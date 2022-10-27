@@ -4,7 +4,7 @@ import MobileNotifications from "https://cdn.jsdelivr.net/gh/digital-auto/playgr
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
-		`https://193.148.162.180:8080/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
+		`https://digitalauto.piyushb9.repl.co/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
 	// waits until the request completes...
 	if (!res.ok) {
 		const message = `An error has occured: ${res.status}`;
