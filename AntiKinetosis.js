@@ -172,6 +172,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 		let video = controlsFrame.querySelector("#video")
 		video.onclick = () => {			
+			const style = simulationDetails.style.trim();
+			const videoURL = style === "relaxed" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxedDriver_AVC.mp4?alt=media&token=ea69aa02-828b-4a66-af0b-5b5abc257d5c" : style === "optimized" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimizedDriver_AVC.mp4?alt=media&token=f9fc5f86-c61a-4760-ac48-4a83d135b8f3" : "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSportyDriver_AVC.mp4?alt=media&token=2f2b664a-f682-4171-912f-0b0e3e32a5bd"
 			let videoFrame = document.createElement("div")
 			videoFrame.style = "width:100%;height:100%;background-color:#e4eeff"
 			videoFrame.innerHTML =
@@ -179,7 +181,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<div id="videoContainer" >
 					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
 						<source
-						src="https://193.148.162.180:8080/video?module=kinetosis&style=${simulationDetails.style.trim()}"
+						${videoURL}
 						type="video/mp4"
 						/>
 					</video>
