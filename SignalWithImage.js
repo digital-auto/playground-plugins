@@ -17,7 +17,9 @@ const SignalWithMedia = (
         
         const intervalId = setInterval(async () => {
             const strippedApi = vssSignal.split(".").slice(1).join(".")
-            const media = valueMedia[await vehicle[strippedApi].get()]
+            const value = await vehicle[strippedApi].get()
+            const media = valueMedia[value]
+            console.log("_S", value, media)
             if (typeof media === "undefined") {
                 div.innerHTML = ""
             } else if (media.type === "video") {
