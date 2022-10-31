@@ -25,11 +25,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "LightDome",
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
-            [0]: {
+            [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
             },
-            [100]: {
+            [false]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
             },
@@ -39,11 +39,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "SeatUpDown",
         SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Backrest.Lumbar.Height", {
-            [true]: {
+            [0]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/SeatUp.mp4"
             },
-            [false]: {
+            [100]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/SeatDown.mp4"
             },
