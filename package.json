@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "build": "cd typescript && tsc && mv ts-built/* ../ && rm -r ts-built"
+    }
+}

@@ -2,7 +2,7 @@ import loadScript from "./loadScript.js"
 
 // type pills = {
 //     signal: string,
-//     icon: string
+//     icon?: string
 // }[]
 
 const SignalPills = (pills, vehicle) => {
