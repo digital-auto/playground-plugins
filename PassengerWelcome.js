@@ -26,12 +26,12 @@ const plugin = ({widgets, vehicle, simulator}) => {
         "SignalWithMediaConsumer",
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
             [true]: {
-                type: "image",
-                url: "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FAC_Status_Asset.png?alt=media&token=d1174d6f-df5c-4cdf-b305-698b2264c847"
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
             },
             [false]: {
                 type: "video",
-                url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
             },
         }, vehicle)
     )
