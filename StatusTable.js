@@ -1,4 +1,4 @@
-import DataTableHTML from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins/DataTableHTML.min.js"
+import DataTableHTML from "/DataTableHTML.js"
 
 const StatusTable = ({apis, vehicle, refresh = 5 * 1000}) => {
     return (box) => {
@@ -18,7 +18,6 @@ const StatusTable = ({apis, vehicle, refresh = 5 * 1000}) => {
         
         const updateTable = async () => {
             for (const api of apis) {
-                const stripped = api.split(".").slice(1).join(".")
                 const val = await vehicle[stripped].get()
                 div.querySelector(`tbody > [data-api="${api}"] > td:nth-child(2)`).textContent = val
             }
