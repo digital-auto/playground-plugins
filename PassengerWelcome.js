@@ -23,7 +23,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     ], simulator)
 
     widgets.register(
-        "SignalWithMediaConsumer",
+        "LightDome",
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
             [true]: {
                 type: "video",
@@ -35,6 +35,23 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
+
+    widgets.register(
+        "SeatUpDown",
+        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatUp.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatDown.mp4"
+            },
+        }, vehicle)
+    )
+
+    
+    
 
     widgets.register(
         "SignalPillsConsumer",
