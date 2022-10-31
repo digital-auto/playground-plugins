@@ -1,4 +1,4 @@
-import loadScript from "/loadScript.js"
+import loadScript from "./loadScript.js"
 
 // type pills = {
 //     signal: string,
