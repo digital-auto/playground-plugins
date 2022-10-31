@@ -6,6 +6,7 @@ const supportsPins = (vehicle) => {
         vehicle.Reset.get()
         return true
     } catch (error) {
+        console.log("supportsPin Error:", error)
         return false
     }
 }
