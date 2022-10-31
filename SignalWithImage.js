@@ -19,7 +19,6 @@ const SignalWithMedia = (
             const strippedApi = vssSignal.split(".").slice(1).join(".")
             const value = await vehicle[strippedApi].get()
             const media = valueMedia[value]
-            console.log("-S", vssSignal, value, media)
             if (typeof media === "undefined") {
                 div.innerHTML = ""
             } else if (media.type === "video") {
