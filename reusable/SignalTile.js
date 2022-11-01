@@ -19,10 +19,10 @@ const SignalTile = (pill, vehicle) => {
         }
         </style>
         <div style="height: 100%; padding: 10px; display: flex; flex-direction: column;">
-            <div style="display: flex; flex-direction: column; height: 100%; background-image: linear-gradient(#1d4882, #688cc3); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;" data-signal="${pill.signal}">
+            <div style="display: flex; flex-direction: column; height: 100%; background-image: linear-gradient(#1d4882, #688cc3); color: white; padding: 35px 15px; border-radius: 25px 15px; user-select: none; align-items: center;" data-signal="${pill.signal}">
                 <div style="margin-bottom: 10px; font-size: 0.75em;" title="${pill.signal}">${pill.signal}</div>
                 <div style="font-size: 1.1em;" class="signal-value">No Value Yet</div>
-                ${pill.icon && `<div style="margin-top: auto;"><i style="font-size: 2.5em;" class="fa-solid fa-${pill.icon}"></i></div>`}
+                ${pill.icon && `<div style="margin-top: auto;"><i style="font-size: 3em;" class="fa-solid fa-${pill.icon}"></i></div>`}
             </div>
         </div>
         `)
