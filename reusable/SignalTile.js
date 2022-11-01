@@ -20,7 +20,7 @@ const SignalTile = (pill, vehicle) => {
         </style>
         <div style="height: 100%; padding: 10px; display: flex; flex-direction: column;">
             <div style="display: flex; flex-direction: column; height: 100%; background-image: linear-gradient(#1d4882, #688cc3); color: white; padding: 35px 15px; border-radius: 25px 15px; user-select: none; align-items: center; justify-content: center;" data-signal="${pill.signal}">
-                <div style="margin-bottom: 10px;font-size: 0.9em;margin-top: auto;font-weight: bold;" title="${pill.signal}">${pill.signal}</div>
+                <div style="margin-bottom: 10px;font-size: 0.9em;font-weight: bold;" title="${pill.signal}">${pill.signal}</div>
                 <div style="font-size: 1.1em;" class="signal-value">No Value Yet</div>
                 ${pill.icon && `<div style="margin-top: 30px;"><i style="font-size: 3em;" class="fa-solid fa-${pill.icon}"></i></div>`}
             </div>
@@ -28,14 +28,12 @@ const SignalTile = (pill, vehicle) => {
         `)
 
         const intervalId = setInterval(async () => {
-            for (const {signal} of pills) {
-                const strippedApi = signal.split(".").slice(1).join(".")
-                const signalValueEl = div.querySelector(`[data-signal="${signal}"] .signal-value`)
-                if (signalValueEl !== null) {
-                    signalValueEl.textContent = await vehicle[strippedApi].get()
-                } else {
-                    throw new Error(`Signal Pill ${signal} div couldn't be found.`)
-                }
+            const strippedApi = pill.signal.split(".").slice(1).join(".")
+            const signalValueEl = div.querySelector(`[data-signal="${pill.signal}"] .signal-value`)
+            if (signalValueEl !== null) {
+                signalValueEl.textContent = await vehicle[strippedApi].get()
+            } else {
+                throw new Error(`Signal Pill ${pill.signal} div couldn't be found.`)
             }
         }, 300)
 
