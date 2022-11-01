@@ -1,10 +1,10 @@
-import StatusTable from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins/StatusTable.min.js"
-import GoogleMapsPluginApi from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins/GoogleMapsPluginApi.min.js"
-import MobileNotifications from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins/MobileNotifications.min.js"
+import StatusTable from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/StatusTable.min.js"
+import GoogleMapsPluginApi from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/GoogleMapsPluginApi.min.js"
+import MobileNotifications from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/MobileNotifications.min.js"
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
-		`https://193.148.162.180:8080/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
+		`https://aiotapp.net/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
 	// waits until the request completes...
 	if (!res.ok) {
 		const message = `An error has occured: ${res.status}`;
@@ -29,7 +29,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         body {
             font-family: 'Lato', sans-serif;
             color:#ffffe3;
-            background-color:rgb(108 122 224);
+            background-color:rgb(0 80 114);
             text-align:center;            
         }
         </style>
@@ -64,18 +64,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		<div id="passengers" style="position:relative;margin-top:5px;width:100%;">        
 			<div class="selections" style="display:flex;position:relative;justify-content:center">
 			<div class="btn-group gender" style="margin:5px;display:grid">
-				<button id="gender_male" style="background-color: rgb(55 65 81);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+				<button id="gender_male" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 				Male
 				</button>
-				<button id="gender_female" style="background-color: rgb(156 163 175);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+				<button id="gender_female" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 				Female
 				</button>
 			</div>
 			<div class="btn-group age" style="margin:5px;display:grid">
-				<button id="age_young" style="background-color: rgb(55 65 81);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+				<button id="age_young" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 				Young
 				</button>
-				<button id="age_old" style="background-color: rgb(156 163 175);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+				<button id="age_old" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 				Adult
 				</button>
 			</div>
@@ -145,41 +145,43 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let gender_male = controlsFrame.querySelector("#gender_male")
 		gender_male.onclick = () => {
 			simulationDetails["gender"] = "male"
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(55 65 81)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(156 163 175)"
+			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
+			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
 		}
 	
 		let gender_female = controlsFrame.querySelector("#gender_female")
 		gender_female.onclick = () => {
 			simulationDetails["gender"] = "female"
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(156 163 175)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(55 65 81)"
+			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
+			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(104 130 158)"
 		}
 	
 		let age_young = controlsFrame.querySelector("#age_young")
 		age_young.onclick = () => {
 			simulationDetails["age"] = "young"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(55 65 81)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(156 163 175)"
+			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
+			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
 		}
 	
 		let age_old = controlsFrame.querySelector("#age_old")
 		age_old.onclick = () => {
 			simulationDetails["age"] = "adult"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(156 163 175)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(55 65 81)"
+			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
+			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
 		}
 
 		let video = controlsFrame.querySelector("#video")
-		video.onclick = () => {			
+		video.onclick = () => {
+			const style = simulationDetails.style.trim();
+			const videoURL = style === "relaxed" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxedDriver_AVC.mp4?alt=media&token=ea69aa02-828b-4a66-af0b-5b5abc257d5c" : style === "optimized" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimizedDriver_AVC.mp4?alt=media&token=f9fc5f86-c61a-4760-ac48-4a83d135b8f3" : "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSportyDriver_AVC.mp4?alt=media&token=2f2b664a-f682-4171-912f-0b0e3e32a5bd"
 			let videoFrame = document.createElement("div")
-			videoFrame.style = "width:100%;height:100%;background-color:#e4eeff"
+			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
 			videoFrame.innerHTML =
 				`
 				<div id="videoContainer" >
 					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
 						<source
-						src="https://193.148.162.180:8080/video?module=kinetosis&style=${simulationDetails.style.trim()}"
+						src=${videoURL}
 						type="video/mp4"
 						/>
 					</video>
@@ -196,10 +198,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			"age": "young"
 			}
 
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(55, 65, 81)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(156, 163, 175)"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(55, 65, 81)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(156, 163, 175)"
+			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
+			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
+			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
+			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#red svg").style.width = "60%"
 			controlsFrame.querySelector("#green svg").style.width = "50%"
 			controlsFrame.querySelector("#yellow svg").style.width = "50%"
@@ -218,8 +220,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			mobileNotifications("");
 
 			animationFrame.querySelector("#animation").textContent = "Click on the Animation you want to see."
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(156 163 175)"
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(156 163 175)"
+			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
+			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
 
 		}
 
@@ -264,8 +266,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						simulator("Vehicle.AngularVelocity.Yaw", "get", async () => {
 							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
 						})
+						simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
+							return (VSSdata[index]["Vehicle.CurrentLocation.Latitude"])
+						})
+						simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
+							return (VSSdata[index]["Vehicle.CurrentLocation.Longitude"])
+						})
+
+						if(setVehiclePinGlobal !== null) {
+							setVehiclePinGlobal({
+								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"]),
+								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"])
+							})
+						}
 						
-						scoreFrame.querySelector("#score .text").textContent = VSSdata[index]["KinetosisScore"]
+						scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2)
 						scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
 						scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
 						scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
@@ -307,11 +322,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
 	widgets.register("Table", StatusTable({
-		apis: ["Vehicle.Speed", "Vehicle.TripMeterReading", "Vehicle.Acceleration.Lateral", "Vehicle.Acceleration.Longitudinal", "Vehicle.Acceleration.Vertical", "Vehicle.AngularVelocity.Roll", "Vehicle.AngularVelocity.Pitch", "Vehicle.AngularVelocity.Yaw"],
+		apis: ["Vehicle.Speed", "Vehicle.TripMeterReading", "Vehicle.Acceleration.Lateral", "Vehicle.Acceleration.Longitudinal", "Vehicle.Acceleration.Vertical", "Vehicle.AngularVelocity.Roll", "Vehicle.AngularVelocity.Pitch", "Vehicle.AngularVelocity.Yaw", "Vehicle.CurrentLocation.Latitude", "Vehicle.CurrentLocation.Longitude"],
 		vehicle: vehicle,
 		refresh: 1000
 	}))
 
+	let setVehiclePinGlobal = null;
 	widgets.register("Map", (box) => {
 		let path = [
 			{
@@ -323,7 +339,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				"lng": 10.425532
 			},
 		]
-		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path)
+		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path).then(({setVehiclePin}) => {
+			setVehiclePinGlobal = setVehiclePin
+		})
 	})
 
 	let scoreFrame = document.createElement("div")	
@@ -338,7 +356,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         body {
             font-family: 'Lato', sans-serif;
             color:#ffffe3;
-            background-color:rgb(108 122 224);
+            background-color:rgb(0 80 114);
             text-align:center;            
         }
         </style>
@@ -391,33 +409,33 @@ const plugin = ({widgets, simulator, vehicle}) => {
         body {
             font-family: 'Lato', sans-serif;
             color:#ffffe3;
-            background-color:rgb(108 122 224);
+            background-color:rgb(0 80 114);
             text-align:center;            
         }
 		</style>
 		<div>Please click on the button below to take action : </div>
 		<div class="btn-group animation" style="margin:5px;display:grid;position:relative;top:50%">
-			<button id="animation_ac" style="background-color: rgb(156 163 175);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-			Turn on A/C
-			</button>
-			<button id="animation_window" style="background-color: rgb(156 163 175);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			<button id="animation_window_open" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Open Window
+			</button>
+			<button id="animation_window_close" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			Close Window
 			</button>
 		</div>
 		`
 		
-		let animation_ac = animationControlsFrame.querySelector("#animation_ac")
-		animation_ac.onclick = () => {
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(55 65 81)"
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(156 163 175)"
-			animationFrame.querySelector("#animation").textContent = "Show AC Animation"
+		let animation_open = animationControlsFrame.querySelector("#animation_window_open")
+		animation_open.onclick = () => {
+			animationControlsFrame.querySelector("#animation_window_open").style.backgroundColor = "rgb(104 130 158)"
+			animationControlsFrame.querySelector("#animation_window_close").style.backgroundColor = "rgb(157 176 184)"
+			animationFrame.querySelector("#animation").textContent = "Show Window Open Animation"
 		}
 	
-		let animation_window = animationControlsFrame.querySelector("#animation_window")
-		animation_window.onclick = () => {
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(156 163 175)"
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(55 65 81)"
-			animationFrame.querySelector("#animation").textContent = "Show Window Animation"
+		let animation_close = animationControlsFrame.querySelector("#animation_window_close")
+		animation_close.onclick = () => {
+			animationControlsFrame.querySelector("#animation_window_open").style.backgroundColor = "rgb(157 176 184)"
+			animationControlsFrame.querySelector("#animation_window_close").style.backgroundColor = "rgb(104 130 158)"
+			animationFrame.querySelector("#animation").textContent = "Show Window Close Animation"
 		}
 
 		box.injectNode(animationControlsFrame)
