@@ -23,15 +23,15 @@ const plugin = ({widgets, vehicle, simulator}) => {
             [
                 {
                     signal: "Vehicle.CurrentLocation.Latitude",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `gauge`
                 },
                 {
                     signal: "Vehicle.CurrentLocation.Longitude",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `location-dot`
                 },
                 {
                     signal: "Vehicle.Speed",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: ``
                 }
             ],
             vehicle
