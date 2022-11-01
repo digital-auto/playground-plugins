@@ -1,4 +1,4 @@
-import SignalWithMedia from "./reusable/SignalWithMedia"
+import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 

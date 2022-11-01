@@ -1,4 +1,4 @@
-import StatusTable from "./reusable/StatusTable"
+import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
 
 async function fetchIntensity(weather) {

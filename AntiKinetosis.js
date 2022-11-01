@@ -1,6 +1,6 @@
-import StatusTable from "./reusable/StatusTable"
-import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi"
-import MobileNotifications from "./reusable/MobileNotifications"
+import StatusTable from "./reusable/StatusTable.js"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
