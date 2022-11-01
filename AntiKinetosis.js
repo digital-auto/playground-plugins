@@ -266,8 +266,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						simulator("Vehicle.AngularVelocity.Yaw", "get", async () => {
 							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
 						})
+						simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
+							return (VSSdata[index]["Vehicle.CurrentLocation.Latitude"])
+						})
+						simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
+							return (VSSdata[index]["Vehicle.CurrentLocation.Longitude"])
+						})
+
+						if(setVehiclePinGlobal !== null) {
+							setVehiclePinGlobal({
+								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"]),
+								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"])
+							})
+						}
 						
-						scoreFrame.querySelector("#score .text").textContent = VSSdata[index]["KinetosisScore"]
+						scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2)
 						scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
 						scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
 						scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
@@ -309,11 +322,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
 	widgets.register("Table", StatusTable({
-		apis: ["Vehicle.Speed", "Vehicle.TripMeterReading", "Vehicle.Acceleration.Lateral", "Vehicle.Acceleration.Longitudinal", "Vehicle.Acceleration.Vertical", "Vehicle.AngularVelocity.Roll", "Vehicle.AngularVelocity.Pitch", "Vehicle.AngularVelocity.Yaw"],
+		apis: ["Vehicle.Speed", "Vehicle.TripMeterReading", "Vehicle.Acceleration.Lateral", "Vehicle.Acceleration.Longitudinal", "Vehicle.Acceleration.Vertical", "Vehicle.AngularVelocity.Roll", "Vehicle.AngularVelocity.Pitch", "Vehicle.AngularVelocity.Yaw", "Vehicle.CurrentLocation.Latitude", "Vehicle.CurrentLocation.Longitude"],
 		vehicle: vehicle,
 		refresh: 1000
 	}))
 
+	let setVehiclePinGlobal = null;
 	widgets.register("Map", (box) => {
 		let path = [
 			{
@@ -325,7 +339,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				"lng": 10.425532
 			},
 		]
-		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path)
+		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path).then(({setVehiclePin}) => {
+			setVehiclePinGlobal = setVehiclePin
+		})
 	})
 
 	let scoreFrame = document.createElement("div")	
@@ -399,27 +415,27 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		</style>
 		<div>Please click on the button below to take action : </div>
 		<div class="btn-group animation" style="margin:5px;display:grid;position:relative;top:50%">
-			<button id="animation_ac" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-			Turn on A/C
-			</button>
-			<button id="animation_window" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			<button id="animation_window_open" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Open Window
+			</button>
+			<button id="animation_window_close" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			Close Window
 			</button>
 		</div>
 		`
 		
-		let animation_ac = animationControlsFrame.querySelector("#animation_ac")
-		animation_ac.onclick = () => {
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(104 130 158)"
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
-			animationFrame.querySelector("#animation").textContent = "Show AC Animation"
+		let animation_open = animationControlsFrame.querySelector("#animation_window_open")
+		animation_open.onclick = () => {
+			animationControlsFrame.querySelector("#animation_window_open").style.backgroundColor = "rgb(104 130 158)"
+			animationControlsFrame.querySelector("#animation_window_close").style.backgroundColor = "rgb(157 176 184)"
+			animationFrame.querySelector("#animation").textContent = "Show Window Open Animation"
 		}
 	
-		let animation_window = animationControlsFrame.querySelector("#animation_window")
-		animation_window.onclick = () => {
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(104 130 158)"
-			animationFrame.querySelector("#animation").textContent = "Show Window Animation"
+		let animation_close = animationControlsFrame.querySelector("#animation_window_close")
+		animation_close.onclick = () => {
+			animationControlsFrame.querySelector("#animation_window_open").style.backgroundColor = "rgb(157 176 184)"
+			animationControlsFrame.querySelector("#animation_window_close").style.backgroundColor = "rgb(104 130 158)"
+			animationFrame.querySelector("#animation").textContent = "Show Window Close Animation"
 		}
 
 		box.injectNode(animationControlsFrame)
