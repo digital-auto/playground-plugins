@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "module": "commonjs",
+        "target": "ES2017",
+        "outDir": "ts-built",
+        "lib": ["ES2015", "DOM"],
+    }
+}

@@ -1,4 +1,4 @@
-import DataTableHTML from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins/DataTableHTML.min.js"
+import DataTableHTML from "./DataTableHTML.js"
 
 const StatusTable = ({apis, vehicle, refresh = 5 * 1000}) => {
     return (box) => {
