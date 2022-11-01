@@ -1,5 +1,4 @@
 import loadScript from "./loadScript.js"
-import { BoxType } from "./types/pluginTypes"
 
 // type PillsType = {
 //     signal: string
