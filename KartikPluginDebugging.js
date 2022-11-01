@@ -59,7 +59,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         );
         box.injectNode(div)
         console.log("all good");
-        
+
         return () => {
         }
 
@@ -67,7 +67,4 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
     })
 }
-
-export default plugin
-
 
