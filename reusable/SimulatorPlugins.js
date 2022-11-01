@@ -1,7 +1,9 @@
 const SimulatorPlugins = (signalValues, simulator) => {
     let currentIndex = 0
 
-    for (const signal of ["Vehicle.CurrentLocation.Longitude", "Vehicle.Speed", "Vehicle.CurrentLocation.Latitude"]) {
+    const APIs = new Set(signalValues.map(signalValueObj => Object.keys(signalValueObj)).flat())
+
+    for (const signal of APIs) {
         simulator(signal, "get", async () => {
             return signalValues[currentIndex][signal]
         })
