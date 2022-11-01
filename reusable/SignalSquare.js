@@ -19,7 +19,7 @@ const SignalSquare = (pill, vehicle) => {
         }
         </style>
         <div style="height: 100%; padding: 10px; display: flex; flex-direction: column;">
-            <div style="display: flex; height: 100%; background-color: rgb(0 80 114); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;" data-signal="${pill.signal}">
+            <div style="display: flex; height: 100%; background-image: linear-gradient(#ff836f, #f95850); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;" data-signal="${pill.signal}">
                 <div style="display: flex; flex-direction: column; overflow: hidden; width: 100%;">
                     <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="${pill.signal}">${pill.signal}</div>
                     <div style="font-size: 1.1em;" class="signal-value">No Value Yet</div>
