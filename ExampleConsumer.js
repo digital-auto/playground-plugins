@@ -1,6 +1,7 @@
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import SignalSquare from "./reusable/SignalSquare.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
@@ -34,6 +35,17 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     icon: `gauge`
                 }
             ],
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "SignalSquareConsumer",
+        SignalSquare(
+            {
+                signal: "Vehicle.Speed",
+                icon: `gauge`
+            },
             vehicle
         )
     )
