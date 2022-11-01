@@ -1,4 +1,4 @@
-import loadScript from "../loadScript";
+import loadScript from "./loadScript.js";
 
 function calculateAndDisplayRoute(box, path, directionsRenderer) {
     const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
