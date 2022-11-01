@@ -23,7 +23,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             [
                 {
                     signal: "Vehicle.CurrentLocation.Latitude",
-                    icon: `gauge`
+                    icon: `location-dot`
                 },
                 {
                     signal: "Vehicle.CurrentLocation.Longitude",
@@ -31,7 +31,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
                 },
                 {
                     signal: "Vehicle.Speed",
-                    icon: ``
+                    icon: `gauge`
                 }
             ],
             vehicle
