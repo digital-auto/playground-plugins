@@ -423,30 +423,46 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			</button>
 		</div>
 		`
-		
+		let timer;
+    	let top1 = 42.6;
+
 		let animation_open = animationControlsFrame.querySelector("#animation_window_open")
 		animation_open.onclick = () => {
 			animationControlsFrame.querySelector("#animation_window_open").style.backgroundColor = "rgb(104 130 158)"
 			animationControlsFrame.querySelector("#animation_window_close").style.backgroundColor = "rgb(157 176 184)"
-			animationFrame.querySelector("#animation").textContent = "Show Window Open Animation"
+			clearInterval(timer)
+		    timer = setInterval(function(){
+				top1<42.6 ? top1 = top1 + 0.1 : clearInterval(timer)
+				animationFrame.querySelector("#glass").style.top = top1+"%"
+			},10)
 		}
 	
 		let animation_close = animationControlsFrame.querySelector("#animation_window_close")
 		animation_close.onclick = () => {
 			animationControlsFrame.querySelector("#animation_window_open").style.backgroundColor = "rgb(157 176 184)"
 			animationControlsFrame.querySelector("#animation_window_close").style.backgroundColor = "rgb(104 130 158)"
-			animationFrame.querySelector("#animation").textContent = "Show Window Close Animation"
+			clearInterval(timer)
+			timer = setInterval(function(){
+				top1>2.6 ? top1 = top1 - 0.1 : clearInterval(timer)
+				animationFrame.querySelector("#glass").style.top = top1+"%"
+			},10)
 		}
 
 		box.injectNode(animationControlsFrame)
 
 	})
 
-	let animationFrame = document.createElement("div")
-	animationFrame.innerHTML = `
-	<div id="animation" style='display: flex; height: 100%; width: 100%; justify-content: center; align-items: center; text-align: center; font-family: sans-serif; color: #6b7280; user-select: none;'>Click on the Animation you want to see.</div>
-	`
+	let animationFrame = null;
+	
 	widgets.register("Animation", (box) => {
+		animationFrame = document.createElement("div")
+		animationFrame.innerHTML = 
+		`
+		<div class="car" style="max-width: 849px; margin: 30px auto 0; position: relative;">
+			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/588557img1.png" alt="" style="width: 100%;">
+			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/128340img2.png" alt="" id="glass" style="width: 76%; position: absolute; top: 42.6%; left: 18.3%; z-index: -1;">
+		</div>
+		`
 		box.injectNode(animationFrame)
 	})
 	
