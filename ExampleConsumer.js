@@ -1,7 +1,7 @@
-import SignalWithMedia from "./SignalWithImage.js"
-import SignalPills from "./SignalPills.js"
-import GoogleMapsFromSignal from "./GoogleMapsFromSignal.js"
-import SimulatorPlugins from "./SimulatorPlugins.js"
+import SignalWithMedia from "./reusable/SignalWithMedia"
+import SignalPills from "./reusable/SignalPills.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     SimulatorPlugins([

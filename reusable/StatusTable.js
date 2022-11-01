@@ -1,4 +1,4 @@
-import DataTableHTML from "./reusable/DataTableHTML.js"
+import DataTableHTML from "./DataTableHTML.js"
 
 const StatusTable = ({apis, vehicle, refresh = 5 * 1000}) => {
     return (box) => {

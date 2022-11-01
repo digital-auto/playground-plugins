@@ -1,6 +1,6 @@
-import StatusTable from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/StatusTable.min.js"
-import GoogleMapsPluginApi from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/GoogleMapsPluginApi.min.js"
-import MobileNotifications from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/MobileNotifications.min.js"
+import StatusTable from "./reusable/StatusTable"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi"
+import MobileNotifications from "./reusable/MobileNotifications"
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(

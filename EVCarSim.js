@@ -1,6 +1,6 @@
-import GoogleMapsPluginApi from "./GoogleMapsPluginApi.js"
-import StatusTable from "./StatusTable.js"
-import DataTableHTML from "./DataTableHTML.js"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
+import StatusTable from "./reusable/StatusTable.js"
+import DataTableHTML from "./reusable/DataTableHTML.js"
 
 const plugin = ({widgets, simulator, vehicle}) => {
     let setVehiclePinGlobal = null

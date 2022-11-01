@@ -1,4 +1,4 @@
-import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
+import GoogleMapsPluginApi from "./GoogleMapsPluginApi.js"
 
 const supportsPins = (vehicle) => {
     try {
