@@ -51,13 +51,14 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     }
                 }
             };
+            
             loadScript(box.window, "https://cdn.jsdelivr.net/npm/chart.js")
 
-            const myChart = new Chart(
+            // const myChart = new Chart(
                 
-                div.querySelector("#myChart"),
-                config
-            );
+            //     div.querySelector("#myChart"),
+            //     config
+            // );
             box.injectNode(div)
             console.log("all good");
         }
