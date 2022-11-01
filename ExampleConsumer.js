@@ -43,8 +43,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
         "SignalTileConsumer",
         SignalTile(
             {
-                signal: "Vehicle.Speed",
-                icon: `gauge`
+                signal: "Vehicle.CurrentLocation.Longitude",
+                icon: `location-dot`
             },
             vehicle
         )
