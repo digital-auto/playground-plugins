@@ -5,7 +5,7 @@ import loadScript from "./loadScript.js"
 //     icon?: string
 // }
 
-const SignalSquare = (pill, vehicle) => {
+const SignalTile = (pill, vehicle) => {
     return (box) => {
         const div = document.createElement("div")
         div.innerHTML = (`
@@ -51,4 +51,4 @@ const SignalSquare = (pill, vehicle) => {
     }
 }
 
-export default SignalSquare
+export default SignalTile
