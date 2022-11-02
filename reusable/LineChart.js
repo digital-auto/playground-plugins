@@ -58,12 +58,10 @@ const LineChart = (signals, vehicle) => {
             }
 
             const entries = (await Promise.all(signals.map(async signal => {
-                const prevValue = getDataset(signal.signal)[0]
+                const prevValue = getDataset(signal.signal).data[0]
 
                 const stripped = signal.signal.split(".").slice(1).join(".")
                 const newValue = await vehicle[stripped].get()
-
-                console.log(signal.signal, "::", prevValue, newValue)
 
                 if (typeof prevValue !== "undefined" && prevValue === newValue) {
                     return [signal.signal, null]
