@@ -1,5 +1,6 @@
 import SignalPills from "./reusable/SignalPills.js"
 import SignalTile from "./reusable/SignalTile.js"
+import loadScript from "./reusable/loadScript.js"
 
 const fulfillChariottService = async (body) => {
     const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
@@ -16,10 +17,16 @@ const fulfillChariottService = async (body) => {
 
 const HappyDog = ({ simulator, widgets, vehicle }) => {
     widgets.register("DogStream", (box) => {
+        loadScript(box.window, "https://kit.fontawesome.com/c37d34b852.js")
+
         const div = document.createElement("div")
         div.style = "width: 100%; height: 100%;"
         div.innerHTML = "<img style='width: 100%; height: 100%; object-fit: cover;'></img>"
         box.injectNode(div)
+
+        const IconDiv = document.createElement("div")
+        IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;"
+        IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 2.5em;"></i>`
 
         const SIGNALS = ["Vehicle.Cabin.HVAC.AmbientAirTemperature", "Vehicle.OBD.HybridBatteryRemaining", "Vehicle.Cabin.HVAC.IsAirConditioningActive"]
 
