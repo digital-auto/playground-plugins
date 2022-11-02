@@ -1,4 +1,3 @@
-import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
@@ -38,6 +37,31 @@ const plugin = ({widgets, vehicle, simulator}) => {
                 icon: "flag-checkered",
                 suffix: "s"
             },
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "SignalPills",
+        SignalPills(
+            [
+                {
+                    signal: "Vehicle.CurrentLocation.Latitude",
+                    label: "Latitude",
+                    icon: "satellite",
+                },
+                {
+                    signal: "Vehicle.CurrentLocation.Longitude",
+                    label: "Longitude",
+                    icon: "satellite"
+                },
+                {
+                    signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
+                    label: "ETA",
+                    icon: "flag-checkered",
+                    suffix: "s"
+                },
+            ],
             vehicle
         )
     )
