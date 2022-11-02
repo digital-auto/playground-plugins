@@ -1,3 +1,5 @@
+import SignalPills from "./reusable/SignalPills.js"
+
 const fulfillChariottService = async (body) => {
     const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
     const response = await fetch("https://bcw.chariottdemo.com:44243/chariott.runtime.v1.ChariottService/Fulfill", {
@@ -11,7 +13,7 @@ const fulfillChariottService = async (body) => {
     return await response.json()
 }
 
-const HappyDog = ({ widgets }) => {
+const HappyDog = ({ simulator, widgets }) => {
     widgets.register("DogStream", (box) => {
         const div = document.createElement("div")
         div.style = "width: 100%; height: 100%;"
@@ -69,9 +71,30 @@ const HappyDog = ({ widgets }) => {
             }
         }
 
-        const intervalId = setInterval(async () => {
-            console.log(STATE)
+        for (const api of SIGNALS) {
+            simulator(api, "get", () => {
+                return STATE.signals[api]
+            })
+        }
 
+        widgets.register("SensorPills", SignalPills([
+            {
+                signal: "Vehicle.Cabin.HVAC.AmbientAirTemperature",
+                icon: "temperature-half",
+                suffix: " °C"
+            },
+            {
+                signal: "Vehicle.OBD.HybridBatteryRemaining",
+                icon: "battery-half",
+                suffix: "%"
+            },
+            {
+                signal: "Vehicle.Cabin.HVAC.IsAirConditioningActive",
+                icon: "wind"
+            },
+        ], vehicle))
+
+        const intervalId = setInterval(async () => {
             updateCurrentStatus()
             updateImage()
             updateAPIs()

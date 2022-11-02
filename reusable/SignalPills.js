@@ -4,6 +4,7 @@ import loadScript from "./loadScript.js"
 //     signal: string
 //     icon?: string
 //     label?: string
+//     suffix?: string
 // }[]
 
 const SignalPills = (pills, vehicle) => {
