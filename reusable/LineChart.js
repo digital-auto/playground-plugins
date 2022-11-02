@@ -63,7 +63,7 @@ const LineChart = (signals, vehicle) => {
                 const stripped = signal.signal.split(".").slice(1).join(".")
                 const newValue = await vehicle[stripped].get()
 
-                console.log("dataset", dataset)
+                console.log("dataset", getDataset(signal.signal))
                 console.log(signal.signal, "::", prevValue, newValue)
 
 
