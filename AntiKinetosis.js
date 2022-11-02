@@ -18,7 +18,7 @@ async function fetchSimulationResults(simulationDetails) {
 const plugin = ({widgets, simulator, vehicle}) => {
 
     let controlsFrame = document.createElement("div")
-    controlsFrame.style = 'display:grid;'
+    controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
 	controlsFrame.innerHTML = 
 		`
         <style>
@@ -30,7 +30,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             font-family: 'Lato', sans-serif;
             color:#ffffe3;
             background-color:rgb(0 80 114);
-            text-align:center;            
+            text-align:center;
+			display:flex;          
         }
         </style>
 		<div class="label" style="width:100%;position:relative;margin-top:10px;">Driving Style:</div>
@@ -280,7 +281,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 							})
 						}
 						
-						scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2)
+						scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2) + "%"
 						scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
 						scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
 						scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
@@ -345,7 +346,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	})
 
 	let scoreFrame = document.createElement("div")	
-	scoreFrame.style = `width:100%;`
+	scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
 	scoreFrame.innerHTML =
 		`
 		<style>
@@ -360,7 +361,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             text-align:center;            
         }
         </style>
-		<div id="score" style="postion:relative;top:25%">
+		<div id="score" style="">
 			<div class="text">0.0%</div>
 			<svg width="100" height="200" style="transform: rotateX(180deg)">
 				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
@@ -390,7 +391,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			apis : null,
 			vehicle: null,
 			box: box,
-			refresh: null
+			refresh: null,
+			backgroundColor: "rgb(0 80 114)"
 		}).then(({printNotification}) => {
 			mobileNotifications = printNotification;
 		})
@@ -399,7 +401,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	let animationControlsFrame = null;
 	widgets.register("Animation Controls", (box) => {
 		animationControlsFrame = document.createElement("div")
-		animationControlsFrame.style = "display:grid"
+		animationControlsFrame.style = "height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
 		animationControlsFrame.innerHTML = `
 		<style>
 		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -414,7 +416,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 		</style>
 		<div>Please click on the button below to take action : </div>
-		<div class="btn-group animation" style="margin:5px;display:grid;position:relative;top:50%">
+		<div class="btn-group animation" style="margin:5px;display:grid">
 			<button id="animation_window_open" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Open Window
 			</button>
@@ -458,6 +460,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		animationFrame = document.createElement("div")
 		animationFrame.innerHTML = 
 		`
+		<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color:#ffffe3;
+            background-color:rgb(0 80 114);
+            text-align:center;            
+        }
+		</style>
 		<div class="car" style="max-width: 849px; margin: 30px auto 0; position: relative;">
 			<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fsmart-wipers%2Fimg1.png?alt=media&token=99945f0a-7ef4-4049-a830-f73a2e7b678d" alt="" style="width: 100%;">
 			<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fsmart-wipers%2Fimg2.png?alt=media&token=052bfcb8-1dfe-4f9a-8984-6446421efe72" alt="" id="glass" style="width: 76%; position: absolute; top: 2.6%; left: 18.3%; z-index: -1;">
