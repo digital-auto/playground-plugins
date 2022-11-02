@@ -6,6 +6,39 @@ import LineChart from "./reusable/LineChart.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
+        "LatitudeTile",
+        SignalTile(
+            {
+                signal: "Vehicle.CurrentLocation.Latitude",
+                label: "Latitude"
+            },
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "LongitudeTile",
+        SignalTile(
+            {
+                signal: "Vehicle.CurrentLocation.Longitude",
+                label: "Longitude"
+            },
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "ETATile",
+        SignalTile(
+            {
+                signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
+                label: "ETA"
+            },
+            vehicle
+        )
+    )
+
+    widgets.register(
         "SpeedLineChart",
         LineChart(
             [
