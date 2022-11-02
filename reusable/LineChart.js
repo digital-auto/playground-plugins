@@ -40,6 +40,7 @@ const LineChart = (signals, vehicle) => {
             loadScript(box.window, "https://cdn.jsdelivr.net/npm/chart.js").then(() => {
                 const ctx = container.querySelector('canvas').getContext('2d');
     
+                console.log(signals, 'rgb(248, 250, 252)')
                 chart = new box.window.Chart(ctx, {
                     type: 'line',
                     data: {
