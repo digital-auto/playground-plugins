@@ -8,6 +8,14 @@ const HappyDog = ({widgets}) => {
             const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
             const response = await fetch("https://bcw.chariottdemo.com:44243/chariott.runtime.v1.ChariottService/Fulfill", {
                 method: "POST",
+                body: JSON.stringify({
+                    "namespace": "sdv.camera.simulated",
+                    "intent": {
+                        "read": {
+                            "key": "camera.12fpm"
+                        }
+                    }
+                }),
                 headers: {
                     "Authorization":  'Basic ' + btoa(username + ":" + password)
                 }
