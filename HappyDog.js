@@ -1,5 +1,5 @@
 import SignalPills from "./reusable/SignalPills.js"
-import SignalTile from "./reusable/SignalTile"
+import SignalTile from "./reusable/SignalTile.js"
 
 const fulfillChariottService = async (body) => {
     const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
