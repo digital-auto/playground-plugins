@@ -7,6 +7,7 @@ const HappyDog = ({widgets}) => {
         const updateImage = async () => {
             const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
             const response = await fetch("https://bcw.chariottdemo.com:44243/chariott.runtime.v1.ChariottService/Fulfill", {
+                method: "POST",
                 headers: {
                     "Authorization":  'Basic ' + btoa(username + ":" + password)
                 }
