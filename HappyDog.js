@@ -21,7 +21,7 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
         
         const IconDiv = document.createElement("div")
         IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;"
-        IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 2.5em;"></i>`
+        IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 6em;"></i>`
 
         box.injectNode(IconDiv)
     })
@@ -65,6 +65,7 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
                 }
             })
             STATE.status = json.fulfillment.read.value.bool
+            IconDiv.style.color = STATE.status ? "#059669" : "red"
         }
 
         const updateAPIs = async () => {
