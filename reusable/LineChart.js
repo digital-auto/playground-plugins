@@ -8,6 +8,7 @@ import loadScript from "./loadScript.js";
 const LineChart = (signals, vehicle) => {
     return (box) => {
         const container = document.createElement("div")
+        container.style = "width: 100%; height: 100%;"
         container.innerHTML = (`
         <canvas width="100%" height="100%"></canvas>
         `)
@@ -28,6 +29,10 @@ const LineChart = (signals, vehicle) => {
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
                     }))
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false                  
                 }
             });
         })
@@ -68,8 +73,8 @@ const LineChart = (signals, vehicle) => {
                 dataset.data.push(value)
             }
 
-            chart.data.labels.push(chart.data.labels.length + 1)
-            chart.update()
+            // chart.data.labels.push(chart.data.labels.length + 1)
+            // chart.update()
         }, 300)
 
         return () => {
