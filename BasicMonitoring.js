@@ -11,7 +11,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             {
                 signal: "Vehicle.CurrentLocation.Latitude",
                 label: "Latitude",
-                icon: "satellite"
+                icon: "satellite",
             },
             vehicle
         )
@@ -35,7 +35,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
             {
                 signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
                 label: "ETA",
-                icon: "flag-checkered"
+                icon: "flag-checkered",
+                suffix: "s"
             },
             vehicle
         )
@@ -46,7 +47,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
         LineChart(
             [
                 {
-                    signal: "Vehicle.Speed"
+                    signal: "Vehicle.Speed",
+                    suffix: " km/h"
                 }
             ],
             vehicle
@@ -58,10 +60,12 @@ const plugin = ({widgets, vehicle, simulator}) => {
         LineChart(
             [
                 {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature"
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
+                    suffix: " C"
                 },
                 {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature"
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
+                    suffix: " C"
                 },
             ],
             vehicle
