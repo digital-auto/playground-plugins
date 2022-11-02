@@ -418,7 +418,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			<button id="animation_window_open" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Open Window
 			</button>
-			<button id="animation_window_close" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			<button id="animation_window_close" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Close Window
 			</button>
 		</div>
@@ -460,7 +460,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
 		<div class="car" style="max-width: 849px; margin: 30px auto 0; position: relative;">
 			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/588557img1.png" alt="" style="width: 100%;">
-			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/128340img2.png" alt="" id="glass" style="width: 76%; position: absolute; top: 42.6%; left: 18.3%; z-index: -1;">
+			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/128340img2.png" alt="" id="glass" style="width: 76%; position: absolute; top: 2.6%; left: 18.3%; z-index: -1;">
 		</div>
 		`
 		box.injectNode(animationFrame)
