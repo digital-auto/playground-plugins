@@ -276,7 +276,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						if(setVehiclePinGlobal !== null) {
 							setVehiclePinGlobal({
 								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
-								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude" * (180 / Math.PI)])
+								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
 							})
 						}
 						
