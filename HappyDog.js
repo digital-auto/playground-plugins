@@ -1,4 +1,5 @@
 import SignalPills from "./reusable/SignalPills.js"
+import SignalTile from "./reusable/SignalTile"
 
 const fulfillChariottService = async (body) => {
     const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
@@ -77,21 +78,31 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
             })
         }
 
+        const TemperatureTile = {
+            signal: "Vehicle.Cabin.HVAC.AmbientAirTemperature",
+            icon: "temperature-half",
+            suffix: " °C"
+        }
+
+        const BatteryTile = {
+            signal: "Vehicle.OBD.HybridBatteryRemaining",
+            icon: "battery-half",
+            suffix: "%"
+        }
+
+        const AirConditioningTile = {
+            signal: "Vehicle.Cabin.HVAC.IsAirConditioningActive",
+            icon: "wind"
+        }
+
+        widgets.register("TemperatureTile", SignalTile(TemperatureTile, vehicle))
+        widgets.register("BatteryTile", SignalTile(BatteryTile, vehicle))
+        widgets.register("AirConditioningTile", SignalTile(AirConditioningTile, vehicle))
+
         widgets.register("SensorPills", SignalPills([
-            {
-                signal: "Vehicle.Cabin.HVAC.AmbientAirTemperature",
-                icon: "temperature-half",
-                suffix: " °C"
-            },
-            {
-                signal: "Vehicle.OBD.HybridBatteryRemaining",
-                icon: "battery-half",
-                suffix: "%"
-            },
-            {
-                signal: "Vehicle.Cabin.HVAC.IsAirConditioningActive",
-                icon: "wind"
-            },
+            TemperatureTile,
+            BatteryTile,
+            AirConditioningTile,
         ], vehicle))
 
         const intervalId = setInterval(async () => {
