@@ -48,7 +48,7 @@ const LineChart = (signals, vehicle) => {
                             label: signal.signal,
                             data: [],
                             fill: false,
-                            borderColor: 'rgb(75, 192, 192)',
+                            borderColor: signal.color || 'rgb(248, 250, 252)',
                             tension: 0.1
                         }))
                     },
