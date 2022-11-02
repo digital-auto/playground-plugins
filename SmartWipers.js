@@ -231,6 +231,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         dashcamFrame.querySelector("#play").onclick = () => {
             clearInterval(intervalId)
+            clearInterval(intervalId2)
             manualOverride = false;
             index = 0;
             percent = 0;
@@ -310,7 +311,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
     widgets.register("Wiper Control", (box) => {
         WipersControlFrame = document.createElement("div")
-        WipersControlFrame.style = "display:grid"
+        WipersControlFrame.style = "width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
         WipersControlFrame.innerHTML = `
 		<style>
 		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -430,7 +431,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     let scoreFrame = null;
     widgets.register("Score", (box) => {
         scoreFrame = document.createElement("div")
-        scoreFrame.style = `width:100%;height:100%`
+        scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
         scoreFrame.innerHTML =
             `
             <style>
