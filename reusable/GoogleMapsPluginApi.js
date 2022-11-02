@@ -1,19 +1,4 @@
-const appendMapScript = (window, apikey) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const GOOGLE_MAPS_API = `https://maps.googleapis.com/maps/api/js?key=${apikey}`;
-
-            const script = window.document.createElement("script");
-            script.defer = true;
-
-            script.src = GOOGLE_MAPS_API;
-            window.document.head.appendChild(script);
-            script.addEventListener("load", () => resolve());
-        } catch (e) {
-            reject();
-        }
-    });
-}
+import loadScript from "./loadScript.js";
 
 function calculateAndDisplayRoute(box, path, directionsRenderer) {
     const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
@@ -33,7 +18,7 @@ function calculateAndDisplayRoute(box, path, directionsRenderer) {
 }
 
 const GoogleMapsPluginApi = async (apikey, box, path) => {
-    await appendMapScript(box.window, apikey)
+    await loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
 
     const container = document.createElement("div");
     container.setAttribute("style", `display:flex; height: 100%; width: 100%;`);

@@ -1,27 +1,8 @@
-import SignalWithMedia from "./SignalWithImage.js"
-import SignalPills from "./SignalPills.js"
-import GoogleMapsFromSignal from "./GoogleMapsFromSignal.js"
-import SimulatorPlugins from "./SimulatorPlugins.js"
+import SignalWithMedia from "./reusable/SignalWithMedia.js"
+import SignalPills from "./reusable/SignalPills.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
-    SimulatorPlugins([
-        {
-            "Vehicle.CurrentLocation.Latitude": 48.85850429451804,
-            "Vehicle.CurrentLocation.Longitude": 9.125898683591739,
-            "Vehicle.Speed": 80
-        },
-        {
-            "Vehicle.CurrentLocation.Latitude": 48.969879287383634,
-            "Vehicle.CurrentLocation.Longitude": 9.226323054446112,
-            "Vehicle.Speed": 50
-        },
-        {
-            "Vehicle.CurrentLocation.Latitude": 49.168188548489255,
-            "Vehicle.CurrentLocation.Longitude": 9.25731322438704,
-            "Vehicle.Speed": 65
-        },
-    ], simulator)
-
     widgets.register(
         "LightDome",
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {

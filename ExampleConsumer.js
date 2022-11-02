@@ -1,27 +1,10 @@
-import SignalWithMedia from "./SignalWithImage.js"
-import SignalPills from "./SignalPills.js"
-import GoogleMapsFromSignal from "./GoogleMapsFromSignal.js"
-import SimulatorPlugins from "./SimulatorPlugins.js"
+import SignalWithMedia from "./reusable/SignalWithMedia.js"
+import SignalPills from "./reusable/SignalPills.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import SignalTile from "./reusable/SignalTile.js"
+import LineChart from "./reusable/LineChart.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
-    SimulatorPlugins([
-        {
-            "Vehicle.CurrentLocation.Latitude": 48.85850429451804,
-            "Vehicle.CurrentLocation.Longitude": 9.125898683591739,
-            "Vehicle.Speed": 80
-        },
-        {
-            "Vehicle.CurrentLocation.Latitude": 48.969879287383634,
-            "Vehicle.CurrentLocation.Longitude": 9.226323054446112,
-            "Vehicle.Speed": 50
-        },
-        {
-            "Vehicle.CurrentLocation.Latitude": 49.168188548489255,
-            "Vehicle.CurrentLocation.Longitude": 9.25731322438704,
-            "Vehicle.Speed": 65
-        },
-    ], simulator)
-
     widgets.register(
         "SignalWithMediaConsumer",
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
@@ -42,17 +25,28 @@ const plugin = ({widgets, vehicle, simulator}) => {
             [
                 {
                     signal: "Vehicle.CurrentLocation.Latitude",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `location-dot`
                 },
                 {
                     signal: "Vehicle.CurrentLocation.Longitude",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `location-dot`
                 },
                 {
                     signal: "Vehicle.Speed",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `gauge`
                 }
             ],
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "SignalTileConsumer",
+        SignalTile(
+            {
+                signal: "Vehicle.CurrentLocation.Longitude",
+                icon: `location-dot`
+            },
             vehicle
         )
     )
@@ -62,13 +56,25 @@ const plugin = ({widgets, vehicle, simulator}) => {
         GoogleMapsFromSignal(
             [
                 {
-                    "lat": 48.813254159291475,
-                    "lng": 9.212379215835714
+                    "lat": 48.149497,
+                    "lng": 11.523194
                 },
                 {
-                    "lat": 49.20261646797924,
-                    "lng": 9.189121574828052
+                    "lat": 50.445168,
+                    "lng": 11.020569
                 },
+            ],
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "SpeedLineChart",
+        LineChart(
+            [
+                {
+                    signal: "Vehicle.Speed"
+                }
             ],
             vehicle
         )

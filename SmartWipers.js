@@ -1,4 +1,4 @@
-import StatusTable from "https://cdn.jsdelivr.net/gh/digital-auto/playground-plugins@develop/StatusTable.min.js"
+import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
 
 async function fetchIntensity(weather) {
