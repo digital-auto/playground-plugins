@@ -40,6 +40,7 @@ const LineChart = (signals, vehicle) => {
             }
 
             const getDataset = (signalName) => {
+                console.log("getDataset", chart.data.datasets, signalName)
                 return chart.data.datasets.find(dataset => dataset.label === signalName)
             }
 
