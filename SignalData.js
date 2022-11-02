@@ -240,7 +240,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Longitude": 49.181607,
             "Vehicle.CurrentLocation.Latitude": 11.0095,
             "Vehicle.Speed": 69,
-		"Vehicle.ETA": 14:45
+		"Vehicle.ETA": 52020,
 		"Temperature":22,
 		"isOpen": False
         },
@@ -345,7 +345,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Longitude": 49.841430,
             "Vehicle.CurrentLocation.Latitude": 10.976624,
             "Vehicle.Speed": 0,
-		"Vehicle.ETA": 00:00,
+		"Vehicle.ETA": 0,
 		"Temperature":8
 		"isOpen": False
 
@@ -372,7 +372,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Longitude": 50.057044,
             "Vehicle.CurrentLocation.Latitude": 10.946412,
             "Vehicle.Speed": 81,
-		"Vehicle.ETA": 07:51,
+		"Vehicle.ETA": 27036,
 		"Temperature":16
 		"isOpen": False
 
