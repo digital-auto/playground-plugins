@@ -63,6 +63,8 @@ const LineChart = (signals, vehicle) => {
                 const stripped = signal.signal.split(".").slice(1).join(".")
                 const newValue = await vehicle[stripped].get()
 
+                console.log(signal.signal, "::", prevValue, newValue)
+
                 if (typeof prevValue !== "undefined" && prevValue === newValue) {
                     return [signal.signal, null]
                 } else {
