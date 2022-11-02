@@ -10,6 +10,15 @@ const LineChart = (signals, vehicle) => {
         const container = document.createElement("div")
         container.style = "width: 100%; height: 100%; padding: 5px;"
         container.innerHTML = (`
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        </style>
         <canvas width="100%" height="100%"></canvas>
         `)
 
@@ -72,8 +81,8 @@ const LineChart = (signals, vehicle) => {
                 dataset.data.push(value)
             }
 
-            // chart.data.labels.push(chart.data.labels.length + 1)
-            // chart.update()
+            chart.data.labels.push(chart.data.labels.length + 1)
+            chart.update()
         }, 300)
 
         return () => {
