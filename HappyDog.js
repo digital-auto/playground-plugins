@@ -80,18 +80,21 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
 
         const TemperatureTile = {
             signal: "Vehicle.Cabin.HVAC.AmbientAirTemperature",
+            label: "AirTemperature",
             icon: "temperature-half",
             suffix: " °C"
         }
 
         const BatteryTile = {
             signal: "Vehicle.OBD.HybridBatteryRemaining",
+            label: "BatteryRemaining",
             icon: "battery-half",
             suffix: "%"
         }
 
         const AirConditioningTile = {
             signal: "Vehicle.Cabin.HVAC.IsAirConditioningActive",
+            label: "IsAirConditioningActive",
             icon: "wind"
         }
 
