@@ -69,7 +69,7 @@ const LineChart = (signals, vehicle) => {
             }
 
             chart.data.labels.push(chart.data.labels.length + 1)
-
+            chart.update()
         }, 300)
 
         return () => {
