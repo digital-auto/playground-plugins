@@ -3,7 +3,7 @@
 //     color?: string
 // }[]
 
-import loadScript from "./loadScript";
+import loadScript from "./loadScript.js";
 
 const LineChart = (signals, vehicle) => {
     return (box) => {
