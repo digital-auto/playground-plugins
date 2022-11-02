@@ -8,7 +8,7 @@ const HappyDog = ({widgets}) => {
             const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
             const response = await fetch("https://bcw.chariottdemo.com:44243/chariott.runtime.v1.ChariottService/Fulfill", {
                 headers: {
-                    "Authorization":  'Basic ' + Buffer.from(username + ":" + password).toString('base64')
+                    "Authorization":  'Basic ' + btoa(username + ":" + password)
                 }
             })
             const json = await response.json()
@@ -18,6 +18,7 @@ const HappyDog = ({widgets}) => {
         }
 
         const intervalId = setInterval(updateImage, 5000)
+        updateImage()
 
         return () => {
             clearInterval(intervalId)
