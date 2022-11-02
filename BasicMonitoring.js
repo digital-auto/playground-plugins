@@ -10,7 +10,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalTile(
             {
                 signal: "Vehicle.CurrentLocation.Latitude",
-                label: "Latitude"
+                label: "Latitude",
+                icon: "satellite"
             },
             vehicle
         )
@@ -21,7 +22,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalTile(
             {
                 signal: "Vehicle.CurrentLocation.Longitude",
-                label: "Longitude"
+                label: "Longitude",
+                icon: "satellite"
             },
             vehicle
         )
@@ -32,7 +34,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalTile(
             {
                 signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
-                label: "ETA"
+                label: "ETA",
+                icon: "flag-checkered"
             },
             vehicle
         )
