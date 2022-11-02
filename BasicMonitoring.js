@@ -4,14 +4,29 @@ import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
+    const LatitudeTile = {
+        signal: "Vehicle.CurrentLocation.Latitude",
+        label: "Latitude",
+        icon: "satellite",
+    }
+    
+    const LongitudeTile = {
+        signal: "Vehicle.CurrentLocation.Longitude",
+        label: "Longitude",
+        icon: "satellite"
+    }
+
+    const ETATile = {
+        signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
+        label: "ETA",
+        icon: "flag-checkered",
+        suffix: "s"
+    }
+
     widgets.register(
         "LatitudeTile",
         SignalTile(
-            {
-                signal: "Vehicle.CurrentLocation.Latitude",
-                label: "Latitude",
-                icon: "satellite",
-            },
+            LatitudeTile,
             vehicle
         )
     )
@@ -19,11 +34,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "LongitudeTile",
         SignalTile(
-            {
-                signal: "Vehicle.CurrentLocation.Longitude",
-                label: "Longitude",
-                icon: "satellite"
-            },
+            LongitudeTile,
             vehicle
         )
     )
@@ -31,12 +42,18 @@ const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "ETATile",
         SignalTile(
-            {
-                signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
-                label: "ETA",
-                icon: "flag-checkered",
-                suffix: "s"
-            },
+            ETATile,
+            vehicle
+        )
+    )
+
+    widgets.register(
+        "LatLongPills",
+        SignalPills(
+            [
+                LatitudeTile,
+                LongitudeTile,
+            ],
             vehicle
         )
     )
@@ -45,22 +62,9 @@ const plugin = ({widgets, vehicle, simulator}) => {
         "SignalPills",
         SignalPills(
             [
-                {
-                    signal: "Vehicle.CurrentLocation.Latitude",
-                    label: "Latitude",
-                    icon: "satellite",
-                },
-                {
-                    signal: "Vehicle.CurrentLocation.Longitude",
-                    label: "Longitude",
-                    icon: "satellite"
-                },
-                {
-                    signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
-                    label: "ETA",
-                    icon: "flag-checkered",
-                    suffix: "s"
-                },
+                LatitudeTile,
+                LongitudeTile,
+                ETATile,
             ],
             vehicle
         )
