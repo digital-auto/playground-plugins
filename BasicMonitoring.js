@@ -88,11 +88,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         LineChart(
             [
                 {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
+                    signal: "Vehicle.Chassis.Axle.Row1.Wheel.Left.Tire.Temperature",
                     suffix: " C"
                 },
                 {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
+                    signal: "Vehicle.Chassis.Axle.Row2.Wheel.Left.Tire.Temperature",
                     suffix: " C"
                 },
             ],
