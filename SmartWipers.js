@@ -202,6 +202,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         dashcamFrame.querySelector("#forward").onclick = () => {
             clearInterval(intervalId)
             clearInterval(intervalId2)
+            setSignals("stop");
             manualOverride = false;
             
             WipersControlFrame.querySelector("#stop").style.backgroundColor = "rgb(157 176 184)"
@@ -232,6 +233,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         dashcamFrame.querySelector("#play").onclick = () => {
             clearInterval(intervalId)
             clearInterval(intervalId2)
+            setSignals("stop");
             manualOverride = false;
             index = 0;
             percent = 0;
