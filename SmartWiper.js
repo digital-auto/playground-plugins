@@ -51,7 +51,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }
 
     widgets.register(
-        "LatitudeTile",
+        "Tile1",
         SignalTile(
             ETATile,
             vehicle
@@ -59,7 +59,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     )
 
     widgets.register(
-        "LatitudeTile",
+        "Tile2",
         SignalTile(
             ETATile,
             vehicle
@@ -67,7 +67,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     )
 
     widgets.register(
-        "LatitudeTile",
+        "Tile3",
         SignalTile(
             ETATile,
             vehicle
