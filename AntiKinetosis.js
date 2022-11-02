@@ -267,16 +267,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
 						})
 						simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
-							return (VSSdata[index]["Vehicle.CurrentLocation.Latitude"])
+							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
 						})
 						simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
-							return (VSSdata[index]["Vehicle.CurrentLocation.Longitude"])
+							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
 						})
 
 						if(setVehiclePinGlobal !== null) {
 							setVehiclePinGlobal({
-								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"]),
-								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"])
+								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
+								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude" * (180 / Math.PI)])
 							})
 						}
 						
