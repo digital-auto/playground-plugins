@@ -1,10 +1,11 @@
 import loadScript from "./loadScript.js"
 
-// type PillType = {
+// type PillsType = {
 //     signal: string
-//     label?: string
 //     icon?: string
-// }
+//     label?: string
+//     suffix?: string
+// }[]
 
 const SignalTile = (pill, vehicle) => {
     return (box) => {
@@ -23,8 +24,8 @@ const SignalTile = (pill, vehicle) => {
         </style>
         <div style="height: 100%; padding: 10px; display: flex; flex-direction: column;">
             <div style="display: flex; flex-direction: column; height: 100%; background-image: linear-gradient(#1d4882, #688cc3); color: white; padding: 35px 20px; border-radius: 25px 15px; user-select: none; align-items: center;" data-signal="${pill.signal}">
-                <div style="margin-bottom: 10px;font-size: 1.1em;font-weight: bold;margin-top: auto;overflow: hidden;text-overflow: ellipsis;width: fit-content;" title="${label}">${label}</div>
-                <div style="font-size: 1.1em; margin-bottom: 25px;" class="signal-value">No Value Yet</div>
+                <div style="margin-bottom: 10px;font-size: 1.1em;font-weight: bold;margin-top: auto;overflow: hidden;text-overflow: ellipsis;width: fit-content; max-width: 100%;" title="${label}">${label}</div>
+                <div style="font-size: 1.1em; margin-bottom: 25px;" class="signal-value"><span>No Value Yet</span>${pill.suffix || ""}</div>
                 ${pill.icon ? `<div style="margin-top: auto;"><i style="font-size: 3em;" class="fa-solid fa-${pill.icon}"></i></div>` : ``}
             </div>
         </div>
@@ -32,7 +33,7 @@ const SignalTile = (pill, vehicle) => {
 
         const intervalId = setInterval(async () => {
             const strippedApi = pill.signal.split(".").slice(1).join(".")
-            const signalValueEl = div.querySelector(`[data-signal="${pill.signal}"] .signal-value`)
+            const signalValueEl = div.querySelector(`[data-signal="${pill.signal}"] .signal-value > span`)
             if (signalValueEl !== null) {
                 signalValueEl.textContent = await vehicle[strippedApi].get()
             } else {

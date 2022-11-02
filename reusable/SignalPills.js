@@ -26,7 +26,7 @@ const SignalPills = (pills, vehicle) => {
                 <div style="display: flex; height: 100%; background-image: linear-gradient(to right, #f95850, #ff836f); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;${i !== pills.length-1 && 'margin-bottom: 7px;' }" data-signal="${pill.signal}">
                     <div style="display: flex; flex-direction: column; overflow: hidden; width: 100%;">
                         <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="${label}">${label}</div>
-                        <div style="font-size: 1.1em;" class="signal-value">No Value Yet</div>
+                        <div style="font-size: 1.1em;" class="signal-value"><span>No Value Yet</span>${pill.suffix || ""}</div>
                     </div>
                     ${pill.icon && `<div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-${pill.icon}"></i></div>`}
                 </div>
@@ -38,7 +38,7 @@ const SignalPills = (pills, vehicle) => {
         const intervalId = setInterval(async () => {
             for (const {signal} of pills) {
                 const strippedApi = signal.split(".").slice(1).join(".")
-                const signalValueEl = div.querySelector(`[data-signal="${signal}"] .signal-value`)
+                const signalValueEl = div.querySelector(`[data-signal="${signal}"] .signal-value > span`)
                 if (signalValueEl !== null) {
                     signalValueEl.textContent = await vehicle[strippedApi].get()
                 } else {
