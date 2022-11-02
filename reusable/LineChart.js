@@ -8,7 +8,7 @@ import loadScript from "./loadScript.js";
 const LineChart = (signals, vehicle) => {
     return (box) => {
         const container = document.createElement("div")
-        container.style = "width: 100%; height: 100%;"
+        container.style = "width: 100%; height: 100%; padding: 5px;"
         container.innerHTML = (`
         <canvas width="100%" height="100%"></canvas>
         `)
@@ -45,7 +45,6 @@ const LineChart = (signals, vehicle) => {
             }
 
             const getDataset = (signalName) => {
-                console.log("getDataset", chart.data.datasets, signalName)
                 return chart.data.datasets.find(dataset => dataset.label === signalName)
             }
 
