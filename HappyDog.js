@@ -4,7 +4,7 @@ const HappyDog = ({widgets}) => {
         div.innerHTML = "<img></img>"
         box.injectNode(div)
 
-        const intervalId = setInterval(async () => {
+        const updateImage = async () => {
             const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
             const response = await fetch("https://bcw.chariottdemo.com:44243/chariott.runtime.v1.ChariottService/Fulfill", {
                 headers: {
@@ -15,7 +15,9 @@ const HappyDog = ({widgets}) => {
             const imageBytes = json.fulfillment.read.value.blob.bytes
             
             div.querySelector("img").src = `data:image/png;base64,${imageBytes}`
-        }, 5000)
+        }
+
+        const intervalId = setInterval(updateImage, 5000)
 
         return () => {
             clearInterval(intervalId)
