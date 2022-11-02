@@ -54,6 +54,21 @@ const plugin = ({widgets, vehicle, simulator}) => {
     )
 
     widgets.register(
+        "TemperatureLineCharts",
+        LineChart(
+            [
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature"
+                },
+            ],
+            vehicle
+        )
+    )
+
+    widgets.register(
         "GoogleMapDirections",
         GoogleMapsFromSignal(
             [
