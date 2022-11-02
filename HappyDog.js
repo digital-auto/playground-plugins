@@ -28,6 +28,10 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
         IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;"
         IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 2.5em;"></i>`
 
+        widgets.register("DogStatus", (box) => {
+            box.injectNode(IconDiv)
+        })
+
         const SIGNALS = ["Vehicle.Cabin.HVAC.AmbientAirTemperature", "Vehicle.OBD.HybridBatteryRemaining", "Vehicle.Cabin.HVAC.IsAirConditioningActive"]
 
         const STATE = {
