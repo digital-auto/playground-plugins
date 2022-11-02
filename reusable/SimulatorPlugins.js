@@ -10,10 +10,14 @@ const SimulatorPlugins = (signalValues, simulator) => {
     }
 
     simulator("Vehicle.Next", "get", () => {
-        currentIndex += 1
-        if (currentIndex >= signalValues.length) {
-            currentIndex = 0
+        if (currentIndex > signalValues.length-1) {
+            throw new Error("Undefined Index: Next Simulator Data")
         }
+        if (currentIndex === signalValues.length-1) {
+            return false
+        }
+        currentIndex += 1
+        return true
     })
 
     simulator("Vehicle.Reset", "get", () => {
