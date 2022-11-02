@@ -12,45 +12,64 @@ const LineChart = (signals, vehicle) => {
         <canvas width="100%" height="100%"></canvas>
         `)
 
-        const ctx = container.querySelector('canvas').getContext('2d');
+        let chart = null
+
         loadScript(box.window, "https://cdn.jsdelivr.net/npm/chart.js").then(() => {
-            new box.window.Chart(ctx, {
-                type: 'bar',
+            const ctx = container.querySelector('canvas').getContext('2d');
+
+            chart = new box.window.Chart(ctx, {
+                type: 'line',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                    labels: [],
+                    datasets: signals.map(signal => ({
+                        label: signal.signal,
+                        data: [],
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }))
                 }
             });
         })
 
         box.injectNode(container)
+
+        const intervalId = setInterval(async () => {
+            if (chart === null) {
+                throw new Error("Chart.js hasn't been loaded yet.")
+            }
+
+            const entries = (await Promise.all(signals.map(async signal => {
+                const prevValue = history[signal.signal][0]
+
+                const stripped = signal.split(".").slice(1).join(".")
+                const newValue = await vehicle[stripped].get()
+
+                if (typeof prevValue !== "undefined" && prevValue === newValue) {
+                    return [signal.signal, null]
+                } else {
+                    return [signal.signal, newValue]
+                }
+            })))
+
+            const shouldPushData = entries.find(([signal, value]) => value !== null)
+
+            if (!shouldPushData) {
+                return false
+            }
+
+            for (const [signal, value] of entries) {
+                const dataset = chart.data.datasets.find(dataset => dataset.label === signal.signal)
+                dataset.data.push(value)
+            }
+
+            chart.data.labels.push(chart.data.labels.length + 1)
+
+        }, 300)
+
+        return () => {
+            clearInterval(intervalId)
+        }
     }
 }
 
