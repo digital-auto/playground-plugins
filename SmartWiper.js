@@ -41,7 +41,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         box.injectNode(simulatorFrame)
     });
 
-    simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
+    //simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
 
     const ETATile = {
         signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
