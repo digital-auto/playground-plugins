@@ -13,7 +13,7 @@ const fulfillChariottService = async (body) => {
     return await response.json()
 }
 
-const HappyDog = ({ simulator, widgets }) => {
+const HappyDog = ({ simulator, widgets, vehicle }) => {
     widgets.register("DogStream", (box) => {
         const div = document.createElement("div")
         div.style = "width: 100%; height: 100%;"
