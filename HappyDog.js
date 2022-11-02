@@ -1,7 +1,8 @@
 const HappyDog = ({widgets}) => {
     widgets.register("DogStream", (box) => {
         const div = document.createElement("div")
-        div.innerHTML = "<img></img>"
+        div.style = "width: 100%; height: 100%;"
+        div.innerHTML = "<img style='width: 100%; height: 100%; object-fit: cover;'></img>"
         box.injectNode(div)
 
         const updateImage = async () => {
