@@ -7,8 +7,7 @@ import loadScript from "./loadScript.js";
 
 const supportsIteratorApis = (vehicle) => {
     try {
-        vehicle.Next.get()
-        vehicle.Reset.get()
+        vehicle.IteratorEnded.get()
         return true
     } catch (error) {
         console.log("supportsIteratorApis Error:", error)
