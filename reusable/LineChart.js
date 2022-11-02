@@ -39,8 +39,12 @@ const LineChart = (signals, vehicle) => {
                 throw new Error("Chart.js hasn't been loaded yet.")
             }
 
+            const getDataset = (signalName) => {
+                return chart.data.datasets.find(dataset => dataset.label === signalName)
+            }
+
             const entries = (await Promise.all(signals.map(async signal => {
-                const prevValue = history[signal.signal][0]
+                const prevValue = getDataset(signal.signal)[0]
 
                 const stripped = signal.split(".").slice(1).join(".")
                 const newValue = await vehicle[stripped].get()
@@ -59,7 +63,7 @@ const LineChart = (signals, vehicle) => {
             }
 
             for (const [signal, value] of entries) {
-                const dataset = chart.data.datasets.find(dataset => dataset.label === signal.signal)
+                const dataset = getDataset(signal.signal)
                 dataset.data.push(value)
             }
 
