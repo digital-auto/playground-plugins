@@ -63,8 +63,8 @@ const LineChart = (signals, vehicle) => {
                 return false
             }
 
-            for (const [signal, value] of entries) {
-                const dataset = getDataset(signal.signal)
+            for (const [signalName, value] of entries) {
+                const dataset = getDataset(signalName)
                 dataset.data.push(value)
             }
 
