@@ -16,21 +16,21 @@ const fulfillChariottService = async (body) => {
 }
 
 const HappyDog = ({ simulator, widgets, vehicle }) => {
-    widgets.register("DogStream", (box) => {
+    widgets.register("DogStatus", (box) => {
         loadScript(box.window, "https://kit.fontawesome.com/c37d34b852.js")
-
-        const div = document.createElement("div")
-        div.style = "width: 100%; height: 100%;"
-        div.innerHTML = "<img style='width: 100%; height: 100%; object-fit: cover;'></img>"
-        box.injectNode(div)
-
+        
         const IconDiv = document.createElement("div")
         IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;"
         IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 2.5em;"></i>`
 
-        widgets.register("DogStatus", (box) => {
-            box.injectNode(IconDiv)
-        })
+        box.injectNode(IconDiv)
+    })
+
+    widgets.register("DogStream", (box) => {
+        const div = document.createElement("div")
+        div.style = "width: 100%; height: 100%;"
+        div.innerHTML = "<img style='width: 100%; height: 100%; object-fit: cover;'></img>"
+        box.injectNode(div)
 
         const SIGNALS = ["Vehicle.Cabin.HVAC.AmbientAirTemperature", "Vehicle.OBD.HybridBatteryRemaining", "Vehicle.Cabin.HVAC.IsAirConditioningActive"]
 
@@ -89,36 +89,6 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
             })
         }
 
-        const TemperatureTile = {
-            signal: "Vehicle.Cabin.HVAC.AmbientAirTemperature",
-            label: "AirTemperature",
-            icon: "temperature-half",
-            suffix: " °C"
-        }
-
-        const BatteryTile = {
-            signal: "Vehicle.OBD.HybridBatteryRemaining",
-            label: "BatteryRemaining",
-            icon: "battery-half",
-            suffix: "%"
-        }
-
-        const AirConditioningTile = {
-            signal: "Vehicle.Cabin.HVAC.IsAirConditioningActive",
-            label: "IsAirConditioningActive",
-            icon: "wind"
-        }
-
-        widgets.register("TemperatureTile", SignalTile(TemperatureTile, vehicle))
-        widgets.register("BatteryTile", SignalTile(BatteryTile, vehicle))
-        widgets.register("AirConditioningTile", SignalTile(AirConditioningTile, vehicle))
-
-        widgets.register("SensorPills", SignalPills([
-            TemperatureTile,
-            BatteryTile,
-            AirConditioningTile,
-        ], vehicle))
-
         const intervalId = setInterval(async () => {
             updateCurrentStatus()
             updateImage()
@@ -133,6 +103,37 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
             clearInterval(intervalId)
         }
     })
+
+
+    const TemperatureTile = {
+        signal: "Vehicle.Cabin.HVAC.AmbientAirTemperature",
+        label: "AirTemperature",
+        icon: "temperature-half",
+        suffix: " °C"
+    }
+
+    const BatteryTile = {
+        signal: "Vehicle.OBD.HybridBatteryRemaining",
+        label: "BatteryRemaining",
+        icon: "battery-half",
+        suffix: "%"
+    }
+
+    const AirConditioningTile = {
+        signal: "Vehicle.Cabin.HVAC.IsAirConditioningActive",
+        label: "IsAirConditioningActive",
+        icon: "wind"
+    }
+
+    widgets.register("TemperatureTile", SignalTile(TemperatureTile, vehicle))
+    widgets.register("BatteryTile", SignalTile(BatteryTile, vehicle))
+    widgets.register("AirConditioningTile", SignalTile(AirConditioningTile, vehicle))
+
+    widgets.register("SensorPills", SignalPills([
+        TemperatureTile,
+        BatteryTile,
+        AirConditioningTile,
+    ], vehicle))
 }
 
 export default HappyDog
