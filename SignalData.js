@@ -7,8 +7,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.523194,
             "Vehicle.Speed": 20,
 		"Vehicle.ETA": 61200,
-		"Temperature":7,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -31,8 +30,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.473755,
             "Vehicle.Speed": 30,
 		"Vehicle.ETA": 57600,
-		"Temperature":4,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -54,8 +52,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.457276,
             "Vehicle.Speed": 40,
 		"Vehicle.ETA": 59400,
-		"Temperature":6,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -78,8 +75,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.4572,
             "Vehicle.Speed": 50,
 		"Vehicle.ETA": 59292
-		"Temperature":6,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -105,8 +101,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.4380,
             "Vehicle.Speed": 51,
 		"Vehicle.ETA": 58176,
-		"Temperature":5,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -130,8 +125,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.4682,
             "Vehicle.Speed": 52,
 		"Vehicle.ETA": 56124,
-		"Temperature":6,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -155,8 +149,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.481995,
             "Vehicle.Speed": 54,
 		"Vehicle.ETA": 55980,
-		"Temperature":7,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -179,8 +172,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.503968,
             "Vehicle.Speed": 55,
 		"Vehicle.ETA": 55620,
-		"Temperature":7,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -202,8 +194,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.542420,
             "Vehicle.Speed": 57,
 		"Vehicle.ETA": 55260,
-		"Temperature":7,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -225,8 +216,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.572632,
             "Vehicle.Speed": 58,
 		"Vehicle.ETA": 55080,
-		"Temperature":8,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -248,8 +238,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.564393,
             "Vehicle.Speed": 59,
 		"Vehicle.ETA": 54720,
-		"Temperature":8,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -271,8 +260,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.487488,
             "Vehicle.Speed": 60,
 		"Vehicle.ETA": 52164,
-		"Temperature":9,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -294,8 +282,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.4407,
             "Vehicle.Speed": 61,
 		"Vehicle.ETA": 52380,
-		"Temperature":10,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -317,8 +304,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.358399,
             "Vehicle.Speed": 62,
 		"Vehicle.ETA": 52200,
-		"Temperature":15,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -340,8 +326,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.281495,
             "Vehicle.Speed": 63,
 		"Vehicle.ETA": 52092,
-		"Temperature":12
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -362,8 +347,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.210084,
             "Vehicle.Speed": 64,
 		"Vehicle.ETA": 51444,
-		"Temperature":10,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -385,8 +369,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.152405,
             "Vehicle.Speed": 65,
 		"Vehicle.ETA": 50976,
-		"Temperature":8,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -408,8 +391,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.105713,
             "Vehicle.Speed": 66,
 		"Vehicle.ETA": 50796,
-		"Temperature":5,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -431,8 +413,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.042542,
             "Vehicle.Speed": 66,
 		"Vehicle.ETA": 50472,
-		"Temperature":14,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -454,8 +435,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.987610,
             "Vehicle.Speed": 67,
 		"Vehicle.ETA": 50400,
-		"Temperature":15,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -478,8 +458,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.949158,
             "Vehicle.Speed": 67,
 		"Vehicle.ETA": 48924,
-		"Temperature":19,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -506,8 +485,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.962891,
             "Vehicle.Speed": 67,
 		"Vehicle.ETA": 48780,
-		"Temperature":19,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 4,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -534,8 +512,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.012330,
             "Vehicle.Speed": 68,
 		"Vehicle.ETA": 45180,
-		"Temperature":20,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 4,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -564,8 +541,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.0095,
             "Vehicle.Speed": 69,
 		"Vehicle.ETA": 52000,
-		"Temperature":22,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 5,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -587,8 +563,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.067261,
             "Vehicle.Speed": 70,
 		"Vehicle.ETA": 52020,
-		"Temperature":23,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -614,8 +589,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 9.125898683591739,
             "Vehicle.Speed": 70,
 		"Vehicle.ETA": 44820,
-		"Temperature":25,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 7,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -637,8 +611,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.050782
             "Vehicle.Speed": 71,
 		"Vehicle.ETA": 44460,
-		"Temperature":26,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 8,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -660,8 +633,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.039795,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":22,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -684,8 +656,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.971131,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":21,
-		"isOpen": True,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 10,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -709,8 +680,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.995850,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":20,
-		"isOpen": True,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -732,8 +702,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.020569,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":17,
-		"isOpen": True,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 12,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -755,8 +724,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.048035,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":15,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 13,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -778,8 +746,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.061768,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":12,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 14,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -801,8 +768,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.034302,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":10,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 15,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -824,8 +790,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.976624,
             "Vehicle.Speed": 0,
 		"Vehicle.ETA": 0,
-		"Temperature":8,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 16,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -847,8 +812,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.880494,
             "Vehicle.Speed": 79,
 		"Vehicle.ETA": 39600,
-		"Temperature":12,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 17,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -870,8 +834,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.913453,
             "Vehicle.Speed": 86,
 		"Vehicle.ETA": 32400,
-		"Temperature":13,
-		"isOpen": True,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 18,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -893,8 +856,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.946412,
             "Vehicle.Speed": 81,
 		"Vehicle.ETA": 27036,
-		"Temperature":16,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 19,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
@@ -916,8 +878,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 10.954651,
             "Vehicle.Speed": 89,
 		"Vehicle.ETA": 27036,
-		"Temperature":17,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 20,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -939,8 +900,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.006837,
             "Vehicle.Speed": 95,
 		"Vehicle.ETA": 25920,
-		"Temperature":18,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 21,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -961,8 +921,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.017823,
             "Vehicle.Speed": 94,
 		"Vehicle.ETA": 26244,
-		"Temperature":19,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 22,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -984,8 +943,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.017823,
             "Vehicle.Speed": 93,
 		"Vehicle.ETA": 26460,
-		"Temperature":20,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 23,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -1007,8 +965,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.034302,
             "Vehicle.Speed": 91,
 		"Vehicle.ETA": 26712,
-		"Temperature":22,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 24,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
@@ -1030,8 +987,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.CurrentLocation.Latitude": 11.020569,
             "Vehicle.Speed": 90,
 		"Vehicle.ETA": 26820,
-		"Temperature":24,
-		"isOpen": False,
+		
 		"Vehicle.Driver.DriveTimeExceeded": False,
 		"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 25,
 		"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
