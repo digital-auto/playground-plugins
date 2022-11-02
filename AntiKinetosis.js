@@ -459,8 +459,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		animationFrame.innerHTML = 
 		`
 		<div class="car" style="max-width: 849px; margin: 30px auto 0; position: relative;">
-			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/588557img1.png" alt="" style="width: 100%;">
-			<img src="https://tool-officel.oss-cn-guangzhou.aliyuncs.com/mogu/2022-11-01/128340img2.png" alt="" id="glass" style="width: 76%; position: absolute; top: 2.6%; left: 18.3%; z-index: -1;">
+			<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fsmart-wipers%2Fimg1.png?alt=media&token=99945f0a-7ef4-4049-a830-f73a2e7b678d" alt="" style="width: 100%;">
+			<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fsmart-wipers%2Fimg2.png?alt=media&token=052bfcb8-1dfe-4f9a-8984-6446421efe72" alt="" id="glass" style="width: 76%; position: absolute; top: 2.6%; left: 18.3%; z-index: -1;">
 		</div>
 		`
 		box.injectNode(animationFrame)
