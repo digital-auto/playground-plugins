@@ -41,7 +41,8 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
 
     widgets.register("SignalTable", StatusTable({
         apis: SIGNALS,
-        vehicle
+        vehicle,
+        refresh: 1000
     }))
 
     widgets.register("Directions", GoogleMapsFromSignal([
