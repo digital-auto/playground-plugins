@@ -40,12 +40,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
         box.injectNode(simulatorFrame)
     });
 
-    //simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
-
     simulator("Vehicle.Body.Windshield.Front.Wiping.Mode", "set", ({args}) => {
         const [value] = args
-        console.log("SS", value)
-        // simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
+        if (value === "MEDIUM") {
+            simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
+        } else if (value === "OFF") {
+            simulatorFrame.querySelector("#wiper").contentWindow.postMessage("OFF", "*")
+        }
     })
 
     return {
