@@ -1,6 +1,6 @@
 import AnimatedWipers from "./reusable/AnimatedWipers.js"
 import StatusTable from "./reusable/StatusTable.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 
 const getRTIData = async (title) => {
     const response = await fetch(`https://rti.ngrok.io/dds/rest1/applications/CovesaDemoApp/domain_participants/MyParticipant/subscribers/MySubscriber/data_readers/${title}`)
