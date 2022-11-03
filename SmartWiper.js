@@ -72,7 +72,20 @@ const plugin = ({widgets, simulator, vehicle}) => {
             ETATile,
             vehicle
         )
-    )
+    );
+
+    return {
+        printNotification: (message) => mobileNotifications(message),
+        setWiperSpeed: (speed) => {
+            const value = parseInt(speed)
+            if(value > 90) {
+                simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
+            }
+            else {
+                simulatorFrame.querySelector("#wiper").contentWindow.postMessage("OFF", "*")
+            }
+        }
+    }
 
 }
 
