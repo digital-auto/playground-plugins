@@ -94,7 +94,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
                 },
                 {
                     signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
-                    suffix: " C"
+                    suffix: " C",
                     color: "#a21caf"
                 },
                 
