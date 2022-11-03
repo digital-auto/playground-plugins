@@ -28,7 +28,7 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
 
     widgets.register("DogStream", (box) => {
         const div = document.createElement("div")
-        div.style = "width: 100%; height: 100%;"
+        div.style = "width: 100%; height: 100%; background-color: rgb(31 41 55);"
         div.innerHTML = `<img onerror="this.style.visibility = 'hidden'" onload="this.style.visibility = 'visible'" style='width: 100%; height: 100%; object-fit: cover;'></img>`
         box.injectNode(div)
 
