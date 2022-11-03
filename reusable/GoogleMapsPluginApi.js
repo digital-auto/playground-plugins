@@ -1,15 +1,16 @@
 import loadScript from "./loadScript.js";
 
-function calculateAndDisplayRoute(box, path, directionsRenderer) {
+function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
     const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
     const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
+    const mode = tmode === "BICYCLING" ? box.window.google.maps.TravelMode.BICYCLING : tmode === "TRANSIT" ? box.window.google.maps.TravelMode.TRANSIT : tmode === "WALKING" ? box.window.google.maps.TravelMode.WALKING : "DRIVING";
 
     const directionsService = new box.window.google.maps.DirectionsService();
     directionsService
     .route({
         origin: start,
         destination: end,
-        travelMode: box.window.google.maps.TravelMode.DRIVING,
+        travelMode: mode
     })
     .then((response) => {
         directionsRenderer.setDirections(response);
@@ -17,7 +18,7 @@ function calculateAndDisplayRoute(box, path, directionsRenderer) {
     .catch((e) => console.log("Directions request failed due to " + e));
 }
 
-const GoogleMapsPluginApi = async (apikey, box, path) => {
+const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null) => {
     await loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
 
     const container = document.createElement("div");
@@ -30,7 +31,7 @@ const GoogleMapsPluginApi = async (apikey, box, path) => {
     });
     directionsRenderer.setMap(map);
 
-    calculateAndDisplayRoute(box, path, directionsRenderer);
+    calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);
     
     box.injectNode(container);
 
