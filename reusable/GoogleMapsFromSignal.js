@@ -27,6 +27,10 @@ const GoogleMapsFromSignal = (directions, vehicle, {
 
         const intervalId = setInterval(async () => {
             if (setVehiclePinGlobal !== null) {
+                console.log("$>", {
+                    lat: await vehicle.CurrentLocation.Latitude.get(),
+                    lng: await vehicle.CurrentLocation.Longitude.get()
+                })
                 setVehiclePinGlobal({
                     lat: await vehicle.CurrentLocation.Latitude.get(),
                     lng: await vehicle.CurrentLocation.Longitude.get()
