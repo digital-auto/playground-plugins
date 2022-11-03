@@ -30,6 +30,20 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
+    
+    widgets.register(
+        "RightDoorOpen",
+        SignalWithMedia("Vehicle.Cabin.Door.Row2.Right.IsOpen", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/OpenRearRightDoor.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/CloseRearRightDoor.mp4"
+            },
+        }, vehicle)
+    )
 
     
     
@@ -68,7 +82,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     "lng": 9.189121574828052
                 },
             ],
-            vehicle
+            vehicle,
+            { iterate: true }
         )
     )
 

@@ -1,5 +1,5 @@
 import SignalPills from "./reusable/SignalPills.js"
-import SignalTile from "./reusable/SignalTile.js"
+import SignalBlackTile from "./reusable/SignalBlackTile.js"
 import loadScript from "./reusable/loadScript.js"
 
 const fulfillChariottService = async (body) => {
@@ -17,7 +17,7 @@ const fulfillChariottService = async (body) => {
 
 const HappyDog = ({ simulator, widgets, vehicle }) => {
     const IconDiv = document.createElement("div")
-    IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: #9ca3af;"
+    IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: #9ca3af; background-color: rgb(31 41 55);"
     IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 6em;  "></i>`
 
     widgets.register("DogStatus", (box) => {
@@ -28,8 +28,8 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
 
     widgets.register("DogStream", (box) => {
         const div = document.createElement("div")
-        div.style = "width: 100%; height: 100%;"
-        div.innerHTML = "<img style='width: 100%; height: 100%; object-fit: cover;'></img>"
+        div.style = "width: 100%; height: 100%; background-color: rgb(31 41 55);"
+        div.innerHTML = `<img onerror="this.style.visibility = 'hidden'" onload="this.style.visibility = 'visible'" style='width: 100%; height: 100%; object-fit: cover; visibility: hidden;'></img>`
         box.injectNode(div)
 
         const SIGNALS = ["Vehicle.Cabin.HVAC.AmbientAirTemperature", "Vehicle.OBD.HybridBatteryRemaining", "Vehicle.Cabin.HVAC.IsAirConditioningActive"]
@@ -65,7 +65,6 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
                 }
             })
             STATE.status = json.fulfillment.read.value.bool
-            console.log(STATE.status, STATE.status ? "#059669" : "#ef4444")
             IconDiv.style.color = STATE.status ? "#059669" : "#ef4444"
         }
 
@@ -127,9 +126,9 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
         icon: "wind"
     }
 
-    widgets.register("TemperatureTile", SignalTile(TemperatureTile, vehicle))
-    widgets.register("BatteryTile", SignalTile(BatteryTile, vehicle))
-    widgets.register("AirConditioningTile", SignalTile(AirConditioningTile, vehicle))
+    widgets.register("TemperatureTile", SignalBlackTile(TemperatureTile, vehicle))
+    widgets.register("BatteryTile", SignalBlackTile(BatteryTile, vehicle))
+    widgets.register("AirConditioningTile", SignalBlackTile(AirConditioningTile, vehicle))
 
     widgets.register("SensorPills", SignalPills([
         TemperatureTile,

@@ -22,11 +22,25 @@ const plugin = ({widgets, vehicle, simulator}) => {
         icon: "flag-checkered",
         suffix: "s"
     }
+    const Proximity = {
+        signal: "Vehicle.Driver.ProximityToVehicle",
+        label: "PROX",
+        icon: "person",
+        suffix: "s"
+    }
 
     widgets.register(
         "LatitudeTile",
         SignalTile(
             LatitudeTile,
+            vehicle
+        )
+    )
+    
+    widgets.register(
+        "Proximity",
+        SignalPills(
+            Proximity,
             vehicle
         )
     )
@@ -89,11 +103,34 @@ const plugin = ({widgets, vehicle, simulator}) => {
             [
                 {
                     signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
-                    suffix: " C"
+                    suffix: " C",
+                    color: "yellow"
                 },
                 {
                     signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
-                    suffix: " C"
+                    suffix: " C",
+                    color: "#a21caf"
+                },
+                
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature",
+                    suffix: " C",
+                    color: "#14b8a6"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature",
+                    suffix: " C",
+                    color: "#a3e635"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature",
+                    suffix: " C",
+                    color: "#e11d48"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature",
+                    suffix: " C",
+                    color: "#fca5a5"
                 },
             ],
             vehicle
@@ -113,7 +150,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     "lng": 11.020569
                 },
             ],
-            vehicle
+            vehicle,
+            { iterate: true }
         )
     )
 }

@@ -22,7 +22,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 
 		},
@@ -46,7 +47,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -69,7 +71,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 
@@ -93,7 +96,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 
@@ -120,7 +124,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 
@@ -146,7 +151,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 		},
 
 
@@ -171,7 +177,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 5,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 
@@ -195,7 +202,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -218,7 +226,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -241,7 +250,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -255,16 +265,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCar.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 8,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 8,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 8,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 8,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 13,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 17,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 20,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 7,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 8,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -278,16 +289,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 9,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 9,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 9,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 9,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 18,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 20,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 25,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 8,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 8,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -301,16 +313,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 10,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 10,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 10,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 10,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 22,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 25,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 128,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 9,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 8,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -324,16 +337,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 15,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 15,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 15,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 15,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 25,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 26,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 30,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 11,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -347,16 +361,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 12,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 12,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 12,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 12,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 30,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 31,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 33,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 12,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 10,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
+			"Vehicle.Driver.ProximityToVehicle": 1
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.844738,
@@ -369,16 +384,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 10,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 10,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 10,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 10,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 30,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 31,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 33,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 10,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -392,16 +408,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 8,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 8,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 8,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 8,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 31,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature":33,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 35,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -415,16 +432,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 5,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 5,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 5,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 5,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 32,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 33,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 36,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 12,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 11,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -438,16 +456,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 14,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 14,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 14,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 14,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 34,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 38,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 39,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 13,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 13,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -461,16 +480,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 15,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 15,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 15,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 15,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 37,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 39,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 40,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 13,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 13,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 
@@ -485,16 +505,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 19,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 19,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 19,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 19,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 39,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 40,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 41,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 12,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 
 
@@ -513,16 +534,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 19,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 19,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 19,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 19,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 40,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 41,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 42,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 
 
@@ -541,16 +563,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 20,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 20,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 20,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 20,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 40,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 41,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 42,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 
 
@@ -571,16 +594,17 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 22,
-			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 22,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 22,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 22,
+			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 40,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 41,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 42,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 13,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 		},
 
 		{
@@ -603,7 +627,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 
 
@@ -630,7 +655,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -653,7 +679,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -676,7 +703,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 
 		},
@@ -700,7 +728,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 
@@ -725,7 +754,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -748,7 +778,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": true,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -771,7 +802,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": true,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -794,7 +826,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -817,7 +850,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
+			"Vehicle.Driver.ProximityToVehicle": 3
 
 		},
 		{
@@ -840,7 +874,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": true,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
+			"Vehicle.Driver.ProximityToVehicle": 3
 
 		},
 		{
@@ -863,7 +898,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
+			"Vehicle.Driver.ProximityToVehicle": 3
 
 		},
 		{
@@ -886,7 +922,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
+			"Vehicle.Driver.ProximityToVehicle": 3
 
 		},
 		{
@@ -909,7 +946,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
+			"Vehicle.Driver.ProximityToVehicle": 3
 
 		},
 		{
@@ -932,7 +970,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
+			"Vehicle.Driver.ProximityToVehicle": 3
 
 		},
 		{
@@ -955,7 +994,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
+			"Vehicle.Driver.ProximityToVehicle": 1
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.280470,
@@ -977,7 +1017,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -1000,7 +1041,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -1023,7 +1065,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		},
 		{
@@ -1046,7 +1089,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 7
+			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 7,
+			"Vehicle.Driver.ProximityToVehicle": 1
 
 		}
 	], simulator)
