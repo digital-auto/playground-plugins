@@ -5,7 +5,7 @@ import StatusTable from "./reusable/StatusTable.js"
 const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Signals", StatusTable({
-        apis: ["Vehicle.Body.Windshield.Front.Wiping.System.Mode", "Vehicle.Body.Windshield.Front.Wiping.System.ActualPosition", "Vehicle.Body.Windshield.Front.Wiping.System.TargetPosition", "Vehicle.Body.Windshield.Front.Wiping.System.IsWiping", "Vehicle.Body.Windshield.Front.Wiping.System.IsEndingWipeCycle", "Vehicle.Body.Windshield.Front.Wiping.System.IsPositionReached", "Vehicle.Body.Raindetection.Intensity"],
+        apis: ["Vehicle.Body.Windshield.Front.Wiping.Mode", "Vehicle.Body.Hood.IsOpen", "Vehicle.Body.Hood"],
         vehicle: vehicle,
         refresh: 1000
     }));
@@ -17,7 +17,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			vehicle: null,
 			box: box,
 			refresh: null,
-			backgroundColor: "rgb(0 80 114)"
 		}).then(({printNotification}) => {
 			mobileNotifications = printNotification;
 		})
@@ -74,17 +73,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
         )
     );
 
+    simulator("Vehicle.Body.Windshield.Front.Wiping.Mode", "set", ({args}) => {
+        const [value] = args
+        console.log("SS", value)
+        // simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
+    })
+
     return {
         printNotification: (message) => mobileNotifications(message),
-        setWiperSpeed: (speed) => {
-            const value = parseInt(speed)
-            if(value > 90) {
-                simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
-            }
-            else {
-                simulatorFrame.querySelector("#wiper").contentWindow.postMessage("OFF", "*")
-            }
-        }
     }
 
 }
