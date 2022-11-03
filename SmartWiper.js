@@ -17,6 +17,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			vehicle: null,
 			box: box,
 			refresh: null,
+            paddingTop: 70,
+            paddingHorizontal: 25
 		}).then(({printNotification}) => {
 			mobileNotifications = printNotification;
 		})
@@ -25,7 +27,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     widgets.register("CarImage", (box) => {
         box.injectHTML(`
         <div style="max-width: fit-content; margin: 0 auto; position: relative;">
-        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FE-Car_Full_Vehicle.png?alt=media&token=9c9d4cb4-fee0-42e3-bbb1-7feaa407cc8e" style="height: 100%; width: 100%; object-fit: cover;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FE-Car_Full_Vehicle.png?alt=media&token=9c9d4cb4-fee0-42e3-bbb1-7feaa407cc8e" style="height: 100%; width: 100%; object-fit: contain;">
             <div class="smartphone-text" style="position: absolute; color: white; font-family: 'Lato'; width: 100%; top: 0; height: 100%; box-sizing: border-box; padding-top: 25px; padding-right: 12px; padding-left: 12px; padding-bottom: 25px;"></div>
         </div>
         `)
