@@ -223,6 +223,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			animationFrame.querySelector("#animation").textContent = "Click on the Animation you want to see."
 			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
 			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
+			setVehiclePinGlobal(null);
 
 		}
 
