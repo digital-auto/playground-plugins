@@ -1,4 +1,5 @@
 import AnimatedWipers from "./reusable/AnimatedWipers.js"
+import StatusTable from "./reusable/StatusTable.js"
 
 const getRTIData = async (title) => {
     const response = await fetch(`https://rti.ngrok.io/dds/rest1/applications/CovesaDemoApp/domain_participants/MyParticipant/subscribers/MySubscriber/data_readers/${title}`)
@@ -36,6 +37,8 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
         "Vehicle.Body.Windshield.Front.Wiping.IsWipersWorn",
         "Vehicle.Body.Windshield.Front.Wiping.Mode"
     ]
+
+    widgets.register("SignalTable", StatusTable(SIGNALS, vehicle))
 
     const STATE = {}
 
