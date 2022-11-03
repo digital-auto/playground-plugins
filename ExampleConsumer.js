@@ -28,6 +28,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     icon: `location-dot`
                 },
                 {
+                    signal: "Vehicle.Driver.ProximityToVehicle",
+                    icon: `person`
+                },
+                
+                {
                     signal: "Vehicle.CurrentLocation.Longitude",
                     icon: `location-dot`
                 },
