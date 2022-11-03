@@ -95,6 +95,23 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
                     suffix: " C"
                 },
+                
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature",
+                    suffix: " C"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature",
+                    suffix: " C"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature",
+                    suffix: " C"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature",
+                    suffix: " C"
+                },
             ],
             vehicle
         )
