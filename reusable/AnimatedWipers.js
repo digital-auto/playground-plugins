@@ -4,6 +4,7 @@ const AnimatedWipers = (signal, vehicle) => {
     setInterval(async () => {
         const stripped = signal.split(".").slice(1).join(".")
         const value = await vehicle[stripped].get()
+        console
         if (setWiperSpeed !== null) {
             setWiperSpeed(["FAST", "MEDIUM"].includes(value) ? "HI" : (["INTERVAL", "SLOW"].includes(value) ? "LO" : "OFF"))
         }
@@ -23,6 +24,7 @@ const AnimatedWipers = (signal, vehicle) => {
             if (iframe === null) {
                 throw new Error(`AnimatedWipers widget is not mounted.`)
             }
+            iframe.contentWindow.postMessage(speed, "*")
         }
     }
 
