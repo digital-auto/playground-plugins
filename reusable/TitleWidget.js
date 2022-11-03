@@ -15,7 +15,8 @@ const TitleWidget = (title) => {
         const div = document.createElement("div")
         div.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: #9ca3af; text-align: center; padding: 5px;"
         div.textContent = title
-        box.injectNode(div)
+        container.appendChild(div)
+        box.injectNode(container)
     }
 }
 
