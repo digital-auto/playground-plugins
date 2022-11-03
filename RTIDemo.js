@@ -46,12 +46,12 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
 
     widgets.register("Directions", GoogleMapsFromSignal([
         {
-            lat: 36.14587504468877,
-            lng: -86.77251127071571
+            lat: 39.36440665494062,
+            lng: -85.62349717186248
         },
         {
-            lat: 47.43473567605476,
-            lng: -100.94749536173212
+            lat: 40.05174288244341,
+            lng: -86.4531371326884
         }
     ], vehicle))
 
