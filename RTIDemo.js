@@ -38,7 +38,10 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
         "Vehicle.Body.Windshield.Front.Wiping.Mode"
     ]
 
-    widgets.register("SignalTable", StatusTable(SIGNALS, vehicle))
+    widgets.register("SignalTable", StatusTable({
+        apis: SIGNALS,
+        vehicle
+    }))
 
     const STATE = {}
 
