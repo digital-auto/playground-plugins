@@ -6,8 +6,14 @@ const supportsPins = (vehicle) => {
         vehicle.Reset.get()
         return true
     } catch (error) {
-        console.log("supportsPin Error:", error)
         return false
+    }
+}
+
+const convertCoordinates = (coordinates) => {
+    return {
+        lat: parseFloat(coordinates.lat),
+        lng: parseFloat(coordinates.lng)
     }
 }
 
@@ -27,14 +33,10 @@ const GoogleMapsFromSignal = (directions, vehicle, {
 
         const intervalId = setInterval(async () => {
             if (setVehiclePinGlobal !== null) {
-                console.log("$>", {
+                setVehiclePinGlobal(convertCoordinates({
                     lat: await vehicle.CurrentLocation.Latitude.get(),
                     lng: await vehicle.CurrentLocation.Longitude.get()
-                })
-                setVehiclePinGlobal({
-                    lat: await vehicle.CurrentLocation.Latitude.get(),
-                    lng: await vehicle.CurrentLocation.Longitude.get()
-                })
+                }))
                 if (iterate) {
                     await vehicle.Next.get()
                 }
