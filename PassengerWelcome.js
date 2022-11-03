@@ -68,7 +68,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     "lng": 9.189121574828052
                 },
             ],
-            vehicle
+            vehicle,
+            { iterate: true }
         )
     )
 

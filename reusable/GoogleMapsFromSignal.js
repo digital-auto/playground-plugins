@@ -12,6 +12,7 @@ const supportsPins = (vehicle) => {
 }
 
 const GoogleMapsFromSignal = (directions, vehicle, {
+    iterate = false,
     autoNext = 800,
 } = {}) => {
     return (box) => {
@@ -20,21 +21,22 @@ const GoogleMapsFromSignal = (directions, vehicle, {
             setVehiclePinGlobal = setVehiclePin
         })
 
-        let intervalId = null
+        if (!supportsPins(vehicle) && iterate) {
+            alert("GoogleMapsFromSignal plugin doesn't support 'iterate' parameter without Wishlist sensors 'Vehicle.Next' and 'Vehicle.Reset'.")
+        }
 
-        if (supportsPins(vehicle)) {
-            intervalId = setInterval(async () => {
-                if (setVehiclePinGlobal !== null) {
-                    setVehiclePinGlobal({
-                        lat: await vehicle.CurrentLocation.Latitude.get(),
-                        lng: await vehicle.CurrentLocation.Longitude.get()
-                    })
+        const intervalId = setInterval(async () => {
+            if (setVehiclePinGlobal !== null) {
+                setVehiclePinGlobal({
+                    lat: await vehicle.CurrentLocation.Latitude.get(),
+                    lng: await vehicle.CurrentLocation.Longitude.get()
+                })
+                if (iterate) {
                     await vehicle.Next.get()
                 }
-            }, autoNext)
-        } else {
-            alert("GoogleMapsFromSignal plugin doesn't support vehicle pin without Wishlist sensors 'Vehicle.Next' and 'Vehicle.Reset'.")
-        }
+            }
+        }, autoNext)
+
 
         return () => {
             if (intervalId !== null) {

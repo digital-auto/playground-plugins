@@ -1,5 +1,6 @@
 import AnimatedWipers from "./reusable/AnimatedWipers.js"
 import StatusTable from "./reusable/StatusTable.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal"
 
 const getRTIData = async (title) => {
     const response = await fetch(`https://rti.ngrok.io/dds/rest1/applications/CovesaDemoApp/domain_participants/MyParticipant/subscribers/MySubscriber/data_readers/${title}`)
@@ -42,6 +43,17 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
         apis: SIGNALS,
         vehicle
     }))
+
+    widgets.register("Directions", GoogleMapsFromSignal([
+        {
+            lat: "36.14587504468877",
+            lng: "-86.77251127071571"
+        },
+        {
+            lat: "47.43473567605476",
+            lng: "-100.94749536173212"
+        }
+    ], vehicle))
 
     const STATE = {}
 

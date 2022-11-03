@@ -149,7 +149,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     "lng": 11.020569
                 },
             ],
-            vehicle
+            vehicle,
+            { iterate: true }
         )
     )
 }
