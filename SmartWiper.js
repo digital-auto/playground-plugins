@@ -42,10 +42,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     simulator("Vehicle.Body.Windshield.Front.Wiping.Mode", "set", ({args}) => {
         const [value] = args
-        console.log("SS", value)
         if (value === "MEDIUM") {
+            console.log("postMessage", "LO")
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
         } else if (value === "OFF") {
+            console.log("postMessage", "OFF")
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("OFF", "*")
         }
     })
