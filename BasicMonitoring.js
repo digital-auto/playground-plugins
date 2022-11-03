@@ -22,11 +22,24 @@ const plugin = ({widgets, vehicle, simulator}) => {
         icon: "flag-checkered",
         suffix: "s"
     }
+    const PROXIMITY = {
+        signal: "Vehicle.Driver.ProximityToVehicle",
+        label: "PROX",
+        icon: "person",
+        suffix: "s"
+    }
 
     widgets.register(
         "LatitudeTile",
         SignalTile(
             LatitudeTile,
+            vehicle
+        )
+        
+    widgets.register(
+        "PROXIMITY",
+        SignalPills(
+            PROXIMITY,
             vehicle
         )
     )
