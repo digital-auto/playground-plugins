@@ -35,7 +35,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
             LatitudeTile,
             vehicle
         )
-        
+    )
+    
     widgets.register(
         "PROXIMITY",
         SignalPills(
