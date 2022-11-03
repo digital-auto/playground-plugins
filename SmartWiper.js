@@ -52,7 +52,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
     return {
-        printNotification: (message) => mobileNotifications(message),
+        notifyPhone: (message) => mobileNotifications(message),
     }
 
 }
