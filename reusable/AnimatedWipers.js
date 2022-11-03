@@ -24,7 +24,13 @@ const AnimatedWipers = (signal, vehicle) => {
             if (iframe === null) {
                 throw new Error(`AnimatedWipers widget is not mounted.`)
             }
-            iframe.contentWindow.postMessage(speed, "*")
+            if (iframe.contentWindow !== null) {
+                iframe.contentWindow.postMessage(speed, "*")
+            }
+        }
+
+        return () => {
+            setWiperSpeed = null
         }
     }
 
