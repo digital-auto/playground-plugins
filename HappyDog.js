@@ -17,8 +17,8 @@ const fulfillChariottService = async (body) => {
 
 const HappyDog = ({ simulator, widgets, vehicle }) => {
     const IconDiv = document.createElement("div")
-    IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;"
-    IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 6em; color: #9ca3af;  "></i>`
+    IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: #9ca3af;"
+    IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 6em;  "></i>`
 
     widgets.register("DogStatus", (box) => {
         loadScript(box.window, "https://kit.fontawesome.com/c37d34b852.js")
