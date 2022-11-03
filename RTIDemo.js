@@ -1,6 +1,7 @@
 import AnimatedWipers from "./reusable/AnimatedWipers.js"
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import TitleWidget from "./reusable/TitleWidget.js"
 
 const getRTIData = async (title) => {
     const response = await fetch(`https://rti.ngrok.io/dds/rest1/applications/CovesaDemoApp/domain_participants/MyParticipant/subscribers/MySubscriber/data_readers/${title}`)
@@ -92,6 +93,8 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
             return STATE[signal]
         })
     }
+
+    widgets.register("Title", TitleWidget("RTIDemo"))
 }
 
 export default RTIDemo
