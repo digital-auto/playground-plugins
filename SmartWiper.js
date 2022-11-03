@@ -42,37 +42,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     //simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
 
-    const ETATile = {
-        signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
-        label: "ETA",
-        icon: "flag-checkered",
-        suffix: "s"
-    }
-
-    widgets.register(
-        "Tile1",
-        SignalTile(
-            ETATile,
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "Tile2",
-        SignalTile(
-            ETATile,
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "Tile3",
-        SignalTile(
-            ETATile,
-            vehicle
-        )
-    );
-
     simulator("Vehicle.Body.Windshield.Front.Wiping.Mode", "set", ({args}) => {
         const [value] = args
         console.log("SS", value)
