@@ -1,10 +1,7 @@
-import AnimatedWipers from "./reusable/AnimatedWipers"
+import AnimatedWipers from "./reusable/AnimatedWipers.js"
 
-const RTIDemo = ({widgets, simulator}) => {
-    widgets.register("AnimatedWipers", (box) => {
-        const [onActivate, setWiperSpeed] = AnimatedWipers()
-        return onActivate(box)
-    })
+const RTIDemo = ({widgets, vehicle}) => {
+    widgets.register("AnimatedWipers", AnimatedWipers("Vehicle.Body.Windshield.Front.Wiping.Mode", vehicle))
 }
 
 export default RTIDemo
