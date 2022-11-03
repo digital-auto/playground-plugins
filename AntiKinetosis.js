@@ -340,7 +340,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				"lng": 10.425532
 			},
 		]
-		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path).then(({setVehiclePin}) => {
+		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path, "BICYCLING").then(({setVehiclePin}) => {
 			setVehiclePinGlobal = setVehiclePin
 		})
 	})
@@ -426,7 +426,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		</div>
 		`
 		let timer;
-    	let top1 = 42.6;
+    	let top1 = 2.6;
 
 		let animation_open = animationControlsFrame.querySelector("#animation_window_open")
 		animation_open.onclick = () => {
