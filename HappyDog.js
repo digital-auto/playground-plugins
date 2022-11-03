@@ -17,7 +17,7 @@ const fulfillChariottService = async (body) => {
 
 const HappyDog = ({ simulator, widgets, vehicle }) => {
     const IconDiv = document.createElement("div")
-    IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: #9ca3af;"
+    IconDiv.style = "display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: #9ca3af; background-color: rgb(31 41 55);"
     IconDiv.innerHTML = `<i class="fa-solid fa-dog" style="font-size: 6em;  "></i>`
 
     widgets.register("DogStatus", (box) => {
@@ -65,7 +65,6 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
                 }
             })
             STATE.status = json.fulfillment.read.value.bool
-            console.log(STATE.status, STATE.status ? "#059669" : "#ef4444")
             IconDiv.style.color = STATE.status ? "#059669" : "#ef4444"
         }
 
