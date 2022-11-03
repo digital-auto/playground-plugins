@@ -1,5 +1,5 @@
 import SignalPills from "./reusable/SignalPills.js"
-import SignalTile from "./reusable/SignalTile.js"
+import SignalBlackTile from "./reusable/SignalBlackTile.js"
 import loadScript from "./reusable/loadScript.js"
 
 const fulfillChariottService = async (body) => {
@@ -127,9 +127,9 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
         icon: "wind"
     }
 
-    widgets.register("TemperatureTile", SignalTile(TemperatureTile, vehicle))
-    widgets.register("BatteryTile", SignalTile(BatteryTile, vehicle))
-    widgets.register("AirConditioningTile", SignalTile(AirConditioningTile, vehicle))
+    widgets.register("TemperatureTile", SignalBlackTile(TemperatureTile, vehicle))
+    widgets.register("BatteryTile", SignalBlackTile(BatteryTile, vehicle))
+    widgets.register("AirConditioningTile", SignalBlackTile(AirConditioningTile, vehicle))
 
     widgets.register("SensorPills", SignalPills([
         TemperatureTile,
