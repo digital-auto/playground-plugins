@@ -37,28 +37,22 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		<div class="label" style="width:100%;position:relative;margin-top:10px;">Driving Style:</div>
 		<div id="style" style="display:flex;width:100%;justify-content: center;align-items:center;position:relative;margin-top:5px">        
 			<div id="red" style="width:33%;text-align:center">
-			<svg style="width:60%;" id="eQMxJAybPva1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-				<ellipse rx="150" ry="150" transform="translate(150 150)" fill="#ff0000" stroke-width="0" />
-			</svg>
-			<div style="font-weight:bold">
-				Sporty
-			</div>
+				<img style="width:100%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSporty.png?alt=media&token=e318b297-d41e-4e6a-9a41-8b7fbbf2602d" />
+				<div style="font-weight:bold">
+					Sporty
+				</div>
 			</div>
 			<div id="yellow" style="width:33%;text-align:center">
-			<svg style="width:50%;" id="eqyhJoi98wx1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-				<ellipse rx="150" ry="150" transform="translate(150 150)" fill="#ffff00" stroke-width="0" />
-			</svg>
-			<div style="font-weight:unset">
-				Optimized
-			</div>
+				<img style="width:60%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimized.png?alt=media&token=dff86e6b-ee69-4daf-b213-abc38da273ef" />
+				<div style="font-weight:unset">
+					Optimized
+				</div>
 			</div>
 			<div id="green" style="width:33%;text-align:center">
-			<svg style="width:50%;" id="e0dZOJ9h5R31" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-				<ellipse rx="150" ry="150" transform="translate(150 150)" fill="#008000" stroke-width="0" />
-			</svg>
-			<div style="font-weight:unset">
-				Relaxed
-			</div>
+				<img style="width:60%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxed.png?alt=media&token=86901115-a104-4f48-b09b-6b4e44a7e8bd" />
+				<div style="font-weight:unset">
+					Relaxed
+				</div>
 			</div>
 		</div>
 		<div class="label" style="width:100%;position:relative;margin-top:10px;">Back Seat passengers: </div>
@@ -113,9 +107,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let sportyStyle = controlsFrame.querySelector("#red")
 		sportyStyle.onclick = () => {
 			simulationDetails["style"] = "sporty"
-			controlsFrame.querySelector("#red svg").style.width = "60%"
-			controlsFrame.querySelector("#green svg").style.width = "50%"
-			controlsFrame.querySelector("#yellow svg").style.width = "50%"
+			controlsFrame.querySelector("#red img").style.width = "100%"
+			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -124,9 +118,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let relaxedStyle = controlsFrame.querySelector("#green")
 		relaxedStyle.onclick = () => {
 			simulationDetails["style"] = "relaxed"
-			controlsFrame.querySelector("#red svg").style.width = "50%"
-			controlsFrame.querySelector("#green svg").style.width = "60%"
-			controlsFrame.querySelector("#yellow svg").style.width = "50%"
+			controlsFrame.querySelector("#red img").style.width = "60%"
+			controlsFrame.querySelector("#green img").style.width = "100%"
+			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -135,9 +129,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let optimizedStyle = controlsFrame.querySelector("#yellow")
 		optimizedStyle.onclick = () => {
 			simulationDetails["style"] = "optimized"
-			controlsFrame.querySelector("#red svg").style.width = "50%"
-			controlsFrame.querySelector("#green svg").style.width = "50%"
-			controlsFrame.querySelector("#yellow svg").style.width = "60%"
+			controlsFrame.querySelector("#red img").style.width = "60%"
+			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "100%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
@@ -203,9 +197,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#red svg").style.width = "60%"
-			controlsFrame.querySelector("#green svg").style.width = "50%"
-			controlsFrame.querySelector("#yellow svg").style.width = "50%"
+			controlsFrame.querySelector("#red img").style.width = "100%"
+			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -302,6 +296,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						scoreFrame.querySelector("#score #message").textContent = message
 
 						mobileNotifications(message);
+						message  === "Warning: High kinetosis level" ? mobileNotifications("Please open the window for the passenger.") : ""
 
 						index = index + 17
 					}
