@@ -5,7 +5,7 @@ const getRTIData = async (title) => {
     return new DOMParser().parseFromString(await response.text(), "text/xml")
 }
 
-const RTIDemo = ({widgets, vehicle}) => {
+const RTIDemo = ({widgets, vehicle, simulator}) => {
     widgets.register("AnimatedWipers", AnimatedWipers("Vehicle.Body.Windshield.Front.Wiping.Mode", vehicle))
 
     const SIGNALS = [
