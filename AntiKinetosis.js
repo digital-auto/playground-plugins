@@ -281,22 +281,24 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
 						scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
 
-						let message = "";
+						let message = "", mobileMessage = "";
 						if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 80.0) {
-							message = "Warning: High kinetosis level"
+							message = "Warning: High kinetosis level.";
+							mobileMessage = message + "\nPlease open the window for the passenger.";
 							//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
 						}
 						else if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 60.0) {
-							message = "Kinetosis level is medium"
+							message = "Kinetosis level is medium";
+							mobileMessage = message;
 						}
 						else {
-							message =  "Kinetosis level is normal"
+							message =  "Kinetosis level is normal";
+							mobileMessage = message;
 						}
 
 						scoreFrame.querySelector("#score #message").textContent = message
 
-						mobileNotifications(message);
-						message  === "Warning: High kinetosis level" ? mobileNotifications("Please open the window for the passenger.") : ""
+						mobileNotifications(mobileMessage);
 
 						index = index + 17
 					}
