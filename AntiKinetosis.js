@@ -107,7 +107,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let sportyStyle = controlsFrame.querySelector("#red")
 		sportyStyle.onclick = () => {
 			simulationDetails["style"] = "sporty"
-			controlsFrame.querySelector("#red img").style.width = "100%"
+			controlsFrame.querySelector("#red img").style.width = "80%"
 			controlsFrame.querySelector("#green img").style.width = "60%"
 			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
@@ -119,7 +119,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		relaxedStyle.onclick = () => {
 			simulationDetails["style"] = "relaxed"
 			controlsFrame.querySelector("#red img").style.width = "60%"
-			controlsFrame.querySelector("#green img").style.width = "100%"
+			controlsFrame.querySelector("#green img").style.width = "80%"
 			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
@@ -131,7 +131,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["style"] = "optimized"
 			controlsFrame.querySelector("#red img").style.width = "60%"
 			controlsFrame.querySelector("#green img").style.width = "60%"
-			controlsFrame.querySelector("#yellow img").style.width = "100%"
+			controlsFrame.querySelector("#yellow img").style.width = "80%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
