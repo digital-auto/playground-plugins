@@ -136,7 +136,7 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
         TemperatureTile,
         BatteryTile,
         AirConditioningTile
-    ], vehicle))
+    ].map(tile => tile.signal), vehicle))
 
     widgets.register("BatteryLineChart", LineChart([
         "Vehicle.OBD.HybridBatteryRemaining"
