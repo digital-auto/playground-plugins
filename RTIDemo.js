@@ -9,7 +9,7 @@ const getRTIData = async (title) => {
     return new DOMParser().parseFromString(await response.text(), "text/xml")
 }
 
-const RTIDemo = ({widgets, vehicle, simulator}) => {
+const RTIDemo = ({ widgets, vehicle, simulator }) => {
     widgets.register("AnimatedWipers", AnimatedWipers("Vehicle.Body.Windshield.Front.Wiping.Mode", vehicle))
 
     widgets.register("SpeedLineChart", LineChart([
@@ -20,7 +20,7 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
 
     widgets.register("MeterLineChart", LineChart([
         {
-            signal: "TripMeterReading"
+            signal: "Vehicle.TripMeterReading"
         }
     ], vehicle), 5000)
 
