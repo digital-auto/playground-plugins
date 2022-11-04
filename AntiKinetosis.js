@@ -108,8 +108,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		sportyStyle.onclick = () => {
 			simulationDetails["style"] = "sporty"
 			controlsFrame.querySelector("#red img").style.width = "80%"
-			controlsFrame.querySelector("#green img").style.width = "60%"
-			controlsFrame.querySelector("#yellow img").style.width = "60%"
+			controlsFrame.querySelector("#green img").style.width = "50%"
+			controlsFrame.querySelector("#yellow img").style.width = "50%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -118,9 +118,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let relaxedStyle = controlsFrame.querySelector("#green")
 		relaxedStyle.onclick = () => {
 			simulationDetails["style"] = "relaxed"
-			controlsFrame.querySelector("#red img").style.width = "60%"
+			controlsFrame.querySelector("#red img").style.width = "50%"
 			controlsFrame.querySelector("#green img").style.width = "80%"
-			controlsFrame.querySelector("#yellow img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "50%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -129,8 +129,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let optimizedStyle = controlsFrame.querySelector("#yellow")
 		optimizedStyle.onclick = () => {
 			simulationDetails["style"] = "optimized"
-			controlsFrame.querySelector("#red img").style.width = "60%"
-			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#red img").style.width = "50%"
+			controlsFrame.querySelector("#green img").style.width = "50%"
 			controlsFrame.querySelector("#yellow img").style.width = "80%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
