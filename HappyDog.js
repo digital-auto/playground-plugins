@@ -1,6 +1,8 @@
 import SignalPills from "./reusable/SignalPills.js"
 import SignalBlackTile from "./reusable/SignalBlackTile.js"
 import loadScript from "./reusable/loadScript.js"
+import StatusTable from "./reusable/StatusTable.js"
+import LineChart from "./reusable/LineChart.js"
 
 const fulfillChariottService = async (body) => {
     const [username, password] = ["bcwdemo", "80jEpKYTPVPi"]
@@ -129,6 +131,18 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
     widgets.register("TemperatureTile", SignalBlackTile(TemperatureTile, vehicle))
     widgets.register("BatteryTile", SignalBlackTile(BatteryTile, vehicle))
     widgets.register("AirConditioningTile", SignalBlackTile(AirConditioningTile, vehicle))
+    
+    widgets.register("SignalsTable", StatusTable([
+        TemperatureTile,
+        BatteryTile,
+        AirConditioningTile
+    ], vehicle))
+
+    widgets.register("BatteryLineChart", LineChart([
+        "Vehicle.OBD.HybridBatteryRemaining"
+    ], vehicle))
+
+
 
     widgets.register("SensorPills", SignalPills([
         TemperatureTile,
