@@ -132,15 +132,15 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
     widgets.register("BatteryTile", SignalBlackTile(BatteryTile, vehicle))
     widgets.register("AirConditioningTile", SignalBlackTile(AirConditioningTile, vehicle))
     
-    widgets.register("SignalsTable", StatusTable([
+    widgets.register("SignalsTable", StatusTable({apis: [
         TemperatureTile,
         BatteryTile,
         AirConditioningTile
-    ].map(tile => tile.signal), vehicle))
+    ].map(tile => tile.signal), vehicle}))
 
     widgets.register("BatteryLineChart", LineChart([
         BatteryTile
-    ], vehicle))
+    ], vehicle, 5000))
 
 
 

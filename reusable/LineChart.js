@@ -15,7 +15,7 @@ const supportsIteratorApis = (vehicle) => {
     }
 }
 
-const LineChart = (signals, vehicle) => {
+const LineChart = (signals, vehicle, refreshTime = 800) => {
     return (box) => {
         const container = document.createElement("div")
         container.style = "width: 100%; height: 100%; padding: 5px;"
@@ -96,7 +96,7 @@ const LineChart = (signals, vehicle) => {
     
                 chart.data.labels.push(chart.data.labels.length + 1)
                 chart.update()
-            }, 800)
+            }, refreshTime)
         } else {
             alert("LineChart plugin doesn't support vehicle pin without Wishlist sensor 'Vehicle.IteratorEnded'.")
         }
