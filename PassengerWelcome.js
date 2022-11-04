@@ -5,7 +5,7 @@ import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "LightDome",
-        SignalWithMedia("Vehicle.Cabin.Lights.AmbientLight", {
+        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
