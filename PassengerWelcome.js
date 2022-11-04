@@ -12,7 +12,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
+                url: "https://digitalauto-media-data.netlify.app/LightDomeOFF.mp4"
             },
         }, vehicle)
     )
