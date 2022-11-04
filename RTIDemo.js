@@ -2,6 +2,7 @@ import AnimatedWipers from "./reusable/AnimatedWipers.js"
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import TitleWidget from "./reusable/TitleWidget.js"
+import LineChart from "./reusable/LineChart.js"
 
 const getRTIData = async (title) => {
     const response = await fetch(`https://rti.ngrok.io/dds/rest1/applications/CovesaDemoApp/domain_participants/MyParticipant/subscribers/MySubscriber/data_readers/${title}`)
@@ -10,6 +11,18 @@ const getRTIData = async (title) => {
 
 const RTIDemo = ({widgets, vehicle, simulator}) => {
     widgets.register("AnimatedWipers", AnimatedWipers("Vehicle.Body.Windshield.Front.Wiping.Mode", vehicle))
+
+    widgets.register("SpeedLineChart", LineChart([
+        {
+            signal: "Vehicle.Speed"
+        }
+    ], vehicle), 5000)
+
+    widgets.register("MeterLineChart", LineChart([
+        {
+            signal: "TripMeterReading"
+        }
+    ], vehicle), 5000)
 
     const SIGNALS = [
         "Vehicle.CurrentLocation.Latitude",
@@ -93,8 +106,6 @@ const RTIDemo = ({widgets, vehicle, simulator}) => {
             return STATE[signal]
         })
     }
-
-    widgets.register("Title", TitleWidget("RTIDemo"))
 }
 
 export default RTIDemo
