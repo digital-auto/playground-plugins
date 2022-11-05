@@ -19,7 +19,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
 
     widgets.register(
         "SeatUpDown",
-        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Backrest.Lumbar.Height", {
+        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Height", {
             [0]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/SeatGoDown1800x900.mp4"
