@@ -12,7 +12,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOff1800x900.mp4"
             },
         }, vehicle)
     )
