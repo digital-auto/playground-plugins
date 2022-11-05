@@ -26,7 +26,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
             [100]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoDown1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatGoUp1800x900.mp4"
             },
         }, vehicle)
     )
