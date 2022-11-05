@@ -33,7 +33,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     
     widgets.register(
         "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
+        SignalWithMedia("Vehicle.Cabin.Door.Row2.Left.IsOpen", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
