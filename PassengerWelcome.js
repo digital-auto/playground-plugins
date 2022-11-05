@@ -8,11 +8,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/LightDomeOn.mp4"
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn1800x900.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/LightDomeOFF.mp4"
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn1800x900.mp4"
             },
         }, vehicle)
     )
@@ -22,11 +22,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Backrest.Lumbar.Height", {
             [0]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatUp.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatGoDown1800x900.mp4"
             },
             [100]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatDown.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatGoDown1800x900.mp4"
             },
         }, vehicle)
     )
@@ -36,11 +36,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Door.Row2.Left.IsOpen", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/OpenRearRightDoor.mp4"
+                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/CloseRearRightDoor.mp4"
+                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
             },
         }, vehicle)
     )
