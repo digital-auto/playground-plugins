@@ -4,7 +4,7 @@ const plugin = ({widgets, simulator}) => {
     container.innerHTML = (`
     <div style="max-width: fit-content; margin: 0 auto; position: relative; margin: auto 0;">
         <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FDashboardSpeed.jpg?alt=media&token=44b42de9-12a7-4cb1-b525-94e8fc077141" style="height: fit-content; width: 100%; object-fit: contain;">
-        <div class="speedometer-status" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;"></div>
+        <div class="speedometer-status" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: end;padding-top: 10px;padding-right: 10px;"></div>
     </div>
     `)
 
