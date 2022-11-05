@@ -40,7 +40,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
             },
         }, vehicle)
     )
