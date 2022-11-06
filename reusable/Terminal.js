@@ -1,8 +1,8 @@
 import loadScript from "./loadScript.js"
 
 const Terminal = ({widgets}) => {
-    loadScript("https://cdn.tailwindcss.com")
     widgets.register("Terminal", (box) => {
+        loadScript(box.window, "https://cdn.tailwindcss.com")
         box.injectHTML(`
         <div class="flex flex-col text-gray-100 text-sm subpixel-antialiased bg-gray-800 leading-normal overflow-auto h-48 scroll-gray">
             <div class="top flex items-center sticky top-0 left-0 bg-gray-800 px-5 pt-4 pb-2">
