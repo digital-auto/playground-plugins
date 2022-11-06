@@ -37,11 +37,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         "HoodMovement",
         SignalWithMedia("Vehicle.Body.Hood.IsOpen", {
             [false]: {
-                type: "video",
+                type: "image",
                 url: "https://digitalauto-media-data.netlify.app/WhiteHoodClosed1080x540.png"
             },
-            [100]: {
-                type: "video",
+            [true]: {
+                type: "image",
                 url: "https://digitalauto-media-data.netlify.app/WhiteHoodOpen1080x540.png"
             },
         }, vehicle)
