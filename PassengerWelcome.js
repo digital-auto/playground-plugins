@@ -8,11 +8,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn720x360.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOff1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOff720x360.mp4"
             },
         }, vehicle)
     )
@@ -22,80 +22,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Height", {
             [0]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoDown1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatGoDown720x360.mp4"
             },
             [100]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoUp1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    
-    widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row2.Left.IsOpen", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    
-    widgets.register(
-        "MirrorTilt",
-        SignalWithMedia("Vehicle.Body.Mirrors.Left.Tilt", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/MirrorsOpening1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/MirrorsClose1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    widgets.register(
-        "SeatEngaged",
-        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Switch.Seating.IsForwardEngaged", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoToFront1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoToRear1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    
-    widgets.register(
-        "Tilt",
-        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Tilt", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatRotationFront1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatRotationBack1800x900.mp44"
-            },
-        }, vehicle)
-    )
-    
-    widgets.register(
-        "AmbientLight",
-        SignalWithMedia("Vehicle.Cabin.Lights.AmbientLight", {
-            [0]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/Ambience1800x900.mp4"
-            },
-            [100]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/Ambience1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatGoUp720x360.mp4"
             },
         }, vehicle)
     )
@@ -105,30 +36,86 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Door.Row2.Left.IsOpen", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/DoorOpen720x360.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/DoorClose720x360.mp4"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "MirrorTilt",
+        SignalWithMedia("Vehicle.Body.Mirrors.Left.Tilt", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/MirrorsOpening720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/MirrorsClose720x360.mp4"
             },
         }, vehicle)
     )
 
+    widgets.register(
+        "SeatEngaged",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Switch.Seating.IsForwardEngaged", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoToFront720x360.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoToRear720x360.mp4"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "Tilt",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Tilt", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatRotationFront720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatRotationBack720x360.mp44"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "AmbientLight",
+        SignalWithMedia("Vehicle.Cabin.Lights.AmbientLight", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/Ambience720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/Ambience720x360.mp4"
+            },
+        }, vehicle)
+    )
+    
     widgets.register(
         "SignalPillsConsumer",
         SignalPills(
             [
                 {
                     signal: "Vehicle.CurrentLocation.Latitude",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `fa-gauge`
                 },
                 {
                     signal: "Vehicle.CurrentLocation.Longitude",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `fa-gauge`
                 },
                 {
                     signal: "Vehicle.Speed",
-                    icon: `<i class="fa-solid fa-gauge"></i>`
+                    icon: `fa-gauge`
                 }
             ],
             vehicle
