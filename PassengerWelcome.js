@@ -106,15 +106,15 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalPills(
             [
                 {
-                    signal: "Vehicle.CurrentLocation.Latitude",
+                    signal: "Vehicle.Cabin.Door.Row2.Left.IsOpen",
                     icon: `fa-gauge`
                 },
                 {
-                    signal: "Vehicle.CurrentLocation.Longitude",
+                    signal: "Vehicle.Cabin.Lights.AmbientLight",
                     icon: `fa-gauge`
                 },
                 {
-                    signal: "Vehicle.Speed",
+                    signal: "Vehicle.Cabin.Seat.Row1.Pos1.Height",
                     icon: `fa-gauge`
                 }
             ],
