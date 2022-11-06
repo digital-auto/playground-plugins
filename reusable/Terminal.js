@@ -1,6 +1,6 @@
 const Terminal = ({widgets}) => {
     widgets.register("Terminal", (box) => {
-        box.innerHTML = `
+        box.injectHTML(`
         <div class="flex flex-col text-gray-100 text-sm subpixel-antialiased bg-gray-800 leading-normal overflow-auto h-48 scroll-gray">
             <div class="top flex items-center sticky top-0 left-0 bg-gray-800 px-5 pt-4 pb-2">
                 <div class="select-none">Terminal</div>
@@ -15,7 +15,7 @@ const Terminal = ({widgets}) => {
                 </div>
             </div>
         </div>
-        `
+        ` )
     })
 }
 
