@@ -1,4 +1,3 @@
-import SignalTile from "./reusable/SignalTile.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import StatusTable from "./reusable/StatusTable.js"
 
@@ -32,6 +31,20 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
         `)
     });
+
+    widgets.register(
+        "HoodMovement",
+        SignalWithMedia("Vehicle.Body.Hood.IsOpen", {
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/WhiteHoodClosed1080x540.png"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/WhiteHoodOpen1080x540.png"
+            },
+        }, vehicle)
+    )
 
     let simulatorFrame = null;
     widgets.register("Wiper Simulator", (box) => {
