@@ -60,7 +60,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
 
     widgets.register(
         "SeatEngaged",
-        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Switch.Seating.IsForwardEngaged", {
+        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Switch.Seating.IsForwardEngaged", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/SeatGoToFront720x360.mp4"
@@ -74,7 +74,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     
     widgets.register(
         "Tilt",
-        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Tilt", {
+        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Tilt", {
             [0]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/SeatRotationFront720x360.mp4"
@@ -105,11 +105,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalPills(
             [
                 {
-                    signal: "Vehicle.Cabin.Door.Row2.Left.IsOpen",
-                    icon: `fa-gauge`
-                },
-                {
-                    signal: "Vehicle.Cabin.Lights.AmbientLight",
+                    signal: "Vehicle.Cabin.Door.Row1.Left.IsOpen",
                     icon: `fa-gauge`
                 },
                 {
