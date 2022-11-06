@@ -1,5 +1,5 @@
 const Terminal = ({widgets}) => {
-    let addScript = null
+    let print = null
     widgets.register("Terminal", (box) => {
         const div = document.createElement("div")
         div.innerHTML = `
@@ -22,7 +22,19 @@ const Terminal = ({widgets}) => {
             `
             div.querySelector(".terminal-lines").appendChild()
         }
+
+        return () => {
+            print = null
+        }
     })
+
+    return {
+        print: (text) => {
+            if (print !== null) {
+                print(text)
+            }
+        }
+    }
 }
 
 export default Terminal
