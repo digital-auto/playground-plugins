@@ -1,6 +1,5 @@
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import SignalPills from "./reusable/SignalPills.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
@@ -33,7 +32,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     
     widgets.register(
         "LeftDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row2.Left.IsOpen", {
+        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/DoorOpen720x360.mp4"
@@ -121,25 +120,6 @@ const plugin = ({widgets, vehicle, simulator}) => {
             vehicle
         )
     )
-
-    widgets.register(
-        "GoogleMapsSignalConsumer",
-        GoogleMapsFromSignal(
-            [
-                {
-                    "lat": 48.813254159291475,
-                    "lng": 9.212379215835714
-                },
-                {
-                    "lat": 49.20261646797924,
-                    "lng": 9.189121574828052
-                },
-            ],
-            vehicle,
-            { iterate: true }
-        )
-    )
-
 }
 
 export default plugin
