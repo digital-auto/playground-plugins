@@ -4,7 +4,7 @@ import SignalPills from "./reusable/SignalPills.js"
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "LightDome",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
+        SignalWithMedia("Vehicle.Cabin.Lights.IsDomeOn", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn720x360.mp4"
