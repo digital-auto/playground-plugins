@@ -20,7 +20,7 @@ const Terminal = ({widgets}) => {
             <span class="text-green-400 select-none">&gt;&gt;&gt;</span>
             <p class="flex-1 items-center pl-2 whitespace-pre-line">${text}</p>
             `
-            div.querySelector(".terminal-lines").appendChild()
+            div.querySelector(".terminal-lines").appendChild(line)
         }
 
         return () => {
