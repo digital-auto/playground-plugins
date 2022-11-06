@@ -1,5 +1,5 @@
 const Terminal = ({widgets}) => {
-    let print = null
+    let print = null, reset = null
     widgets.register("Terminal", (box) => {
         const div = document.createElement("div")
         div.innerHTML = `
@@ -23,6 +23,10 @@ const Terminal = ({widgets}) => {
             div.querySelector(".terminal-lines").appendChild(line)
         }
 
+        reset = () => {
+            div.querySelector(".terminal-lines").textContent = ""
+        }
+
         return () => {
             print = null
         }
@@ -32,6 +36,11 @@ const Terminal = ({widgets}) => {
         print: (text) => {
             if (print !== null) {
                 print(text)
+            }
+        },
+        reset: () => {
+            if (reset !== null) {
+                reset()
             }
         }
     }
