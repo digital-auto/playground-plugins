@@ -1,5 +1,6 @@
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import StatusTable from "./reusable/StatusTable.js"
+import SignalWithMedia from "./reusable/SignalWithMedia.js"
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
