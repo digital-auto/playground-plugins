@@ -45,7 +45,6 @@ const plugin = ({widgets, vehicle, simulator}) => {
         }, vehicle)
     )
     
-    )
     widgets.register(
         "MirrorTilt",
         SignalWithMedia("Vehicle.Body.Mirrors.Left.Tilt", {
@@ -102,7 +101,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     )
     
     widgets.register(
-        "RightDoorOpen",
+        "LeftDoorOpen",
         SignalWithMedia("Vehicle.Cabin.Door.Row2.Left.IsOpen", {
             [true]: {
                 type: "video",
@@ -114,9 +113,6 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
-
-    
-    
 
     widgets.register(
         "SignalPillsConsumer",
