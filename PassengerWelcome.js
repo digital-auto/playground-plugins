@@ -44,97 +44,59 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
+    
+    )
     widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
+        "MirrorTilt",
+        SignalWithMedia("Vehicle.Body.Mirrors.Left.Tilt", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/MirrorsOpening1800x900.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/MirrorsClose1800x900.mp4"
+            },
+        }, vehicle)
+    )
+    widgets.register(
+        "SeatEngaged",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Switch.Seating.IsForwardEngaged", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoToFront1800x900.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoToRear1800x900.mp4"
             },
         }, vehicle)
     )
     
     widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
+        "Tilt",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row2.Pos1.Tilt", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatRotationFront1800x900.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/SeatRotationBack1800x900.mp44"
             },
         }, vehicle)
     )
     
     widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
-            [true]: {
+        "AmbientLight",
+        SignalWithMedia("Vehicle.Cabin.Lights.AmbientLight", {
+            [0]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/Ambience1800x900.mp4"
             },
-            [false]: {
+            [100]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
-            },
-        }, vehicle)
-    )
-    
-    widgets.register(
-        "RightDoorOpen",
-        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
-            [true]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorOpen1800x900.mp4"
-            },
-            [false]: {
-                type: "video",
-                url: "https://digitalauto-media-data.netlify.app/DoorClose1800x900.mp4"
+                url: "https://digitalauto-media-data.netlify.app/Ambience1800x900.mp4"
             },
         }, vehicle)
     )
