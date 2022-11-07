@@ -2,7 +2,7 @@
 
 All the reusable plugins available to use in the playground:
 
-## **TitleWidget**(https://playground-plugins.netlify.app/reusable/TitleWidget.js) (WidgetActivation)
+## [**TitleWidget**](https://playground-plugins.netlify.app/reusable/TitleWidget.js) (WidgetActivation)
 
 Displays the text passed in a widget, centered.
 
