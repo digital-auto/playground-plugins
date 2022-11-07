@@ -2,7 +2,7 @@
 
 All the reusable plugins available to use in the playground:
 
-## **TitleWidget** (WidgetActivation)
+## **TitleWidget**(https://playground-plugins.netlify.app/reusable/TitleWidget.js) (WidgetActivation)
 
 Displays the text passed in a widget, centered.
 
@@ -11,7 +11,7 @@ TitleWidget(title: string, size: number = 1) => WidgetActivateFunction
 ```
 
 
-## **Terminal** (Plugin)
+## [**Terminal**](https://playground-plugins.netlify.app/reusable/Terminal.js) (Plugin)
 
 Acts as an almost-complete drop-in replacement of the Control Center Terminal. Exposes the two functions `print` and `reset` for the prototype to use.
 
@@ -41,7 +41,7 @@ type TileType = {
 
 `suffix`: Suffix to add after the value, useful for adding units like ` km/h` or `h`
 
-## **SignalTile** (WidgetActivation)
+## [**SignalTile**](https://playground-plugins.netlify.app/reusable/SignalTile.js) (WidgetActivation)
 
 Displays the current value of a single VSS API in a tile.
 
@@ -49,7 +49,7 @@ Displays the current value of a single VSS API in a tile.
 SignalTile(pill: TileType, vehicle: VehicleObject) => WidgetActivateFunction
 ```
 
-## **SignalBlackTile** (WidgetActivation)
+## [**SignalBlackTile**](https://playground-plugins.netlify.app/reusable/SignalBlackTile.js) (WidgetActivation)
 
 Alternate design of **SignalTile**.
 
@@ -57,7 +57,7 @@ Alternate design of **SignalTile**.
 SignalBlackTile(pill: TileType, vehicle: VehicleObject) => WidgetActivateFunction
 ```
 
-## **SignalPills** (WidgetActivation)
+## [**SignalPills**](https://playground-plugins.netlify.app/reusable/SignalPills.js) (WidgetActivation)
 
 Shows the current value of multiple VSS APIs as stacked pills. Up to 3 APIs work best.
 
@@ -65,7 +65,7 @@ Shows the current value of multiple VSS APIs as stacked pills. Up to 3 APIs work
 SignalPills(pills: TileType[], vehicle: VehicleObject) => WidgetActivateFunction
 ```
 
-## **StatusTable** (WidgetActivation)
+## [**StatusTable**](https://playground-plugins.netlify.app/reusable/StatusTable.js) (WidgetActivation)
 
 Shows the current value of multiple VSS APIs in a table. This table can fit any number of APIs.
 
@@ -77,7 +77,7 @@ StatusTable({
 }) => WidgetActivateFunction
 ```
 
-## **SignalWithMedia** (WidgetActivation)
+## [**SignalWithMedia**](https://playground-plugins.netlify.app/reusable/SignalWithMedia.js) (WidgetActivation)
 
 Shows the associated media for a VSS APIs value in a widget. For example:
 
@@ -113,7 +113,7 @@ SignalWithMedia(
 ) => WidgetActivateFunction
 ```
 
-## **LineChart** (WidgetActivation)
+## [**LineChart**](https://playground-plugins.netlify.app/reusable/LineChart.js) (WidgetActivation)
 
 ```
 type SignalsType = {
@@ -124,13 +124,13 @@ type SignalsType = {
 LineChart(signals: SignalsType, vehicle: VehicleObject, refreshTime = 800) => WidgetActivateFunction
 ```
 
-## **loadScript** (Function)
+## [**loadScript**](https://playground-plugins.netlify.app/reusable/loadScript.js) (Function)
 
 ```
 loadScript(boxWindow: Window, url: string) => Promise<void>
 ```
 
-## **GoogleMapsFromSignal** (WidgetActivation)
+## [**GoogleMapsFromSignal**](https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js) (WidgetActivation)
 
 ```
 type Coordinate = {
