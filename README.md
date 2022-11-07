@@ -1,6 +1,24 @@
 # playground-plugins
 
-All the reusable plugins that can be used right now:
+There are 3 types of reusable plugin components you can use, all by importing them from their JS url, linked below.
+
+1. Plugin
+
+    These are entire plugins you can add directly in the playground.
+
+2. WidgetActivation
+
+    These can be used to create an entire widget. You can pass some parameters to these reusable widgets, and they create the widget's activation function from that.
+
+    For example:
+
+    ```
+    widgets.register("WidgetName", TitleWidget("Title"))
+    ```
+
+3. Function
+
+    Helper functions you can use inside your plugin to minimize the code you need to write.
 
 ## [**TitleWidget**](https://playground-plugins.netlify.app/reusable/TitleWidget.js) (WidgetActivation)
 
@@ -150,6 +168,8 @@ loadScript(boxWindow: Window, url: string) => Promise<void>
 ```
 
 ## [**GoogleMapsFromSignal**](https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js) (WidgetActivation) 
+
+Adds a map showing directions from point A to B, along with the location of the current vehicle, fetched from the VSS API's `Vehicle.CurrentLocation.Latitude` and `Vehicle.CurrentLocation.Longitude`
 
 ```
 type Coordinate = {
