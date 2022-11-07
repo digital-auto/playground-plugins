@@ -1,6 +1,6 @@
 # playground-plugins
 
-There are 3 types of reusable plugin components you can use, all by importing them from their JS url, linked below.
+We have 3 types of reusable plugin components you can use, all by importing them from their JS Url's linked below.
 
 1. Plugin
 
