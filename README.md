@@ -1,6 +1,6 @@
 # playground-plugins
 
-All the reusable plugins available to use in the playground:
+All the reusable plugins that can be used right now:
 
 ## [**TitleWidget**](https://playground-plugins.netlify.app/reusable/TitleWidget.js) (WidgetActivation)
 
@@ -9,7 +9,6 @@ Displays the text passed in a widget, centered.
 ```
 TitleWidget(title: string, size: number = 1) => WidgetActivateFunction
 ```
-
 
 ## [**Terminal**](https://playground-plugins.netlify.app/reusable/Terminal.js) (Plugin)
 
@@ -21,6 +20,10 @@ Terminal(props: PluginProps) => {
     reset() => void
 }
 ```
+
+### `VehicleObject`
+
+This is the `vehicle` parameter passed to the plugin definition. Needs to passed forward for some widgets.
 
 ### `TileType`
 
@@ -115,6 +118,10 @@ SignalWithMedia(
 
 ## [**LineChart**](https://playground-plugins.netlify.app/reusable/LineChart.js) (WidgetActivation)
 
+Shows a line chart with the current values of one or more VSS signals (each with their own line), along with their trend as the value changes.
+
+You can use the optional color key to set a different color for each line.
+
 ```
 type SignalsType = {
     signal: string
@@ -126,11 +133,23 @@ LineChart(signals: SignalsType, vehicle: VehicleObject, refreshTime = 800) => Wi
 
 ## [**loadScript**](https://playground-plugins.netlify.app/reusable/loadScript.js) (Function)
 
+Loads a JS script in a window, returns a promise that resolves once the script has finished loading.
+
+To use this plugin, `box.window` needs to be passed as the first parameter.
+
+Like:
+
+```
+(box) => {
+    loadScript(box.window, "https://domain.com/js_file.js")
+}
+```
+
 ```
 loadScript(boxWindow: Window, url: string) => Promise<void>
 ```
 
-## [**GoogleMapsFromSignal**](https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js) (WidgetActivation)
+## [**GoogleMapsFromSignal**](https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js) (WidgetActivation) 
 
 ```
 type Coordinate = {
@@ -141,9 +160,9 @@ type Coordinate = {
 GoogleMapsFromSignal(
     directions: [Coordinate, Coordinate],
     vehicle: VehicleObject,
-    {
+    options?: {
         iterate: boolean = false,
         autoNext: number = 800,
-    } = {}
+    }
 )
 ```
