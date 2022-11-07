@@ -1,11 +1,11 @@
-const loadScript = (window, url) => {
+const loadScript = (boxWindow, url) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const script = window.document.createElement("script");
+            const script = boxWindow.document.createElement("script");
             script.defer = true;
 
             script.src = url;
-            window.document.head.appendChild(script);
+            boxWindow.document.head.appendChild(script);
             script.addEventListener("load", () => resolve());
         } catch (e) {
             reject();
