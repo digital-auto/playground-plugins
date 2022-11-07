@@ -7,18 +7,31 @@
       <body>
         <div id='content'>
     <h1 id="playground-plugins">playground-plugins</h1>
-<p>All the reusable plugins available to use in the playground:</p>
-<h2 id="titlewidget-widgetactivation"><strong>TitleWidget</strong> (WidgetActivation)</h2>
+<p>There are 3 types of reusable plugin components you can use, all by importing them from their JS url, linked below.</p>
+<ol>
+<li><p>Plugin</p>
+<p>These are entire plugins you can add directly in the playground.</p></li>
+<li><p>WidgetActivation</p>
+<p>These can be used to create an entire widget. You can pass some parameters to these reusable widgets, and they create the widget's activation function from that.</p>
+<p>For example:</p>
+<pre><code>widgets.register("WidgetName", TitleWidget("Title"))
+</code></pre></li>
+<li><p>Function</p>
+<p>Helper functions you can use inside your plugin to minimize the code you need to write.</p></li>
+</ol>
+<h2 id="titlewidgethttpsplayground-pluginsnetlifyappreusabletitlewidgetjs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/TitleWidget.js"><strong>TitleWidget</strong></a> (WidgetActivation)</h2>
 <p>Displays the text passed in a widget, centered.</p>
 <pre><code>TitleWidget(title: string, size: number = 1) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="terminal-plugin"><strong>Terminal</strong> (Plugin)</h2>
+<h2 id="terminalhttpsplayground-pluginsnetlifyappreusableterminaljs-plugin"><a href="https://playground-plugins.netlify.app/reusable/Terminal.js"><strong>Terminal</strong></a> (Plugin)</h2>
 <p>Acts as an almost-complete drop-in replacement of the Control Center Terminal. Exposes the two functions <code>print</code> and <code>reset</code> for the prototype to use.</p>
 <pre><code>Terminal(props: PluginProps) =&gt; {
     print(text: string) =&gt; void
     reset() =&gt; void
 }
 </code></pre>
+<h3 id="vehicleobject"><code>VehicleObject</code></h3>
+<p>This is the <code>vehicle</code> parameter passed to the plugin definition. Needs to passed forward for some widgets.</p>
 <h3 id="tiletype"><code>TileType</code></h3>
 <pre><code>type TileType = {
     signal: string
@@ -31,19 +44,19 @@
 <p><code>icon</code>: Optional Font Awesome icon name, for example: <code>satellite</code></p>
 <p><code>label</code>: Label to display in the title, defaults to <code>signal</code>.</p>
 <p><code>suffix</code>: Suffix to add after the value, useful for adding units like <code>km/h</code> or <code>h</code></p>
-<h2 id="signaltile-widgetactivation"><strong>SignalTile</strong> (WidgetActivation)</h2>
+<h2 id="signaltilehttpsplayground-pluginsnetlifyappreusablesignaltilejs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/SignalTile.js"><strong>SignalTile</strong></a> (WidgetActivation)</h2>
 <p>Displays the current value of a single VSS API in a tile.</p>
 <pre><code>SignalTile(pill: TileType, vehicle: VehicleObject) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="signalblacktile-widgetactivation"><strong>SignalBlackTile</strong> (WidgetActivation)</h2>
+<h2 id="signalblacktilehttpsplayground-pluginsnetlifyappreusablesignalblacktilejs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/SignalBlackTile.js"><strong>SignalBlackTile</strong></a> (WidgetActivation)</h2>
 <p>Alternate design of <strong>SignalTile</strong>.</p>
 <pre><code>SignalBlackTile(pill: TileType, vehicle: VehicleObject) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="signalpills-widgetactivation"><strong>SignalPills</strong> (WidgetActivation)</h2>
+<h2 id="signalpillshttpsplayground-pluginsnetlifyappreusablesignalpillsjs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/SignalPills.js"><strong>SignalPills</strong></a> (WidgetActivation)</h2>
 <p>Shows the current value of multiple VSS APIs as stacked pills. Up to 3 APIs work best.</p>
 <pre><code>SignalPills(pills: TileType[], vehicle: VehicleObject) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="statustable-widgetactivation"><strong>StatusTable</strong> (WidgetActivation)</h2>
+<h2 id="statustablehttpsplayground-pluginsnetlifyappreusablestatustablejs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/StatusTable.js"><strong>StatusTable</strong></a> (WidgetActivation)</h2>
 <p>Shows the current value of multiple VSS APIs in a table. This table can fit any number of APIs.</p>
 <pre><code>StatusTable({
     apis: string[],
@@ -51,7 +64,7 @@
     refresh = 5 * 1000
 }) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="signalwithmedia-widgetactivation"><strong>SignalWithMedia</strong> (WidgetActivation)</h2>
+<h2 id="signalwithmediahttpsplayground-pluginsnetlifyappreusablesignalwithmediajs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/SignalWithMedia.js"><strong>SignalWithMedia</strong></a> (WidgetActivation)</h2>
 <p>Shows the associated media for a VSS APIs value in a widget. For example:</p>
 <pre><code>SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
     [true]: {
@@ -79,7 +92,9 @@ SignalWithMedia(
     vehicle: VehicleObject
 ) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="linechart-widgetactivation"><strong>LineChart</strong> (WidgetActivation)</h2>
+<h2 id="linecharthttpsplayground-pluginsnetlifyappreusablelinechartjs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/LineChart.js"><strong>LineChart</strong></a> (WidgetActivation)</h2>
+<p>Shows a line chart with the current values of one or more VSS signals (each with their own line), along with their trend as the value changes.</p>
+<p>You can use the optional color key to set a different color for each line.</p>
 <pre><code>type SignalsType = {
     signal: string
     color?: string
@@ -87,10 +102,18 @@ SignalWithMedia(
 
 LineChart(signals: SignalsType, vehicle: VehicleObject, refreshTime = 800) =&gt; WidgetActivateFunction
 </code></pre>
-<h2 id="loadscript-function"><strong>loadScript</strong> (Function)</h2>
+<h2 id="loadscripthttpsplayground-pluginsnetlifyappreusableloadscriptjs-function"><a href="https://playground-plugins.netlify.app/reusable/loadScript.js"><strong>loadScript</strong></a> (Function)</h2>
+<p>Loads a JS script in a window, returns a promise that resolves once the script has finished loading.</p>
+<p>To use this plugin, <code>box.window</code> needs to be passed as the first parameter.</p>
+<p>Like:</p>
+<pre><code>(box) =&gt; {
+    loadScript(box.window, "https://domain.com/js_file.js")
+}
+</code></pre>
 <pre><code>loadScript(boxWindow: Window, url: string) =&gt; Promise&lt;void&gt;
 </code></pre>
-<h2 id="googlemapsfromsignal-widgetactivation"><strong>GoogleMapsFromSignal</strong> (WidgetActivation)</h2>
+<h2 id="googlemapsfromsignalhttpsplayground-pluginsnetlifyappreusablegooglemapsfromsignaljs-widgetactivation"><a href="https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js"><strong>GoogleMapsFromSignal</strong></a> (WidgetActivation)</h2>
+<p>Adds a map showing directions from point A to B, along with the location of the current vehicle, fetched from the VSS API's <code>Vehicle.CurrentLocation.Latitude</code> and <code>Vehicle.CurrentLocation.Longitude</code></p>
 <pre><code>type Coordinate = {
     lat: number
     lng: number
@@ -99,10 +122,10 @@ LineChart(signals: SignalsType, vehicle: VehicleObject, refreshTime = 800) =&gt;
 GoogleMapsFromSignal(
     directions: [Coordinate, Coordinate],
     vehicle: VehicleObject,
-    {
+    options?: {
         iterate: boolean = false,
         autoNext: number = 800,
-    } = {}
+    }
 )
 </code></pre>
 
