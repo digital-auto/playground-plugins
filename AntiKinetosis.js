@@ -37,19 +37,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		<div class="label" style="width:100%;position:relative;margin-top:10px;">Driving Style:</div>
 		<div id="style" style="display:flex;width:100%;justify-content: center;align-items:center;position:relative;margin-top:5px">        
 			<div id="red" style="width:33%;text-align:center">
-				<img style="width:80%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSporty.png?alt=media&token=e318b297-d41e-4e6a-9a41-8b7fbbf2602d" />
+				<img style="width:100%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSporty.png?alt=media&token=e318b297-d41e-4e6a-9a41-8b7fbbf2602d" />
 				<div style="font-weight:bold">
 					Sporty
 				</div>
 			</div>
 			<div id="yellow" style="width:33%;text-align:center">
-				<img style="width:50%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimized.png?alt=media&token=dff86e6b-ee69-4daf-b213-abc38da273ef" />
+				<img style="width:60%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimized.png?alt=media&token=dff86e6b-ee69-4daf-b213-abc38da273ef" />
 				<div style="font-weight:unset">
 					Optimized
 				</div>
 			</div>
 			<div id="green" style="width:33%;text-align:center">
-				<img style="width:50%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxed.png?alt=media&token=86901115-a104-4f48-b09b-6b4e44a7e8bd" />
+				<img style="width:60%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxed.png?alt=media&token=86901115-a104-4f48-b09b-6b4e44a7e8bd" />
 				<div style="font-weight:unset">
 					Relaxed
 				</div>
@@ -78,18 +78,27 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		</div>
 		<div id="controls" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
 			<div id="icons" style="margin:5px;display:flex;justify-content:space-around">
-			<div style="width:2em;cursor: pointer;" id="video">
-				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
+				<div style="width:2em;cursor: pointer;" id="video">
+					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
+				</div>
+				<div style="width:2em;cursor: pointer;" id="reload">
+					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Freload.svg?alt=media&token=0a2db061-8210-4c0b-bb84-0fdbf34c415e" alt="reload" style="filter: invert(100%);">
+				</div>
+				<div style="width:2em;cursor: pointer;" id="play">
+					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
+				</div>
+				<div style="width:2em;cursor: pointer;" id="forward">
+					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fforward.svg?alt=media&token=6e729a78-4c7b-4065-a738-b58cdbcfc3cc" alt="forward" style="filter: invert(100%);">
+				</div>
 			</div>
-			<div style="width:2em;cursor: pointer;" id="reload">
-				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Freload.svg?alt=media&token=0a2db061-8210-4c0b-bb84-0fdbf34c415e" alt="reload" style="filter: invert(100%);">
-			</div>
-			<div style="width:2em;cursor: pointer;" id="play">
-				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
-			</div>
-			<div style="width:2em;cursor: pointer;" id="forward">
-				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fforward.svg?alt=media&token=6e729a78-4c7b-4065-a738-b58cdbcfc3cc" alt="forward" style="filter: invert(100%);">
-			</div>
+		</div>
+		<div id="controls_intro" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
+			<div style="margin:5px;display:flex;justify-content:space-around">
+				<div style="cursor: pointer;" id="intro">
+					<button id="intro_btn" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Intro
+					</button>
+				</div>
 			</div>
 		</div>
 		`
@@ -107,9 +116,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let sportyStyle = controlsFrame.querySelector("#red")
 		sportyStyle.onclick = () => {
 			simulationDetails["style"] = "sporty"
-			controlsFrame.querySelector("#red img").style.width = "80%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
+			controlsFrame.querySelector("#red img").style.width = "100%"
+			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -118,9 +127,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let relaxedStyle = controlsFrame.querySelector("#green")
 		relaxedStyle.onclick = () => {
 			simulationDetails["style"] = "relaxed"
-			controlsFrame.querySelector("#red img").style.width = "50%"
-			controlsFrame.querySelector("#green img").style.width = "80%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
+			controlsFrame.querySelector("#red img").style.width = "60%"
+			controlsFrame.querySelector("#green img").style.width = "100%"
+			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
@@ -129,9 +138,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let optimizedStyle = controlsFrame.querySelector("#yellow")
 		optimizedStyle.onclick = () => {
 			simulationDetails["style"] = "optimized"
-			controlsFrame.querySelector("#red img").style.width = "50%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "80%"
+			controlsFrame.querySelector("#red img").style.width = "60%"
+			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "100%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
@@ -185,6 +194,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box.triggerPopup(videoFrame)
 		}
 
+		let intro_video = controlsFrame.querySelector("#intro_btn")
+		intro_video.onclick = () => {
+			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FKinetosis%20final%20kompr.mp4?alt=media&token=3b58ba7f-3a62-4357-9475-ea986e407d75"
+			let videoFrame = document.createElement("div")
+			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
+			videoFrame.innerHTML =
+				`
+				<div id="videoContainer" >
+					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
+						<source
+						src=${videoURL}
+						type="video/mp4"
+						/>
+					</video>
+				</div>
+				`
+			box.triggerPopup(videoFrame)
+		}
+
 		let reload = controlsFrame.querySelector("#reload")
 		reload.onclick = () => {
 		simulationDetails = {
@@ -197,9 +225,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#red img").style.width = "80%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
+			controlsFrame.querySelector("#red img").style.width = "100%"
+			controlsFrame.querySelector("#green img").style.width = "60%"
+			controlsFrame.querySelector("#yellow img").style.width = "60%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
