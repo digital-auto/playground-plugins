@@ -67,6 +67,7 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
                 }
             })
             STATE.status = json.fulfillment.read.value.bool
+            console.log("Status:", STATE.status)
             IconDiv.style.color = STATE.status ? "#059669" : "#ef4444"
         }
 
