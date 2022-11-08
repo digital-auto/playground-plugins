@@ -74,6 +74,9 @@ const RTIDemo = ({ widgets, vehicle, simulator }) => {
 
     const refresh = () => {
         getRTIData("MyVehicleLocationReader").then(data => {
+            if (!data.querySelector("data")) {
+                return
+            }
             for (const parameter of ["Latitude", "Longitude", "Heading", "HorizontalAccuracy", "Altitude", "VerticalAccuracy"]) {
                 STATE[`Vehicle.CurrentLocation.${parameter}`] = data.querySelector(`data > ${parameter}`).textContent
             }
@@ -81,6 +84,9 @@ const RTIDemo = ({ widgets, vehicle, simulator }) => {
         })
 
         getRTIData("MyVehicleMotionReader").then(data => {
+            if (!data.querySelector("data")) {
+                return
+            }
             for (const parameter of ["Speed", "AverageSpeed", "TripMeterReading", "IsBrokenDown", "IsMoving"]) {
                 STATE[`Vehicle.${parameter}`] = data.querySelector(`data > ${parameter}`).textContent
             }
@@ -88,6 +94,9 @@ const RTIDemo = ({ widgets, vehicle, simulator }) => {
         })
 
         getRTIData("MyWiperStatusReader").then(data => {
+            if (!data.querySelector("data")) {
+                return
+            }
             for (const parameter of ["Mode", "Frequency", "TargetPosition", "ActualPosition", "DriveCurrent", "IsWiping", "IsEndingWipeCycle", "IsWiperError", "IsPositionReached", "IsOverheated", "IsBlocked"]) {
                 STATE[`Vehicle.Body.Windshield.Front.Wiping.System.${parameter}`] = data.querySelector(`data > ${parameter}`).textContent
             }
