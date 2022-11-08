@@ -55,6 +55,8 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
             const imageBytes = json.fulfillment.read.value.blob.bytes
 
             div.querySelector("img").src = `data:image/png;base64,${imageBytes}`
+
+            await updateCurrentStatus()
         }
 
         const updateCurrentStatus = async () => {
@@ -67,7 +69,7 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
                 }
             })
             STATE.status = json.fulfillment.read.value.bool
-            console.log("Status:", STATE.status)
+            console.log("CurrentState:", )
             IconDiv.style.color = STATE.status ? "#059669" : "#ef4444"
         }
 
@@ -94,12 +96,10 @@ const HappyDog = ({ simulator, widgets, vehicle }) => {
         }
 
         const intervalId = setInterval(async () => {
-            updateCurrentStatus()
             updateImage()
             updateAPIs()
         }, 5000)
 
-        updateCurrentStatus()
         updateImage()
         updateAPIs()
 
