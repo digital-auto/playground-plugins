@@ -291,7 +291,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 22,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 25,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 128,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 28,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 9,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 8,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
