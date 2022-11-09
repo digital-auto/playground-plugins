@@ -29,11 +29,13 @@ const DriveScore = ({widgets, vehicle}) => {
     widgets.register("DriverCard", SignalPills([
         {
             signal: "Vehicle.Driver.DriverCard.ID",
-            label: "ID"
+            label: "ID",
+            icon: "fingerprint"
         },
         {
             signal: "Vehicle.Driver.DriverCard.Name",
-            label: "Name"
+            label: "Name",
+            icon: "id-card"
         },
     ], vehicle))
 

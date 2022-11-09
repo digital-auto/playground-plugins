@@ -29,7 +29,7 @@ const SignalPills = (pills, vehicle) => {
                         <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="${label}">${label}</div>
                         <div style="font-size: 1.1em;" class="signal-value"><span>No Value Yet</span>${pill.suffix || ""}</div>
                     </div>
-                    ${pill.icon && `<div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-${pill.icon}"></i></div>`}
+                    ${pill.icon ? `<div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-${pill.icon}"></i></div>` : ``}
                 </div>
             `)
             }).join("")}
