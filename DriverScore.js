@@ -55,9 +55,14 @@ const DriveScore = ({widgets, vehicle}) => {
             }
             printNotification(message)
         }, 300)
+
+        const iteratorIntervalidId = setInterval(async () => {
+            await vehicle.Next()
+        }, 3000)
         
         return ( ) => {
             clearInterval(intervalId)
+            clearInterval(iteratorIntervalidId)
         }
     })
 }
