@@ -5,7 +5,7 @@ const DriveScore = ({widgets, vehicle}) => {
     widgets.register("DriveTimeExceededTile", SignalTile("Driver.DriveTimeExceeded", vehicle))
 
     widgets.register("MobileNotifications", (box) => {
-        const {printNotifications} = MobileNotifications({box})
+        const {printNotification} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
             const [timeExceeded, currentFuelEconomy] = [
                 await vehicle.Driver.DriveTimeExceeded.get(),
@@ -18,7 +18,7 @@ const DriveScore = ({widgets, vehicle}) => {
             if (currentFuelEconomy < 50) {
                 message += "WARNING: CurrentFuelEconomy below 50%!"
             }
-            printNotifications(message)
+            printNotification(message)
         }, 300)
         
         return ( ) => {
