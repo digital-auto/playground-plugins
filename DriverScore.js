@@ -57,7 +57,7 @@ const DriveScore = ({widgets, vehicle}) => {
         }, 300)
 
         const iteratorIntervalidId = setInterval(async () => {
-            await vehicle.Next()
+            await vehicle.Next.get()
         }, 3000)
         
         return ( ) => {
