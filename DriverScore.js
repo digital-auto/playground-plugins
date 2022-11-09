@@ -13,6 +13,18 @@ const DriveScore = ({widgets, vehicle}) => {
             signal: "Vehicle.Driver.DriveTimeExceeded"
         }
     ], vehicle))
+    
+    widgets.register("AccumulatedDriveTime", LineChart([
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime"
+        }
+    ], vehicle))
+    
+    widgets.register("AllowedDriveTime", LineChart([
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime"
+        }
+    ], vehicle))
 
     widgets.register("CurrentFuelEconomyLineChart", LineChart([
         {
