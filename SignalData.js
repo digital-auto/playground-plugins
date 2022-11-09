@@ -9,7 +9,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 61200,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 7,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 2,
@@ -24,8 +24,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.191627,
@@ -49,7 +47,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.237381,
@@ -58,7 +55,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 59400,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 6,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 3,
@@ -73,9 +70,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.284922,
 			"Vehicle.CurrentLocation.Longitude": 11.4572,
@@ -83,7 +78,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 59292,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 6,
@@ -98,20 +93,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
-
-
-
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.341,
-			"Vehicle.CurrentLocation.Longitude": 11.4380,
+			"Vehicle.CurrentLocation.Longitude": 11.438,
 			"Vehicle.Speed": 51,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 58176,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 11,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 5,
@@ -126,10 +116,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
-
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.3944,
 			"Vehicle.CurrentLocation.Longitude": 11.4682,
@@ -137,7 +124,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 56124,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 2,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 15,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 7,
@@ -146,7 +133,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 1,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 4,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 3,
-
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
 			"Vehicle.Driver.IsPausing": false,
@@ -154,9 +140,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
 		},
-
-
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.4473,
 			"Vehicle.CurrentLocation.Longitude": 11.481995,
@@ -164,7 +147,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 55980,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 11,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 7,
@@ -179,9 +162,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.489209,
 			"Vehicle.CurrentLocation.Longitude": 11.503968,
@@ -189,7 +170,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 55620,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 11,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 7,
@@ -204,16 +185,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.567422,
-			"Vehicle.CurrentLocation.Longitude": 11.542420,
+			"Vehicle.CurrentLocation.Longitude": 11.54242,
 			"Vehicle.Speed": 57,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 55260,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 12,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 7,
@@ -228,7 +208,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.600127,
@@ -236,8 +215,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Speed": 58,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 55080,
 			"Vehicle.Driver.DriveTimeExceeded": false,
-			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 13,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 8,
@@ -252,16 +231,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
-			"Vehicle.CurrentLocation.Latitude": 48.643700,
+			"Vehicle.CurrentLocation.Latitude": 48.6437,
 			"Vehicle.CurrentLocation.Longitude": 11.564393,
 			"Vehicle.Speed": 59,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 54720,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 6,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCar.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 8,
@@ -276,7 +254,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.65821,
@@ -285,7 +262,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 52164,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 3,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 7,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 9,
@@ -300,7 +277,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.747037,
@@ -309,7 +285,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 52380,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 4,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 10,
@@ -324,7 +300,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.8803148,
@@ -333,7 +308,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 52200,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 4,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 6,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 15,
@@ -348,7 +323,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.821235,
@@ -357,7 +331,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 52092,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 5,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 6,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 12,
@@ -380,7 +354,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 51444,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 10,
@@ -395,21 +369,20 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
-			"Vehicle.CurrentLocation.Latitude": 48.879070,
+			"Vehicle.CurrentLocation.Latitude": 48.87907,
 			"Vehicle.CurrentLocation.Longitude": 11.152405,
 			"Vehicle.Speed": 65,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 50976,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 8,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature": 31,
-			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature":33,
+			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature": 33,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 35,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
@@ -419,7 +392,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.868231,
@@ -428,7 +400,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 50796,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 5,
@@ -443,16 +415,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
-			"Vehicle.CurrentLocation.Latitude": 48.888100,
+			"Vehicle.CurrentLocation.Latitude": 48.8881,
 			"Vehicle.CurrentLocation.Longitude": 11.042542,
 			"Vehicle.Speed": 66,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 50472,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 14,
@@ -467,16 +438,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 8,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 2,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.913377,
-			"Vehicle.CurrentLocation.Longitude": 10.987610,
+			"Vehicle.CurrentLocation.Longitude": 10.98761,
 			"Vehicle.Speed": 67,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 50400,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 15,
@@ -491,9 +461,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.003549,
 			"Vehicle.CurrentLocation.Longitude": 10.949158,
@@ -501,7 +469,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 48924,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 19,
@@ -516,13 +484,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
-
-
-
-
 		},
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.068371,
 			"Vehicle.CurrentLocation.Longitude": 10.962891,
@@ -530,7 +492,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 48780,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 6,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 19,
@@ -545,21 +507,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
-
-
-
-
 		},
-
 		{
-			"Vehicle.CurrentLocation.Latitude": 49.138500,
-			"Vehicle.CurrentLocation.Longitude": 11.012330,
+			"Vehicle.CurrentLocation.Latitude": 49.1385,
+			"Vehicle.CurrentLocation.Longitude": 11.01233,
 			"Vehicle.Speed": 68,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 45180,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 4,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 7,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 20,
@@ -574,15 +530,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
-
-
-
-
 		},
-
-
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.181607,
 			"Vehicle.CurrentLocation.Longitude": 11.0095,
@@ -590,7 +538,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 52000,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 5,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 22,
@@ -606,7 +554,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
 		},
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.221088,
 			"Vehicle.CurrentLocation.Longitude": 11.067261,
@@ -614,7 +561,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 52020,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 6,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 23,
@@ -629,11 +576,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
-
-
-
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 48.85850429451804,
@@ -657,7 +599,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.357237,
@@ -666,7 +607,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 44460,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 7,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 26,
@@ -681,7 +622,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.414451,
@@ -690,7 +630,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 7,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 22,
@@ -705,8 +645,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.487658,
@@ -715,7 +653,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 8,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 11,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 21,
@@ -730,18 +668,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
-
-
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.534026,
-			"Vehicle.CurrentLocation.Longitude": 10.995850,
+			"Vehicle.CurrentLocation.Longitude": 10.99585,
 			"Vehicle.Speed": 0,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 8,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 11,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 20,
@@ -756,7 +691,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.642638,
@@ -765,7 +699,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 8,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 17,
@@ -780,7 +714,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.672865,
@@ -789,7 +722,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 6,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 15,
@@ -804,16 +737,15 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
-			"Vehicle.CurrentLocation.Latitude": 49.751010,
+			"Vehicle.CurrentLocation.Latitude": 49.75101,
 			"Vehicle.CurrentLocation.Longitude": 11.061768,
 			"Vehicle.Speed": 0,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 7,
@@ -828,7 +760,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.782942,
@@ -837,7 +768,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 10,
@@ -852,10 +783,9 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
 			"Vehicle.Driver.ProximityToVehicle": 3
-
 		},
 		{
-			"Vehicle.CurrentLocation.Latitude": 49.841430,
+			"Vehicle.CurrentLocation.Latitude": 49.84143,
 			"Vehicle.CurrentLocation.Longitude": 10.976624,
 			"Vehicle.Speed": 0,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 0,
@@ -876,7 +806,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
 			"Vehicle.Driver.ProximityToVehicle": 3
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.949357,
@@ -885,7 +814,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 39600,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 12,
@@ -900,7 +829,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
 			"Vehicle.Driver.ProximityToVehicle": 3
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 49.998817,
@@ -924,7 +852,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 6,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 4,
 			"Vehicle.Driver.ProximityToVehicle": 3
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.057044,
@@ -948,7 +875,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
 			"Vehicle.Driver.ProximityToVehicle": 3
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.166248,
@@ -957,7 +883,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 27036,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 17,
@@ -972,7 +898,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
 			"Vehicle.Driver.ProximityToVehicle": 3
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.217242,
@@ -981,7 +906,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 25920,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 18,
@@ -998,13 +923,13 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.ProximityToVehicle": 1
 		},
 		{
-			"Vehicle.CurrentLocation.Latitude": 50.280470,
+			"Vehicle.CurrentLocation.Latitude": 50.28047,
 			"Vehicle.CurrentLocation.Longitude": 11.017823,
 			"Vehicle.Speed": 94,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 26244,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 19,
@@ -1019,7 +944,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.340107,
@@ -1028,7 +952,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 26460,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 10,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 20,
@@ -1043,7 +967,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.380408,
@@ -1052,7 +975,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 26712,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 22,
@@ -1067,7 +990,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 6,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		},
 		{
 			"Vehicle.CurrentLocation.Latitude": 50.445168,
@@ -1076,7 +998,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 26820,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 9,
-			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 8,
+			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 9,
 			"Vehicle.Driver.DriverCard.Name": "Thomas",
 			"Vehicle.Driver.DriverCard.ID": 2345,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature": 24,
@@ -1091,7 +1013,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 4,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 7,
 			"Vehicle.Driver.ProximityToVehicle": 1
-
 		}
 	], simulator)
 }
