@@ -4,8 +4,8 @@ const DriveScore = ({widgets, vehicle}) => {
     widgets.register("MobileNotifications", (box) => {
         const {printNotifications} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
-            console.log(await vehicle.Driver.DriveTimeExceeded())
-            if (await vehicle.Driver.DriveTimeExceeded()) {
+            console.log(await vehicle.Driver.DriveTimeExceeded.get())
+            if (await vehicle.Driver.DriveTimeExceeded.get()) {
                 printNotifications("Drive Time Exceeded!")
             }
         }, 300)
