@@ -16,7 +16,7 @@ const DriveScore = ({widgets, vehicle}) => {
                 message += "Drive Time Exceeded!\n"
             }
             if (currentFuelEconomy < 50) {
-                message += "WARNING: CurrentFuelEconomy below 50%!"
+                message += "WARNING: CurrentFuelEconomy below 50%!\nEF"
             }
             printNotification(message)
         }, 300)
