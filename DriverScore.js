@@ -1,4 +1,4 @@
-import MobileNotifications from "./reusable/MobileNotifications"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 const DriveScore = ({widgets, vehicle}) => {
     let printNotifications = null
