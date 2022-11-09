@@ -20,9 +20,9 @@ const DriveScore = ({widgets, vehicle}) => {
         }
     ], vehicle))
 
-    widgets.register("CurrentFuelEconomyLineChart", LineChart([
+    widgets.register("AccumulatedConsumptionLineChart", LineChart([
         {
-            signal: "Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy"
+            signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption"
         }
     ], vehicle))
 
