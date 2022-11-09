@@ -15,7 +15,7 @@ const DriveScore = ({widgets, vehicle}) => {
             ]
             let message = ""
             if (timeExceeded) {
-                message += "Drive Time Exceeded!\n\n"
+                message += "\nDrive Time Exceeded!\n\n"
             }
             if (currentFuelEconomy < 50) {
                 message += "WARNING: CurrentFuelEconomy below 50%!"
