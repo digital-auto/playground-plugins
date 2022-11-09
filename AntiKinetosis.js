@@ -413,15 +413,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
-		MobileNotifications({
+		const {printNotification} = MobileNotifications({
 			apis : null,
 			vehicle: null,
 			box: box,
 			refresh: null,
 			backgroundColor: "rgb(0 80 114)"
-		}).then(({printNotification}) => {
-			mobileNotifications = printNotification;
 		})
+		mobileNotifications = printNotification;
 	})
 
 	let animationControlsFrame = null;
