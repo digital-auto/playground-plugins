@@ -5,7 +5,7 @@ const DriveScore = ({widgets, vehicle}) => {
     widgets.register("MobileNotifications", (box) => {
         ({printNotifications} = MobileNotifications({box}))
     })
-    useInterval(async () => {
+    setInterval(async () => {
         if (printNotifications === null) {
             return
         }
