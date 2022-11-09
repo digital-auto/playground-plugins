@@ -2,7 +2,9 @@ import MobileNotifications from "./reusable/MobileNotifications.js"
 import SignalTile from "./reusable/SignalTile.js"
 
 const DriveScore = ({widgets, vehicle}) => {
-    widgets.register("DriveTimeExceededTile", SignalTile("Driver.DriveTimeExceeded", vehicle))
+    widgets.register("DriveTimeExceededTile", SignalTile({
+        signal: "Driver.DriveTimeExceeded"
+    }, vehicle))
 
     widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
