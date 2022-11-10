@@ -12,16 +12,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
-		MobileNotifications({
+		({printNotification: mobileNotifications} = MobileNotifications({
 			apis : null,
 			vehicle: null,
 			box: box,
 			refresh: null,
             paddingTop: 70,
             paddingHorizontal: 25
-		}).then(({printNotification}) => {
-			mobileNotifications = printNotification;
-		})
+		}))
 	});
 
     widgets.register("CarImage", (box) => {
@@ -66,7 +64,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
     return {
-        notifyPhone: (message) => mobileNotifications(message),
+        notifyPhone: (message) => {
+            if (mobileNotifications !== null) {
+                mobileNotifications(message)
+            }
+        },
     }
 
 }
