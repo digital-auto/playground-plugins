@@ -1,5 +1,6 @@
 {
     "scripts": {
-        "build": "cd typescript && tsc && cp -r ts-built/* ../ && rm -r ts-built"
+        "build": "npm start convert-html && cd typescript && tsc && cp -r ts-built/* ../ && rm -r ts-built",
+        "convert-html": "generate-md --layout github --input ./README.md --output ./ && mv README.html index.html"
     }
 }

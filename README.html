@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Reusable Widgets</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="reusable-widgets"><a class="header-link" href="#reusable-widgets"></a>Reusable Widgets</h1>
+<p>To use a reusable widget:</p>
+<ol class="list">
+<li><p>Import the plugin as an ES module.</p>
+</li>
+<li><p>Call it with your arguments.</p>
+</li>
+<li><p>Use the widget activation function with <code>widgets.register</code></p>
+</li>
+</ol>
+<p>Example of using <code>TitleWidget</code>:</p>
+<pre class="hljs"><code>widgets.<span class="hljs-keyword">register</span>(<span class="hljs-string">&#x27;AnyNameForTheWidget&#x27;</span>, TitleWidget(<span class="hljs-string">&#x27;Any Title&#x27;</span>))</code></pre><h2 id="titlewidget"><a class="header-link" href="#titlewidget"></a><a href="https://playground-plugins.netlify.app/reusable/TitleWidget.js"><strong>TitleWidget</strong></a></h2>
+<p>Displays the text passed in a widget, centered.</p>
+<pre class="hljs"><code><span class="hljs-constructor">TitleWidget(<span class="hljs-params">title</span>: <span class="hljs-params">string</span>, <span class="hljs-params">size</span>: <span class="hljs-params">number</span> = 1)</span> =&gt; WidgetActivateFunction</code></pre><h2 id="signaltile"><a class="header-link" href="#signaltile"></a><a href="https://playground-plugins.netlify.app/reusable/SignalTile.js"><strong>SignalTile</strong></a></h2>
+<p>Displays the current value of a single VSS API in a tile.</p>
+<pre class="hljs"><code><span class="hljs-constructor">SignalTile(<span class="hljs-params">pill</span>: TileType, <span class="hljs-params">vehicle</span>: VehicleObject)</span> =&gt; WidgetActivateFunction</code></pre><h2 id="signalblacktile"><a class="header-link" href="#signalblacktile"></a><a href="https://playground-plugins.netlify.app/reusable/SignalBlackTile.js"><strong>SignalBlackTile</strong></a></h2>
+<p>Alternate design of <strong>SignalTile</strong>.</p>
+<pre class="hljs"><code><span class="hljs-constructor">SignalBlackTile(<span class="hljs-params">pill</span>: TileType, <span class="hljs-params">vehicle</span>: VehicleObject)</span> =&gt; WidgetActivateFunction</code></pre><h2 id="signalpills"><a class="header-link" href="#signalpills"></a><a href="https://playground-plugins.netlify.app/reusable/SignalPills.js"><strong>SignalPills</strong></a></h2>
+<p>Shows the current value of multiple VSS APIs as stacked pills. Up to 3 APIs work best.</p>
+<pre class="hljs"><code><span class="hljs-constructor">SignalPills(<span class="hljs-params">pills</span>: TileType[], <span class="hljs-params">vehicle</span>: VehicleObject)</span> =&gt; WidgetActivateFunction</code></pre><h2 id="statustable"><a class="header-link" href="#statustable"></a><a href="https://playground-plugins.netlify.app/reusable/StatusTable.js"><strong>StatusTable</strong></a></h2>
+<p>Shows the current value of multiple VSS APIs in a table. This table can fit any number of APIs.</p>
+<pre class="hljs"><code><span class="hljs-attr">StatusTable({</span>
+    <span class="hljs-attr">apis</span>: <span class="hljs-string">string[],</span>
+    <span class="hljs-attr">vehicle</span>: <span class="hljs-string">VehicleObject,</span>
+    <span class="hljs-attr">refresh</span> = <span class="hljs-string">5 * 1000</span>
+<span class="hljs-meta">})</span> =<span class="hljs-string">&gt; WidgetActivateFunction</span></code></pre><h2 id="signalwithmedia"><a class="header-link" href="#signalwithmedia"></a><a href="https://playground-plugins.netlify.app/reusable/SignalWithMedia.js"><strong>SignalWithMedia</strong></a></h2>
+<p>Shows the associated media for a VSS APIs value in a widget. For example:</p>
+<pre class="hljs"><code>SignalWithMedia(<span class="hljs-string">&quot;Vehicle.Cabin.Door.Row1.Left.IsOpen&quot;</span>, {
+    [<span class="hljs-literal">true</span>]: {
+        <span class="hljs-built_in">type</span>: <span class="hljs-string">&quot;video&quot;</span>,
+        url: <span class="hljs-string">&quot;https://digitalauto-media-data.netlify.app/DoorOpen720x360.mp4&quot;</span>
+    },
+    [<span class="hljs-literal">false</span>]: {
+        <span class="hljs-built_in">type</span>: <span class="hljs-string">&quot;image&quot;</span>,
+        url: <span class="hljs-string">&quot;https://digitalauto-media-data.netlify.app/WhiteHoodClosed1080x540.png&quot;</span>
+    },
+}, <span class="hljs-built_in">vehicle</span>)</code></pre><p>This widget will switch to the first video when the value of <code>Vehicle.Cabin.Door.Row1.Left.IsOpen</code> is <code>true</code>, and the second image when it&#39;s <code>false</code>.</p>
+<p>Values can be of any type, and you can add any number of values.</p>
+<pre class="hljs"><code><span class="hljs-built_in">type</span> SignalValueImages = {
+    [value: <span class="hljs-built_in">string</span>]: {
+        <span class="hljs-built_in">type</span>: <span class="hljs-string">&quot;image&quot;</span> | <span class="hljs-string">&quot;video&quot;</span>,
+        ur<span class="hljs-variable">l:</span> <span class="hljs-built_in">string</span>
+    }
+}
+
+SignalWithMedia(
+    vssSigna<span class="hljs-variable">l:</span> <span class="hljs-built_in">string</span>,
+    valueMedi<span class="hljs-variable">a:</span> SignalValueImages,
+    vehicle: VehicleObject
+) =&gt; WidgetActivateFunction</code></pre><h2 id="linechart"><a class="header-link" href="#linechart"></a><a href="https://playground-plugins.netlify.app/reusable/LineChart.js"><strong>LineChart</strong></a></h2>
+<p>Shows a line chart with the current values of one or more VSS signals (each with their own line), along with their trend as the value changes.</p>
+<p>You can use the optional color key to set a different color for each line.</p>
+<pre class="hljs"><code><span class="hljs-keyword">type</span> SignalsType = {
+    signal: <span class="hljs-built_in">string</span>
+    color?: <span class="hljs-built_in">string</span>
+}<span class="hljs-literal">[]</span>
+
+<span class="hljs-constructor">LineChart(<span class="hljs-params">signals</span>: SignalsType, <span class="hljs-params">vehicle</span>: VehicleObject, <span class="hljs-params">refreshTime</span> = 800)</span> =&gt; WidgetActivateFunction</code></pre><h2 id="loadscript-function"><a class="header-link" href="#loadscript-function"></a><a href="https://playground-plugins.netlify.app/reusable/loadScript.js"><strong>loadScript</strong></a> (Function)</h2>
+<p>Loads a JS script in a window, returns a promise that resolves once the script has finished loading.</p>
+<p>To use this plugin, <code>box.window</code> needs to be passed as the first parameter.</p>
+<p>Like:</p>
+<pre class="hljs"><code>(<span class="hljs-type">box</span>) =&gt; {
+    loadScript(<span class="hljs-type">box</span>.<span class="hljs-keyword">window</span>, &quot;https://domain.com/js_file.js&quot;)
+}</code></pre><pre class="hljs"><code>load<span class="hljs-constructor">Script(<span class="hljs-params">boxWindow</span>: Window, <span class="hljs-params">url</span>: <span class="hljs-params">string</span>)</span> =&gt; Promise&lt;void&gt;</code></pre><h2 id="googlemapsfromsignal"><a class="header-link" href="#googlemapsfromsignal"></a><a href="https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js"><strong>GoogleMapsFromSignal</strong></a></h2>
+<p>Adds a map showing directions from point A to B, along with the location of the current vehicle, fetched from the VSS API&#39;s <code>Vehicle.CurrentLocation.Latitude</code> and <code>Vehicle.CurrentLocation.Longitude</code></p>
+<pre class="hljs"><code><span class="hljs-built_in">type</span> Coordinate = {
+    <span class="hljs-keyword">la</span><span class="hljs-variable">t:</span> <span class="hljs-keyword">number</span>
+    <span class="hljs-keyword">ln</span><span class="hljs-variable">g:</span> <span class="hljs-keyword">number</span>
+}
+
+GoogleMapsFromSignal(
+    direction<span class="hljs-variable">s:</span> [Coordinate, Coordinate],
+    vehicle: VehicleObject,
+    <span class="hljs-keyword">options</span>?: {
+        iterate: boolean = false,
+        autoNex<span class="hljs-variable">t:</span> <span class="hljs-keyword">number</span> = <span class="hljs-number">800</span>,
+    }
+)</code></pre><h2 id="terminal"><a class="header-link" href="#terminal"></a><a href="https://playground-plugins.netlify.app/reusable/Terminal.js"><strong>Terminal</strong></a></h2>
+<p>This widget is an exception. It can be added as a plugin in the playground, and will automatically be available as the Widget &#39;Terminal&#39;.</p>
+<p>Acts as an almost-complete drop-in replacement of the Control Center Terminal. Exposes the two functions <code>print</code> and <code>reset</code> for the prototype to use.</p>
+<pre class="hljs"><code>Terminal(props: PluginProps) =&gt; {
+    <span class="hljs-built_in">print</span>(text: string) =&gt; <span class="hljs-keyword">void</span>
+    reset() =&gt; <span class="hljs-keyword">void</span>
+}</code></pre><h3 id="vehicleobject"><a class="header-link" href="#vehicleobject"></a><code>VehicleObject</code></h3>
+<p>This is the <code>vehicle</code> parameter passed to the plugin definition. Needs to passed forward for some widgets.</p>
+<h3 id="tiletype"><a class="header-link" href="#tiletype"></a><code>TileType</code></h3>
+<pre class="hljs"><code>type TileType = {
+    <span class="hljs-keyword">signal</span><span class="hljs-string"></span>: <span class="hljs-built_in">string</span>
+    icon?: <span class="hljs-built_in">string</span>
+    label?: <span class="hljs-built_in">string</span>
+    suffix?: <span class="hljs-built_in">string</span>
+}</code></pre><p><code>signal</code>: Name of the VSS signal to be shown, for example: &quot;Vehicle.Speed&quot;</p>
+<p><code>icon</code>: Optional Font Awesome icon name, for example: <code>satellite</code></p>
+<p><code>label</code>: Label to display in the title, defaults to <code>signal</code>.</p>
+<p><code>suffix</code>: Suffix to add after the value, useful for adding units like <code> km/h</code> or <code>h</code></p>
+    </article>
+  </body>
+</html>

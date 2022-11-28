@@ -1,26 +1,20 @@
-# playground-plugins
+# Reusable Widgets
 
-We have 3 types of reusable plugin components you can use, all by importing them from their JS Url's linked below.
+To use a reusable widget:
 
-1. Plugin
+1. Import the plugin as an ES module.
 
-    These are entire plugins you can add directly in the playground.
+2. Call it with your arguments.
 
-2. WidgetActivation
+3. Use the widget activation function with `widgets.register`
 
-    These can be used to create an entire widget. You can pass some parameters to these reusable widgets, and they create the widget's activation function from that.
+Example of using `TitleWidget`:
 
-    For example:
+```
+widgets.register('AnyNameForTheWidget', TitleWidget('Any Title'))
+```
 
-    ```
-    widgets.register("WidgetName", TitleWidget("Title"))
-    ```
-
-3. Function
-
-    Helper functions you can use inside your plugin to minimize the code you need to write.
-
-## [**TitleWidget**](https://playground-plugins.netlify.app/reusable/TitleWidget.js) (WidgetActivation)
+## [**TitleWidget**](https://playground-plugins.netlify.app/reusable/TitleWidget.js)
 
 Displays the text passed in a widget, centered.
 
@@ -28,41 +22,7 @@ Displays the text passed in a widget, centered.
 TitleWidget(title: string, size: number = 1) => WidgetActivateFunction
 ```
 
-## [**Terminal**](https://playground-plugins.netlify.app/reusable/Terminal.js) (Plugin)
-
-Acts as an almost-complete drop-in replacement of the Control Center Terminal. Exposes the two functions `print` and `reset` for the prototype to use.
-
-```
-Terminal(props: PluginProps) => {
-    print(text: string) => void
-    reset() => void
-}
-```
-
-### `VehicleObject`
-
-This is the `vehicle` parameter passed to the plugin definition. Needs to passed forward for some widgets.
-
-### `TileType`
-
-```
-type TileType = {
-    signal: string
-    icon?: string
-    label?: string
-    suffix?: string
-}
-```
-
-`signal`: Name of the VSS signal to be shown, for example: "Vehicle.Speed"
-
-`icon`: Optional Font Awesome icon name, for example: `satellite`
-
-`label`: Label to display in the title, defaults to `signal`.
-
-`suffix`: Suffix to add after the value, useful for adding units like ` km/h` or `h`
-
-## [**SignalTile**](https://playground-plugins.netlify.app/reusable/SignalTile.js) (WidgetActivation)
+## [**SignalTile**](https://playground-plugins.netlify.app/reusable/SignalTile.js)
 
 Displays the current value of a single VSS API in a tile.
 
@@ -70,7 +30,7 @@ Displays the current value of a single VSS API in a tile.
 SignalTile(pill: TileType, vehicle: VehicleObject) => WidgetActivateFunction
 ```
 
-## [**SignalBlackTile**](https://playground-plugins.netlify.app/reusable/SignalBlackTile.js) (WidgetActivation)
+## [**SignalBlackTile**](https://playground-plugins.netlify.app/reusable/SignalBlackTile.js)
 
 Alternate design of **SignalTile**.
 
@@ -78,7 +38,7 @@ Alternate design of **SignalTile**.
 SignalBlackTile(pill: TileType, vehicle: VehicleObject) => WidgetActivateFunction
 ```
 
-## [**SignalPills**](https://playground-plugins.netlify.app/reusable/SignalPills.js) (WidgetActivation)
+## [**SignalPills**](https://playground-plugins.netlify.app/reusable/SignalPills.js)
 
 Shows the current value of multiple VSS APIs as stacked pills. Up to 3 APIs work best.
 
@@ -86,7 +46,7 @@ Shows the current value of multiple VSS APIs as stacked pills. Up to 3 APIs work
 SignalPills(pills: TileType[], vehicle: VehicleObject) => WidgetActivateFunction
 ```
 
-## [**StatusTable**](https://playground-plugins.netlify.app/reusable/StatusTable.js) (WidgetActivation)
+## [**StatusTable**](https://playground-plugins.netlify.app/reusable/StatusTable.js)
 
 Shows the current value of multiple VSS APIs in a table. This table can fit any number of APIs.
 
@@ -98,7 +58,7 @@ StatusTable({
 }) => WidgetActivateFunction
 ```
 
-## [**SignalWithMedia**](https://playground-plugins.netlify.app/reusable/SignalWithMedia.js) (WidgetActivation)
+## [**SignalWithMedia**](https://playground-plugins.netlify.app/reusable/SignalWithMedia.js)
 
 Shows the associated media for a VSS APIs value in a widget. For example:
 
@@ -134,7 +94,7 @@ SignalWithMedia(
 ) => WidgetActivateFunction
 ```
 
-## [**LineChart**](https://playground-plugins.netlify.app/reusable/LineChart.js) (WidgetActivation)
+## [**LineChart**](https://playground-plugins.netlify.app/reusable/LineChart.js)
 
 Shows a line chart with the current values of one or more VSS signals (each with their own line), along with their trend as the value changes.
 
@@ -167,7 +127,7 @@ Like:
 loadScript(boxWindow: Window, url: string) => Promise<void>
 ```
 
-## [**GoogleMapsFromSignal**](https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js) (WidgetActivation) 
+## [**GoogleMapsFromSignal**](https://playground-plugins.netlify.app/reusable/GoogleMapsFromSignal.js) 
 
 Adds a map showing directions from point A to B, along with the location of the current vehicle, fetched from the VSS API's `Vehicle.CurrentLocation.Latitude` and `Vehicle.CurrentLocation.Longitude`
 
@@ -186,3 +146,39 @@ GoogleMapsFromSignal(
     }
 )
 ```
+
+## [**Terminal**](https://playground-plugins.netlify.app/reusable/Terminal.js)
+
+This widget is an exception. It can be added as a plugin in the playground, and will automatically be available as the Widget 'Terminal'.
+
+Acts as an almost-complete drop-in replacement of the Control Center Terminal. Exposes the two functions `print` and `reset` for the prototype to use.
+
+```
+Terminal(props: PluginProps) => {
+    print(text: string) => void
+    reset() => void
+}
+```
+
+### `VehicleObject`
+
+This is the `vehicle` parameter passed to the plugin definition. Needs to passed forward for some widgets.
+
+### `TileType`
+
+```
+type TileType = {
+    signal: string
+    icon?: string
+    label?: string
+    suffix?: string
+}
+```
+
+`signal`: Name of the VSS signal to be shown, for example: "Vehicle.Speed"
+
+`icon`: Optional Font Awesome icon name, for example: `satellite`
+
+`label`: Label to display in the title, defaults to `signal`.
+
+`suffix`: Suffix to add after the value, useful for adding units like ` km/h` or `h`
