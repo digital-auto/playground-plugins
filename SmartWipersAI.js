@@ -359,6 +359,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 text-align:center;            
             }
             </style>
+            <script src="https://docs.opencv.org/4.0.1/opencv.js" type="text/javascript"></script>
             <div id="big-loop">
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
@@ -374,6 +375,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("OFF", "*")
             // fillPercent(0)
             manualOverride = true;
+            //pause the video and get current details
+            dashcamFrame.querySelector("#videoPlayer").pause();
+            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
+            const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            const video = new cv.VideoCapture(videoSrc)
+            const t_msec = 1000*(videoTime)
+            video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            ret, frame = video.read()
             box.triggerPopup(bigloopFrame);
         }
 
@@ -387,6 +397,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
             // fillPercent(50)
             manualOverride = true;
+            //pause the video and get current details
+            dashcamFrame.querySelector("#videoPlayer").pause();
+            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
+            const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            const video = new cv.VideoCapture(videoSrc)
+            const t_msec = 1000*(videoTime)
+            video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            ret, frame = video.read()            
             box.triggerPopup(bigloopFrame);            
         }
 
@@ -400,6 +419,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("HI", "*")
             // fillPercent(100)
             manualOverride = true;
+            //pause the video and get current details
+            dashcamFrame.querySelector("#videoPlayer").pause();
+            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
+            const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            const video = new cv.VideoCapture(videoSrc)
+            const t_msec = 1000*(videoTime)
+            video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            ret, frame = video.read()            
             box.triggerPopup(bigloopFrame);
         }
 
