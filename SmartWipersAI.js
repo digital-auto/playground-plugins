@@ -1,6 +1,6 @@
 import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
-import "https://docs.opencv.org/4.0.1/opencv.js"
+import "./assets/js/opencv.js"
 
 async function fetchIntensity(weather) {
     const res = await fetch(
