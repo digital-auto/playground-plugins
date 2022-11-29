@@ -326,7 +326,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             background-color:rgb(0 80 114);
             text-align:center;            
         }
-		</style>	
+		</style>
+        <script src="https://docs.opencv.org/4.0.1/opencv.js" type="text/javascript"></script>
 		<div style="">
             <div class="btn-group wiper-controls" style="margin:5px;display:grid;">
                 <button id="stop" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
@@ -359,7 +360,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 text-align:center;            
             }
             </style>
-            <script src="https://docs.opencv.org/4.0.1/opencv.js" type="text/javascript"></script>
             <div id="big-loop">
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
