@@ -1,5 +1,6 @@
 import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
+import "https://docs.opencv.org/4.0.1/opencv.js"
 
 async function fetchIntensity(weather) {
     const res = await fetch(
@@ -327,8 +328,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             text-align:center;            
         }
 		</style>
-        <script src="https://docs.opencv.org/4.0.1/opencv.js" type="text/javascript"></script>
-		<div style="">
+        <div style="">
             <div class="btn-group wiper-controls" style="margin:5px;display:grid;">
                 <button id="stop" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Stop
