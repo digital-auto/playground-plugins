@@ -1,6 +1,6 @@
 import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
-import "./assets/js/opencv.js"
+//import "./assets/js/opencv.js"
 
 async function fetchIntensity(weather) {
     const res = await fetch(
@@ -380,10 +380,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            const video = new cv.VideoCapture(videoSrc)
-            const t_msec = 1000*(videoTime)
-            video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            ret, frame = video.read()
+            // const video = new cv.VideoCapture(videoSrc)
+            // const t_msec = 1000*(videoTime)
+            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            // ret, frame = video.read()
             box.triggerPopup(bigloopFrame);
         }
 
@@ -402,10 +402,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            const video = new cv.VideoCapture(videoSrc)
-            const t_msec = 1000*(videoTime)
-            video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            ret, frame = video.read()            
+            // const video = new cv.VideoCapture(videoSrc)
+            // const t_msec = 1000*(videoTime)
+            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            // ret, frame = video.read()            
             box.triggerPopup(bigloopFrame);            
         }
 
@@ -424,10 +424,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            const video = new cv.VideoCapture(videoSrc)
-            const t_msec = 1000*(videoTime)
-            video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            ret, frame = video.read()            
+            // const video = new cv.VideoCapture(videoSrc)
+            // const t_msec = 1000*(videoTime)
+            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            // ret, frame = video.read()            
             box.triggerPopup(bigloopFrame);
         }
 
