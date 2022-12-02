@@ -4,29 +4,28 @@ async function getRowsFromSpreadsheet(spreadsheetId, apiKey) {
         `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent("A1:Z1000")}?key=${apiKey}`
     );
 
-    // Convert the response to JSON
     const json = await response.json();
 
-    // Get the headers from the first row of the spreadsheet
-    const headers = json.valueRanges[0].values[0];
+    // Get the headers from the first row
 
-    // Get the rows from the remaining values in the value range
-    const rows = json.valueRanges[0].values.slice(1);
+    const headers = json.values[0];
 
-    // Convert the rows into an array of objects, using the headers as keys
-    return rows.map((row) =>
-        row.reduce((obj, cell, i) => {
-            obj[headers[i]] = cell;
-            return obj;
-        }, {})
-    );
+    // Convert the remaining rows to an array of objects
+    const rows = json.values.slice(1).map(row => {
+        const rowObject = {};
+        for (let i = 0; i < row.length; i++) {
+            rowObject[headers[i]] = row[i];
+        }
+        return rowObject;
+    });
+
 }
 
 const plugin = () => {
     getRowsFromSpreadsheet("1geHkSlE6e351LS_bMFGMIUBEOZO-HTb0wOS90X1jAp0", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
-    .then((rows) => {
-        console.log(rows);
-    })
+        .then((rows) => {
+            console.log(rows);
+        })
 }
 
 export default plugin;
