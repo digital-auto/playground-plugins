@@ -28,10 +28,7 @@ const plugin = ({simulator, vehicle}) => {
     fetchRowsFromSpreadsheet("1geHkSlE6e351LS_bMFGMIUBEOZO-HTb0wOS90X1jAp0", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
-        setInterval(async () => {
-            const o = await vehicle.ADAS.ABS.get()
-            console.log(o)
-        }, 5000)    
+        console.log(vehicle)
     })
 }
 
