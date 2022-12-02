@@ -1,5 +1,6 @@
 import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
+//import "./assets/js/opencv.js"
 
 async function fetchIntensity(weather) {
     const res = await fetch(
@@ -326,8 +327,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             background-color:rgb(0 80 114);
             text-align:center;            
         }
-		</style>	
-		<div style="">
+		</style>
+        <div style="">
             <div class="btn-group wiper-controls" style="margin:5px;display:grid;">
                 <button id="stop" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Stop
@@ -374,6 +375,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("OFF", "*")
             // fillPercent(0)
             manualOverride = true;
+            //pause the video and get current details
+            dashcamFrame.querySelector("#videoPlayer").pause();
+            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
+            const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            // const video = new cv.VideoCapture(videoSrc)
+            // const t_msec = 1000*(videoTime)
+            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            // ret, frame = video.read()
             box.triggerPopup(bigloopFrame);
         }
 
@@ -387,6 +397,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
             // fillPercent(50)
             manualOverride = true;
+            //pause the video and get current details
+            dashcamFrame.querySelector("#videoPlayer").pause();
+            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
+            const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            // const video = new cv.VideoCapture(videoSrc)
+            // const t_msec = 1000*(videoTime)
+            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            // ret, frame = video.read()            
             box.triggerPopup(bigloopFrame);            
         }
 
@@ -400,6 +419,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("HI", "*")
             // fillPercent(100)
             manualOverride = true;
+            //pause the video and get current details
+            dashcamFrame.querySelector("#videoPlayer").pause();
+            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
+            const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            // const video = new cv.VideoCapture(videoSrc)
+            // const t_msec = 1000*(videoTime)
+            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
+            // ret, frame = video.read()            
             box.triggerPopup(bigloopFrame);
         }
 
