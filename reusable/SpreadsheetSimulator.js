@@ -7,6 +7,8 @@ async function getRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Convert the response to JSON
     const json = await response.json();
 
+    console.log(json)
+
     // Get the headers from the first row of the spreadsheet
     const headers = json.valueRanges[0].values[0];
 
