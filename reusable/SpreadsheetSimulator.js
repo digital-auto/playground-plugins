@@ -1,13 +1,11 @@
 async function getRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Fetch the data from the Google Sheets API
     const response = await fetch(
-        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values:batchGet?key=${apiKey}`
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent("A1:Z1000")}?key=${apiKey}`
     );
 
     // Convert the response to JSON
     const json = await response.json();
-
-    console.log(json)
 
     // Get the headers from the first row of the spreadsheet
     const headers = json.valueRanges[0].values[0];
