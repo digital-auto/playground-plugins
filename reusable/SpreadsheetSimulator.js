@@ -19,12 +19,14 @@ async function getRowsFromSpreadsheet(spreadsheetId, apiKey) {
         return rowObject;
     });
 
+    return {headers, rows}
+
 }
 
 const plugin = () => {
     getRowsFromSpreadsheet("1geHkSlE6e351LS_bMFGMIUBEOZO-HTb0wOS90X1jAp0", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
-        .then((rows) => {
-            console.log(rows);
+        .then(({headers, rows}) => {
+            console.log(headers, rows);
         })
 }
 
