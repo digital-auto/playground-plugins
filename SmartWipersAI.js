@@ -390,9 +390,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             canvas.height = videoFrame.videoHeight;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(videoFrame, 0, 0, videoFrame.videoWidth, videoFrame.videoHeight);
-            const data = canvas.toDataURL("image/png");
             const photo = bigloopFrame.querySelector("#photo");
             photo.setAttribute("crossorigin", "anonymous")
+            const data = canvas.toDataURL("image/png");
+            
             photo.setAttribute("src", data);
             // const video = new cv.VideoCapture(videoSrc)
             // const t_msec = 1000*(videoTime)
