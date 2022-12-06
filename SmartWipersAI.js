@@ -361,6 +361,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
             </style>
             <div id="big-loop">
+                <div class="output">
+                    <img id="photo" alt="The screen capture will appear in this box." />
+                </div>
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
         `
@@ -376,10 +379,20 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             // fillPercent(0)
             manualOverride = true;
             //pause the video and get current details
-            dashcamFrame.querySelector("#videoPlayer").pause();
-            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            //dashcamFrame.querySelector("#videoPlayer").pause();
+            //dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
+            
+            const videoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas = document.createElement('canvas')
+            canvas.width = videoFrame.videoWidth;
+            canvas.height = videoFrame.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(videoFrame, 0, 0, videoFrame.videoWidth, videoFrame.videoHeight);
+            const data = canvas.toDataURL("image/png");
+            const photo = bigloopFrame.querySelector("#photo");
+            photo.setAttribute("src", data);
             // const video = new cv.VideoCapture(videoSrc)
             // const t_msec = 1000*(videoTime)
             // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
