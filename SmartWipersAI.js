@@ -362,7 +362,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             </style>
             <div id="big-loop">
                 <div class="output">
-                    <img crossorigin="anonymous" id="photo" alt="The screen capture will appear in this box." />
+                    <img crossOrigin="anonymous" id="photo" alt="The screen capture will appear in this box." />
                 </div>
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
