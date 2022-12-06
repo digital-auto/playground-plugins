@@ -362,7 +362,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             </style>
             <div id="big-loop">
                 <div class="output">
-                    <img crossOrigin="anonymous" id="photo" alt="The screen capture will appear in this box." />
+                    <img id="photo" alt="The screen capture will appear in this box." />
                 </div>
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
@@ -392,6 +392,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             ctx.drawImage(videoFrame, 0, 0, videoFrame.videoWidth, videoFrame.videoHeight);
             const data = canvas.toDataURL("image/png");
             const photo = bigloopFrame.querySelector("#photo");
+            photo.setAttribute("crossorigin", "anonymous")
             photo.setAttribute("src", data);
             // const video = new cv.VideoCapture(videoSrc)
             // const t_msec = 1000*(videoTime)
