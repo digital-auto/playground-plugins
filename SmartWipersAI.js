@@ -392,9 +392,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             ctx.drawImage(videoFrame, 0, 0, videoFrame.videoWidth, videoFrame.videoHeight);
             const photo = bigloopFrame.querySelector("#photo");
             photo.setAttribute("crossorigin", "anonymous")
-            const data = canvas.toDataURL("image/png");
-            
-            photo.setAttribute("src", data);
+            //const data = canvas.toDataURL("image/png");
+            //photo.setAttribute("src", data);
             // const video = new cv.VideoCapture(videoSrc)
             // const t_msec = 1000*(videoTime)
             // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
