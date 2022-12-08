@@ -431,10 +431,35 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            // const video = new cv.VideoCapture(videoSrc)
-            // const t_msec = 1000*(videoTime)
-            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            // ret, frame = video.read()            
+            
+            const rawVideoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas1 = document.createElement('canvas');
+            const imgWidth1 = rawVideoFrame.videoWidth;
+            const imgHeight1 = rawVideoFrame.videoHeight;
+            canvas1.width = imgWidth1;
+            canvas1.height = imgHeight1;
+            const ctx1 = canvas1.getContext('2d');
+            ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
+
+            const photo1 = bigloopFrame.querySelector("#raw");
+            photo1.setAttribute("crossorigin", "anonymous")
+            const data1 = canvas1.toDataURL("image/png");
+            photo1.setAttribute("src", data1);
+
+            const inferenceVideoFrame = dashcamInferenceFrame.querySelector("#videoPlayer");
+            let canvas2 = document.createElement('canvas');
+            const imgWidth2 = inferenceVideoFrame.videoWidth;
+            const imgHeight2 = inferenceVideoFrame.videoHeight;
+            canvas2.width = imgWidth2;
+            canvas2.height = imgHeight2;
+            const ctx2 = canvas2.getContext('2d');
+            ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
+
+            const photo2 = bigloopFrame.querySelector("#inference");
+            photo2.setAttribute("crossorigin", "anonymous")
+            const data2 = canvas2.toDataURL("image/png");
+            photo2.setAttribute("src", data2);
+
             box.triggerPopup(bigloopFrame);            
         }
 
@@ -453,10 +478,35 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            // const video = new cv.VideoCapture(videoSrc)
-            // const t_msec = 1000*(videoTime)
-            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            // ret, frame = video.read()            
+            
+            const rawVideoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas1 = document.createElement('canvas');
+            const imgWidth1 = rawVideoFrame.videoWidth;
+            const imgHeight1 = rawVideoFrame.videoHeight;
+            canvas1.width = imgWidth1;
+            canvas1.height = imgHeight1;
+            const ctx1 = canvas1.getContext('2d');
+            ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
+
+            const photo1 = bigloopFrame.querySelector("#raw");
+            photo1.setAttribute("crossorigin", "anonymous")
+            const data1 = canvas1.toDataURL("image/png");
+            photo1.setAttribute("src", data1);
+
+            const inferenceVideoFrame = dashcamInferenceFrame.querySelector("#videoPlayer");
+            let canvas2 = document.createElement('canvas');
+            const imgWidth2 = inferenceVideoFrame.videoWidth;
+            const imgHeight2 = inferenceVideoFrame.videoHeight;
+            canvas2.width = imgWidth2;
+            canvas2.height = imgHeight2;
+            const ctx2 = canvas2.getContext('2d');
+            ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
+
+            const photo2 = bigloopFrame.querySelector("#inference");
+            photo2.setAttribute("crossorigin", "anonymous")
+            const data2 = canvas2.toDataURL("image/png");
+            photo2.setAttribute("src", data2);
+
             box.triggerPopup(bigloopFrame);
         }
 
