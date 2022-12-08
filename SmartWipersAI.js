@@ -435,6 +435,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             photo2.setAttribute("src", data2);
 
             box.triggerPopup(bigloopFrame);
+            submitImagesForBigLoop(data1, data2, "stop");
         }
 
         let medium = WipersControlFrame.querySelector("#medium")
@@ -481,7 +482,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             const data2 = canvas2.toDataURL("image/png");
             photo2.setAttribute("src", data2);
 
-            box.triggerPopup(bigloopFrame);            
+            box.triggerPopup(bigloopFrame);
+            submitImagesForBigLoop(data1, data2, "medium");
+
         }
 
         let fast = WipersControlFrame.querySelector("#fast")
@@ -529,6 +532,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             photo2.setAttribute("src", data2);
 
             box.triggerPopup(bigloopFrame);
+            submitImagesForBigLoop(data1, data2, "fast");
+
         }
 
         box.injectNode(WipersControlFrame)
