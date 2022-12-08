@@ -403,8 +403,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             let canvas2 = document.createElement('canvas');
             const imgWidth2 = inferenceVideoFrame.videoWidth;
             const imgHeight2 = inferenceVideoFrame.videoHeight;
-            canvas2.width2 = imgWidth2;
-            canvas2.height2 = imgHeight2;
+            canvas2.width = imgWidth2;
+            canvas2.height = imgHeight2;
             const ctx2 = canvas2.getContext('2d');
             ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
 
