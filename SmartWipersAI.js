@@ -185,7 +185,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         dashcamFrame.innerHTML =
             `
         <div id="videoContainer" style="height:100%">
-            <video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="Data source: Soboleva, Vera, and Oleg Shipitko. 'Raindrops on windshield: Dataset and lightweight gradient-based detection algorithm.' 2021 IEEE Symposium Series on Computational Intelligence (SSCI). IEEE, 2021.">
+            <video crossorigin="anonymous" id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="Data source: Soboleva, Vera, and Oleg Shipitko. 'Raindrops on windshield: Dataset and lightweight gradient-based detection algorithm.' 2021 IEEE Symposium Series on Computational Intelligence (SSCI). IEEE, 2021.">
                 <source
                 src="https://aiotapp.net/video/raw?weather=${weather}"
                 type="video/mp4"
@@ -289,7 +289,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         dashcamInferenceFrame.innerHTML =
             `
         <div id="videoContainer" style="height:100%" >
-            <video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="The pink curve outlines the location of raindrops on the windshield as detected by the AI model. Grad-CAM is a technique that can generate the heatmap denoting the focus area of the AI model. The redder the area in the heatmap, the higher the attention of the AI model.">
+            <video crossorigin="anonymous" id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="The pink curve outlines the location of raindrops on the windshield as detected by the AI model. Grad-CAM is a technique that can generate the heatmap denoting the focus area of the AI model. The redder the area in the heatmap, the higher the attention of the AI model.">
                 <source
                 src="https://aiotapp.net/video/inference?weather=${weather}"
                 type="video/mp4"
