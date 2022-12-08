@@ -394,7 +394,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             const ctx1 = canvas1.getContext('2d');
             ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
 
-            const photo1 = bigloopFrame.querySelector("#photo");
+            const photo1 = bigloopFrame.querySelector("#raw");
             photo1.setAttribute("crossorigin", "anonymous")
             const data1 = canvas1.toDataURL("image/png");
             photo1.setAttribute("src", data1);
@@ -408,7 +408,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             const ctx2 = canvas2.getContext('2d');
             ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
 
-            const photo2 = bigloopFrame.querySelector("#photo");
+            const photo2 = bigloopFrame.querySelector("#inference");
             photo2.setAttribute("crossorigin", "anonymous")
             const data2 = canvas2.toDataURL("image/png");
             photo2.setAttribute("src", data2);
