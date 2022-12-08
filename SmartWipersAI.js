@@ -361,8 +361,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
             </style>
             <div id="big-loop">
-                <div class="output">
-                    <img id="photo" alt="The screen capture will appear in this box." />
+                <div class="output" style="display:flex">
+                    <img id="raw" alt="The raw image will appear in this box." style="width:50%"/>
+                    <img id="inference" alt="The inference image will appear in this box." style="width:50%"/>
                 </div>
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
@@ -384,20 +385,34 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
             
-            const videoFrame = dashcamFrame.querySelector("#videoPlayer");
-            let canvas = document.createElement('canvas')
-            canvas.width = videoFrame.videoWidth;
-            canvas.height = videoFrame.videoHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(videoFrame, 0, 0, videoFrame.videoWidth, videoFrame.videoHeight);
-            const photo = bigloopFrame.querySelector("#photo");
-            photo.setAttribute("crossorigin", "anonymous")
-            const data = canvas.toDataURL("image/png");
-            photo.setAttribute("src", data);
-            // const video = new cv.VideoCapture(videoSrc)
-            // const t_msec = 1000*(videoTime)
-            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            // ret, frame = video.read()
+            const rawVideoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas1 = document.createElement('canvas');
+            const imgWidth1 = rawVideoFrame.videoWidth;
+            const imgHeight1 = rawVideoFrame.videoHeight;
+            canvas1.width = imgWidth1;
+            canvas1.height = imgHeight1;
+            const ctx1 = canvas1.getContext('2d');
+            ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
+
+            const photo1 = bigloopFrame.querySelector("#photo");
+            photo1.setAttribute("crossorigin", "anonymous")
+            const data1 = canvas1.toDataURL("image/png");
+            photo1.setAttribute("src", data1);
+
+            const inferenceVideoFrame = dashcamInferenceFrame.querySelector("#videoPlayer");
+            let canvas2 = document.createElement('canvas');
+            const imgWidth2 = inferenceVideoFrame.videoWidth;
+            const imgHeight2 = inferenceVideoFrame.videoHeight;
+            canvas2.width2 = imgWidth2;
+            canvas2.height2 = imgHeight2;
+            const ctx2 = canvas2.getContext('2d');
+            ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
+
+            const photo2 = bigloopFrame.querySelector("#photo");
+            photo2.setAttribute("crossorigin", "anonymous")
+            const data2 = canvas2.toDataURL("image/png");
+            photo2.setAttribute("src", data2);
+
             box.triggerPopup(bigloopFrame);
         }
 
