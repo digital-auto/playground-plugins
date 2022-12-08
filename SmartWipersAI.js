@@ -10,9 +10,30 @@ async function fetchIntensity(weather) {
         const message = `An error has occured: ${res.status}`;
         throw new Error(message);
     }
-    //conver response to json
+    //convert response to json
     const response = await res.json()
     return response
+}
+
+async function submitImagesForBigLoop(image1, image2, wiperMode) {
+    const res = await fetch(
+        `https://aiotapp.net/bigloop/upload/user`,
+        {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({
+                "rawimage": image1,
+                "inferenceImage": image2,
+                "wiperMode": wiperMode
+            })
+        }
+    );
+    const response = await res.json()
+    return response;
 }
 
 const plugin = ({ widgets, simulator, vehicle }) => {
