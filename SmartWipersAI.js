@@ -10,9 +10,30 @@ async function fetchIntensity(weather) {
         const message = `An error has occured: ${res.status}`;
         throw new Error(message);
     }
-    //conver response to json
+    //convert response to json
     const response = await res.json()
     return response
+}
+
+async function submitImagesForBigLoop(image1, image2, wiperMode) {
+    const res = await fetch(
+        `https://aiotapp.net/bigloop/upload/user`,
+        {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({
+                "rawimage": image1,
+                "inferenceImage": image2,
+                "wiperMode": wiperMode
+            })
+        }
+    );
+    const response = await res.json()
+    return response;
 }
 
 const plugin = ({ widgets, simulator, vehicle }) => {
@@ -185,7 +206,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         dashcamFrame.innerHTML =
             `
         <div id="videoContainer" style="height:100%">
-            <video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="Data source: Soboleva, Vera, and Oleg Shipitko. 'Raindrops on windshield: Dataset and lightweight gradient-based detection algorithm.' 2021 IEEE Symposium Series on Computational Intelligence (SSCI). IEEE, 2021.">
+            <video crossorigin="anonymous" id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="Data source: Soboleva, Vera, and Oleg Shipitko. 'Raindrops on windshield: Dataset and lightweight gradient-based detection algorithm.' 2021 IEEE Symposium Series on Computational Intelligence (SSCI). IEEE, 2021.">
                 <source
                 src="https://aiotapp.net/video/raw?weather=${weather}"
                 type="video/mp4"
@@ -289,7 +310,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         dashcamInferenceFrame.innerHTML =
             `
         <div id="videoContainer" style="height:100%" >
-            <video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="The pink curve outlines the location of raindrops on the windshield as detected by the AI model. Grad-CAM is a technique that can generate the heatmap denoting the focus area of the AI model. The redder the area in the heatmap, the higher the attention of the AI model.">
+            <video crossorigin="anonymous" id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="The pink curve outlines the location of raindrops on the windshield as detected by the AI model. Grad-CAM is a technique that can generate the heatmap denoting the focus area of the AI model. The redder the area in the heatmap, the higher the attention of the AI model.">
                 <source
                 src="https://aiotapp.net/video/inference?weather=${weather}"
                 type="video/mp4"
@@ -361,6 +382,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
             </style>
             <div id="big-loop">
+                <div class="output" style="display:flex">
+                    <img id="raw" alt="The raw image will appear in this box." style="width:50%"/>
+                    <img id="inference" alt="The inference image will appear in this box." style="width:50%"/>
+                </div>
                 <div>This is the current rain situation and the resulting AI inference. Since there was a manual override from the driver, this scene will be sent to the backend for re-evaluation and potential re-training of Smart Wiper AI.</div>
             </div>
         `
@@ -376,15 +401,41 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             // fillPercent(0)
             manualOverride = true;
             //pause the video and get current details
-            dashcamFrame.querySelector("#videoPlayer").pause();
-            dashcamInferenceFrame.querySelector("#videoPlayer").pause();
+            //dashcamFrame.querySelector("#videoPlayer").pause();
+            //dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            // const video = new cv.VideoCapture(videoSrc)
-            // const t_msec = 1000*(videoTime)
-            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            // ret, frame = video.read()
+            
+            const rawVideoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas1 = document.createElement('canvas');
+            const imgWidth1 = rawVideoFrame.videoWidth;
+            const imgHeight1 = rawVideoFrame.videoHeight;
+            canvas1.width = imgWidth1;
+            canvas1.height = imgHeight1;
+            const ctx1 = canvas1.getContext('2d');
+            ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
+
+            const photo1 = bigloopFrame.querySelector("#raw");
+            photo1.setAttribute("crossorigin", "anonymous")
+            const data1 = canvas1.toDataURL("image/png");
+            photo1.setAttribute("src", data1);
+
+            const inferenceVideoFrame = dashcamInferenceFrame.querySelector("#videoPlayer");
+            let canvas2 = document.createElement('canvas');
+            const imgWidth2 = inferenceVideoFrame.videoWidth;
+            const imgHeight2 = inferenceVideoFrame.videoHeight;
+            canvas2.width = imgWidth2;
+            canvas2.height = imgHeight2;
+            const ctx2 = canvas2.getContext('2d');
+            ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
+
+            const photo2 = bigloopFrame.querySelector("#inference");
+            photo2.setAttribute("crossorigin", "anonymous")
+            const data2 = canvas2.toDataURL("image/png");
+            photo2.setAttribute("src", data2);
+
             box.triggerPopup(bigloopFrame);
+            submitImagesForBigLoop(data1, data2, "stop");
         }
 
         let medium = WipersControlFrame.querySelector("#medium")
@@ -402,11 +453,38 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            // const video = new cv.VideoCapture(videoSrc)
-            // const t_msec = 1000*(videoTime)
-            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            // ret, frame = video.read()            
-            box.triggerPopup(bigloopFrame);            
+            
+            const rawVideoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas1 = document.createElement('canvas');
+            const imgWidth1 = rawVideoFrame.videoWidth;
+            const imgHeight1 = rawVideoFrame.videoHeight;
+            canvas1.width = imgWidth1;
+            canvas1.height = imgHeight1;
+            const ctx1 = canvas1.getContext('2d');
+            ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
+
+            const photo1 = bigloopFrame.querySelector("#raw");
+            photo1.setAttribute("crossorigin", "anonymous")
+            const data1 = canvas1.toDataURL("image/png");
+            photo1.setAttribute("src", data1);
+
+            const inferenceVideoFrame = dashcamInferenceFrame.querySelector("#videoPlayer");
+            let canvas2 = document.createElement('canvas');
+            const imgWidth2 = inferenceVideoFrame.videoWidth;
+            const imgHeight2 = inferenceVideoFrame.videoHeight;
+            canvas2.width = imgWidth2;
+            canvas2.height = imgHeight2;
+            const ctx2 = canvas2.getContext('2d');
+            ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
+
+            const photo2 = bigloopFrame.querySelector("#inference");
+            photo2.setAttribute("crossorigin", "anonymous")
+            const data2 = canvas2.toDataURL("image/png");
+            photo2.setAttribute("src", data2);
+
+            box.triggerPopup(bigloopFrame);
+            submitImagesForBigLoop(data1, data2, "medium");
+
         }
 
         let fast = WipersControlFrame.querySelector("#fast")
@@ -424,11 +502,38 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             dashcamInferenceFrame.querySelector("#videoPlayer").pause();
             const videoTime = dashcamFrame.querySelector("#videoPlayer").currentTime;
             const videoSrc = dashcamFrame.querySelector("#videoPlayer").currentSrc;
-            // const video = new cv.VideoCapture(videoSrc)
-            // const t_msec = 1000*(videoTime)
-            // video.set(cv.CAP_PROP_POS_MSEC, t_msec)
-            // ret, frame = video.read()            
+            
+            const rawVideoFrame = dashcamFrame.querySelector("#videoPlayer");
+            let canvas1 = document.createElement('canvas');
+            const imgWidth1 = rawVideoFrame.videoWidth;
+            const imgHeight1 = rawVideoFrame.videoHeight;
+            canvas1.width = imgWidth1;
+            canvas1.height = imgHeight1;
+            const ctx1 = canvas1.getContext('2d');
+            ctx1.drawImage(rawVideoFrame, 0, 0, imgWidth1, imgHeight1);
+
+            const photo1 = bigloopFrame.querySelector("#raw");
+            photo1.setAttribute("crossorigin", "anonymous")
+            const data1 = canvas1.toDataURL("image/png");
+            photo1.setAttribute("src", data1);
+
+            const inferenceVideoFrame = dashcamInferenceFrame.querySelector("#videoPlayer");
+            let canvas2 = document.createElement('canvas');
+            const imgWidth2 = inferenceVideoFrame.videoWidth;
+            const imgHeight2 = inferenceVideoFrame.videoHeight;
+            canvas2.width = imgWidth2;
+            canvas2.height = imgHeight2;
+            const ctx2 = canvas2.getContext('2d');
+            ctx2.drawImage(inferenceVideoFrame, 0, 0, imgWidth2, imgHeight2);
+
+            const photo2 = bigloopFrame.querySelector("#inference");
+            photo2.setAttribute("crossorigin", "anonymous")
+            const data2 = canvas2.toDataURL("image/png");
+            photo2.setAttribute("src", data2);
+
             box.triggerPopup(bigloopFrame);
+            submitImagesForBigLoop(data1, data2, "fast");
+
         }
 
         box.injectNode(WipersControlFrame)
