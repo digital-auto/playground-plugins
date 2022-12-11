@@ -2,6 +2,7 @@ import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     const LatitudeTile = {
@@ -154,6 +155,33 @@ const plugin = ({widgets, vehicle, simulator}) => {
             { iterate: true }
         )
     )
+    
+     widgets.register("MobileNotifications", (box) => {
+        const {printNotification} = MobileNotifications({box})
+        const intervalId = setInterval(async () => {
+            const [timeExceeded, currentFuelEconomy] = [
+                await vehicle.Driver.DriveTimeExceeded.get(),
+                await vehicle.Powertrain.FuelSystem.CurrentFuelEconomy.get()
+            ]
+            let message = ""
+            if (timeExceeded) {
+                message += "\nDrive Time Exceeded!\n\n"
+            }
+            if (currentFuelEconomy < 50) {
+                message += "WARNING: CurrentFuelEconomy below 50%!"
+            }
+            printNotification(message)
+        }, 300)
+
+        const iteratorIntervalidId = setInterval(async () => {
+            await vehicle.Next.get()
+        }, 3000)
+        
+        return ( ) => {
+            clearInterval(intervalId)
+            clearInterval(iteratorIntervalidId)
+        }
+    })
 }
 
 export default plugin
