@@ -159,16 +159,16 @@ const plugin = ({widgets, vehicle, simulator}) => {
      widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
-            const [timeExceeded, currentFuelEconomy] = [
-                await vehicle.Driver.DriveTimeExceeded.get(),
-                await vehicle.Powertrain.FuelSystem.CurrentFuelEconomy.get()
+            const [Frontbrake, Rearbrake] = [
+                await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get(),
+                await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get()
             ]
             let message = ""
-            if (timeExceeded) {
-                message += "\nDrive Time Exceeded!\n\n"
+            if (Frontbrake > 21) {
+                message += "\nTemperature of front brake exceeding threshold 21C!\n\n"
             }
-            if (currentFuelEconomy < 50) {
-                message += "WARNING: CurrentFuelEconomy below 50%!"
+            if (Rearbrake > 21) {
+                message += "Temperature of rear brake exceeding threshold 21C!"
             }
             printNotification(message)
         }, 300)
