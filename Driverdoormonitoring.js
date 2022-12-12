@@ -31,7 +31,9 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
                 }
     ], vehicle))
   
-  
+  widgets.register("Proximity", SignalTile({
+        signal: "Vehicle.Driver.ProximityToVehicle"
+    }, vehicle))
   
   widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
