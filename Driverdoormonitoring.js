@@ -43,7 +43,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
             if (LeftDoor == false) {
                 message += "\nThe CargoSpace Left Door is open\n\n"
             }
-            if (RightDoor == true) {
+            if (RightDoor == false) {
                 message += "The CargoSpace Left Door is open"
             }
             printNotification(message)
