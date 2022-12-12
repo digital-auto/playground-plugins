@@ -150,7 +150,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
                     signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
                     suffix: " C",
                     color: "#a21caf"
-                },
+                }
             ],
             vehicle
         )
