@@ -4,19 +4,7 @@ import LineChart from "./reusable/LineChart.js"
 import SignalPills from "./reusable/SignalPills.js"
 import SignalTile from "./reusable/SignalTile.js"
 const Driverdoormonitoring = ({widgets, vehicle}) => {
- const Proximity = {
-        signal: "Vehicle.Driver.ProximityToVehicle",
-        label: "PROX",
-        icon: "person",
-        suffix: "s"
-    }
-widgets.register(
-        "Proximity",
-        SignalPills(
-            Proximity,
-            vehicle
-        )
-    )
+ 
    widgets.register(
         "GoogleMapDirections",
         GoogleMapsFromSignal(
