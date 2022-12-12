@@ -51,7 +51,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
 
         const iteratorIntervalidId = setInterval(async () => {
             await vehicle.Next.get()
-        }, 300)
+        }, 3000)
         
         return ( ) => {
             clearInterval(intervalId)
