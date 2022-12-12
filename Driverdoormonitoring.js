@@ -40,10 +40,10 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
                 await Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
             ]
             let message = ""
-            if (LeftDoor == "true") {
+            if (LeftDoor == true) {
                 message += "\nThe CargoSpace Left Door is open\n\n"
             }
-            if (RightDoor > "true") {
+            if (RightDoor == true) {
                 message += "The CargoSpace Left Door is open"
             }
             printNotification(message)
@@ -51,7 +51,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
 
         const iteratorIntervalidId = setInterval(async () => {
             await vehicle.Next.get()
-        }, 3000)
+        }, 300)
         
         return ( ) => {
             clearInterval(intervalId)
