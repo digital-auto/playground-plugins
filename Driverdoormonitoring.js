@@ -43,10 +43,10 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         const intervalId = setInterval(async () => {
             const drivervehicledistance = await vehicle.Vehicle.Driver.ProximityToVehicle.get()
             let message = ""
-            if (drivervehicledistance <= 10) {
+            if (drivervehicledistance < 2) {
                 message += "\nSafe driver vehicle distance\n\n"
             }
-            if (drivervehicledistance >= 20) {
+            if (drivervehicledistance > 2) {
                 message += "Driver vehicle distance exceed the safe distance"
             }
             printNotification(message)
