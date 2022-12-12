@@ -545,7 +545,17 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         simulatorFrame = document.createElement("div")
         simulatorFrame.style = "width:100%;height:100%"
         simulatorFrame.innerHTML =
-            `<iframe id="wiper" src="https://aiotapp.net/wiper/simulator" frameborder="0" style="width:100%;height:100%"></iframe>`
+            `
+            <div class="loading" id="loading" style="left:0;position:absolute;top:0;height:100%;width:100%;align-items:center;display:flex;justify-content:center;">Loading</div>
+            <iframe id="wiper" src="https://aiotapp.net/wiper/simulator" frameborder="0" style="width:100%;height:100%;opacity:0"></iframe>
+            `
+        const iframeEle = simulatorFrame.querySelector('#wiper');
+        const loadingEle = simulatorFrame.querySelector('#loading');
+
+        iframeEle.addEventListener('load', function () {
+            loadingEle.style.display = 'none';
+            iframeEle.style.opacity = 1;
+        });
         // simulatorFrame.querySelector("#wiper").onload = () => {
         //     dashcamFrame.querySelector("#videoPlayer").play();
         //     dashcamInferenceFrame.querySelector("#videoPlayer").play();
