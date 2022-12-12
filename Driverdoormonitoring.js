@@ -27,7 +27,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
        {
                     signal: "Vehicle.Driver.ProximityToVehicle",
                     suffix: " C",
-                    color: "yellow"
+                    color: "Red"
         }
     ], vehicle))
   
