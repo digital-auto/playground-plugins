@@ -155,6 +155,33 @@ const plugin = ({widgets, vehicle, simulator}) => {
             vehicle
         )
     )
+    
+     widgets.register("MobileNotifications", (box) => {
+        const {printNotification} = MobileNotifications({box})
+        const intervalId = setInterval(async () => {
+            const [timeExceeded, currentFuelEconomy] = [
+                await vehicle.Driver.DriveTimeExceeded.get(),
+                await vehicle.Powertrain.FuelSystem.CurrentFuelEconomy.get()
+            ]
+            let message = ""
+            if (timeExceeded) {
+                message += "\nDrive Time Exceeded!\n\n"
+            }
+            if (currentFuelEconomy < 50) {
+                message += "WARNING: CurrentFuelEconomy below 50%!"
+            }
+            printNotification(message)
+        }, 300)
+
+        const iteratorIntervalidId = setInterval(async () => {
+            await vehicle.Next.get()
+        }, 3000)
+        
+        return ( ) => {
+            clearInterval(intervalId)
+            clearInterval(iteratorIntervalidId)
+        }
+    })
 
     widgets.register(
         "GoogleMapDirections",
