@@ -35,7 +35,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
     }, vehicle))
   widgets.register("Doorrightopen", SignalTile({
-        signal: "Vehicle.Trailer.CargoSpace.Door.Right.isOpen"
+        signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
   
   widgets.register("MobileNotifications", (box) => {
