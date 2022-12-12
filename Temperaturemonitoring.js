@@ -63,8 +63,8 @@ const Temperaturemonitoring = ({widgets, vehicle}) => {
         const {printNotification} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
             const [Frontbrake, Rearbrake] = [
-              await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get(),
-              await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get()
+              await vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature.get(),
+              await vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature.get()
             ]
             let message = ""
             if (Frontbrake >=21) {
