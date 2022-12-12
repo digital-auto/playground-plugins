@@ -48,9 +48,7 @@ widgets.register(
   widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
-            const [drivervehicledistance] = [
-              await vehicle.Vehicle.Driver.ProximityToVehicle.get()
-            ]
+            const drivervehicledistance = await vehicle.Vehicle.Driver.ProximityToVehicle.get()
             let message = ""
             if (drivervehicledistance <= 10) {
                 message += "\nSafe driver vehicle distance\n\n"
