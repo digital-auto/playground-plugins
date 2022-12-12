@@ -23,13 +23,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         )
     )
 
-  widgets.register("DriverProximityToVehicle", LineChart([
-       {
-                    signal: "Vehicle.Driver.ProximityToVehicle",
-                    suffix: " C",
-                    color: "Red"
-        }
-    ], vehicle))
+ 
   
   widgets.register("Doorleftopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
@@ -41,13 +35,16 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
   widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
-            const drivervehicledistance = await Vehicle.Driver.ProximityToVehicle.get()
+            const [LeftDoor, RightDoor] = [
+                await Vehicle.Trailer.CargoSpace.Door.Left.isOpen.get(),
+                await Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
+            ]
             let message = ""
-            if (drivervehicledistance < 2) {
-                message += "\nSafe driver vehicle distance\n\n"
+            if (LeftDoor == "true") {
+                message += "\nThe CargoSpace Left Door is open\n\n"
             }
-            if (drivervehicledistance > 2) {
-                message += "Driver vehicle distance exceed the safe distance"
+            if (RightDoor > "true") {
+                message += "The CargoSpace Left Door is open"
             }
             printNotification(message)
         }, 300)
