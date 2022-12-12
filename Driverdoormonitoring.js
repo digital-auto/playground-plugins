@@ -28,7 +28,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
                     signal: "Vehicle.Driver.ProximityToVehicle",
                     suffix: " C",
                     color: "yellow"
-                }
+        }
     ], vehicle))
   
   widgets.register("Doorleftopen", SignalTile({
