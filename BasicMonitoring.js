@@ -97,6 +97,14 @@ const plugin = ({widgets, vehicle, simulator}) => {
             vehicle
         )
     )
+	
+    widgets.register("DriverProximityToVehicle", LineChart([
+       {
+                    signal: "Vehicle.Driver.ProximityToVehicle",
+                    suffix: " C",
+                    color: "Red"
+        }
+    ], vehicle))
 
     widgets.register(
         "TemperatureLineCharts",
