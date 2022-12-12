@@ -88,6 +88,19 @@ const DriveScore = ({widgets, vehicle}) => {
             icon: "id-card"
         },
     ], vehicle))
+    
+    widgets.register("fuelscorebrakescore", SignalPills([
+        {
+            signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption",
+            label: "Fuel Consumption score",
+            icon: "fingerprint"
+        },
+        {
+            signal: "Vehicle.Chassis.Brake.PedalPosition",
+            label: "Brake Score",
+            icon: "fingerprint"
+        },
+    ], vehicle))
 
     widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
