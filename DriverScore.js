@@ -37,6 +37,25 @@ const DriveScore = ({widgets, vehicle}) => {
             signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption"
         }
     ], vehicle))
+    
+    widgets.register(
+        "driverscoreLineCharts",
+        LineChart(
+            [
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+                    suffix: " C",
+                    color: "#a21caf"
+                }
+            ],
+            vehicle
+        )
+    )
 
     widgets.register("DriverCard", SignalPills([
         {
