@@ -31,8 +31,11 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
                 }
     ], vehicle))
   
-  widgets.register("Proximity", SignalTile({
-        signal: "Vehicle.Driver.ProximityToVehicle"
+  widgets.register("Doorleftopen", SignalTile({
+        signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
+    }, vehicle))
+ widgets.register("Doorrightopen", SignalTile({
+        signal: "Vehicle.Trailer.CargoSpace.Door.Right.isOpen"
     }, vehicle))
   
   widgets.register("MobileNotifications", (box) => {
