@@ -19,7 +19,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 1,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 1,
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
-			"Vehicle.Trailer.CargoSpace.Door.Right.isOpen": false,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
 			"Vehicle.Driver.IsPausing": false,
 			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 9,
 			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 1,
