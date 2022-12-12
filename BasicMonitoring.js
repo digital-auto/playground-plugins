@@ -2,6 +2,7 @@ import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     const LatitudeTile = {
@@ -200,6 +201,18 @@ const plugin = ({widgets, vehicle, simulator}) => {
             { iterate: true }
         )
     )
+    
+    let mobileNotifications = null;
+	widgets.register("Mobile", (box) => {
+		const {printNotification} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+			backgroundColor: "rgb(0 80 114)"
+		})
+		mobileNotifications = printNotification;
+	})
 }
 
 export default plugin
