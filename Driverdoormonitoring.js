@@ -40,10 +40,10 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
                 await vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
             ]
             let message = ""
-            if (LeftDoor == "false") {
+            if (LeftDoor == false) {
                 message += "\nThe CargoSpace Left Door is open\n\n"
             }
-            if (RightDoor == "true") {
+            if (RightDoor == true) {
                 message += "The CargoSpace Left Door is open"
             }
             printNotification(message)
