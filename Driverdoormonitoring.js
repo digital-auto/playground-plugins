@@ -3,6 +3,7 @@ import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import LineChart from "./reusable/LineChart.js"
 import SignalPills from "./reusable/SignalPills.js"
 import SignalTile from "./reusable/SignalTile.js"
+import SignalWithMedia from "./reusable/SignalWithMedia.js"
 const Driverdoormonitoring = ({widgets, vehicle}) => {
  
    widgets.register(
@@ -24,6 +25,20 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
     )
 
  
+
+ widgets.register(
+        "TruckDoorOpen",
+        SignalWithMedia(("Vehicle.Trailer.CargoSpace.Door.Left.isOpen"||"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"), {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/Trailerdooropen.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/Trailerdooropen.mp4"
+            },
+        }, vehicle)
+    )
   
   widgets.register("Doorleftopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
