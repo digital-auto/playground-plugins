@@ -4,6 +4,7 @@ import LineChart from "./reusable/LineChart.js"
 import SignalPills from "./reusable/SignalPills.js"
 import SignalTile from "./reusable/SignalTile.js"
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
+import Terminal from "./reusable/Terminal.js"
 const Driverdoormonitoring = ({widgets, vehicle}) => {
  
    widgets.register(
@@ -46,6 +47,14 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
   widgets.register("Doorrightopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
+ 
+ widgets.register(
+        "Terminal",
+        Terminal(props: PluginProps) => {
+    print(text: string) => void
+    reset() => void
+}
+    )
   
   widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
