@@ -27,7 +27,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
  
 
  widgets.register(
-        "TruckDoorOpen",
+        "Trailerdooropen",
         SignalWithMedia(("Vehicle.Trailer.CargoSpace.Door.Left.isOpen"||"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"), {
             [true]: {
                 type: "video",
