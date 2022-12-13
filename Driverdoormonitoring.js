@@ -48,13 +48,7 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
  
- widgets.register(
-  "Terminal",
-  Terminal(props: PluginProps) => {
-   print(text: string) => void
-   reset() => void
-  }
-   )
+
   
   widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
