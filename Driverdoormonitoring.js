@@ -4,7 +4,7 @@ import LineChart from "./reusable/LineChart.js"
 import SignalPills from "./reusable/SignalPills.js"
 import SignalTile from "./reusable/SignalTile.js"
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
-import Terminal from "./reusable/Terminal.js"
+
 const Driverdoormonitoring = ({widgets, vehicle}) => {
  
    widgets.register(
