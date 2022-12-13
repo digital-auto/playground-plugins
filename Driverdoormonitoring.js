@@ -31,11 +31,11 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
             [true]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/Trailerdooropen.mp4"
+                url: "https://digitalauto-media-data.netlify.app/Trailerdooropen720x360.mp4"
             },
             [false]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/Trailerdooropen.mp4"
+                url: "https://digitalauto-media-data.netlify.app/Trailerdooropen720x360.mp4"
             },
         }, vehicle)
     )
