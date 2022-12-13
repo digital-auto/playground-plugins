@@ -49,12 +49,12 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
     }, vehicle))
  
  widgets.register(
-        "Terminal",
-        Terminal(props: PluginProps) => {
-    print(text: string) => void
-    reset() => void
-}
-    )
+  "Terminal",
+  Terminal(props: PluginProps) => {
+   print(text: string) => void
+   reset() => void
+  }
+   )
   
   widgets.register("MobileNotifications", (box) => {
         const {printNotification} = MobileNotifications({box})
