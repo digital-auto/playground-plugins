@@ -546,8 +546,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         simulatorFrame.style = "width:100%;height:100%"
         simulatorFrame.innerHTML =
             `
-            <div class="loading text-5xl text-gray-400" id="loading" style="left:0;position:absolute;top:0;height:100%;width:100%;align-items:center;display:flex;justify-content:center;">Loading</div>
-            <!-- <iframe id="wiper" src="https://aiotapp.net/wiper/simulator" frameborder="0" style="width:100%;height:100%;opacity:0"></iframe> -->
+            <div class="loading" id="loading" style="left:0;position:absolute;top:0;height:100%;width:100%;align-items:center;display:flex;justify-content:center;color: rgb(156 163 175);opacity:1;font-size:3em;line-height:1;font-family: 'Lato', sans-serif;">Loading</div>
+            <iframe id="wiper" src="https://aiotapp.net/wiper/simulator" frameborder="0" style="width:100%;height:100%;opacity:0"></iframe>
             `
         const iframeEle = simulatorFrame.querySelector('#wiper');
         const loadingEle = simulatorFrame.querySelector('#loading');
