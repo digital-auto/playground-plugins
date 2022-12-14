@@ -552,10 +552,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const iframeEle = simulatorFrame.querySelector('#wiper');
         const loadingEle = simulatorFrame.querySelector('#loading');
 
-        iframeEle.addEventListener('load', function () {
+        /* iframeEle.addEventListener('load', function () {
             loadingEle.style.display = 'none';
             iframeEle.style.opacity = 1;
-        });
+        }); */
         // simulatorFrame.querySelector("#wiper").onload = () => {
         //     dashcamFrame.querySelector("#videoPlayer").play();
         //     dashcamInferenceFrame.querySelector("#videoPlayer").play();
