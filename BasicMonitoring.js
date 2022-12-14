@@ -2,6 +2,7 @@ import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
     const LatitudeTile = {
@@ -96,6 +97,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
             vehicle
         )
     )
+	
+   
 
     widgets.register(
         "TemperatureLineCharts",
@@ -136,6 +139,52 @@ const plugin = ({widgets, vehicle, simulator}) => {
             vehicle
         )
     )
+    
+    widgets.register(
+        "driverscoreLineCharts",
+        LineChart(
+            [
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+                    suffix: " C",
+                    color: "#a21caf"
+                }
+            ],
+            vehicle
+        )
+    )
+    
+     widgets.register("MobileNotifications", (box) => {
+        const {printNotification} = MobileNotifications({box})
+        const intervalId = setInterval(async () => {
+            const [Frontbrake, Rearbrake] = [
+                await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get(),
+                await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get()
+            ]
+            let message = ""
+            if (Frontbrake > 21) {
+                message += "\nTemperature of front brake exceeding threshold 21C!\n\n"
+            }
+            if (Rearbrake > 21) {
+                message += "Temperature of rear brake exceeding threshold 21C!"
+            }
+            printNotification(message)
+        }, 300)
+
+        const iteratorIntervalidId = setInterval(async () => {
+            await vehicle.Next.get()
+        }, 3000)
+        
+        return ( ) => {
+            clearInterval(intervalId)
+            clearInterval(iteratorIntervalidId)
+        }
+    })
 
     widgets.register(
         "GoogleMapDirections",
@@ -154,6 +203,18 @@ const plugin = ({widgets, vehicle, simulator}) => {
             { iterate: true }
         )
     )
+    
+    let mobileNotifications = null;
+	widgets.register("Mobile", (box) => {
+		const {printNotification} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+			backgroundColor: "rgb(0 80 114)"
+		})
+		mobileNotifications = printNotification;
+	})
 }
 
 export default plugin

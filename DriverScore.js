@@ -2,6 +2,7 @@ import MobileNotifications from "./reusable/MobileNotifications.js"
 import SignalTile from "./reusable/SignalTile.js"
 import SignalPills from "./reusable/SignalPills.js"
 import LineChart from "./reusable/LineChart.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 
 const DriveScore = ({widgets, vehicle}) => {
     widgets.register("DriveTimeExceededTile", SignalTile({
@@ -37,6 +38,43 @@ const DriveScore = ({widgets, vehicle}) => {
             signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption"
         }
     ], vehicle))
+    
+    widgets.register(
+        "driverscoreLineCharts",
+        LineChart(
+            [
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+                    suffix: " C",
+                    color: "#a21caf"
+                }
+            ],
+            vehicle
+        )
+    )
+    
+    widgets.register(
+        "GoogleMapDirections",
+        GoogleMapsFromSignal(
+            [
+                {
+                    "lat": 48.149497,
+                    "lng": 11.523194
+                },
+                {
+                    "lat": 50.445168,
+                    "lng": 11.020569
+                },
+            ],
+            vehicle,
+            { iterate: true }
+        )
+    )
 
     widgets.register("DriverCard", SignalPills([
         {
@@ -48,6 +86,19 @@ const DriveScore = ({widgets, vehicle}) => {
             signal: "Vehicle.Driver.DriverCard.Name",
             label: "Name",
             icon: "id-card"
+        },
+    ], vehicle))
+    
+    widgets.register("fuelscorebrakescore", SignalPills([
+        {
+            signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption",
+            label: "Fuel Consumption score",
+            icon: "fingerprint"
+        },
+        {
+            signal: "Vehicle.Chassis.Brake.PedalPosition",
+            label: "Brake Score",
+            icon: "fingerprint"
         },
     ], vehicle))
 
