@@ -1,6 +1,7 @@
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
@@ -15,7 +16,37 @@ async function fetchSimulationResults(simulationDetails) {
 	return response
 }
 
+async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
+    // Set the range to A1:Z1000
+    const range = "A1:Z1000";
+
+    // Fetch the rows from the Google Spreadsheet API
+    const response = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${encodeURIComponent(apiKey)}`
+    );
+    const json = await response.json();
+    // Get the headers from the first row
+    const headers = json.values[0];
+    // Convert the remaining rows to an array of objects
+    const rows = json.values.slice(1).map(row => {
+        const rowObject = {};
+        for (let i = 0; i < row.length; i++) {
+            rowObject[headers[i]] = row[i];
+        }
+        return rowObject;
+    });
+
+    return rows;
+}
+
 const plugin = ({widgets, simulator, vehicle}) => {
+
+	fetchRowsFromSpreadsheet("114qbiiIP8rehRIs1FoWOjg7jpWtobkJR_54-c9soEz8", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
+    .then((rows) => {
+        SimulatorPlugins(rows, simulator)
+		
+
+    })
 
     let controlsFrame = document.createElement("div")
     controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
