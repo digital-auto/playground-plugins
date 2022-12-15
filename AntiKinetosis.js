@@ -44,7 +44,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	fetchRowsFromSpreadsheet("114qbiiIP8rehRIs1FoWOjg7jpWtobkJR_54-c9soEz8", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
-		
+		console.log(rows)
 
     })
 
