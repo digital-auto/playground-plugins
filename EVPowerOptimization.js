@@ -29,7 +29,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     fetchRowsFromSpreadsheet("13ix5z-_Oa_tB5v11XJqnST0SiCBmPraZVUBbB5QzK9c", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
-        console.log(vehicle)
+        console.log(rows)
     })
 
     widgets.register("Table",StatusTable({
