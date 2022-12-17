@@ -1,5 +1,6 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
+import LineChart from "./reusable/LineChart.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -39,6 +40,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }
 
     ))
+    widgets.register("TemperatureLineCharts", LineChart(
+            [
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
+                    suffix: " C",
+                    color: "yellow"
+                },
+	   ],
+	   vehicle
+	   )
+	)
 }
 
 export default plugin;
