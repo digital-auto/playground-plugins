@@ -1,4 +1,5 @@
-import SimulatorPlugins from "./SimulatorPlugins.js"
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import StatusTable from "./reusable/StatusTable.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -39,3 +40,4 @@ const plugin = ({widgets, simulator, vehicle}) => {
 }
 
 export default plugin;
+
