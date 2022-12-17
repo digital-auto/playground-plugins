@@ -40,12 +40,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }
 
     ))
-    widgets.register("TemperatureLineCharts", LineChart(
+    widgets.register("SOCLineCharts", LineChart(
             [
                 {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
+                    signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
                     suffix: " C",
-                    color: "yellow"
+                    color: "Black"
                 },
 	   ],
 	   vehicle
