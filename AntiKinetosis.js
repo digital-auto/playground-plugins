@@ -139,7 +139,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     widgets.register("Controls", (box) => {
 
 		simulator("Vehicle.Passenger.Age", "get", async () => {
-			return "15";
+			return parseInt("15");
 		})
 		simulator("Vehicle.Passenger.Gender", "get", async () => {
 			return "male";
@@ -210,7 +210,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
 			simulator("Vehicle.Passenger.Age", "get", async () => {
-				return "15";
+				return parseInt("15");
 			})
 		}
 	
@@ -220,7 +220,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
 			simulator("Vehicle.Passenger.Age", "get", async () => {
-				return "60";
+				return parseInt("60");
 			})
 		}
 
