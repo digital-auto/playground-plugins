@@ -301,6 +301,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 		let index = 0;
 		let intervalId = null;
+		let sim_intervalId = null;
 
 		let play = controlsFrame.querySelector("#play")
 		play.onclick = () => {
@@ -393,6 +394,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         box.injectNode(controlsFrame)
         return () => {
 			clearInterval(intervalId)
+			clearInterval(sim_intervalId)
             boxGlobal = null
             // Deactivation function for clearing intervals or such.
         }
@@ -562,9 +564,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	return {
 		start_simulation : (time) => {
-			setInterval(async () => {
+			sim_intervalId = setInterval(async () => {
 				await vehicle.Next.get()
-				sim_function();
+				sim_function()
 			}, time)
 		}
 	}
