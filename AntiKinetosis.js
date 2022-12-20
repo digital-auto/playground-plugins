@@ -555,10 +555,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		box.injectNode(animationFrame)
 	})
 
+	let sim_function;
+	simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
+		sim_function = func
+	})
+
 	return {
 		start_simulation : (time) => {
 			sim_intervalId = setInterval(async () => {
 				await vehicle.Next.get()
+				sim_function();
 			}, time)
 		}
 	}
