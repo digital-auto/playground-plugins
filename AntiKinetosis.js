@@ -560,7 +560,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	let sim_function;
 	simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
-		sim_function = func
+		sim_function = args[0]
+		console.log("print func", args[0])
 	})
 
 	return {
