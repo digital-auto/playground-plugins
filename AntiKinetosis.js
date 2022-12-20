@@ -562,7 +562,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	return {
 		start_simulation : (time) => {
-			sim_intervalId = setInterval(async () => {
+			setInterval(async () => {
 				await vehicle.Next.get()
 				sim_function();
 			}, time)
