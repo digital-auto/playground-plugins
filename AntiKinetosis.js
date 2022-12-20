@@ -182,6 +182,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["gender"] = "male"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
+			simulator("Vehicle.Passenger.Gender", "get", async () => {
+				return "male";
+			})
 		}
 	
 		let gender_female = controlsFrame.querySelector("#gender_female")
@@ -189,6 +192,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["gender"] = "female"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(104 130 158)"
+			simulator("Vehicle.Passenger.Gender", "get", async () => {
+				return "female";
+			})
 		}
 	
 		let age_young = controlsFrame.querySelector("#age_young")
@@ -196,6 +202,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["age"] = "young"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
+			simulator("Vehicle.Passenger.Age", "get", async () => {
+				return "15";
+			})
 		}
 	
 		let age_old = controlsFrame.querySelector("#age_old")
@@ -203,6 +212,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["age"] = "adult"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
+			simulator("Vehicle.Passenger.Age", "get", async () => {
+				return "60";
+			})
 		}
 
 		let video = controlsFrame.querySelector("#video")
