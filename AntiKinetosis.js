@@ -138,6 +138,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Controls", (box) => {
 
+		simulator("Vehicle.Passenger.Age", "get", async () => {
+			return "15";
+		})
+		simulator("Vehicle.Passenger.Gender", "get", async () => {
+			return "male";
+		})
+
 		let simulationDetails = {
 			"style": "sporty",
 			"gender": "male",
