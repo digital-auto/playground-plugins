@@ -6,7 +6,7 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.CurrentLocation.Latitude": 48.149497,
 			"Vehicle.CurrentLocation.Longitude": 11.523194,
 			"Vehicle.Speed": 20,
-			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 1Hr30S,
+			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 61200,
 			"Vehicle.Driver.DriveTimeExceeded": false,
 			"Vehicle.Powertrain.FuelSystem.AccumulatedConsumption": 1,
 			"Vehicle.Powertrain.FuelSystem.CurrentFuelEconomy": 7,
