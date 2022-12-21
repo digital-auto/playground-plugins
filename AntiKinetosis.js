@@ -43,7 +43,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	
 	let sim_intervalId = null;
-	fetchRowsFromSpreadsheet("114qbiiIP8rehRIs1FoWOjg7jpWtobkJR_54-c9soEz8", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
+	fetchRowsFromSpreadsheet("1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
 		console.log(rows)
