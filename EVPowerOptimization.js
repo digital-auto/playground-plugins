@@ -28,8 +28,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 
 const plugin = ({widgets, simulator, vehicle}) => {
-   
-    let sim_intervalId = null;
+  
     fetchRowsFromSpreadsheet("13ix5z-_Oa_tB5v11XJqnST0SiCBmPraZVUBbB5QzK9c", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
