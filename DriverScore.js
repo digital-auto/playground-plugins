@@ -40,16 +40,22 @@ const DriveScore = ({widgets, vehicle}) => {
     ], vehicle))
     
     
-    widgets.register("alloweddrivetime", SignalTile({
-        signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime"
-    },
-    {
-        signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime"
-    }, vehicle))
+ 
     
-    widgets.register("accumulateddrivetime", SignalTile({
-        signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime"
-    }, vehicle))
+    
+    widgets.register("driveallowedtime", SignalPills([
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            label: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            icon: "none"
+        },
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+            label: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+            icon: "none"
+        },
+    ], vehicle))
+    
     
     widgets.register(
         "driverscoreLineCharts",
