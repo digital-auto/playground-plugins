@@ -31,11 +31,11 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         "leftdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.IsOpen", {
             [true]: {
-                type: "video",
+                type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen.jpg"
             },
             [false]: {
-                type: "video",
+                type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed.jpg"
             },
         }, vehicle)
@@ -44,11 +44,11 @@ const Driverdoormonitoring = ({widgets, vehicle}) => {
         "rightdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
             [true]: {
-                type: "video",
+                type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdooropen.jpg"
             },
             [false]: {
-                type: "video",
+                type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed.jpg"
             },
         }, vehicle)
