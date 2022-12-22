@@ -42,7 +42,23 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		    refresh: 100         
     }))
 	
-
+	
+    let setVehiclePinGlobal = null;
+    widgets.register("Map", (box) => {
+		let path = [
+			{
+				"lat": 48.78021,
+				"lng": 9.17732
+			},
+			{
+				"lat": 52.34655,
+				"lng": 9.79768
+			},
+		]
+		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path, "BICYCLING").then(({setVehiclePin}) => {
+			setVehiclePinGlobal = setVehiclePin
+		})
+	})
 	
     widgets.register("SOCLineCharts", LineChart(
             [
