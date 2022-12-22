@@ -40,8 +40,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		    refresh: 100         
     }))
 	
-
-	widgets.register("Map", (box) => {
+    let setVehiclePinGlobal = null;
+    widgets.register("Map", (box) => {
 		let path = [
 			{
 				"lat": 48.78021,
