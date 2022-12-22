@@ -38,24 +38,7 @@ const DriveScore = ({widgets, vehicle}) => {
             signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption"
         }
     ], vehicle))
-   let mobileNotifications = null;
-    widgets.register("Mobile", (box) => {
-		({printNotification: mobileNotifications} = MobileNotifications({
-			apis : null,
-			vehicle: null,
-			box: box,
-			refresh: null,
-            paddingTop: 70,
-            paddingHorizontal: 25
-		}))
-	});
-    return {
-        notifyPhone: (message) => {
-            if (mobileNotifications !== null) {
-                mobileNotifications(message)
-            }
-        },
-    }
+   
     
     
  
