@@ -37,9 +37,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
             apis:["Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Powertrain.TractionBattery.AccumulatedConsumedEnergy", "Vehicle.Cabin.Infotainment.Media.Action", "Vehicle.Cabin.Lights.LightIntensity",	"Vehicle.TravelledDistance", "Vehicle.CurrentLocation.Longitude","Vehicle.CurrentLocation.Latitude"],
             vehicle: vehicle,
 		    refresh: 100         
-    }
-
-    ))
+    }))
+	
+    let setVehiclePinGlobal = null;
+	widgets.register("Map", (box) => {
+		let path = [
+			{
+				"lat": 48.78021,
+				"lng": 9.17732
+			},
+			{
+				"lat": 52.34655,
+				"lng": 9.79768
+			},
+		]
+		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path, "BICYCLING").then(({setVehiclePin}) => {
+			setVehiclePinGlobal = setVehiclePin
+		})
+	})
+	
     widgets.register("SOCLineCharts", LineChart(
             [
                 {
