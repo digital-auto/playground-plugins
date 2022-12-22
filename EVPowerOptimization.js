@@ -1,6 +1,7 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
 import LineChart from "./reusable/LineChart.js"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
