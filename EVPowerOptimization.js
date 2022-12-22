@@ -2,6 +2,7 @@ import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
 import LineChart from "./reusable/LineChart.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -40,6 +41,24 @@ const plugin = ({widgets, simulator, vehicle}) => {
             vehicle: vehicle,
 		    refresh: 100         
     }))
+	
+    widgets.register(
+        "GoogleMapDirections",
+        GoogleMapsFromSignal(
+            [
+                {
+                    "lat": 48.78021,
+                    "lng": 9.17732
+                },
+                {
+                    "lat": 52.34655,
+                    "lng": 9.79768
+                },
+            ],
+            vehicle,
+            { iterate: true }
+        )
+    )
 	
     widgets.register("SOCLineCharts", LineChart(
             [
