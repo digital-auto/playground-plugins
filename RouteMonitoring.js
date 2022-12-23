@@ -28,7 +28,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId) {
 
 const plugin = ({widgets, vehicle, simulator}) => {
 	
-     fetchRowsFromSpreadsheet("1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE")
+     fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
@@ -51,13 +51,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         icon: "flag-checkered",
         suffix: "s"
     }
-    const Proximity = {
-        signal: "Vehicle.Driver.ProximityToVehicle",
-        label: "PROX",
-        icon: "person",
-        suffix: "s"
-    }
-
+    
     widgets.register(
         "LatitudeTile",
         SignalTile(
@@ -66,14 +60,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         )
     )
     
-    widgets.register(
-        "Proximity",
-        SignalPills(
-            Proximity,
-            vehicle
-        )
-    )
-
+   
     widgets.register(
         "LongitudeTile",
         SignalTile(
@@ -101,17 +88,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         )
     )
 
-    widgets.register(
-        "SignalPills",
-        SignalPills(
-            [
-                LatitudeTile,
-                LongitudeTile,
-                ETATile,
-            ],
-            vehicle
-        )
-    )
+   
 
     widgets.register(
         "SpeedLineChart",
