@@ -28,6 +28,12 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 }
 
 const plugin = ({widgets, vehicle, simulator}) => {
+	
+    fetchRowsFromSpreadsheet("1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
+    .then((rows) => {
+        SimulatorPlugins(rows, simulator)
+        console.log(rows)
+    })
     const LatitudeTile = {
         signal: "Vehicle.CurrentLocation.Latitude",
         label: "Latitude",
