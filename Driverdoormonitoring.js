@@ -32,7 +32,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
  
-    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
+    fetchRowsFromSpreadsheet("1Km_SkY2WW3iiiRFnlf3xMtgs0HjKjdd3Tw6BVh0nsxA", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
