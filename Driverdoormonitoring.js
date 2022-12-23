@@ -130,7 +130,7 @@ return {
 
         const iteratorIntervalidId = setInterval(async () => {
             await vehicle.Next.get()
-        }, 3000)
+        }, 500)
         
         return ( ) => {
             clearInterval(intervalId)
