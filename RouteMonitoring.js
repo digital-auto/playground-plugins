@@ -10,7 +10,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId) {
 
     // Fetch the rows from the Google Spreadsheet API
     const response = await fetch(
-        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?`
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`
     );
     const json = await response.json();
     // Get the headers from the first row
