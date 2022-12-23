@@ -1,4 +1,3 @@
-import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
