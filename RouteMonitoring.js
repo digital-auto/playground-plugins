@@ -2,7 +2,6 @@ import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
-import MobileNotifications from "./reusable/MobileNotifications.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId) {
     // Set the range to A1:Z1000
