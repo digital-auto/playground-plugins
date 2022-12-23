@@ -3,8 +3,8 @@ import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 const plugin = ({ widgets, vehicle, simulator }) => {
 	SimulatorPlugins([
 		{
-			//"Vehicle.CurrentLocation.Latitude": 48.149497,
-			//"Vehicle.CurrentLocation.Longitude": 11.523194,
+			"Vehicle.CurrentLocation.Latitude": 48.149497,
+			"Vehicle.CurrentLocation.Longitude": 11.523194,
 			"Vehicle.Speed": 20,
 			"Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA": 61200,
 			"Vehicle.Driver.DriveTimeExceeded": false,
