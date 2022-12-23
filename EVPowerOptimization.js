@@ -47,8 +47,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         GoogleMapsFromSignal(
             [
                 {
-                    "lat": 48.78021,
-                    "lng": 9.17732
+                    "lat": 50.96731,
+                    "lng": 9.47941
                 },
                 {
                     "lat": 52.34655,
