@@ -4,13 +4,13 @@ import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
 
-async function fetchRowsFromSpreadsheet(spreadsheetId) {
+async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
 
     // Fetch the rows from the Google Spreadsheet API
     const response = await fetch(
-        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${encodeURIComponent(apiKey)}`
     );
     const json = await response.json();
     // Get the headers from the first row
@@ -29,7 +29,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId) {
 
 const plugin = ({widgets, vehicle, simulator}) => {
 	
-    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU")
+    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
