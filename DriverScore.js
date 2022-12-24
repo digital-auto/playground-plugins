@@ -128,7 +128,7 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
     
     
     widgets.register(
-        "driverscoreLineCharts",
+        "driverscoreLineChartss",
         LineChart(
             [
                 {
