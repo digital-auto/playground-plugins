@@ -218,8 +218,6 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
 			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
 			"Vehicle.Driver.IsPausing": false,
-			"Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime": 7,
-			"Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime": 3,
 			"Vehicle.Driver.ProximityToVehicle": 1
 		},
 		{
