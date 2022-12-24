@@ -61,7 +61,7 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
 
     widgets.register(
         "leftdooropen",
-        SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.IsOpen", {
+        SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
             [true]: {
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen.jpg"
