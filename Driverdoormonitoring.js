@@ -46,6 +46,16 @@ const plugin = ({widgets, vehicle, simulator}) => {
     }, vehicle))
     
     widgets.register(
+        "LatLongPills",
+        SignalPills(
+            [
+                Doorleftopen
+            ],
+            vehicle
+        )
+    )	
+	
+    widgets.register(
         "leftdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
             [true]: {
