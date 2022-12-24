@@ -31,14 +31,20 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 
 const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
- 
+    const CargoDoorLeft = {
+        signal: "vehicle.Trailer.CargoSpace.Door.Left.isOpen",
+        label: "vehicle.Trailer.CargoSpace.Door.Left.isOpen",
+        icon: "",
+        suffix: ""
+    }
+    
     fetchRowsFromSpreadsheet("1Km_SkY2WW3iiiRFnlf3xMtgs0HjKjdd3Tw6BVh0nsxA", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
     })
  
-   widgets.register(
+    widgets.register(
         "GoogleMapDirections",
         GoogleMapsFromSignal(
             [
@@ -56,9 +62,10 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
         )
     )
 
+    
  
 
- widgets.register(
+    widgets.register(
         "leftdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.IsOpen", {
             [true]: {
@@ -71,7 +78,7 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
- widgets.register(
+    widgets.register(
         "rightdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
             [true]: {
@@ -83,12 +90,16 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed.jpg"
             },
         }, vehicle)
-    )
+     )
   
-  widgets.register("Doorleftopen", SignalTile({
-        signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
-    }, vehicle))
-  widgets.register("Doorrightopen", SignalTile({
+    widgets.register(
+      "CargoDoorLeft", 
+       SignalTile(
+           CargoDoorLeft,
+           vehicle
+       )
+     )
+    widgets.register("Doorrightopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
  
