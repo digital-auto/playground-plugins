@@ -3,8 +3,52 @@ import SignalTile from "./reusable/SignalTile.js"
 import SignalPills from "./reusable/SignalPills.js"
 import LineChart from "./reusable/LineChart.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+
+
+async function fetchRowsFromSpreadsheet(spreadsheetId) {
+    // Set the range to A1:Z1000
+    const range = "A1:Z1000";
+
+    // Fetch the rows from the Google Spreadsheet API
+    const response = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?`
+    );
+    const json = await response.json();
+    // Get the headers from the first row
+    const headers = json.values[0];
+    // Convert the remaining rows to an array of objects
+    const rows = json.values.slice(1).map(row => {
+        const rowObject = {};
+        for (let i = 0; i < row.length; i++) {
+            rowObject[headers[i]] = row[i];
+        }
+        return rowObject;
+    });
+
+    return rows;
+}
 
 const DriveScore = ({widgets, vehicle}) => {
+	
+    fetchRowsFromSpreadsheet("1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE")
+    .then((rows) => {
+        SimulatorPlugins(rows, simulator)
+        console.log(rows)
+    }){
+        
+    let mobileNotifications = null;
+	widgets.register("Mobile", (box) => {
+		({printNotification: mobileNotifications} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+            paddingTop: 70,
+            paddingHorizontal: 25
+		}))
+	});
+
     widgets.register("DriveTimeExceededTile", SignalTile({
         signal: "Vehicle.Driver.DriveTimeExceeded"
     }, vehicle))
@@ -172,6 +216,15 @@ const DriveScore = ({widgets, vehicle}) => {
             clearInterval(iteratorIntervalidId)
         }
     })
+        return {
+        notifyPhone: (message) => {
+            if (mobileNotifications !== null) {
+                mobileNotifications(message)
+            }
+        },
+    }
+        
+        
 }
 
 export default DriveScore
