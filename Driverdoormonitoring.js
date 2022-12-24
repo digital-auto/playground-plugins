@@ -30,7 +30,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 }
 
 
-const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
+const plugin = ({widgets, vehicle, simulator}) => {
     
     fetchRowsFromSpreadsheet("1Km_SkY2WW3iiiRFnlf3xMtgs0HjKjdd3Tw6BVh0nsxA", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
@@ -142,4 +142,4 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
     })
 }
 
-export default Driverdoormonitoring
+export default plugin
