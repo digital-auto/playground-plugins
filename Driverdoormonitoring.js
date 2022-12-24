@@ -1,10 +1,9 @@
-import MobileNotifications from "./reusable/MobileNotifications.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
-import LineChart from "./reusable/LineChart.js"
-import SignalPills from "./reusable/SignalPills.js"
-import SignalTile from "./reusable/SignalTile.js"
-import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import SignalPills from "./reusable/SignalPills.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import SignalTile from "./reusable/SignalTile.js"
+import LineChart from "./reusable/LineChart.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -29,36 +28,32 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-
 const plugin = ({widgets, vehicle, simulator}) => {
-    
+	
     fetchRowsFromSpreadsheet("1Km_SkY2WW3iiiRFnlf3xMtgs0HjKjdd3Tw6BVh0nsxA", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
     })
- 
+    
+    const LatitudeTile = {
+        signal: "Vehicle.CurrentLocation.Latitude",
+        label: "Latitude",
+        icon: "satellite"
+    }
+    
     widgets.register(
-        "GoogleMapDirections",
-        GoogleMapsFromSignal(
-            [
-                {
-                    "lat": 48.149497,
-                    "lng": 11.523194
-                },
-                {
-                    "lat": 50.445168,
-                    "lng": 11.020569
-                },
-            ],
-            vehicle,
-            { iterate: true }
+        "LatitudeTile",
+        SignalTile(
+            LatitudeTile,
+            vehicle
         )
     )
-
     
- 
-
+    widgets.register("Doorrightopen", SignalTile({
+        signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
+    }, vehicle))
+    
     widgets.register(
         "leftdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
@@ -86,69 +81,6 @@ const plugin = ({widgets, vehicle, simulator}) => {
         }, vehicle)
      )
     
-    const LatitudeTile = {
-        signal: "Vehicle.CurrentLocation.Latitude",
-        label: "Latitude",
-        icon: "satellite"
-    }
-    
-    widgets.register(
-        "LatitudeTile",
-        SignalTile(
-            LatitudeTile,
-            vehicle
-        )
-    )
-    
-    widgets.register("Doorrightopen", SignalTile({
-        signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
-    }, vehicle))
- 
-    let mobileNotifications = null;
-          widgets.register("Mobile", (box) => {
-                ({printNotification: mobileNotifications} = MobileNotifications({
-                      apis : null,
-                      vehicle: null,
-                      box: box,
-                      refresh: null,
-                paddingTop: 70,
-                paddingHorizontal: 25
-                }))
-          });
-    return {
-            notifyPhone: (message) => {
-                if (mobileNotifications !== null) {
-                    mobileNotifications(message)
-                }
-            },
-        }
-  
-  widgets.register("MobileNotifications", (box) => {
-        const {printNotification} = MobileNotifications({box})
-        const intervalId = setInterval(async () => {
-            const [LeftDoor, RightDoor] = [
-                await Vehicle.Trailer.CargoSpace.Door.Left.isOpen.get(),
-                await Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
-            ]
-            let message = ""
-            if (LeftDoor == true) {
-                message += "\nThe CargoSpace Left Door is open\n\n"
-            }
-            if (RightDoor == true) {
-                message += "The CargoSpace Right Door is open"
-            }
-            printNotification(message)
-        }, 300)
-
-        const iteratorIntervalidId = setInterval(async () => {
-            await vehicle.Next.get()
-        }, 500)
-        
-        return ( ) => {
-            clearInterval(intervalId)
-            clearInterval(iteratorIntervalidId)
-        }
-    })
 }
 
 export default plugin
