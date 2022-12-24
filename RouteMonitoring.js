@@ -79,29 +79,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         )
     )
 
-    widgets.register(
-        "LatLongPills",
-        SignalPills(
-            [
-                LatitudeTile,
-                LongitudeTile,
-            ],
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "SignalPills",
-        SignalPills(
-            [
-                LatitudeTile,
-                LongitudeTile,
-                ETATile,
-            ],
-            vehicle
-        )
-    )
-
+    
     widgets.register(
         "SpeedLineChart",
         LineChart(
