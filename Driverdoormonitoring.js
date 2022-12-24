@@ -86,19 +86,11 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
         }, vehicle)
      )
     
-    const CargoDoorLeft = {
-        signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
-        label: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
-        icon: ""
-    }
+
     
-    widgets.register(
-      "CargoDoorLeft", 
-       SignalTile(
-           CargoDoorLeft,
-           vehicle
-       )
-     )
+    widgets.register("Doorleftopen", SignalTile({
+        signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
+    }, vehicle))
     widgets.register("Doorrightopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
