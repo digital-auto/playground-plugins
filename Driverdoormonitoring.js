@@ -86,14 +86,19 @@ const plugin = ({widgets, vehicle, simulator}) => {
         }, vehicle)
      )
     
-    widgets.register("Doorleftopen", SignalTile([
-        {
-            signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
-            label: "Cargo Left Door",
-            icon: "fingerprint"
-        },
-    ], vehicle))
+    const LongitudeTile = {
+        signal: "Vehicle.CurrentLocation.Longitude",
+        label: "Longitude",
+        icon: "satellite"
+    }
     
+    widgets.register(
+        "LatitudeTile",
+        SignalTile(
+            LatitudeTile,
+            vehicle
+        )
+    )
     
     widgets.register("Doorrightopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
