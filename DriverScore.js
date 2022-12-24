@@ -6,7 +6,7 @@ import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 
 
-async function fetchRowsFromSpreadsheet(spreadsheetId) {
+async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
 
