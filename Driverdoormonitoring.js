@@ -118,8 +118,8 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
         const {printNotification} = MobileNotifications({box})
         const intervalId = setInterval(async () => {
             const [LeftDoor, RightDoor] = [
-                await vehicle.Trailer.CargoSpace.Door.Left.isOpen.get(),
-                await vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
+                await Vehicle.Trailer.CargoSpace.Door.Left.isOpen.get(),
+                await Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
             ]
             let message = ""
             if (LeftDoor == true) {
