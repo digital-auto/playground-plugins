@@ -35,7 +35,7 @@ const DriveScore = ({widgets, vehicle}) => {
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
-    }){
+    });{
         
     let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
@@ -226,5 +226,5 @@ const DriveScore = ({widgets, vehicle}) => {
         
         
 }
-
+}
 export default DriveScore
