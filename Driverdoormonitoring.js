@@ -32,8 +32,8 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
     const CargoDoorLeft = {
-        signal: "vehicle.Trailer.CargoSpace.Door.Left.isOpen",
-        label: "vehicle.Trailer.CargoSpace.Door.Left.isOpen",
+        signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
+        label: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
         icon: "",
         suffix: ""
     }
