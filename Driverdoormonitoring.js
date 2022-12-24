@@ -86,9 +86,9 @@ const plugin = ({widgets, vehicle, simulator}) => {
         }, vehicle)
      )
     
-    const LongitudeTile = {
-        signal: "Vehicle.CurrentLocation.Longitude",
-        label: "Longitude",
+    const LatitudeTile = {
+        signal: "Vehicle.CurrentLocation.Latitude",
+        label: "Latitude",
         icon: "satellite"
     }
     
