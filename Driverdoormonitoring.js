@@ -36,19 +36,9 @@ const plugin = ({widgets, vehicle, simulator}) => {
         console.log(rows)
     })
     
-    const LatitudeTile = {
-        signal: "Vehicle.CurrentLocation.Latitude",
-        label: "Latitude",
-        icon: "satellite"
-    }
-    
-    widgets.register(
-        "LatitudeTile",
-        SignalTile(
-            LatitudeTile,
-            vehicle
-        )
-    )
+    widgets.register("Doorleftopen", SignalTile({
+        signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
+    }, vehicle))
     
     widgets.register("Doorrightopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
@@ -80,6 +70,24 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
      )
+   let mobileNotifications = null;
+          widgets.register("Mobile", (box) => {
+                ({printNotification: mobileNotifications} = MobileNotifications({
+                      apis : null,
+                      vehicle: null,
+                      box: box,
+                      refresh: null,
+                paddingTop: 70,
+                paddingHorizontal: 25
+                }))
+          });
+    return {
+            notifyPhone: (message) => {
+                if (mobileNotifications !== null) {
+                    mobileNotifications(message)
+                }
+            },
+        }
     
 }
 
