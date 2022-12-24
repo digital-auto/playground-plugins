@@ -31,7 +31,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId) {
 
 const DriveScore = ({widgets, vehicle}) => {
 	
-    fetchRowsFromSpreadsheet("1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE")
+    fetchRowsFromSpreadsheet("1Iy5a86yfHYhB9YnZfpvmCDnk_Dl9s8X1MSARn0z_KSg")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
