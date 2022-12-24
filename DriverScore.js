@@ -29,7 +29,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId) {
     return rows;
 }
 
-const DriveScore = ({widgets, vehicle}) => {
+const DriveScore = ({widgets, vehicle, simulator}) => {
 	
     fetchRowsFromSpreadsheet("1Iy5a86yfHYhB9YnZfpvmCDnk_Dl9s8X1MSARn0z_KSg")
     .then((rows) => {
