@@ -62,11 +62,11 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "leftdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
-            [TRUE]: {
+            [true]: {
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen.jpg"
             },
-            [FALSE]: {
+            [false]: {
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed.jpg"
             },
@@ -75,11 +75,11 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "rightdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
-            [TRUE]: {
+            [true]: {
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdooropen.jpg"
             },
-            [FALSE]: {
+            [false]: {
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed.jpg"
             },
@@ -122,10 +122,10 @@ const Driverdoormonitoring = ({widgets, vehicle, simulator}) => {
                 await Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn.get()
             ]
             let message = ""
-            if (LeftDoor == TRUE) {
+            if (LeftDoor == true) {
                 message += "\nThe CargoSpace Left Door is open\n\n"
             }
-            if (RightDoor == TRUE) {
+            if (RightDoor == true) {
                 message += "The CargoSpace Right Door is open"
             }
             printNotification(message)
