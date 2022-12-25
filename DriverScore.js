@@ -4,6 +4,7 @@ import SignalPills from "./reusable/SignalPills.js"
 import LineChart from "./reusable/LineChart.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
@@ -28,6 +29,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
     return rows;
 }
+
 
 const DriveScore = ({widgets, vehicle, simulator}) => {
 	
@@ -190,22 +192,7 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
         },
     ], vehicle))
 
-    widgets.register("MobileNotifications", (box) => {
-        const {printNotification} = MobileNotifications({box})
-        const intervalId = setInterval(async () => {
-            const [timeExceeded, currentFuelEconomy] = [
-                await vehicle.Driver.DriveTimeExceeded.get(),
-                await vehicle.Powertrain.FuelSystem.CurrentFuelEconomy.get()
-            ]
-            let message = ""
-            if (timeExceeded) {
-                message += "\nDrive Time Exceeded!\n\n"
-            }
-            if (currentFuelEconomy < 50) {
-                message += "WARNING: CurrentFuelEconomy below 50%!"
-            }
-            printNotification(message)
-        }, 300)
+    
 
         const iteratorIntervalidId = setInterval(async () => {
             await vehicle.Next.get()
