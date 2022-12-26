@@ -68,6 +68,11 @@ widgets.register(
                     signal: "Vehicle.Speed",
                     suffix: " Km/hr",
                     color: "yellow"
+                },
+	 {
+                    signal: "Vehicle.Length",
+                    suffix: " m",
+                    color: "#a21caf"
                 }
     ], vehicle))	 
 
