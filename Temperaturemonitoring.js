@@ -1,7 +1,40 @@
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import LineChart from "./reusable/LineChart.js"
-const Temperaturemonitoring = ({widgets, vehicle}) => {
+
+async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
+    // Set the range to A1:Z1000
+    const range = "A1:Z1000";
+
+    // Fetch the rows from the Google Spreadsheet API
+    const response = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${encodeURIComponent(apiKey)}`
+    );
+    const json = await response.json();
+    // Get the headers from the first row
+    const headers = json.values[0];
+    // Convert the remaining rows to an array of objects
+    const rows = json.values.slice(1).map(row => {
+        const rowObject = {};
+        for (let i = 0; i < row.length; i++) {
+            rowObject[headers[i]] = row[i];
+        }
+        return rowObject;
+    });
+
+    return rows;
+}
+
+
+const plugin = ({widgets, simulator, vehicle}) => {
+  
+    fetchRowsFromSpreadsheet("1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
+    .then((rows) => {
+        SimulatorPlugins(rows, simulator)
+        console.log(rows)
+    })
   
    widgets.register(
         "GoogleMapDirections",
@@ -58,6 +91,92 @@ const Temperaturemonitoring = ({widgets, vehicle}) => {
                     color: "#14b8a6"
                 }
     ], vehicle))
+	
+	
+	let sim_function;
+       simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}  
+	let sim_function;
+       simulator("Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}  
+	let sim_function;
+       simulator("Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}  
+	let sim_function;
+       simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}  
+	let sim_function;
+       simulator("Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}  
+	let sim_function;
+       simulator("Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}  
   
    let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
