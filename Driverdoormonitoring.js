@@ -45,13 +45,6 @@ const plugin = ({widgets, vehicle, simulator}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 
-    widgets.register(
-        "Doorleftopen1",
-        SignalPills(
-            Doorleftopen,
-            vehicle
-        )
-    )	
     
 	
     widgets.register(
