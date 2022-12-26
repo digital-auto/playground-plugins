@@ -48,9 +48,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "Doorleftopen1",
         SignalPills(
-            [
-                Doorleftopen
-            ],
+            Doorleftopen,
             vehicle
         )
     )	
