@@ -96,7 +96,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	
   
    let mobileNotifications = null;
-	widgets.register("Mobile", (box) => {
+	widgets.register("TemperatureWarning", (box) => {
 		({printNotification: mobileNotifications} = MobileNotifications({
 			apis : null,
 			vehicle: null,
