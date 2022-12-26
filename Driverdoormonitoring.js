@@ -68,12 +68,6 @@ widgets.register(
                     signal: "Vehicle.Speed",
                     suffix: " Km/hr",
                     color: "yellow"
-                },
-                
-                {
-                    signal: "Vehicle.Driver.ProximityToVehicle",
-                    suffix: " C",
-                    color: "#14b8a6"
                 }
     ], vehicle))	 
 
