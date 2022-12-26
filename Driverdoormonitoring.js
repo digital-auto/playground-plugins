@@ -4,6 +4,7 @@ import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
+import SignalPills from "./reusable/SignalPills.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -44,6 +45,15 @@ const plugin = ({widgets, vehicle, simulator}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 
+    widgets.register(
+        "Doorleftopen1",
+        SignalPills(
+            [
+                Doorleftopen
+            ],
+            vehicle
+        )
+    )	
     
 	
     widgets.register(
