@@ -5,7 +5,7 @@ import LineChart from "./reusable/LineChart.js"
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import SignalPills from "./reusable/SignalPills.js"
-
+/*
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
@@ -28,15 +28,15 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
     return rows;
 }
-
+*/
 const plugin = ({widgets, vehicle, simulator}) => {
-	
+/*	
     fetchRowsFromSpreadsheet("1Km_SkY2WW3iiiRFnlf3xMtgs0HjKjdd3Tw6BVh0nsxA", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
     })
-    
+ */   
     widgets.register("Doorleftopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
     }, vehicle))
