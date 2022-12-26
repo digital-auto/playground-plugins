@@ -142,4 +142,4 @@ return {
     })
 }
 
-export default Temperaturemonitoring
+export default plugin
