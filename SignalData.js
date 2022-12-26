@@ -720,8 +720,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 7,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": true,
 
 			"Vehicle.Driver.ProximityToVehicle": 1
@@ -742,8 +742,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 13,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": true,
 
 			"Vehicle.Driver.ProximityToVehicle": 3
@@ -764,8 +764,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 8,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 11,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": true,
 
 			"Vehicle.Driver.ProximityToVehicle": 3
@@ -786,8 +786,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 12,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 10,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 9,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 3
@@ -808,8 +808,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 13,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 9,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 9,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 3
@@ -830,8 +830,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 16,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 9,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 8,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 3
@@ -852,8 +852,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 17,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 9,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 10,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 3
@@ -874,8 +874,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 18,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 10,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 1
@@ -896,8 +896,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 19,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 12,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 13,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 1
@@ -918,8 +918,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 20,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 12,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 1
@@ -940,8 +940,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 22,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 11,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 1
@@ -962,8 +962,8 @@ const plugin = ({ widgets, vehicle, simulator }) => {
 			"Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature": 24,
 			"Vehicle.Trailer.Chassis.Axle.Row1.Temperature": 13,
 			"Vehicle.Trailer.Chassis.Axle.Row2.Temperature": 12,
-			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": false,
-			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": false,
+			"Vehicle.Trailer.CargoSpace.Door.Left.isOpen": true,
+			"Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn": true,
 			"Vehicle.Driver.IsPausing": false,
 
 			"Vehicle.Driver.ProximityToVehicle": 1
