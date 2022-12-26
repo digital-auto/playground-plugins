@@ -107,7 +107,7 @@ widgets.register(
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed.jpg"
             },
-        }, vehicle)
+        }, vehicle, { iterate: true })
     )
     widgets.register(
         "rightdooropen",
