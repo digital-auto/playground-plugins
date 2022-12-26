@@ -101,11 +101,11 @@ widgets.register(
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
             [true]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen.jpg"
+                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen360x360.png"
             },
             [false]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed.jpg"
+                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed360x360.png"
             },
         }, vehicle, { iterate: true })
     )
@@ -114,11 +114,11 @@ widgets.register(
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
             [true]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdooropen.jpg"
+                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdooropen360x360.png"
             },
             [false]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed.jpg"
+                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed360x360.png"
             },
         }, vehicle)
      )
