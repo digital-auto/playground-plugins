@@ -63,7 +63,19 @@ widgets.register(
         )
     )	
 	
-	 
+ widgets.register("DoorLineChart", LineChart([
+       {
+                    signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                
+                {
+                    signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn",
+                    suffix: " C",
+                    color: "#14b8a6"
+                }
+    ], vehicle))	 
 
     widgets.register(
         "GoogleMapDirections",
