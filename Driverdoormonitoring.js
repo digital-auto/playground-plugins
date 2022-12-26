@@ -63,7 +63,7 @@ widgets.register(
         )
     )	
 	
- widgets.register("DoorLineChart", LineChart([
+ widgets.register("SpeedProximity", LineChart([
        {
                     signal: "Vehicle.Speed",
                     suffix: " Km/hr",
@@ -71,7 +71,7 @@ widgets.register(
                 },
                 
                 {
-                    signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn",
+                    signal: "Vehicle.Driver.ProximityToVehicle",
                     suffix: " C",
                     color: "#14b8a6"
                 }
