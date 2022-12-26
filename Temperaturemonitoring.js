@@ -114,32 +114,7 @@ return {
         },
     }
   
-  widgets.register("MobileNotifications", (box) => {
-        const {printNotification} = MobileNotifications({box})
-        const intervalId = setInterval(async () => {
-            const [Frontbrake, Rearbrake] = [
-              await vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature.get(),
-              await vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature.get()
-            ]
-            let message = ""
-            if (Frontbrake >=21) {
-                message += "\nTemperature of front brake exceeding threshold 21C!\n\n"
-            }
-            if (Rearbrake >= 21) {
-                message += "Temperature of rear brake exceeding threshold 21C!"
-            }
-            printNotification(message)
-        }, 300)
-
-        const iteratorIntervalidId = setInterval(async () => {
-            await vehicle.Next.get()
-        }, 3000)
-        
-        return ( ) => {
-            clearInterval(intervalId)
-            clearInterval(iteratorIntervalidId)
-        }
-    })
+  
 }
 
 export default plugin
