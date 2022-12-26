@@ -45,7 +45,24 @@ const plugin = ({widgets, vehicle, simulator}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 
-    
+    widgets.register(
+        "GoogleMapDirections",
+        GoogleMapsFromSignal(
+            [
+                {
+                    "lat": 48.149497,
+                    "lng": 11.523194
+                },
+                {
+                    "lat": 50.445168,
+                    "lng": 11.020569
+                },
+            ],
+            vehicle,
+            { iterate: true }
+        )
+    )
+
 	
     widgets.register(
         "leftdooropen",
