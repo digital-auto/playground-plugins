@@ -44,53 +44,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
     
-    
-	
-    widgets.register(
-        "leftdooropen",
-        SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
-            [true]: {
-                type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen.jpg"
-            },
-            [false]: {
-                type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed.jpg"
-            },
-        }, vehicle)
-    )
-    widgets.register(
-        "rightdooropen",
-        SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
-            [true]: {
-                type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdooropen.jpg"
-            },
-            [false]: {
-                type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed.jpg"
-            },
-        }, vehicle)
-     )
-   let mobileNotifications = null;
-          widgets.register("Mobile", (box) => {
-                ({printNotification: mobileNotifications} = MobileNotifications({
-                      apis : null,
-                      vehicle: null,
-                      box: box,
-                      refresh: null,
-                paddingTop: 70,
-                paddingHorizontal: 25
-                }))
-          });
-    return {
-            notifyPhone: (message) => {
-                if (mobileNotifications !== null) {
-                    mobileNotifications(message)
-                }
-            },
-        }
-    
+
 }
 
 export default plugin
