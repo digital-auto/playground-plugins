@@ -36,7 +36,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
     })
- */   
+    
     widgets.register("Doorleftopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen"
     }, vehicle))
@@ -44,6 +44,26 @@ const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register("Doorrightopen", SignalTile({
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
+*/	
+	
+widgets.register(
+        "SignalPillsDoor",
+        SignalPills(
+            [
+                {
+                    signal: "Vehicle.Trailer.CargoSpace.Door.Left.isOpen",
+                    icon: `fa-gauge`
+                },
+                {
+                    signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn",
+                    icon: `fa-gauge`
+                }
+            ],
+            vehicle
+        )
+    )	
+	
+	 
 
     widgets.register(
         "GoogleMapDirections",
