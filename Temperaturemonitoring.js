@@ -108,6 +108,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	});
 return {
         notifyPhone: (message) => {
+		console.log("message",message)
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
             }
