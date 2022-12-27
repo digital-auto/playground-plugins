@@ -145,7 +145,7 @@ intervalId = setInterval(() => {
   
    let mobileNotifications = null;
 	widgets.register("TemperatureWarning", (box) => {
-		const printNotification = MobileNotifications({
+		const {printNotification} = MobileNotifications({
 			apis : null,
 			vehicle: null,
 			box: box,
@@ -153,7 +153,7 @@ intervalId = setInterval(() => {
             paddingTop: 70,
             paddingHorizontal: 25
 		})
-		console.log("hi", printNotification)
+		console.log("xyz", printNotification)
 		mobileNotifications = printNotification
 	});
 	mobileNotifications("hi")
