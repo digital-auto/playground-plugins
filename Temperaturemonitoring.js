@@ -95,7 +95,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 let index = 0;
 let intervalId = null;
 fetchRowsFromSpreadsheet("1vcrl5yRyMiAdsH1eIakfuHxocnYu6rgs5O-QHxnznj4", "AIzaSyBpMUJezbwUYARDHxFIR0a7h4yxh2v1dwI")
-	.then(data => {
+	.then((data) => {
 const VSSdata = data.signal_values;
 intervalId = setInterval(() => {
 	if (index >= VSSdata.length) {
