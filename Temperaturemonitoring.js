@@ -94,51 +94,47 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	
 let index = 0;
 let intervalId = null;
-fetchSimulationResults(simulationDetails).then(data => {
-				const VSSdata = data.signal_values
+const VSSdata = data.signal_values;
 intervalId = setInterval(() => {
-					if (index >= VSSdata.length) {
-						clearInterval(intervalId)
-					}
-					else {
-                        simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
-						})
-						simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-						})
-                        simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row1.Temperature"])
-						})
-                        simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row2.Temperature"])
-						})
-
-
-if(setVehiclePinGlobal !== null) {
-							setVehiclePinGlobal({
-								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
-								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-							})
+	if (index >= VSSdata.length) {
+		clearInterval(intervalId)
+	}
+	else {
+		simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
+			return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
+		})
+		simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
+			return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
+		})
+		simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "get", async () => {
+			return parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row1.Temperature"])
+		})
+		simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "get", async () => {
+			return parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row2.Temperature"])
+		})
+		if(setVehiclePinGlobal !== null) {
+			setVehiclePinGlobal({
+				lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
+				lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
+			})
 						}
-
-let message = "", mobileMessage = "";
-						if (parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row1.Temperature"]) > 20) {
-							message = "Warning: Temperature of front brake exceeding threshold 20C!";
-							mobileMessage = message;
-                        }
-                        else if (parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row2.Temperature"]) > 20) {
-							message = "Warning: Temperature of Rear brake exceeding threshold 20C!";
-							mobileMessage = message;
-						}
-						else {
-							message =  "Temperature for front and rear break is normal";
-							mobileMessage = message;
-						}
-mobileNotifications(mobileMessage);
+		let message = "", mobileMessage = "";
+		if (parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row1.Temperature"]) > 20) {
+			message = "Warning: Temperature of front brake exceeding threshold 20C!";
+			mobileMessage = message;
 		}
-				}, 1000)
-			})	
+		else if (parseFloat(VSSdata[index]["Vehicle.Trailer.Chassis.Axle.Row2.Temperature"]) > 20) {
+			message = "Warning: Temperature of Rear brake exceeding threshold 20C!";
+			mobileMessage = message;
+		}
+		else {
+			message =  "Temperature for front and rear break is normal";
+			mobileMessage = message;
+		}
+		mobileNotifications(mobileMessage);
+		}
+}, 1000)
+				
 	
 	
 	
