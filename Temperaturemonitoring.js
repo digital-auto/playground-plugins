@@ -33,7 +33,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     fetchRowsFromSpreadsheet("1vcrl5yRyMiAdsH1eIakfuHxocnYu6rgs5O-QHxnznj4", "AIzaSyBpMUJezbwUYARDHxFIR0a7h4yxh2v1dwI")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
-        console.log("hi", rows)
+        console.log(rows)
     })
   
    widgets.register(
@@ -154,6 +154,8 @@ intervalId = setInterval(() => {
             paddingHorizontal: 25
 		}))
 	});
+	
+/*	
 return {
         notifyPhone: (message) => {
 		console.log("message",message)
@@ -163,7 +165,7 @@ return {
         },
     }
   
-  
+*/  
 }
 
 export default plugin
