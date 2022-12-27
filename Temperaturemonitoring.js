@@ -153,7 +153,9 @@ intervalId = setInterval(() => {
             paddingTop: 70,
             paddingHorizontal: 25
 		}))
+		mobileNotifications = printNotification
 	});
+	mobileNotifications("hi")
 	
 /*	
 return {
