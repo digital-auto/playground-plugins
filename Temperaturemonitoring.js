@@ -155,8 +155,9 @@ intervalId = setInterval(() => {
 		})
 		console.log("xyz", printNotification)
 		mobileNotifications = printNotification
+		mobileNotifications("hi")
 	});
-	mobileNotifications("hi")
+	
 	
 /*	
 return {
