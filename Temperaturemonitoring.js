@@ -35,22 +35,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
     })
-	
-	 let mobileNotifications = null;
-	widgets.register("TemperatureWarning", (box) => {
-		const {printNotification} = MobileNotifications({
-			apis : null,
-			vehicle: null,
-			box: box,
-			refresh: null,
-            paddingTop: 70,
-            paddingHorizontal: 25
-		})
-		console.log("xyz", printNotification)
-		mobileNotifications = printNotification
-		mobileNotifications("hi")
-	});
-	mobileNotifications("hello")
   
    widgets.register(
         "GoogleMapDirections",
@@ -158,7 +142,7 @@ intervalId = setInterval(() => {
 	
 	
 	
-  /*
+  
    let mobileNotifications = null;
 	widgets.register("TemperatureWarning", (box) => {
 		const {printNotification} = MobileNotifications({
@@ -173,8 +157,8 @@ intervalId = setInterval(() => {
 		mobileNotifications = printNotification
 		mobileNotifications("hi")
 	});
-	mobileNotifications("hello")
-	*/
+	
+	
 /*	
 return {
         notifyPhone: (message) => {
