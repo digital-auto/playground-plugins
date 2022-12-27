@@ -70,7 +70,7 @@ widgets.register(
                     color: "yellow"
                 },
 	 {
-                    signal: "Vehicle.Length",
+                    signal: "Vehicle.Driver.ProximityToVehicle",
                     suffix: " m",
                     color: "#a21caf"
                 }
