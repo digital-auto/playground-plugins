@@ -157,7 +157,7 @@ intervalId = setInterval(() => {
 		mobileNotifications = printNotification
 		mobileNotifications("hi")
 	});
-	
+	mobileNotifications("hello")
 	
 /*	
 return {
