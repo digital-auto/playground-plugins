@@ -144,32 +144,26 @@ intervalId = setInterval(() => {
 	
   
    let mobileNotifications = null;
-	widgets.register("TemperatureWarning", (box) => {
-		const {printNotification} = MobileNotifications({
+	widgets.register("Mobile", (box) => {
+		({printNotification: mobileNotifications} = MobileNotifications({
 			apis : null,
 			vehicle: null,
 			box: box,
 			refresh: null,
             paddingTop: 70,
             paddingHorizontal: 25
-		})
-		console.log("xyz", printNotification)
-		mobileNotifications = printNotification
-		mobileNotifications("hi")
+		}))
 	});
+
 	
 	
-/*	
 return {
         notifyPhone: (message) => {
-		console.log("message",message)
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
             }
         },
     }
-  
-*/  
 }
 
 export default plugin
