@@ -198,10 +198,7 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
             await vehicle.Next.get()
         }, 3000)
         
-        return ( ) => {
-            clearInterval(intervalId)
-            clearInterval(iteratorIntervalidId)
-        }
+
     }
         return {
         notifyPhone: (message) => {
