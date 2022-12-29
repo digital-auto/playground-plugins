@@ -40,7 +40,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
   
    widgets.register(
-        "GoogleMapDirections",
+        "GoogleMapDirectionsy",
         GoogleMapsFromSignal(
             [
                 {
