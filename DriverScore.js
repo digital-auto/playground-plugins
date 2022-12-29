@@ -67,11 +67,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
             signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
             label: "Allowed Drive Time",
             icon: "fingerprint"
-        },
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "Breaks Remaining",
-            icon: "fingerprint"
         }
     ], vehicle))
 	
