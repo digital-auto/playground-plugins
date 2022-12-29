@@ -146,7 +146,7 @@ widgets.register(
 		console.log("print func", args[0])
 	})
 
-	return {
+     return {
 		start_simulation : (time) => {
 			sim_intervalId = setInterval(async () => {
 				await vehicle.Next.get()
