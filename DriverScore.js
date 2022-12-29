@@ -1,6 +1,5 @@
 
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
-import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import LineChart from "./reusable/LineChart.js"
