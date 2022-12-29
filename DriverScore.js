@@ -88,6 +88,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
         },
     ], vehicle))
     
+	
+    widgets.register("CurrentFuelEconomyLineChart", LineChart([
+{
+    signal: "Vehicle.Chassis.Brake.PedalPosition"
+}
+], vehicle))
+
+    widgets.register("AccumulatedConsumptionLineChart", LineChart([
+        {
+            signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption"
+        }
+    ], vehicle))
     widgets.register("fuelscorebrakescore", SignalPills([
         {
             signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption",
