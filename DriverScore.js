@@ -202,7 +202,7 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
             clearInterval(intervalId)
             clearInterval(iteratorIntervalidId)
         }
-    })
+    }
         return {
         notifyPhone: (message) => {
             if (mobileNotifications !== null) {
@@ -213,5 +213,5 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
         
         
 }
-}
+
 export default DriveScore
