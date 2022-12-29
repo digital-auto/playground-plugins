@@ -1,11 +1,11 @@
+
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import LineChart from "./reusable/LineChart.js"
 import SignalTile from "./reusable/SignalTile.js"
 import SignalPills from "./reusable/SignalPills.js"
-import LineChart from "./reusable/LineChart.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
-import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
-import MobileNotifications from "./reusable/MobileNotifications.js"
-
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -31,113 +31,15 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 }
 
 
-const DriveScore = ({widgets, vehicle, simulator}) => {
-	
+const plugin = ({widgets, simulator, vehicle}) => {
+  
     fetchRowsFromSpreadsheet("1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
-    });{
-        
-
-    widgets.register("DriveTimeExceededTile", SignalTile({
-        signal: "Vehicle.Driver.DriveTimeExceeded"
-    }, vehicle))
-
-    widgets.register("AccumulatedConsumptionLineChart", LineChart([
-        {
-            signal: "Vehicle.Driver.DriveTimeExceeded"
-        }
-    ], vehicle))
-    
-    widgets.register("AccumulatedDriveTime", LineChart([
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime"
-        }
-    ], vehicle))
-    
-    widgets.register("AllowedDriveTime", LineChart([
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime"
-        }
-    ], vehicle))
-
-    widgets.register("CurrentFuelEconomyLineChart", LineChart([
-        {
-            signal: "Vehicle.Chassis.Brake.PedalPosition"
-        }
-    ], vehicle))
-
-    widgets.register("AccumulatedConsumptionLineChart", LineChart([
-        {
-            signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption"
-        }
-    ], vehicle))
-   
-    
-    
- 
-    
-    
-    widgets.register("driveallowedtime", SignalPills([
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "driverscore",
-            icon: "fingerprint"
-        },
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
-            label: "weeklydriverscore",
-            icon: "fingerprint"
-        },
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "monthlydriverscore",
-            icon: "fingerprint"
-        }
-    ], vehicle))
-    
-    widgets.register("driveallowedtimee", SignalPills([
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "Accumulated Drive Time",
-            icon: "fingerprint"
-        },
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
-            label: "Allowed Drive Time",
-            icon: "fingerprint"
-        },
-        {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "Breaks Remaining",
-            icon: "fingerprint"
-        }
-    ], vehicle))
-    
-    
-    
-    
-    widgets.register(
-        "driverscoreLineChartss",
-        LineChart(
-            [
-                {
-                    signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
-                    suffix: " C",
-                    color: "yellow"
-                },
-                {
-                    signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-                    suffix: " C",
-                    color: "#a21caf"
-                }
-            ],
-            vehicle
-        )
-    )
-    
-    widgets.register(
+    })
+  
+   widgets.register(
         "GoogleMapDirections",
         GoogleMapsFromSignal(
             [
@@ -155,6 +57,7 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
         )
     )
 
+	
     widgets.register("DriverCard", SignalPills([
         {
             signal: "Vehicle.Driver.DriverCard.ID",
@@ -180,8 +83,98 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
             icon: "fingerprint"
         },
     ], vehicle))
-	    
-        let mobileNotifications = null;
+	
+widgets.register("DriverCard", SignalPills([
+        {
+            signal: "Vehicle.Driver.DriverCard.ID",
+            label: "ID",
+            icon: "fingerprint"
+        },
+        {
+            signal: "Vehicle.Driver.DriverCard.Name",
+            label: "Name",
+            icon: "id-card"
+        },
+    ], vehicle))
+	
+  widgets.register("TemperatureMonitoringRow1", LineChart([
+       {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature",
+                    suffix: " C",
+                    color: "#a21caf"
+                },
+                
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature",
+                    suffix: " C",
+                    color: "#14b8a6"
+                }
+    ], vehicle))
+
+	
+	    widgets.register("driveallowedtimee", SignalPills([
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            label: "Accumulated Drive Time",
+            icon: "fingerprint"
+        },
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+            label: "Allowed Drive Time",
+            icon: "fingerprint"
+        },
+        {
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            label: "Breaks Remaining",
+            icon: "fingerprint"
+        }
+    ], vehicle))
+	
+	
+    widgets.register(
+        "driverscoreLineChartss",
+        LineChart(
+            [
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                {
+                    signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+                    suffix: " C",
+                    color: "#a21caf"
+                }
+            ],
+            vehicle
+        )
+    )
+  
+  widgets.register("TemperatureMonitoringRow2", LineChart([
+        {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
+                    suffix: " C",
+                    color: "yellow"
+                },
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature",
+                    suffix: " C",
+                    color: "#a21caf"
+                },
+                
+                {
+                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature",
+                    suffix: " C",
+                    color: "#14b8a6"
+                }
+    ], vehicle))
+  
+   let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
 		({printNotification: mobileNotifications} = MobileNotifications({
 			apis : null,
@@ -193,20 +186,15 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
 		}))
 	});
 
-    
-
-        
-
-    }
-        return {
+	
+	
+return {
         notifyPhone: (message) => {
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
             }
         },
     }
-        
-        
 }
 
-export default DriveScore
+export default plugin
