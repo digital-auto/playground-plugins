@@ -103,7 +103,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     widgets.register("fuelscorebrakescore", SignalPills([
         {
             signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption",
-            label: "Fuel Consumption score",
+            label: "Fuel Consumption Score",
             icon: "fingerprint"
         },
         {
@@ -132,17 +132,17 @@ widgets.register("DriverCard", SignalPills([
     widgets.register("driveallowedtime", SignalPills([
         {
             signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "driverscore",
+            label: "Driver Score",
             icon: "fingerprint"
         },
         {
             signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
-            label: "weeklydriverscore",
+            label: "Weekly Driver Score",
             icon: "fingerprint"
         },
         {
             signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-            label: "monthlydriverscore",
+            label: "Monthly Driver Score",
             icon: "fingerprint"
         }
     ], vehicle))
