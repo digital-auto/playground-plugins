@@ -39,17 +39,6 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
         console.log(rows)
     });{
         
-    let mobileNotifications = null;
-	widgets.register("Mobile", (box) => {
-		({printNotification: mobileNotifications} = MobileNotifications({
-			apis : null,
-			vehicle: null,
-			box: box,
-			refresh: null,
-            paddingTop: 70,
-            paddingHorizontal: 25
-		}))
-	});
 
     widgets.register("DriveTimeExceededTile", SignalTile({
         signal: "Vehicle.Driver.DriveTimeExceeded"
@@ -191,6 +180,18 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
             icon: "fingerprint"
         },
     ], vehicle))
+	    
+        let mobileNotifications = null;
+	widgets.register("Mobile", (box) => {
+		({printNotification: mobileNotifications} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+            paddingTop: 70,
+            paddingHorizontal: 25
+		}))
+	});
 
     
 
