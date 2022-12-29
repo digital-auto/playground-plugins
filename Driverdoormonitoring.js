@@ -135,7 +135,7 @@ widgets.register(
 			}, time)
 		}
 	}	
-   let mobileNotifications = null;
+  let mobileNotifications = null;
           widgets.register("Mobile", (box) => {
                 ({printNotification: mobileNotifications} = MobileNotifications({
                       apis : null,
