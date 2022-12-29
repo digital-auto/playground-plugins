@@ -76,7 +76,7 @@ widgets.register(
                 }
     ], vehicle))	 
 
-    widgets.register(
+  widgets.register(
         "GoogleMapDirections",
         GoogleMapsFromSignal(
             [
@@ -95,7 +95,7 @@ widgets.register(
     )
 
 	
-    widgets.register(
+  widgets.register(
         "leftdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
             [true]: {
@@ -108,7 +108,7 @@ widgets.register(
             },
         }, vehicle, { iterate: true })
     )
-    widgets.register(
+  widgets.register(
         "rightdooropen",
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
             [true]: {
