@@ -126,24 +126,7 @@ widgets.register("DriverCard", SignalPills([
         },
     ], vehicle))
 	
-  widgets.register("TemperatureMonitoringRow1", LineChart([
-       {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Temperature",
-                    suffix: " C",
-                    color: "yellow"
-                },
-                {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Left.Brake.Temperature",
-                    suffix: " C",
-                    color: "#a21caf"
-                },
-                
-                {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row1.Wheel.Right.Brake.Temperature",
-                    suffix: " C",
-                    color: "#14b8a6"
-                }
-    ], vehicle))
+
 
 	
     widgets.register("driveallowedtime", SignalPills([
@@ -184,24 +167,7 @@ widgets.register("DriverCard", SignalPills([
         )
     )
   
-  widgets.register("TemperatureMonitoringRow2", LineChart([
-        {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Temperature",
-                    suffix: " C",
-                    color: "yellow"
-                },
-                {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Left.Brake.Temperature",
-                    suffix: " C",
-                    color: "#a21caf"
-                },
-                
-                {
-                    signal: "Vehicle.Trailer.Chassis.Axle.Row2.Wheel.Right.Brake.Temperature",
-                    suffix: " C",
-                    color: "#14b8a6"
-                }
-    ], vehicle))
+
   
    let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
