@@ -194,9 +194,6 @@ const DriveScore = ({widgets, vehicle, simulator}) => {
 
     
 
-        const iteratorIntervalidId = setInterval(async () => {
-            await vehicle.Next.get()
-        }, 3000)
         
 
     }
