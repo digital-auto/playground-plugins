@@ -215,7 +215,7 @@ widgets.register("DriverCard", SignalPills([
 		}))
 	});
 	
-	    simulator("Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime", "set", ({args}) => {
+	    simulator("Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime", "get", ({args}) => {
         const [value] = args
         if (value === "greater") {
             simulatorFrame.querySelector("#wiper").contentWindow.postMessage("LO", "*")
