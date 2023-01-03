@@ -106,48 +106,26 @@ const plugin = ({widgets, simulator, vehicle}) => {
             justify-content: center;
         }
 		</style>
-        <style>
-            
-            #btn{
-                width: 100px;
-                height: 50px;
-                font-size: 25px;
-            }
-        </style>
         <img class="main-class" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fmain.png?alt=media&token=e4ec1915-de42-4226-8eeb-a74ab4d5f9e7">
         <img id="wind" class="wind" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368">
         <div id="show" class="show"></div>
 		`
         
         function btnClick() {
-            var wind = document.getElementById("wind");
+            var wind = HVACAnimationFrame.querySelector("#wind");
             console.log(wind.getAttribute("src"));
             if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368") {
                 wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
-                btn.innerHTML = "弱风";
                 return;
             }
             if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811") {
                 wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
-                btn.innerHTML = "强风";
                 return;
             }
     
         }
 
-        function init(txt) {
-            var show = document.getElementById("show");
-            if (txt) {
-                show.innerHTML = txt;
-            } else {
-                show.innerHTML = "HVAC degradation system state: 10";
-            }
-    
-        }
-
-        box.window.onload = () => {
-            init()
-        }
+        HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
         
 		box.injectNode(HVACAnimationFrame)
     });
