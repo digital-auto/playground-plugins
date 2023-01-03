@@ -78,7 +78,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	})
 
     widgets.register("HVAC Animation", (box) => {
-		HVACAnimationFrame = document.createElement("div")
+		let HVACAnimationFrame = document.createElement("div")
 		HVACAnimationFrame.innerHTML = 
 		`
 		<style>
@@ -160,7 +160,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     });
 
     widgets.register("IVI Animation", (box) => {
-        IVIAnimationFrame = document.createElement("div")
+        let IVIAnimationFrame = document.createElement("div")
 		IVIAnimationFrame.innerHTML = 
         `
 		<style>
