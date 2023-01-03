@@ -33,7 +33,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
             await vehicle.Next.get()
-            sim_function()
+            // sim_function()
         }, time)
     }
 
@@ -57,7 +57,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 },
             ],
             vehicle,
-            { iterate: true }
+            { iterate: false }
         )
     )
 	
@@ -72,10 +72,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	   vehicle
 	   )
 	)
-    let sim_function;
-    simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "subscribe", async ({func, args}) => {
-		sim_function = args[0]
-	})
+    // let sim_function;
+    // simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "subscribe", async ({func, args}) => {
+	// 	sim_function = args[0]
+	// })
 
     widgets.register("HVAC Animation", (box) => {
 		let HVACAnimationFrame = document.createElement("div")
