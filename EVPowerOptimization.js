@@ -344,8 +344,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
         }
 
-        IVIAnimationFrame.querySelector("#songName").innerText = songNameParam?songNameParam:"Shape of You一Ed Sheeran";
-        IVIAnimationFrame.querySelector("#mainText").innerHTML = mainTextParam?mainTextParam:"Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+        IVIAnimationFrame.querySelector("#songName").innerText = "Shape of You一Ed Sheeran";
+        IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
 
         box.injectNode(IVIAnimationFrame)
     });
