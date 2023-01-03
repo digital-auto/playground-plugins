@@ -373,7 +373,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Control Frame", (box) => {
         let controlFrame = document.createElement("div")
-        controlFrame.style = "display:flex;flex-direction:column;justify-content:space-evenly;align-items:center"
+        controlFrame.style = "height:100%;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center"
         controlFrame.innerHTML = 
         `
         <style>
@@ -389,21 +389,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
         </style>
         <div class="mode-select" style="display:flex;flex-direction:row;justify-content:space-evenly;align-items:center">
-            <div>
-                <button id="optimized" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                    Optimized
-                </button>
-                <button id="non-optimized" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                    Non-Optimized
-                </button>
-            </div>
-            <div>
-                <button id="start" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                    Start
-                </button>
-            </div>    
+            <button id="optimized" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Optimized
+            </button>
+            <button id="non-optimized" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Non-Optimized
+            </button>
         </div>
-        <div class="simulation-start"></div>
+        <div class="simulation-start">
+            <button id="start" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Start
+            </button>
+        </div>
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
         let optimized = controlFrame.querySelector("#optimized")
