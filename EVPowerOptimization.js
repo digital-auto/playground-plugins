@@ -151,6 +151,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("IVI Animation", (box) => {
         let IVIAnimationFrame = document.createElement("div")
+        IVIAnimationFrame.style = "max-wisth:fit-content"
 		IVIAnimationFrame.innerHTML = 
         `
 		<style>
@@ -161,16 +162,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
             width: 11px;
         }
         .main-img{
-            width: 653px;
-            margin-top: 25px;
-            margin-left: 22px;
+            width: 100%;
+            height: 100%;
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
         }
         .main-div {
             position: absolute;
-            top: 78px;
-            left: 168px;
-            width: 375px;
-            height: 218px;
+            top: 16%;
+            left: 22%;
+            width: 55%;
+            height: 65%;
             background-color: white;
         }
     
