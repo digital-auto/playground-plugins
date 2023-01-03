@@ -83,24 +83,27 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
 		<style>
         .main-class {
-            width: 1000px;
+            width: 100%;
+            height:100%
         }
         .wind {
             position: absolute;
-            width: 1000px;
-            left: 20px;
+            width: 100%;
+            left: 0%;
         }
         .show {
             background-color: #3c5c7b;
             position: absolute;
-            top: 269px;
-            left: 377px;
-            width: 276px;
-            height: 61px;
-            font-size: 14px;
+            top: 45%;
+            left: 31%%;
+            width: 40%;
+            height: 15%;
+            font-size: 12px;
             color: #e9e9e9;
             text-align: center;
-            line-height: 56px;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
         }
 		</style>
         <style>
