@@ -173,7 +173,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             top: 16%;
             left: 24.5%;
             width: 55%;
-            height: 65%;
+            height: 55%;
             background-color: white;
         }
     
