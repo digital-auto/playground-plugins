@@ -82,16 +82,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		HVACAnimationFrame.innerHTML = 
 		`
 		<style>
-		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Lato', sans-serif;
-            color:#ffffe3;
-            background-color:rgb(0 80 114);
-            text-align:center;            
-        }
         .main-class {
             width: 1000px;
         }
@@ -164,16 +154,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		IVIAnimationFrame.innerHTML = 
         `
 		<style>
-		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Lato', sans-serif;
-            color:#ffffe3;
-            background-color:rgb(0 80 114);
-            text-align:center;            
-        }
         .model-img{
             left: 44px;
             padding-top: 6px;
