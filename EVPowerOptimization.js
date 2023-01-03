@@ -30,6 +30,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
+    let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
             await vehicle.Next.get()
@@ -348,14 +349,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
             text-align:center;            
         }
         </style>
-        <div class="mode-select" style="display:flex;flex-direction:row;justify-content:space-evenly;align-items:center">
+        <!-- <div class="mode-select" style="display:flex;flex-direction:row;justify-content:space-evenly;align-items:center">
             <button id="optimized" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Optimized
             </button>
             <button id="non-optimized" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Non-Optimized
             </button>
-        </div>
+        </div> -->
         <div class="simulation-start">
             <button id="start" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Start
@@ -390,6 +391,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
         box.injectNode(controlFrame)
+
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        }
     })
 
 	return {
