@@ -95,7 +95,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             background-color: #3c5c7b;
             position: absolute;
             top: 45%;
-            left: 31%%;
+            left: 31%;
             width: 40%;
             height: 15%;
             font-size: 12px;
