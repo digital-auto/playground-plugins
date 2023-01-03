@@ -178,8 +178,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
     
         .main-text {
-            padding: 16px;
-            font-size: 16px;
+            padding: 10px;
+            font-size: 12px;
             font-weight: 600;
             height: 45%;
         }
@@ -188,8 +188,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin:0px 60px 0px 60px;
-            font-size: 17px;
+            margin:0% 10% 0% 10%;
+            font-size: 15px;
             font-weight: 600;
             overflow: hidden;
         }
@@ -328,9 +328,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
         `
 
         IVIAnimationFrame.querySelector("#btnImg").onclick = () => {
-            const btnImg = document.getElementById("btnImg");
-            const songName = document.getElementById("songName");
-            const model = document.getElementById("modelImg");
+            const btnImg = IVIAnimationFrame.querySelector("#btnImg");
+            const songName = IVIAnimationFrame.querySelector("#songName");
+            const model = IVIAnimationFrame.querySelector("#modelImg");
             const status = songName.style.animationPlayState;
             if(status == "paused"){
                 songName.style.animationPlayState = "running"
