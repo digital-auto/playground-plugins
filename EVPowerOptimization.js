@@ -33,6 +33,35 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
+            let mode = await vehicle.PowerOptimizationMode.get();
+            if ( mode === "OFF" || mode === "Level 1" ){
+                HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
+                HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
+                IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fpause.png?alt=media&token=8d615884-44aa-4bcb-93bc-49a0c3bb7958")
+                IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+                IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+            }
+            else if (mode === "Level 2" || mode === "Level 3" ) {
+                HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
+                HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+                IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+                IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
+                IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
+            }
+
+            if(mode === "OFF") {
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：OFF <br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+            }
+            else if(mode === "Level 1") {
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+            }
+            else if(mode === "Level 2") {
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 2 (IVI  & HVAC)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+            }
+            else {
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：OFF<br>Interior Light System Weak Light";
+            }
+
             await vehicle.Next.get()
             // sim_function()
         }, time)
@@ -78,8 +107,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	// 	sim_function = args[0]
 	// })
 
+    let HVACAnimationFrame = null;
     widgets.register("HVAC Animation", (box) => {
-		let HVACAnimationFrame = document.createElement("div")
+		HVACAnimationFrame = document.createElement("div")
 		HVACAnimationFrame.innerHTML = 
 		`
 		<style>
@@ -113,7 +143,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
         
         function btnClick() {
-            var wind = HVACAnimationFrame.querySelector("#wind");
+            let wind = HVACAnimationFrame.querySelector("#wind");
             console.log(wind.getAttribute("src"));
             if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368") {
                 wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
@@ -131,8 +161,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		box.injectNode(HVACAnimationFrame)
     });
 
+    let IVIAnimationFrame = null;
     widgets.register("IVI Animation", (box) => {
-        let IVIAnimationFrame = document.createElement("div")
+        IVIAnimationFrame = document.createElement("div")
         IVIAnimationFrame.style = "max-wisth:fit-content"
 		IVIAnimationFrame.innerHTML = 
         `
