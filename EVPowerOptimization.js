@@ -171,7 +171,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         .main-div {
             position: absolute;
             top: 16%;
-            left: 22%;
+            left: 24.5%;
             width: 55%;
             height: 65%;
             background-color: white;
@@ -181,7 +181,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             padding: 16px;
             font-size: 16px;
             font-weight: 600;
-            height: 90px;
+            height: 45%;
         }
     
         .song-div {
