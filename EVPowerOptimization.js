@@ -320,37 +320,33 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <div class="btn-div">
                 <img align="middle" class="btn-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fhearts.png?alt=media&token=76b9cf8c-c056-428d-b4e1-fc123022ed0e">
                 <img align="middle" class="btn-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Flast.png?alt=media&token=e7f2e83d-44cf-4375-b367-77b3087f401f">
-                <img align="middle" id="btnImg" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced" onclick="${btnClick2}">
+                <img align="middle" id="btnImg" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced">
                 <img align="middle" class="btn-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fend.png?alt=media&token=fb6dc01d-b626-419f-b218-d164c065562d">
                 <img align="middle" class="btn-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fmenu.png?alt=media&token=6310dad1-92fc-4cbf-856a-620317d0135b">
             </div>
         </div>
         `
 
-        function init2(songNameParam,mainTextParam){
-            document.getElementById("songName").innerText = songNameParam?songNameParam:"Shape of You一Ed Sheeran";
-            document.getElementById("mainText").innerHTML = mainTextParam?mainTextParam:"Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
-        }
-        function btnClick2(){
-            var btnImg = document.getElementById("btnImg");
-            var songName = document.getElementById("songName");
-            var model = document.getElementById("modelImg");
-            var status = songName.style.animationPlayState;
+        IVIAnimationFrame.querySelector("#btnImg").onclick = () => {
+            const btnImg = document.getElementById("btnImg");
+            const songName = document.getElementById("songName");
+            const model = document.getElementById("modelImg");
+            const status = songName.style.animationPlayState;
             if(status == "paused"){
                 songName.style.animationPlayState = "running"
                 model.style.animationPlayState = "running"
                 btnImg.setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fpause.png?alt=media&token=8d615884-44aa-4bcb-93bc-49a0c3bb7958")
-            }else{
+            }
+            else{
                 songName.style.animationPlayState = "paused"
                 model.style.animationPlayState = "paused"
                 btnImg.setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
             }
-            
         }
 
-        box.window.onload = () => {
-            init2();
-        }
+        IVIAnimationFrame.querySelector("#songName").innerText = songNameParam?songNameParam:"Shape of You一Ed Sheeran";
+        IVIAnimationFrame.querySelector("#mainText").innerHTML = mainTextParam?mainTextParam:"Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+
         box.injectNode(IVIAnimationFrame)
     });
 
