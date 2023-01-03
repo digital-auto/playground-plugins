@@ -364,19 +364,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
-        let optimized = controlFrame.querySelector("#optimized")
-        optimized.onclick = () => {
-            sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE"
-            optimized.style.backgroundColor = "rgb(104 130 158)";
-            non_optimized.style.backgroundColor = "rgb(157 176 184)";
-        }
+        // let optimized = controlFrame.querySelector("#optimized")
+        // optimized.onclick = () => {
+        //     sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE"
+        //     optimized.style.backgroundColor = "rgb(104 130 158)";
+        //     non_optimized.style.backgroundColor = "rgb(157 176 184)";
+        // }
 
-        let non_optimized = controlFrame.querySelector("#non-optimized")
-        non_optimized.onclick = () => {
-            sheetID = "13ix5z-_Oa_tB5v11XJqnST0SiCBmPraZVUBbB5QzK9c"
-            optimized.style.backgroundColor = "rgb(157 176 184)";
-            non_optimized.style.backgroundColor = "rgb(104 130 158)";
-        }
+        // let non_optimized = controlFrame.querySelector("#non-optimized")
+        // non_optimized.onclick = () => {
+        //     sheetID = "13ix5z-_Oa_tB5v11XJqnST0SiCBmPraZVUBbB5QzK9c"
+        //     optimized.style.backgroundColor = "rgb(157 176 184)";
+        //     non_optimized.style.backgroundColor = "rgb(104 130 158)";
+        // }
 
         let start = controlFrame.querySelector("#start")
         start.onclick = () => {
