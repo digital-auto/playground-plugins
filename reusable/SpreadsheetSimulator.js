@@ -1,4 +1,5 @@
 import SimulatorPlugins from "./SimulatorPlugins.js"
+import PLUGINS_API_KEY from "./apikey.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -25,7 +26,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 
 const plugin = ({simulator, vehicle}) => {
-    fetchRowsFromSpreadsheet("1geHkSlE6e351LS_bMFGMIUBEOZO-HTb0wOS90X1jAp0", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
+    fetchRowsFromSpreadsheet("1geHkSlE6e351LS_bMFGMIUBEOZO-HTb0wOS90X1jAp0", PLUGINS_API_KEY)
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(vehicle)

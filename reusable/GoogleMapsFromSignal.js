@@ -1,4 +1,5 @@
 import GoogleMapsPluginApi from "./GoogleMapsPluginApi.js"
+import { PLUGINS_APIKEY } from "./apikey.js"
 
 const supportsPins = (vehicle) => {
     try {
@@ -23,7 +24,7 @@ const GoogleMapsFromSignal = (directions, vehicle, {
 } = {}) => {
     return (box) => {
         let setVehiclePinGlobal = null
-        GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, directions).then(({setVehiclePin}) => {
+        GoogleMapsPluginApi(PLUGINS_APIKEY, box, directions).then(({setVehiclePin}) => {
             setVehiclePinGlobal = setVehiclePin
         })
 

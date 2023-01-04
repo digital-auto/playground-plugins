@@ -1,4 +1,5 @@
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 
 const plugin = ({widgets, simulator}) => {
     let boxGlobal = null
@@ -15,7 +16,7 @@ const plugin = ({widgets, simulator}) => {
     return {
         createDirections: (path) => {
             if (boxGlobal !== null) {
-                GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", boxGlobal, path)
+                GoogleMapsPluginApi(PLUGINS_APIKEY, boxGlobal, path)
             }
         }
     }

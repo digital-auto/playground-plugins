@@ -2,6 +2,7 @@ import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
@@ -43,7 +44,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	
 	let sim_intervalId = null;
-	fetchRowsFromSpreadsheet("1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4", "AIzaSyA1otn2KKfYB3Svdfv30BhgJHPpWjVVrvw")
+	fetchRowsFromSpreadsheet("1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4", PLUGINS_APIKEY)
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
 		console.log(rows)
