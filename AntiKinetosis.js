@@ -420,7 +420,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				"lng": 10.425532
 			},
 		]
-		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path, "BICYCLING").then(({setVehiclePin}) => {
+		GoogleMapsPluginApi(PLUGINS_APIKEY, box, path, "BICYCLING").then(({setVehiclePin}) => {
 			setVehiclePinGlobal = setVehiclePin
 		})
 	})
