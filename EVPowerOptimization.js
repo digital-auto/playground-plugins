@@ -262,11 +262,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
         #btnImg{
             cursor: pointer;
-            width: 50px;
+            width: 15%;
         }
     
         .btn-img{
-            width: 30px;
+            width: 10%;
         }
     
         @keyframes modelMove {
