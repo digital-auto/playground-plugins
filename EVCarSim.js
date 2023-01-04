@@ -1,11 +1,12 @@
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import StatusTable from "./reusable/StatusTable.js"
 import DataTableHTML from "./reusable/DataTableHTML.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 
 const plugin = ({widgets, simulator, vehicle}) => {
     let setVehiclePinGlobal = null
     widgets.register("Maps", (box) => {
-        GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, [
+        GoogleMapsPluginApi(PLUGINS_APIKEY, box, [
             {
                 "lat": 48.813254159291475,
                 "lng": 9.212379215835714
