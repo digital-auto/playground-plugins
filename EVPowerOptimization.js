@@ -172,7 +172,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         .model-img{
             left: 10%;
             position: absolute;
-            width: 11px;
+            width: 3%;
         }
         .main-img{
             width: 100%;
