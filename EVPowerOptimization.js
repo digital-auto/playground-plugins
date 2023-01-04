@@ -51,16 +51,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
 
             if(mode === "OFF") {
-                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：OFF <br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：OFF <br>IVI System ：ON<br>Interior Light System ：Medium Light";
             }
             else if(mode === "Level 1") {
                 IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
             }
             else if(mode === "Level 2") {
-                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 2 (IVI  & HVAC)<br>IVI System ：ON<br>Interior Light System ：Medium Light";
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 2 (IVI  & HVAC)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
             }
             else {
-                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：ON<br>Interior Light System Weak Light";
+                IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：OFF<br>Interior Light System Weak Light";
             }
 
             await vehicle.Next.get()
