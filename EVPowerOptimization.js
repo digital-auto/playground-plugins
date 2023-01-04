@@ -70,18 +70,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
             }
 
-            widgets.register("SOCLineCharts", LineChart(
-                [
-                    {
-                        signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
-                        suffix: " C",
-                        color: "Black"
-                    },
-                ],
-                vehicle
-                )
-            )
-
             await vehicle.Next.get()
             // sim_function()
         }, time)
@@ -111,6 +99,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
         )
     )
 	
+    widgets.register("SOCLineCharts", LineChart(
+            [
+                {
+                    signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
+                    suffix: " C",
+                    color: "Black"
+                },
+	   ],
+	   vehicle
+	   )
+	)
     // let sim_function;
     // simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "subscribe", async ({func, args}) => {
 	// 	sim_function = args[0]
