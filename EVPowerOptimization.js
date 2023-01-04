@@ -170,8 +170,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         `
 		<style>
         .model-img{
-            left: 44px;
-            padding-top: 6px;
+            left: 10%;
             position: absolute;
             width: 11px;
         }
@@ -248,7 +247,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             margin-bottom: -3px;
         }
         .process-img{
-            width: 285px;
+            width: 80%;
         }
         .btn-div{
             text-align: center;
