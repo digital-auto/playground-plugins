@@ -1,5 +1,5 @@
 import SimulatorPlugins from "./SimulatorPlugins.js"
-import PLUGINS_API_KEY from "./apikey.js"
+import { PLUGINS_API_KEY } from "./apikey.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
