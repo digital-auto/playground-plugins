@@ -71,7 +71,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     widgets.register("Table",StatusTable({
             apis:["Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Powertrain.TractionBattery.AccumulatedConsumedEnergy", "Vehicle.Cabin.Infotainment.Media.Action", "Vehicle.Cabin.Lights.LightIntensity",	"Vehicle.TravelledDistance", "Vehicle.CurrentLocation.Longitude","Vehicle.CurrentLocation.Latitude"],
             vehicle: vehicle,
-		    refresh: 100         
+		    refresh: 800         
     }))
 	
     widgets.register(
@@ -418,7 +418,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             })
 
             start.style.backgroundColor = "rgb(104 130 158)";
-            start_sim(100)
+            start_sim(800)
 
         }
 
