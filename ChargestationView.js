@@ -1,5 +1,4 @@
 import loadScript from "./reusable/loadScript.js"
-import SignalPills from "./reusable/SignalPills.js"
 import StatusTable from "./reusable/StatusTable.js"
 
 const plugin = ({simulator, widgets, modelObjectCreator}) => {
@@ -7,7 +6,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     // Get the query string value of "chargestationId" with URLSearchParams
     const params = new URLSearchParams(window.location.search)
-    const chargestationId = params.get('chargestationId')
+    const chargestationId = params.get('chargestationId') ?? 1
 
     const currentSignalValues = {
         "Chargestation.ID": chargestationId,
@@ -65,16 +64,18 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         })
     })
 
-	widgets.register("ChargestationStatus", StatusTable({
-		apis: [
-            "Chargestation.ID",
-            "Chargestation.MaxCurrent",
-            "Chargestation.MaxVoltage",
-            "Chargestation.ChargingVehicleID",
-        ],
-		vehicle: chargestation,
-		refresh: 4000
-	}))
+	widgets.register("ChargestationStatus", (box) => {
+        StatusTable({
+            apis: [
+                "Chargestation.ID",
+                "Chargestation.MaxCurrent",
+                "Chargestation.MaxVoltage",
+                "Chargestation.ChargingVehicleID",
+            ],
+            vehicle: chargestation,
+            refresh: 4000
+        })
+    })
 
 
 }
