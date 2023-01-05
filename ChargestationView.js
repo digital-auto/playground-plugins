@@ -64,18 +64,16 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         })
     })
 
-	widgets.register("ChargestationStatus", (box) => {
-        StatusTable({
-            apis: [
-                "Chargestation.ID",
-                "Chargestation.MaxCurrent",
-                "Chargestation.MaxVoltage",
-                "Chargestation.ChargingVehicleID",
-            ],
-            vehicle: chargestation,
-            refresh: 4000
-        })
-    })
+	widgets.register("ChargestationStatus", StatusTable({
+		apis: [
+            "Chargestation.ID",
+            "Chargestation.MaxCurrent",
+            "Chargestation.MaxVoltage",
+            "Chargestation.ChargingVehicleID",
+        ],
+		vehicle: chargestation,
+		refresh: 500
+	}))
 
 
 }
