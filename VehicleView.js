@@ -1,5 +1,6 @@
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import LineChart from "./reusable/LineChart.js"
 
 const plugin = ({simulator, widgets, modelObjectCreator}) => {
     const vehicle = modelObjectCreator("Vehicle")
@@ -85,6 +86,22 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     widgets.register("VehicleImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
     })
+
+    // LineChart widget for StateOfCharge
+
+    const StateOfChargeTile = {
+        signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
+        label: "State of Charge",
+        icon: "car-battery",
+    }
+
+    widgets.register("StateOfChargeLineChart", LineChart(
+        [
+            StateOfChargeTile
+        ],
+        vehicle,
+        5000
+    ))
 
 }
 
