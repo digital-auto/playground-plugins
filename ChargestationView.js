@@ -1,6 +1,6 @@
 import loadScript from "./reusable/loadScript.js"
 import SignalPills from "./reusable/SignalPills.js"
-import StatusTable from "./reusable/StatusTable"
+import StatusTable from "./reusable/StatusTable.js"
 
 const plugin = ({simulator, widgets, modelObjectCreator}) => {
     const chargestation = modelObjectCreator("Chargestation")
