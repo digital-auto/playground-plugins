@@ -64,8 +64,12 @@ const plugin = ({ box, widgets }) => {
                                 strokeWeight: 0,
                                 scale: .1,
                                 rotation: 0
-                            }
+                            },
+                            clickable: true
                         });
+                        vehicleMarkers[vehicleId].addEventListener('click', () => {
+                            window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?vehicleId=${vehicleId}`
+                        })
                     }
                 });
 
@@ -84,7 +88,11 @@ const plugin = ({ box, widgets }) => {
                         chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
                             map: map,
+                            clickable: true
                         });
+                        chargestationMarkers[chargestationId].addEventListener('click', () => {
+                            window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?chargestationId=${chargestationId}`
+                        })
                     }
                 });
 
