@@ -82,7 +82,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         vehicle,
     ))
 
-    // Register a widget that just the following image https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1, centered
     widgets.register("VehicleImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
     })

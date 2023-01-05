@@ -75,6 +75,10 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 		refresh: 500
 	}))
 
+    widgets.register("ChargestationImage", box => {
+        box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargestation.png?alt=media&token=8e3f6cb4-d327-466c-94b0-7fdd450e3a4f" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
+    })
+
 
 }
 
