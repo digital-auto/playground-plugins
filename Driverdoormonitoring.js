@@ -29,7 +29,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-const plugin = ({widgets, vehicle, simulator}) => {
+const plugin = ({widgets, simulator, vehicle}) => {
 	
     fetchRowsFromSpreadsheet("1Rbal-uM_L3XHsv12QD6u-QwfiQfVNnTIhKTDznE9vnE", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
     .then((rows) => {
@@ -141,19 +141,19 @@ widgets.register(
             },
         }
   let sim_function;
-       simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
+       simulator("Vehicle.SpeedOp", "subscribe", async ({func, args}) => {
 		sim_function = args[0]
 		console.log("print func", args[0])
 	})
 
    return {
-		start_simulation : (time) => {
-			sim_intervalId = setInterval(async () => {
-				await vehicle.Next.get()
-				sim_function()
-			}, time)
-		}
-	}	
+	   start_simulation : (time) => {
+		sim_intervalId = setInterval(async () => {
+			await vehicle.Next.get()
+			sim_function()
+		}, time)
+	   }
+    }	
 
 }
 
