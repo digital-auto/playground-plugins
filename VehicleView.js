@@ -60,7 +60,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
 	widgets.register("VehicleStatus", StatusTable({
         // Filter all Latitiude and Longitude signals
-        apis: Object.keys(currentSignalValues).filter(signal => signal.includes("Latitude") || signal.includes("Longitude")),
+        apis: Object.keys(currentSignalValues).filter(signal => !(signal.includes("Latitude") || signal.includes("Longitude")) ),
         vehicle,
         refresh: 500
     }))
