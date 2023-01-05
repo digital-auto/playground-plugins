@@ -97,7 +97,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         LineChart(
             [
                 {
-                    signal: "Vehicle.Speed",
+                    signal: "Vehicle.speed",
                     suffix: " km/h"
                 }
             ],
