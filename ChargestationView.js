@@ -1,3 +1,5 @@
+import loadScript from "./reusable/loadScript.js"
+
 const plugin = ({simulator, widgets}) => {
     // Get the query string value of "chargestationId" with URLSearchParams
     const params = new URLSearchParams(window.location.search)
@@ -39,24 +41,26 @@ const plugin = ({simulator, widgets}) => {
 
     // Register a widget that renders a map with a marker with the chargestation's location
     widgets.register("ChargestationMap", (box) => {
-        const container = document.createElement("div")
-        container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
-        box.injectNode(container)
-
-        const map = new box.window.google.maps.Map(container, {
-            zoom: 6.3,
-            center: {
-                lat: currentSignalValues["Chargestation.Location.Latitude"],
-                lng: currentSignalValues["Chargestation.Location.Longitude"]
-            }
-        });
-
-        const marker = new box.window.google.maps.Marker({
-            position: {
-                lat: currentSignalValues["Chargestation.Location.Latitude"],
-                lng: currentSignalValues["Chargestation.Location.Longitude"]
-            },
-            map: map
+        loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`).then(() => {
+            const container = document.createElement("div")
+            container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
+            box.injectNode(container)
+    
+            const map = new box.window.google.maps.Map(container, {
+                zoom: 6.3,
+                center: {
+                    lat: currentSignalValues["Chargestation.Location.Latitude"],
+                    lng: currentSignalValues["Chargestation.Location.Longitude"]
+                }
+            });
+    
+            const marker = new box.window.google.maps.Marker({
+                position: {
+                    lat: currentSignalValues["Chargestation.Location.Latitude"],
+                    lng: currentSignalValues["Chargestation.Location.Longitude"]
+                },
+                map: map
+            })
         })
         
     })
