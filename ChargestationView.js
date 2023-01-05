@@ -33,15 +33,13 @@ const plugin = ({simulator, widgets}) => {
         }
     }
 
-    setInterval(() => {
-        updateChargestation()
-    }, 5000)
-
-    updateChargestation()
+    const firstLoadChargestation = updateChargestation()
 
     // Register a widget that renders a map with a marker with the chargestation's location
     widgets.register("ChargestationMap", (box) => {
-        loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`).then(() => {
+        loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`).then(async () => {
+            await firstLoadChargestation
+            console.log(currentSignalValues)
             const container = document.createElement("div")
             container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
             box.injectNode(container)
