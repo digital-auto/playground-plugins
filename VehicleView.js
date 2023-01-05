@@ -7,7 +7,17 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     // Get the query string value of "vehicleId" with URLSearchParams
     const params = new URLSearchParams(window.location.search)
-    const vehicleId = params.get('vehicleId') ?? 1
+    const vehicleId = params.get('vehicleId')
+
+    if (!vehicleId) {
+        // Fetch vehicle coordinates from API and link to the first vehicle
+        fetch('https://evfleetsim.onrender.com/fleet/vehicle-coordinates')
+        .then(response => response.json())
+        .then(vehicleCoordinates => {
+            const firstVehicleId = Object.keys(vehicleCoordinates)[0]
+            window.location.href = `?vehicleId=${firstVehicleId}`
+        })
+    }
 
     const currentSignalValues = {
         "Vehicle.VehicleIdentification.VIN": 0,
@@ -31,8 +41,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             return currentSignalValues[signal]
         })
     }
-    
-    
 
     const updateVehicle = async () => {
         if (!vehicleId) {
@@ -45,24 +53,19 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         }
     }
 
-    const firstLoadVehicle = updateVehicle()
-    firstLoadVehicle.then(() => {
-        GoogleMapsFromSignal([
-            
-        ], vehicle)    
-    })
+    // Update the vehicle every 5 seconds
+    
+    setInterval(updateVehicle, 5000)
+
+    updateVehicle()
 
     // Register a widget that renders a map with a marker with the chargestation's location
 
 	widgets.register("VehicleStatus", (box) => {
         StatusTable({
-            apis: [
-                "Chargestation.ID",
-                "Chargestation.MaxCurrent",
-                "Chargestation.MaxVoltage",
-                "Chargestation.ChargingVehicleID",
-            ],
-            vehicle: chargestation,
+            // Filter all Latitiude and Longitude signals
+            apis: Object.keys(currentSignalValues).filter(signal => signal.includes("Latitude") || signal.includes("Longitude")),
+            vehicle,
             refresh: 4000
         })
     })
