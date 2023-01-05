@@ -1,4 +1,3 @@
-import loadScript from "./reusable/loadScript.js"
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 
@@ -59,15 +58,29 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     updateVehicle()
 
-    // Register a widget that renders a map with a marker with the chargestation's location
-
 	widgets.register("VehicleStatus", StatusTable({
         // Filter all Latitiude and Longitude signals
         apis: Object.keys(currentSignalValues).filter(signal => signal.includes("Latitude") || signal.includes("Longitude")),
         vehicle,
-        refresh: 4000
+        refresh: 500
     }))
 
+
+    // Register a widget that renders a map with a marker with the vehicle's location
+    // Use the GoogleMapsFromSignal widget, then manually change the directions of the map created by accesing the DOM from box.window
+    widgets.register("VehicleMap", GoogleMapsFromSignal(
+        [
+            {
+                "lat": 47.93330662389945,
+                "lng": 6.8981571326644175
+            },
+            {
+                "lat": 53.08277351361783,
+                "lng": 13.195127235586439
+            },
+        ],
+        vehicle,
+    ))
 
 }
 
