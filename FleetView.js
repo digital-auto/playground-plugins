@@ -91,7 +91,7 @@ const plugin = ({ box, widgets }) => {
                             clickable: true
                         });
                         chargestationMarkers[chargestationId].addListener('click', () => {
-                            window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?chargestationId=${chargestationId}`
+                            window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
                         })
                     }
                 });
