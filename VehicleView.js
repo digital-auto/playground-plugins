@@ -61,14 +61,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     // Register a widget that renders a map with a marker with the chargestation's location
 
-	widgets.register("VehicleStatus", (box) => {
-        StatusTable({
-            // Filter all Latitiude and Longitude signals
-            apis: Object.keys(currentSignalValues).filter(signal => signal.includes("Latitude") || signal.includes("Longitude")),
-            vehicle,
-            refresh: 4000
-        })
-    })
+	widgets.register("VehicleStatus", StatusTable({
+        // Filter all Latitiude and Longitude signals
+        apis: Object.keys(currentSignalValues).filter(signal => signal.includes("Latitude") || signal.includes("Longitude")),
+        vehicle,
+        refresh: 4000
+    }))
 
 
 }
