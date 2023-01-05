@@ -49,7 +49,7 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
                 AverageSpeedTile
             ],
             fleet,
-            3000
+            5000
         ),
     )
 
@@ -61,7 +61,7 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
                 NumberOfChargingVehiclesTile
             ],
             fleet,
-            3000
+            5000
         )
     )
     
