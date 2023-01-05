@@ -39,13 +39,12 @@ const plugin = ({simulator, widgets}) => {
     widgets.register("ChargestationMap", (box) => {
         loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`).then(async () => {
             await firstLoadChargestation
-            console.log(currentSignalValues)
             const container = document.createElement("div")
             container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
             box.injectNode(container)
     
             const map = new box.window.google.maps.Map(container, {
-                zoom: 6.3,
+                zoom: 15,
                 center: {
                     lat: currentSignalValues["Chargestation.Location.Latitude"],
                     lng: currentSignalValues["Chargestation.Location.Longitude"]
