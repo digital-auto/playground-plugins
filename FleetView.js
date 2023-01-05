@@ -67,7 +67,7 @@ const plugin = ({ box, widgets }) => {
                             },
                             clickable: true
                         });
-                        vehicleMarkers[vehicleId].addEventListener('click', () => {
+                        vehicleMarkers[vehicleId].addListener('click', () => {
                             window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?vehicleId=${vehicleId}`
                         })
                     }
@@ -90,7 +90,7 @@ const plugin = ({ box, widgets }) => {
                             map: map,
                             clickable: true
                         });
-                        chargestationMarkers[chargestationId].addEventListener('click', () => {
+                        chargestationMarkers[chargestationId].addListener('click', () => {
                             window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?chargestationId=${chargestationId}`
                         })
                     }
