@@ -48,9 +48,9 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
             [
                 AverageSpeedTile
             ],
-            fleet
+            fleet,
+            3000
         ),
-        3000
     )
 
     widgets.register(
