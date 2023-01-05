@@ -1,6 +1,6 @@
-import SignalPills from "https://playground-plugins.netlify.app/reusable/SignalPills.js"
-import SignalTile from "https://playground-plugins.netlify.app/reusable/SignalTile.js"
-import LineChart from "https://playground-plugins.netlify.app/reusable/LineChart.js"
+import SignalPills from "./reusable/SignalPills.js"
+import SignalTile from "./reusable/SignalTile.js"
+import LineChart from "./reusable/LineChart.js"
 
 const plugin = ({ widgets, simulator, modelObjectCreator }) => {
     const fleet = modelObjectCreator("Fleet")
