@@ -50,6 +50,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
             let mode = await vehicle.Driver.ProximityToVehicle.get();
+		if (mode > 5){
+			message = "Danger";
+			mobileMessage = message;
+		}
+		else {
+			message = "";
+			mobileMessage = message;
+		}
+		
 		await vehicle.Next.get()
             // sim_function()
         }, time)
