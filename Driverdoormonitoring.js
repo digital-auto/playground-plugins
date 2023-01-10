@@ -144,13 +144,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 paddingHorizontal: 25
                 }))
           });
-    return {
-            notifyPhone: (message) => {
-                if (mobileNotifications !== null) {
-                    mobileNotifications(message)
-                }
-            },
-        }
+    
     return {
 		start_simulation : start_sim
 	}
