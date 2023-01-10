@@ -122,7 +122,7 @@ widgets.register(
         }, vehicle)
      )
   	
-  message = "Hey"	
+  	
 	
   let mobileNotifications = null;
           widgets.register("Mobile", (box) => {
@@ -138,7 +138,7 @@ widgets.register(
     return {
             notifyPhone: (message) => {
                 if (mobileNotifications !== null) {
-                    mobileNotifications(message)
+                    mobileNotifications(hey)
                 }
             },
         }
