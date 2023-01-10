@@ -46,7 +46,22 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }, vehicle))
 */	
 	
-widgets.register(
+    let sim_intervalId = null;
+    const start_sim = (time) => {
+        sim_intervalId = setInterval(async () => {
+            let mode = await vehicle.Driver.ProximityToVehicle();	
+		
+	    if (mode > 40):{
+	    	mobileMessage = "The driver is out of boundary" }
+	    else {	
+		mobileMessage = "" }
+	mobileNotifications(mobileMessage);
+		await vehicle.Next.get()
+            // sim_function()
+        }, time)
+    }
+		
+  widgets.register(
         "SignalPillsDoor",
         SignalPills(
             [
@@ -135,27 +150,11 @@ widgets.register(
                 paddingHorizontal: 25
                 }))
           });
+    
+  start_sim(800)
     return {
-            notifyPhone: (message) => {
-                if (mobileNotifications !== null) {
-                    mobileNotifications(message)
-                }
-            },
-        }
-  let sim_function;
-       simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
-		sim_function = args[0]
-		console.log("print func", args[0])
-	})
-
-   return {
-	   start_simulation : (time) => {
-		sim_intervalId = setInterval(async () => {
-			await vehicle.Next.get()
-			sim_function()
-		}, time)
-	   }
-    }	
+		start_simulation : start_sim
+	} 	
 
 }
 
