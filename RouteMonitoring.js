@@ -3,6 +3,7 @@ import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -29,7 +30,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, vehicle, simulator}) => {
 	
-    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
+    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", "PLUGINS_APIKEY")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
