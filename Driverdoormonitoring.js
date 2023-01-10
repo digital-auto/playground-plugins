@@ -138,7 +138,7 @@ widgets.register(
     return {
             notifyPhone: (message) => {
                 if (mobileNotifications !== null) {
-                    mobileNotifications(hey)
+                    mobileNotifications(message)
                 }
             },
         }
