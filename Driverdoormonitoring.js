@@ -58,7 +58,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			message = "";
 			mobileMessage = message;
 		}
-		
+		mobileNotifications(mobileMessage);
 		await vehicle.Next.get()
             // sim_function()
         }, time)
@@ -143,16 +143,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
   	
 	
   let mobileNotifications = null;
-          widgets.register("Mobile", (box) => {
-                ({printNotification: mobileNotifications} = MobileNotifications({
-                      apis : null,
-                      vehicle: null,
-                      box: box,
-                      refresh: null,
-                paddingTop: 70,
-                paddingHorizontal: 25
-                }))
-          });
+	widgets.register("Mobile", (box) => {
+		const {printNotification} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+			paddingTop: 70,
+                	paddingHorizontal: 25
+		})
+		mobileNotifications = printNotification;
+	})
     
     return {
 		start_simulation : start_sim
