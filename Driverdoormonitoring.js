@@ -122,6 +122,8 @@ widgets.register(
         }, vehicle)
      )
   	
+  message = "Hey"	
+	
   let mobileNotifications = null;
           widgets.register("Mobile", (box) => {
                 ({printNotification: mobileNotifications} = MobileNotifications({
