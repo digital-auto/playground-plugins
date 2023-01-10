@@ -46,11 +46,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }, vehicle))
 */	
 	
-    let sim_intervalId = null;
-    const start_sim = (time) => {
-        sim_intervalId = setInterval(async () => {
-            let mode = await vehicle.PowerOptimizationMode.get();	
-	
+    
   widgets.register(
         "SignalPillsDoor",
         SignalPills(
