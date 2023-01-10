@@ -46,7 +46,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }, vehicle))
 */	
 	
-    
+    let sim_intervalId = null;
+    const start_sim = (time) => {
+        sim_intervalId = setInterval(async () => {
+            let mode = await vehicle.Driver.ProximityToVehicle.get();
+		await vehicle.Next.get()
+            // sim_function()
+        }, time)
+    }
   widgets.register(
         "SignalPillsDoor",
         SignalPills(
