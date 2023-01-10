@@ -45,7 +45,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 */	
-    start_sim(800)	
+    	
     let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
@@ -54,6 +54,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // sim_function()
         }, time)
     }
+    start_sim(800)
   widgets.register(
         "SignalPillsDoor",
         SignalPills(
