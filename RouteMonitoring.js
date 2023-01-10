@@ -27,10 +27,9 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
     return rows;
 }
-
-const plugin = ({widgets, vehicle, simulator}) => {
-	
-    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", "PLUGINS_APIKEY")
+const plugin = ({widgets, simulator, vehicle}) => {
+  
+    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", PLUGINS_APIKEY)
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
