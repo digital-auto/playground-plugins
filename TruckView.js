@@ -82,9 +82,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         ],
         vehicle,
     ), null, {
-        icon: {
-            
-        },
+        icon: "https://maps.google.com/mapfiles/ms/icons/truck.png",
     })
 
     widgets.register("TruckImage", box => {
