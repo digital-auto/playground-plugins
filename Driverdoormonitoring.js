@@ -29,9 +29,9 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
     return rows;
 }
-
+const message = " ";
 const plugin = ({widgets, simulator, vehicle}) => {
-    const message ="";	
+    	
     fetchRowsFromSpreadsheet("1I2SDTt8bhWe23KgCerLaityOLT4vVFF5GBX0zAIGLNU", "AIzaSyDQhEi1VGA2FiEAg9vVbvKZRjb3SfwYbI4")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
