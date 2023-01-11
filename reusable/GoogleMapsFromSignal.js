@@ -21,10 +21,11 @@ const convertCoordinates = (coordinates) => {
 const GoogleMapsFromSignal = (directions, vehicle, {
     iterate = false,
     autoNext = 800,
+    icon = null
 } = {}) => {
     return (box) => {
         let setVehiclePinGlobal = null
-        GoogleMapsPluginApi(PLUGINS_APIKEY, box, directions).then(({setVehiclePin}) => {
+        GoogleMapsPluginApi(PLUGINS_APIKEY, box, directions, null, {icon} ).then(({setVehiclePin}) => {
             setVehiclePinGlobal = setVehiclePin
         })
 
