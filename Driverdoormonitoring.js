@@ -50,25 +50,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
-            let mode = await vehicle.Driver.ProximityToVehicle.get();
-		if (mode > 5){
-			message = "both the doors are open\n and driver is in proximity range";
-			mobileMessage = message;
-		}
-		else if (mode >20){
-			message = "the driver is out of the proximity range";
-			mobileMessage = message;
-		}	
-		else {
-			message = "";
-			mobileMessage = message;
-		}
-		mobileNotifications(mobileMessage);
-		await vehicle.Next.get()
+            // let mode = await vehicle.Driver.ProximityToVehicle.get();
+            // if (mode > 5){
+            //     message = "both the doors are open\n and driver is in proximity range";
+            //     mobileMessage = message;
+            // }
+            // else if (mode >20){
+            //     message = "the driver is out of the proximity range";
+            //     mobileMessage = message;
+            // }	
+            // else {
+            //     message = "";
+            //     mobileMessage = message;
+            // }
+            // mobileNotifications(mobileMessage);
+            await vehicle.Next.get()
             sim_function()
         }, time)
     }
-    start_sim(3000)
+    // start_sim(3000)
   widgets.register(
         "SignalPillsDoor",
         SignalPills(
@@ -159,7 +159,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box: box,
 			refresh: null,
 			paddingTop: 70,
-                	paddingHorizontal: 25
+            paddingHorizontal: 25
 		})
 		mobileNotifications = printNotification;
 	})
