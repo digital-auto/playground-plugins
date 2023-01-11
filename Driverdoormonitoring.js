@@ -5,6 +5,7 @@ import LineChart from "./reusable/LineChart.js"
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import SignalPills from "./reusable/SignalPills.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -30,8 +31,8 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 }
 
 const plugin = ({widgets, simulator, vehicle}) => {
-	
-    fetchRowsFromSpreadsheet("1Rbal-uM_L3XHsv12QD6u-QwfiQfVNnTIhKTDznE9vnE", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
+    	
+    fetchRowsFromSpreadsheet("1I2SDTt8bhWe23KgCerLaityOLT4vVFF5GBX0zAIGLNU", "AIzaSyDQhEi1VGA2FiEAg9vVbvKZRjb3SfwYbI4")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
@@ -45,8 +46,30 @@ const plugin = ({widgets, simulator, vehicle}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 */	
-	
-widgets.register(
+    let message = "", mobileMessage = "";	
+    let sim_intervalId = null;
+    const start_sim = (time) => {
+        sim_intervalId = setInterval(async () => {
+            let mode = await vehicle.Driver.ProximityToVehicle.get();
+		if (mode > 5){
+			message = "both the doors are open\n and driver is in proximity range";
+			mobileMessage = message;
+		}
+		else if (mode >20){
+			message = "the driver is out of the proximity range";
+			mobileMessage = message;
+		}	
+		else {
+			message = "";
+			mobileMessage = message;
+		}
+		mobileNotifications(mobileMessage);
+		await vehicle.Next.get()
+            // sim_function()
+        }, time)
+    }
+    start_sim(3000)
+  widgets.register(
         "SignalPillsDoor",
         SignalPills(
             [
@@ -122,39 +145,30 @@ widgets.register(
         }, vehicle)
      )
   	
+  	
+	
   let mobileNotifications = null;
-          widgets.register("Mobile", (box) => {
-                ({printNotification: mobileNotifications} = MobileNotifications({
-                      apis : null,
-                      vehicle: null,
-                      box: box,
-                      refresh: null,
-                paddingTop: 70,
-                paddingHorizontal: 25
-                }))
-          });
-    return {
-            notifyPhone: (message) => {
-                if (mobileNotifications !== null) {
-                    mobileNotifications(message)
-                }
-            },
-        }
-  let sim_function;
-       simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
-		sim_function = args[0]
-		console.log("print func", args[0])
+	widgets.register("Mobile", (box) => {
+		const {printNotification} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+			paddingTop: 70,
+                	paddingHorizontal: 25
+		})
+		mobileNotifications = printNotification;
 	})
-
-   return {
-	   start_simulation : (time) => {
-		sim_intervalId = setInterval(async () => {
-			await vehicle.Next.get()
-			sim_function()
-		}, time)
-	   }
-    }	
-
+    
+    return {
+		start_simulation : start_sim
+	}
+    return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        } 		
+  
 }
 
 export default plugin

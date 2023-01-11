@@ -1,5 +1,5 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
-
+import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import LineChart from "./reusable/LineChart.js"
@@ -30,7 +30,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
   
-    fetchRowsFromSpreadsheet("1vcrl5yRyMiAdsH1eIakfuHxocnYu6rgs5O-QHxnznj4", "AIzaSyBpMUJezbwUYARDHxFIR0a7h4yxh2v1dwI")
+    fetchRowsFromSpreadsheet("1vcrl5yRyMiAdsH1eIakfuHxocnYu6rgs5O-QHxnznj4", PLUGINS_APIKEY)
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
@@ -106,13 +106,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	
 	
-return {
-        notifyPhone: (message) => {
-            if (mobileNotifications !== null) {
-                mobileNotifications(message)
-            }
-        },
-    }
+let sim_function;
+	simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+	
+	simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}
 }
 
 export default plugin

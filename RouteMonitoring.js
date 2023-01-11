@@ -3,6 +3,7 @@ import SignalPills from "./reusable/SignalPills.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import SignalTile from "./reusable/SignalTile.js"
 import LineChart from "./reusable/LineChart.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -26,10 +27,9 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
     return rows;
 }
-
-const plugin = ({widgets, vehicle, simulator}) => {
-	
-    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
+const plugin = ({widgets, simulator, vehicle}) => {
+  
+    fetchRowsFromSpreadsheet("1P1YrDvAf_9MEGolYuZe8oz8NxNpvku8UB-nSa-gIIRU", PLUGINS_APIKEY)
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
@@ -97,7 +97,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
         LineChart(
             [
                 {
-                    signal: "Vehicle.speed",
+                    signal: "Vehicle.Speed",
                     suffix: " km/h"
                 }
             ],
