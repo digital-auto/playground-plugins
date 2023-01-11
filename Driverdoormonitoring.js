@@ -88,7 +88,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	
  widgets.register("SpeedProximity", LineChart([
        {
-                    signal: "Vehicle.speed",
+                    signal: "Vehicle.Speed",
                     suffix: " Km/hr",
                     color: "yellow"
                 },
