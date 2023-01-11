@@ -81,10 +81,10 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             },
         ],
         vehicle,
-    ), {
-        icon: "https://maps.google.com/mapfiles/ms/icons/truck.png",
-        autoNext: 802
-    })
+        {
+            icon: "https://maps.google.com/mapfiles/ms/icons/truck.png",
+        }
+    ))
 
     widgets.register("TruckImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fschweres_nutzfahrzeug_schra%CC%88gansicht_(links)_iridium__kein_hintergrund.png?alt=media&token=a5a04bce-05c7-4941-9849-393c7944894c" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
