@@ -106,13 +106,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	
 	
-return {
-        notifyPhone: (message) => {
-            if (mobileNotifications !== null) {
-                mobileNotifications(message)
-            }
-        },
-    }
+let sim_function;
+	simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+	
+	simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+
+	return {
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		}
+	}
 }
 
 export default plugin
