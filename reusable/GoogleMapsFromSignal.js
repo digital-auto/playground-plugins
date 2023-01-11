@@ -24,6 +24,7 @@ const GoogleMapsFromSignal = (directions, vehicle, {
     icon = null
 } = {}) => {
     return (box) => {
+        console.log("GoogleMapsFromSignal icon", icon)
         let setVehiclePinGlobal = null
         GoogleMapsPluginApi(PLUGINS_APIKEY, box, directions, null, {icon} ).then(({setVehiclePin}) => {
             setVehiclePinGlobal = setVehiclePin
