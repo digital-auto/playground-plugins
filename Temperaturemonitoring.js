@@ -108,7 +108,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			mobileMessage = message;
 		}	
 	    else {
-			message = "";
+			message = "Temperature of front and rear brake is within safe limit";
 			mobileMessage = message;
 		}
 		mobileNotifications(mobileMessage);
