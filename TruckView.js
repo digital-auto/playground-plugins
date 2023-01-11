@@ -99,7 +99,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         icon: "car-battery",
     }
 
-    widgets.register("TruckStateOfChargeLineChart", LineChart(
+    widgets.register("StateOfChargeLineChart", LineChart(
         [
             StateOfChargeTile
         ],
