@@ -29,7 +29,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
     return rows;
 }
-const message = " ";
+
 const plugin = ({widgets, simulator, vehicle}) => {
     	
     fetchRowsFromSpreadsheet("1I2SDTt8bhWe23KgCerLaityOLT4vVFF5GBX0zAIGLNU", "AIzaSyDQhEi1VGA2FiEAg9vVbvKZRjb3SfwYbI4")
@@ -46,7 +46,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 */	
-    	
+    let message = "", mobileMessage = "";	
     let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
