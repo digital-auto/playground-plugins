@@ -55,7 +55,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			message = "both the doors are open\n and driver is in proximity range";
 			mobileMessage = message;
 		}
-		elsif (mode >20){
+		else if (mode >20){
 			message = "the driver is out of the proximity range";
 			mobileMessage = message;
 		}	
