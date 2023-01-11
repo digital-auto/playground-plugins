@@ -132,7 +132,7 @@ widgets.register("DriverCard", SignalPills([
             icon: "fingerprint"
         },
         {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+            signal: "Vehicle.Driver.Trip.CurrentSegment.WeeklyDriverScore",
             label: "Weekly Driver Score",
             icon: "fingerprint"
         },
