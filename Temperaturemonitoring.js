@@ -91,18 +91,54 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     color: "#14b8a6"
                 }
     ], vehicle))
+	
+    let message = "", mobileMessage = "";		
+    let sim_intervalId = null;
+    const start_sim = (time) => {
+        sim_intervalId = setInterval(async () => {
+            let Row1 = await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get();
+	    let Row2 = await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get();	
+
+            if(Row1 > 10) {
+		    message = "Temperature of front brake exceeding threshold 10C!";
+		    mobileMessage = message;
+		}
+	    else if (Row2 >10){
+			message = "Temperature of rear brake exceeding threshold 10C!";
+			mobileMessage = message;
+		}	
+	    else {
+			message = "";
+			mobileMessage = message;
+		}
+		mobileNotifications(mobileMessage);
+		await vehicle.Next.get()
+            // sim_function()
+        }, time)
+    }
+    start_sim(3000)
   
    let mobileNotifications = null;
-	widgets.register("TemperatureWarning", (box) => {
-		({printNotification: mobileNotifications} = MobileNotifications({
+	widgets.register("Mobile", (box) => {
+		const {printNotification} = MobileNotifications({
 			apis : null,
 			vehicle: null,
 			box: box,
 			refresh: null,
-            paddingTop: 70,
-            paddingHorizontal: 25
-		}))
-	});
+			paddingTop: 70,
+                	paddingHorizontal: 25
+		})
+		mobileNotifications = printNotification;
+	})
+    
+    return {
+		start_simulation : start_sim
+	}
+    return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        } 		
 
 	
 	
