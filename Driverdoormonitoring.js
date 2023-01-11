@@ -5,6 +5,7 @@ import LineChart from "./reusable/LineChart.js"
 import SignalWithMedia from "./reusable/SignalWithMedia.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 import SignalPills from "./reusable/SignalPills.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -31,7 +32,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 	
-    fetchRowsFromSpreadsheet("1Rbal-uM_L3XHsv12QD6u-QwfiQfVNnTIhKTDznE9vnE", "AIzaSyD8WaOWN38h1SynN7Ua0S9T5mSe_UDnUKo")
+    fetchRowsFromSpreadsheet("1I2SDTt8bhWe23KgCerLaityOLT4vVFF5GBX0zAIGLNU", PLUGINS_APIKEY")
     .then((rows) => {
         SimulatorPlugins(rows, simulator)
         console.log(rows)
