@@ -113,7 +113,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 },
             ],
             vehicle,
-            { iterate: true }
+            { iterate: false }
         )
     )
 
@@ -129,7 +129,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 type: "image",
                 url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed360x360.png"
             },
-        }, vehicle, { iterate: true })
+        }, vehicle, { iterate: false })
     )
   widgets.register(
         "rightdooropen",
