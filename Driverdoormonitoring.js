@@ -162,7 +162,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
     return {
 		start_simulation : start_sim,
-        notifyPhone : printNotification
+        notifyPhone : mobileNotifications
 	}		
   
 }
