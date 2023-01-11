@@ -63,7 +63,7 @@ const plugin = ({ box, widgets }) => {
                                 fillOpacity: 1,
                                 anchor: new box.window.google.maps.Point(12, -290),
                                 strokeWeight: 0,
-                                scale: .1,
+                                scale: .05,
                                 rotation: 0
                             },
                             clickable: true
