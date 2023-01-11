@@ -65,7 +65,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		}
 		mobileNotifications(mobileMessage);
 		await vehicle.Next.get()
-            // sim_function()
+            sim_function()
         }, time)
     }
     start_sim(3000)
@@ -145,7 +145,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }, vehicle)
      )
   	
-  	
+     let sim_function = null;
+     simulator("Vehicle.speed", "subscribe", async ({func, args}) => {
+        sim_function = args[0];
+         console.log("print func", args[0])
+     })
 	
   let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
