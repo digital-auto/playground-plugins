@@ -161,13 +161,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	})
     
     return {
-		start_simulation : start_sim
-	}
-    return () => {
-            if (sim_intervalId !== null) {
-                clearInterval(sim_intervalId)
-            }
-        } 		
+		start_simulation : start_sim,
+        notifyPhone : printNotification
+	}		
   
 }
 
