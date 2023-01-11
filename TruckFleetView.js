@@ -57,7 +57,7 @@ const plugin = ({ box, widgets }) => {
                         vehicleMarkers[vehicleId] = new box.window.google.maps.Marker({
                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
                             map: map,
-                            icon: "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                            icon: "https://maps.google.com/mapfiles/ms/icons/truck.png",
                             clickable: true
                         });
                         vehicleMarkers[vehicleId].addListener('click', () => {
