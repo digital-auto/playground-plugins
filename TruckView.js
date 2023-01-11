@@ -7,15 +7,15 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     // Get the query string value of "vehicleId" with URLSearchParams
     const params = new URLSearchParams(window.location.search)
-    const vehicleId = params.get('vehicleId')
+    const truckId = params.get('truckId')
 
-    if (!vehicleId) {
+    if (!truckId) {
         // Fetch vehicle coordinates from API and link to the first vehicle
         fetch('https://evfleetsim.onrender.com/fleet/vehicle-coordinates')
         .then(response => response.json())
         .then(vehicleCoordinates => {
-            const firstVehicleId = Object.keys(vehicleCoordinates)[0]
-            window.location.href = `?truckId=${firstVehicleId}`
+            const firstTruckId = Object.keys(vehicleCoordinates)[0]
+            window.location.href = `?truckId=${firstTruckId}`
         })
     }
 
@@ -43,10 +43,10 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     }
 
     const updateVehicle = async () => {
-        if (!vehicleId) {
+        if (!truckId) {
             return
         }
-        const response = await fetch(`https://evfleetsim.onrender.com/vehicle/${vehicleId}`)
+        const response = await fetch(`https://evfleetsim.onrender.com/vehicle/${truckId}`)
         const fleetJson = await response.json()
         for (const signal in currentSignalValues) {
             currentSignalValues[signal] = fleetJson[signal]
@@ -99,7 +99,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         icon: "car-battery",
     }
 
-    widgets.register("TruckChargeLineChart", LineChart(
+    widgets.register("TruckStateOfChargeLineChart", LineChart(
         [
             StateOfChargeTile
         ],
