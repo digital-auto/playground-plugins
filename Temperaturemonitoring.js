@@ -50,7 +50,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 },
             ],
             vehicle,
-            { iterate: true }
+            { iterate: false }
         )
     )
 
@@ -96,27 +96,34 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
-            let Row1 = await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get();
-	    let Row2 = await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get();	
+            // let Row1 = await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get();
+            // let Row2 = await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get();	
 
-            if(Row1 > 10) {
-		    message = "Temperature of front brake exceeding threshold 10C!";
-		    mobileMessage = message;
-		}
-	    else if (Row2 >10){
-			message = "Temperature of rear brake exceeding threshold 10C!";
-			mobileMessage = message;
-		}	
-	    else {
-			message = "";
-			mobileMessage = message;
-		}
-		mobileNotifications(mobileMessage);
-		await vehicle.Next.get()
-            // sim_function()
+            // if(Row1 > 10) {
+            //     message = "Temperature of front brake exceeding threshold 10C!";
+            //     mobileMessage = message;
+            // }
+            // else if (Row2 >10){
+            //     message = "Temperature of rear brake exceeding threshold 10C!";
+            //     mobileMessage = message;
+            // }	
+            // else {
+            //     message = "";
+            //     mobileMessage = message;
+            // }
+            // mobileNotifications(mobileMessage);
+            await vehicle.Next.get()
+            sim_function()
         }, time)
+
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        } 		
+
     }
-    start_sim(3000)
+    // start_sim(3000)
   
    let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
@@ -131,18 +138,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		mobileNotifications = printNotification;
 	})
     
-    return {
-		start_simulation : start_sim
-	}
-    return () => {
-            if (sim_intervalId !== null) {
-                clearInterval(sim_intervalId)
-            }
-        } 		
-
-	
-	
-let sim_function;
+    let sim_function;
 	simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "subscribe", async ({func, args}) => {
 		sim_function = args[0]
 		console.log("print func", args[0])
@@ -153,13 +149,8 @@ let sim_function;
 		console.log("print func", args[0])
 	})
 
-	return {
-		start_simulation : (time) => {
-			sim_intervalId = setInterval(async () => {
-				await vehicle.Next.get()
-				sim_function()
-			}, time)
-		}
+    return {
+		start_simulation : start_sim
 	}
 }
 
