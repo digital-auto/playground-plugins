@@ -68,7 +68,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // sim_function()
         }, time)
     }
-    start_sim(1000)
+    start_sim(1600)
   widgets.register(
         "SignalPillsDoor",
         SignalPills(
