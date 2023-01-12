@@ -126,8 +126,8 @@ let sim_function;
 	})
 	
 	simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "subscribe", async ({func, args}) => {
-		sim_function = args[0]
-		console.log("print func", args[0])
+		sim_function = args[1]
+		console.log("print func", args[1])
 	})	
   
    let mobileNotifications = null;
