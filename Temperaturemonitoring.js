@@ -125,7 +125,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			apis : null,
 			vehicle: null,
 			box: box,
-			refresh: null,
+			refresh: 300,
 			paddingTop: 70,
             paddingHorizontal: 25
 		})
