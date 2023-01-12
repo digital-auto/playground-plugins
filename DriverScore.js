@@ -60,12 +60,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	    widgets.register("driveallowedtimee", SignalPills([
         {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
             label: "Accumulated Drive Time",
             icon: "fingerprint"
         },
         {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
+            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
             label: "Allowed Drive Time",
             icon: "fingerprint"
         }
