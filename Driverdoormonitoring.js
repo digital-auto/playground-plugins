@@ -46,28 +46,28 @@ const plugin = ({widgets, simulator, vehicle}) => {
         signal: "Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn"
     }, vehicle))
 */	
-    let message = "", mobileMessage = "";	
+    // let message = "", mobileMessage = "";	
     let sim_intervalId = null;
-    const start_sim = (time) => {
-        sim_intervalId = setInterval(async () => {
-            // let mode = await vehicle.Driver.ProximityToVehicle.get();
-            // if (mode > 5){
-            //     message = "both the doors are open\n and driver is in proximity range";
-            //     mobileMessage = message;
-            // }
-            // else if (mode >20){
-            //     message = "the driver is out of the proximity range";
-            //     mobileMessage = message;
-            // }	
-            // else {
-            //     message = "";
-            //     mobileMessage = message;
-            // }
-            // mobileNotifications(mobileMessage);
-            await vehicle.Next.get()
-            sim_function()
-        }, time)
-    }
+    // const start_sim = (time) => {
+    //     sim_intervalId = setInterval(async () => {
+    //         // let mode = await vehicle.Driver.ProximityToVehicle.get();
+    //         // if (mode > 5){
+    //         //     message = "both the doors are open\n and driver is in proximity range";
+    //         //     mobileMessage = message;
+    //         // }
+    //         // else if (mode >20){
+    //         //     message = "the driver is out of the proximity range";
+    //         //     mobileMessage = message;
+    //         // }	
+    //         // else {
+    //         //     message = "";
+    //         //     mobileMessage = message;
+    //         // }
+    //         // mobileNotifications(mobileMessage);
+    //         await vehicle.Next.get()
+    //         sim_function()
+    //     }, time)
+    // }
     // start_sim(3000)
   widgets.register(
         "SignalPillsDoor",
@@ -162,11 +162,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
             paddingHorizontal: 25
 		})
 		mobileNotifications = printNotification;
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        }
 	})
     
     return {
-		start_simulation : start_sim,
-        notifyPhone : mobileNotifications
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		},
+        notifyPhone : (message) => {
+            if (mobileNotifications !== null) {
+                mobileNotifications(message)
+            }
+        },
 	}		
   
 }
