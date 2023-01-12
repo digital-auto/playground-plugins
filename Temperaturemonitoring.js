@@ -150,7 +150,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	})
 
     return {
-		start_simulation : start_sim
+		start_simulation : start_sim,
+        notifyPhone : mobileNotifications
 	}
 }
 
