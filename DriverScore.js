@@ -98,12 +98,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
     ], vehicle))
     widgets.register("fuelscorebrakescore", SignalPills([
         {
-            signal: "Vehicle.Powertrain.FuelSystem.FuelConsumptionScore",
+            signal: "Vehicle.Powertrain.FuelSystem.AccumulatedConsumption",
             label: "Fuel Consumption Score",
             icon: "fingerprint"
         },
         {
-            signal: "Vehicle.Chassis.Brake.BrakeScore",
+            signal: "Vehicle.Chassis.Brake.PedalPosition",
             label: "Brake Score",
             icon: "fingerprint"
         },
