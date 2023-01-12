@@ -118,6 +118,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     // }
     // start_sim(3000)
+	
+let sim_function;
+	simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})
+	
+	simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+		console.log("print func", args[0])
+	})	
   
    let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
@@ -137,16 +148,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 	})
     
-    let sim_function;
-	simulator("Vehicle.Trailer.Chassis.Axle.Row1.Temperature", "subscribe", async ({func, args}) => {
-		sim_function = args[0]
-		console.log("print func", args[0])
-	})
-	
-	simulator("Vehicle.Trailer.Chassis.Axle.Row2.Temperature", "subscribe", async ({func, args}) => {
-		sim_function = args[0]
-		console.log("print func", args[0])
-	})
 
     return {
 		start_simulation : (time) => {
