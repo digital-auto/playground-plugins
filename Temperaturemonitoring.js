@@ -92,37 +92,31 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
     ], vehicle))
 	
-    let message = "", mobileMessage = "";		
+    // let message = "", mobileMessage = "";		
     let sim_intervalId = null;
-    const start_sim = (time) => {
-        sim_intervalId = setInterval(async () => {
-            // let Row1 = await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get();
-            // let Row2 = await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get();	
+    // const start_sim = (time) => {
+    //     sim_intervalId = setInterval(async () => {
+    //         // let Row1 = await vehicle.Trailer.Chassis.Axle.Row1.Temperature.get();
+    //         // let Row2 = await vehicle.Trailer.Chassis.Axle.Row2.Temperature.get();	
 
-            // if(Row1 > 10) {
-            //     message = "Temperature of front brake exceeding threshold 10C!";
-            //     mobileMessage = message;
-            // }
-            // else if (Row2 >10){
-            //     message = "Temperature of rear brake exceeding threshold 10C!";
-            //     mobileMessage = message;
-            // }	
-            // else {
-            //     message = "";
-            //     mobileMessage = message;
-            // }
-            // mobileNotifications(mobileMessage);
-            await vehicle.Next.get()
-            sim_function()
-        }, time)
+    //         // if(Row1 > 10) {
+    //         //     message = "Temperature of front brake exceeding threshold 10C!";
+    //         //     mobileMessage = message;
+    //         // }
+    //         // else if (Row2 >10){
+    //         //     message = "Temperature of rear brake exceeding threshold 10C!";
+    //         //     mobileMessage = message;
+    //         // }	
+    //         // else {
+    //         //     message = "";
+    //         //     mobileMessage = message;
+    //         // }
+    //         // mobileNotifications(mobileMessage);
+    //         await vehicle.Next.get()
+    //         sim_function()
+    //     }, time) 		
 
-        return () => {
-            if (sim_intervalId !== null) {
-                clearInterval(sim_intervalId)
-            }
-        } 		
-
-    }
+    // }
     // start_sim(3000)
   
    let mobileNotifications = null;
@@ -133,9 +127,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box: box,
 			refresh: null,
 			paddingTop: 70,
-                	paddingHorizontal: 25
+            paddingHorizontal: 25
 		})
 		mobileNotifications = printNotification;
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        }
 	})
     
     let sim_function;
@@ -150,7 +149,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	})
 
     return {
-		start_simulation : start_sim,
+		start_simulation : (time) => {
+			sim_intervalId = setInterval(async () => {
+				await vehicle.Next.get()
+				sim_function()
+			}, time)
+		},
         notifyPhone : (message) => {
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
