@@ -127,7 +127,7 @@ widgets.register("DriverCard", SignalPills([
 	
     widgets.register("driveallowedtime", SignalPills([
         {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            signal: "Vehicle.Driver.Trip.CurrentSegment.DriverScore",
             label: "Driver Score",
             icon: "fingerprint"
         },
@@ -137,7 +137,7 @@ widgets.register("DriverCard", SignalPills([
             icon: "fingerprint"
         },
         {
-            signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
+            signal: "Vehicle.Driver.Trip.CurrentSegment.MonthlyDriverScore",
             label: "Monthly Driver Score",
             icon: "fingerprint"
         }
