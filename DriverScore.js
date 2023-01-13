@@ -189,7 +189,7 @@ widgets.register("DriverCard", SignalPills([
 
     let sim_function;
 	simulator("Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime", "subscribe", async ({func, args}) => {
-        sim_function = args[0]();
+        sim_function = args[0];
 		console.log("print func", args[0])
 	})
 
