@@ -49,11 +49,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		})
 	}
 
-	simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
-		return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
+	simulator("Vehicle.CurrentLocation.Latitude", "get", async ({prevReturnValue}) => {
+		return parseFloat(prevReturnValue * (180 / Math.PI))
 	})
-	simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
-		return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
+	simulator("Vehicle.CurrentLocation.Longitude", "get", async ({prevReturnValue}) => {
+		return parseFloat(prevReturnValue * (180 / Math.PI))
 	})
 
 	const updateSimulation = async () => {
