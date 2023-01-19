@@ -42,14 +42,43 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
+	const loadSpreadSheet = async () => {
+		fetchRowsFromSpreadsheet("1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4", PLUGINS_APIKEY)
+		.then((rows) => {
+			SimulatorPlugins(rows, simulator)
+		})
+	}
+
+	const updateSimulation = async () => {
+		let score = await vehicle.Passenger.KinetosisScore.get()
+
+		scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
+		scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
+		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
+		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
+
+		let message = "", mobileMessage = "";
+		if (parseFloat(score) > 80.0) {
+			message = "Warning: High kinetosis level.";
+			mobileMessage = message + "\nPlease open the window for the passenger.";
+			//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
+		}
+		else if (parseFloat(score) > 60.0) {
+			message = "Kinetosis level is medium";
+			mobileMessage = message;
+		}
+		else {
+			message =  "Kinetosis level is normal";
+			mobileMessage = message;
+		}
+
+		scoreFrame.querySelector("#score #message").textContent = message
+
+		mobileNotifications(mobileMessage);
+	}
 	
 	let sim_intervalId = null;
-	fetchRowsFromSpreadsheet("1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4", PLUGINS_APIKEY)
-    .then((rows) => {
-        SimulatorPlugins(rows, simulator)
-		console.log(rows)
-
-    })
+	
 
     let controlsFrame = document.createElement("div")
     controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
@@ -570,8 +599,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			sim_intervalId = setInterval(async () => {
 				await vehicle.Next.get()
 				sim_function()
+				updateSimulation()
 			}, time)
-		}
+		},
+		load_signals : loadSpreadSheet,
+		update_simulation : updateSimulation
 	}
 	
 }
