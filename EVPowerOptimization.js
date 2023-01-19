@@ -31,6 +31,14 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
+    const loadSpreadSheet = async () => {
+        let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
+        fetchRowsFromSpreadsheet(sheetID, PLUGINS_APIKEY)
+        .then((rows) => {
+            SimulatorPlugins(rows, simulator)
+        })
+    }  
+
     let sim_intervalId = null;
     const start_sim = (time) => {
         sim_intervalId = setInterval(async () => {
@@ -437,7 +445,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
 	return {
-		start_simulation : start_sim
+		start_simulation : start_sim,
+        load_signals : loadSpreadSheet
 	}  
 }
 
