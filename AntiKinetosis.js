@@ -49,15 +49,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		})
 	}
 
-	simulator("Vehicle.CurrentLocation.Latitude", "get", async ({prevReturnValue}) => {
-		return parseFloat(prevReturnValue * (180 / Math.PI))
-	})
-	simulator("Vehicle.CurrentLocation.Longitude", "get", async ({prevReturnValue}) => {
-		return parseFloat(prevReturnValue * (180 / Math.PI))
-	})
-
 	const updateSimulation = async () => {
-		
 		let score = await vehicle.Passenger.KinetosisScore.get()
 
 		scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
