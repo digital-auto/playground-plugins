@@ -86,18 +86,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }, time)
     }
 
-    widgets.register("Table", () => {
+    widgets.register("Table",
         StatusTable({
             apis:["Vehicle.PowerOptimizationMode","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Powertrain.TractionBattery.AccumulatedConsumedEnergy", "Vehicle.Cabin.Infotainment.Media.Action", "Vehicle.Cabin.Lights.LightIntensity",	"Vehicle.TravelledDistance", "Vehicle.CurrentLocation.Longitude","Vehicle.CurrentLocation.Latitude"],
             vehicle: vehicle,
 		    refresh: 800         
-    })
-    return () => {
-        if (sim_intervalId !== null) {
-            clearInterval(sim_intervalId)
-        }
-    }
-    })
+        })
+
+        // return () => {
+        //     if (sim_intervalId !== null) {
+        //         clearInterval(sim_intervalId)
+        //     }
+        // }
+    )
 	
     widgets.register(
         "GoogleMapDirections",
