@@ -43,14 +43,19 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 const plugin = ({widgets, simulator, vehicle}) => {
 
 	const loadSpreadSheet = async () => {
-		fetchRowsFromSpreadsheet("1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4", PLUGINS_APIKEY)
+		const style = await vehicle.DrivingStyle.get()
+		const spreadsheetId = style === "sporty" ? "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4" : style === "relaxed" ? "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4" : "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4";
+
+		fetchRowsFromSpreadsheet(spreadsheetId, PLUGINS_APIKEY)
 		.then((rows) => {
 			SimulatorPlugins(rows, simulator)
 		})
 	}
 
 	const updateSimulation = async () => {
-		let score = await vehicle.Passenger.KinetosisScore.get()
+		const score = await vehicle.Passenger.KinetosisScore.get()
+		const lat = await vehicle.CurrentLocation.Latitude.get()
+		const lng = await vehicle.CurrentLocation.Longitude.get()
 
 		scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
 		scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
@@ -75,12 +80,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		scoreFrame.querySelector("#score #message").textContent = message
 
 		mobileNotifications(mobileMessage);
+
+		if(setVehiclePinGlobal !== null) {
+			setVehiclePinGlobal({
+				lat: lat,
+				lng: lng
+			})
+		}
 	}
 	
 	let sim_intervalId = null;
 	
 
-    let controlsFrame = document.createElement("div")
+    let controlsFrame = null;
+    widgets.register("Controls", (box) => {
+	controlsFrame = document.createElement("div")
     controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
 	controlsFrame.innerHTML = 
 		`
@@ -144,7 +158,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<div style="width:2em;cursor: pointer;" id="video">
 					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
 				</div>
-				<div style="width:2em;cursor: pointer;" id="reload">
+				<!-- <div style="width:2em;cursor: pointer;" id="reload">
 					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Freload.svg?alt=media&token=0a2db061-8210-4c0b-bb84-0fdbf34c415e" alt="reload" style="filter: invert(100%);">
 				</div>
 				<div style="width:2em;cursor: pointer;" id="play">
@@ -152,7 +166,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				</div>
 				<div style="width:2em;cursor: pointer;" id="forward">
 					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fforward.svg?alt=media&token=6e729a78-4c7b-4065-a738-b58cdbcfc3cc" alt="forward" style="filter: invert(100%);">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div id="controls_intro" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
@@ -165,16 +179,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			</div>
 		</div>
 		`
-        
-    let boxGlobal = null
-
-    widgets.register("Controls", (box) => {
 
 		simulator("Vehicle.Passenger.Age", "get", async () => {
 			return parseInt("15");
 		})
 		simulator("Vehicle.Passenger.Gender", "get", async () => {
 			return "male";
+		})
+		simulator("Vehicle.DrivingStyle", "get", async () => {
+			return "sporty";
 		})
 
 		let simulationDetails = {
@@ -192,6 +205,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "sporty";
+			})
 		}
 	
 		let relaxedStyle = controlsFrame.querySelector("#green")
@@ -203,6 +219,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "relaxed";
+			})
 		}
 	
 		let optimizedStyle = controlsFrame.querySelector("#yellow")
@@ -214,6 +233,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "optimized";
+			})
 		}
 	
 		let gender_male = controlsFrame.querySelector("#gender_male")
@@ -295,138 +317,137 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box.triggerPopup(videoFrame)
 		}
 
-		let reload = controlsFrame.querySelector("#reload")
-		reload.onclick = () => {
-		simulationDetails = {
-			"style": "sporty",
-			"gender": "male",
-			"age": "young"
-			}
+		// let reload = controlsFrame.querySelector("#reload")
+		// reload.onclick = () => {
+		// simulationDetails = {
+		// 	"style": "sporty",
+		// 	"gender": "male",
+		// 	"age": "young"
+		// 	}
 
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#red img").style.width = "80%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
-			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
+		// 	controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
+		// 	controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
+		// 	controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
+		// 	controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
+		// 	controlsFrame.querySelector("#red img").style.width = "80%"
+		// 	controlsFrame.querySelector("#green img").style.width = "50%"
+		// 	controlsFrame.querySelector("#yellow img").style.width = "50%"
+		// 	controlsFrame.querySelector("#red div").style.fontWeight = "bold"
+		// 	controlsFrame.querySelector("#green div").style.fontWeight = "unset"
+		// 	controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
 
-			index = 0;
-			clearInterval(intervalId)
+		// 	index = 0;
+		// 	clearInterval(intervalId)
 
-			scoreFrame.querySelector("#score .text").textContent = "0.0%"
-			scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(0) * 2)) + "," + 200);
-			scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(0) * 2)}`)
-			scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(0) * 2)}`)
-			scoreFrame.querySelector("#score #message").textContent = "Kinetosis level is "
-			mobileNotifications("");
+		// 	scoreFrame.querySelector("#score .text").textContent = "0.0%"
+		// 	scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(0) * 2)) + "," + 200);
+		// 	scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(0) * 2)}`)
+		// 	scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(0) * 2)}`)
+		// 	scoreFrame.querySelector("#score #message").textContent = "Kinetosis level is "
+		// 	mobileNotifications("");
 
-			animationFrame.querySelector("#animation").textContent = "Click on the Animation you want to see."
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
-			setVehiclePinGlobal(null);
+		// 	animationFrame.querySelector("#animation").textContent = "Click on the Animation you want to see."
+		// 	animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
+		// 	animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
+		// 	setVehiclePinGlobal(null);
 
-		}
+		// }
 
-		let index = 0;
-		let intervalId = null;
+		// let index = 0;
+		// let intervalId = null;
 
-		let play = controlsFrame.querySelector("#play")
-		play.onclick = () => {
-			clearInterval(intervalId)
-			index = 0;
+		// let play = controlsFrame.querySelector("#play")
+		// play.onclick = () => {
+		// 	clearInterval(intervalId)
+		// 	index = 0;
 
-			fetchSimulationResults(simulationDetails).then(data => {
-				const VSSdata = data.signal_values
+		// 	fetchSimulationResults(simulationDetails).then(data => {
+		// 		const VSSdata = data.signal_values
 
-				intervalId = setInterval(() => {
-					if (index >= VSSdata.length) {
-						clearInterval(intervalId)
-					}
-					else {
+		// 		intervalId = setInterval(() => {
+		// 			if (index >= VSSdata.length) {
+		// 				clearInterval(intervalId)
+		// 			}
+		// 			else {
 
-						simulator("Vehicle.TripMeterReading", "get", async () => {
-							return (parseFloat(parseFloat(VSSdata[index]["Vehicle.TripMeterReading"]) / 1000).toFixed(3) + " km");
-						})
-						simulator("Vehicle.Speed", "get", async () => {
-							return (parseFloat(parseFloat(VSSdata[index]["Vehicle.Speed"]).toFixed() * 3.6).toFixed(2) + " km/h");
-						})
-						simulator("Vehicle.Acceleration.Lateral", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Lateral"]).toFixed(3))
-						})
-						simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Longitudinal"]).toFixed(3))
-						})
-						simulator("Vehicle.Acceleration.Vertical", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Vertical"]).toFixed(3))
-						})
-						simulator("Vehicle.AngularVelocity.Roll", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Roll"]).toFixed(3))
-						})
-						simulator("Vehicle.AngularVelocity.Pitch", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Pitch"]).toFixed(3))
-						})
-						simulator("Vehicle.AngularVelocity.Yaw", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
-						})
-						simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
-						})
-						simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-						})
+		// 				simulator("Vehicle.TripMeterReading", "get", async () => {
+		// 					return (parseFloat(parseFloat(VSSdata[index]["Vehicle.TripMeterReading"]) / 1000).toFixed(3) + " km");
+		// 				})
+		// 				simulator("Vehicle.Speed", "get", async () => {
+		// 					return (parseFloat(parseFloat(VSSdata[index]["Vehicle.Speed"]).toFixed() * 3.6).toFixed(2) + " km/h");
+		// 				})
+		// 				simulator("Vehicle.Acceleration.Lateral", "get", async () => {
+		// 					return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Lateral"]).toFixed(3))
+		// 				})
+		// 				simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
+		// 					return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Longitudinal"]).toFixed(3))
+		// 				})
+		// 				simulator("Vehicle.Acceleration.Vertical", "get", async () => {
+		// 					return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Vertical"]).toFixed(3))
+		// 				})
+		// 				simulator("Vehicle.AngularVelocity.Roll", "get", async () => {
+		// 					return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Roll"]).toFixed(3))
+		// 				})
+		// 				simulator("Vehicle.AngularVelocity.Pitch", "get", async () => {
+		// 					return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Pitch"]).toFixed(3))
+		// 				})
+		// 				simulator("Vehicle.AngularVelocity.Yaw", "get", async () => {
+		// 					return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
+		// 				})
+		// 				simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
+		// 					return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
+		// 				})
+		// 				simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
+		// 					return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
+		// 				})
 
-						if(setVehiclePinGlobal !== null) {
-							setVehiclePinGlobal({
-								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
-								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-							})
-						}
+		// 				if(setVehiclePinGlobal !== null) {
+		// 					setVehiclePinGlobal({
+		// 						lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
+		// 						lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
+		// 					})
+		// 				}
 						
-						scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2) + "%"
-						scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
-						scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
-						scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
+		// 				scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2) + "%"
+		// 				scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
+		// 				scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
+		// 				scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
 
-						let message = "", mobileMessage = "";
-						if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 80.0) {
-							message = "Warning: High kinetosis level.";
-							mobileMessage = message + "\nPlease open the window for the passenger.";
-							//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
-						}
-						else if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 60.0) {
-							message = "Kinetosis level is medium";
-							mobileMessage = message;
-						}
-						else {
-							message =  "Kinetosis level is normal";
-							mobileMessage = message;
-						}
+		// 				let message = "", mobileMessage = "";
+		// 				if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 80.0) {
+		// 					message = "Warning: High kinetosis level.";
+		// 					mobileMessage = message + "\nPlease open the window for the passenger.";
+		// 					//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
+		// 				}
+		// 				else if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 60.0) {
+		// 					message = "Kinetosis level is medium";
+		// 					mobileMessage = message;
+		// 				}
+		// 				else {
+		// 					message =  "Kinetosis level is normal";
+		// 					mobileMessage = message;
+		// 				}
 
-						scoreFrame.querySelector("#score #message").textContent = message
+		// 				scoreFrame.querySelector("#score #message").textContent = message
 
-						mobileNotifications(mobileMessage);
+		// 				mobileNotifications(mobileMessage);
 
-						index = index + 17
-					}
-				}, 1000)
-			})
-		}
+		// 				index = index + 17
+		// 			}
+		// 		}, 1000)
+		// 	})
+		// }
 
-		let forward = controlsFrame.querySelector("#forward")
-		forward.onclick = () => {
-			if (index !== 0)
-				index = index + (17 * 60)
-		}
+		// let forward = controlsFrame.querySelector("#forward")
+		// forward.onclick = () => {
+		// 	if (index !== 0)
+		// 		index = index + (17 * 60)
+		// }
 
         box.injectNode(controlsFrame)
         return () => {
 			clearInterval(intervalId)
 			clearInterval(sim_intervalId)
-            boxGlobal = null
             // Deactivation function for clearing intervals or such.
         }
     })
@@ -454,7 +475,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		})
 	})
 
-	let scoreFrame = document.createElement("div")	
+	let scoreFrame = null;
+	widgets.register("Score", (box) => {
+	scoreFrame = document.createElement("div")	
 	scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
 	scoreFrame.innerHTML =
 		`
@@ -481,17 +504,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
 			<div id="message">Kinetosis Level is </div>		
-		</div>				
-		
+		</div>
 		`
 
-	widgets.register("Score", (box) => {
-		boxGlobal = box
 		box.injectNode(scoreFrame)
-		return () => {
-			boxGlobal = null
-			// Deactivation function for clearing intervals or such.
-		}
 	})
 
 	let mobileNotifications = null;
@@ -591,7 +607,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	let sim_function;
 	simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
 		sim_function = args[0]
-		console.log("print func", args[0])
 	})
 
 	return {
