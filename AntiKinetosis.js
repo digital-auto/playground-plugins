@@ -44,7 +44,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	const loadSpreadSheet = async () => {
 		const style = await vehicle.DrivingStyle.get()
-		const spreadsheetId = style === "sporty" ? "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4" : style === "relaxed" ? "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4" : "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4";
+		const spreadsheetId = style === "sporty" ? "1fDkYtcpYkBfxlH5BjmhAUs0eqnSZKEJ1w7p0uuEtnQs" : style === "relaxed" ? "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4" : "19yh1r-CL3CSy7eiLLDm6ART6VgMNqNd1KxY7Rrygfyw";
 
 		fetchRowsFromSpreadsheet(spreadsheetId, PLUGINS_APIKEY)
 		.then((rows) => {
