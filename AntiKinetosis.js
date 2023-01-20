@@ -446,7 +446,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         box.injectNode(controlsFrame)
         return () => {
-			clearInterval(intervalId)
+			//clearInterval(intervalId)
 			clearInterval(sim_intervalId)
             // Deactivation function for clearing intervals or such.
         }
