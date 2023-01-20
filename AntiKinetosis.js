@@ -83,8 +83,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 		if(setVehiclePinGlobal !== null) {
 			setVehiclePinGlobal({
-				lat: lat,
-				lng: lng
+				lat: parseFloat(lat),
+				lng: parseFloat(lng)
 			})
 		}
 	}
