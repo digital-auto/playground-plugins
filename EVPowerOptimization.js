@@ -92,12 +92,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
             vehicle: vehicle,
 		    refresh: 800         
         })
-
-        // return () => {
-        //     if (sim_intervalId !== null) {
-        //         clearInterval(sim_intervalId)
-        //     }
-        // }
     )
 	
     widgets.register(
@@ -185,7 +179,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
         
-		box.injectNode(HVACAnimationFrame)
+		box.injectNode(HVACAnimationFrame)        
+
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        }
     });
 
     let IVIAnimationFrame = null;
@@ -387,6 +387,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
         IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
 
         box.injectNode(IVIAnimationFrame)
+
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        }
     });
 
     widgets.register("Control Frame", (box) => {
