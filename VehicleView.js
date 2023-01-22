@@ -6,7 +6,6 @@ export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const condBecomesTrue = async (cond, sleep_ms = 1000) => {
     while(!cond()) {
-        console.log("->")
         await sleep(sleep_ms)
     }
 }
@@ -105,6 +104,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     travelMode: "DRIVING"
                 })
                 .then((response) => {
+                    console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
                     box.window.directionsRenderer.setDirections(response);
                 })
                 .catch((e) => console.log("Directions request failed due to " + e));    
