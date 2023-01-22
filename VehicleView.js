@@ -6,6 +6,7 @@ export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const condBecomesTrue = async (cond, sleep_ms = 1000) => {
     while(!cond()) {
+        console.log("->")
         await sleep(sleep_ms)
     }
 }
@@ -107,7 +108,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     box.window.directionsRenderer.setDirections(response);
                 })
                 .catch((e) => console.log("Directions request failed due to " + e));    
-            }, 5000)
+            }, 0)
         })
 
         return GoogleMapsFromSignal(
