@@ -30,6 +30,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         zoom: 7,
         center: path[0],
     });
+    box.window.directionsRenderer = directionsRenderer
     directionsRenderer.setMap(map);
 
     calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);

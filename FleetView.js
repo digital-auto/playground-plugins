@@ -1,4 +1,4 @@
-import loadScript from "/reusable/loadScript.js";
+import loadScript from "https://playground-plugins.netlify.app/reusable/loadScript.js";
 
 const plugin = ({ box, widgets }) => {
     widgets.register("Map", (box) => {
