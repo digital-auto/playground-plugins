@@ -95,18 +95,19 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
             const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
 
-            const directionsService = new box.window.google.maps.DirectionsService();
-            directionsService
-            .route({
-                origin: start,
-                destination: end,
-                travelMode: "DRIVING"
-            })
-            .then((response) => {
-                box.window.directionsRenderer.setDirections(response);
-            })
-            .catch((e) => console.log("Directions request failed due to " + e));
-        
+            setTimeout(() => {
+                const directionsService = new box.window.google.maps.DirectionsService();
+                directionsService
+                .route({
+                    origin: start,
+                    destination: end,
+                    travelMode: "DRIVING"
+                })
+                .then((response) => {
+                    box.window.directionsRenderer.setDirections(response);
+                })
+                .catch((e) => console.log("Directions request failed due to " + e));    
+            }, 5000)
         })
 
         return GoogleMapsFromSignal(
