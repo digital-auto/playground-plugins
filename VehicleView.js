@@ -95,7 +95,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
             const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
 
-            console.log(box.window)
+            console.log(box.window.directionsRenderer)
 
             // const directionsService = new box.window.google.maps.DirectionsService();
             // directionsService
