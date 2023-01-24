@@ -29,7 +29,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         if (!chargestationId) {
             return
         }
-        const response = await fetch(`http://localhost:8000/chargestation/${chargestationId}`)
+        const response = await fetch(`https://fleetsim.onrender.com/chargestation/${chargestationId}`)
         const fleetJson = await response.json()
         for (const signal in currentSignalValues) {
             currentSignalValues[signal] = fleetJson[signal].value
