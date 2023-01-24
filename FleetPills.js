@@ -70,8 +70,8 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
     const currentSignalValues = {
         "Fleet.NumberOfMovingVehicles": 0,
         "Fleet.NumberOfChargingVehicles": 0,
-        "Fleet.NumberOfParkingVehicles": 0,
         "Fleet.NumberOfQueuedVehicles": 0,
+        "Fleet.NumberOfStuckVehicles": 0,
         "Fleet.AverageSpeed": 0,
     }
 
