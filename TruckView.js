@@ -11,7 +11,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     if (!truckId) {
         // Fetch vehicle coordinates from API and link to the first vehicle
-        fetch('https://evfleetsim.onrender.com/fleet/vehicle-coordinates')
+        fetch('https://fleetsim.onrender.com/fleet/vehicle-coordinates')
         .then(response => response.json())
         .then(vehicleCoordinates => {
             const firstTruckId = Object.keys(vehicleCoordinates)[0]
@@ -46,7 +46,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         if (!truckId) {
             return
         }
-        const response = await fetch(`https://evfleetsim.onrender.com/vehicle/${truckId}`)
+        const response = await fetch(`https://fleetsim.onrender.com/vehicle/${truckId}`)
         const fleetJson = await response.json()
         for (const signal in currentSignalValues) {
             currentSignalValues[signal] = fleetJson[signal]
