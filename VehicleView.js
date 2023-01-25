@@ -128,6 +128,14 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     widgets.register("VehicleImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
+        
+        const div = document.createElement("div")
+        div.style.cursor = "pointer"
+        div.style.backgroundColor = "white"
+        div.style.borderRadius = "5px"
+        div.style.top = "2px"
+        div.style.right = "2px"
+        box.window.appendChild(div)
     })
 
     // LineChart widget for StateOfCharge
