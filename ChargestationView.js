@@ -96,6 +96,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         <div style="font-size: 0.875rem; font-weight: 500;">Vehicle Fleet View</div>
         </div>`
         div.appendChild(a1)
+
+        box.window.document.body.appendChild(div)
     })
 
     widgets.register("ConnectedStatus", (box) => {
