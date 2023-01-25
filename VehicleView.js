@@ -129,12 +129,14 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     widgets.register("VehicleImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
         
-        const div = document.createElement("div")
-        div.innerHTML = `<div style="display: flex; color: #718096; background-color: #fff; z-index: 10; border-radius: 0.25rem; padding: 0.375rem 0.75rem; user-select: none; align-items: center; cursor: pointer; box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;">
+        const a = document.createElement("a")
+        a.target = "_blank"
+        a.href = "/model/goWywBM5VPnC3voJycT7/library/prototype/PYFCFEWOELGHMjgGq5Wb/view/run"
+        a.innerHTML = `<div style="display: flex;color: #718096;background-color: #fff;z-index: 10;border-radius: 0.25rem;padding: 0.375rem 0.75rem;user-select: none;align-items: center;cursor: pointer;box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;width: fit-content;position: absolute;top: 10px;right: 10px;font-family: sans-serif;">
         <div style="font-size: 0.875rem; font-weight: 700;">ABC</div>
         </div>`
 
-        box.window.document.body.appendChild(div)
+        box.window.document.body.appendChild(a)
     })
 
     // LineChart widget for StateOfCharge
