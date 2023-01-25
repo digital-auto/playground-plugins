@@ -87,7 +87,16 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     ))
 
     widgets.register("TruckImage", box => {
+        const a = document.createElement("a")
+        a.target = "_blank"
+        a.href = "/model/goWywBM5VPnC3voJycT7/library/prototype/PYFCFEWOELGHMjgGq5Wb/view/run"
+        a.innerHTML = `<div style="display: flex;color: #718096;background-color: #fff;z-index: 10;border-radius: 0.25rem;padding: 0.375rem 0.75rem;user-select: none;align-items: center;cursor: pointer;box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;width: fit-content;position: absolute;top: 10px;right: 10px;font-family: sans-serif;letter-spacing: 0.5px;">
+        <div style="font-size: 0.875rem; font-weight: 500;">Fleet View</div>
+        </div>`
+
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fschweres_nutzfahrzeug_schra%CC%88gansicht_(links)_iridium__kein_hintergrund.png?alt=media&token=a5a04bce-05c7-4941-9849-393c7944894c" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
+
+        box.window.document.body.appendChild(a)
     })
 
     // LineChart widget for StateOfCharge
