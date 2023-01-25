@@ -77,6 +77,25 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     widgets.register("ChargestationImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargestation.png?alt=media&token=8e3f6cb4-d327-466c-94b0-7fdd450e3a4f" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
+
+        const div = document.createElement("div")
+        div.style = "display: flex;height: 100%; position: absolute; top: 10px; right: 10px;"
+
+        const a0 = document.createElement("a")
+        a0.target = "_blank"
+        a0.href = "/model/CDLEDoVfJpzfw8jOJQUu/library/prototype/52MsI5jc0V1Mt4ogd9ab/view/run"
+        a0.innerHTML = `<div style="margin-left: 10px; display: flex;color: #718096;background-color: #fff;z-index: 10;border-radius: 0.25rem;padding: 0.375rem 0.75rem;user-select: none;align-items: center;cursor: pointer;box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;width: fit-content;font-family: sans-serif;letter-spacing: 0.5px;">
+        <div style="font-size: 0.875rem; font-weight: 500;">Truck Fleet View</div>
+        </div>`
+        div.appendChild(a0)
+
+        const a1 = document.createElement("a")
+        a1.target = "_blank"
+        a1.href = "/model/goWywBM5VPnC3voJycT7/library/prototype/PYFCFEWOELGHMjgGq5Wb/view/run"
+        a1.innerHTML = `<div style="margin-left: 10px; display: flex;color: #718096;background-color: #fff;z-index: 10;border-radius: 0.25rem;padding: 0.375rem 0.75rem;user-select: none;align-items: center;cursor: pointer;box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;width: fit-content;font-family: sans-serif;letter-spacing: 0.5px;">
+        <div style="font-size: 0.875rem; font-weight: 500;">Vehicle Fleet View</div>
+        </div>`
+        div.appendChild(a1)
     })
 
     widgets.register("ConnectedStatus", (box) => {
