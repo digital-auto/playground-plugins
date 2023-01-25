@@ -130,7 +130,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     })
 
     widgets.register("TruckImage", box => {
-        box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
+        box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fschweres_nutzfahrzeug_schra%CC%88gansicht_(links)_iridium__kein_hintergrund.png?alt=media&token=a5a04bce-05c7-4941-9849-393c7944894c" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
         
         const a = document.createElement("a")
         a.target = "_blank"
