@@ -20,7 +20,13 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
     const NumberOfStuckVehicles = {
         signal: "Fleet.NumberOfStuckVehicles",
         label: "NumberOfStuckVehicles",
-        icon: "car-stuck",
+        icon: "car-burst",
+    }
+
+    const NumberOfQueuedVehicles = {
+        signal: "Fleet.NumberOfQueuedVehicles",
+        label: "NumberOfQueuedVehicles",
+        icon: "car-side",
     }
 
     widgets.register(
@@ -29,7 +35,8 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
             [
                 NumberOfMovingVehiclesTile,
                 NumberOfChargingVehiclesTile,
-                NumberOfStuckVehicles
+                NumberOfStuckVehicles,
+                NumberOfQueuedVehicles
             ],
             fleet
         )
@@ -66,7 +73,8 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
             [
                 NumberOfMovingVehiclesTile,
                 NumberOfChargingVehiclesTile,
-                NumberOfStuckVehicles
+                NumberOfStuckVehicles,
+                NumberOfQueuedVehicles
             ],
             fleet,
             5000
@@ -80,6 +88,7 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
         "Fleet.NumberOfChargingVehicles": 0,
         "Fleet.NumberOfQueuedVehicles": 0,
         "Fleet.NumberOfStuckVehicles": 0,
+        "Fleet.NumberOfQueuedChargingVehicles": 0,
         "Fleet.AverageSpeed": 0,
     }
 
