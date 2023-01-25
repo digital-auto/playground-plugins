@@ -135,7 +135,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         div.style.borderRadius = "5px"
         div.style.top = "2px"
         div.style.right = "2px"
-        box.window.appendChild(div)
+        box.window.document.body.appendChild(div)
     })
 
     // LineChart widget for StateOfCharge
