@@ -80,6 +80,7 @@ const plugin = ({ box, widgets }) => {
                     Object.keys(vehicleCoordinates).forEach(vehicleId => {
                         const coordinates = vehicleCoordinates[vehicleId];
                         vehicleMarkers[vehicleId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
+                        console.log("I", vehicleMarkers[vehicleId])
                     })
                 }, 5000);
 
