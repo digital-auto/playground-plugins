@@ -133,7 +133,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         a.target = "_blank"
         a.href = "/model/goWywBM5VPnC3voJycT7/library/prototype/PYFCFEWOELGHMjgGq5Wb/view/run"
         a.innerHTML = `<div style="display: flex;color: #718096;background-color: #fff;z-index: 10;border-radius: 0.25rem;padding: 0.375rem 0.75rem;user-select: none;align-items: center;cursor: pointer;box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;width: fit-content;position: absolute;top: 10px;right: 10px;font-family: sans-serif;">
-        <div style="font-size: 0.875rem; font-weight: 700;">ABC</div>
+        <div style="font-size: 0.875rem; font-weight: 700;">Fleet</div>
         </div>`
 
         box.window.document.body.appendChild(a)
