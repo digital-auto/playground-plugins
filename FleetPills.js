@@ -88,7 +88,6 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
         "Fleet.NumberOfChargingVehicles": 0,
         "Fleet.NumberOfQueuedVehicles": 0,
         "Fleet.NumberOfStuckVehicles": 0,
-        "Fleet.NumberOfQueuedChargingVehicles": 0,
         "Fleet.AverageSpeed": 0,
     }
 
