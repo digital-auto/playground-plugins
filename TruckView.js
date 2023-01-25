@@ -123,6 +123,9 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                 },
             ],
             vehicle,
+            {
+                icon: "https://maps.google.com/mapfiles/ms/icons/truck.png"
+            }
         )(box)
     })
 

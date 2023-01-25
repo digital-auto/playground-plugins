@@ -1,9 +1,8 @@
-import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 import loadScript from "./reusable/loadScript.js";
 
 const plugin = ({ box, widgets }) => {
     widgets.register("Map", (box) => {
-        loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${PLUGINS_APIKEY}`)
+        loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`)
             .then(() => {
                 const rectangleCoordinates = [
                     {
@@ -43,7 +42,7 @@ const plugin = ({ box, widgets }) => {
                     },
                 });
 
-                // Create an object to store the markers by vehicleId
+                // Create an object to store the markers by truckId
                 const vehicleMarkers = {}
 
                 // Fetch vehicle coordinates and add markers to map
@@ -51,20 +50,30 @@ const plugin = ({ box, widgets }) => {
                 .then(response => response.json())
                 .then(vehicleCoordinates => {
                     // For each vehicle, create a marker on the map
-                    for (let vehicleId in vehicleCoordinates) {
-                        let coordinates = vehicleCoordinates[vehicleId];
+                    for (let truckId in vehicleCoordinates) {
+                        let coordinates = vehicleCoordinates[truckId];
                         // Store market in markers object
-                        vehicleMarkers[vehicleId] = new box.window.google.maps.Marker({
+                        vehicleMarkers[truckId] = new box.window.google.maps.Marker({
                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
                             map: map,
                             icon: "https://maps.google.com/mapfiles/ms/icons/truck.png",
                             clickable: true
                         });
-                        vehicleMarkers[vehicleId].addListener('click', () => {
-                            window.location.href = `/model/kuAlpF1nRy65u3dzl9YQ/library/prototype/Aj66iZqab1YIw5dHaaGr/view/run?truckId=${vehicleId}`
+                        vehicleMarkers[truckId].addListener('click', () => {
+                            window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?truckId=${truckId}`
                         })
                     }
                 });
+
+                // Every 5 seconds, fetch the new coordinates and update the vehicle markers
+                setInterval(async () => {
+                    const response = await fetch("https://fleetsim.onrender.com/vehicle/all/coordinates")
+                    const vehicleCoordinates = await response.json();
+                    Object.keys(vehicleCoordinates).forEach(truckId => {
+                        const coordinates = vehicleCoordinates[truckId];
+                        vehicleMarkers[truckId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
+                    })
+                }, 5000);
 
                 // Create an object to store the markers by chargestationId
                 const chargestationMarkers = {}
@@ -76,7 +85,6 @@ const plugin = ({ box, widgets }) => {
                     // For each vehicle, create a marker on the map
                     for (let chargestationId in chargestationCoordinates) {
                         let coordinates = chargestationCoordinates[chargestationId];
-                        console.log(coordinates)
                         // Store market in markers object
                         chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
@@ -88,16 +96,6 @@ const plugin = ({ box, widgets }) => {
                         })
                     }
                 });
-
-                // Every 5 seconds, fetch the new coordinates and update the vehicle markers
-                setInterval(async () => {
-                    const response = await fetch("https://fleetsim.onrender.com/vehicle/all/coordinates")
-                    const vehicleCoordinates = await response.json();
-                    Object.keys(vehicleCoordinates).forEach(vehicleId => {
-                        const coordinates = vehicleCoordinates[vehicleId];
-                        vehicleMarkers[vehicleId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
-                    })
-                }, 5000);
 
                // Every 5 seconds, fetch the new coordinates and update the chargestation markers
                setInterval(async () => {
