@@ -17,12 +17,19 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
         icon: "charging-station",
     }
 
+    const NumberOfStuckVehicles = {
+        signal: "Fleet.NumberOfStuckVehicles",
+        label: "NumberOfStuckVehicles",
+        icon: "car-stuck",
+    }
+
     widgets.register(
         "VehicleActions",
         SignalPills(
             [
                 NumberOfMovingVehiclesTile,
                 NumberOfChargingVehiclesTile,
+                NumberOfStuckVehicles
             ],
             fleet
         )
@@ -58,7 +65,8 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
         LineChart(
             [
                 NumberOfMovingVehiclesTile,
-                NumberOfChargingVehiclesTile
+                NumberOfChargingVehiclesTile,
+                NumberOfStuckVehicles
             ],
             fleet,
             5000
