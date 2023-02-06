@@ -19,7 +19,7 @@ async function fetchSimulationResults(simulationDetails) {
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
-    const range = "A1:Z1000";
+    const range = "A1:Z2000";
 
     // Fetch the rows from the Google Spreadsheet API
     const response = await fetch(
