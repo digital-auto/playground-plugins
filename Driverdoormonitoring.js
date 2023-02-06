@@ -123,11 +123,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Left.isOpen", {
             [true]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdooropen360x612.jpg"
+                url: "https://digitalauto-media-data.netlify.app/Trailerleftdooropen360x360.jpg"
             },
             [false]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerleftdoorclosed360x612.jpg"
+                url: "https://digitalauto-media-data.netlify.app/Trailerleftdoorclosed360x360.jpg"
             },
         }, vehicle, { iterate: false })
     )
@@ -136,11 +136,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         SignalWithMedia("Vehicle.Trailer.CargoSpace.Door.Right.IsOpenn", {
             [true]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdooropen360x612.jpg"
+                url: "https://digitalauto-media-data.netlify.app/Trailerrightdooropen360x360.jpg"
             },
             [false]: {
                 type: "image",
-                url: "https://digitalauto-media-data.netlify.app/SmartTrailerrightdoorclosed360x612.jpg"
+                url: "https://digitalauto-media-data.netlify.app/Trailerrightdoorclosed360x360.jpg"
             },
         }, vehicle)
      )
