@@ -184,5 +184,5 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	}		
   
 }
-
+""
 export default plugin
