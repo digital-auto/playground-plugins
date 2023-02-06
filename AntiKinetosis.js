@@ -610,9 +610,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	})
 
 	return {
-		start_simulation : (time) => {
+		start_simulation : (time, skip=100) => {
 			sim_intervalId = setInterval(async () => {
-				await vehicle.Next.get()
+				for(let i=0;i<100;i++)
+					await vehicle.Next.get()
 				sim_function()
 				updateSimulation()
 			}, time)
