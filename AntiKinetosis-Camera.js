@@ -34,7 +34,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         image.src=URL.createObjectURL(event.target.files[0]);
     }
 
-    widgets.register("container", (box) => {
+    widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
     })
 }
