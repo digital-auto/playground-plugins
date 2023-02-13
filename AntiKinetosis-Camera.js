@@ -23,7 +23,7 @@ async function imageUpload(image) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
-    let webcam_message = 'Turn on Webcam'
+    let webcam_message = 'Webcam'
 
     const container = document.createElement('div')
     container.innerHTML = 
@@ -33,6 +33,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
     </div>
     <div id="video" style="display:none">
         <video id="webcam-video" playsinline autoplay> </video>
+    </div>
+    <div id="image_canvas" style="display:none">
+        <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="475" height="475"></canvas>    
     </div>
     <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
         <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
@@ -52,14 +55,38 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const capture_btn = container.querySelector("#capture-btn")
     capture_btn.onclick = () => {
-        if(webcam_message === "Turn on Webcam") {
-            console.log('turn on webcam')
+        const video = container.querySelector("#webcam-video")
+        
+        if(webcam_message === "Webcam") {
             webcam_message = "Capture"
+            container.querySelector("#capture-btn").innerText = webcam_message
+
+            const constraints = {  
+                audio: false,  
+                video: {  
+                    width: 475, height: 475  
+                }
+            };
+            if (navigator.mediaDevices.getUserMedia) {  
+                navigator.mediaDevices.getUserMedia(constraints)  
+                    .then(function (stream) {  
+                        video.srcObject = stream;  
+                    })  
+                    .catch(function (err0r) {  
+                        console.log("Something went wrong!");  
+                    });  
+            }
         }
         else {
             // const image = container.querySelector('#output');
             // image.src = URL.createObjectURL(event.target.files[0]);
             console.log("capture image")
+            const canvas = document.getElementById('canvas');  
+            const context = canvas.getContext('2d');  
+    
+            // Capture the image into canvas from Webcam streaming Video element  
+            context.drawImage(video, 0, 0);  
+
         }
     }
 
@@ -67,6 +94,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
     upload.onchange = (event) => {
         const image = container.querySelector('#output');
         image.src = URL.createObjectURL(event.target.files[0]);
+        container.querySelector("#image").style = "display: block"
+        container.querySelector("#video").style = "display: none"
     }
 
     widgets.register("Webcam Block", (box) => {
