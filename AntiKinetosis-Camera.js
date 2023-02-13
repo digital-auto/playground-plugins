@@ -87,7 +87,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             //canvas1.width = imgWidth1;
             //canvas1.height = imgHeight1;
             const context = canvas.getContext('2d');
-            context.drawImage(video, 0, 0);
+            context.drawImage(video, 0, 0, 475, 475);
     
             image.setAttribute("crossorigin", "anonymous")
             const data = canvas.toDataURL("image/png");
