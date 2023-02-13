@@ -108,17 +108,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
     }
 
-    // function stop() {  
-    //     var stream = video.srcObject;  
-    //     var tracks = stream.getTracks();  
-  
-    //     for (var i = 0; i < tracks.length; i++) {  
-    //         var track = tracks[i];  
-    //         track.stop();  
-    //     }  
-    //     video.srcObject = null;  
-    // }
-
     const upload = container.querySelector("#upload")
     upload.onchange = (event) => {
         const image = container.querySelector('#output');
