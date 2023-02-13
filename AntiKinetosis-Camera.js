@@ -28,7 +28,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     <p><img id="output" width="200"/></p>
     `
 
-    upload = container.querySelector("#upload")
+    const upload = container.querySelector("#upload")
     upload.onchange = (event) => {
         const image = document.getElementById('output');
         image.src=URL.createObjectURL(event.target.files[0]);
