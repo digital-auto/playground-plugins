@@ -23,7 +23,9 @@ async function imageUpload(image) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
-    const container = `
+    const container = document.createElement('div')
+    container.innerHTML = 
+    `
     <input id="upload" type="file" accept="image/*">
     <p><img id="output" width="200"/></p>
     `
