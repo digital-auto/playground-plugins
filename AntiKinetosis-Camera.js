@@ -93,6 +93,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
             container.querySelector("#image").style = "display: block"
             container.querySelector("#video").style = "display: none"
 
+            const stream = video.srcObject;  
+            const tracks = stream.getTracks();  
+    
+            for (let i = 0; i < tracks.length; i++) {  
+                const track = tracks[i];  
+                track.stop();  
+            }  
+            video.srcObject = null;  
+
         }
     }
 
