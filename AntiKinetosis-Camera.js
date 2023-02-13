@@ -26,24 +26,34 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const container = document.createElement('div')
     container.innerHTML = 
     `
-    <div class="image">
+    <div id="image-show">
         <img id="output" width="100%"/>
     </div>
-    <div class="btn btn-color" style="display:flex; position:absolute; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-        <button id="upload" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+    <div id="image-hide">
+        <p>
+            Capture the image or Upload the image
+        </p>
+    </div>
+    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+        <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Upload
         </button>
-        <button id="capture" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+        <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Capture
         </button>
-        <input id="upload" type="file" accept="image/*">
+        <input id="upload" type="file" accept="image/*" style="display:none">
     </div>
     `
+
+    const upload_btn = container.querySelector("#upload-btn")
+    upload_btn.onclick = () => {
+        container.querySelector("#upload").click()
+    }
 
     const upload = container.querySelector("#upload")
     upload.onchange = (event) => {
         const image = container.querySelector('#output');
-        image.src=URL.createObjectURL(event.target.files[0]);
+        image.src = URL.createObjectURL(event.target.files[0]);
     }
 
     widgets.register("Webcam Block", (box) => {
