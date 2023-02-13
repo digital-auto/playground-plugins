@@ -32,7 +32,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         <img id="output" width="100%"/>
     </div>
     <div id="video" style="display:none">
-        <video id="webcam-video" playsinline autoplay> </video>
+        <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
     </div>
     <div id="video_canvas" style="display:none">
         <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="475" height="475"></canvas>    
