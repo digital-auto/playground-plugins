@@ -29,7 +29,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     <div class="image">
         <img id="output" width="100%"/>
     </div>
-    <div class="btn btn-color" style="display:flex; position:absolute; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+    <div class="btn btn-color" style="display:flex; position:absolute; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
         <button id="upload" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Upload
         </button>
