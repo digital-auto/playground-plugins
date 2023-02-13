@@ -91,7 +91,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
             image.setAttribute("crossorigin", "anonymous")
             const data = canvas.toDataURL("image/png");
-            photo1.setAttribute("src", data);
+            image.setAttribute("src", data);
             container.querySelector("#image").style = "display: block"
             container.querySelector("#video").style = "display: none"
 
