@@ -62,10 +62,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             container.querySelector("#capture-btn").innerText = webcam_message
 
             const constraints = {  
-                audio: false,  
-                video: {  
-                    width: 475, height: 475  
-                }
+                audio: false,
             };
             if (navigator.mediaDevices.getUserMedia) {  
                 navigator.mediaDevices.getUserMedia(constraints)  
