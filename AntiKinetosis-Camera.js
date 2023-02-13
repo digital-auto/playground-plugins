@@ -29,7 +29,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     container.innerHTML = 
     `
     <div id="image" style="display:none">
-        <img id="output" width="100%"/>
+        <img id="output" width="100%" height=100%/>
     </div>
     <div id="video" style="display:none; width:100%; height:100%">
         <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
@@ -100,7 +100,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 const track = tracks[i];  
                 track.stop();  
             }  
-            video.srcObject = null;  
+            video.srcObject = null;
+
+            webcam_message = "Webcam"
+            container.querySelector("#capture-btn").innerText = webcam_message
 
         }
     }
