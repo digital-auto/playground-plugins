@@ -34,7 +34,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     <div id="video" style="display:none">
         <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
     </div>
-    <div id="video_canvas" style="display:none">
+    <div id="video_canvas" style="display:none; width:100%; height: 100%">
         <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="475" height="475"></canvas>    
     </div>
     <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
@@ -82,12 +82,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
         else {
             const image = container.querySelector('#output');
             const canvas = document.createElement('canvas');
+            const videoFrame = container.querySelector("#video")
             //const imgWidth1 = rawVideoFrame.videoWidth;
             //const imgHeight1 = rawVideoFrame.videoHeight;
-            //canvas1.width = imgWidth1;
-            //canvas1.height = imgHeight1;
+            canvas.width = videoFrame.videoWidth;
+            canvas.height = videoFrame.videoHeight;
             const context = canvas.getContext('2d');
-            context.drawImage(video, 0, 0, 475, 475);
+            context.drawImage(video, 0, 0, videoFrame.videoWidth, videoFrame.videoHeight);
     
             image.setAttribute("crossorigin", "anonymous")
             const data = canvas.toDataURL("image/png");
