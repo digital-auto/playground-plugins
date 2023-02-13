@@ -63,6 +63,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
             const constraints = {  
                 audio: false,
+                video: {  
+                    width: 475, height: 475  
+                }
             };
             if (navigator.mediaDevices.getUserMedia) {  
                 navigator.mediaDevices.getUserMedia(constraints)  
