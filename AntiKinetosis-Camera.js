@@ -26,8 +26,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const container = document.createElement('div')
     container.innerHTML = 
     `
-    <input id="upload" type="file" accept="image/*">
-    <p><img id="output" width="200"/></p>
+    <div class="image">
+        <img id="output" width="100%"/>
+    </div>
+    <div class="btn btn-color" style="">
+        <input id="upload" type="file" accept="image/*">
+    </div>
     `
 
     const upload = container.querySelector("#upload")
