@@ -50,7 +50,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container.querySelector("#upload").click()
     }
 
-    const capture_btn = container.querySelector("#capture_btn")
+    const capture_btn = container.querySelector("#capture-btn")
     capture_btn.onclick = () => {
         if(webcam_message === "Turn on Webcam") {
             console.log('turn on webcam')
