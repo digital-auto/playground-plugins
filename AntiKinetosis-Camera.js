@@ -1,6 +1,6 @@
 async function imageUpload(image) {
 	const res = await fetch(
-		`http://127.0.0.1:5000`, {
+		`https://aiotapp.net/kinetosis/detectImage`, {
             method:'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -48,8 +48,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
     </div>
     `
 
+    let imageEncoded = null;
     const upload_btn = container.querySelector("#upload-btn")
     upload_btn.onclick = () => {
+        imageUpload(imageEncoded)
         container.querySelector("#upload").click()
     }
 
@@ -88,7 +90,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             context.drawImage(video, 0, 0);
     
             image.setAttribute("crossorigin", "anonymous")
-            const data = canvas.toDataURL("image/png");
+            const data = canvas.toDataURL("image/jpeg");
+            imageEncoded = data
             image.setAttribute("src", data);
             container.querySelector("#image").style = "display: block"
             container.querySelector("#video").style = "display: none"
