@@ -1,4 +1,5 @@
 async function imageUpload(image) {
+    image = image.replace('data:image/jpeg;base64,', '')
 	const res = await fetch(
 		`https://aiotapp.net/kinetosis/detectImage`, {
             method:'POST',
