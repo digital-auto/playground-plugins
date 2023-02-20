@@ -58,10 +58,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container.querySelector("#upload").click()
     }
 
+    let age, gender = null
     const submit_btn = container.querySelector("#submit-btn")
     submit_btn.onclick = async () => {
         const res = await imageUpload(imageEncoded)
-        console.log(res)
+        age = res.age 
+        gender = res.gender
+    }
+
+    const getUserDetails = () => {
+        container.querySelector("#submit-btn").click()
     }
 
     const capture_btn = container.querySelector("#capture-btn")
@@ -131,6 +137,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
     widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
     })
+
+    return {
+        user_details: () => {
+            getUserDetails()
+            return { age, gender}
+        }        
+    }
 }
 
 export default plugin
