@@ -45,6 +45,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
         <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             ${webcam_message}
         </button>
+        <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            Submit
+        </button>
         <input id="upload" type="file" accept="image/*" style="display:none">
     </div>
     `
@@ -52,8 +55,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let imageEncoded = null;
     const upload_btn = container.querySelector("#upload-btn")
     upload_btn.onclick = () => {
-        imageUpload(imageEncoded)
         container.querySelector("#upload").click()
+    }
+
+    const submit_btn = container.querySelector("#submit-btn")
+    submit_btn.onclick = async () => {
+        const res = await imageUpload(imageEncoded)
+        console.log(res)
     }
 
     const capture_btn = container.querySelector("#capture-btn")
