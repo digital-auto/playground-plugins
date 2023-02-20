@@ -25,6 +25,7 @@ async function imageUpload(image) {
 const plugin = ({widgets, simulator, vehicle}) => {
 
     let webcam_message = 'Webcam'
+	let age_old = null, age_young = null, gender_male = null, gender_female = null
 
     const container = document.createElement('div')
     container.innerHTML = 
@@ -149,11 +150,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container.querySelector("#image").style = "display: block"
         container.querySelector("#video").style = "display: none"
     }
-
-	let gender_male = controlsFrame.querySelector("#gender_male")
-	let gender_female = controlsFrame.querySelector("#gender_female")
-	let age_old = controlsFrame.querySelector("#age_old")
-	let age_young = controlsFrame.querySelector("#age_young")
 
     widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
@@ -305,7 +301,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-
+		gender_male = controlsFrame.querySelector("#gender_male")
 		gender_male.onclick = () => {
 			simulationDetails["gender"] = "male"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
@@ -315,7 +311,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-
+		gender_female = controlsFrame.querySelector("#gender_female")
 		gender_female.onclick = () => {
 			simulationDetails["gender"] = "female"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
@@ -325,7 +321,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-
+		age_young = controlsFrame.querySelector("#age_young")
 		age_young.onclick = () => {
 			simulationDetails["age"] = "young"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
@@ -335,7 +331,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-
+		age_old = controlsFrame.querySelector("#age_old")
 		age_old.onclick = () => {
 			simulationDetails["age"] = "adult"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
