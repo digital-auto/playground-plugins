@@ -45,11 +45,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
         <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             ${webcam_message}
         </button>
-        <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-            Submit
-        </button>
         <input id="upload" type="file" accept="image/*" style="display:none">
     </div>
+    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+		<button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			Submit
+		</button>
+	</div>
     `
 
     let imageEncoded = null;
@@ -64,6 +66,20 @@ const plugin = ({widgets, simulator, vehicle}) => {
         const res = await imageUpload(imageEncoded)
         age = res.age 
         gender = res.gender
+
+		if (parseInt(age) > 40) {
+			age_old.click()
+		}
+		else {
+			age_young.click()
+		}
+
+		if(gender === "M"){
+			gender_male.click()
+		}
+		else {
+			gender_female.click()
+		}
     }
 
     const getUserDetails = () => {
@@ -181,22 +197,22 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		<div class="label" style="width:100%;position:relative;margin-top:10px;">Back Seat passengers: </div>
 		<div id="passengers" style="position:relative;margin-top:5px;width:100%;">        
 			<div class="selections" style="display:flex;position:relative;justify-content:center">
-			<div class="btn-group gender" style="margin:5px;display:grid">
-				<button id="gender_male" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-				Male
-				</button>
-				<button id="gender_female" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-				Female
-				</button>
-			</div>
-			<div class="btn-group age" style="margin:5px;display:grid">
-				<button id="age_young" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-				Young
-				</button>
-				<button id="age_old" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-				Adult
-				</button>
-			</div>
+				<div class="btn-group gender" style="margin:5px;display:grid">
+					<button id="gender_male" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Male
+					</button>
+					<button id="gender_female" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Female
+					</button>
+				</div>
+				<div class="btn-group age" style="margin:5px;display:grid">
+					<button id="age_young" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Young
+					</button>
+					<button id="age_old" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Adult
+					</button>
+				</div>
 			</div>
 		</div>
 		<div id="controls" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
@@ -369,8 +385,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // Deactivation function for clearing intervals or such.
         }
     })
-
-
 
     return {
         user_details: () => {
