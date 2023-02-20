@@ -47,7 +47,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </button>
         <input id="upload" type="file" accept="image/*" style="display:none">
     </div>
-    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 60px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
 		<button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Submit
 		</button>
@@ -149,6 +149,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container.querySelector("#image").style = "display: block"
         container.querySelector("#video").style = "display: none"
     }
+
+	let gender_male = controlsFrame.querySelector("#gender_male")
+	let gender_female = controlsFrame.querySelector("#gender_female")
+	let age_old = controlsFrame.querySelector("#age_old")
+	let age_young = controlsFrame.querySelector("#age_young")
 
     widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
@@ -300,7 +305,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-		let gender_male = controlsFrame.querySelector("#gender_male")
+
 		gender_male.onclick = () => {
 			simulationDetails["gender"] = "male"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
@@ -310,7 +315,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-		let gender_female = controlsFrame.querySelector("#gender_female")
+
 		gender_female.onclick = () => {
 			simulationDetails["gender"] = "female"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
@@ -320,7 +325,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-		let age_young = controlsFrame.querySelector("#age_young")
+
 		age_young.onclick = () => {
 			simulationDetails["age"] = "young"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
@@ -330,7 +335,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-		let age_old = controlsFrame.querySelector("#age_old")
+
 		age_old.onclick = () => {
 			simulationDetails["age"] = "adult"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
