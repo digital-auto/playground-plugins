@@ -149,7 +149,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
         image.src = URL.createObjectURL(event.target.files[0]);
         container.querySelector("#image").style = "display: block"
         container.querySelector("#video").style = "display: none"
-    }
+
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d');
+	
+		var base_image = new Image();
+		base_image.src = url;
+		base_image.onload = function() {
+			canvas.width = base_image.width;
+			canvas.height = base_image.height;
+	
+			ctx.drawImage(base_image, 0, 0);
+			imageEncoded = canvas.toDataURL('image/jpeg')
+			canvas.remove();		
+    		}
+		}
 
     widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
