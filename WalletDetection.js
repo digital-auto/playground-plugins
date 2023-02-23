@@ -1,6 +1,6 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
-import LineChart from "./reusable/LineChart.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
@@ -43,8 +43,32 @@ const plugin = ({widgets, simulator, vehicle}) => {
         apis:["Vehicle.PowerOptimizationMode","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Powertrain.TractionBattery.AccumulatedConsumedEnergy", "Vehicle.Cabin.Infotainment.Media.Action", "Vehicle.Cabin.Lights.LightIntensity",	"Vehicle.TravelledDistance", "Vehicle.CurrentLocation.Longitude","Vehicle.CurrentLocation.Latitude"],
         vehicle: vehicle,
         refresh: 800         
-    })
-)
+    }))
+
+    let mobileNotifications = null;
+	widgets.register("Mobile", (box) => {
+		const {printNotification} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+			backgroundColor: "rgb(0 80 114)"
+		})
+		mobileNotifications = printNotification;
+	})
+
+    let setVehiclePinGlobal = null;
+	widgets.register("Map", (box) => {
+		let path = [
+			{
+				"lat": 46.477127,
+				"lng": 10.367829
+			}
+		]
+		GoogleMapsPluginApi(PLUGINS_APIKEY, box, path, "BICYCLING").then(({setVehiclePin}) => {
+			setVehiclePinGlobal = setVehiclePin
+		})
+	})
 
 }
 
