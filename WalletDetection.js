@@ -103,6 +103,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             container.querySelector("#image").style = "display: block"
             //container.querySelector("#video").style = "display: none"
         }
+        box.injectNode(container)
 
         async function imageUpload() {
             const data = new FormData()
