@@ -70,6 +70,72 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		})
 	})
 
+    widgets.register("Video Panel", (box) => {
+        const container = document.createElement('div')
+        container.innerHTML = 
+        `
+        <div id="image" style="display:none">
+            <img id="output" width="100%" height="100%"/>
+        </div>
+        <!-- <div id="video" style="display:none; width:100%; height:100%">
+            <video id="webcam-video" playsinline autoplay width="100%" height="100%">
+                <source
+                    src="https://aiotapp.net/video/inference?weather=heavy"
+                    type="video/mp4"
+                />
+            </video>
+        </div> -->
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        `
+
+        const upload = container.querySelector("#upload")
+        upload.onchange = (event) => {
+            const image = container.querySelector('#output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            container.querySelector("#image").style = "display: block"
+            //container.querySelector("#video").style = "display: none"
+        }
+
+        async function imageUpload() {
+            const data = new FormData()
+            data.append('file', upload.files[0])
+
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=582a8a02-0357-412f-a31d-865549855e43`, {
+                    method:'POST',
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'apikey':'h644blf0bp1g3k4d8ffkazchyfb412e',
+                        'apisecret':'yswm5qiyg0lhf45fo3pn1epsv5m01li03094wgwf7hgactxlq76kdd55whymfx'
+                    },
+                    body: data
+                });
+            // waits until the request completes...
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            //convert response to json
+            const response = await res.json()
+            return response
+        }
+
+        const submit_btn = container.querySelector("#submit-btn")
+        submit_btn.onclick = async () => {
+            const res = await imageUpload()
+            console.log(res)
+        }
+
+    })
+
 }
 
 export default plugin;
