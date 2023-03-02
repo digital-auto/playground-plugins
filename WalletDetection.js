@@ -115,7 +115,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const res = await fetch(
                 `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=582a8a02-0357-412f-a31d-865549855e43`, {
                     method:'POST',
-                    mode: 'no-cors',
+                    mode: 'cors',
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         'apikey':'h644blf0bp1g3k4d8ffkazchyfb412e',
