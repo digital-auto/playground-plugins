@@ -95,6 +95,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <input id="upload" type="file" accept="image/*" style="display:none">
         </div>
         `
+        const upload_btn = container.querySelector("#upload-btn")
+        upload_btn.onclick = () => {
+            container.querySelector("#upload").click()
+        }
 
         const upload = container.querySelector("#upload")
         upload.onchange = (event) => {
@@ -103,9 +107,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             container.querySelector("#image").style = "display: block"
             //container.querySelector("#video").style = "display: none"
         }
-        box.injectNode(container)
 
-        async function imageUpload() {
+        const imageUpload = async () => {
             const data = new FormData()
             data.append('file', upload.files[0])
 
@@ -134,6 +137,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const res = await imageUpload()
             console.log(res)
         }
+
+        box.injectNode(container)
 
     })
 
