@@ -77,7 +77,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <img id="output" width="100%" height="100%"/>
         </div> -->
         <div id="video" style="display:none; width:100%; height:100%">
-            <video id="raw-video" playsinline width="100%" height="100%">
+            <video id="raw-video" width="100%" height="100%">
                 <source
                     src="https://aiotapp.net/video/inference?weather=heavy"
                     type="video/mp4"
