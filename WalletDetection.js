@@ -40,7 +40,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Table",
     StatusTable({
-        apis:["Vehicle.PowerOptimizationMode","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Powertrain.TractionBattery.AccumulatedConsumedEnergy", "Vehicle.Cabin.Infotainment.Media.Action", "Vehicle.Cabin.Lights.LightIntensity",	"Vehicle.TravelledDistance", "Vehicle.CurrentLocation.Longitude","Vehicle.CurrentLocation.Latitude"],
+        apis:["Vehicle.Connectivity.IsConnectivityAvailable","Vehicle.IsMoving", "Vehicle.Cabin.Seat.Row1.Pos1.IsOccupied", "Vehicle.CurrentLocation.Latitude", "Vehicle.CurrentLocation.Longitude"],
         vehicle: vehicle,
         refresh: 800         
     }))
