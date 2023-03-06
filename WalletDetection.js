@@ -4,6 +4,7 @@ import MobileNotifications from "./reusable/MobileNotifications.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
+import GoogleMapsLocation from "./reusable/GoogleMapsLocation.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -57,7 +58,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		mobileNotifications = printNotification;
 	})
 
-    let setVehiclePinGlobal = null;
+    let setLocationGlobal = null;
 	widgets.register("Map", (box) => {
 		let path = [
 			{
@@ -65,8 +66,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				"lng": 10.367829
 			}
 		]
-		GoogleMapsPluginApi(PLUGINS_APIKEY, box, path, "BICYCLING").then(({setVehiclePin}) => {
-			setVehiclePinGlobal = setVehiclePin
+        GoogleMapsLocation(PLUGINS_APIKEY, box).then(({setLocation}) => {
+			setLocationGlobal = setLocation
 		})
 	})
 
@@ -135,6 +136,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         const submit_btn = container.querySelector("#submit-btn")
         submit_btn.onclick = async () => {
+            console.log(setLocationGlobal)
             const res = await imageUpload()
             console.log(res)
         }
