@@ -78,10 +78,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div> -->
         <div id="video" style="display:none; width:100%; height:100%">
             <video id="raw-video" width="100%" height="100%">
-                <source
-                    
-                    type="video/mp4"
-                />
             </video>
         </div>
         <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
@@ -104,8 +100,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // const image = container.querySelector('#output');
             // image.src = URL.createObjectURL(event.target.files[0]);
             // container.querySelector("#image").style = "display: block"
-            const video = container.querySelector("#raw-video source");
-            video.src = URL.createObjectURL(event.target.files[0]);
+            const video = container.querySelector("#raw-video");
+            video.innerHTML = `<source src=${URL.createObjectURL(event.target.files[0])} type="video/mp4"></source>`
             container.querySelector("#video").style = "display: block"
         }
 
