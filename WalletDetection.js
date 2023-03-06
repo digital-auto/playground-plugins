@@ -79,7 +79,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         <div id="video" style="display:none; width:100%; height:100%">
             <video id="raw-video" width="100%" height="100%">
             </video>
-            <div style="width:3em;cursor: pointer;position:absolute;bottom:5%;left:5%"" id="play-btn">
+            <div style="width:3em;cursor: pointer;position:absolute;bottom:45%;left:45%"" id="play-btn">
 				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
 			</div>
         </div>
