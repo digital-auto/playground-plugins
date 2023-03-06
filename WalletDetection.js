@@ -60,13 +60,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let setLocationGlobal = null;
 	widgets.register("Map", (box) => {
-		let path = [
-			{
-				"lat": 46.477127,
-				"lng": 10.367829
-			}
-		]
-        GoogleMapsLocation(PLUGINS_APIKEY, box).then(({setLocation}) => {
+		const initialLocation = {
+            "lat": 46.477127,
+            "lng": 10.367829
+		}
+        GoogleMapsLocation(PLUGINS_APIKEY, box, initialLocation).then(({setLocation}) => {
 			setLocationGlobal = setLocation
 		})
 	})
@@ -75,17 +73,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
         const container = document.createElement('div')
         container.innerHTML = 
         `
-        <div id="image" style="display:none">
+        <!-- <div id="image" style="display:none">
             <img id="output" width="100%" height="100%"/>
-        </div>
-        <!-- <div id="video" style="display:none; width:100%; height:100%">
-            <video id="webcam-video" playsinline autoplay width="100%" height="100%">
+        </div> -->
+        <div id="video" style="display:none; width:100%; height:100%">
+            <video id="raw-video" playsinline width="100%" height="100%">
                 <source
                     src="https://aiotapp.net/video/inference?weather=heavy"
                     type="video/mp4"
                 />
             </video>
-        </div> -->
+        </div>
         <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
             <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Upload
@@ -93,7 +91,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Submit
             </button>
-            <input id="upload" type="file" accept="image/*" style="display:none">
+            <input id="upload" type="file" accept="video/*" style="display:none">
         </div>
         `
         const upload_btn = container.querySelector("#upload-btn")
@@ -103,10 +101,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         const upload = container.querySelector("#upload")
         upload.onchange = (event) => {
-            const image = container.querySelector('#output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            container.querySelector("#image").style = "display: block"
-            //container.querySelector("#video").style = "display: none"
+            // const image = container.querySelector('#output');
+            // image.src = URL.createObjectURL(event.target.files[0]);
+            // container.querySelector("#image").style = "display: block"
+            const video = container.querySelector("#raw-video source");
+            video.src = URL.createObjectURL(event.target.files[0]);
+            container.querySelector("#video").style = "display: block"
         }
 
         const imageUpload = async () => {
