@@ -149,6 +149,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     })
 
+    return {
+        load_data: async () => {
+            loadSpreadSheet
+        }
+    }
+
 }
 
 export default plugin;
