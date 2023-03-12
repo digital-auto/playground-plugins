@@ -68,18 +68,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
         age = res.age 
         gender = res.gender
 
-		if (parseInt(age) > 40) {
-			age_old.click()
-		}
-		else {
-			age_young.click()
-		}
+		ageDiv = controlsFrame.querySelector('#age')
+		genderDiv = controlsFrame.querySelector('#gender')
+
+		ageDiv.innerText = age
+
+		// if (parseInt(age) > 40) {
+		// 	age_old.click()
+		// }
+		// else {
+		// 	age_young.click()
+		// }
 
 		if(gender === "M"){
-			gender_male.click()
+			//gender_male.click()
+			genderDiv.innerText = "Male"
 		}
 		else {
-			gender_female.click()
+			//gender_female.click()
+			genderDiv.innerText = "Female"
 		}
     }
 
@@ -228,13 +235,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					Adult
 					</button>
 				</div> -->
-				<div class="gender" style="margin:5px">
+				<div style="margin:5px">
 					<span>Gender : </span>
-					<span>Male </span>
+					<span id="gender">Male </span>
 				</div>
-				<div class="age" style="margin:5px">
+				<div style="margin:5px">
 					<span>Age : </span>
-					<span>15 </span>
+					<span id="age">15</span>
 				</div>
 			</div>
 		</div>
@@ -323,45 +330,45 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-		gender_male = controlsFrame.querySelector("#gender_male")
-		gender_male.onclick = () => {
-			simulationDetails["gender"] = "male"
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
-			simulator("Vehicle.Passenger.Gender", "get", async () => {
-				return "male";
-			})
-		}
+		// gender_male = controlsFrame.querySelector("#gender_male")
+		// gender_male.onclick = () => {
+		// 	simulationDetails["gender"] = "male"
+		// 	controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
+		// 	controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
+		// 	simulator("Vehicle.Passenger.Gender", "get", async () => {
+		// 		return "male";
+		// 	})
+		// }
 	
-		gender_female = controlsFrame.querySelector("#gender_female")
-		gender_female.onclick = () => {
-			simulationDetails["gender"] = "female"
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(104 130 158)"
-			simulator("Vehicle.Passenger.Gender", "get", async () => {
-				return "female";
-			})
-		}
+		// gender_female = controlsFrame.querySelector("#gender_female")
+		// gender_female.onclick = () => {
+		// 	simulationDetails["gender"] = "female"
+		// 	controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
+		// 	controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(104 130 158)"
+		// 	simulator("Vehicle.Passenger.Gender", "get", async () => {
+		// 		return "female";
+		// 	})
+		// }
 	
-		age_young = controlsFrame.querySelector("#age_young")
-		age_young.onclick = () => {
-			simulationDetails["age"] = "young"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
-			simulator("Vehicle.Passenger.Age", "get", async () => {
-				return parseInt("15");
-			})
-		}
+		// age_young = controlsFrame.querySelector("#age_young")
+		// age_young.onclick = () => {
+		// 	simulationDetails["age"] = "young"
+		// 	controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
+		// 	controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
+		// 	simulator("Vehicle.Passenger.Age", "get", async () => {
+		// 		return parseInt("15");
+		// 	})
+		// }
 	
-		age_old = controlsFrame.querySelector("#age_old")
-		age_old.onclick = () => {
-			simulationDetails["age"] = "adult"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
-			simulator("Vehicle.Passenger.Age", "get", async () => {
-				return parseInt("60");
-			})
-		}
+		// age_old = controlsFrame.querySelector("#age_old")
+		// age_old.onclick = () => {
+		// 	simulationDetails["age"] = "adult"
+		// 	controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
+		// 	controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
+		// 	simulator("Vehicle.Passenger.Age", "get", async () => {
+		// 		return parseInt("60");
+		// 	})
+		// }
 
 		let video = controlsFrame.querySelector("#video")
 		video.onclick = () => {
