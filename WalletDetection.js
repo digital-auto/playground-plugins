@@ -111,6 +111,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         const imageUpload = async () => {
             const data = new FormData()
             data.append('file', upload.files[0])
+            console.log(data)
 
             const res = await fetch(
                 `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=582a8a02-0357-412f-a31d-865549855e43`, {
