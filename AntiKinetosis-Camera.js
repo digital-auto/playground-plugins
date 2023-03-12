@@ -212,7 +212,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		<div class="label" style="width:100%;position:relative;margin-top:10px;">Back Seat passengers: </div>
 		<div id="passengers" style="position:relative;margin-top:5px;width:100%;">        
 			<div class="selections" style="display:flex;position:relative;justify-content:center">
-				<div class="btn-group gender" style="margin:5px;display:grid">
+				<!-- <div class="btn-group gender" style="margin:5px;display:grid">
 					<button id="gender_male" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 					Male
 					</button>
@@ -227,6 +227,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					<button id="age_old" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 					Adult
 					</button>
+				</div> -->
+				<div class="gender" style="margin:5px">
+					<span>Gender : </span>
+					<span>Male </span>
+				</div>
+				<div class="age" style="margin:5px">
+					<span>Age : </span>
+					<span>15 </span>
 				</div>
 			</div>
 		</div>
