@@ -163,8 +163,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         },
         start_simulation: (time) => {
             simInterval = setInterval(async () => {
-                const lat = await vehicle.CurrentLocation.Latitude.get()
-                const lng = await vehicle.CurrentLocation.Longitude.get()
+                const lat = parseFloat(await vehicle.CurrentLocation.Latitude.get())
+                const lng = parseFloat(await vehicle.CurrentLocation.Longitude.get())
                 setLocationGlobal({lat, lng})
                 await vehicle.Next.get()
             }, time)
