@@ -170,8 +170,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 const lat = parseFloat(await vehicle.CurrentLocation.Latitude.get())
                 const lng = parseFloat(await vehicle.CurrentLocation.Longitude.get())
                 setLocationGlobal({lat, lng})
-                if(count === 0)
+                if(count === 0) {
                     container.querySelector("#raw-video").play()
+                    count++
+                }
                 await vehicle.Next.get()
             }, time)
         }
