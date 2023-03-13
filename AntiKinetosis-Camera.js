@@ -73,7 +73,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		ageDiv.value = age
 
 
-		if(gender === "M" || gender === "m"){
+		if(gender === "M" || gender === "m" || gender === "Male"){
 			genderDiv.value = "Male"
 		}
 		else {
