@@ -169,10 +169,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 const isConnected = await vehicle.Connectivity.IsConnectivityAvailable.get()
                 const isMoving = await vehicle.IsMoving.get()
 
-                if(isConnected === true && isMoving === false) {
+                if(isConnected === "TRUE" && isMoving === "FALSE") {
                     mobileNotificationsGlobal("Now checking for wallet detection")
                 }
-                
+
                 setLocationGlobal({lat, lng})
                 if(count === 0) {
                     container.querySelector("#raw-video").play()
