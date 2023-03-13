@@ -80,7 +80,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		// 	age_young.click()
 		// }
 
-		if(gender === "M"){
+		if(gender === "M" || gender === "m"){
 			//gender_male.click()
 			genderDiv.innerText = "Male"
 		}
@@ -237,11 +237,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				</div> -->
 				<div style="margin:5px">
 					<span><strong>Gender : </strong></span>
-					<span id="gender">Male </span>
+					<span id="gender">Male</span>
+					<select id="gender-input">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
 				</div>
 				<div style="margin:5px">
 					<span><strong>Age : </strong></span>
 					<span id="age">15</span>
+					<input type="number" id="age-input">
 				</div>
 			</div>
 		</div>
