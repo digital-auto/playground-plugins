@@ -69,8 +69,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		})
 	})
 
+    let container = null
+
     widgets.register("Video Panel", (box) => {
-        const container = document.createElement('div')
+        container = document.createElement('div')
         container.innerHTML = 
         `
         <!-- <div id="image" style="display:none">
