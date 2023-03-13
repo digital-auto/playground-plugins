@@ -49,10 +49,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let mobileNotificationsGlobal = null;
 	widgets.register("Mobile", (box) => {
 		const {printNotification} = MobileNotifications({
-			apis : null,
-			vehicle: null,
 			box: box,
-			refresh: null,
 			backgroundColor: "rgb(0 80 114)"
 		})
 		mobileNotificationsGlobal = printNotification;
