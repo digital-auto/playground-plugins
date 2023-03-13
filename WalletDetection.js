@@ -48,7 +48,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let mobileNotificationsGlobal = null;
 	widgets.register("Mobile", (box) => {
-		const {printNotification} = MobileNotifications({
+		const notification = MobileNotifications({
 			apis : null,
 			vehicle: null,
 			box: box,
