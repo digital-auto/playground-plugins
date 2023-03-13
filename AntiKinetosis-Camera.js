@@ -71,6 +71,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		const ageDiv = controlsFrame.querySelector('#age')
 		const genderDiv = controlsFrame.querySelector('#gender')
 
+		const ageDiv1 = controlsFrame.querySelector('#age-input')
+		const genderDiv1 = controlsFrame.querySelector('#gender-input')
+		ageDiv1.value = age
+
 		ageDiv.innerText = age
 
 		// if (parseInt(age) > 40) {
@@ -83,10 +87,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		if(gender === "M" || gender === "m"){
 			//gender_male.click()
 			genderDiv.innerText = "Male"
+			genderDiv1.value = "Male"
 		}
 		else {
 			//gender_female.click()
 			genderDiv.innerText = "Female"
+			genderDiv1.value = "Female"
+
 		}
     }
 
@@ -236,17 +243,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					</button>
 				</div> -->
 				<div style="margin:5px">
-					<span><strong>Gender : </strong></span>
+					<div><strong>Gender : </strong></div>
 					<span id="gender">Male</span>
-					<select id="gender-input">
+					<select id="gender-input" style="width:50%">
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
 					</select>
 				</div>
 				<div style="margin:5px">
-					<span><strong>Age : </strong></span>
+					<div><strong>Age : </strong></div>
 					<span id="age">15</span>
-					<input type="number" id="age-input">
+					<input type="number" id="age-input" style="width:50%" min="0" max="200" value="15"/>
 				</div>
 			</div>
 		</div>
