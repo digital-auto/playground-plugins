@@ -46,7 +46,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         refresh: 800         
     }))
 
-    let mobileNotifications = null;
+    let mobileNotificationsGlobal = null;
 	widgets.register("Mobile", (box) => {
 		const {printNotification} = MobileNotifications({
 			apis : null,
@@ -55,7 +55,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			refresh: null,
 			backgroundColor: "rgb(0 80 114)"
 		})
-		mobileNotifications = printNotification;
+		mobileNotificationsGlobal = printNotification;
 	})
 
     let setLocationGlobal = null;
@@ -163,7 +163,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             loadSpreadSheet()
         },
         mobile_notification: (message) => {
-            mobileNotifications(message)
+            mobileNotificationsGlobal(message)
         },
         start_simulation: (time) => {
             simInterval = setInterval(async () => {
