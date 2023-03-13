@@ -1,8 +1,6 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
-import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import GoogleMapsLocation from "./reusable/GoogleMapsLocation.js"
 
@@ -30,6 +28,8 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 }
 
 const plugin = ({widgets, simulator, vehicle}) => {
+
+    let simInterval = null
 
     const loadSpreadSheet = async () => {
         let sheetID = "1KopET4hpEUQqswqvBP1Nx2xljYE7Ws-6kRqH1rxGJv4";
@@ -148,11 +148,23 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         box.injectNode(container)
 
+        return () => {
+            clearInterval(simInterval)
+        }
+
     })
 
     return {
         load_data: async () => {
             loadSpreadSheet()
+        },
+        mobile_notification: (message) => {
+            mobileNotifications(message)
+        },
+        start_simulation: (time) => {
+            simInterval = setInterval(async () => {
+                await vehicle.Next.get()
+            }, time)
         }
     }
 
