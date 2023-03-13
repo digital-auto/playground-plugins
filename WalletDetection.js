@@ -169,7 +169,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 const isConnected = await vehicle.Connectivity.IsConnectivityAvailable.get()
                 const isMoving = await vehicle.IsMoving.get()
 
-                if(isConnected === "TRUE" && isMoving === "FALSE") {
+                if(isConnected === "TRUE") {
                     mobileNotificationsGlobal("Now checking for wallet detection")
                 }
 
