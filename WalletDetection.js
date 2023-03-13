@@ -166,6 +166,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
             simInterval = setInterval(async () => {
                 const lat = parseFloat(await vehicle.CurrentLocation.Latitude.get())
                 const lng = parseFloat(await vehicle.CurrentLocation.Longitude.get())
+                const isConnected = await vehicle.Connectivity.IsConnectivityAvailable.get()
+                const isMoving = await vehicle.IsMoving.get()
+
+                if(isConnected === true && isMoving === false) {
+                    mobileNotificationsGlobal("Now checking for wallet detection")
+                }
+                
                 setLocationGlobal({lat, lng})
                 if(count === 0) {
                     container.querySelector("#raw-video").play()
