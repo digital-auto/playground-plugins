@@ -226,14 +226,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					Adult
 					</button>
 				</div> -->
-				<div style="margin:5px">
+				<div style="margin:5px; display:inline-flex">
 					<div><strong>Gender : </strong></div>
 					<select id="gender-input" style="width:50%">
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
 					</select>
 				</div>
-				<div style="margin:5px">
+				<div style="margin:5px; display:inline-flex">
 					<div><strong>Age : </strong></div>
 					<input type="number" id="age-input" style="width:50%" min="0" max="200" value="15"/>
 				</div>
