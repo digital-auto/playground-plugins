@@ -55,6 +55,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			refresh: null,
 			backgroundColor: "rgb(0 80 114)"
 		})
+        console.log("Hello")
 		mobileNotificationsGlobal = printNotification;
 	})
 
@@ -163,6 +164,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             loadSpreadSheet()
         },
         mobile_notification: (message) => {
+            console.log(mobileNotificationsGlobal)
             mobileNotificationsGlobal(message)
         },
         start_simulation: (time) => {
