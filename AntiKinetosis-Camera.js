@@ -249,7 +249,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 							</th>
 						</tr>
 						<tr>
-							<td>
+							<td style="float:right">
 								<strong>Gender : </strong>
 							</td>
 							<td>
@@ -263,7 +263,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td style="float:right">
 								<strong>Age : </strong>
 							</td>
 							<td>
