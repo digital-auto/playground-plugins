@@ -250,7 +250,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						</tr>
 						<tr>
 							<td>
-								<strong>Gender</strong>
+								<strong>Gender : </strong>
 							</td>
 							<td>
 								<span>Male</span>
@@ -264,7 +264,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						</tr>
 						<tr>
 							<td>
-								<strong>Age</strong>
+								<strong>Age : </strong>
 							</td>
 							<td>
 								<span>15</span>
