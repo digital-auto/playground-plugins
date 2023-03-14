@@ -95,6 +95,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // image.src = URL.createObjectURL(event.target.files[0]);
             // container.querySelector("#image").style = "display: block"
             const video = container.querySelector("#raw-video");
+            container.querySelector("#video").style = "display: none"
             video.innerHTML = `<source src=${URL.createObjectURL(event.target.files[0])} type="video/mp4"></source>`
             container.querySelector("#video").style = "display: block"
         }
