@@ -31,14 +31,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
     container.innerHTML = 
     `
     <div id="image" style="display:none">
-        <img id="output" width="100%" height="100%"/>
+        <img id="output" width="100%" height="100%" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
     </div>
     <div id="video" style="display:none; width:100%; height:100%">
         <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
     </div>
-    <div id="video_canvas" style="display:none; width:100%; height: 100%">
+    <!-- <div id="video_canvas" style="display:none; width:100%; height: 100%">
         <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="475" height="475"></canvas>    
-    </div>
+    </div> -->
     <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
         <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Upload
