@@ -77,7 +77,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <img id="output" width="100%" height="100%"/>
         </div> -->
         <div id="video" style="display:block; width:100%; height:100%">
-            <video id="raw-video" width="100%" height="100%" syle="object-fit:fill">
+            <video id="raw-video" width="100%" height="100%" style="object-fit:fill">
                 <source src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fwallet-detection%2Fwallet-detection-default.mp4?alt=media&token=e7a9ed4e-a463-4bd8-be45-af1a3e498f51" type="video/mp4"></source>
             </video>
             <!-- <div style="width:3em;cursor: pointer;position:absolute;bottom:45%;left:45%"" id="play-btn">
