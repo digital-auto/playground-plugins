@@ -30,7 +30,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const container = document.createElement('div')
     container.innerHTML = 
     `
-    <div id="image" style="display:none">
+    <div id="image" style="display:block">
         <img id="output" width="100%" height="100%" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
     </div>
     <div id="video" style="display:none; width:100%; height:100%">
@@ -226,7 +226,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					Adult
 					</button>
 				</div> -->
-				<div style="margin:5px; display:inline-flex">
+				<!-- <div style="margin:5px; display:inline-flex">
 					<div><strong>Gender : </strong></div>
 					<select id="gender-input" style="width:50%">
 						<option value="Male">Male</option>
@@ -236,6 +236,44 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<div style="margin:5px; display:inline-flex">
 					<div><strong>Age : </strong></div>
 					<input type="number" id="age-input" style="width:50%" min="0" max="200" value="15"/>
+				</div> -->
+				<div style="margin:5px; display:block">
+					<table>
+						<tr>
+							<th></th>
+							<th>
+								Predicted
+							</th>
+							<th>
+								Actual
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<strong>Gender</strong>
+							</td>
+							<td>
+								<span>Male</span>
+							</td>
+							<td>
+								<select id="gender-input" >
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Age</strong>
+							</td>
+							<td>
+								<span>15</span>
+							</td>
+							<td>
+								<input type="number" id="age-input" min="0" max="200" value="15"/>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
