@@ -39,16 +39,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         })
     }
 
-    let mobileNotificationsGlobal = null;
-	widgets.register("Mobile",
-    (box) => {
-		const {printNotification} = MobileNotifications({
-			box: box,
-			backgroundColor: "rgb(0 80 114)"
-		})
-		mobileNotificationsGlobal = printNotification;
-	})
-
     widgets.register("Table",
     StatusTable({
         apis:["Vehicle.Connectivity.IsConnectivityAvailable","Vehicle.IsMoving", "Vehicle.Cabin.Seat.Row1.Pos1.IsOccupied", "Vehicle.CurrentLocation.Latitude", "Vehicle.CurrentLocation.Longitude"],
@@ -153,6 +143,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
             clearInterval(simInterval)
         }
 
+    })
+
+    let mobileNotificationsGlobal = null;
+    widgets.register("Mobile",
+    (box) => {
+        const {printNotification} = MobileNotifications(
+            {
+                box:box,
+                backgroundColor: "rgb(0 80 114)"
+            }
+        )
+        mobileNotificationsGlobal = printNotification
     })
 
     let count = 0;
