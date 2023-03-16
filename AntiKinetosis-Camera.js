@@ -39,7 +39,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     <!-- <div id="video_canvas" style="display:none; width:100%; height: 100%">
         <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="475" height="475"></canvas>    
     </div> -->
-    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
         <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Upload
         </button>
@@ -52,6 +52,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		<button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
 			Submit
 		</button>
+	</div>
+	<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
+		<div> <span>Gender : </span><span id="p-gender">Male</span></div>
+		<div><span>Age : </span><span id="p-age">15</span></div>
 	</div>
     `
 
@@ -68,16 +72,23 @@ const plugin = ({widgets, simulator, vehicle}) => {
         age = res.age 
         gender = res.gender
 
+
+		const pAge = controlsFrame.querySelector('#p-age')
+		const pGender = controlsFrame.querySelector('#p-gender')
+
 		const ageDiv = controlsFrame.querySelector('#age-input')
 		const genderDiv = controlsFrame.querySelector('#gender-input')
 		ageDiv.value = age
+		pAge.innerText = age
 
 
 		if(gender === "M" || gender === "m" || gender === "Male"){
 			genderDiv.value = "Male"
+			pGender.innerHTML = "Male"
 		}
 		else {
 			genderDiv.value = "Female"
+			pGender.innerHTML = "Female"
 		}
     }
 
@@ -226,7 +237,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					Adult
 					</button>
 				</div> -->
-				<!-- <div style="margin:5px; display:inline-flex">
+				<div style="margin:5px; display:inline-flex">
 					<div><strong>Gender : </strong></div>
 					<select id="gender-input" style="width:50%">
 						<option value="Male">Male</option>
@@ -236,8 +247,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<div style="margin:5px; display:inline-flex">
 					<div><strong>Age : </strong></div>
 					<input type="number" id="age-input" style="width:50%" min="0" max="200" value="15"/>
-				</div> -->
-				<div style="margin:5px;">
+				</div>
+				<!-- <div style="margin:5px;">
 					<table>
 						<tr>
 							<th></th>
@@ -274,7 +285,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 							</td>
 						</tr>
 					</table>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div id="controls" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
