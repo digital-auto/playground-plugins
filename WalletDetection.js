@@ -118,10 +118,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
         const imageUpload = async (image) => {
-            image = image.replace('data:image/jpeg;base64,', '')
-            apikey = 'h644blf0bp1g3k4d8ffkazchyfb412e'
-            apisecret = 'yswm5qiyg0lhf45fo3pn1epsv5m01li03094wgwf7hgactxlq76kdd55whymfx'
-            endpoint_id = '582a8a02-0357-412f-a31d-865549855e43'
+            const image = image.replace('data:image/jpeg;base64,', '')
+            const apikey = 'h644blf0bp1g3k4d8ffkazchyfb412e'
+            const apisecret = 'yswm5qiyg0lhf45fo3pn1epsv5m01li03094wgwf7hgactxlq76kdd55whymfx'
+            const endpoint_id = '582a8a02-0357-412f-a31d-865549855e43'
             const res = await fetch(
                 `https://aiotapp.net/walletdetection/image-upload`, {
                     method:'POST',
