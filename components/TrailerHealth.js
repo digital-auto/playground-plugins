@@ -1,105 +1,7 @@
-import SignalPills from "./reusable/SignalPills.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
-import SignalTile from "./reusable/SignalTile.js"
-import LineChart from "./reusable/LineChart.js"
-import MobileNotifications from "./reusable/MobileNotifications.js"
+import LineChart from "../reusable/LineChart.js"
+import MobileNotifications from "../reusable/MobileNotifications.js"
 
-const plugin = ({widgets, vehicle, simulator}) => {
-    const LatitudeTile = {
-        signal: "Vehicle.CurrentLocation.Latitude",
-        label: "Latitude",
-        icon: "satellite",
-    }
-    
-    const LongitudeTile = {
-        signal: "Vehicle.CurrentLocation.Longitude",
-        label: "Longitude",
-        icon: "satellite"
-    }
-
-    const ETATile = {
-        signal: "Vehicle.Cabin.Infotainment.Navigation.DestinationSet.ETA",
-        label: "ETA",
-        icon: "flag-checkered",
-        suffix: "s"
-    }
-    const Proximity = {
-        signal: "Vehicle.Driver.ProximityToVehicle",
-        label: "PROX",
-        icon: "person",
-        suffix: "s"
-    }
-
-    widgets.register(
-        "LatitudeTile",
-        SignalTile(
-            LatitudeTile,
-            vehicle
-        )
-    )
-    
-    widgets.register(
-        "Proximity",
-        SignalPills(
-            Proximity,
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "LongitudeTile",
-        SignalTile(
-            LongitudeTile,
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "ETATile",
-        SignalTile(
-            ETATile,
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "LatLongPills",
-        SignalPills(
-            [
-                LatitudeTile,
-                LongitudeTile,
-            ],
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "SignalPills",
-        SignalPills(
-            [
-                LatitudeTile,
-                LongitudeTile,
-                ETATile,
-            ],
-            vehicle
-        )
-    )
-
-    widgets.register(
-        "SpeedLineChart",
-        LineChart(
-            [
-                {
-                    signal: "Vehicle.Speed",
-                    suffix: " km/h"
-                }
-            ],
-            vehicle
-        )
-    )
-	
-   
-
+const TrailerHealthPlugin = ({widgets, vehicle}) => {
     widgets.register(
         "TemperatureLineCharts",
         LineChart(
@@ -146,12 +48,12 @@ const plugin = ({widgets, vehicle, simulator}) => {
             [
                 {
                     signal: "Vehicle.Driver.Trip.CurrentSegment.AccumulatedDriveTime",
-                    suffix: " C",
+                    suffix: "s",
                     color: "yellow"
                 },
                 {
                     signal: "Vehicle.Driver.Trip.CurrentSegment.AllowedDriveTime",
-                    suffix: " C",
+                    suffix: "s",
                     color: "#a21caf"
                 }
             ],
@@ -186,24 +88,6 @@ const plugin = ({widgets, vehicle, simulator}) => {
         }
     })
 
-    widgets.register(
-        "GoogleMapDirections",
-        GoogleMapsFromSignal(
-            [
-                {
-                    "lat": 48.149497,
-                    "lng": 11.523194
-                },
-                {
-                    "lat": 50.445168,
-                    "lng": 11.020569
-                },
-            ],
-            vehicle,
-            { iterate: true }
-        )
-    )
-    
     let mobileNotifications = null;
 	widgets.register("Mobile", (box) => {
 		const {printNotification} = MobileNotifications({
@@ -215,6 +99,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
 		})
 		mobileNotifications = printNotification;
 	})
+
 }
 
-export default plugin
+export default TrailerHealthPlugin
