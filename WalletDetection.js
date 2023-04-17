@@ -146,8 +146,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const response = await res.json()
             let op = response["output"]
             op = op.replaceAll('\"', "'").replaceAll('"{', '{').replaceAll('"}','}').replaceAll("'", '"')
-            console.log(op)
-            return response
+            return op
         }
 
         const videoUpload = async () => {
