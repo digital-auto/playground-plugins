@@ -144,6 +144,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
             //conver response to json
             const response = await res.json()
+            let op = response["output"]
+            op = op.replaceAll('\"', "'").replaceAll('"{', '{').replaceAll('"}','}').replaceAll("'", '"')
+            console.log(op)
             return response
         }
 
