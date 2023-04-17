@@ -81,7 +81,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Submit
             </button>
-            <input id="upload" type="file" accept="video/*" style="display:none">
+            <input id="upload" type="file" accept="image/*" style="display:none">
         </div>
         `
         const upload_btn = container.querySelector("#upload-btn")
