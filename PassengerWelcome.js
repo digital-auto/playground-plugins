@@ -1,4 +1,4 @@
-import SignalWithMedia from "./reusable/SignalWithMedia.js"
+import SignalWithMedia from "./reusable/SignalWithMediaDev.js"
 import SignalPills from "./reusable/SignalPills.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
