@@ -28,6 +28,31 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
+const anysisSimulation = async (call, policy) => {
+    const res = await fetch(
+        `https://aiotapp.net/evpoweroptimization`, {
+            method:'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                call,
+                policy
+            })
+        });
+    // waits until the request completes...
+    if (!res.ok) {
+        const message = `An error has occured: ${res.status}`;
+        throw new Error(message);
+    }
+    //conver response to json
+    const response = await res.json()
+    
+    return response
+}
+
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
@@ -77,13 +102,27 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }
 
     let sim_intervalId = null;
-    const start_sim = (time) => {
+    const start_sim = async (time) => {
+        await anysisSimulation('start', policy)
         sim_intervalId = setInterval(async () => {
-            updateSimulation()
+            await anysisSimulation('resume', policy)
+            // updateSimulation()
 
             await vehicle.Next.get()
             // sim_function()
         }, time)
+    }
+
+    const stop_sim = async (time) => {
+        clearInterval(sim_intervalId)
+        await anysisSimulation('stop', policy)
+        // sim_intervalId = setInterval(async () => {
+        //     await anysisSimulation('resume', policy)
+        //     // updateSimulation()
+
+        //     await vehicle.Next.get()
+        //     // sim_function()
+        // }, time)
     }
 
     widgets.register("Table",
@@ -539,6 +578,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	return {
 		start_simulation : start_sim,
+        stop_simulation : stop_sim,
         load_signals : loadSpreadSheet,
         update_simulation: updateSimulation
 	}  
