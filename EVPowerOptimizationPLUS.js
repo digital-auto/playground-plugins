@@ -101,11 +101,34 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
     }
 
+    const updateSignals = async(signals) => {
+
+        simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "get", async () => {
+            return signals["SOC"]
+        })
+        simulator("Vehicle.Speed", "get", async () => {
+            return signals["Speed_kmph"]
+        })
+        simulator("Vehicle.Cabin.HVAC.AmbientAirTemperature", "get", async () => {
+            return signals["Temperature"]
+        })
+        simulator("Vehicle.Cabin.Sunroof.Position", "get", async () => {
+            return signals["Sunroof"]
+        })
+        simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
+            return signals["Volume"]
+        })
+        simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
+            return signals["Fan_Speed"]
+        })
+    }
+
     let sim_intervalId = null;
     const start_sim = async (time) => {
         await anysisSimulation('start', policy)
         sim_intervalId = setInterval(async () => {
-            await anysisSimulation('resume', policy)
+            res = await anysisSimulation('resume', policy)
+            updateSignals(res)
             // updateSimulation()
 
             await vehicle.Next.get()
