@@ -121,6 +121,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
             return signals["Fan_Speed"]
         })
+
+        // update the values related to the bar here, what vss api value you want the bar for
+        // const score = await vehicle.Passenger.KinetosisScore.get()
+        const score = "20"
+        scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
+		scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
+		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
+		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
+        //message you want to write with the bar
+        scoreFrame.querySelector("#score #message").textContent = "message"
     }
 
     let sim_intervalId = null;
@@ -597,6 +607,41 @@ const plugin = ({widgets, simulator, vehicle}) => {
         box.injectNode(PolicyFrame)
 
     })
+
+    let scoreFrame = null;
+	widgets.register("Score Bar", (box) => {
+	scoreFrame = document.createElement("div")	
+	scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
+	scoreFrame.innerHTML =
+		`
+		<style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color:#ffffe3;
+            background-color:rgb(0 80 114);
+            text-align:center;            
+        }
+        </style>
+		<div id="score" style="">
+			<div class="text">0.0%</div>
+			<svg width="100" height="200" style="transform: rotateX(180deg)">
+				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
+				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="red" stroke-width="50" stroke-dasharray="200,200"/>
+				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="160,200"/>
+				<line class="high" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="120,200"/>
+				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
+				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
+			</svg>
+			<div id="message">Kinetosis Level is </div>		
+		</div>
+		`
+
+		box.injectNode(scoreFrame)
+	})
 
 	return {
 		start_simulation : start_sim,
