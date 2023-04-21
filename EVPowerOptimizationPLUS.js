@@ -101,19 +101,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
     }
 
-    const updateSignals = async(signals) => {
-        // signals.
-        // simulator(signal, "get", async () => {
-        //     return signalValues[currentIndex][signal]
-        // })
-    }
-
     let sim_intervalId = null;
     const start_sim = async (time) => {
         await anysisSimulation('start', policy)
         sim_intervalId = setInterval(async () => {
-            res = await anysisSimulation('resume', policy)  
-            updateSignals(res)
+            await anysisSimulation('resume', policy)
             // updateSimulation()
 
             await vehicle.Next.get()
