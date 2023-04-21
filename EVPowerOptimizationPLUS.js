@@ -516,8 +516,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
 		`
 
-        // pol1 = PolicyFrame.querySelector("#fast")
-        // fast.onclick = () => {}
+        let policy = 0;
+        
+        pol = PolicyFrame.querySelectorAll(".pol")
+        for (let i = 0; i < 10; i++) {
+            pol[i].onclick = () => {
+                policy = i
+                console.log(policy)
+            };
+        }
 
         box.injectNode(PolicyFrame)
 
