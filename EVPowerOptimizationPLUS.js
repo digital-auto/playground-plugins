@@ -113,7 +113,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }, time)
     }
 
-    const stop_sim = async (time) => {
+    const stop_sim = async () => {
         clearInterval(sim_intervalId)
         await anysisSimulation('stop', policy)
         // sim_intervalId = setInterval(async () => {
