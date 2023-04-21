@@ -462,6 +462,64 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
     })
 
+    let PolicyFrame = null;
+
+    widgets.register("Policy Selection", (box) => {
+        PolicyFrame = document.createElement("div")
+        PolicyFrame.style = "width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
+        PolicyFrame.innerHTML = `
+		<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color:#ffffe3;
+            background-color:rgb(0 80 114);
+            text-align:center;            
+        }
+		</style>
+        <div style="">
+            <div class="btn-group" style="margin:5px;display:flex;">
+                <button id="pol1" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 1
+                </button>
+                <button id="pol2" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 2
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 3
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 4
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 5
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 6
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 7
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 8
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 9
+                </button>
+                <button id="pol3" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Policy 10
+                </button>
+            </div>
+        </div>
+		`
+
+        box.injectNode(PolicyFrame)
+
+    })
+
 	return {
 		start_simulation : start_sim,
         load_signals : loadSpreadSheet,
