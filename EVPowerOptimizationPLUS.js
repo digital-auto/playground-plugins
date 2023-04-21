@@ -187,7 +187,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     widgets.register("SOCLineCharts", LineChart(
             [
                 {
-                    signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
+                    signal: "Vehicle.TravelledDistance",
                     suffix: " C",
                     color: "Black"
                 },
@@ -636,7 +636,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Kinetosis Level is </div>		
+			<div id="message">Current battery SOC is </div>		
 		</div>
 		`
 
