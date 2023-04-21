@@ -517,8 +517,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
 
         let policy = 0;
-        
-        pol = PolicyFrame.querySelectorAll(".pol")
+
+        let pol = PolicyFrame.querySelectorAll(".pol")
         for (let i = 0; i < 10; i++) {
             pol[i].onclick = () => {
                 policy = i
