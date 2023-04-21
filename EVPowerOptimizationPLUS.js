@@ -502,6 +502,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
     let PolicyFrame = null;
+    let policy = 0;
 
     widgets.register("Policy Selection", (box) => {
         PolicyFrame = document.createElement("div")
@@ -554,8 +555,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
             </div>
         </div>
 		`
-
-        let policy = 0;
 
         let pol = PolicyFrame.querySelectorAll(".pol")
         for (let i = 0; i < 10; i++) {
