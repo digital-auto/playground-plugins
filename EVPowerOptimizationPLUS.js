@@ -66,7 +66,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
-        let media_volume = await Vehicle.Cabin.Infotainment.Media.Volume.get()
+        let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
 
         if(media_volume === "100") {
             IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power <br>IVI System ：ON<br>Interior Light System ：Medium Light";
