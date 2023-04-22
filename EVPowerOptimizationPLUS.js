@@ -138,7 +138,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
 		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
         //message you want to write with the bar
-        scoreFrame.querySelector("#score #message").textContent = "message"
+        scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
     }
 
     let sim_intervalId = null;
@@ -543,7 +543,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
     let PolicyFrame = null;
-    let policy = 0;
+    let policy = 11;
 
     widgets.register("Policy Selection", (box) => {
         PolicyFrame = document.createElement("div")
