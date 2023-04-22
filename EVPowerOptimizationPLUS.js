@@ -131,7 +131,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         // update the values related to the bar here, what vss api value you want the bar for
         // const score = await vehicle.Passenger.KinetosisScore.get()
-        const score = "20"
+        // const score = "20"
+        const score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
 		scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
 		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
