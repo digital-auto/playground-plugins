@@ -137,7 +137,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const start_sim = async (time) => {
         await anysisSimulation('start', policy)
         sim_intervalId = setInterval(async () => {
-            res = await anysisSimulation('resume', policy)
+            const res = await anysisSimulation('resume', policy)
             updateSignals(res)
             // updateSimulation()
 
