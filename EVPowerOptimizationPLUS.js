@@ -103,24 +103,31 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const updateSignals = async(signals) => {
 
+        simulator("Vehicle.TravelledDistance", "get", async () => {
+            return signals["Distance"]
+        })
         simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "get", async () => {
             return signals["SOC"]
         })
         simulator("Vehicle.Speed", "get", async () => {
             return signals["Speed_kmph"]
         })
-        simulator("Vehicle.Cabin.HVAC.AmbientAirTemperature", "get", async () => {
-            return signals["Temperature"]
-        })
-        simulator("Vehicle.Cabin.Sunroof.Position", "get", async () => {
-            return signals["Sunroof"]
-        })
-        simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
-            return signals["Volume"]
+        simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
+            return signals["Acceleration_Limit"]
         })
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
             return signals["Fan_Speed"]
         })
+        simulator("Vehicle.Cabin.Sunroof.Position", "get", async () => {
+            return signals["Sunroof"]
+        })
+        simulator("Vehicle.Cabin.HVAC.AmbientAirTemperature", "get", async () => {
+            return signals["Temperature"]
+        })
+        simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
+            return signals["Volume"]
+        })
+
 
         // update the values related to the bar here, what vss api value you want the bar for
         // const score = await vehicle.Passenger.KinetosisScore.get()
@@ -160,7 +167,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Table",
         StatusTable({
-            apis:["Vehicle.PowerOptimizationMode","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Acceleration.Longitudinal", "Vehicle.Cabin.Lights.LightIntensity",	"Vehicle.Cabin.HVAC.AmbientAirTemperature", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Infotainment.Media.Volume","Vehicle.Cabin.Sunroof.Position"],
+            apis:["Vehicle.PowerOptimizationMode","Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Acceleration.Longitudinal", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.AmbientAirTemperature","Vehicle.Cabin.Infotainment.Media.Volume"],
             vehicle: vehicle,
 		    refresh: 800         
         })
