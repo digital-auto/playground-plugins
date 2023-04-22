@@ -68,7 +68,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let media_volume = await Vehicle.Cabin.Infotainment.Media.Volume.get()
 
-        if(media_volume === 100) {
+        if(media_volume === "100") {
             IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power <br>IVI System ：ON<br>Interior Light System ：Medium Light";
             HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
