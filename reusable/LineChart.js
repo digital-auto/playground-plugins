@@ -62,6 +62,9 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
             box.injectNode(container)
     
             intervalId = setInterval(async () => {
+                try {
+
+                
                 if (chart === null) {
                     throw new Error("Chart.js hasn't been loaded yet.")
                 }
@@ -74,9 +77,12 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
                     const iteratorEnded = await vehicle.IteratorEnded.get()
     
                     const stripped = signal.signal.split(".").slice(1).join(".")
+                    console.log(`stripped ${stripped}`)
                     const newValue = await vehicle[stripped].get()
+                    console.log(`newValue ${newValue}`)
     
                     if (iteratorEnded) {
+                        console.log(`iteratorEnded ================================`)
                         return [signal.signal, null]
                     }
     
@@ -84,6 +90,9 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
                 })))
     
                 const shouldPushData = entries.find(([signal, value]) => value !== null)
+
+                console.log(`shouldPushData`)
+                console.log(shouldPushData)
     
                 if (!shouldPushData) {
                     return false
@@ -96,6 +105,11 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
     
                 chart.data.labels.push(chart.data.labels.length + 1)
                 chart.update()
+
+                } catch(e) {
+                    console.log("err inside chart interval")
+                    console.log(e)
+                }
             }, refreshTime)
         } else {
             alert("LineChart plugin doesn't support vehicle pin without Wishlist sensor 'Vehicle.IteratorEnded'.")
