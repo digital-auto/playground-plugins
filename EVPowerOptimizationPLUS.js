@@ -198,7 +198,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 color: "Black"
             },
 	   ],
-	   vehicle
+	   vehicle,
+       1000
 	   )
 	)
     // let sim_function;
