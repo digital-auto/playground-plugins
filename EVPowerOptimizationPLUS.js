@@ -67,6 +67,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+        //convert to int
         // media_volume = parseInt(media_volume)
 
         if(media_volume === 100) {
@@ -77,6 +78,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
             IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
         }
+        //change "Level1" to desired value say 50
         else if(media_volume === "Level 1") {
             //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
             HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
@@ -85,6 +87,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
             IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
         }
+        //change "Level2" to desired value say 20
         else if(media_volume === "Level 2") {
             //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 2 (IVI  & HVAC)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
             HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
