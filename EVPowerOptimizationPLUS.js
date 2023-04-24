@@ -607,6 +607,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let policy = 11;
 
     widgets.register("Policy Selection", (box) => {
+
+        // adjust button and box position
+        let btnGroup = PolicyFrame.querySelector(".btn-group");
+        btnGroup.parentNode.insertBefore(dataBox, btnGroup);
+
         PolicyFrame = document.createElement("div")
         PolicyFrame.style = "width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
         PolicyFrame.innerHTML = `
