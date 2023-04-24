@@ -69,7 +69,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         // media_volume = parseInt(media_volume)
 
-        if(media_volume === "100") {
+        if(media_volume === 100) {
             IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power <br>IVI System ：ON<br>Interior Light System ：Medium Light";
             HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
@@ -149,7 +149,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         sim_intervalId = setInterval(async () => {
             const res = await anysisSimulation('resume', policy)
             updateSignals(res)
-            // updateSimulation()
+            updateSimulation()
 
             await vehicle.Next.get()
             // sim_function()
@@ -159,13 +159,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const stop_sim = async () => {
         clearInterval(sim_intervalId)
         await anysisSimulation('stop', policy)
-        // sim_intervalId = setInterval(async () => {
-        //     await anysisSimulation('resume', policy)
-        //     // updateSimulation()
-
-        //     await vehicle.Next.get()
-        //     // sim_function()
-        // }, time)
     }
 
     widgets.register("Table",
