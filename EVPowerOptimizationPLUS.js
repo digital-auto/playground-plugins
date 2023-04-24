@@ -109,7 +109,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const updateSignals = async(signals) => {
 
         simulator("Vehicle.TravelledDistance", "get", async () => {
-            return 10
+            return signals["Distance"]
         })
         simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "get", async () => {
             return signals["SOC"]
