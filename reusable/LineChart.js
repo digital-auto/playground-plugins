@@ -16,14 +16,14 @@ const supportsIteratorApis = (vehicle) => {
 }
 
 const LineChart = (signals, vehicle, refreshTime = 800) => {
-    return (box) => {
-        window.addEventListener("startRun", function(){
-            console.log(`>>>>>> LineChart window get startRun`)
-        });
 
-        window.addEventListener("stopRun", function(){
-            console.log(`>>>>>> LineChart window get stopRun`)
-        });
+    return (box) => {
+        let isRunning = false;
+        box.window.addEventListener("message", function(e){
+            if(!e.data) return
+            if(e.data == 'startRun') isRunning = true
+            if(e.data == 'stopRun') isRunning = false
+        }, false);
 
         const container = document.createElement("div")
         container.style = "width: 100%; height: 100%; padding: 5px;"
@@ -71,6 +71,7 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
     
             intervalId = setInterval(async () => {
                 try {
+                    if(!isRunning) return false
                     if (chart === null) {
                         throw new Error("Chart.js hasn't been loaded yet.")
                     }
