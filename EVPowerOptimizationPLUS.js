@@ -608,10 +608,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Policy Selection", (box) => {
 
-        // adjust button and box position
-        let btnGroup = PolicyFrame.querySelector(".btn-group");
-        btnGroup.parentNode.insertBefore(dataBox, btnGroup);
-
         PolicyFrame = document.createElement("div")
         PolicyFrame.style = "width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
         PolicyFrame.innerHTML = `
@@ -688,11 +684,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     })
 
-    let scoreFrame = null;
-	widgets.register("Score Bar", (box) => {
-	scoreFrame = document.createElement("div")	
-	scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
-	scoreFrame.innerHTML =
 		`
 		<style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
