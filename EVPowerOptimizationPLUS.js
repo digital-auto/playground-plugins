@@ -607,7 +607,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let policy = 11;
 
     widgets.register("Policy Selection", (box) => {
-
         PolicyFrame = document.createElement("div")
         PolicyFrame.style = "width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
         PolicyFrame.innerHTML = `
@@ -658,12 +657,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
             </div>
         </div>
 		`
-        let dataBox = document.createElement("div");
-        dataBox.id = "data-box";
-        dataBox.style = "width: 60%; height: 150px; margin: 20px auto; background-color: #fff; border: 1px solid #000; padding: 10px; font-size: 1.2em; font-weight: bold; text-align: center;";
-        dataBox.innerHTML = "Data will appear here.";
-        PolicyFrame.appendChild(dataBox);
-
 
         let pol = PolicyFrame.querySelectorAll(".pol")
         for (let i = 0; i < 10; i++) {
@@ -684,6 +677,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     })
 
+    let scoreFrame = null;
+	widgets.register("Score Bar", (box) => {
+	scoreFrame = document.createElement("div")	
+	scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
+	scoreFrame.innerHTML =
 		`
 		<style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -731,4 +729,3 @@ const plugin = ({widgets, simulator, vehicle}) => {
 }
 
 export default plugin;
-
