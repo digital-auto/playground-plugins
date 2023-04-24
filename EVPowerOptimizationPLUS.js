@@ -258,7 +258,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
         }
 
-        HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
+        HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: <br>Fan speed: ";
         
 		box.injectNode(HVACAnimationFrame)        
 
@@ -465,7 +465,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
         IVIAnimationFrame.querySelector("#songName").innerText = "Shape of You一Ed Sheeran";
-        IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 1 (IVI Only)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
+        IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：OFF<br>Interior Light System ：OFF";
 
         box.injectNode(IVIAnimationFrame)
 
