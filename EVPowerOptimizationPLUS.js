@@ -71,7 +71,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         // media_volume = parseInt(media_volume)
 
         if(media_volume === 100) {
-            IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power <br>IVI System ：ON<br>Interior Light System ：Medium Light";
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON<br>Interior Light System ：Medium Light";
             HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
             IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fpause.png?alt=media&token=8d615884-44aa-4bcb-93bc-49a0c3bb7958")
@@ -123,10 +123,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
             return signals["Fan_Speed"]
         })
+        simulator("Vehicle.Cabin.Lights.LightIntensity", "get", async () => {
+            return signals["Interior_Lighting"]
+        })
         simulator("Vehicle.Cabin.Sunroof.Position", "get", async () => {
             return signals["Sunroof"]
         })
-        simulator("Vehicle.Cabin.HVAC.AmbientAirTemperature", "get", async () => {
+        simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "get", async () => {
             return signals["Temperature"]
         })
         simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
@@ -166,7 +169,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Table",
         StatusTable({
-            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Acceleration.Longitudinal", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.AmbientAirTemperature","Vehicle.Cabin.Infotainment.Media.Volume"],
+            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Acceleration.Longitudinal", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume"],
             vehicle: vehicle,
 		    refresh: 800         
         })
@@ -642,7 +645,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Current battery SOC is </div>		
+			<div id="message">Current battery SOC</div>		
 		</div>
 		`
 
