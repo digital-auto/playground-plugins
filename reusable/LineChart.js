@@ -63,48 +63,50 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
     
             intervalId = setInterval(async () => {
                 try {
-
-                
-                if (chart === null) {
-                    throw new Error("Chart.js hasn't been loaded yet.")
-                }
-    
-                const getDataset = (signalName) => {
-                    return chart.data.datasets.find(dataset => dataset.label === signalName)
-                }
-    
-                const entries = (await Promise.all(signals.map(async signal => {
-                    const iteratorEnded = await vehicle.IteratorEnded.get()
-    
-                    const stripped = signal.signal.split(".").slice(1).join(".")
-                    console.log(`stripped ${stripped}`)
-                    const newValue = await vehicle[stripped].get()
-                    console.log(`newValue ${newValue}`)
-    
-                    if (iteratorEnded) {
-                        console.log(`iteratorEnded ================================`)
-                        return [signal.signal, null]
+                    if (chart === null) {
+                        throw new Error("Chart.js hasn't been loaded yet.")
                     }
-    
-                    return [signal.signal, newValue]
-                })))
-    
-                const shouldPushData = entries.find(([signal, value]) => value !== null)
+        
+                    const getDataset = (signalName) => {
+                        return chart.data.datasets.find(dataset => dataset.label === signalName)
+                    }
+        
+                    const entries = (await Promise.all(signals.map(async signal => {
+                        const iteratorEnded = await vehicle.IteratorEnded.get()
+        
+                        const stripped = signal.signal.split(".").slice(1).join(".")
+                        console.log(`stripped ${stripped}`)
+                        const newValue = await vehicle[stripped].get()
+                        console.log(`newValue ${newValue}`)
+                        
+        
+                        if (newValue === null && iteratorEnded) {
+                            console.log(`iteratorEnded ================================`)
+                            return [signal.signal, null]
+                        }
+        
+                        return [signal.signal, newValue]
+                    })))
 
-                console.log(`shouldPushData`)
-                console.log(shouldPushData)
-    
-                if (!shouldPushData) {
-                    return false
-                }
-    
-                for (const [signalName, value] of entries) {
-                    const dataset = getDataset(signalName)
-                    dataset.data.push(value)
-                }
-    
-                chart.data.labels.push(chart.data.labels.length + 1)
-                chart.update()
+                    console.log('entries')
+                    console.log(entries)
+        
+                    const shouldPushData = entries.find(([signal, value]) => value !== null)
+
+                    console.log(`shouldPushData`)
+                    console.log(shouldPushData)
+        
+                    if (!shouldPushData) {
+                        return false
+                    }
+        
+                    for (const [signalName, value] of entries) {
+                        const dataset = getDataset(signalName)
+                        dataset.data.push(value)
+                    }
+        
+                    chart.data.labels.push(chart.data.labels.length + 1)
+                    chart.update()
 
                 } catch(e) {
                     console.log("err inside chart interval")
