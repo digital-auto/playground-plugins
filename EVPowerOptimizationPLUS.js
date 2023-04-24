@@ -258,7 +258,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
         }
 
-        HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
+        HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
         
 		box.injectNode(HVACAnimationFrame)        
 
