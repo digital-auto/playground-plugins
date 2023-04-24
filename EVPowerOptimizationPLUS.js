@@ -89,26 +89,81 @@ const plugin = ({widgets, simulator, vehicle}) => {
             HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
             IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
-            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
-            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
         }
         //change "Level2" to desired value say 20
-        else if(media_volume === "Level 2") {
-            //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 2 (IVI  & HVAC)<br>IVI System ：OFF<br>Interior Light System ：Medium Light";
-            HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
+        //Policy 2
+        else if(inf_light === 100 && temp === 15 && fan_speed === 100 && media_volume === 40) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 40<br>Interior Light System ：Maximum light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
             IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
-            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
-            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
         }
-        else {
+        //Policy 3
+        else if(inf_light === 100 && temp === 15 && fan_speed === 100 && media_volume === 10) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 10<br>Interior Light System ：Maximum light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
+            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+        }
+        //Policy 4
+        else if(inf_light === 70 && temp === 15 && fan_speed === 100 && media_volume === 10) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 10<br>Interior Light System ：Medium light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
+            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+        }
+        //Policy 5
+        else if(inf_light === 40 && temp === 15 && fan_speed === 100 && media_volume === 10) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 10<br>Interior Light System ：Weak light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
+            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+        }
+        //Policy 6
+        else if(inf_light === 40 && temp === 18 && fan_speed === 100 && media_volume === 10) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 10<br>Interior Light System ：Weak light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 18<br>Fan speed: 100";
+            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+        }
+        //Policy 7
+        else if(inf_light === 40 && temp === 20 && fan_speed === 70 && media_volume === 10) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 10<br>Interior Light System ：Weak light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 20<br>Fan speed: 100";
+            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+        }
+        //Policy 8 & 9 & 10
+        else if(inf_light === 40 && temp === 20 && fan_speed === 40 && media_volume === 10) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON <br> Media volume: 10<br>Interior Light System ：Weak light <br> HVAC system: ON";
+            HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 20<br>Fan speed: 100";
+            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
+            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
+        }
+        //else {
             //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：OFF<br>Interior Light System Weak Light";
-            HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
-            HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
-            IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
-            IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
-            IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
-        }
+           // HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
+           // HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+            //IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+            //IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
+            //IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
+        //}
     }
 
     const updateSignals = async(signals) => {
