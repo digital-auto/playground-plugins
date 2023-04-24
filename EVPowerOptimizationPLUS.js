@@ -199,7 +199,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             },
 	   ],
 	   vehicle,
-       1000
+       3000
 	   )
 	)
     // let sim_function;
