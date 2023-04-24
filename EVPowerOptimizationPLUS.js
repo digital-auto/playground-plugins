@@ -67,6 +67,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+        media_volume = parseInt(media_volume)
 
         if(media_volume === 100) {
             IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power <br>IVI System ：ON<br>Interior Light System ：Medium Light";
@@ -194,12 +195,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
     )
 	
     widgets.register("SOCLineCharts", LineChart(
-            [
-                {
-                    signal: "Vehicle.TravelledDistance",
-                    suffix: " C",
-                    color: "Black"
-                },
+        [
+            {
+                signal: "Vehicle.TravelledDistance",
+                suffix: " C",
+                color: "Black"
+            },
 	   ],
 	   vehicle
 	   )
@@ -639,9 +640,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			<div class="text">0.0%</div>
 			<svg width="100" height="200" style="transform: rotateX(180deg)">
 				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
-				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="red" stroke-width="50" stroke-dasharray="200,200"/>
-				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="160,200"/>
-				<line class="high" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="120,200"/>
+				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="200,200"/>
+				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="120,200"/>
+				<line class="high" x1="50" y1="0" x2="50" y2="200" stroke="red" stroke-width="50" stroke-dasharray="60,200"/>
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
@@ -650,6 +651,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
 
 		box.injectNode(scoreFrame)
+
+        return async () => {
+            
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+            await anysisSimulation('stop', policy)
+        }
 	})
 
 	return {
