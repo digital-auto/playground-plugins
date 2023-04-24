@@ -659,9 +659,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
         let dataBox = document.createElement("div");
         dataBox.id = "data-box";
-        dataBox.style = "width: 80%; height: 200px; margin: 20px auto; background-color: #fff; border: 1px solid #000; padding: 10px; font-size: 1.2em; font-weight: bold; text-align: center;";
+        dataBox.style = "width: 60%; height: 150px; margin: 20px auto; background-color: #fff; border: 1px solid #000; padding: 10px; font-size: 1.2em; font-weight: bold; text-align: center;";
         dataBox.innerHTML = "Data will appear here.";
-
         PolicyFrame.appendChild(dataBox);
 
 
