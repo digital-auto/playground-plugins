@@ -16,7 +16,15 @@ const supportsIteratorApis = (vehicle) => {
 }
 
 const LineChart = (signals, vehicle, refreshTime = 800) => {
+
     return (box) => {
+        let isRunning = false;
+        box.window.addEventListener("message", function(e){
+            if(!e.data) return
+            if(e.data == 'startRun') isRunning = true
+            if(e.data == 'stopRun') isRunning = false
+        }, false);
+
         const container = document.createElement("div")
         container.style = "width: 100%; height: 100%; padding: 5px;"
         container.innerHTML = (`
@@ -63,6 +71,7 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
     
             intervalId = setInterval(async () => {
                 try {
+                    if(!isRunning) return false
                     if (chart === null) {
                         throw new Error("Chart.js hasn't been loaded yet.")
                     }
@@ -75,26 +84,18 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
                         const iteratorEnded = await vehicle.IteratorEnded.get()
         
                         const stripped = signal.signal.split(".").slice(1).join(".")
-                        console.log(`stripped ${stripped}`)
                         const newValue = await vehicle[stripped].get()
-                        console.log(`newValue ${newValue}`)
                         
         
                         if (newValue === null && iteratorEnded) {
-                            console.log(`iteratorEnded ================================`)
+                            //console.log(`iteratorEnded ================================`)
                             return [signal.signal, null]
                         }
         
                         return [signal.signal, newValue]
                     })))
-
-                    console.log('entries')
-                    console.log(entries)
         
                     const shouldPushData = entries.find(([signal, value]) => value !== null)
-
-                    console.log(`shouldPushData`)
-                    console.log(shouldPushData)
         
                     if (!shouldPushData) {
                         return false
