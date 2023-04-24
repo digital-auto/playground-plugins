@@ -66,12 +66,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
+        let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
+        let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
+        let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+
         //convert to int
         // media_volume = parseInt(media_volume)
 
-        if(media_volume === 100) {
-            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON<br>Interior Light System ：Medium Light";
+        if( inf_light === 100 && temp === 15 && fan_speed === 100 && media_volume === 100) {
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = "IVI System ：ON  Media volume: 15<br>Interior Light System ：Maximum light <br> HVAC system: ON";
             HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 10";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fbig.gif?alt=media&token=4587f1ef-a9e5-45f5-b3cd-c5a617a65811");
             IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fpause.png?alt=media&token=8d615884-44aa-4bcb-93bc-49a0c3bb7958")
