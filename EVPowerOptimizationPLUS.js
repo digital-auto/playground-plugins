@@ -109,7 +109,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const updateSignals = async(signals) => {
 
         simulator("Vehicle.TravelledDistance", "get", async () => {
-            return signals["Distance"]
+            return 10
         })
         simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "get", async () => {
             return signals["SOC"]
@@ -198,8 +198,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 color: "Black"
             },
 	   ],
-	   vehicle,
-       3000
+	   vehicle
 	   )
 	)
     // let sim_function;
