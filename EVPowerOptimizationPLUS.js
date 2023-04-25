@@ -184,9 +184,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
         simulator("Vehicle.Speed", "get", async () => {
             return roundNumber(signals["Speed_kmph"])
         })
-        simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
-            return roundNumber(signals["Acceleration_Limit"])
-        })
+        // simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
+        //     return roundNumber(signals["Acceleration_Limit"])
+        // })
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
             return roundNumber(signals["Fan_Speed"])
         })
@@ -236,7 +236,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Table",
         StatusTable({
-            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Acceleration.Longitudinal", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume"],
+            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume"],
             vehicle: vehicle,
 		    refresh: 800         
         })
