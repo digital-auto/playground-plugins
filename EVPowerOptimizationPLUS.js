@@ -715,18 +715,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
 			<div id="message">Current battery SOC</div>
-            <div style="width:2em;cursor: pointer;margin-top:4px;" id="video">
-                <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
+            <div style="width:2em;cursor: pointer;margin-top:4px;text-align:center;" id="video">
+                <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);margin:auto;">
             </div>
 		</div>
 		`
 
-		box.injectNode(scoreFrame)
+		
 
-        let video = controlsFrame.querySelector("#video")
+        let video = scoreFrame.querySelector("#video")
 		video.onclick = () => {
-			const style = simulationDetails.style.trim();
-			const videoURL = style === "relaxed" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxedDriver_AVC.mp4?alt=media&token=ea69aa02-828b-4a66-af0b-5b5abc257d5c" : style === "optimized" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimizedDriver_AVC.mp4?alt=media&token=f9fc5f86-c61a-4760-ac48-4a83d135b8f3" : "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSportyDriver_AVC.mp4?alt=media&token=2f2b664a-f682-4171-912f-0b0e3e32a5bd"
+			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fpower_optimization%2FEV_Power_Optimisation.mp4?alt=media&token=6e441fbf-14e9-4567-bdf5-62f4df264a46"
 			let videoFrame = document.createElement("div")
 			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
 			videoFrame.innerHTML =
@@ -742,6 +741,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				`
 			box.triggerPopup(videoFrame)
 		}
+
+        box.injectNode(scoreFrame)
 
         return async () => {
             
