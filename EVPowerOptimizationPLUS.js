@@ -298,7 +298,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             left: 31%;
             width: 40%;
             height: 15%;
-            font-size: 12px;
+            font-size: 14px;
             color: #e9e9e9;
             text-align: center;
             display:flex;
@@ -366,7 +366,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
         .main-text {
             padding: 10px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             height: 86%;
         }
