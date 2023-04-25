@@ -357,10 +357,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
         .main-div {
             position: absolute;
-            top: 10%;
-            left: 15%;
-            width: 70%;
-            height: 80%;
+            top: 15%;
+            left: 20%;
+            width: 60%;
+            height: 70%;
             background-color: white;
         }
     
@@ -368,7 +368,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             padding: 10px;
             font-size: 14px;
             font-weight: 600;
-            height: 45%;
+            height: 60%;
         }
     
         .song-div {
@@ -489,24 +489,22 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
         }
         </style>
-        <!--
         <img class="main-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fmain.png?alt=media&token=02815bf3-b9c4-4e7d-8fb1-c02be00fd0a0">
-        -->
         <div class="main-div">
             <div id="mainText" class="main-text">
             </div>
-            <div class="song-div">
+            <div class="song-div" style='display:none;'>
                 <div id="songName" style="animation-play-state:paused;" class="song-name">
                     
                 </div>
             </div>
-            <div class="process-div">
+            <div class="process-div" style='display:none;'>
                 <div>
                     <img class="process-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fprocess.png?alt=media&token=d23481f5-b188-4bb2-8e21-d0be44a13496">
                     <img id="modelImg" class="model-img" style="animation-play-state:paused" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fmodel.png?alt=media&token=e855b64a-fcb9-4752-8434-31b4b46a7529">
                 </div>
             </div>
-            <div class="btn-div">
+            <div class="btn-div" style='display:none;'>
                 <img align="middle" class="btn-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fhearts.png?alt=media&token=76b9cf8c-c056-428d-b4e1-fc123022ed0e">
                 <img align="middle" class="btn-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Flast.png?alt=media&token=e7f2e83d-44cf-4375-b367-77b3087f401f">
                 <img align="middle" id="btnImg" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced">
@@ -632,35 +630,38 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 		</style>
         <div style="display:flex;flex-wrap:wrap;flex-direction:column;align-content:space-around;jusstify-content:space-around">
+            <div style="width:100%;display: flex;align-items: center;justify-content: center;cursor: pointer;margin-bottom:4px;" id="video">
+                <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
+            </div>
             <div class="btn-group" style="margin:5px;">
-                <button id="pol1" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol1" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 1
                 </button>
-                <button id="pol2" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol2" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 2
                 </button>
-                <button id="pol3" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol3" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 3
                 </button>
-                <button id="pol4" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol4" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 4
                 </button>
-                <button id="pol5" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol5" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 5
                 </button>
-                <button id="pol6" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol6" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 6
                 </button>
-                <button id="pol7" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol7" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 7
                 </button>
-                <button id="pol8" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol8" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 8
                 </button>
-                <button id="pol9" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol9" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 9
                 </button>
-                <button id="pol10" class="pol" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol10" class="pol" style="width:100px;max-width:100px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 10
                 </button>
             </div>
@@ -681,6 +682,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
             };
         }
+
+        let video = PolicyFrame.querySelector("#video")
+		video.onclick = () => {
+			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fpower_optimization%2FEV_Power_Optimisation.mp4?alt=media&token=6e441fbf-14e9-4567-bdf5-62f4df264a46"
+			let videoFrame = document.createElement("div")
+			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
+			videoFrame.innerHTML =
+				`
+				<div id="videoContainer" >
+					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
+						<source
+						src=${videoURL}
+						type="video/mp4"
+						/>
+					</video>
+				</div>
+				`
+			box.triggerPopup(videoFrame)
+		}
 
         box.injectNode(PolicyFrame)
 
@@ -706,7 +726,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </style>
 		<div id="score" style="">
 			<div class="text">0.0%</div>
-			<svg width="100" height="180" style="transform: rotateX(180deg)">
+			<svg width="100" height="200" style="transform: rotateX(180deg)">
 				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
 				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="120,200"/>
@@ -715,32 +735,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
 			<div id="message">Current battery SOC</div>
-            <div style="width:2em;cursor: pointer;margin-top:4px;text-align:center;" id="video">
-                <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);margin:auto;">
-            </div>
 		</div>
 		`
-
-		
-
-        let video = scoreFrame.querySelector("#video")
-		video.onclick = () => {
-			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fpower_optimization%2FEV_Power_Optimisation.mp4?alt=media&token=6e441fbf-14e9-4567-bdf5-62f4df264a46"
-			let videoFrame = document.createElement("div")
-			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
-			videoFrame.innerHTML =
-				`
-				<div id="videoContainer" >
-					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
-						<source
-						src=${videoURL}
-						type="video/mp4"
-						/>
-					</video>
-				</div>
-				`
-			box.triggerPopup(videoFrame)
-		}
 
         box.injectNode(scoreFrame)
 
