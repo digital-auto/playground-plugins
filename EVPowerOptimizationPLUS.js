@@ -168,34 +168,39 @@ const plugin = ({widgets, simulator, vehicle}) => {
         //}
     }
 
+    const roundNumber = (num) => {
+        if(!num) return 0
+        return Math.round(num*1000)/1000
+    }
+
     const updateSignals = async(signals) => {
 
         simulator("Vehicle.TravelledDistance", "get", async () => {
-            return signals["Distance"]
+            return roundNumber(signals["Distance"])
         })
         simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "get", async () => {
-            return signals["SOC"]
+            return roundNumber(signals["SOC"])
         })
         simulator("Vehicle.Speed", "get", async () => {
-            return signals["Speed_kmph"]
+            return roundNumber(signals["Speed_kmph"])
         })
         simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
-            return signals["Acceleration_Limit"]
+            return roundNumber(signals["Acceleration_Limit"])
         })
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
-            return signals["Fan_Speed"]
+            return roundNumber(signals["Fan_Speed"])
         })
         simulator("Vehicle.Cabin.Lights.LightIntensity", "get", async () => {
-            return signals["Interior_Lighting"]
+            return roundNumber(signals["Interior_Lighting"])
         })
         simulator("Vehicle.Cabin.Sunroof.Position", "get", async () => {
-            return signals["Sunroof"]
+            return roundNumber(signals["Sunroof"])
         })
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "get", async () => {
-            return signals["Temperature"]
+            return roundNumber(signals["Temperature"])
         })
         simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
-            return signals["Volume"]
+            return roundNumber(signals["Volume"])
         })
 
 
@@ -352,16 +357,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
         .main-div {
             position: absolute;
-            top: 16%;
-            left: 24.5%;
-            width: 55%;
-            height: 55%;
+            top: 10%;
+            left: 15%;
+            width: 70%;
+            height: 80%;
             background-color: white;
         }
     
         .main-text {
             padding: 10px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             height: 45%;
         }
@@ -371,7 +376,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             flex-direction: column;
             align-items: center;
             margin:0% 10% 0% 10%;
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 600;
             overflow: hidden;
         }
@@ -484,7 +489,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
         }
         </style>
+        <!--
         <img class="main-img" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fmain.png?alt=media&token=02815bf3-b9c4-4e7d-8fb1-c02be00fd0a0">
+        -->
         <div class="main-div">
             <div id="mainText" class="main-text">
             </div>
