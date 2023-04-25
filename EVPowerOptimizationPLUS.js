@@ -706,7 +706,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </style>
 		<div id="score" style="">
 			<div class="text">0.0%</div>
-			<svg width="100" height="200" style="transform: rotateX(180deg)">
+			<svg width="100" height="180" style="transform: rotateX(180deg)">
 				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
 				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="120,200"/>
@@ -714,11 +714,34 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Current battery SOC</div>		
+			<div id="message">Current battery SOC</div>
+            <div style="width:2em;cursor: pointer;margin-top:4px;" id="video">
+                <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
+            </div>
 		</div>
 		`
 
 		box.injectNode(scoreFrame)
+
+        let video = controlsFrame.querySelector("#video")
+		video.onclick = () => {
+			const style = simulationDetails.style.trim();
+			const videoURL = style === "relaxed" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxedDriver_AVC.mp4?alt=media&token=ea69aa02-828b-4a66-af0b-5b5abc257d5c" : style === "optimized" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimizedDriver_AVC.mp4?alt=media&token=f9fc5f86-c61a-4760-ac48-4a83d135b8f3" : "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSportyDriver_AVC.mp4?alt=media&token=2f2b664a-f682-4171-912f-0b0e3e32a5bd"
+			let videoFrame = document.createElement("div")
+			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
+			videoFrame.innerHTML =
+				`
+				<div id="videoContainer" >
+					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
+						<source
+						src=${videoURL}
+						type="video/mp4"
+						/>
+					</video>
+				</div>
+				`
+			box.triggerPopup(videoFrame)
+		}
 
         return async () => {
             
