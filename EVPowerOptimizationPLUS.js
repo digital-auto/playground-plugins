@@ -170,7 +170,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const roundNumber = (num) => {
         if(!num) return 0
-        return Math.round(num*1000)/1000
+        return Math.round(num*100)/100
     }
 
     const updateSignals = async(signals) => {
