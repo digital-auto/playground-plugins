@@ -197,7 +197,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             return roundNumber(signals["Sunroof"])
         })
         simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "get", async () => {
-            return roundNumber(signals["Temperature"])
+            return roundNumber(45 - signals["Temperature"])
         })
         simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
             return roundNumber(signals["Volume"])
