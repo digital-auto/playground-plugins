@@ -4,6 +4,7 @@ import LineChart from "./reusable/LineChart.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
+import MobileNotifications from "./reusable/MobileNotifications.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
@@ -158,6 +159,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "running";
             IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
         }
+
         //else {
             //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：OFF<br>Interior Light System Weak Light";
            // HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
@@ -278,6 +280,20 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "subscribe", async ({func, args}) => {
 	// 	sim_function = args[0]
 	// })
+
+
+    let mobileNotifications = null;
+	widgets.register("Mobile", (box) => {
+		({printNotification: mobileNotifications} = MobileNotifications({
+			apis : null,
+			vehicle: null,
+			box: box,
+			refresh: null,
+            paddingTop: 70,
+            paddingHorizontal: 25
+		}))
+	});
+
 
     let HVACAnimationFrame = null;
     widgets.register("HVAC Animation", (box) => {
@@ -756,7 +772,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		start_simulation : start_sim,
         stop_simulation : stop_sim,
         load_signals : loadSpreadSheet,
-        update_simulation: updateSimulation
+        update_simulation: updateSimulation,
+        notifyPhone: (message) => {
+            if (mobileNotifications !== null) {
+                mobileNotifications(message)
+            }
+        },
 	}  
 }
 
