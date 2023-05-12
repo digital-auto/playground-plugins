@@ -59,6 +59,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let container = null
 
+    let resultImgDiv = null
+    let resultRecDiv = null
+
+    let imgWidth = 0;
+    let imgHeight = 0;
+
+    widgets.register("Result", (box) => {
+        container = document.createElement('div')
+        container.innerHTML = `
+            <div style="width:100%;height:100%;position: relative">
+                <div id="resultRec" style="position:absolute;border: 2px solid red;top: 0;left:0;width:0;height:0;z-index:2;"></div>
+                <img id="resultImg" style="width:100%;height:100%;position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;"/>
+            </div>
+        `
+        resultImgDiv = container.querySelector("#resultImg")
+        resultRecDiv = container.querySelector("#resultRec")
+        box.injectNode(container)
+    })
+
     widgets.register("Video Panel", (box) => {
         container = document.createElement('div')
         container.innerHTML = 
@@ -85,25 +104,30 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
         `
         const upload_btn = container.querySelector("#upload-btn")
+        const upload = container.querySelector("#upload")
         upload_btn.onclick = () => {
-            container.querySelector("#upload").click()
+            // container.querySelector("#upload").click()
+            if(upload) upload.click()
         }
 
         let imageEncoded = null
-        const upload = container.querySelector("#upload")
+        const img_output = container.querySelector('#output');
+        const img = container.querySelector("#image")
         upload.onchange = (event) => {
-            const image = container.querySelector('#output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            container.querySelector("#image").style = "display: block"
+            img_output.src = URL.createObjectURL(event.target.files[0]);
+            img.style = "display: block"
 
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
         
             var base_image = new Image();
-            base_image.src = image.src;
+            base_image.src = img_output.src;
             base_image.onload = function() {
                 canvas.width = base_image.width;
                 canvas.height = base_image.height;
+
+                imgWidth = base_image.width;
+                imgHeight = base_image.height;
         
                 ctx.drawImage(base_image, 0, 0);
                 imageEncoded = canvas.toDataURL('image/jpeg')
@@ -179,6 +203,42 @@ const plugin = ({widgets, simulator, vehicle}) => {
         submit_btn.onclick = async () => {
             // console.log(setLocationGlobal)
             const res = await imageUpload(imageEncoded)
+            console.log(resultImgDiv)
+            console.log(imageEncoded)
+            if(res) {
+                let resData = JSON.parse(res)
+                console.log(resData)
+                if(resData && resData.backbonepredictions) {
+                    for(let key in resData.backbonepredictions) {
+                        let coordinates = resData.backbonepredictions[key].coordinates
+                        console.log("res.backbonepredictions.coordinates", coordinates)
+                        if(resultImgDiv) {
+                            resultImgDiv.src = imageEncoded;
+                            let imgWidthDiv =  resultImgDiv.width
+                            let imgHeightDiv =  resultImgDiv.height
+                            let xmax = coordinates.xmax
+                            let xmin = coordinates.xmin
+                            let ymax = coordinates.ymax
+                            let ymin = coordinates.ymin
+
+                            let leftPercent = (1.0*xmin)/(imgWidth*1.0)
+                            let topPercent = (1.0*ymin)/(imgHeight*1.0)
+
+                            let widthPercent = (xmax-xmin)/(imgWidth*1.0)
+                            let heightPercent = (ymax-ymin)/(imgHeight*1.0)
+
+                            resultRecDiv.style.left = `${imgWidthDiv * leftPercent}px`
+                            resultRecDiv.style.top = `${imgHeightDiv * topPercent}px`
+
+                            resultRecDiv.style.width = `${imgWidthDiv * widthPercent}px`
+                            resultRecDiv.style.height = `${imgHeightDiv * heightPercent}px`
+
+                        }
+
+                        break;
+                    }
+                }
+            }
             console.log(res)
         }
 
