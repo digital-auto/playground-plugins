@@ -83,7 +83,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container = document.createElement('div')
         container.innerHTML = 
         `
-        <div id="image" style="display:none">
+        <div id="image" style="display:block;">
             <img id="output" width="100%" height="100%" 
                 src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F0000.JPG?alt=media&token=4e2bb785-846f-4ee1-8774-0a101b473bca"/>
         </div>
@@ -205,15 +205,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
         submit_btn.onclick = async () => {
             // console.log(setLocationGlobal)
             const res = await imageUpload(imageEncoded)
-            console.log(resultImgDiv)
-            console.log(imageEncoded)
+            // console.log(resultImgDiv)
+            // console.log(imageEncoded)
             if(res) {
                 let resData = JSON.parse(res)
                 // console.log(resData)
                 if(resData && resData.backbonepredictions) {
                     for(let key in resData.backbonepredictions) {
                         let coordinates = resData.backbonepredictions[key].coordinates
-                        console.log("res.backbonepredictions.coordinates", coordinates)
+                        // console.log("res.backbonepredictions.coordinates", coordinates)
                         if(resultImgDiv) {
                             resultImgDiv.src = imageEncoded;
                             let imgWidthDiv =  resultImgDiv.width
