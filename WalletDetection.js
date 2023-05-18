@@ -95,7 +95,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
 			</div> -->
         <!-- </div> -->
-        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:0%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
             <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Upload
             </button>
