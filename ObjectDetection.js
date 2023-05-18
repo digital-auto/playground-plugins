@@ -29,6 +29,11 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
+    let API_PATH = 'https://aiotapp.net/walletdetection/image-upload'
+    let apikey = 'h644blf0bp1g3k4d8ffkazchyfb412e'
+    let apisecret = 'yswm5qiyg0lhf45fo3pn1epsv5m01li03094wgwf7hgactxlq76kdd55whymfx'
+    let endpoint_id = '582a8a02-0357-412f-a31d-865549855e43'
+
     let simInterval = null
 
     const loadSpreadSheet = async () => {
@@ -145,11 +150,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         const imageUpload = async (image) => {
             image = image.replace('data:image/jpeg;base64,', '')
-            const apikey = 'h644blf0bp1g3k4d8ffkazchyfb412e'
-            const apisecret = 'yswm5qiyg0lhf45fo3pn1epsv5m01li03094wgwf7hgactxlq76kdd55whymfx'
-            const endpoint_id = '582a8a02-0357-412f-a31d-865549855e43'
             const res = await fetch(
-                `https://aiotapp.net/walletdetection/image-upload`, {
+                    API_PATH, {
                     method:'POST',
                     mode: 'cors',
                     cache: 'no-cache',
@@ -276,6 +278,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
         },
         mobile_notification: (message) => {
             mobileNotificationsGlobal(message)
+        },
+        set_api_info: (in_api_path, in_api_key, in_api_secret, in_endpoint_id) => {
+            API_PATH = in_api_path || 'https://aiotapp.net/walletdetection/image-upload'
+            apikey = in_api_key || 'h644blf0bp1g3k4d8ffkazchyfb412e'
+            apisecret = in_api_secret || 'yswm5qiyg0lhf45fo3pn1epsv5m01li03094wgwf7hgactxlq76kdd55whymfx'
+            endpoint_id = in_endpoint_id || '582a8a02-0357-412f-a31d-865549855e43'
         },
         start_simulation: (time) => {
             simInterval = setInterval(async () => {
