@@ -70,7 +70,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container.innerHTML = `
             <div style="width:100%;height:100%;position: relative">
                 <div id="resultRec" style="position:absolute;border: 2px solid red;top: 0;left:0;width:0;height:0;z-index:2;"></div>
-                <img id="resultImg" style="width:100%;height:100%;position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;"/>
+                <img id="resultImg" style="width:100%;height:100%;position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;"
+                    src=""/>
             </div>
         `
         resultImgDiv = container.querySelector("#resultImg")
@@ -83,7 +84,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container.innerHTML = 
         `
         <div id="image" style="display:none">
-            <img id="output" width="100%" height="100%"/>
+            <img id="output" width="100%" height="100%" 
+                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F0000.JPG?alt=media&token=4e2bb785-846f-4ee1-8774-0a101b473bca"/>
         </div>
         <!-- <div id="video" style="display:block; width:100%; height:100%"> -->
             <!-- <video id="raw-video" width="100%" height="100%" style="object-fit:fill">
@@ -93,7 +95,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
 			</div> -->
         <!-- </div> -->
-        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 10px; opacity:0%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
             <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Upload
             </button>
@@ -207,7 +209,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             console.log(imageEncoded)
             if(res) {
                 let resData = JSON.parse(res)
-                console.log(resData)
+                // console.log(resData)
                 if(resData && resData.backbonepredictions) {
                     for(let key in resData.backbonepredictions) {
                         let coordinates = resData.backbonepredictions[key].coordinates
@@ -239,7 +241,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     }
                 }
             }
-            console.log(res)
         }
 
         /* const play_btn = container.querySelector("#play-btn")
