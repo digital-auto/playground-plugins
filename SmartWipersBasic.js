@@ -50,7 +50,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         simulatorFrame = document.createElement("div")
         simulatorFrame.style = "width:100%;height:100%"
         simulatorFrame.innerHTML =
-            `<iframe id="wiper" src="https://aiotapp.net/wiper/simulator" frameborder="0" style="width:100%;height:100%"></iframe>`
+            `<iframe id="wiper" src="https://playground-plugins.netlify.app/simulator/wiper-iframe/" frameborder="0" style="width:100%;height:100%"></iframe>`
         box.injectNode(simulatorFrame)
     });
 
