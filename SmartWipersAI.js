@@ -2,9 +2,12 @@ import StatusTable from "./reusable/StatusTable.js"
 // import SpeedOMeter from "./Speedometer.js"
 //import "./assets/js/opencv.js"
 
+// const API_HOST = "https://aiotapp.net"
+const API_HOST = "http://localhost:80"
+
 async function fetchIntensity(weather) {
     const res = await fetch(
-        `https://aiotapp.net/video/inference/percentage?weather=${weather}`);
+        `${API_HOST}/video/inference/percentage?weather=${weather}`);
     // waits until the request completes...
     if (!res.ok) {
         const message = `An error has occured: ${res.status}`;
@@ -17,7 +20,7 @@ async function fetchIntensity(weather) {
 
 async function submitImagesForBigLoop(image1, image2, wiperMode) {
     const res = await fetch(
-        `https://aiotapp.net/bigloop/upload/user`,
+        `${API_HOST}/bigloop/upload/user`,
         {
             method: 'POST',
             mode: 'cors',
@@ -208,7 +211,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         <div id="videoContainer" style="height:100%">
             <video crossorigin="anonymous" id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="Data source: Soboleva, Vera, and Oleg Shipitko. 'Raindrops on windshield: Dataset and lightweight gradient-based detection algorithm.' 2021 IEEE Symposium Series on Computational Intelligence (SSCI). IEEE, 2021.">
                 <source
-                src="https://aiotapp.net/video/raw?weather=${weather}"
+                src="${API_HOST}/video/raw?weather=${weather}"
                 type="video/mp4"
                 />
             </video>
@@ -239,8 +242,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             else
                 weather = "heavy";
 
-            dashcamFrame.querySelector("#videoPlayer source").setAttribute("src", `https://aiotapp.net/video/raw?weather=${weather}`)
-            dashcamInferenceFrame.querySelector("#videoPlayer source").setAttribute("src", `https://aiotapp.net/video/inference?weather=${weather}`)
+            dashcamFrame.querySelector("#videoPlayer source").setAttribute("src", `${API_HOST}/video/raw?weather=${weather}`)
+            dashcamInferenceFrame.querySelector("#videoPlayer source").setAttribute("src", `${API_HOST}/video/inference?weather=${weather}`)
             dashcamFrame.querySelector("#videoPlayer").load();
             dashcamInferenceFrame.querySelector("#videoPlayer").load();
 
@@ -312,7 +315,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         <div id="videoContainer" style="height:100%" >
             <video crossorigin="anonymous" id="videoPlayer" style="width:100%; height:100%; object-fit: fill" preload="auto" muted title="The pink curve outlines the location of raindrops on the windshield as detected by the AI model. Grad-CAM is a technique that can generate the heatmap denoting the focus area of the AI model. The redder the area in the heatmap, the higher the attention of the AI model.">
                 <source
-                src="https://aiotapp.net/video/inference?weather=${weather}"
+                src="${API_HOST}/video/inference?weather=${weather}"
                 type="video/mp4"
                 />
             </video>

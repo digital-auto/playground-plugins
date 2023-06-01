@@ -31,7 +31,8 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 const anysisSimulation = async (call, policy) => {
     const res = await fetch(
-        `https://aiotapp.net/evpoweroptimization`, {
+        `http://localhost/evpoweroptimization`, {
+        // `https://aiotapp.net/evpoweroptimization`, {
             method:'POST',
             mode: 'cors',
             cache: 'no-cache',
