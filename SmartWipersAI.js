@@ -3,7 +3,7 @@ import StatusTable from "./reusable/StatusTable.js"
 //import "./assets/js/opencv.js"
 
 // const API_HOST = "https://aiotapp.net"
-const API_HOST = "http://localhost:80"
+const API_HOST = "https://app.digitalauto.tech"
 
 async function fetchIntensity(weather) {
     const res = await fetch(

@@ -5,7 +5,7 @@ import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 
 // const API_HOST = "https://aiotapp.net"
-const API_HOST = "http://localhost"
+const API_HOST = "https://app.digitalauto.tech"
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
