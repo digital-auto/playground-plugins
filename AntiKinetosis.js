@@ -4,9 +4,12 @@ import MobileNotifications from "./reusable/MobileNotifications.js"
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 
+// const API_HOST = "https://aiotapp.net"
+const API_HOST = "http://localhost"
+
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
-		`https://aiotapp.net/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
+		`${API_HOST}/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
 	// waits until the request completes...
 	if (!res.ok) {
 		const message = `An error has occured: ${res.status}`;
