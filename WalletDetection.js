@@ -68,9 +68,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 widgets.register("Result", (box) => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div style="width: 50%; height: 50%; display: flex; align-items: center; justify-content: center;">
+        <div style="width: 50%; height: 50%; position: relative;">
             <div id="resultRec" style="position: absolute; border: 2px solid red; top: 0; left: 0; width: 0; height: 0; z-index: 2;"></div>
-            <img id="resultImg" style="max-width: 100%; max-height: 100%; z-index: 1;"
+            <img id="resultImg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; z-index: 1;"
                 src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240"/> 
         </div>
     `;
