@@ -109,7 +109,122 @@ let container = null
         box.injectNode(container);
     });		
 
+widgets.register("InputImage", (box) => {
+        container = document.createElement('div')
+        container.innerHTML = 
+        `
+        <div id="image" style="display:block;z-index:1;">
+            <img id="output" width="100%" height="100%" 
+                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F0000.JPG?alt=media&token=4e2bb785-846f-4ee1-8774-0a101b473bca"/>
+        </div>
+        <div class="btn btn-color" 
+            style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" 
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="submit-btn" 
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        `
+        const upload_btn = container.querySelector("#upload-btn")
+        const upload = container.querySelector("#upload")
+        upload_btn.onclick = () => {
+            if(upload) upload.click()
+        }
 
+        let imageEncoded = null
+        let file = null
+        const img_output = container.querySelector('#output');
+        const img = container.querySelector("#image")
+        upload.onchange = (event) => {
+            file = event.target.files[0]
+            img_output.src = URL.createObjectURL(event.target.files[0]);
+            img.style = "display: block"
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+        
+            var base_image = new Image();
+            base_image.src = img_output.src;
+            base_image.onload = function() {
+                canvas.width = base_image.width;
+                canvas.height = base_image.height;
+
+                imgWidth = base_image.width;
+                imgHeight = base_image.height;
+        
+                ctx.drawImage(base_image, 0, 0);
+                imageEncoded = canvas.toDataURL('image/jpeg')
+                canvas.remove();
+            }
+        }
+
+        const imageUpload = async (image) => {
+            if(!file) return
+            const data = new FormData()
+            data.append('file', file)
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=582a8a02-0357-412f-a31d-865549855e43`, {
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {
+                        'apikey':'2a7uwh0n7kojn34iov5wo4epnt6qcum',
+                        'apisecret':'klprn1tfzninfffpdsb7jqwt09zvbtvbughnljq6wq8pa2gavc2ku15ybysykp'
+                    },
+                    body: data
+            });
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            const response = await res.json()
+            return response
+        }
+
+        const submit_btn = container.querySelector("#submit-btn")
+        submit_btn.onclick = async () => {
+            const resData = await imageUpload(imageEncoded)
+            if(resultImgDiv) {
+                resultImgDiv.src = imageEncoded;
+                resultImgDiv.style.display='block'
+            }
+            if(resData) {
+                if(resData.backbonepredictions) {
+                    for(let key in resData.backbonepredictions) {
+                        let coordinates = resData.backbonepredictions[key].coordinates
+                        if(resultImgDiv) {
+                            resultImgDiv.src = imageEncoded;
+                            let imgWidthDiv =  resultImgDiv.width
+                            let imgHeightDiv =  resultImgDiv.height
+                            let xmax = coordinates.xmax
+                            let xmin = coordinates.xmin
+                            let ymax = coordinates.ymax
+                            let ymin = coordinates.ymin
+
+                            let leftPercent = (1.0*xmin)/(imgWidth*1.0)
+                            let topPercent = (1.0*ymin)/(imgHeight*1.0)
+
+                            let widthPercent = (xmax-xmin)/(imgWidth*1.0)
+                            let heightPercent = (ymax-ymin)/(imgHeight*1.0)
+
+                            resultRecDiv.style.left = `${imgWidthDiv * leftPercent}px`
+                            resultRecDiv.style.top = `${imgHeightDiv * topPercent}px`
+
+                            resultRecDiv.style.width = `${imgWidthDiv * widthPercent}px`
+                            resultRecDiv.style.height = `${imgHeightDiv * heightPercent}px`
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        box.injectNode(container)
+        return () => { }
+    })
 
 
     widgets.register("Video Panel", (box) => {
