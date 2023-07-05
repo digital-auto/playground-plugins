@@ -56,7 +56,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			setLocationGlobal = setLocation
 		})
 	})
-
+'''
     let container = null
 
     let resultImgDiv = null
@@ -79,7 +79,7 @@ widgets.register("Result", (box) => {
     box.injectNode(container);
 });
 
-
+'''
 let container = null
 
     let resultImgDiv = null
