@@ -24,7 +24,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 
 ##### 1.1 Register a LandingLens account and create an AI project
 * Register an account at Landing AI homepage (https://app.landing.ai/login).
-<img src="./img/LandingaiRegistration.png" alt="LandingaiRegistration" width="600">
+  <img src="./img/LandingaiRegistration.png" alt="LandingaiRegistration" width="600">
 
 * After entering your personal account home page, click on **Create Project** tile to create your project.
 <img src="./img//LandingLens.png" alt="LandingLens" width="600">
@@ -129,7 +129,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 
 ##### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
-<img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
+  <img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
 
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
   <img src="./img/AIResult.png" alt="AIResult" width="600">
