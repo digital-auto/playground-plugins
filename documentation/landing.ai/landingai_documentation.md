@@ -76,6 +76,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/NewPrototype.jpg" alt="NewPrototype" width="600">
 
 * Provide your prototype name, description, target user, and a brief solution introduction, then click **Create** button to create your prototype.
+  
   <img src="./img/PrototypeDescription.jpg" alt="PrototypeDescription" width="300">
 
 ### 2.4 Build your plugin with the online digital.auto Plugin Editor
@@ -98,6 +99,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/PluginEditor_2.png" alt="PluginEditor" width="600">
 
   * Go back to **Deploy** menu on **LandingLens** and copy the URL (inside the red box), as shown in the image below. 
+  
     <img src="./img/URL.png" alt="DatasetUpload" width="600">
 
   * You can copy the JavaScript code we provided in the **Wallet Detection** prototype (https://editor.digitalauto.tech/editor/f7054ad5-77f7-47cd-8d0d-d0d9bbb58761wallet_detection.js), and paste into the new plugin you created on the online editor, then replace the URL with the one you copied just now and the **apikey**  with your personalized API Key, which LandingLens previously generated.
@@ -111,16 +113,19 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/OpenPrototype.jpg" alt="OpenPrototype" width="600">
 
 * Click on the **Code** button to enter the page for the Software-defined vehicle Python script editor and Dashboard configuration.
+  
   <img src="./img/CodeEditor.jpg" alt="CodeEditor" width="600">
 
 * Click on **Dashboard config** option to open the Dashboard config editor.
   <img src="./img/DashboardConfig.jpg" alt="DashboardConfig" width="600">
 
 * Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/code).
+  
   <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="600">
 
 ### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
+  
   <img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
 
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
