@@ -73,7 +73,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 
 ##### 2.2 Choose your vehicle model
 * Click on **Select Model** button; thus, all public vehicle models are visible.
-<img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
+  <img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
 
 * Click on the vehicle model **Industrial Internet**. 
 <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
@@ -132,7 +132,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 <img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
 
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
-<img src="./img/AIResult.png" alt="AIResult" width="600">
+  <img src="./img/AIResult.png" alt="AIResult" width="600">
 
 
 
