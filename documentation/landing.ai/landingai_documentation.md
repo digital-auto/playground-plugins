@@ -88,6 +88,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/JSCodeEditor.jpg" alt="JSCodeEditor" width="600">
 
 * Click **Open JS code editor** to open an online digital.auto Plugin Editor (https://editor.digitalauto.tech/) for prototype development on digital.auto Playground.
+  
   <img src="./img/OpenJSEditor.jpg" alt="OpenJSEditor" width="600">
 
 * Click on **Create New Plugin** button to create a plugin for your prototype, specify your plugin name and add the respective JavaScript code on the digital.auto Plugin Editor.
