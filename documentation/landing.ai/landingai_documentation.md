@@ -54,7 +54,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 
 ## 2. digital.auto Playground integration
 
-In this section, the integration processes of the AI model from LandingLens on digital.auto Playground will be introduced. We will deploy four widget boxes (two for the raw image and two for the AI inference results) on the vehicle model Dashboard on Playground to demonstrate Wallet Detection use case. 
+In this section, the integration processes of the AI model from LandingLens on digital.auto Playground will be introduced. We will deploy two widgets (one for the raw image and one for the AI inference results) on the vehicle model Dashboard on Playground to demonstrate Wallet Detection use case. 
 
 ### 2.1 Login to the digital.auto playground portal
 * Click this link https://digitalauto.netlify.app/ to visit digital.auto playground portal on your web browser.
