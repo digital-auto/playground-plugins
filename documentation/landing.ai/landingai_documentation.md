@@ -91,6 +91,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/OpenJSEditor.jpg" alt="OpenJSEditor" width="600">
 
 * Click on **Create New Plugin** button to create a plugin for your prototype, specify your plugin name and add the respective JavaScript code on the digital.auto Plugin Editor.
+  
   <img src="./img/PluginEditor_1.png" alt="PluginEditor" width="600">
   <img src="./img/PluginEditor_2.png" alt="PluginEditor" width="600">
 
