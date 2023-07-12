@@ -1,3 +1,10 @@
+
+  
+<div class="logo-container">
+  <img src="./img/FSTI.png" alt="Logo 2" width="180"/>
+  <img src="./img//AIoTLogoLabHN.jpg" alt="Logo 1" width="160"/>
+</div>
+
 <style>
 .logo-container {
   display: flex;
@@ -8,11 +15,6 @@
   margin-right: 20px;
 }
 </style>
-  
-<div class="logo-container">
-  <img src="./img/FSTI.png" alt="Logo 2" width="180"/>
-  <img src="./img//AIoTLogoLabHN.jpg" alt="Logo 1" width="160"/>
-</div>
 
 ### Landing AI Platform Model build up and digital.auto Playground Deployment Guide
 
@@ -23,8 +25,10 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 ##### 1.1 Register a LandingLens account and create an AI project
 * Register an account at Landing AI homepage (https://app.landing.ai/login).
 <img src="./img/LandingaiRegistration.png" alt="LandingaiRegistration" width="600">
+
 * After entering your personal account home page, click on **Create Project** tile to create your project.
 <img src="./img//LandingLens.png" alt="LandingLens" width="600">
+
 * After entering your created project, click on **Edit** icon  and enter a descriptive name for your project.
 <img src="./img/ProjectName.png" alt="ProjectName" width="600">
 
@@ -48,6 +52,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
      <img src="./img/DefineClass.png" alt="DefineClass" width="600">
   *  You can label your images by drawing a box on the object that you want to identify, then press the left or right arrow keys on your keyboard accordingly to move to the next image.
     <img src="./img/DrawBox.png" alt="DrawBox" width="600">
+
   * If the image does not have any items to label, then click **Nothing to Label** on the bottom right corner.
 
 ##### 1.4 Train your model online
@@ -69,6 +74,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 ##### 2.2 Choose your vehicle model
 * Click on **Select Model** button; thus, all public vehicle models are visible.
 <img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
+
 * Click on the vehicle model **Industrial Internet**. 
 <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
 
@@ -98,8 +104,10 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Click on **Create New Plugin** button to create a plugin for your prototype, specify your plugin name and add the respective JavaScript code on the digital.auto Plugin Editor.
 <img src="./img/PluginEditor_1.png" alt="PluginEditor" width="600">
 <img src="./img/PluginEditor_2.png" alt="PluginEditor" width="600">
+
   * Go back to **Deploy** menu on **LandingLens** and copy the URL (inside the red box), as shown in the image below. 
   <img src="./img/URL.png" alt="DatasetUpload" width="600">
+
   * You can copy the JavaScript code we provided in the **Wallet Detection** prototype (https://editor.digitalauto.tech/editor/f7054ad5-77f7-47cd-8d0d-d0d9bbb58761wallet_detection.js), and paste into the new plugin you created on the online editor, then replace the URL with the one you copied just now and the **apikey**  with your personalized API Key, which LandingLens previously generated.
  <img src="./img/JSScript.png" alt="JSScript" width="600">
 
@@ -122,6 +130,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 ##### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
 <img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
+
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
 <img src="./img/AIResult.png" alt="AIResult" width="600">
 
