@@ -5,17 +5,6 @@
   <img src="./img//AIoTLogoLabHN.jpg" alt="Logo 1" width="160"/>
 </div>
 
-<style>
-.logo-container {
-  display: flex;
-  justify-content: flex-end;
-}
-  
-.logo-container img {
-  margin-right: 20px;
-}
-</style>
-
 ### Landing AI Platform Model build up and digital.auto Playground Deployment Guide
 
 Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/run) demo case on [**digital.auto Playground**](https://digitalauto.netlify.app/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the Landing AI platform [**LandingLens**](https://landing.ai/) from scratch and deploying this model on digital.auto Playground. 
@@ -27,10 +16,10 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
   <img src="./img/LandingaiRegistration.png" alt="LandingaiRegistration" width="600">
 
 * After entering your personal account home page, click on **Create Project** tile to create your project.
-<img src="./img//LandingLens.png" alt="LandingLens" width="600">
+  <img src="./img//LandingLens.png" alt="LandingLens" width="600">
 
 * After entering your created project, click on **Edit** icon  and enter a descriptive name for your project.
-<img src="./img/ProjectName.png" alt="ProjectName" width="600">
+  <img src="./img/ProjectName.png" alt="ProjectName" width="600">
 
 ##### 1.2 Select your project type
 * Three main Computer Vision related tasks that can be developed on LandingLens: 
