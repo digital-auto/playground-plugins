@@ -40,7 +40,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
   * Click on **+ Create Class** to define the item you want to detect into a class, e.g., Wallet.   
      <img src="./img/DefineClass.png" alt="DefineClass" width="600">
   *  You can label your images by drawing a box on the object that you want to identify, then press the left or right arrow keys on your keyboard accordingly to move to the next image.
-    <img src="./img/DrawBox.png" alt="DrawBox" width="600">
+     <img src="./img/DrawBox.png" alt="DrawBox" width="600">
 
   * If the image does not have any items to label, then click **Nothing to Label** on the bottom right corner.
 
@@ -50,7 +50,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 #### 1.5 Generate your model API key
 * Click on **Deploy** button in the left menu, then click on **Create new endpoint** and deploy. Give a name and click **Create** button to create your endpoint.
 * Select **View API Key**, enter the name, and click **Generate API Key** to generate your personalized API key. Later during the deployment of digital.auto Playground, you will use API calls to send images by specifying your API key. 
-<img src="./img/Api.png" alt="DatasetUpload" width="600">
+ <img src="./img/Api.png" alt="DatasetUpload" width="600">
 
 ### 2. digital.auto Playground integration
 
@@ -65,34 +65,34 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
 
 * Click on the vehicle model **Industrial Internet**. 
-<img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
+ <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
 
 #### 2.3 Create your Software-defined Vehicle prototype
 * Click **Prototype Library** to enter the prototype catalog.
-<img src="./img/PrototypeLibrary.jpg" alt="PrototypeLibrary" width="600">
+ <img src="./img/PrototypeLibrary.jpg" alt="PrototypeLibrary" width="600">
 
 * Click on **+ New prototype** button to create your prototype under **Industrial Internet** vehicle model.
-<img src="./img/NewPrototype.jpg" alt="NewPrototype" width="600">
+ <img src="./img/NewPrototype.jpg" alt="NewPrototype" width="600">
 
 * Provide your prototype name, description, target user, and a brief solution introduction, then click **Create** button to create your prototype.
-<img src="./img/PrototypeDescription.jpg" alt="PrototypeDescription" width="300">
+ <img src="./img/PrototypeDescription.jpg" alt="PrototypeDescription" width="300">
 
 #### 2.4 Build your plugin with the online digital.auto Plugin Editor
 * Go back to **Industrial Internet** vehicle model, then select **Plugins**.
-<img src="./img/SelectPlugin.jpg" alt="SelectPlugin" width="600">
+ <img src="./img/SelectPlugin.jpg" alt="SelectPlugin" width="600">
 
 * Click on **+ New plugin** button to create your customized plugin to support your prototype demonstration on your prototype **Dashboard**.
-<img src="./img/NewPlugin.jpg" alt="NewPlugin" width="600">
+ <img src="./img/NewPlugin.jpg" alt="NewPlugin" width="600">
 
 * Add plugin name, Plugin description and click on **Create JS code file using our editor**.
-<img src="./img/JSCodeEditor.jpg" alt="JSCodeEditor" width="600">
+ <img src="./img/JSCodeEditor.jpg" alt="JSCodeEditor" width="600">
 
 * Click **Open JS code editor** to open an online digital.auto Plugin Editor (https://editor.digitalauto.tech/) for prototype development on digital.auto Playground.
-<img src="./img/OpenJSEditor.jpg" alt="OpenJSEditor" width="600">
+ <img src="./img/OpenJSEditor.jpg" alt="OpenJSEditor" width="600">
 
 * Click on **Create New Plugin** button to create a plugin for your prototype, specify your plugin name and add the respective JavaScript code on the digital.auto Plugin Editor.
-<img src="./img/PluginEditor_1.png" alt="PluginEditor" width="600">
-<img src="./img/PluginEditor_2.png" alt="PluginEditor" width="600">
+ <img src="./img/PluginEditor_1.png" alt="PluginEditor" width="600">
+ <img src="./img/PluginEditor_2.png" alt="PluginEditor" width="600">
 
   * Go back to **Deploy** menu on **LandingLens** and copy the URL (inside the red box), as shown in the image below. 
    <img src="./img/URL.png" alt="DatasetUpload" width="600">
