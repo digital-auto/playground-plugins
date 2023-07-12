@@ -9,9 +9,9 @@
 
 Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/run) demo case on [**digital.auto Playground**](https://digitalauto.netlify.app/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the Landing AI platform [**LandingLens**](https://landing.ai/) from scratch and deploying this model on digital.auto Playground. 
 
-### 1. LandingLens AI model build up
+## 1. LandingLens AI model build up
 
-#### 1.1 Register a LandingLens account and create an AI project
+### 1.1 Register a LandingLens account and create an AI project
 * Register an account at Landing AI homepage (https://app.landing.ai/login).
   <img src="./img/LandingaiRegistration.png" alt="LandingaiRegistration" width="600">
 
@@ -21,14 +21,14 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 * After entering your created project, click on **Edit** icon  and enter a descriptive name for your project.
   <img src="./img/ProjectName.png" alt="ProjectName" width="600">
 
-#### 1.2 Select your project type
+### 1.2 Select your project type
 * Three main Computer Vision related tasks that can be developed on LandingLens: 
   * Object Detection: I want to identify objects by drawing boxes around them.
   * Segmentation: I want to identify objects by painting pixels on them.
   * Classification: I want to identify each image into different categories.
 * For **Wallet Detection** project, we select the project type of Object detection.
 
-#### 1.3 Upload your image dataset 
+### 1.3 Upload your image dataset 
 * If you have labeled image datasets, you can upload them by selecting drop to upload button. 
   * Drag the image dataset to LandingLens on the upload image page.
     <img src="./img/BrowseImages.png" alt="DatasetUpload" width="600">
@@ -44,23 +44,23 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 
   * If the image does not have any items to label, then click **Nothing to Label** on the bottom right corner.
 
-#### 1.4 Train your model online
+### 1.4 Train your model online
   * After you prepare your dataset on LandingLens, click the **Train** button to start training your customized wallet detection model, which will take a few minutes.
   
-#### 1.5 Generate your model API key
+### 1.5 Generate your model API key
 * Click on **Deploy** button in the left menu, then click on **Create new endpoint** and deploy. Give a name and click **Create** button to create your endpoint.
 * Select **View API Key**, enter the name, and click **Generate API Key** to generate your personalized API key. Later during the deployment of digital.auto Playground, you will use API calls to send images by specifying your API key. 
   <img src="./img/Api.png" alt="DatasetUpload" width="600">
 
-### 2. digital.auto Playground integration
+## 2. digital.auto Playground integration
 
 In this section, the integration processes of the AI model from LandingLens on digital.auto Playground will be introduced. We will deploy four widgets (two for the raw image and two for the AI inference results) on the vehicle model Dashboard on Playground to demonstrate Wallet Detection use case. 
 
-#### 2.1 Login to the digital.auto playground portal
+### 2.1 Login to the digital.auto playground portal
 * Click this link https://digitalauto.netlify.app/ to visit digital.auto playground portal on your web browser.
 * Login with your user email ID and password. (Please send an email to chris.cheng@ferdinand-steinbeis-institut.de to request an account)
 
-#### 2.2 Choose your vehicle model
+### 2.2 Choose your vehicle model
 * Click on **Select Model** button; thus, all public vehicle models are visible.
   <img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
 
@@ -68,7 +68,7 @@ In this section, the integration processes of the AI model from LandingLens on d
    
   <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
 
-#### 2.3 Create your Software-defined Vehicle prototype
+### 2.3 Create your Software-defined Vehicle prototype
 * Click **Prototype Library** to enter the prototype catalog.
   <img src="./img/PrototypeLibrary.jpg" alt="PrototypeLibrary" width="600">
 
@@ -78,7 +78,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Provide your prototype name, description, target user, and a brief solution introduction, then click **Create** button to create your prototype.
   <img src="./img/PrototypeDescription.jpg" alt="PrototypeDescription" width="300">
 
-#### 2.4 Build your plugin with the online digital.auto Plugin Editor
+### 2.4 Build your plugin with the online digital.auto Plugin Editor
 * Go back to **Industrial Internet** vehicle model, then select **Plugins**.
   <img src="./img/SelectPlugin.jpg" alt="SelectPlugin" width="600">
 
@@ -106,7 +106,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Return to the plugin description page to add the copied link, then click **Create** to create your plugin.
   <img src="./img/CreatePlugin.jpg" alt="CreatePlugin" width="600">
 
-#### 2.5 Widget implementation 
+### 2.5 Widget implementation 
 * The created prototype screen displays as follows; click on **Open** button.
   <img src="./img/OpenPrototype.jpg" alt="OpenPrototype" width="600">
 
@@ -119,7 +119,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/code).
   <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="600">
 
-#### 2.6 Final view of your prototype on Dashboard.
+### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
   <img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
 
