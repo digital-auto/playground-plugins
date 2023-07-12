@@ -5,7 +5,7 @@
   <img src="./img//AIoTLogoLabHN.jpg" alt="Logo 1" width="160"/>
 </div>
 
-## Landing AI Platform Model build up and digital.auto Playground Deployment Guide
+# Landing AI Platform Model build up and digital.auto Playground Deployment Guide
 
 Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/run) demo case on [**digital.auto Playground**](https://digitalauto.netlify.app/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the Landing AI platform [**LandingLens**](https://landing.ai/) from scratch and deploying this model on digital.auto Playground. 
 
