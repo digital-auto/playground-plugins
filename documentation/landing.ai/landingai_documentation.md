@@ -50,7 +50,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 #### 1.5 Generate your model API key
 * Click on **Deploy** button in the left menu, then click on **Create new endpoint** and deploy. Give a name and click **Create** button to create your endpoint.
 * Select **View API Key**, enter the name, and click **Generate API Key** to generate your personalized API key. Later during the deployment of digital.auto Playground, you will use API calls to send images by specifying your API key. 
- <img src="./img/Api.png" alt="DatasetUpload" width="600">
+  <img src="./img/Api.png" alt="DatasetUpload" width="600">
 
 ### 2. digital.auto Playground integration
 
@@ -122,7 +122,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
     <img src="./img/AIResult.png" alt="AIResult" width="600">
-    
+
 
 
 
