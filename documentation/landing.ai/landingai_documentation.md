@@ -111,17 +111,17 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/CodeEditor.jpg" alt="CodeEditor" width="600">
 
 * Click on **Dashboard config** option to open the Dashboard config editor.
- <img src="./img/DashboardConfig.jpg" alt="DashboardConfig" width="600">
+  <img src="./img/DashboardConfig.jpg" alt="DashboardConfig" width="600">
 
 * Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/code).
- <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="600">
+  <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="600">
 
 #### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
   <img src="./img/FinalDashboard.jpg" alt="FinalDashboard" width="600">
 
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
-  <img src="./img/AIResult.png" alt="AIResult" width="600">
+    <img src="./img/AIResult.png" alt="AIResult" width="600">
 
 
 
