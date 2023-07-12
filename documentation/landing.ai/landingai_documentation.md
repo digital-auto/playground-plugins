@@ -64,7 +64,8 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Click on **Select Model** button; thus, all public vehicle models are visible.
   <img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
 
-* Click on the vehicle model **Industrial Internet**. 
+* Click on the vehicle model **Industrial Internet**.
+   
   <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
 
 #### 2.3 Create your Software-defined Vehicle prototype
