@@ -122,6 +122,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 
 * Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
     <img src="./img/AIResult.png" alt="AIResult" width="600">
+    
 
 
 
