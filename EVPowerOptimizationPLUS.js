@@ -35,16 +35,6 @@ let SimulatorStarted = false
 const getAnsysStatus = async () => {
     console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`)
     const res = await fetch(`${ANSYS_API}simulations/status`)
-        // , {
-        //     method:'GET',
-        //     mode: 'no-cors',
-        //     // cache: 'no-cache',
-        //     // headers: {
-        //     //     'Content-Type': 'application/json'
-        //     // }
-        // }
-        // );
-    // console.log("res", res)
     if(!res.ok) throw "Get ansys status failed"
     return await res.json()
 }
