@@ -815,6 +815,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         box.injectNode(scoreFrame)
 
+        box.window.setEventListener("unload", async () => {
+            console.log("on widget unload")
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+            if(SimulatorStarted) {
+                console.log("Stop  simulator")
+                await anysisSimulation('stop', policy)
+            }
+        })
+
         return async () => {
             
             if (sim_intervalId !== null) {
