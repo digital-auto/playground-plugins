@@ -277,6 +277,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
         await anysisSimulation('start', policy)
+        SimulatorStarted = true
         sim_intervalId = setInterval(async () => {
             const res = await anysisSimulation('resume', policy)
             updateSignals(res)
@@ -285,7 +286,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
             await vehicle.Next.get()
             // sim_function()
         }, time)
-        SimulatorStarted = true
         return true
     }
 
@@ -817,9 +817,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         box.window.addEventListener("unload", async () => {
             console.log("on widget unload")
-            if (sim_intervalId !== null) {
-                clearInterval(sim_intervalId)
-            }
+            clearInterval(sim_intervalId)
+
             if(SimulatorStarted) {
                 console.log("Stop  simulator")
                 await anysisSimulation('stop', policy)
