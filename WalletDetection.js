@@ -97,7 +97,7 @@ let container = null
                     style="position:absolute;border: 2px solid red; top: 0; left: 0; width: 0; height: 0; z-index: 2;">
                 </div>
                 <img id="resultImg" 
-                    style="display:none;position:absolute;top:0%;left:0%;width:100%;height:100%; z-index: 1;"
+                    style="display:block;position:absolute;top:0%;left:0%;width:100%;height:100%; z-index: 1;"
                     src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F2023-05-18_17h11_11.png?alt=media&token=81335e79-b793-4c81-ad40-1e6dc4d93f54"/> 
                 <img id="logoImg" 
                     style="position:absolute;top:5%;right:5%;width:30%;padding:6px; z-index: 3;object-fit:contain;background:white;"
