@@ -29,30 +29,75 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-const anysisSimulation = async (call, policy) => {
+let ANSYS_API = "https://evoptimize01.digitalauto.tech/"
+let SimulatorStarted = false
+
+const getAnsysStatus = async () => {
+    console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`)
+    const res = await fetch(`${ANSYS_API}simulations/status`)
+    if(!res.ok) throw "Get ansys status failed"
+    return await res.json()
+}
+
+const callAnsysAction = async (action, policy) => {
+    if(!action) throw "Action is required"
+    if(!["start","stop","resume"].includes(action)) throw "Action is invalid"
     const res = await fetch(
-        // `https://app.digitalauto.tech/evpoweroptimization`, {
-        `https://aiotapp.net/evpoweroptimization`, {
-            method:'POST',
+        `${ANSYS_API}simulations/${action}${policy?'?level_no='+policy:''}`, {
+            method:'PUT',
             mode: 'cors',
             cache: 'no-cache',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                call,
-                policy
-            })
+            }
         });
-    // waits until the request completes...
-    if (!res.ok) {
-        const message = `An error has occured: ${res.status}`;
-        throw new Error(message);
+    if(!res.ok) throw "Call start api failed"
+    return await res.json()
+}
+
+
+const anysisSimulation = async (call, policy) => {
+    try {
+        switch(call) {
+            case "start":
+                await callAnsysAction("start")
+                break;
+            case "stop":
+                await callAnsysAction("stop")
+                break;
+            case "resume":
+                let resumeReturn =  await callAnsysAction("resume", policy)
+                return resumeReturn
+            default:
+                break;
+        }
+    } catch(err) {
+        console.log(err)
     }
-    //conver response to json
-    const response = await res.json()
     
-    return response
+    // const res = await fetch(
+    //     // `https://app.digitalauto.tech/evpoweroptimization`, {
+    //     `https://aiotapp.net/evpoweroptimization`, {
+    //         method:'POST',
+    //         mode: 'cors',
+    //         cache: 'no-cache',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             call,
+    //             policy
+    //         })
+    //     });
+    // // waits until the request completes...
+    // if (!res.ok) {
+    //     const message = `An error has occured: ${res.status}`;
+    //     throw new Error(message);
+    // }
+    //conver response to json
+    // const response = await res.json()
+    
+    // return response
 }
 
 
@@ -177,6 +222,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     }
 
     const updateSignals = async(signals) => {
+        if(!signals) return
 
         simulator("Vehicle.TravelledDistance", "get", async () => {
             return roundNumber(signals["Distance"])
@@ -224,7 +270,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let sim_intervalId = null;
     const start_sim = async (time) => {
+        let res  = await getAnsysStatus()
+        if(res && res.Status === "IDLE") {
+            alert("Simulator is busy, try again later!")
+            return false
+        }
+
         await anysisSimulation('start', policy)
+        SimulatorStarted = true
         sim_intervalId = setInterval(async () => {
             const res = await anysisSimulation('resume', policy)
             updateSignals(res)
@@ -233,6 +286,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             await vehicle.Next.get()
             // sim_function()
         }, time)
+        return true
     }
 
     const stop_sim = async () => {
@@ -242,7 +296,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Table",
         StatusTable({
-            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume"],
+            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume","Vehicle.PowerOptimizeLevel","Vehicle.Cabin.Infotainment.HMI.Brightness","Vehicle.Cabin.Infotainment.HMI.DisplayOffTime","Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn","Vehicle.Cabin.Infotainment.HMI.LastActionTime","Vehicle.Cabin.Infotainment.Media.Volume"],
             vehicle: vehicle,
 		    refresh: 800         
         })
@@ -298,6 +352,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let HVACAnimationFrame = null;
     widgets.register("HVAC Animation", (box) => {
+
 		HVACAnimationFrame = document.createElement("div")
 		HVACAnimationFrame.innerHTML = 
 		`
@@ -760,12 +815,24 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         box.injectNode(scoreFrame)
 
+        box.window.addEventListener("unload", async () => {
+            console.log("on widget unload")
+            clearInterval(sim_intervalId)
+
+            if(SimulatorStarted) {
+                console.log("Stop  simulator")
+                await anysisSimulation('stop', policy)
+            }
+        })
+
         return async () => {
             
             if (sim_intervalId !== null) {
                 clearInterval(sim_intervalId)
             }
-            await anysisSimulation('stop', policy)
+            if(SimulatorStarted) {
+                await anysisSimulation('stop', policy)
+            }
         }
 	})
 
