@@ -291,6 +291,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const stop_sim = async () => {
         clearInterval(sim_intervalId)
+        alert("Stop!")
         await anysisSimulation('stop', policy)
     }
 
@@ -900,7 +901,5 @@ const plugin = ({widgets, simulator, vehicle}) => {
         },
 	}  
 }
-window.onbeforeunload = function(){
-    alert("The application will be stopped!")
- }
+
 export default plugin;
