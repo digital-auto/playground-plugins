@@ -310,7 +310,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         });
     }
 
-    const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
+    const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
 
     widgets.register("Client", async (box) => {
         await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
