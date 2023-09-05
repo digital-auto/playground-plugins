@@ -309,9 +309,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
         });
     }
-    // const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
+
     const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
-    
+
     widgets.register("Client", async (box) => {
         await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
         const socket = box.window.io("https://bridge.digitalauto.tech");
@@ -396,10 +396,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	   vehicle
 	   )
 	)
-    // let sim_function;
-    // simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "subscribe", async ({func, args}) => {
-	// 	sim_function = args[0]
-	// })
+
+    
 
 
     let mobileNotifications = null;
@@ -715,19 +713,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
-        // let optimized = controlFrame.querySelector("#optimized")
-        // optimized.onclick = () => {
-        //     sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE"
-        //     optimized.style.backgroundColor = "rgb(104 130 158)";
-        //     non_optimized.style.backgroundColor = "rgb(157 176 184)";
-        // }
 
-        // let non_optimized = controlFrame.querySelector("#non-optimized")
-        // non_optimized.onclick = () => {
-        //     sheetID = "13ix5z-_Oa_tB5v11XJqnST0SiCBmPraZVUBbB5QzK9c"
-        //     optimized.style.backgroundColor = "rgb(157 176 184)";
-        //     non_optimized.style.backgroundColor = "rgb(104 130 158)";
-        // }
+        
 
         let start = controlFrame.querySelector("#start")
         start.onclick = () => {
