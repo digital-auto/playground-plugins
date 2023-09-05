@@ -291,7 +291,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     const stop_sim = async () => {
         clearInterval(sim_intervalId)
-        alert("Stop!")
         await anysisSimulation('stop', policy)
     }
 
