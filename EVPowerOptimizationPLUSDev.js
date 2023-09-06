@@ -374,10 +374,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
             })
         }
         btnTest.onclick = () => {
-            socket.send(JSON.stringify({
-                cmd: "testAction", 
-                to_provider_id: PROVIDER_ID,
-              }));
+            socket.emit("messageTest", {
+                cmd: "messageTest",
+                data: trvl_dist
+            });
         }
         box.injectNode(container);
     })
