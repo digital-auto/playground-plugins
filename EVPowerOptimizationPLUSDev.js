@@ -360,12 +360,32 @@ const plugin = ({widgets, simulator, vehicle}) => {
     })
 
     widgets.register("Table",
-        StatusTable({
-            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume","Vehicle.PowerOptimizeLevel","Vehicle.Cabin.Infotainment.HMI.Brightness","Vehicle.Cabin.Infotainment.HMI.DisplayOffTime","Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn","Vehicle.Cabin.Infotainment.HMI.LastActionTime","Vehicle.Cabin.Infotainment.Media.Volume"],
-            vehicle: vehicle,
-		    refresh: 800         
-        })
-    )
+    StatusTable({
+        apis: [
+            "Vehicle.TravelledDistance",
+            "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
+            "Vehicle.Speed",
+            "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed",
+            "Vehicle.Cabin.Lights.LightIntensity",
+            "Vehicle.Cabin.Sunroof.Position",
+            "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature",
+            "Vehicle.Cabin.Infotainment.Media.Volume",
+            "Vehicle.PowerOptimizeLevel",
+            "Vehicle.Cabin.Infotainment.HMI.Brightness",
+            "Vehicle.Cabin.Infotainment.HMI.DisplayOffTime",
+            "Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn",
+            "Vehicle.Cabin.Infotainment.HMI.LastActionTime",
+            "Vehicle.Cabin.Infotainment.Media.Volume"
+        ],
+        vehicle: vehicle,
+        refresh: 800,
+        //Socket communication
+        sendTableDataToBackend: function(data) {
+            socket.emit("table_data", data);
+        }
+    })
+);
+
 	
     widgets.register(
         "GoogleMapDirections",
