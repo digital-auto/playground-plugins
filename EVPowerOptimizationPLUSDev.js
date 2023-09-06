@@ -373,6 +373,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 data: 1
             })
         }
+        let trvl_dist = await vehicle.TravelledDistance.get()
         btnTest.onclick = () => {
             socket.emit("messageTest", {
                 cmd: "messageTest",
