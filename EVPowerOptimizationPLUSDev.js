@@ -379,10 +379,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         ],
         vehicle: vehicle,
         refresh: 800,
-        //Socket communication
-        sendTableDataToBackend: function(data) {
-            socket.emit("table_data", { table_data: data });
-        }
     })
 );
 
@@ -734,8 +730,26 @@ const plugin = ({widgets, simulator, vehicle}) => {
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
 
-        
-
+        // Add a function to retrieve Vehicle.TravelledDistance
+function getTravelledDistance() {
+    const tableWidget = widgets.getWidget("Table"); // Replace with the actual method to get the table widget
+    const travelledDistance = tableWidget.getValue("Vehicle.TravelledDistance");
+    return travelledDistance;
+  }
+  
+  function sendTravelledDistanceToBackend() {
+    const travelledDistance = getTravelledDistance();
+  
+    socket.onopen = () => {
+      socket.send(JSON.stringify({
+        cmd: "updateTravelledDistance",
+        value: travelledDistance,
+      }));
+      socket.close();
+    };
+  }
+   
+  
         let start = controlFrame.querySelector("#start")
         start.onclick = () => {
             fetchRowsFromSpreadsheet(sheetID, PLUGINS_APIKEY)
@@ -744,7 +758,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             })
 
             start.style.backgroundColor = "rgb(104 130 158)";
-            start_sim(800)
+            start_sim(800);
+            setInterval(sendTravelledDistanceToBackend, 800);
 
         }
 
