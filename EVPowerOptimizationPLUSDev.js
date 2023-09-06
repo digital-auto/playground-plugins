@@ -392,7 +392,20 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		    refresh: 800         
         })
     )
-    
+ 
+    const onTestClick = () => {
+        const tableWidget = widgets.getWidget("Table");
+        const travelledDistance = tableWidget.getValue("Vehicle.TravelledDistance");
+
+        socket.emit("messageTest", {
+            cmd: "messageTest",
+            data: travelledDistance
+        });
+    };
+
+    btnTest.onclick = onTestClick;
+
+ 
 	
     widgets.register(
         "GoogleMapDirections",
