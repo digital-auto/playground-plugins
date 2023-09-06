@@ -340,6 +340,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         socket.on('message_from_provider', messageFromProvider)
         socket.on('message_Test', messageTest)
         socket.on('provider_reply', onProviderReply)
+        socket.on("hello", (arg, callback) => {
+            console.log(arg); // "world"
+            callback("got it");
+          });
+       
 
         const container = document.createElement("div");
         container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
@@ -373,10 +378,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
             })
         }
         btnTest.onclick = () => {
-            socket.send(JSON.stringify({
-                cmd: "testAction", 
-                to_provider_id: PROVIDER_ID,
-              }));
+            socket.emit("hello", "world", (response) => {
+                console.log(response); // "got it"
+                });
         }
         box.injectNode(container);
     })
