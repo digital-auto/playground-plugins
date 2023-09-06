@@ -327,12 +327,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 lblSpeed.innerText = payload.data
             }
         }
+        const messageTest = (payload) => {
+            if(payload.cmd == 'messageTest') {
+                lblTest.innerText = payload.data
+            }
+        }
         const onProviderReply = (payload) => {
             lblSpeed.innerText = payload.result
         }
 
         socket.on("connect", onConnected);
         socket.on('message_from_provider', messageFromProvider)
+        socket.on('message_Test', messageTest)
         socket.on('provider_reply', onProviderReply)
 
         const container = document.createElement("div");
@@ -346,12 +352,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
                     id='btnStart'> Start</div>
             </div>
+            <div style='margin-top: 10px;font-size:20px;'>
+            <div style='display:inline-block;width: 100px;'>Test</div>
+            <div style='display:inline-block;font-weight: 700' id='lblTest'></div>
+        </div>
             <div style='margin-top: 10px;'>
             <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
                 id='btnTest'> Test</div>
         </div>
         `
         let lblSpeed = container.querySelector("#lblSpeed")
+        let lblTest = container.querySelector("#lblTest")
         let btnStart = container.querySelector("#btnStart")
         let btnTest = container.querySelector("#btnTest")
         btnStart.onclick = () => {
