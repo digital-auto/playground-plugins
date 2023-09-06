@@ -340,11 +340,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         socket.on('message_from_provider', messageFromProvider)
         socket.on('message_Test', messageTest)
         socket.on('provider_reply', onProviderReply)
-        socket.on("hello", (arg, callback) => {
-            console.log(arg); // "world"
-            callback("got it");
-          });
-       
+        
 
         const container = document.createElement("div");
         container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
@@ -378,9 +374,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
             })
         }
         btnTest.onclick = () => {
-            socket.emit("hello", "world", (response) => {
-                console.log(response); // "got it"
-                });
+            socket.send(JSON.stringify({
+                cmd: "testAction", 
+                to_provider_id: PROVIDER_ID,
+              }));
         }
         box.injectNode(container);
     })
@@ -393,20 +390,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
         })
     )
  
-    const onTestClick = () => {
-        const tableWidget = widgets.getWidget("Table");
-        const travelledDistance = tableWidget.getValue("Vehicle.TravelledDistance");
+const onTestClick = () => {
+     const tableWidget = widgets.getWidget("Table");
+    const travelledDistance = tableWidget.getValue("Vehicle.TravelledDistance");
 
-        socket.emit("messageTest", {
-            cmd: "messageTest",
-            data: travelledDistance
-        });
-    };
+     socket.emit("messageTest", {
+        cmd: "messageTest",
+        data: travelledDistance
+    });
+};
 
-    btnTest.onclick = onTestClick;
+ btnTest.onclick = onTestClick;
 
  
-	
     widgets.register(
         "GoogleMapDirections",
         GoogleMapsFromSignal(
