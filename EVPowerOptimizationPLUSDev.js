@@ -330,6 +330,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
         const onProviderReply = (payload) => {
             lblSpeed.innerText = payload.result
         }
+        function sendTextToBackend(text) {
+             const socket = new WebSocket("wss://your-backend-url");
+            socket.onopen = () => {
+              socket.send(JSON.stringify({
+                cmd: "sendText",
+                provider_id: provider_id,
+                text: text,
+              }));
+              socket.close();
+            };
+          }
 
         socket.on("connect", onConnected);
         socket.on('message_from_provider', messageFromProvider)
@@ -354,34 +365,20 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 to_provider_id: PROVIDER_ID,
                 cmd: "Start",
                 data: 1
-            })
+            });
+            sendTextToBackend("Test");
+
         }
         box.injectNode(container);
     })
 
     widgets.register("Table",
-    StatusTable({
-        apis: [
-            "Vehicle.TravelledDistance",
-            "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
-            "Vehicle.Speed",
-            "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed",
-            "Vehicle.Cabin.Lights.LightIntensity",
-            "Vehicle.Cabin.Sunroof.Position",
-            "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature",
-            "Vehicle.Cabin.Infotainment.Media.Volume",
-            "Vehicle.PowerOptimizeLevel",
-            "Vehicle.Cabin.Infotainment.HMI.Brightness",
-            "Vehicle.Cabin.Infotainment.HMI.DisplayOffTime",
-            "Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn",
-            "Vehicle.Cabin.Infotainment.HMI.LastActionTime",
-            "Vehicle.Cabin.Infotainment.Media.Volume"
-        ],
-        vehicle: vehicle,
-        refresh: 800,
-    })
-);
-
+        StatusTable({
+            apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume","Vehicle.PowerOptimizeLevel","Vehicle.Cabin.Infotainment.HMI.Brightness","Vehicle.Cabin.Infotainment.HMI.DisplayOffTime","Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn","Vehicle.Cabin.Infotainment.HMI.LastActionTime","Vehicle.Cabin.Infotainment.Media.Volume"],
+            vehicle: vehicle,
+		    refresh: 800         
+        })
+    )
 	
     widgets.register(
         "GoogleMapDirections",
@@ -730,23 +727,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
 
+        
 
-  
-  async function sendTravelledDistanceToBackend() {
-    const travelledDistance = await vehicle.TravelledDistance.get()
-;
-  
-    socket.onopen = () => {
-      socket.send(JSON.stringify({
-        cmd: "updateTravelledDistance",
-        value: travelledDistance,
-      }));
-      socket.close();
-    };
-  }
-  setInterval(sendTravelledDistanceToBackend, 800);
-
-  
         let start = controlFrame.querySelector("#start")
         start.onclick = () => {
             fetchRowsFromSpreadsheet(sheetID, PLUGINS_APIKEY)
@@ -755,8 +737,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             })
 
             start.style.backgroundColor = "rgb(104 130 158)";
-            start_sim(800);
-            setInterval(sendTravelledDistanceToBackend, 800);
+            start_sim(800)
 
         }
 
