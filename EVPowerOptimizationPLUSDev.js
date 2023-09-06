@@ -381,7 +381,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         refresh: 800,
         //Socket communication
         sendTableDataToBackend: function(data) {
-            socket.emit("table_data", data);
+            socket.emit("table_data", { table_data: data });
         }
     })
 );
