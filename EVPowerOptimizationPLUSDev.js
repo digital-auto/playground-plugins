@@ -330,17 +330,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         const onProviderReply = (payload) => {
             lblSpeed.innerText = payload.result
         }
-        function sendTextToBackend(text) {
-             const socket = new WebSocket("wss://your-backend-url");
-            socket.onopen = () => {
-              socket.send(JSON.stringify({
-                cmd: "sendText",
-                provider_id: provider_id,
-                text: text,
-              }));
-              socket.close();
-            };
-          }
 
         socket.on("connect", onConnected);
         socket.on('message_from_provider', messageFromProvider)
@@ -357,17 +346,26 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
                     id='btnStart'> Start</div>
             </div>
+            <div style='margin-top: 10px;'>
+            <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
+                id='btnTest'> Start</div>
+        </div>
         `
         let lblSpeed = container.querySelector("#lblSpeed")
         let btnStart = container.querySelector("#btnStart")
+        let btnTest = container.querySelector("#btnTest")
         btnStart.onclick = () => {
             socket.emit("request_provider", {
                 to_provider_id: PROVIDER_ID,
                 cmd: "Start",
                 data: 1
-            });
-            sendTextToBackend("Test");
-
+            })
+        }
+        btnTest.onclick = () => {
+            socket.send(JSON.stringify({
+                cmd: "testAction", 
+                to_provider_id: PROVIDER_ID,
+              }));
         }
         box.injectNode(container);
     })
@@ -379,6 +377,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		    refresh: 800         
         })
     )
+    
 	
     widgets.register(
         "GoogleMapDirections",
