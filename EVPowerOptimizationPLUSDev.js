@@ -730,15 +730,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
 
-        // Add a function to retrieve Vehicle.TravelledDistance
-function getTravelledDistance() {
-    const tableWidget = widgets.getWidget("Table"); // Replace with the actual method to get the table widget
-    const travelledDistance = tableWidget.getValue("Vehicle.TravelledDistance");
-    return travelledDistance;
-  }
+
   
-  function sendTravelledDistanceToBackend() {
-    const travelledDistance = getTravelledDistance();
+  async function sendTravelledDistanceToBackend() {
+    const travelledDistance = await vehicle.TravelledDistance.get()
+;
   
     socket.onopen = () => {
       socket.send(JSON.stringify({
@@ -748,7 +744,8 @@ function getTravelledDistance() {
       socket.close();
     };
   }
-   
+  setInterval(sendTravelledDistanceToBackend, 800);
+
   
         let start = controlFrame.querySelector("#start")
         start.onclick = () => {
