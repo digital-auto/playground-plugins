@@ -314,7 +314,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Client", async (box) => {
         await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
-        const socket = box.window.io();
+        const socket = box.window.io("https://bridge.digitalauto.tech");
         const sio = box.window.io("https://bridge.digitalauto.tech");
 
         sio.on('connect', () => {
@@ -390,7 +390,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             socket.emit("request_provider", {
                 to_provider_id: PROVIDER_ID,
                 cmd: "Start",
-                data: 15
+                data: 1
             })
         }
     
