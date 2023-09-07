@@ -322,6 +322,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 master_provider_id: PROVIDER_ID
             })
         }
+        const onDisconnected = () => {
+            console.log("Io disconnected")
+          
+        }
         const messageFromProvider = (payload) => {
             if(payload.cmd == 'showSpeed') {
                 lblSpeed.innerText = payload.data
@@ -337,6 +341,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
         socket.on("connect", onConnected);
+        socket.on("disconnect", onDisconnected);
         socket.on('message_from_provider', messageFromProvider)
         socket.on('message_Test', messageTest)
         socket.on('provider_reply', onProviderReply)
