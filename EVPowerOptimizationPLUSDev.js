@@ -367,10 +367,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 id='btnTest'> Test</div>
         </div>
         `
-        let lblSpeed = container.querySelector("#lblSpeed")
-        let lblTest = container.querySelector("#lblTest")
-        let btnStart = container.querySelector("#btnStart")
-        let btnTest = container.querySelector("#btnTest")
+        let lblSpeed = container.querySelector("#lblSpeed");
+        let lblTest = container.querySelector("#lblTest");
+        let btnStart = container.querySelector("#btnStart");
+        let btnTest = container.querySelector("#btnTest");
         btnStart.onclick = () => {
             socket.emit("request_provider", {
                 to_provider_id: PROVIDER_ID,
@@ -378,12 +378,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 data: 1
             })
         }
-        let trvl_dist = await vehicle.TravelledDistance.get()
         btnTest.onclick = () => {
             socket.emit("messageTest", {
-                cmd: "messageTest",
-                data: trvl_dist
-            });
+                to_provider_id: PROVIDER_ID,
+                cmd: "Test",
+                data: 1
+            })
         }
         box.injectNode(container);
     })
