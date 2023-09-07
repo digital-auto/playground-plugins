@@ -358,7 +358,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
                     id='btnStart'> Start</div>
             </div>
-            <div style='margin-top: 10px;font-size:20px;'>
+        <div style='margin-top: 10px;font-size:20px;'>
             <div style='display:inline-block;width: 100px;'>Test</div>
             <div style='display:inline-block;font-weight: 700' id='lblTest'></div>
         </div>
