@@ -313,22 +313,105 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
 
     widgets.register("Client", async (box) => {
-        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
-        const sio = box.window.io("https://bridge.digitalauto.tech");
+      /* await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
+        const socket = box.window.io("https://bridge.digitalauto.tech");
 
-        sio.on('connect', () => {
-        console.log('connected');
-        sio.emit('sum', {numbers: [1, 2]});
+        const onConnected = () => {
+            console.log("Io connected")
+            socket.emit("register_client", {
+                master_provider_id: PROVIDER_ID
+            });
+         }
+        const onDisconnected = () => {
+            console.log("Io disconnected")
+          
+        }
+        const messageFromProvider = (payload) => {
+            if(payload.cmd == 'showSpeed') {
+                lblSpeed.innerText = payload.data
+            }
+        }
+        const messageTest = (payload) => {
+            if(payload.cmd == 'messageTest') {
+                lblTest.innerText = payload.data
+            }
+        }
+        const onProviderReply = (payload) => {
+            lblSpeed.innerText = payload.result
+        }
+
+        socket.on("connect", onConnected);
+        socket.on("disconnect", onDisconnected);
+        socket.on('message_from_provider', messageFromProvider);
+        socket.on('message_Test', messageTest);
+        socket.on('provider_reply', onProviderReply);
+        
+
+        const container = document.createElement("div");
+        container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
+        container.innerHTML = `
+            <div style='margin-top: 10px;font-size:20px;'>
+                <div style='display:inline-block;width: 100px;'>Speed</div>
+                <div style='display:inline-block;font-weight: 700' id='lblSpeed'></div>
+            </div>
+            <div style='margin-top: 10px;'>
+                <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
+                    id='btnStart'> Start</div>
+            </div>
+            <div style='margin-top: 10px;font-size:20px;'>
+            <div style='display:inline-block;width: 100px;'>Test</div>
+            <div style='display:inline-block;font-weight: 700' id='lblTest'></div>
+        </div>
+            <div style='margin-top: 10px;'>
+            <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
+                id='btnTest'> Test</div>
+        </div>
+        `
+        let lblSpeed = container.querySelector("#lblSpeed")
+        let lblTest = container.querySelector("#lblTest")
+        let btnStart = container.querySelector("#btnStart")
+        let btnTest = container.querySelector("#btnTest")
+        btnStart.onclick = () => {
+            socket.emit("request_provider", {
+                to_provider_id: PROVIDER_ID,
+                cmd: "Start",
+                data: 1
+            })
+        }
+        let trvl_dist = await vehicle.TravelledDistance.get()
+        btnTest.onclick = () => {
+            socket.emit("messageTest", {
+                cmd: "messageTest",
+                data: trvl_dist
+            });
+        }
+        box.injectNode(container);*/
+
+        const io = require('https://cdn.socket.io/4.6.0/socket.io.min.js');
+        const socket = io.connect('https://bridge.digitalauto.tech');
+
+        const myClientId = 'client123'; // Replace with your unique client ID
+
+        socket.on('connect', () => {
+            console.log(`Connected as ${socket.id}`);
+            socket.emit('register', myClientId);
         });
 
-        sio.on('disconnect', () => {
-        console.log('disconnected');
+        socket.on('message', (message) => {
+            console.log(`Received message: ${message}`);
         });
 
-        sio.on('sum_result', (data) => {
-        console.log(data);
+        socket.on('error', (error) => {
+            console.error(`Error: ${error}`);
         });
-        box.injectNode(container);
+
+        // Example: Send a message to another client
+        function sendMessage(recipientId, message) {
+            socket.emit('send_message', recipientId, message);
+        }
+
+        // Example usage:
+        sendMessage('client456', 'Hello, client456!');
     })
 
     widgets.register("Table",
