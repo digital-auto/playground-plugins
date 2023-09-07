@@ -345,7 +345,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
         socket.on('message_from_provider', messageFromProvider);
         socket.on('message_Test', messageTest);
         socket.on('provider_reply', onProviderReply);
-        
+        socket.on("hello", (arg) => {
+            alert(arg); 
+        });
 
         const container = document.createElement("div");
         container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
