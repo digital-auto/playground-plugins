@@ -320,8 +320,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
             console.log("Io connected")
             socket.emit("register_client", {
                 master_provider_id: PROVIDER_ID
-            })
-            socket.emit("sum", {numbers: [1,2]})
+            });
+            socket.emit("sum", {numbers: [1,2]});
+            alert("test");
         }
         const onDisconnected = () => {
             console.log("Io disconnected")
@@ -343,9 +344,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
         socket.on("connect", onConnected);
         socket.on("disconnect", onDisconnected);
-        socket.on('message_from_provider', messageFromProvider)
-        socket.on('message_Test', messageTest)
-        socket.on('provider_reply', onProviderReply)
+        socket.on('message_from_provider', messageFromProvider);
+        socket.on('message_Test', messageTest);
+        socket.on('provider_reply', onProviderReply);
         
 
         const container = document.createElement("div");
