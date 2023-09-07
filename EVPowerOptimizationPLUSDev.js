@@ -314,7 +314,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     widgets.register("Client", async (box) => {
         await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
-        const socket = box.window.io("https://bridge.digitalauto.tech");
+        const socket = box.window.io();
+        const sio = box.window.io("https://bridge.digitalauto.tech");
+
+        sio.on('connect', () => {
+        console.log('connected');
+        sio.emit('sum', {numbers: [1, 2]});
+        });
+
+        sio.on('disconnect', () => {
+        console.log('disconnected');
+        });
+
+        sio.on('sum_result', (data) => {
+        console.log(data);
+        });
 
         const onConnected = () => {
             console.log("Io connected")
