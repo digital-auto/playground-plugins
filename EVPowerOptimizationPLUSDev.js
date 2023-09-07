@@ -322,13 +322,24 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 master_provider_id: PROVIDER_ID
             });
          }
-
- 
+        const onDisconnected = () => {
+            console.log("Io disconnected")
+          
+        }
+        const messageFromProvider = (payload) => {
+            if(payload.cmd == 'showSpeed') {
+                lblSpeed.innerText = payload.data
+            }
+        }
+        const messageTest = (payload) => {
+                 lblTest.innerText = payload.data
+         }
         const onProviderReply = (payload) => {
-            lblTest.innerText = payload.result
+            lblSpeed.innerText = payload.result
         }
 
         socket.on("connect", onConnected);
+        socket.on('message_from_provider', messageFromProvider);
         socket.on('provider_reply', onProviderReply);
 
 
@@ -353,17 +364,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
         `
         let lblSpeed = container.querySelector("#lblSpeed");
-        let lblTest = container.querySelector("#lblTest");
         let btnStart = container.querySelector("#btnStart");
-        let btnTest = container.querySelector("#btnTest");
-        btnStart.onclick = () => {
+         btnStart.onclick = () => {
             socket.emit("request_provider", {
                 to_provider_id: PROVIDER_ID,
                 cmd: "Start",
                 data: 1
             })
         }
- 
+  
         box.injectNode(container);
     })
 
