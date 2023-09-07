@@ -332,10 +332,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
         }
         const messageTest = (payload) => {
-            if(payload.cmd == 'messageTest') {
-                lblTest.innerText = payload.data
-            }
-        }
+                 lblTest.innerText = payload.data
+         }
         const onProviderReply = (payload) => {
             lblSpeed.innerText = payload.result
         }
