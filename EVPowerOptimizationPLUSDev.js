@@ -331,16 +331,23 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 lblSpeed.innerText = payload.data
             }
         }
-        const messageTest = (payload) => {
-                 lblTest.innerText = payload.data
-         }
         const onProviderReply = (payload) => {
             lblSpeed.innerText = payload.result
+        }
+        const messageFromProviderTest = (payload) => {
+            if(payload.cmd == 'Test') {
+                lblTest.innerText = payload.data
+            }
+        }
+        const onProviderReplyTest = (payload) => {
+            lblTest.innerText = payload.result
         }
 
         socket.on("connect", onConnected);
         socket.on('message_from_provider', messageFromProvider);
         socket.on('provider_reply', onProviderReply);
+        socket.on('Message_from_provider_Test', messageFromProviderTest);
+        socket.on('provider_reply_Test', onProviderReplyTest);
 
 
         const container = document.createElement("div");
@@ -369,6 +376,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
             socket.emit("request_provider", {
                 to_provider_id: PROVIDER_ID,
                 cmd: "Start",
+                data: 1
+            })
+        }
+        let lblTest = container.querySelector("#lblTest");
+        let btnTest = container.querySelector("#btnTest");
+         btnTest.onclick = () => {
+            socket.emit("request_provider_Test", {
+                to_provider_id: PROVIDER_ID,
+                cmd: "Test",
                 data: 1
             })
         }
