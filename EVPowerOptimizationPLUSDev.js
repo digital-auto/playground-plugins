@@ -310,10 +310,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         });
     }
 
-    const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
+    const PROVIDER_ID = "client123"
 
     widgets.register("Client", async (box) => {
-      /* await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
+        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
         const socket = box.window.io("https://bridge.digitalauto.tech");
 
         const onConnected = () => {
@@ -385,33 +385,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 data: trvl_dist
             });
         }
-        box.injectNode(container);*/
-
-        const io = require('https://cdn.socket.io/4.6.0/socket.io.min.js');
-        const socket = io.connect('https://bridge.digitalauto.tech');
-
-        const myClientId = 'client123'; // Replace with your unique client ID
-
-        socket.on('connect', () => {
-            console.log(`Connected as ${socket.id}`);
-            socket.emit('register', myClientId);
-        });
-
-        socket.on('message', (message) => {
-            console.log(`Received message: ${message}`);
-        });
-
-        socket.on('error', (error) => {
-            console.error(`Error: ${error}`);
-        });
-
-        // Example: Send a message to another client
-        function sendMessage(recipientId, message) {
-            socket.emit('send_message', recipientId, message);
-        }
-
-        // Example usage:
-        sendMessage('client456', 'Hello, client456!');
+        box.injectNode(container);
     })
 
     widgets.register("Table",
