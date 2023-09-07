@@ -321,6 +321,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             socket.emit("register_client", {
                 master_provider_id: PROVIDER_ID
             })
+            socket.emit("sum", {numbers: [1,2]})
         }
         const onDisconnected = () => {
             console.log("Io disconnected")
