@@ -310,10 +310,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         });
     }
 
-    const PROVIDER_ID = "client123"
+    const PROVIDER_ID = "client123";
 
     widgets.register("Client", async (box) => {
-        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
+        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`);
         const socket = box.window.io("https://bridge.digitalauto.tech");
 
         const onConnected = () => {
@@ -362,10 +362,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     id='btnStart'> Start</div>
             </div>
             <div style='margin-top: 10px;'>
-            <input type='text' id='inputValue' placeholder='Enter a value' />
+            <input type='text' id='inputValue' placeholder='Value' />
             <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;' id='btnSendValue'> Send Value</div>
-            </div>
-        `
+        </div>
+    `;
         let lblSpeed = container.querySelector("#lblSpeed");
         let btnStart = container.querySelector("#btnStart");
          btnStart.onclick = () => {
@@ -377,17 +377,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
         let inputValue = container.querySelector("#inputValue");
         let btnSendValue = container.querySelector("#btnSendValue");
-
+    
         btnSendValue.onclick = () => {
-            let valueToSend = inputValue.value;
-            socket.emit("send_value_to_backend", {
-                value: valueToSend
-            });
+            try {
+                let valueToSend = inputValue.value;
+                console.log("Sending value:", valueToSend); // Logging
+                socket.emit("send_value_to_backend", {
+                    value: valueToSend
+                });
+            } catch (err) {
+                console.error("Error sending value:", err); // Error log
+            }
         };
-
-
+    
         box.injectNode(container);
-    })
+    });
 
     widgets.register("Table",
         StatusTable({
