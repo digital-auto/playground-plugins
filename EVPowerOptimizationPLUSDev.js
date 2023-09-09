@@ -361,14 +361,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
                     id='btnStart'> Start</div>
             </div>
-        <div style='margin-top: 10px;font-size:20px;'>
-            <div style='display:inline-block;width: 100px;'>Test</div>
-            <div style='display:inline-block;font-weight: 700' id='lblTest'></div>
-        </div>
             <div style='margin-top: 10px;'>
-            <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
-                id='btnTest'> Test</div>
-        </div>
+            <input type='text' id='inputValue' placeholder='Enter a value' />
+            <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;' id='btnSendValue'> Send Value</div>
+            </div>
         `
         let lblSpeed = container.querySelector("#lblSpeed");
         let btnStart = container.querySelector("#btnStart");
@@ -379,16 +375,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 data: 1
             })
         }
-        let lblTest = container.querySelector("#lblTest");
-        let btnTest = container.querySelector("#btnTest");
-         btnTest.onclick = () => {
-            socket.emit("request_provider_Test", {
-                to_provider_id: PROVIDER_ID,
-                cmd: "Test",
-                data: 1
-            })
-        }
-  
+        let inputValue = container.querySelector("#inputValue");
+        let btnSendValue = container.querySelector("#btnSendValue");
+
+        btnSendValue.onclick = () => {
+            let valueToSend = inputValue.value;
+            socket.emit("send_value_to_backend", {
+                value: valueToSend
+            });
+        };
+
+
         box.injectNode(container);
     })
 
