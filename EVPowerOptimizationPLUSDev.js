@@ -313,27 +313,27 @@ const plugin = ({widgets, simulator, vehicle}) => {
     const PROVIDER_ID = "client123"
 
     widgets.register("Client", async (box) => {
-        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
+        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`);
+        const socket = box.window.io("https://bridge.digitalauto.tech"); // Use box.window.io instead of just io.
 
-        const container = document.createElement("div");
-        container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
-        container.innerHTML = `
-            <div style='margin-top: 10px;'>
-            <input type='text' id='inputValue' placeholder='Value' />
-            <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;' id='btnSendValue'> Send Value</div>
-        </div>
+     
+    const container = document.createElement("div");
+    container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
+    container.innerHTML = `
+        <div style='margin-top: 10px;'>
+        <input type='text' id='inputValue' placeholder='Your value' />
+        <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;' id='btnSendValue'> Send Value</div>
+    </div>
     `;
 
-        box.injectNode(container);
+    box.injectNode(container);
 
-        const socket = io("https://bridge.digitalauto.tech");
-
-        socket.on("connect", () => {
-            console.log("Connected to the bridge server.");
-            socket.emit("register_client", {
-                master_provider_id: PROVIDER_ID
-            });
+    socket.on("connect", () => {
+        console.log("Connected to the bridge server.");
+        socket.emit("register_client", {
+            master_provider_id: PROVIDER_ID
         });
+    });
 
         const btnSendValue = container.querySelector("#btnSendValue");
         const inputValue = container.querySelector("#inputValue");
