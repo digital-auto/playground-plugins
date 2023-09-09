@@ -13,8 +13,7 @@ const loadScript = (boxWindow, url) => {
         }
     });
 }
-// const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
-const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
+const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
