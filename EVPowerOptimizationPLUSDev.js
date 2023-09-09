@@ -326,7 +326,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
     </div>
     `;
 
-    box.injectNode(container);
 
     socket.on("connect", () => {
         console.log("Connected to the bridge server.");
@@ -354,6 +353,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         socket.on("response", (data) => {
             console.log("Received response:", data.msg);
         });
+        box.injectNode(container);
 
     });
 
