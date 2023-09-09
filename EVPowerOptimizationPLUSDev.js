@@ -53,7 +53,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             </div>
             <div style='margin-top: 10px;'>
                 <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
-                    id='btnStart'> Set Policy</div>
+                    id='btnStart'>Start</div>
             </div>
         `
         let lblSpeed = container.querySelector("#lblSpeed")
