@@ -322,6 +322,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
+                switch(payload.cmd) {
+                    case "speed":
+                        My_Value = fan_speed ;
+                      break;
+                    case "temperature":
+                        My_Value = temp ;
+                     break;
+                    case "distance":
+                        My_Value = trvl_dist ;
+                      break;
+                }
                 if(payload.cmd == 'speed') {
                     if (Object.keys(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()).length != 0)
                     socket.emit("request_provider", {
