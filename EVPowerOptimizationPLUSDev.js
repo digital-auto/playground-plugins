@@ -323,12 +323,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
                 My_Value=null;
-                if (payload.cmd=="speed")
-                    My_Value = fan_speed ;
-                else if (payload.cmd=="temperature")
-                    My_Value = temp ;
-                else if (payload.cmd=="distance")
-                    My_Value = trvl_dist ;
+                if (payload.cmd=="speed"){
+                    My_Value = fan_speed ;}
+                else if (payload.cmd=="temperature"){
+                    My_Value = temp ;}
+                else if (payload.cmd=="distance"){
+                    My_Value = trvl_dist ;}
                 alert(My_Value);
 
                     if (Object.keys(My_Value).length != 0)
