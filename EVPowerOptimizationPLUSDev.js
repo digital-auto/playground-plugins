@@ -320,11 +320,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
+
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'speed') {
-                    let fan_speed = JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get());
-                    if (fan_speed)
+                    alert(JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()))
+                    if (JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
@@ -337,9 +338,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         data: payload.cmd+" is Null"
                     })
 
-                    //payload.data
                 }
             }
+
             const onProviderReply = (payload) => {
                 alert("Worked");
                 lblResult.innerText = payload.result ;
