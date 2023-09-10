@@ -322,11 +322,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
-                if(payload.cmd == 'showSpeed') {
-                    lblResult.innerText = payload.data
-                }
                 if(payload.cmd == 'speed') {
-                    let fan_speed = vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get();
+                    let fan_speed = JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get());
                     if (fan_speed)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -344,8 +341,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
             }
             const onProviderReply = (payload) => {
-                alert("Worked")
-                lblResult.innerText = payload.result
+                alert("Worked");
+                lblResult.innerText = payload.result ;
             }
     
             socket.on("connect", onConnected);
