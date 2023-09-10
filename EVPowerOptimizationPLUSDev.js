@@ -323,13 +323,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'showSpeed') {
-                    lblSpeed.innerText = payload.data
+                    lblResult.innerText = payload.data
                 }
                 if(payload.cmd == 'speed') {
                     let fan_speed = vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get();
                     //lblSpeed.innerText = fan_speed ;
-                    alert (fan_speed)
-                    if (fan_speed>0)
+                    if (fan_speed)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
@@ -346,7 +345,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
             }
             const onProviderReply = (payload) => {
-                lblSpeed.innerText = payload.result
+                lblResult.innerText = payload.result
             }
     
             socket.on("connect", onConnected);
@@ -358,10 +357,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
             
             container.innerHTML = `
             <div style='margin-top: 10px;font-size:20px;'>
-                <div style='display:inline-block;font-weight: 700' id='lblSpeed'></div>
+                <div style='display:inline-block;font-weight: 700' id='lblResult'></div>
             </div>
             `
-            
+            let lblResult = container.querySelector("#lblResult")
+
             /*
             container.innerHTML = `
                 <div style='margin-top: 10px;font-size:20px;'>
