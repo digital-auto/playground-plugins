@@ -325,6 +325,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 if(payload.cmd == 'showSpeed') {
                     lblSpeed.innerText = payload.data
                 }
+                if(payload.cmd == 'speed') {
+                    let fan_speed = vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get();
+                    //lblSpeed.innerText = fan_speed ;
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "speed_result",
+                        data: fan_speed
+                    })
+                    //payload.data
+                }
             }
             const onProviderReply = (payload) => {
                 lblSpeed.innerText = payload.result
