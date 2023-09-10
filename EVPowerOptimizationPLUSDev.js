@@ -328,17 +328,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 if(payload.cmd == 'speed') {
                     let fan_speed = vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get();
                     //lblSpeed.innerText = fan_speed ;
-                    if (fan_speed)
+                    alert (fan_speed)
+                    if (fan_speed>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: fan_speed
+                        data: payload.cmd+"= "+fan_speed
                     })
                     else
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: "Null"
+                        data: payload.cmd+" is Null"
                     })
 
                     //payload.data
@@ -354,6 +355,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
             const container = document.createElement("div");
             container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
+            
+            container.innerHTML = `
+            <div style='margin-top: 10px;font-size:20px;'>
+                <div style='display:inline-block;font-weight: 700' id='lblSpeed'></div>
+            </div>
+            `
+            
+            /*
             container.innerHTML = `
                 <div style='margin-top: 10px;font-size:20px;'>
                     <div style='display:inline-block;width: 100px;'>Speed</div>
@@ -383,7 +392,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     cmd: "Get",
                     data: Number(value)
                 })
-            }
+               
+            } */
+            
             box.injectNode(container);
         })
     widgets.register("Table",
