@@ -321,12 +321,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 })
             }
             const messageFromProvider = (payload) => {
-                alert(payload.cmd);
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'showSpeed') {
                     lblSpeed.innerText = payload.data
                 }
                 if(payload.cmd == 'speed') {
+                    alert(payload.cmd);
                     let fan_speed = vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get();
                     //lblSpeed.innerText = fan_speed ;
                     socket.emit("request_provider", {
