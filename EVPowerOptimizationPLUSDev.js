@@ -322,16 +322,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
-                My_Value=null;
                 if (payload.cmd=="speed"){
-                    My_Value = fan_speed ;}
-                else if (payload.cmd=="temperature"){
-                    My_Value = temp ;}
-                else if (payload.cmd=="distance"){
-                    My_Value = trvl_dist ;}
-                alert(My_Value);
+                    alert(payload.cmd);
 
-                    if (Object.keys(My_Value).length != 0)
+                    if (Object.keys(fan_speed).length != 0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
@@ -343,6 +337,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         cmd: "result_from_vehicul",
                         data: payload.cmd+" is Null"
                     })
+                }
                     
             }
             const onProviderReply = (payload) => {
