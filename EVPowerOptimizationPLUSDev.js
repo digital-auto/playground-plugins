@@ -322,23 +322,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
-                switch(payload.cmd) {
-                    case "speed":
-                        My_Value = fan_speed ;
-                      break;
-                    case "temperature":
-                        My_Value = temp ;
-                     break;
-                    case "distance":
-                        My_Value = trvl_dist ;
-                      break;
-                }
-                if(payload.cmd == 'speed') {
-                    if (Object.keys(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()).length != 0)
+                const My_Value=null;
+                if (payload.cmd=="speed")
+                    My_Value = fan_speed ;
+                else if (payload.cmd=="temperature")
+                    My_Value = temp ;
+                else if (payload.cmd=="distance")
+                    My_Value = trvl_dist ;
+
+                    if (Object.keys(My_Value).length != 0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+fan_speed
+                        data: payload.cmd+"= "+My_Value
                     })
                     else
                     socket.emit("request_provider", {
@@ -347,8 +343,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         data: payload.cmd+" is Null"
                     })
                     
-
-                }
             }
             const onProviderReply = (payload) => {
                 alert("Worked");
