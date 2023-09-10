@@ -336,7 +336,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         data: payload.cmd+" is Null"
                     })
 
-                    //payload.data
+
                 }
             }
             const onProviderReply = (payload) => {
