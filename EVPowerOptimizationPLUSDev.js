@@ -362,7 +362,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 console.log("value", value)
                 socket.emit("request_provider", {
                     to_provider_id: PROVIDER_ID,
-                    cmd: "Start",
+                    cmd: "Get",
                     data: Number(value)
                 })
             }
