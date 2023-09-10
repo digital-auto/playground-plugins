@@ -321,8 +321,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 })
             }
             const messageFromProvider = (payload) => {
-                console.log('message_from_provider', payload)
-                const My_Value= null ;
+                //console.log('message_from_provider', payload);
                 switch(payload.cmd) {
                     case "speed":
                         My_Value = fan_speed ;
@@ -334,11 +333,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         My_Value = trvl_dist ;
                       break;
                   }
+                  alert(payload.cmd+"= "+My_Value);
                     if (Object.keys(My_Value).length != 0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+trvl_dist
+                        data: payload.cmd+"= "+My_Value
                     })
                     else
                     socket.emit("request_provider", {
