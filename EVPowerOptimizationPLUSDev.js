@@ -332,7 +332,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     case "distance":
                         My_Value = trvl_dist ;
                       break;
-                  }
+                }
                   alert(payload.cmd+"= "+My_Value);
                     if (Object.keys(My_Value).length != 0)
                     socket.emit("request_provider", {
