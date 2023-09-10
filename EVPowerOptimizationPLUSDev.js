@@ -321,6 +321,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 })
             }
             const messageFromProvider = (payload) => {
+                alert(payload.cmd);
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'showSpeed') {
                     lblSpeed.innerText = payload.data
