@@ -321,24 +321,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 })
             }
             const messageFromProvider = (payload) => {
-                //console.log('message_from_provider', payload);
-                switch(payload.cmd) {
-                    case "speed":
-                        My_Value = fan_speed ;
-                      break;
-                    case "temperature":
-                        My_Value = temp ;
-                     break;
-                    case "distance":
-                        My_Value = trvl_dist ;
-                      break;
-                }
-                  alert(payload.cmd+"= "+My_Value);
-                    if (Object.keys(My_Value).length != 0)
+                console.log('message_from_provider', payload)
+                if(payload.cmd == 'speed') {
+                    if (Object.keys(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()).length != 0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+My_Value
+                        data: payload.cmd+"= "+fan_speed
                     })
                     else
                     socket.emit("request_provider", {
@@ -346,10 +335,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         cmd: "result_from_vehicul",
                         data: payload.cmd+" is Null"
                     })
-                
+                    
 
+                }
             }
             const onProviderReply = (payload) => {
+                alert("Worked");
                 lblResult.innerText = payload.result ;
             }
     
