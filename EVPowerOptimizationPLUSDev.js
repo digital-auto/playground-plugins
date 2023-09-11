@@ -321,14 +321,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
 
             const messageFromProvider = (payload) => {
-                console.log('message_from_provider', payload)
+                console.log('message_from_provider', payload);
+                const score = vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get();
+                alert(score);
+
                 if(payload.cmd == 'speed') {
-                    alert(JSON.stringify(vehicle.Speed_kmph))
-                    if (JSON.stringify(vehicle.Speed_kmph).length>0)
+                    alert(JSON.stringify(score))
+                    if (JSON.stringify(score).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+vehicle.Speed_kmph
+                        data: payload.cmd+"= "+score
                     })
                     else
                     socket.emit("request_provider", {
