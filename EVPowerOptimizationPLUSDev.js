@@ -343,11 +343,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
             }
 
-            const onProviderReply = (payload) => {
-                alert("Worked");
-                lblResult.innerText = payload.result ;
-            }
-    
+
             socket.on("connect", onConnected);
             socket.on('message_from_provider', messageFromProvider)
             socket.on('provider_reply', onProviderReply)
@@ -361,7 +357,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
             </div>
             `
             let lblResult = container.querySelector("#lblResult")
-
+            const onProviderReply = (payload) => {
+                alert("Worked");
+                lblResult.innerText = payload.result ;
+            }
+    
             /*
             container.innerHTML = `
                 <div style='margin-top: 10px;font-size:20px;'>
