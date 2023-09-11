@@ -323,11 +323,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
-                alert(score);
 
                 if(payload.cmd == 'speed') {
-                    alert(JSON.stringify(score))
-                    if (JSON.stringify(score).length>0)
+                    alert(vehicle)
+                    if (score>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
