@@ -319,7 +319,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
-            const score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get();
+            const score = await vehicle.Speed.get();
             alert(JSON.stringify(score));
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
