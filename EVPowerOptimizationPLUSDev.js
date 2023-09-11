@@ -319,14 +319,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
-            const score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-
+            const score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get();
+            alert(JSON.stringify(score));
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
                 //alert(JSON.stringify(vehicle));
 
                 if(payload.cmd == 'speed') {
-                    alert(JSON.stringify(score))
                     if (JSON.stringify(score).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -343,7 +342,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
             }
 
-
             socket.on("connect", onConnected);
             socket.on('message_from_provider', messageFromProvider)
             socket.on('provider_reply', onProviderReply)
@@ -356,7 +354,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 <div style='display:inline-block;font-weight: 700' id='lblResult'></div>
             </div>
             `
-            let lblResult = container.querySelector("#lblResult")
+            let lblResult = container.querySelector("#lblResult");
             const onProviderReply = (payload) => {
                 alert("Worked");
                 lblResult.innerText = payload.result ;
