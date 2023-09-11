@@ -323,7 +323,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
-                alert(JSON.stringify(vehicle));
+                //alert(JSON.stringify(vehicle));
 
                 if(payload.cmd == 'speed') {
                     alert(JSON.stringify(score))
