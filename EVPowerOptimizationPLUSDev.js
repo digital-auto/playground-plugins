@@ -319,18 +319,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
-            const score = await vehicle.Speed.get();
-            alert(JSON.stringify(score));
+            const speed = await vehicle.Speed.get();
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
-                //alert(JSON.stringify(vehicle));
+                //alert(JSON.stringify(vehicle));            
+                alert(JSON.stringify(speed));
+
 
                 if(payload.cmd == 'speed') {
-                    if (JSON.stringify(score).length>0)
+                    if (JSON.stringify(speed).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+score
+                        data: payload.cmd+"= "+speed
                     })
                     else
                     socket.emit("request_provider", {
