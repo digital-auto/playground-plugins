@@ -323,12 +323,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'speed') {
-                    alert(JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()))
-                    if (JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()).length>0)
+                    alert(JSON.stringify(vehicle.Speed_kmph))
+                    if (JSON.stringify(vehicle.Speed_kmph).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+fan_speed
+                        data: payload.cmd+"= "+vehicle.Speed_kmph
                     })
                     else
                     socket.emit("request_provider", {
