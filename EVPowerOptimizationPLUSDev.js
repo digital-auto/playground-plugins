@@ -319,19 +319,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
+            let trvl_dist = await vehicle.TravelledDistance.get()
 
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
-                const score = vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get();
-                alert(score);
+                alert(trvl_dist);
 
                 if(payload.cmd == 'speed') {
-                    alert(JSON.stringify(score))
-                    if (JSON.stringify(score).length>0)
+                    alert(JSON.stringify(trvl_dist))
+                    if (JSON.stringify(trvl_dist).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+score
+                        data: payload.cmd+"= "+trvl_dist
                     })
                     else
                     socket.emit("request_provider", {
