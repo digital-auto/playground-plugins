@@ -1,6 +1,7 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
 import LineChart from "./reusable/LineChart.js"
+import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
@@ -28,8 +29,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-let ANSYS_API = "https://evoptimize01.digitalauto.tech/"
-//let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev"
+let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_01/"
 let SimulatorStarted = false
 
 const getAnsysStatus = async () => {
@@ -100,7 +100,6 @@ const anysisSimulation = async (call, policy) => {
     // return response
 }
 
-const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
@@ -294,107 +293,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         clearInterval(sim_intervalId)
         await anysisSimulation('stop', policy)
     }
-    const loadScript = (boxWindow, url) => {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const script = boxWindow.document.createElement("script");
-                script.defer = true;
-                script.referrerPolicy = "origin"
-    
-                script.src = url;
-                boxWindow.document.head.appendChild(script);
-                script.addEventListener("load", () => resolve(undefined));
-            } catch (e) {
-                reject();
-            }
-        });
-    }
 
-        widgets.register("Client", async (box) => {
-            await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
-            const socket = box.window.io("https://bridge.digitalauto.tech");
-    
-            const onConnected = () => {
-                console.log("Io connected")
-                socket.emit("register_client", {
-                    master_provider_id: PROVIDER_ID
-                })
-            }
-
-            const messageFromProvider = (payload) => {
-                console.log('message_from_provider', payload)
-                if(payload.cmd == 'speed') {
-                    alert(JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()))
-                    if (JSON.stringify(vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()).length>0)
-                    socket.emit("request_provider", {
-                        to_provider_id: PROVIDER_ID,
-                        cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+fan_speed
-                    })
-                    else
-                    socket.emit("request_provider", {
-                        to_provider_id: PROVIDER_ID,
-                        cmd: "result_from_vehicul",
-                        data: payload.cmd+" is Null"
-                    })
-
-                }
-            }
-
-            const onProviderReply = (payload) => {
-                alert("Worked");
-                lblResult.innerText = payload.result ;
-            }
-    
-            socket.on("connect", onConnected);
-            socket.on('message_from_provider', messageFromProvider)
-            socket.on('provider_reply', onProviderReply)
-    
-            const container = document.createElement("div");
-            container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
-            
-            container.innerHTML = `
-            <div style='margin-top: 10px;font-size:20px;'>
-                <div style='display:inline-block;font-weight: 700' id='lblResult'></div>
-            </div>
-            `
-            let lblResult = container.querySelector("#lblResult")
-
-            /*
-            container.innerHTML = `
-                <div style='margin-top: 10px;font-size:20px;'>
-                    <div style='display:inline-block;width: 100px;'>Speed</div>
-                    <div style='display:inline-block;font-weight: 700' id='lblSpeed'></div>
-                </div>
-                <div style="margin: 8px 4px;">
-                    <input id="number_input"/>
-                </div>
-                <div style='margin-top: 10px;'>
-                    <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
-                        id='btnStart'>GET</div>
-                </div>
-            `
-            let lblSpeed = container.querySelector("#lblSpeed")
-            let btnStart = container.querySelector("#btnStart")
-            let input = container.querySelector("#number_input")
-            btnStart.onclick = () => {
-                // socket.emit("request_provider", {
-                //     to_provider_id: PROVIDER_ID,
-                //     cmd: "Start",
-                //     data: 1
-                // })
-                let value = input.value
-                console.log("value", value)
-                socket.emit("request_provider", {
-                    to_provider_id: PROVIDER_ID,
-                    cmd: "Get",
-                    data: Number(value)
-                })
-               
-            } */
-            
-            box.injectNode(container);
-        })
     widgets.register("Table",
         StatusTable({
             apis:["Vehicle.TravelledDistance","Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed","Vehicle.Cabin.Lights.LightIntensity","Vehicle.Cabin.Sunroof.Position","Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature","Vehicle.Cabin.Infotainment.Media.Volume","Vehicle.PowerOptimizeLevel","Vehicle.Cabin.Infotainment.HMI.Brightness","Vehicle.Cabin.Infotainment.HMI.DisplayOffTime","Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn","Vehicle.Cabin.Infotainment.HMI.LastActionTime","Vehicle.Cabin.Infotainment.Media.Volume"],
