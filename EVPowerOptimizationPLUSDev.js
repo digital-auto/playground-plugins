@@ -1,7 +1,6 @@
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
 import StatusTable from "./reusable/StatusTable.js"
 import LineChart from "./reusable/LineChart.js"
-import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
@@ -29,8 +28,8 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-//let ANSYS_API = "https://evoptimize01.digitalauto.tech/"
-let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev"
+let ANSYS_API = "https://evoptimize01.digitalauto.tech/"
+//let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev"
 let SimulatorStarted = false
 
 const getAnsysStatus = async () => {
