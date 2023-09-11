@@ -29,7 +29,12 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
+<<<<<<< HEAD
 let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_01/"
+=======
+//let ANSYS_API = "https://evoptimize01.digitalauto.tech/"
+let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev/"
+>>>>>>> 1107d63508f32eec6398d931cff497353c082bc4
 let SimulatorStarted = false
 
 const getAnsysStatus = async () => {
