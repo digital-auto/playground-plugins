@@ -327,7 +327,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 alert("Worked");
                 lblResult.innerText = payload.result ;
             }
-
     
     
             const onConnected = () => {
@@ -344,7 +343,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                      let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
                      let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
                      let trvl_dist = await vehicle.TravelledDistance.get()
-                     lblResult.innerText = "WELCOME"
 
                  if(payload.cmd == 'media') {
                     if (JSON.stringify(media_volume).length>0)
@@ -392,6 +390,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     })
 
                 } 
+                if(payload.cmd == 'showTest') {
+                    lblResult.innerText = payload.data      
+                }
            
         }
 
