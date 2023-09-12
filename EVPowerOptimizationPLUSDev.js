@@ -323,13 +323,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
                 //alert(JSON.stringify(vehicle));   
-                const updateSimulation = async () => {
-                    let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
-                    let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
-                    let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
-                    let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
-                    let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-                    let trvl_dist = await vehicle.TravelledDistance.get()
+                const media_volume = async () => {
+                    let media_volume2 = await vehicle.Cabin.Infotainment.Media.Volume.get() 
+                    return media_volume2
+                }
+ 
                         
               
                  if(payload.cmd == 'speed') {
@@ -347,7 +345,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     })
 
                 }
-            }
+           
         }
 
             socket.on("connect", onConnected);
