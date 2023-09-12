@@ -428,8 +428,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     })
 
                 } 
-                else if((payload.cmd == 'vehicle.TravelledDistance').toLowerCase()) {
-                    alert("done!")
+                else if(payload.cmd == ('vehicle.travelleddistance').toLowerCase()) {
                     if (JSON.stringify(trvl_dist).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
