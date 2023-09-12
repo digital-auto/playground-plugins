@@ -119,8 +119,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
-        alert(JSON.stringify(media_volume));
-       
+        
 
         //convert to int
         // media_volume = parseInt(media_volume)
@@ -331,10 +330,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
                     let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
                     let trvl_dist = await vehicle.TravelledDistance.get()
-                 }         
+                        
               
-
-                if(payload.cmd == 'speed') {
+                 if(payload.cmd == 'speed') {
                     if (JSON.stringify(media_volume).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -350,6 +348,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
                 }
             }
+        }
 
             socket.on("connect", onConnected);
             socket.on('message_from_provider', messageFromProvider)
