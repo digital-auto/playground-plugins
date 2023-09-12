@@ -338,17 +338,51 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 
              const messageFromProvider = async (payload) => {
+
+                     let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
+                     let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
                      let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
                      let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+                     let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
                      let trvl_dist = await vehicle.TravelledDistance.get()
 
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'showTest') {
                     lblSpeed.innerText = payload.data
                 }
-                else
+                
+                else if(payload.cmd == ('vehicle.Cabin.Lights.LightIntensity').toLowerCase()) {
+                    if (JSON.stringify(inf_light).length>0)
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+"= "+inf_light
+                    })
+                    else
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+" is Null"
+                    })
+          
 
-                 if(payload.cmd == ('vehicle.Cabin.Infotainment.Media.Volume').toLowerCase()) {
+                }
+                else if(payload.cmd == ('vehicle.Cabin.HVAC.Station.Row1.Left.Temperature').toLowerCase()) {
+                    if (JSON.stringify(temp).length>0)
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+"= "+temp
+                    })
+                    else
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+" is Null"
+                    })
+
+                } 
+                else if(payload.cmd == ('vehicle.Cabin.Infotainment.Media.Volume').toLowerCase()) {
                     if (JSON.stringify(media_volume).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -370,6 +404,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
                         data: payload.cmd+"= "+fan_speed
+                    })
+                    else
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+" is Null"
+                    })
+
+                } 
+                else if(payload.cmd == ('vehicle.Powertrain.TractionBattery.StateOfCharge.Current').toLowerCase()) {
+                    if (JSON.stringify(bat_soc).length>0)
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+"= "+bat_soc
                     })
                     else
                     socket.emit("request_provider", {
