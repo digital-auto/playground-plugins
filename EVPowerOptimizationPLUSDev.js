@@ -313,7 +313,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
         widgets.register("Client", async (box) => {
             await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
             const socket = box.window.io("https://bridge.digitalauto.tech");
- 
+
+            const container = document.createElement("div");
+            container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
+            
+            container.innerHTML = `
+            <div style='margin-top: 10px;font-size:20px;'>
+                <div style='display:inline-block;font-weight: 700' id='lblResult'></div>
+            </div>
+            `
+            let lblResult = container.querySelector("#lblResult");
+            const onProviderReply = (payload) => {
+                alert("Worked");
+                lblResult.innerText = payload.result ;
+            }
+    
     
             const onConnected = () => {
                 console.log("Io connected")
@@ -321,6 +335,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
+
 
 
              const messageFromProvider = async (payload) => {
@@ -384,53 +399,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             socket.on('message_from_provider', messageFromProvider)
             socket.on('provider_reply', onProviderReply)
     
-            const container = document.createElement("div");
-            container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
-            
-            container.innerHTML = `
-            <div style='margin-top: 10px;font-size:20px;'>
-                <div style='display:inline-block;font-weight: 700' id='lblResult'></div>
-            </div>
-            `
-            let lblResult = container.querySelector("#lblResult");
-            const onProviderReply = (payload) => {
-                alert("Worked");
-                lblResult.innerText = payload.result ;
-            }
-    
-            /*
-            container.innerHTML = `
-                <div style='margin-top: 10px;font-size:20px;'>
-                    <div style='display:inline-block;width: 100px;'>Speed</div>
-                    <div style='display:inline-block;font-weight: 700' id='lblSpeed'></div>
-                </div>
-                <div style="margin: 8px 4px;">
-                    <input id="number_input"/>
-                </div>
-                <div style='margin-top: 10px;'>
-                    <div style='display:inline-block;font-weight: 700;padding: 8px 12px;background-color:#ABABAB;cursor:pointer;border-radius:4px;'
-                        id='btnStart'>GET</div>
-                </div>
-            `
-            let lblSpeed = container.querySelector("#lblSpeed")
-            let btnStart = container.querySelector("#btnStart")
-            let input = container.querySelector("#number_input")
-            btnStart.onclick = () => {
-                // socket.emit("request_provider", {
-                //     to_provider_id: PROVIDER_ID,
-                //     cmd: "Start",
-                //     data: 1
-                // })
-                let value = input.value
-                console.log("value", value)
-                socket.emit("request_provider", {
-                    to_provider_id: PROVIDER_ID,
-                    cmd: "Get",
-                    data: Number(value)
-                })
-               
-            } */
-            
+          
+           
             box.injectNode(container);
 
            
