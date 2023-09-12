@@ -313,6 +313,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
         widgets.register("Client", async (box) => {
             await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
             const socket = box.window.io("https://bridge.digitalauto.tech");
+            const updateSimulation = async () => {
+                //let mode = await vehicle.PowerOptimizationMode.get();
+
+                let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+ 
+                return media_volume
+            }
     
             const onConnected = () => {
                 console.log("Io connected")
@@ -323,7 +330,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
                      let media_volume = vehicle.Cabin.Infotainment.Media.Volume.get() 
-                alert(JSON.stringify(media_volume));   
+                alert(JSON.stringify(updateSimulation));   
 
                  if(payload.cmd == 'speed') {
                     if (JSON.stringify(media_volume).length>0)
