@@ -321,19 +321,25 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
-            const speed = await vehicle.Speed.get();
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
-                //alert(JSON.stringify(vehicle));            
-                alert(JSON.stringify(speed));
-
+                //alert(JSON.stringify(vehicle));   
+                const updateSimulation = async () => {
+                    let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
+                    let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
+                    let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
+                    let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+                    let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
+                    let trvl_dist = await vehicle.TravelledDistance.get()
+                 }         
+              
 
                 if(payload.cmd == 'speed') {
-                    if (JSON.stringify(speed).length>0)
+                    if (JSON.stringify(media_volume).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
                         cmd: "result_from_vehicul",
-                        data: payload.cmd+"= "+speed
+                        data: payload.cmd+"= "+media_volume
                     })
                     else
                     socket.emit("request_provider", {
@@ -397,6 +403,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
             } */
             
             box.injectNode(container);
+
+           
         })
     widgets.register("Table",
         StatusTable({
