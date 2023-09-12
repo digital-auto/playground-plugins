@@ -346,6 +346,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 if(payload.cmd == 'showTest') {
                     lblSpeed.innerText = payload.data
                 }
+                else
 
                  if(payload.cmd == 'media') {
                     if (JSON.stringify(media_volume).length>0)
