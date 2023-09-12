@@ -322,14 +322,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
-                //alert(JSON.stringify(vehicle));   
-                const media_volume = async () => {
-                    let media_volume2 = await vehicle.Cabin.Infotainment.Media.Volume.get() 
-                    return media_volume2
-                }
- 
-                        
-              
+                     let media_volume = vehicle.Cabin.Infotainment.Media.Volume.get() 
+                alert(JSON.stringify(media_volume));   
+
                  if(payload.cmd == 'speed') {
                     if (JSON.stringify(media_volume).length>0)
                     socket.emit("request_provider", {
