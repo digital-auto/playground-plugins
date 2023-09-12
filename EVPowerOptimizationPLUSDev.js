@@ -342,6 +342,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
                         cmd: "result_from_vehicul",
                         data: payload.cmd+" is Null"
                     })
+                    if(payload.cmd == 'showTest') {
+                        lblResult.innerText = payload.data
+                    }
 
                 }
                 else if(payload.cmd == 'speed') {
