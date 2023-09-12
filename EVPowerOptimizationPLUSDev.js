@@ -120,9 +120,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
 
-        function get_media_volume(){
-            return media_volume
-        }
 
         //convert to int
         // media_volume = parseInt(media_volume)
@@ -326,14 +323,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
             }
 
 
-            const messageFromProvider = (payload) => {
+             const messageFromProvider = async (payload) => {
                 console.log('message_from_provider', payload);
-                     let media_volume = vehicle.Cabin.Infotainment.Media.Volume.get() 
-                
-                     alert(updateSimulation().get_media_volume());
+                     let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
+                     let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+                     let trvl_dist = await vehicle.TravelledDistance.get()
 
-
-                 if(payload.cmd == 'speed') {
+                 if(payload.cmd == 'media') {
                     if (JSON.stringify(media_volume).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -348,6 +344,36 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     })
 
                 }
+                else if(payload.cmd == 'speed') {
+                    if (JSON.stringify(fan_speed).length>0)
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+"= "+fan_speed
+                    })
+                    else
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+" is Null"
+                    })
+
+                } 
+                else if(payload.cmd == 'distance') {
+                    if (JSON.stringify(trvl_dist).length>0)
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+"= "+trvl_dist
+                    })
+                    else
+                    socket.emit("request_provider", {
+                        to_provider_id: PROVIDER_ID,
+                        cmd: "result_from_vehicul",
+                        data: payload.cmd+" is Null"
+                    })
+
+                } 
            
         }
 
