@@ -119,7 +119,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
-        
+
+        function get_media_volume(){
+            return media_volume
+        }
 
         //convert to int
         // media_volume = parseInt(media_volume)
@@ -321,10 +324,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     master_provider_id: PROVIDER_ID
                 })
             }
+
+
             const messageFromProvider = (payload) => {
                 console.log('message_from_provider', payload);
                      let media_volume = vehicle.Cabin.Infotainment.Media.Volume.get() 
-                alert(updateSimulation.media_volume);   
+                
+                     alert(updateSimulation().get_media_volume());
+
 
                  if(payload.cmd == 'speed') {
                     if (JSON.stringify(media_volume).length>0)
