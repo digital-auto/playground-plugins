@@ -338,7 +338,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 
              const messageFromProvider = async (payload) => {
-                console.log('message_from_provider', payload);
                      let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
                      let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
                      let trvl_dist = await vehicle.TravelledDistance.get()
