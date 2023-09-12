@@ -348,7 +348,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 }
                 else
 
-                 if(payload.cmd == 'media') {
+                 if(payload.cmd == ('vehicle.Cabin.Infotainment.Media.Volume').toLowerCase()) {
                     if (JSON.stringify(media_volume).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -364,7 +364,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
           
 
                 }
-                else if(payload.cmd == 'speed') {
+                else if(payload.cmd == ('vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed').toLowerCase()) {
                     if (JSON.stringify(fan_speed).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
@@ -379,7 +379,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                     })
 
                 } 
-                else if(payload.cmd == 'distance') {
+                else if((payload.cmd == 'vehicle.travelleddistance').toLowerCase()) {
                     if (JSON.stringify(trvl_dist).length>0)
                     socket.emit("request_provider", {
                         to_provider_id: PROVIDER_ID,
