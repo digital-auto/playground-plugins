@@ -329,7 +329,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
     
             const onConnected = () => {
-                mobileNotifications("Io connected")
+                //mobileNotifications("Io connected")
                 socket.emit("register_client", {
                     master_provider_id: PROVIDER_ID
                 })
