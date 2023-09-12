@@ -119,6 +119,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
+        alert(vehicle.Speed.get());
 
         //convert to int
         // media_volume = parseInt(media_volume)
