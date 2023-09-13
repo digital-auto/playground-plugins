@@ -31,7 +31,8 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_01/"
+let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev/"
+
 let SimulatorStarted = false
 
 const getAnsysStatus = async () => {
@@ -102,7 +103,7 @@ const anysisSimulation = async (call, policy) => {
     // return response
 }
 
-const PROVIDER_ID = "PYTHON-CLIENT-SAMPLE"
+const PROVIDER_ID = "dev-CLIENT-SAMPLE"
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
