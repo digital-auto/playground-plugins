@@ -457,7 +457,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
           
            // Function to handle window close event
-const handleWindowClose = (e) => {
+const handleWindowClose = async (e) => {
     e.preventDefault();
     e.returnValue = ''; // This is required for older browsers
   
@@ -465,9 +465,9 @@ const handleWindowClose = (e) => {
     const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
     e.returnValue = confirmationMessage;
     if (e.returnValue !='')
-    stop_sim = async () => {
-        clearInterval(sim_intervalId)
-        await anysisSimulation('stop', policy)
+    {
+        clearInterval(sim_intervalId);
+        await anysisSimulation('stop', policy);
     }
     return confirmationMessage;
   };
