@@ -305,7 +305,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 const script = boxWindow.document.createElement("script");
                 script.defer = true;
                 script.referrerPolicy = "origin"
-    
                 script.src = url;
                 boxWindow.document.head.appendChild(script);
                 script.addEventListener("load", () => resolve(undefined));
