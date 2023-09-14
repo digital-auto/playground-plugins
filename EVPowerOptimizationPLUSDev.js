@@ -454,8 +454,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
           
             const handleWindowClose = (e) => {
-                e.preventDefault();
+                /*e.preventDefault();
                 e.returnValue = ''; 
+                */
                 const confirmationMessage = 'Are you sure you want to leave this page? ';
                 e.returnValue = confirmationMessage;
                 return confirmationMessage;
