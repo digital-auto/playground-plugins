@@ -6,7 +6,9 @@ import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
-
+    window.onbeforeunload = function(){
+  return 'Are you sure you want to leave?';
+};
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
 
@@ -454,9 +456,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
     
           
             const handleWindowClose = (e) => {
-                /*e.preventDefault();
+                e.preventDefault();
                 e.returnValue = ''; 
-                */
                 const confirmationMessage = 'Are you sure you want to leave this page? ';
                 e.returnValue = confirmationMessage;
                 return confirmationMessage;
