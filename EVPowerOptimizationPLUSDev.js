@@ -6,9 +6,10 @@ import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
-    window.onbeforeunload = function(){
+    /*window.onbeforeunload = function(){
   return 'Are you sure you want to leave?';
 };
+*/
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
 
@@ -463,6 +464,11 @@ const handleWindowClose = (e) => {
     // Show an alert when the user tries to close the window
     const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
     e.returnValue = confirmationMessage;
+    if (e.returnValue !='')
+    stop_sim = async () => {
+        clearInterval(sim_intervalId)
+        await anysisSimulation('stop', policy)
+    }
     return confirmationMessage;
   };
   
