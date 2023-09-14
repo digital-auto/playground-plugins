@@ -455,13 +455,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
             socket.on('message_from_provider', messageFromProvider)
             socket.on('provider_reply', onProviderReply)
     
-          
+    /*      
            // Function to handle window close event
 const handleWindowClose = async (e) => {
     e.preventDefault();
     e.returnValue = ''; // This is required for older browsers
   
-    // Show an alert when the user tries to close the window
     const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
     e.returnValue = confirmationMessage;
     if (e.returnValue !='')
@@ -489,7 +488,7 @@ const handleWindowClose = async (e) => {
   const startAlertOnWindowClose = () => {
     window.addEventListener('beforeunload', handleWindowClose);
   };
-  
+  */
             box.injectNode(container);
 
            
