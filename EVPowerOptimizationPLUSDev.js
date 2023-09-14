@@ -455,34 +455,21 @@ const plugin = ({widgets, simulator, vehicle}) => {
             socket.on('provider_reply', onProviderReply)
     
           
-           // Function to handle window close event
-const handleWindowClose = (e) => {
-    e.preventDefault();
-    e.returnValue = ''; // This is required for older browsers
+                    // Function to handle window close event
+            const handleWindowClose = (e) => {
+                e.preventDefault();
+                e.returnValue = ''; // This is required for older browsers
+            
+                // Show an alert when the user tries to close the window
+                const confirmationMessage = 'Are you sure you want to leave this page? ';
+                e.returnValue = confirmationMessage;
+                return confirmationMessage;
+            };
   
-    // Show an alert when the user tries to close the window
-    const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
-    e.returnValue = confirmationMessage;
-    return confirmationMessage;
-  };
-  
-  // Attach the window close event handler
-  window.addEventListener('beforeunload', handleWindowClose);
-  
-  // Function to remove the window close event handler
-  const removeWindowCloseHandler = () => {
-    window.removeEventListener('beforeunload', handleWindowClose);
-  };
-  
-  // Example of when to remove the event handler (you can call this when needed)
-  const stopAlertOnWindowClose = () => {
-    removeWindowCloseHandler();
-  };
-  
-  // Example of when to start showing the alert on window close (you can call this when needed)
-  const startAlertOnWindowClose = () => {
-    window.addEventListener('beforeunload', handleWindowClose);
-  };
+            // Attach the window close event handler
+            window.addEventListener('beforeunload', handleWindowClose);
+            
+
   
             box.injectNode(container);
 
