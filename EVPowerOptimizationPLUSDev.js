@@ -956,13 +956,10 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
+                alert("Test");
             };
         }
-        let test = document.getElementById("pol5")
-        //Umang need to call this
-        test.onclick = () => {
-           alert("Test")
-        }
+
         let video = PolicyFrame.querySelector("#video")
 		video.onclick = () => {
 			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fpower_optimization%2FEV_Power_Optimisation.mp4?alt=media&token=6e441fbf-14e9-4567-bdf5-62f4df264a46"
