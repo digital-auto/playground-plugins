@@ -909,34 +909,34 @@ const handleWindowClose = async (e) => {
                 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="width: 48px;filter: invert(100%);">
             </div>
             <div class="btn-group" style="margin:5px;">
-                <button id="pol1" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol1" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 1
                 </button>
-                <button id="pol2" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol2" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 2
                 </button>
-                <button id="pol3" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol3" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 3
                 </button>
-                <button id="pol4" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol4" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 4
                 </button>
-                <button id="pol5" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol5" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 5
                 </button>
-                <button id="pol6" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol6" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 6
                 </button>
-                <button id="pol7" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol7" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 7
                 </button>
-                <button id="pol8" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol8" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 8
                 </button>
-                <button id="pol9" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol9" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 9
                 </button>
-                <button id="pol10" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol10" class="pol" style="width:140px;max-width:140px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px" onclick="myFunction()">
                 Policy 10
                 </button>
             </div>
@@ -957,6 +957,9 @@ const handleWindowClose = async (e) => {
                 }
             };
         }
+        function myFunction() {
+            alert("Test");
+          }
 
         let video = PolicyFrame.querySelector("#video")
 		video.onclick = () => {
