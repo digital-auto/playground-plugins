@@ -943,11 +943,7 @@ const handleWindowClose = async (e) => {
         </div>
 		`
         
-        let test = document.getElementsByClassName("pol")
-        //Umang need to call this
-        test.onclick = () => {
-           alert("Test")
-        }
+     
         let pol = PolicyFrame.querySelectorAll(".pol")
         for (let i = 0; i < 10; i++) {
             pol[i].onclick = () => {
@@ -962,7 +958,11 @@ const handleWindowClose = async (e) => {
                 }
             };
         }
-
+        let test = document.getElementById("pol5")
+        //Umang need to call this
+        test.onclick = () => {
+           alert("Test")
+        }
         let video = PolicyFrame.querySelector("#video")
 		video.onclick = () => {
 			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fpower_optimization%2FEV_Power_Optimisation.mp4?alt=media&token=6e441fbf-14e9-4567-bdf5-62f4df264a46"
