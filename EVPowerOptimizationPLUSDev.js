@@ -946,7 +946,7 @@ const handleWindowClose = async (e) => {
         const socket = box.window.io("https://bridge.digitalauto.tech");
         //Get values
         
-    const updateSimulation = async () => {
+    const updateSimulation = async (i) => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
         let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
@@ -954,6 +954,14 @@ const handleWindowClose = async (e) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
+        
+        socket.emit("request_provider", {
+            to_provider_id: PROVIDER_ID,
+            cmd: "set_policy",
+            data: i,
+            vss:[inf_light,temp,fan_speed,media_volume,bat_soc,trvl_dist]
+        })
+    }
 
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
@@ -964,6 +972,7 @@ const handleWindowClose = async (e) => {
             })
         })
         let pol = PolicyFrame.querySelectorAll(".pol")
+        
         for (let i = 0; i < 10; i++) {
             pol[i].onclick = () => {
                 policy = i + 1
@@ -975,18 +984,14 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
-                socket.emit("request_provider", {
-                    to_provider_id: PROVIDER_ID,
-                    cmd: "set_policy",
-                    data: i+1,
-                    vss:[inf_light,temp,fan_speed,media_volume,bat_soc,trvl_dist]
-                })
+                updateSimulation(i+1)
+
                 //alert(i+1);
         
 
             };
         }
-    }
+    
 
         let video = PolicyFrame.querySelector("#video")
 		video.onclick = () => {
