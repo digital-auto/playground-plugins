@@ -996,6 +996,7 @@ const handleWindowClose = async (e) => {
             while(1){
             updateSimulation
             await sleep(2000);
+            console.log("sleep");
             }
           }
           
