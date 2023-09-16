@@ -964,12 +964,14 @@ const handleWindowClose = async (e) => {
 
     const SendVSS =  async() =>
            { 
-            const interval = setInterval(function() {
-                updateSimulation()
+            while (1) {
+            const interval = setInterval(async function() {
+                await updateSimulation()
               }, 1000);
              clearInterval(interval);
              console.log("Test")
             }
+        }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
