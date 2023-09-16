@@ -975,7 +975,7 @@ const handleWindowClose = async (e) => {
                     to_provider_id: PROVIDER_ID,
                     cmd: "set_policy",
                     data: i+1,
-                    vss:[inf_light,temp,fan_speed,media_volume,bat_soc,trvl_dist]
+                    vss:[inf_light,temp,fan_speed,media_volume,bat_soc,vehicle.TravelledDistance.get()]
                 })
                 //alert(i+1);
         
