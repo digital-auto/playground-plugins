@@ -950,7 +950,7 @@ const handleWindowClose = async (e) => {
             return new Promise(resolve => setTimeout(resolve, ms));
           }
     
-          const updateSimulation = async () => {
+          const updateSimulation2 = async function updateSimulation() {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
         let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
@@ -966,6 +966,8 @@ const handleWindowClose = async (e) => {
         })
         await sleep(2000);
         updateSimulation
+        console.log([trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]);
+
     }
 
       
@@ -991,10 +993,8 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 policy=i+1
-                for (let i = 0; i < 10; i++) {
-                    updateSimulation;
-                   console.log(i);
-                  }
+                  updateSimulation2;
+               
              
                 
             };
