@@ -980,7 +980,7 @@ const handleWindowClose = async (e) => {
                 console.log("Test")
               }, 1000);
             while (1) {
-             await interval()
+             interval()
              clearInterval(interval);
              
             }
