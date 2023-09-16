@@ -944,23 +944,23 @@ const handleWindowClose = async (e) => {
 		`
         await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
         const socket = box.window.io("https://bridge.digitalauto.tech");
-        //Get values
         
-    const updateSimulation = async () => {
-        //let mode = await vehicle.PowerOptimizationMode.get();
-        let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
-        let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
-        let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
-        let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
-        let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-        let trvl_dist = await vehicle.TravelledDistance.get()
-        socket.emit("request_provider", {
-            to_provider_id: PROVIDER_ID,
-            cmd: "set_policy",
-            data: policy,
-            vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
-        })
-    }
+        //Get values
+        const updateSimulation = async () => {
+            //let mode = await vehicle.PowerOptimizationMode.get();
+            let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
+            let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
+            let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
+            let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+            let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
+            let trvl_dist = await vehicle.TravelledDistance.get()
+            socket.emit("request_provider", {
+                to_provider_id: PROVIDER_ID,
+                cmd: "set_policy",
+                data: policy,
+                vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
+            })
+        }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
@@ -986,12 +986,12 @@ const handleWindowClose = async (e) => {
                 console.log(i);
             };
         }
-        /*function sleep(ms) {
+        function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
           }
           
           async function delayedGreeting() {
-            //if (policy!=11)
+            if (policy!=11)
             while(1){
             await updateSimulation()
             await sleep(2000);
@@ -1000,7 +1000,7 @@ const handleWindowClose = async (e) => {
           }
           
           delayedGreeting();
-          */
+          
     
 
         let video = PolicyFrame.querySelector("#video")
