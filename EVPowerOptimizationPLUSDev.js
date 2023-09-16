@@ -888,7 +888,7 @@ const handleWindowClose = async (e) => {
     let PolicyFrame = null;
     let policy = 11;
 
-    widgets.register("Policy Selection", (box) => {
+    widgets.register("Policy Selection", async (box) => {
         PolicyFrame = document.createElement("div")
         PolicyFrame.style = "width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center"
         PolicyFrame.innerHTML = `
@@ -942,8 +942,16 @@ const handleWindowClose = async (e) => {
             </div>
         </div>
 		`
-        
-     
+        await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
+        const socket = box.window.io("https://bridge.digitalauto.tech");
+
+        const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
+        socket.on("connect", () => {
+            console.log("Io connected from Policy")
+            socket.emit("register_client", {
+                master_provider_id: PROVIDER_ID
+            })
+        })
         let pol = PolicyFrame.querySelectorAll(".pol")
         for (let i = 0; i < 10; i++) {
             pol[i].onclick = () => {
@@ -956,7 +964,13 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
-                alert("Test");
+                socket.emit("request_provider", {
+                    to_provider_id: PROVIDER_ID,
+                    cmd: "set_policy",
+                    data: i+1
+                })
+                alert(i+1);
+
             };
         }
 
@@ -980,6 +994,7 @@ const handleWindowClose = async (e) => {
 		}
 
         box.injectNode(PolicyFrame)
+        
 
     })
 
