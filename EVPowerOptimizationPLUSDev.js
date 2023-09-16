@@ -125,7 +125,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
 
-
+        alert(trvl_dist)
         //convert to int
         // media_volume = parseInt(media_volume)
         // Policy 11
@@ -984,10 +984,7 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 updateSimulation(i+1)
-
                 //alert(i+1);
-        
-
             };
         }
     
