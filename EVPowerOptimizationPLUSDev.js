@@ -954,7 +954,6 @@ const handleWindowClose = async (e) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
-        
         socket.emit("request_provider", {
             to_provider_id: PROVIDER_ID,
             cmd: "set_policy",
