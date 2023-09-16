@@ -983,7 +983,6 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 updateSimulation
-                delayedGreeting
                 console.log(i);
             };
         }
@@ -992,15 +991,15 @@ const handleWindowClose = async (e) => {
           }
           
           async function delayedGreeting() {
-            //if (policy<11)
+            //if (policy!=11)
             while(1){
             await updateSimulation()
             await sleep(1000);
-            //console.log("sleep");
+            console.log("sleep");
           }
         }
           
-          //delayedGreeting()
+          delayedGreeting()
           
     
 
