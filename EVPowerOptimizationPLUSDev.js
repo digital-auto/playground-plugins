@@ -971,11 +971,11 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
-                socket.emit("request_provider", {
+                socket.emit("request_provider",  async () =>  {
                     to_provider_id: PROVIDER_ID,
                     cmd: "set_policy",
                     data: i+1,
-                    vss:[inf_light,temp,fan_speed,media_volume,bat_soc,vehicle.TravelledDistance.get()]
+                    vss:[inf_light,temp,fan_speed,media_volume,bat_soc,await vehicle.TravelledDistance.get()]
                 })
                 //alert(i+1);
             };
