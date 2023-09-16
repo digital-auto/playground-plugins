@@ -986,7 +986,7 @@ const handleWindowClose = async (e) => {
                 policy=i+1
                 for (let i = 0; i < 10; i++) {
                    setTimeout(updateSimulation, 1000);
-                   alert(i);
+                   console.log(i);
                   }
              
                 
