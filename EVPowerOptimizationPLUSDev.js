@@ -962,11 +962,11 @@ const handleWindowClose = async (e) => {
         })
     }
 
-    const SendVSS =  window.setInterval(async() =>
+    const SendVSS =  async() =>
            { 
             clearInterval(SendVSS) 
-            updateSimulation()
-            }, 1000)
+            await updateSimulation()
+            }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
