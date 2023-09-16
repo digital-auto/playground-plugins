@@ -982,9 +982,8 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
-                policy=i+1
-                    updateSimulation()
-                   console.log(i);
+                updateSimulation
+                console.log(i);
             };
         }
         /*function sleep(ms) {
