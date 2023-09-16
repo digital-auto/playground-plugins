@@ -949,7 +949,8 @@ const handleWindowClose = async (e) => {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
           }
-    const updateSimulation = async () => {
+    
+          const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
         let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
