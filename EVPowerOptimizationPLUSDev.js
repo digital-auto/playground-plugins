@@ -968,7 +968,7 @@ const handleWindowClose = async (e) => {
             const interval = setInterval(async function() {
                 await updateSimulation()
               }, 1000);
-             clearInterval(interval);
+             //clearInterval(interval);
              console.log("Test")
             }
         }
