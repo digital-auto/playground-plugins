@@ -946,7 +946,7 @@ const handleWindowClose = async (e) => {
         const socket = box.window.io("https://bridge.digitalauto.tech");
         //Get values
         
-    const updateSimulation = async (i) => {
+    const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
         let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
@@ -957,8 +957,8 @@ const handleWindowClose = async (e) => {
         socket.emit("request_provider", {
             to_provider_id: PROVIDER_ID,
             cmd: "set_policy",
-            data: i,
-            vss:[inf_light,temp,fan_speed,media_volume,bat_soc,trvl_dist]
+            data: policy,
+            vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
         })
     }
 
@@ -983,7 +983,8 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
-                updateSimulation(i+1)
+                policy=i+1
+                updateSimulation()
                 //alert(i+1);
             };
         }
