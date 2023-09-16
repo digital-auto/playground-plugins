@@ -946,6 +946,9 @@ const handleWindowClose = async (e) => {
         const socket = box.window.io("https://bridge.digitalauto.tech");
         //Get values
         
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
     const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
@@ -960,8 +963,11 @@ const handleWindowClose = async (e) => {
             data: policy,
             vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
         })
+        await sleep(2000);
+        updateSimulation
     }
 
+      
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
@@ -985,7 +991,7 @@ const handleWindowClose = async (e) => {
                 }
                 policy=i+1
                 for (let i = 0; i < 10; i++) {
-                   setTimeout(updateSimulation, 1000);
+                    updateSimulation;
                    console.log(i);
                   }
              
