@@ -963,6 +963,11 @@ const handleWindowClose = async (e) => {
     }
 
 
+        var SendVSS = window.setInterval(function(){
+            clearInterval(SendVSS) 
+            updateSimulation()
+        }, 1000);
+        
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
             console.log("Io connected from Policy")
@@ -984,8 +989,7 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 policy=i+1
-
-                updateSimulation()
+                SendVSS                
                 //alert(i+1);
             };
         }
