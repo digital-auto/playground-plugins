@@ -962,29 +962,6 @@ const handleWindowClose = async (e) => {
         })
     }
 
-    const SendVSS =  async() =>
-           { 
-            const interval = setInterval( async function() {
-                let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
-                let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
-                let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
-                let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
-                let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-                let trvl_dist = await vehicle.TravelledDistance.get()
-                socket.emit("request_provider", {
-                    to_provider_id: PROVIDER_ID,
-                    cmd: "set_policy",
-                    data: policy,
-                    vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
-                })
-                console.log("Test")
-              }, 1000);
-            while (1) {
-             interval()
-             clearInterval(interval);
-             
-            }
-        }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
@@ -1007,8 +984,8 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 policy=i+1
-                //updateSimulation()
-                SendVSS()                
+
+                updateSimulation()
                 //alert(i+1);
             };
         }
