@@ -964,13 +964,14 @@ const handleWindowClose = async (e) => {
 
     const SendVSS =  async() =>
            { 
-            const interval = setInterval(async function() {
-                await updateSimulation()
+            const interval = setInterval(function() {
+                updateSimulation()
+                console.log("Test")
               }, 1000);
             while (1) {
              interval()
              clearInterval(interval);
-             //console.log("Test")
+             
             }
         }
 
