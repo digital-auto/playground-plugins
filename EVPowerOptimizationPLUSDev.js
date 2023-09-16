@@ -991,11 +991,11 @@ const handleWindowClose = async (e) => {
           }
           
           async function delayedGreeting() {
-            //if (policy!=11)
+            if (policy!=11)
             while(1){
             await updateSimulation()
-            await sleep(2000);
-            console.log("sleep");
+            await sleep(1000);
+            //console.log("sleep");
             
           }
         }
