@@ -998,8 +998,9 @@ const handleWindowClose = async (e) => {
             console.log("sleep");
             
           }
+        }
           
-          delayedGreeting();
+          delayedGreeting()
           
     
 
