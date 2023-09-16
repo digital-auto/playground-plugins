@@ -987,7 +987,7 @@ const handleWindowClose = async (e) => {
                    console.log(i);
             };
         }
-        function sleep(ms) {
+        /*function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
           }
           
@@ -1001,6 +1001,7 @@ const handleWindowClose = async (e) => {
           }
           
           delayedGreeting();
+          */
     
 
         let video = PolicyFrame.querySelector("#video")
