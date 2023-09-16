@@ -946,11 +946,7 @@ const handleWindowClose = async (e) => {
         const socket = box.window.io("https://bridge.digitalauto.tech");
         //Get values
         
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-          }
-    
-          const updateSimulation2 = async function updateSimulation() {
+    const updateSimulation = async () => {
         //let mode = await vehicle.PowerOptimizationMode.get();
         let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
         let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
@@ -964,13 +960,7 @@ const handleWindowClose = async (e) => {
             data: policy,
             vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
         })
-        await sleep(2000);
-        updateSimulation
-        console.log([trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]);
-
     }
-
-      
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
@@ -993,12 +983,23 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 policy=i+1
-                  updateSimulation2;
-               
-             
-                
+                    updateSimulation;
+                   console.log(i);
             };
         }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+          
+          async function delayedGreeting() {
+            //if (policy!=11)
+            while(1){
+            updateSimulation
+            await sleep(2000);
+            }
+          }
+          
+          delayedGreeting();
     
 
         let video = PolicyFrame.querySelector("#video")
