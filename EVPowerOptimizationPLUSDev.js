@@ -984,6 +984,7 @@ const handleWindowClose = async (e) => {
                     }       
                 }
                 policy=i+1
+                
                 updateSimulation()
                 //alert(i+1);
             };
