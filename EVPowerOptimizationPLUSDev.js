@@ -978,8 +978,6 @@ const handleWindowClose = async (e) => {
                     vss:[inf_light,temp,fan_speed,media_volume,bat_soc,vehicle.TravelledDistance.get()]
                 })
                 //alert(i+1);
-        
-
             };
         }
 
