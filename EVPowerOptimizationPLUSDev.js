@@ -969,22 +969,22 @@ const handleWindowClose = async (e) => {
                 master_provider_id: PROVIDER_ID
             })
         })
-
-        socket.on("policy_from_provider", () => {
-            alert("Test");
-        })
-       
-        socket.on("policy_from_provider", (data) => {
-        alert("on set_policy_from_provider");
-        try {
-            if(data.cmd=="set_policy_from_provider") {
-               alert("Test set policy case 1")
+        socket.on("new_request", (data) => {
+            console.log("on new_request Test");
+            try {
+                switch(data.cmd) {
+                    case "set_policy_from_provider":
+                       {    
+                          alert("Tessssst")
+                    }
+                        default:
+                        break;
+                }
+            } catch(err) {
+                console.log("error on deploy", err)
             }
-        } catch(err) {
-            console.log("error on deploy", err)
-        }
-        })
-
+            })
+    
         let pol = PolicyFrame.querySelectorAll(".pol")
         
         for (let i = 0; i < 10; i++) {
