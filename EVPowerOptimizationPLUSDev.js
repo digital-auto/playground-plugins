@@ -969,6 +969,8 @@ const handleWindowClose = async (e) => {
                 master_provider_id: PROVIDER_ID
             })
         })
+        
+        /*
         socket.on('set_policy_from_provider', set_policy_from_provider)
 
    
@@ -978,6 +980,7 @@ const handleWindowClose = async (e) => {
                 alert("set_policy_from_provider");
             }
         } 
+        */
            
 
         let pol = PolicyFrame.querySelectorAll(".pol")
