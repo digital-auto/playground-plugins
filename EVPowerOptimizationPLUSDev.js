@@ -960,7 +960,7 @@ const handleWindowClose = async (e) => {
                 data: policy,
                 vss: [trvl_dist,bat_soc,fan_speed,inf_light,temp,media_volume]
             })
-        }
+            }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         socket.on("connect", () => {
@@ -969,6 +969,12 @@ const handleWindowClose = async (e) => {
                 master_provider_id: PROVIDER_ID
             })
         })
+        socket.on("set_policy_from_provider", (payload) => {
+          if (payload.cmd==="set_policy_from_provider")
+            console.log("set policy from provider")
+          
+        })
+      
         let pol = PolicyFrame.querySelectorAll(".pol")
         
         for (let i = 0; i < 10; i++) {
