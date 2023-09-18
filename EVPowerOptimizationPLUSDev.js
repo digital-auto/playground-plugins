@@ -970,12 +970,21 @@ const handleWindowClose = async (e) => {
             })
         })
 
-        socket.on('policy_from_provider', async (payload) => {
-            if(payload.cmd == 'set_policy_from_provider') {
-               alert("set_policy_from_provider");
-           } 
-       })
-
+       socket.on("policy_from_provider", (data) => {
+        alert("on set_policy_from_provider");
+        try {
+            switch(data.cmd) {
+                case "set_policy_from_provider":
+                   {    
+                     alert("Test set policy case 1")
+                    }
+                    default:
+                    break;
+            }
+        } catch(err) {
+            console.log("error on deploy", err)
+        }
+        })
 
         let pol = PolicyFrame.querySelectorAll(".pol")
         
