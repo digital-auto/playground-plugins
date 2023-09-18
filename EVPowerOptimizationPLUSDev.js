@@ -974,7 +974,6 @@ const handleWindowClose = async (e) => {
                 if(data.cmd=="policy_from_provider") {
                   alert("Tessssst")
                  }
-           
         })
     
         let pol = PolicyFrame.querySelectorAll(".pol")
