@@ -971,19 +971,11 @@ const handleWindowClose = async (e) => {
         })
         socket.on("new_request", (data) => {
             console.log("on new_request Test");
-            try {
-                switch(data.cmd) {
-                    case "set_policy_from_provider":
-                       {    
-                          alert("Tessssst")
-                    }
-                        default:
-                        break;
-                }
-            } catch(err) {
-                console.log("error on deploy", err)
-            }
-            })
+                if(data.cmd=="policy_from_provider") {
+                  alert("Tessssst")
+                 }
+           
+        })
     
         let pol = PolicyFrame.querySelectorAll(".pol")
         
