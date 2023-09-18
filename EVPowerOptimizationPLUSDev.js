@@ -449,7 +449,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
                 } 
            
-        }
+            }
 
             socket.on("connect", onConnected);
             socket.on('message_from_provider', messageFromProvider)
@@ -969,12 +969,17 @@ const handleWindowClose = async (e) => {
                 master_provider_id: PROVIDER_ID
             })
         })
-        socket.on("set_policy_from_provider", (payload) => {
-          if (payload.cmd==="set_policy_from_provider")
-            console.log("set policy from provider")
-          
-        })
+        socket.on('set_policy_from_provider', set_policy_from_provider)
+
+   
       
+        const set_policy_from_provider = async (payload) => {
+            if(payload.cmd == 'set_policy_from_provider') {
+                alert("set_policy_from_provider");
+            }
+        } 
+           
+
         let pol = PolicyFrame.querySelectorAll(".pol")
         
         for (let i = 0; i < 10; i++) {
