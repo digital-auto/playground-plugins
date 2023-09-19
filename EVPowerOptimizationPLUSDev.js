@@ -973,11 +973,14 @@ const handleWindowClose = async (e) => {
         socket.on("request_provider", (data) => {
             switch(data.cmd) {
                 case "set_policy_from_index":
+                    {
                     socket.emit("new_request", {
                         cmd: "set_policy",
                         data: data.data, 
                     });
+                    alert("Test");
                     break;
+                }
             }
         });
         
