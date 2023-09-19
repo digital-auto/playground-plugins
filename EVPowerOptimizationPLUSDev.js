@@ -970,11 +970,13 @@ const handleWindowClose = async (e) => {
             })
         })
 
-        socket.on("set_policy_from_index", (data) => {
+        socket.on("new_request", (data) => {
             console.log("on set_policy_from_index", data);
             // handle the data here as per your requirements
             alert("Received data for set_policy_from_index: " + JSON.stringify(data));
         });
+      
+           
         
     
         let pol = PolicyFrame.querySelectorAll(".pol")
