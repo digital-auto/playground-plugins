@@ -975,6 +975,23 @@ const handleWindowClose = async (e) => {
                   alert("Tessssst")
                  }
         })
+
+        socket.on("new_request", (data) => {
+            console.log("on new_request");
+            if(!data || !data.cmd || !data.request_from) return
+            try {
+                switch(data.cmd) {
+                    case "set_policy_from_index":
+                        {
+                        alert("set_policy_from_index")
+                        }
+                        default:
+                        break;
+                }
+            } catch(err) {
+                console.log("error on deploy", err)
+            }
+            })
     
         let pol = PolicyFrame.querySelectorAll(".pol")
         
