@@ -970,23 +970,8 @@ const handleWindowClose = async (e) => {
             })
         })
 
-        socket.on("request_provider", (data) => {
-            switch(data.cmd) {
-                case "set_policy_from_index":
-                    {
-                    socket.emit("new_request", {
-                        cmd: "set_policy",
-                        data: data.data, 
-                    });
-                    alert("Test");
-                    break;
-                }
-            }
-        });
-        
-           
-        
-    
+
+
         let pol = PolicyFrame.querySelectorAll(".pol")
         
         for (let i = 0; i < 10; i++) {
@@ -1019,6 +1004,10 @@ const handleWindowClose = async (e) => {
           
           delayedGreeting()
           
+        socket.on("request_provider", (data) => {
+            alert("Test");
+            alert(data);
+        });
     
 
         let video = PolicyFrame.querySelector("#video")
