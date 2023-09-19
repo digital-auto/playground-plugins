@@ -969,19 +969,14 @@ const handleWindowClose = async (e) => {
                 master_provider_id: PROVIDER_ID
             })
         })
-        socket.on("new_request", (data) => {
-            console.log("on new_request Test");
-                if(data.cmd=="policy_from_provider") {
-                  alert("Tessssst")
-                 }
-        })
 
         socket.on("new_request", (data) => {
             console.log("on new_request");
+            
             if(!data || !data.cmd || !data.request_from) return
             try {
                 switch(data.cmd) {
-                    case "set_policy_from_index":
+                     case "set_policy_from_index":
                         {
                         alert("set_policy_from_index")
                         }
@@ -1023,7 +1018,7 @@ const handleWindowClose = async (e) => {
           }
         }
           
-          //delayedGreeting()
+          delayedGreeting()
           
     
 
