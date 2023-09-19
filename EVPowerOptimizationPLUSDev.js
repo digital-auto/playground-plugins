@@ -1006,7 +1006,7 @@ const handleWindowClose = async (e) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }       
                 }
-               // updateSimulation
+                updateSimulation
                 console.log(i);
             };
         }
@@ -1023,7 +1023,7 @@ const handleWindowClose = async (e) => {
           }
         }
           
-          delayedGreeting()
+          //delayedGreeting()
           
     
 
