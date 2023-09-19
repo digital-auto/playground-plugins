@@ -973,7 +973,6 @@ const handleWindowClose = async (e) => {
         socket.on("new_request", async (data) => {
             console.log("on new_request");
             
-            if(!data || !data.cmd || !data.request_from) return
             try {
                 switch(data.cmd) {
                      case "set_policy_from_index":
