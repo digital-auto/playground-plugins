@@ -970,12 +970,17 @@ const handleWindowClose = async (e) => {
             })
         })
 
-        socket.on("new_request", (data) => {
-            console.log("on set_policy_from_index", data);
-            // handle the data here as per your requirements
-            alert("Received data for set_policy_from_index: " + JSON.stringify(data));
+        socket.on("request_provider", (data) => {
+            switch(data.cmd) {
+                case "set_policy_from_index":
+                    socket.emit("new_request", {
+                        cmd: "set_policy",
+                        data: data.data, 
+                    });
+                    break;
+            }
         });
-      
+        
            
         
     
