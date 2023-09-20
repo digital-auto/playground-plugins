@@ -1011,9 +1011,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }
                 }
-                console.log(i);
+                set_policy()
             };
-            set_policy()
+            
 
         }
 
