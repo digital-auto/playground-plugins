@@ -1028,6 +1028,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         async function delayedGreeting() {
+            console.log("policy= "+policy)
             if (policy!=11)
             while (1) {
                 await requestDataFromAnsys()
