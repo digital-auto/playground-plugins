@@ -1016,9 +1016,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             if(policies) {
                 policies.forEach((pol) => {
                     if(pol.id == 'pol'+policy) {
-                        pol.style.backgroundColor = "rgb(157 176 184)"
-                    } else {
                         pol.style.backgroundColor = "rgb(104 130 158)"
+                    } else {
+                        pol.style.backgroundColor = "rgb(157 176 184)"
                     }
                 })
             }
