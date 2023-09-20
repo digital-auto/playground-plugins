@@ -1006,7 +1006,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     }
                 }
              };
-          //requestDataFromAnsys()
+          requestDataFromAnsys()
 
         }
 
