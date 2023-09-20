@@ -957,9 +957,16 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             let trvl_dist = await vehicle.TravelledDistance.get()
             socket.emit("request_provider", {
                 to_provider_id: PROVIDER_ID,
-                cmd: "set_policy",
+                cmd: "set_data",
                 data: policy,
                 vss: [trvl_dist, bat_soc, fan_speed, inf_light, temp, media_volume]
+            })
+        }
+        const set_policy = async () => {
+            socket.emit("request_provider", {
+                to_provider_id: PROVIDER_ID,
+                cmd: "set_policy",
+                data: policy,
             })
         }
 
@@ -1006,7 +1013,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 }
                 console.log(i);
             };
-            // requestDataFromAnsys()
+            set_policy()
 
         }
 
