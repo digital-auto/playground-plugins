@@ -5,6 +5,8 @@ import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 
+
+
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     /*window.onbeforeunload = function(){
   return 'Are you sure you want to leave?';
@@ -105,6 +107,7 @@ const anysisSimulation = async (call, policy) => {
 }
 
 const PROVIDER_ID = "dev-CLIENT-SAMPLE"
+const PROVIDER_ID_MOBIS = "Mobis-SAMPLE"
 
 const plugin = ({widgets, simulator, vehicle}) => {
 
@@ -338,18 +341,35 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 socket.emit("register_client", {
                     master_provider_id: PROVIDER_ID
                 })
+                socket.emit("register_provider", {
+                    provider_id: PROVIDER_ID_MOBIS,
+                    name: "Listen to ansys",
+                });
             }
+
+            socket.on("new_request", (data) => {
+                console.log("on new_request from ansys");
+                
+                if(!data || !data.cmd || !data.request_from) return
+                switch(data.cmd) {
+                    case "set_policy":
+                        policy = Number(data.data)
+                        break;
+                    default:
+                        break;
+                }
+            })
 
 
 
              const messageFromProvider = async (payload) => {
 
-                     let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
-                     let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
-                     let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
-                     let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
-                     let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-                     let trvl_dist = await vehicle.TravelledDistance.get()
+                let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
+                let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
+                let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
+                let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+                let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
+                let trvl_dist = await vehicle.TravelledDistance.get()
 
                 console.log('message_from_provider', payload)
                 if(payload.cmd == 'showTest') {
