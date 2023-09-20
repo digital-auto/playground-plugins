@@ -107,7 +107,6 @@ const anysisSimulation = async (call, policy) => {
 }
 
 const PROVIDER_ID = "dev-CLIENT-SAMPLE"
-const PROVIDER_ID_MOBIS = "Mobis-SAMPLE"
 
 const plugin = ({ widgets, simulator, vehicle }) => {
 
@@ -341,26 +340,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             socket.emit("register_client", {
                 master_provider_id: PROVIDER_ID
             })
-            socket.emit("register_provider", {
-                provider_id: PROVIDER_ID_MOBIS,
-                name: "Listen to ansys",
-            });
         }
-
-        socket.on("new_request", (data) => {
-            console.log("on new_request from ansys");
-            console.log(data)
-
-            if (!data || !data.cmd || !data.request_from) return
-            switch (data.cmd) {
-                case "set_policy":
-                    policy = Number(data.data)
-                    break;
-                default:
-                    break;
-            }
-        })
-
 
 
         const messageFromProvider = async (payload) => {
@@ -906,7 +886,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     })
 
     let PolicyFrame = null;
-    let policy = 11;
+    let policy = 1;
 
     widgets.register("Policy Selection", async (box) => {
         PolicyFrame = document.createElement("div")
@@ -966,8 +946,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const socket = box.window.io("https://bridge.digitalauto.tech");
 
         //Get values
-        const updateSimulation = async () => {
-            console.log(`updateSimulation`)
+        const requestDataFromAnsys = async () => {
+            console.log(`requestDataFromAnsys`)
             //let mode = await vehicle.PowerOptimizationMode.get();
             let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
             let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
@@ -984,19 +964,37 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
+        const PROVIDER_ID_MOBIS = "Mobis-SAMPLE"
         socket.on("connect", () => {
             console.log("Io connected from Policy")
             socket.emit("register_client", {
                 master_provider_id: PROVIDER_ID
             })
+            socket.emit("register_provider", {
+                provider_id: PROVIDER_ID_MOBIS,
+                name: "Listen to ansys",
+            });
         })
 
+        socket.on("new_request", (data) => {
+            console.log("on new_request from ansys");
+            console.log(data)
 
+            if (!data || !data.cmd || !data.request_from) return
+            switch (data.cmd) {
+                case "set_policy":
+                    policy = Number(data.data)
+                    break;
+                default:
+                    break;
+            }
+        })
 
         let pol = PolicyFrame.querySelectorAll(".pol")
 
         for (let i = 0; i < 10; i++) {
             pol[i].onclick = () => {
+                console.log(`Pol ${i} clicked!`)
                 policy = i + 1
                 let id = "#pol" + policy
                 PolicyFrame.querySelector(id).style.backgroundColor = "rgb(104 130 158)"
@@ -1008,9 +1006,23 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 }
                 console.log(i);
             };
-            updateSimulation()
+            // requestDataFromAnsys()
 
         }
+
+        const renderActivePolicy = () => {
+            let policies =  document.querySelector("#pol")
+            if(policies) {
+                policies.forEach((pol) => {
+                    if(pol.id == 'pol'+policy) {
+                        pol.style.backgroundColor = "rgb(157 176 184)"
+                    } else {
+                        pol.style.backgroundColor = "rgb(104 130 158)"
+                    }
+                })
+            }
+        }
+        
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
@@ -1018,8 +1030,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         async function delayedGreeting() {
             //if (policy!=11)
             while (1) {
-                await updateSimulation()
+                await requestDataFromAnsys()
                 await sleep(1000);
+                renderActivePolicy()
                 console.log("sleep");
             }
         }
