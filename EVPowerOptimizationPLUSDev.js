@@ -984,7 +984,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             switch (data.cmd) {
                 case "set_policy":
                     policy = Number(data.data);
-                    requestDataFromAnsys;
+                    requestDataFromAnsys();
                     break;
                 default:
                     break;
