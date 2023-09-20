@@ -945,7 +945,23 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         await loadScript(box.window, `https://cdn.socket.io/4.6.0/socket.io.min.js`)
         const socket = box.window.io("https://bridge.digitalauto.tech");
 
-    
+        //Get values
+        const requestDataFromAnsys = async () => {
+            console.log(`requestDataFromAnsys`)
+            //let mode = await vehicle.PowerOptimizationMode.get();
+            let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
+            let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
+            let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
+            let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
+            let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
+            let trvl_dist = await vehicle.TravelledDistance.get()
+            socket.emit("request_provider", {
+                to_provider_id: PROVIDER_ID,
+                cmd: "set_policy",
+                data: policy,
+                vss: [trvl_dist, bat_soc, fan_speed, inf_light, temp, media_volume]
+            })
+        }
 
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         const PROVIDER_ID_MOBIS = "Mobis-SAMPLE"
@@ -959,23 +975,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 name: "Listen to ansys",
             });
         })
-            //Get values
-            const requestDataFromAnsys = async () => {
-                console.log(`requestDataFromAnsys`)
-                //let mode = await vehicle.PowerOptimizationMode.get();
-                let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
-                let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
-                let fan_speed = await vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed.get()
-                let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
-                let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-                let trvl_dist = await vehicle.TravelledDistance.get()
-                socket.emit("request_provider", {
-                    to_provider_id: PROVIDER_ID,
-                    cmd: "set_policy",
-                    data: policy,
-                    vss: [trvl_dist, bat_soc, fan_speed, inf_light, temp, media_volume]
-                })
-            }
 
         socket.on("new_request", (data) => {
             console.log("on new_request from ansys");
@@ -984,8 +983,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             if (!data || !data.cmd || !data.request_from) return
             switch (data.cmd) {
                 case "set_policy":
-                    policy = Number(data.data);
-                    requestDataFromAnsys();
+                    policy = Number(data.data)
                     break;
                 default:
                     break;
@@ -996,6 +994,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         for (let i = 0; i < 10; i++) {
             pol[i].onclick = () => {
+                console.log(`Pol ${i} clicked!`)
                 policy = i + 1
                 let id = "#pol" + policy
                 PolicyFrame.querySelector(id).style.backgroundColor = "rgb(104 130 158)"
@@ -1005,14 +1004,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
                     }
                 }
-             };
-          requestDataFromAnsys()
+                console.log(i);
+            };
+            // requestDataFromAnsys()
 
         }
 
         const renderActivePolicy = () => {
             let policies =  PolicyFrame.querySelectorAll(".pol")
-
+            console.log(`policy ${policy} policies`, policies)
             if(policies) {
                 policies.forEach((pol) => {
                     if(pol.id == 'pol'+policy) {
