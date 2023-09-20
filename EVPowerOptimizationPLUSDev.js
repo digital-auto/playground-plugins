@@ -1007,7 +1007,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 console.log(i);
             };
             // requestDataFromAnsys()
-
         }
 
         const renderActivePolicy = () => {
@@ -1029,7 +1028,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         async function delayedGreeting() {
-            //if (policy!=11)
+            if (policy!=11)
             while (1) {
                 await requestDataFromAnsys()
                 await sleep(1000);
