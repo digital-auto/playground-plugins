@@ -886,7 +886,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     })
 
     let PolicyFrame = null;
-    let policy = 1;
+    let policy = 11;
 
     widgets.register("Policy Selection", async (box) => {
         PolicyFrame = document.createElement("div")
@@ -1028,7 +1028,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         async function delayedGreeting() {
-            console.log("policy= "+policy)
+
             if (policy!=11)
             while (1) {
                 await requestDataFromAnsys()
