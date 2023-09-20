@@ -1012,6 +1012,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         const renderActivePolicy = () => {
             let policies =  document.querySelector("#pol")
+            console.log(`policy ${policy} policies`, policies)
             if(policies) {
                 policies.forEach((pol) => {
                     if(pol.id == 'pol'+policy) {
