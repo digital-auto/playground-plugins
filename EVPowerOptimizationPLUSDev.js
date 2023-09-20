@@ -983,7 +983,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             if (!data || !data.cmd || !data.request_from) return
             switch (data.cmd) {
                 case "set_policy":
-                    policy = Number(data.data)
+                    policy = Number(data.data);
+                    requestDataFromAnsys;
                     break;
                 default:
                     break;
