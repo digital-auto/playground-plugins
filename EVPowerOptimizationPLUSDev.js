@@ -12,6 +12,23 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
   return 'Are you sure you want to leave?';
 };
 */
+ // Attach the window close event handler
+ window.addEventListener('beforeunload', handleWindowClose);
+
+ // Function to remove the window close event handler
+ const removeWindowCloseHandler = () => {
+     window.removeEventListener('beforeunload', handleWindowClose);
+ };
+
+ // Example of when to remove the event handler (you can call this when needed)
+ const stopAlertOnWindowClose = () => {
+     removeWindowCloseHandler();
+ };
+
+ // Example of when to start showing the alert on window close (you can call this when needed)
+ const startAlertOnWindowClose = () => {
+     window.addEventListener('beforeunload', handleWindowClose);
+ };
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
 
@@ -472,23 +489,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             return confirmationMessage;
         };
 
-        // Attach the window close event handler
-        window.addEventListener('beforeunload', handleWindowClose);
-
-        // Function to remove the window close event handler
-        const removeWindowCloseHandler = () => {
-            window.removeEventListener('beforeunload', handleWindowClose);
-        };
-
-        // Example of when to remove the event handler (you can call this when needed)
-        const stopAlertOnWindowClose = () => {
-            removeWindowCloseHandler();
-        };
-
-        // Example of when to start showing the alert on window close (you can call this when needed)
-        const startAlertOnWindowClose = () => {
-            window.addEventListener('beforeunload', handleWindowClose);
-        };
+       
 
         box.injectNode(container);
 
@@ -1042,7 +1043,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         async function delayedGreeting() {
-            //if (policy!=11)
             while (1) {
                 await requestDataFromAnsys()
                 await sleep(1000);
