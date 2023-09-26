@@ -1004,7 +1004,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         let pol = PolicyFrame.querySelectorAll(".pol")
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 11; i++) {
             pol[i].onclick = () => {
                 console.log(`Pol ${i} clicked!`)
                 policy = i + 1
