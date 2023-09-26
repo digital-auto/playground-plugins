@@ -1010,7 +1010,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 policy = i + 1
                 let id = "#pol" + policy
                 PolicyFrame.querySelector(id).style.backgroundColor = "rgb(104 130 158)"
-                for (let j = 0; j < 10; j++) {
+                for (let j = 0; j < 11; j++) {
                     if (i !== j) {
                         id = "#pol" + (j + 1)
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
