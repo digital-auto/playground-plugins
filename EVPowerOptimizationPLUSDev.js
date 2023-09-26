@@ -12,37 +12,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
   return 'Are you sure you want to leave?';
 };
 */
- // Attach the window close event handler
- window.addEventListener('beforeunload', handleWindowClose);
 
- // Function to remove the window close event handler
- const removeWindowCloseHandler = () => {
-     window.removeEventListener('beforeunload', handleWindowClose);
- };
-
- // Example of when to remove the event handler (you can call this when needed)
- const stopAlertOnWindowClose = () => {
-     removeWindowCloseHandler();
- };
-
- // Example of when to start showing the alert on window close (you can call this when needed)
- const startAlertOnWindowClose = () => {
-     window.addEventListener('beforeunload', handleWindowClose);
- };
-   // Function to handle window close event
-   const handleWindowClose = async (e) => {
-    e.preventDefault();
-    e.returnValue = ''; // This is required for older browsers
-
-    // Show an alert when the user tries to close the window
-    const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
-    e.returnValue = confirmationMessage;
-    if (e.returnValue != '') {
-        clearInterval(sim_intervalId);
-        await anysisSimulation('stop', policy);
-    }
-    return confirmationMessage;
-};
     // Set the range to A1:Z1000
     const range = "A1:Z1000";
 
@@ -254,7 +224,37 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         //IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
         //}
     }
+ // Attach the window close event handler
+ window.addEventListener('beforeunload', handleWindowClose);
 
+ // Function to remove the window close event handler
+ const removeWindowCloseHandler = () => {
+     window.removeEventListener('beforeunload', handleWindowClose);
+ };
+
+ // Example of when to remove the event handler (you can call this when needed)
+ const stopAlertOnWindowClose = () => {
+     removeWindowCloseHandler();
+ };
+
+ // Example of when to start showing the alert on window close (you can call this when needed)
+ const startAlertOnWindowClose = () => {
+     window.addEventListener('beforeunload', handleWindowClose);
+ };
+   // Function to handle window close event
+   const handleWindowClose = async (e) => {
+    e.preventDefault();
+    e.returnValue = ''; // This is required for older browsers
+
+    // Show an alert when the user tries to close the window
+    const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
+    e.returnValue = confirmationMessage;
+    if (e.returnValue != '') {
+        clearInterval(sim_intervalId);
+        await anysisSimulation('stop', policy);
+    }
+    return confirmationMessage;
+};
     const roundNumber = (num) => {
         if (!num) return 0
         return Math.round(num * 100) / 100
