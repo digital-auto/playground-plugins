@@ -836,15 +836,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
         </style>
         <!-- <div class="mode-select" style="display:flex;flex-direction:row;justify-content:space-evenly;align-items:center">
-            <button id="optimized" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            <button id="optimized" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Optimized
             </button>
-            <button id="non-optimized" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            <button id="non-optimized" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Non-Optimized
             </button>
         </div> -->
         <div class="simulation-start">
-            <button id="start" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            <button id="start" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Start
             </button>
         </div>
@@ -910,38 +910,38 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             </div>
             <div class="btn-group" style="margin:5px;">
            
-                <button id="pol1" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol1" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 1
                 </button>
-                <button id="pol2" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol2" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 2
                 </button>
-                <button id="pol3" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol3" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 3
                 </button>
-                <button id="pol4" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol4" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 4
                 </button>
-                <button id="pol5" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol5" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 5
                 </button>
-                <button id="pol6" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol6" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 6
                 </button>
-                <button id="pol7" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol7" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 7
                 </button>
-                <button id="pol8" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol8" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 8
                 </button>
-                <button id="pol9" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol9" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 9
                 </button>
-                <button id="pol10" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol10" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 10
                 </button>
                 <br>
-                <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 No policy
                 </button>
                
