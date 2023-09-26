@@ -1004,11 +1004,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         let pol = PolicyFrame.querySelectorAll(".pol")
 
-        for (let i = 0; i < 11; i++) {
-            pol[i].onclick = () => {
+        for (let i = 1; i < 11; i++) {
+            pol[i-1].onclick = () => {
                 console.log(`Pol ${i} clicked!`)
-                policy2 = i+1
-                let id = "#pol" + policy2
+                policy = i
+                let id = "#pol" + policy
                 PolicyFrame.querySelector(id).style.backgroundColor = "rgb(104 130 158)"
                 for (let j = 1; j < 11; j++) {
                     if (i !== j) {
