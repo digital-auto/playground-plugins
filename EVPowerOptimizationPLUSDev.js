@@ -909,11 +909,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="width: 48px;filter: invert(100%);">
             </div>
             <div class="btn-group" style="margin:5px;">
-            <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-            No policy
-            </button>
-            <br>
-
+           
                 <button id="pol1" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 1
                 </button>
@@ -944,6 +940,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 <button id="pol10" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 10
                 </button>
+                <br>
+                <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                No policy
+                </button>
+               
             </div>
         </div>
 		`
