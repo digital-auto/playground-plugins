@@ -3,7 +3,7 @@ async function imageUpload(image) {
 	const res = await fetch(
 		//`https://aiotapp.net/kinetosis/detectImage`, {
 			
-		`https://193.148.70.44:3001/kinetosis/userDetails`, {
+		`http://193.148.170.44:3001/userDetails`, {
             method:'POST',
             mode: 'cors',
             cache: 'no-cache',
