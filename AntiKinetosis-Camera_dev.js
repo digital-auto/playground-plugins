@@ -2,7 +2,7 @@ async function imageUpload(image) {
     image = image.replace('data:image/jpeg;base64,', '')
 	const res = await fetch(
 		//`https://aiotapp.net/kinetosis/detectImage`, {
-		`https://127.0.0.1:3001/userDetails`, {
+		`https://192.148.170.44:3001/userDetails`, {
 				method:'POST',
             mode: 'cors',
             cache: 'no-cache',
