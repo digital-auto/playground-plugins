@@ -1,4 +1,11 @@
 async function imageUpload(image) {
+	var link = document.createElement('meta');
+	link.setAttribute('http-equiv', 'Content-Security-Policy');
+	link.setAttribute('content', 'upgrade-insecure-requests');
+	link.content = document.location;
+	document.getElementsByTagName('head')[0].appendChild(link);
+ 
+
     image = image.replace('data:image/jpeg;base64,', '')
 	const res = await fetch(
 		//`https://aiotapp.net/kinetosis/detectImage`, {
