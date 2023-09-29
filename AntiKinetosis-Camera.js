@@ -1,10 +1,9 @@
 async function imageUpload(image) {
-	var link = document.createElement('meta');
-	link.setAttribute('http-equiv', 'Content-Security-Policy');
-	link.setAttribute('content', 'upgrade-insecure-requests');
-	link.content = document.location;
-	document.getElementsByTagName('head')[0].appendChild(link);
- 
+	var meta = document.createElement('meta');
+	meta.httpEquiv = "Content-Security-Policy";
+	meta.content = "upgrade-insecure-requests";
+	document.getElementsByTagName('head')[0].appendChild(meta);
+	
 
     image = image.replace('data:image/jpeg;base64,', '')
 	const res = await fetch(
