@@ -1,8 +1,10 @@
 async function imageUpload(image) {
+	/*
 	var meta = document.createElement('meta');
 	meta.httpEquiv = "Content-Security-Policy";
 	meta.content = "upgrade-insecure-requests";
 	document.getElementsByTagName('head')[0].appendChild(meta);
+	*/
 	
 
     image = image.replace('data:image/jpeg;base64,', '')
