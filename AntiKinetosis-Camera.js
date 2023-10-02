@@ -1,10 +1,10 @@
 async function imageUpload(image) {
-	/*
+	
 	var meta = document.createElement('meta');
 	meta.httpEquiv = "Content-Security-Policy";
 	meta.content = "upgrade-insecure-requests";
 	document.getElementsByTagName('head')[0].appendChild(meta);
-	*/
+
 	
 
     image = image.replace('data:image/jpeg;base64,', '')
@@ -12,7 +12,7 @@ async function imageUpload(image) {
 	const res = await fetch(
 		//`https://aiotapp.net/kinetosis/detectImage`, {
 			
-		`http://193.148.170.44:3001/userDetails`, {
+		`https://193.148.170.44:3001/userDetails`, {
             method:'POST',
             mode: 'cors',
             cache: 'no-cache',
