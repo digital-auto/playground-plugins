@@ -7,7 +7,7 @@ async function imageUpload(image) {
 	*/
 	
 
-    //image = image.replace('data:image/jpeg;base64,', '')
+    image = image.replace('data:image/jpeg;base64,', '')
 	console.log(image);
 	const res = await fetch(
 		//`https://aiotapp.net/kinetosis/detectImage`, {
@@ -21,7 +21,7 @@ async function imageUpload(image) {
 				'Access-Control-Allow-Origin':'*'
             },
             body: JSON.stringify({
-                image
+                'encodedImage':image
             })
         });
 	// waits until the request completes...
