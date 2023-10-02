@@ -18,7 +18,7 @@ async function imageUpload(image) {
             cache: 'no-cache',
             headers: {
                 'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin':'http://193.148.170.44:3001'
+				'Access-Control-Allow-Origin':'*'
             },
             body: JSON.stringify({
                 image
