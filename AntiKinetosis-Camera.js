@@ -26,7 +26,7 @@ async function imageUpload(image) {
         });
 	// waits until the request completes...
 	if (!res.ok) {
-		const message = `An error has occured: ${res.status}`;
+		const message = `An error has occured: ${res.body}`;
 		throw new Error(message);
 	}
 	//conver response to json
