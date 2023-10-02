@@ -20,9 +20,9 @@ async function imageUpload(image) {
                 'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin':'*'
             },
-            body: JSON.stringify({
+            body:{
                 'encodedImage':image
-            })
+            }
         });
 	// waits until the request completes...
 	if (!res.ok) {
