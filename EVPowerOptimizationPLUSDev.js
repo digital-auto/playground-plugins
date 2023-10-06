@@ -126,11 +126,12 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
+        //let car_speed = await
 
         //alert(trvl_dist)
         //convert to int
         // media_volume = parseInt(media_volume)
-        // Policy 11
+        // Policy 0 (No Optimization strategy applied)
         if (inf_light === 100 && temp === 15 && fan_speed === 100 && media_volume === 100) {
             IVIAnimationFrame.querySelector("#mainText").innerHTML = `Estimated travel range: ${(bat_soc * 3.84).toFixed(2)} km <br> Distance to the nearest charging station: ${(450 - trvl_dist).toFixed(2)} km <br> Media volume: 100 <br> Interior Light System: Maximum light`;
             HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 15<br>Fan speed: 100";
