@@ -8,7 +8,6 @@ async function imageUpload(image) {
 	
 
     let encodedImage = image.replace('data:image/jpeg;base64,', '')
-	console.log(JSON.stringify({encodedImage}));
 	const res = await fetch(
 		//`https://aiotapp.net/kinetosis/detectImage`, {
 			
@@ -26,7 +25,7 @@ async function imageUpload(image) {
         });
 	// waits until the request completes...
 	if (!res.ok) {
-		const message = `An error has occured: ${res.body}`;
+		const message = `An error has occured: ${res.json()}`;
 		throw new Error(message);
 	}
 	//conver response to json
