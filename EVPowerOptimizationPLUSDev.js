@@ -882,7 +882,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             No Policy
             </button>
-            <button id="pol0" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            <button id="pol12" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Auto
             </button>
             <button id="pol1" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
@@ -976,13 +976,13 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         })
 
         let pol = PolicyFrame.querySelectorAll(".pol")
-        for (let i = 0; i < 12; i++) {
-            pol[i].onclick = () => {
+        for (let i = 1; i < 13; i++) {
+            pol[i-1].onclick = () => {
                 console.log(`Pol ${i} clicked!`)
                 policy = i
                 let id = "#pol" + policy
                 PolicyFrame.querySelector(id).style.backgroundColor = "rgb(104 130 158)"
-                for (let j = 0; j < 12; j++) {
+                for (let j = 1; j < 13; j++) {
                     if (i !== j) {
                         id = "#pol" + j
                         PolicyFrame.querySelector(id).style.backgroundColor = "rgb(157 176 184)"
