@@ -184,6 +184,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			canvas.remove();		
     		}
 		}
+		
+	widgets.register("DoorVisualization", (box) => {
+		boxGlobal = box;
+		box.injectNode(container);
+		return () => {
+			boxGlobal = null;
+			// Deactivation function for clearing intervals or such.
+		};
+		});
 
     widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
