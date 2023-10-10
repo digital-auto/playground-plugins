@@ -234,7 +234,39 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			// Deactivation function for clearing intervals or such.
 		};
 		});
-
+		setInterval(async () => {
+			const value = await vehicle["Cabin.Door.Row2.Right.IsOpen"].get();
+			if (value != doorState) {
+			  doorState = value;
+			  setVisualization(doorState, boxGlobal);
+			}
+		  }, 2000);
+		
+		  function setVisualization(value, boxGlobal) {
+			let selector = "#door_animation";
+			if (boxGlobal !== null && value !== undefined) {
+			  if (value) {
+				container
+				  .querySelector(selector)
+				  .setAttribute(
+					"src",
+					"https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Frow2_right_open.mp4?alt=media&token=046ecf6b-bbcc-428d-8a97-10f661015aef"
+				  );
+				container.querySelector("#door_animation_video").style.scale = "1.2";
+			  } else {
+				container
+				  .querySelector(selector)
+				  .setAttribute(
+					"src",
+					"https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Frow2_right_close.mp4?alt=media&token=690cc6b6-b353-40cb-a5e6-9dd9ac607dd4"
+				  );
+				container.querySelector("#door_animation_video").style.scale = "1.5";
+			  }
+			  container.querySelector("#door_animation_video").loop = false;
+			  container.querySelector("#door_animation_video").load();
+			  container.querySelector("#door_animation_video").play();
+			}
+		  }
     widgets.register("Webcam Block", (box) => {
         box.injectNode(container)
     })
