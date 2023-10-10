@@ -184,8 +184,49 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			canvas.remove();		
     		}
 		}
-		
+	let boxGlobal = null;
+	let doorState = undefined;
 	widgets.register("DoorVisualization", (box) => {
+		const container = document.createElement("div");
+		container.setAttribute(
+			"style",
+			`height: 100%; width: 100%; overflow: hidden;`
+		);
+		
+		container.innerHTML = `
+		<style>
+		#door_animation_video {
+			width: 100%;
+			height: 100%;
+			margin: auto;
+			display: block;
+		}
+		.text1 {
+			font-weight: bold;
+			margin: 20px;
+			font-size: 20px;
+			display: flex;
+			padding-top: 5px;
+			padding-left: 5px;
+			font-family: "Lato", sans-serif;
+			margin-bottom: -30px;
+		}
+		</style>
+		<p class="text1">
+		<a href="http://bcw-simulator.beg-dev.io" target="_blank" style="z-index:9; color:black; text-decoration: auto;"
+			>Real Vehicles and Simulators connected</a
+		>
+		</p>
+		<div style="overflow: hidden">
+		<video id="door_animation_video" autoplay loop muted>
+			<source
+			id="door_animation"
+			src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Factivity.mp4?alt=media&token=c7478576-22ae-4952-ad29-68c4860645df"
+			type="video/mp4"
+			/>
+		</video>
+		</div>`;
+
 		boxGlobal = box;
 		box.injectNode(container);
 		return () => {
