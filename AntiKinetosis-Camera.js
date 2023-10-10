@@ -184,7 +184,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			canvas.remove();		
     		}
 		}
-
+ 
+ 
+	  
+    widgets.register("Webcam Block", (box) => {
+        box.injectNode(container)
+    })
 
     let controlsFrame = null;
     widgets.register("Controls", (box) => {
