@@ -855,7 +855,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     })
 
     let PolicyFrame = null;
-    let policy = 0;
+    let policy = 11;
 
     widgets.register("Policy Selection", async (box) => {
         PolicyFrame = document.createElement("div")
@@ -879,8 +879,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             </div>
             <div class="btn-group" style="margin:5px;">
            
-            <button id="pol0" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             No Policy
+            </button>
+            <button id="pol0" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+            Auto
             </button>
             <button id="pol1" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Policy 1
@@ -912,10 +915,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 <button id="pol10" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Policy 10
                 </button>
-                <br>
-                <button id="pol11" class="pol" style="width:130px;max-width:130px;background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;margin:1px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                Auto
-                </button>
+             
                
             </div>
         </div>
