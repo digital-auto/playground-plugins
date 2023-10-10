@@ -855,7 +855,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     })
 
     let PolicyFrame = null;
-    let policy = 11;
+    let policy = 0;
 
     widgets.register("Policy Selection", async (box) => {
         PolicyFrame = document.createElement("div")
