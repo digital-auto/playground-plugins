@@ -973,6 +973,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 default:
                     break;
             }
+            alert(policy);
         })
 
         let pol = PolicyFrame.querySelectorAll(".pol")
