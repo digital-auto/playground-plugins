@@ -207,7 +207,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
         //Policy 8 & 9 & 10
         else if (inf_light === 40 && temp === 20 && fan_speed === 40 && media_volume === 10) {
-            IVIAnimationFrame.querySelector("#mainText").innerHTML = `Estimated travel range: ${(bat_soc * 5.50).toFixed(2)} km <br> Distance to the nearest charging station: ${(450 - trvl_dist).toFixed(2)} km <br> Media volume: 10 <br> Interior Light System: Weak light`;
+            IVIAnimationFrame.querySelector("#mainText").innerHTML = `Estimated travel range: ${(bat_soc * 5.20).toFixed(2)} km <br> Distance to the nearest charging station: ${(450 - trvl_dist).toFixed(2)} km <br> Media volume: 10 <br> Interior Light System: Weak light`;
             HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: 20<br>Fan speed: 40";
             HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
             IVIAnimationFrame.querySelector("#btnImg").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fpause.png?alt=media&token=8d615884-44aa-4bcb-93bc-49a0c3bb7958")
