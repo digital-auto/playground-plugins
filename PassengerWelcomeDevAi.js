@@ -1281,7 +1281,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         resultRecDivBox.style.height=`0px`;
         Driver.innerHTML="";
         BoxChecked.innerHTML="";
-        await vehicle.Cabin.Door.Row1.Left.IsLocked.set(True);
+        await vehicle.Cabin.Door.Row1.Left.IsLocked.set(true);
         if (resultImgDiv.src!='')
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'close_driver_door'}), "*")
              resultImgDiv.src = "";
