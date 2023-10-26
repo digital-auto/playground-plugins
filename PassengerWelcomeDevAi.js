@@ -1215,10 +1215,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         async function CheckOfBox(box){
         if (box)
         BoxChecked.innerHTML="&#9745; Box detected";
-        VSSTrunk.innerHTML ="IsOpen";
-        await vehicle.IsMoving.set(True)
+        await vehicle.Cabin.Door.Row1.Left.IsOpen.set(True)
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
-        console.log(VSSTrunk);
         }
 
         async function DetectBox(){
@@ -1284,12 +1282,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         resultRecDivBox.style.height=`0px`;
         Driver.innerHTML="";
         BoxChecked.innerHTML="";
-        VSSTrunk.innerHTML ="IsLocked";
+        await vehicle.Cabin.Door.Row1.Left.IsOpen.set(false)
+
+       
         if (resultImgDiv.src!='')
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'close_driver_door'}), "*")
-
-
-
              resultImgDiv.src = "";
             resultImgDiv.style.display='none'
             //resultRecDiv.style.display='none'
