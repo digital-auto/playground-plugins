@@ -1359,10 +1359,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         
 
         if(lastDoorState!=null && lastDoorState != doorState && doorState == true) {
-            car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*")
+            //car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*")
         }
         if(lastSeatState != null && lastSeatState != seatState && seatState == 3) {
-            car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
+           // car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
         }
         lastDoorState = doorState
         lastSeatState = seatState
