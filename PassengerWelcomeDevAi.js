@@ -215,14 +215,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
         }
 
-        //else {
-        //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：OFF<br>Interior Light System Weak Light";
-        // HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
-        // HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
-        //IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
-        //IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
-        //IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
-        //}
+ 
     }
 
     const roundNumber = (num) => {
@@ -520,66 +513,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     });
 
 
-    let HVACAnimationFrame = null;
-    widgets.register("HVAC Animation", (box) => {
 
-        HVACAnimationFrame = document.createElement("div")
-        HVACAnimationFrame.innerHTML =
-            `
-		<style>
-        .main-class {
-            width: 100%;
-            height:100%
-        }
-        .wind {
-            position: absolute;
-            width: 100%;
-            left: 0%;
-        }
-        .show {
-            background-color: #3c5c7b;
-            position: absolute;
-            top: 45%;
-            left: 31%;
-            width: 40%;
-            height: 15%;
-            font-size: 14px;
-            color: #e9e9e9;
-            text-align: center;
-            display:flex;
-            flex-direction:column;
-            justify-content: center;
-        }
-		</style>
-        <img class="main-class" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fmain.png?alt=media&token=e4ec1915-de42-4226-8eeb-a74ab4d5f9e7">
-        <img id="wind" class="wind" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368">
-        <div id="show" class="show"></div>
-		`
-
-        function btnClick() {
-            let wind = HVACAnimationFrame.querySelector("#wind");
-            console.log(wind.getAttribute("src"));
-            if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368") {
-                wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fblue%20air.gif?alt=media&token=6a00f612-649e-4587-9b46-0be192588088");
-                return;
-            }
-            if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fblue%20air.gif?alt=media&token=6a00f612-649e-4587-9b46-0be192588088") {
-                wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
-                return;
-            }
-
-        }
-
-        HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: <br>Fan speed: ";
-
-        box.injectNode(HVACAnimationFrame)
-
-        return () => {
-            if (sim_intervalId !== null) {
-                clearInterval(sim_intervalId)
-            }
-        }
-    });
 
     let IVIAnimationFrame = null;
     widgets.register("IVI Animation", (box) => {
