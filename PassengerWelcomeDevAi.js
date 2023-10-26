@@ -363,11 +363,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         socket.on('message_from_provider', messageFromProvider)
         socket.on('provider_reply', onProviderReply)
 
-
-
         box.injectNode(container);
-
-
     })
     widgets.register("Table",
         StatusTable({
@@ -1216,10 +1212,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         ResultOfDriver.style.display = "block";
         }
 
-        function CheckOfBox(box){
+        async function CheckOfBox(box){
         if (box)
         BoxChecked.innerHTML="&#9745; Box detected";
         VSSTrunk.innerHTML ="IsOpen";
+        await vehicle.IsMoving.set(True)
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
         console.log(VSSTrunk);
         }
