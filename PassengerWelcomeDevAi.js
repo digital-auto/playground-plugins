@@ -126,9 +126,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         let media_volume = await vehicle.Cabin.Infotainment.Media.Volume.get()
         let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         let trvl_dist = await vehicle.TravelledDistance.get()
-        //let car_speed = await
+     
  
-        
     }
 
     const roundNumber = (num) => {
@@ -151,7 +150,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         sim_intervalId = setInterval(async () => {
             const res = await anysisSimulation('resume', policy)
            
-            updateSimulation()
+            //updateSimulation()
 
             await vehicle.Next.get()
             // sim_function()
@@ -320,7 +319,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         box.injectNode(container);
     })
-    
+
     widgets.register("Table",
         StatusTable({
             // apis: ["Vehicle.TravelledDistance", "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "Vehicle.Cabin.Lights.LightIntensity", "Vehicle.Cabin.Sunroof.Position", "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "Vehicle.Cabin.Infotainment.Media.Volume", "Vehicle.PowerOptimizeLevel", "Vehicle.Cabin.Infotainment.HMI.Brightness", "Vehicle.Cabin.Infotainment.HMI.DisplayOffTime", "Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn", "Vehicle.Cabin.Infotainment.HMI.LastActionTime", "Vehicle.Cabin.Infotainment.Media.Volume"],
