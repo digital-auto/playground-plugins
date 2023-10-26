@@ -320,10 +320,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         box.injectNode(container);
     })
+    
     widgets.register("Table",
         StatusTable({
             // apis: ["Vehicle.TravelledDistance", "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "Vehicle.Cabin.Lights.LightIntensity", "Vehicle.Cabin.Sunroof.Position", "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "Vehicle.Cabin.Infotainment.Media.Volume", "Vehicle.PowerOptimizeLevel", "Vehicle.Cabin.Infotainment.HMI.Brightness", "Vehicle.Cabin.Infotainment.HMI.DisplayOffTime", "Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn", "Vehicle.Cabin.Infotainment.HMI.LastActionTime", "Vehicle.Cabin.Infotainment.Media.Volume"],
-	        apis: ["vehicle.IsMoving", "vehicle.Powertrain.CombustionEngine.IsRunning", "vehicle.Cabin.Door.Row1.Left.IsLocked"],
+	        apis: ["Vehicle.Powertrain.TractionBattery.StateOfCharge.Current","vehicle.IsMoving", "vehicle.Powertrain.CombustionEngine.IsRunning", "vehicle.Cabin.Door.Row1.Left.IsLocked"],
             vehicle: vehicle,
             refresh: 800
         })
