@@ -320,7 +320,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         box.injectNode(container);
     })
 
-    widgets.register("Table",
+    widgets.register("Table", 
         StatusTable({
             // apis: ["Vehicle.TravelledDistance", "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "Vehicle.Cabin.Lights.LightIntensity", "Vehicle.Cabin.Sunroof.Position", "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "Vehicle.Cabin.Infotainment.Media.Volume", "Vehicle.PowerOptimizeLevel", "Vehicle.Cabin.Infotainment.HMI.Brightness", "Vehicle.Cabin.Infotainment.HMI.DisplayOffTime", "Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn", "Vehicle.Cabin.Infotainment.HMI.LastActionTime", "Vehicle.Cabin.Infotainment.Media.Volume"],
 	        apis: ["Vehicle.Powertrain.TractionBattery.StateOfCharge.Current","vehicle.IsMoving", "vehicle.Powertrain.CombustionEngine.IsRunning", "vehicle.Cabin.Door.Row1.Left.IsLocked"],
@@ -1169,7 +1169,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         async function CheckOfBox(box){
         if (box)
         BoxChecked.innerHTML="&#9745; Box detected";
-        await vehicle.Cabin.Door.Row1.Left.IsLocked.set(false);
+        await vehicle.Cabin.Door.Row1.Left.IsOpen.set(true);
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
         }
 
@@ -1236,7 +1236,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         resultRecDivBox.style.height=`0px`;
         Driver.innerHTML="";
         BoxChecked.innerHTML="";
-        await vehicle.Cabin.Door.Row1.Left.IsLocked.set(true);
+        await vehicle.Cabin.Door.Row1.Left.IsOpen.set(false);
         if (resultImgDiv.src!='')
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'close_driver_door'}), "*")
              resultImgDiv.src = "";
