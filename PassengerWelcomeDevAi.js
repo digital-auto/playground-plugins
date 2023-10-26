@@ -1211,6 +1211,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         Driver.innerHTML="&#9745; The driver has been identified: "+name;
         ResultOfDriver.style.display = "block";
         }
+        let IsLocked = null
 
         async function CheckOfBox(box){
         if (box)
@@ -1268,7 +1269,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const submit_btn = container.querySelector("#submit-btn")
      
 
-   
+
         submit_btn.onclick = async () => {
 
 
