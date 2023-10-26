@@ -1170,6 +1170,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         if (box)
         BoxChecked.innerHTML="&#9745; Box detected";
         await vehicle.Cabin.Door.Row1.Left.IsOpen.set(true);
+        let seatState = await vehicle.Cabin.Seat.Row1.Pos1.Position.get()
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
         }
 
