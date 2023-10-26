@@ -1056,7 +1056,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     let ResultOfDriver = null
     let BoxChecked = null
     let Driver = null
-    let IsLocked = null
 
     let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
 
@@ -1211,12 +1210,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         Driver.innerHTML="&#9745; The driver has been identified: "+name;
         ResultOfDriver.style.display = "block";
         }
-        let IsLocked = null
 
         async function CheckOfBox(box){
         if (box)
         BoxChecked.innerHTML="&#9745; Box detected";
-        IsLocked = await vehicle.Cabin.Door.Row1.Left.IsLocked.set(false)
+        await vehicle.Cabin.Door.Row1.Left.IsLocked.set(false)
         car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
         }
 
@@ -1283,7 +1281,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         resultRecDivBox.style.height=`0px`;
         Driver.innerHTML="";
         BoxChecked.innerHTML="";
-        IsLocked= await vehicle.Cabin.Door.Row1.Left.IsLocked.set(True)
+        await vehicle.Cabin.Door.Row1.Left.IsLocked.set(True)
 
        
         if (resultImgDiv.src!='')
