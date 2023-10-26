@@ -1452,7 +1452,42 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         simulatorFrame.innerHTML =
             `<iframe id="car3DViewer" src="https://nhanluongbgsv.github.io/car_simulator/bmw_m4.html" frameborder="0" style="width:100%;height:100%"></iframe>`
         car3DViewer = simulatorFrame.querySelector("#car3DViewer")
-        box.injectNode(simulatorFrame)
+        box.injectNode(simulatorFrame);
+
+
+        
+        // Function to handle window close event
+        const handleWindowClose = async (e) => {
+            e.preventDefault();
+            e.returnValue = ''; // This is required for older browsers
+
+            // Show an alert when the user tries to close the window
+            const confirmationMessage = 'Are you sure you want to leave this page? Your unsaved changes may be lost.';
+            e.returnValue = confirmationMessage;
+            if (e.returnValue != '') {
+                clearInterval(sim_intervalId);
+                await anysisSimulation('stop', policy);
+            }
+            return confirmationMessage;
+        };
+
+        // Attach the window close event handler
+        window.addEventListener('beforeunload', handleWindowClose);
+
+        // Function to remove the window close event handler
+        const removeWindowCloseHandler = () => {
+            window.removeEventListener('beforeunload', handleWindowClose);
+        };
+
+        // Example of when to remove the event handler (you can call this when needed)
+        const stopAlertOnWindowClose = () => {
+            removeWindowCloseHandler();
+        };
+
+        // Example of when to start showing the alert on window close (you can call this when needed)
+        const startAlertOnWindowClose = () => {
+            window.addEventListener('beforeunload', handleWindowClose);
+        };
     });
 
     let lastDoorState = null
@@ -1490,8 +1525,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
             }
-        }
-        ,call_me: (name) => {
+        },call_me: (name) => {
                 return "Hello " + name + ", I am plugin."
             },
             init: () => {
