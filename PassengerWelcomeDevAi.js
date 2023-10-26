@@ -1438,46 +1438,47 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         box.injectNode(container)
         return () => { }
     });
-     //3D Model
+
+
+    //3D Model
       // register the widget
-      let simulatorFrame = null;
-      let car3DViewer = null
-      
-      widgets.register("Viewer", (box) => {
-          setInterval();
-          simulatorFrame = document.createElement("div")
-          simulatorFrame.style = "width:100%;height:100%"
-          simulatorFrame.innerHTML =
-              `<iframe id="car3DViewer" src="https://nhanluongbgsv.github.io/car_simulator/bmw_m4.html" frameborder="0" style="width:100%;height:100%"></iframe>`
-          car3DViewer = simulatorFrame.querySelector("#car3DViewer")
-          box.injectNode(simulatorFrame)
-      });
-  
-      let lastDoorState = null
-      let lastSeatState = null
-  
-      setInterval(async () => {
-  
-          if(!simulatorFrame) return
-          if(!car3DViewer) {
-              car3DViewer = simulatorFrame.querySelector("#car3DViewer")
-          }
-  
-          let doorState = await vehicle.Cabin.Door.Row1.Left.IsOpen.get()
-          let seatState = await vehicle.Cabin.Seat.Row1.Pos1.Position.get()
-          if(!car3DViewer || !car3DViewer.contentWindow) return
-          
-  
-          if(lastDoorState!=null && lastDoorState != doorState && doorState == true) {
-              car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*")
-          }
-          if(lastSeatState != null && lastSeatState != seatState && seatState == 3) {
-              car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
-          }
-          lastDoorState = doorState
-          lastSeatState = seatState
-      }, 1000)
-  
+    let simulatorFrame = null;
+    let car3DViewer = null
+    
+    widgets.register("Viewer", (box) => {
+        setInterval();
+        simulatorFrame = document.createElement("div")
+        simulatorFrame.style = "width:100%;height:100%"
+        simulatorFrame.innerHTML =
+            `<iframe id="car3DViewer" src="https://nhanluongbgsv.github.io/car_simulator/bmw_m4.html" frameborder="0" style="width:100%;height:100%"></iframe>`
+        car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+        box.injectNode(simulatorFrame)
+    });
+
+    let lastDoorState = null
+    let lastSeatState = null
+
+    setInterval(async () => {
+
+        if(!simulatorFrame) return
+        if(!car3DViewer) {
+            car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+        }
+
+        let doorState = await vehicle.Cabin.Door.Row1.Left.IsOpen.get()
+        let seatState = await vehicle.Cabin.Seat.Row1.Pos1.Position.get()
+        if(!car3DViewer || !car3DViewer.contentWindow) return
+        
+
+        if(lastDoorState!=null && lastDoorState != doorState && doorState == true) {
+            car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*")
+        }
+        if(lastSeatState != null && lastSeatState != seatState && seatState == 3) {
+            car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
+        }
+        lastDoorState = doorState
+        lastSeatState = seatState
+    }, 1000)
 
 
     return {
@@ -1489,16 +1490,19 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
             }
-        },
-        init: () => {
-            if(!car3DViewer) {
-                car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+        }
+        ,call_me: (name) => {
+                return "Hello " + name + ", I am plugin."
+            },
+            init: () => {
+                if(!car3DViewer) {
+                    car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+                }
+                if(!car3DViewer || !car3DViewer.contentWindow) return
+                car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'reset'}), "*")
+                lastDoorState = null
+                lastSeatState = null
             }
-            if(!car3DViewer || !car3DViewer.contentWindow) return
-            car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'reset'}), "*")
-            lastDoorState = null
-            lastSeatState = null
-        },
     }
 }
 
