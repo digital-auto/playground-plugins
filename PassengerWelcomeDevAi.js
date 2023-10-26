@@ -215,7 +215,14 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "running";
         }
 
- 
+        //else {
+        //IVIAnimationFrame.querySelector("#mainText").innerHTML = "Power Optimization Mode ：Level 3 (IVI  & HVAC & Light)<br>IVI System ：OFF<br>Interior Light System Weak Light";
+        // HVACAnimationFrame.querySelector("#show").innerHTML = "HVAC degradation system state: 1";
+        // HVACAnimationFrame.querySelector("#wind").setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+        //IVIAnimationFrame.querySelector("#btnImg").setAttribute("src","https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fivi%2Fstart.png?alt=media&token=9d7cc00f-d95e-4351-9d96-a22b4d65eced")
+        //IVIAnimationFrame.querySelector("#songName").style.animationPlayState = "paused";
+        //IVIAnimationFrame.querySelector("#modelImg").style.animationPlayState = "paused";
+        //}
     }
 
     const roundNumber = (num) => {
@@ -513,7 +520,66 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     });
 
 
+    let HVACAnimationFrame = null;
+    widgets.register("HVAC Animation", (box) => {
 
+        HVACAnimationFrame = document.createElement("div")
+        HVACAnimationFrame.innerHTML =
+            `
+		<style>
+        .main-class {
+            width: 100%;
+            height:100%
+        }
+        .wind {
+            position: absolute;
+            width: 100%;
+            left: 0%;
+        }
+        .show {
+            background-color: #3c5c7b;
+            position: absolute;
+            top: 45%;
+            left: 31%;
+            width: 40%;
+            height: 15%;
+            font-size: 14px;
+            color: #e9e9e9;
+            text-align: center;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+        }
+		</style>
+        <img class="main-class" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fmain.png?alt=media&token=e4ec1915-de42-4226-8eeb-a74ab4d5f9e7">
+        <img id="wind" class="wind" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368">
+        <div id="show" class="show"></div>
+		`
+
+        function btnClick() {
+            let wind = HVACAnimationFrame.querySelector("#wind");
+            console.log(wind.getAttribute("src"));
+            if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368") {
+                wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fblue%20air.gif?alt=media&token=6a00f612-649e-4587-9b46-0be192588088");
+                return;
+            }
+            if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fblue%20air.gif?alt=media&token=6a00f612-649e-4587-9b46-0be192588088") {
+                wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368");
+                return;
+            }
+
+        }
+
+        HVACAnimationFrame.querySelector("#show").innerHTML = "Current air conditioner temperature: <br>Fan speed: ";
+
+        box.injectNode(HVACAnimationFrame)
+
+        return () => {
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+        }
+    });
 
     let IVIAnimationFrame = null;
     widgets.register("IVI Animation", (box) => {
@@ -1078,6 +1144,342 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
     })
 
+    
+    //Landing IA
+    let container = null
+    let resultImgDiv = null
+    let resultRecDiv = null
+    let resultImgDivBox = null
+    let resultRecDivBox = null
+    let ResultOfDriver = null
+    let BoxChecked = null
+    let Driver = null
+    let VSSTrunk = null
+
+    let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
+
+    let imgWidth = 0;
+    let imgHeight = 0;
+
+    widgets.register("Result", (box) => {
+         const container = document.createElement('div');
+        container.innerHTML = `
+            <div style="width:100%;height:50%; position: relative; display: inline-block; vertical-align: top;">
+                <div id="resultRec" 
+                    style="position:absolute;border: 4px solid #AAFF00; top: 0; left: 0; width: 0; height: 0; z-index: 2;">
+                </div>
+                 <div id="resultRecBox" 
+                    style="position:absolute;border: 2px solid #FF5F1F; top: 0; left: 0; width: 0; height: 0; z-index: 2;">
+                </div>
+                <img id="resultImg" 
+                    style="display:none;position:absolute;top:0%;left:0%;width:100%;height:100%; z-index: 1;"
+                    src=""/> 
+                  <img id="logoImg" 
+                    style="position:absolute;top:5%;right:5%;width:30%;padding:6px; z-index: 3;object-fit:contain;background:white;"
+                    src="${landingAiLogo}"/> 
+            </div>
+              <div style="height: 50%; width: 50%;">
+              <div style="max-width: fit-content; margin: 0 auto; position: relative;">
+    <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FDashboardPhone.png?alt=media&token=d361018a-b4b3-42c0-8ef0-16c9e70fd9c7" style="height: 100%; width: 100%; object-fit: contain;">
+     <div id="ResultDiv" style="position: absolute; color: white; font-family: 'Lato'; width: 100%; top: 0; height: 100%; box-sizing: border-box; padding-top: 25px; padding-right: 12px; padding-left: 12px; padding-bottom: 25px; white-space: break-spaces;" >
+            <h5 id="Driver" style="color:#7CFC00"></h5>
+            <h5 id="BoxChecked" style="color:#F08000"></h5>
+      </div>
+    </div>
+    </div>
+                      
+        `;
+        resultImgDiv = container.querySelector("#resultImg");
+        resultRecDiv = container.querySelector("#resultRec");
+        resultRecDivBox = container.querySelector("#resultRecBox");
+        ResultOfDriver = container.querySelector("#ResultDiv");
+        Driver = container.querySelector("#Driver");
+        BoxChecked  = container.querySelector("#BoxChecked");
+        //updateNotification("test")
+ 
+        box.injectNode(container);
+
+    });
+
+
+    widgets.register("InputImage", (box) => {
+        container = document.createElement('div')
+        container.innerHTML = 
+        `
+        <div id="image" style="display:block;z-index:1;">
+            <img id="output" width="100%" height="100%" 
+                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
+        </div>
+        <div class="btn btn-color" 
+            style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" 
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="submit-btn" 
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        `
+        const upload_btn = container.querySelector("#upload-btn")
+        const upload = container.querySelector("#upload")
+        upload_btn.onclick = () => {
+            if(upload) upload.click()
+        }
+
+        let imageEncoded = null
+        let file = null
+        const img_output = container.querySelector('#output');
+        const img = container.querySelector("#image")
+        upload.onchange = (event) => {
+            file = event.target.files[0]
+            img_output.src = URL.createObjectURL(event.target.files[0]);
+            img.style = "display: block"
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+        
+            var base_image = new Image();
+            base_image.src = img_output.src;
+            base_image.onload = function() {
+                canvas.width = base_image.width;
+                canvas.height = base_image.height;
+
+                imgWidth = base_image.width;
+                imgHeight = base_image.height;
+        
+                ctx.drawImage(base_image, 0, 0);
+                imageEncoded = canvas.toDataURL('image/jpeg')
+                canvas.remove();
+            }
+        }
+
+        const imageUpload_authentication = async (image) => {
+            if(!file) return
+            const data = new FormData()
+            data.append('file', file)
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=e51fd3d7-c376-4fc3-b541-8df5a3fcfcb5`, {
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {
+                        'apikey':'land_sk_vmrD4HgmLpTXtn7EC2HwllxUv0AFjWGwgc7t3ejqEh11tRr5Ic'
+                    },
+                    body: data
+            });
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            const response = await res.json()
+            return response
+        }
+        
+        const imageUpload_Box = async (image) => {
+            
+            if(!file) return
+            const data = new FormData()
+            data.append('file', file)
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=7a970de6-61a5-4367-8c15-0dd639979210`, {
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {
+                        'apikey':'land_sk_vmrD4HgmLpTXtn7EC2HwllxUv0AFjWGwgc7t3ejqEh11tRr5Ic'
+                    },
+                    body: data
+            });
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            const response = await res.json()
+            return response
+        }
+
+        function NameOfDriver(name){
+        console.log(name);
+       
+        console.log(ResultOfDriver);  // This should log the div element, not null
+        console.log(Driver);  // This should log the h1 element, not null
+         Driver.style.color="#7CFC00"
+
+        Driver.innerHTML="&#9745; The driver has been identified: "+name;
+        ResultOfDriver.style.display = "block";
+        }
+
+        function CheckOfBox(box){
+        if (box)
+        BoxChecked.innerHTML="&#9745; Box detected";
+        VSSTrunk.innerHTML ="IsOpen";
+        car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
+        console.log(VSSTrunk);
+        }
+
+        async function DetectBox(){
+
+           let resultImgDivBox=true;
+           const resDataBox = await imageUpload_Box(imageEncoded)
+          
+          
+            if(resDataBox) {
+                BoxChecked.innerHTML="&#9747; No box detected";
+                if(resDataBox.backbonepredictions) {
+                    for(let key in resDataBox.backbonepredictions) {
+                        let coordinates = resDataBox.backbonepredictions[key].coordinates
+                        if(resultImgDivBox) {
+                            resultImgDiv.src = imageEncoded;
+                            let imgWidthDiv =  resultImgDiv.width
+                            let imgHeightDiv =  resultImgDiv.height
+                            let xmax = coordinates.xmax
+                            let xmin = coordinates.xmin
+                            let ymax = coordinates.ymax
+                            let ymin = coordinates.ymin
+                            
+                            let leftPercent = (1.0*xmin)/(imgWidth*1.0)
+                            let topPercent = (1.0*ymin)/(imgHeight*1.0)
+
+                            let widthPercent = (xmax-xmin)/(imgWidth*1.0)
+                            let heightPercent = (ymax-ymin)/(imgHeight*1.0)
+
+                            resultRecDivBox.style.left = `${imgWidthDiv * leftPercent}px`
+                            resultRecDivBox.style.top = `${imgHeightDiv * topPercent}px`
+
+                            resultRecDivBox.style.width = `${imgWidthDiv * widthPercent}px`
+                            resultRecDivBox.style.height = `${imgHeightDiv * heightPercent}px`
+                                        
+                            let labelName=resDataBox.backbonepredictions[key].labelName
+                            if(labelName){
+                                CheckOfBox(labelName)
+                            } 
+                          
+                        }
+                        
+                        break;
+                    }
+                }
+            }
+            
+        }
+
+        const submit_btn = container.querySelector("#submit-btn")
+     
+
+   
+        submit_btn.onclick = async () => {
+
+
+        resultRecDiv.style.left=`0px`;
+        resultRecDiv.style.top=`0px`;
+        resultRecDiv.style.width=`0px`;
+        resultRecDiv.style.height=`0px`;
+        resultRecDivBox.style.left=`0px`;
+        resultRecDivBox.style.top=`0px`;
+        resultRecDivBox.style.width=`0px`;
+        resultRecDivBox.style.height=`0px`;
+        Driver.innerHTML="";
+        BoxChecked.innerHTML="";
+        VSSTrunk.innerHTML ="IsLocked";
+        if (resultImgDiv.src!='')
+        car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'close_driver_door'}), "*")
+
+
+
+             resultImgDiv.src = "";
+            resultImgDiv.style.display='none'
+            //resultRecDiv.style.display='none'
+            const resData = await imageUpload_authentication(imageEncoded)
+            if(resultImgDiv) {
+                resultImgDiv.src = imageEncoded;
+                resultImgDiv.style.display='block'
+                Driver.style.color="red"
+                Driver.innerHTML="&#9747; Driver not detected";
+
+            }
+            
+            if(resData) {
+                if(resData.backbonepredictions) {
+                    for(let key in resData.backbonepredictions) {
+                        let coordinates = resData.backbonepredictions[key].coordinates
+                        if(resultImgDiv) {
+                            resultImgDiv.src = imageEncoded;
+                            let imgWidthDiv =  resultImgDiv.width
+                            let imgHeightDiv =  resultImgDiv.height
+                            let xmax = coordinates.xmax
+                            let xmin = coordinates.xmin
+                            let ymax = coordinates.ymax
+                            let ymin = coordinates.ymin
+                            
+                            let leftPercent = (1.0*xmin)/(imgWidth*1.0)
+                            let topPercent = (1.0*ymin)/(imgHeight*1.0)
+
+                            let widthPercent = (xmax-xmin)/(imgWidth*1.0)
+                            let heightPercent = (ymax-ymin)/(imgHeight*1.0)
+
+                            resultRecDiv.style.left = `${imgWidthDiv * leftPercent}px`
+                            resultRecDiv.style.top = `${imgHeightDiv * topPercent}px`
+
+                            resultRecDiv.style.width = `${imgWidthDiv * widthPercent}px`
+                            resultRecDiv.style.height = `${imgHeightDiv * heightPercent}px`
+
+                            let labelName=resData.backbonepredictions[key].labelName
+                            if(labelName){
+                                NameOfDriver(labelName)
+                                DetectBox()    
+                            }   
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        box.injectNode(container)
+        return () => { }
+    });
+     //3D Model
+      // register the widget
+      let simulatorFrame = null;
+      let car3DViewer = null
+      
+      widgets.register("Viewer", (box) => {
+          setInterval();
+          simulatorFrame = document.createElement("div")
+          simulatorFrame.style = "width:100%;height:100%"
+          simulatorFrame.innerHTML =
+              `<iframe id="car3DViewer" src="https://nhanluongbgsv.github.io/car_simulator/bmw_m4.html" frameborder="0" style="width:100%;height:100%"></iframe>`
+          car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+          box.injectNode(simulatorFrame)
+      });
+  
+      let lastDoorState = null
+      let lastSeatState = null
+  
+      setInterval(async () => {
+  
+          if(!simulatorFrame) return
+          if(!car3DViewer) {
+              car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+          }
+  
+          let doorState = await vehicle.Cabin.Door.Row1.Left.IsOpen.get()
+          let seatState = await vehicle.Cabin.Seat.Row1.Pos1.Position.get()
+          if(!car3DViewer || !car3DViewer.contentWindow) return
+          
+  
+          if(lastDoorState!=null && lastDoorState != doorState && doorState == true) {
+              car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*")
+          }
+          if(lastSeatState != null && lastSeatState != seatState && seatState == 3) {
+              car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
+          }
+          lastDoorState = doorState
+          lastSeatState = seatState
+      }, 1000)
+  
+
+
     return {
         start_simulation: start_sim,
         stop_simulation: stop_sim,
@@ -1087,6 +1489,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             if (mobileNotifications !== null) {
                 mobileNotifications(message)
             }
+        },
+        init: () => {
+            if(!car3DViewer) {
+                car3DViewer = simulatorFrame.querySelector("#car3DViewer")
+            }
+            if(!car3DViewer || !car3DViewer.contentWindow) return
+            car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'reset'}), "*")
+            lastDoorState = null
+            lastSeatState = null
         },
     }
 }
