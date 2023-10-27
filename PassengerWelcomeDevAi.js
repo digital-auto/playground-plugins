@@ -1169,9 +1169,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         async function CheckOfBox(box){
         if (box)
         BoxChecked.innerHTML="&#9745; Box detected";
-        await vehicle.Cabin.Door.Row1.Left.IsOpen.set(true);
-        car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
-        car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
+   
         }
 
         async function DetectBox(){
@@ -1282,6 +1280,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                             let labelName=resData.backbonepredictions[key].labelName
                             if(labelName){
                                 NameOfDriver(labelName)
+                                await vehicle.Cabin.Door.Row1.Left.IsOpen.set(true);
+                                car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'open_driver_door'}), "*");
+                                car3DViewer.contentWindow.postMessage(JSON.stringify({'cmd': 'expand_seats'}), "*")
                                 DetectBox()    
                             }   
                         }
