@@ -31,6 +31,7 @@ async function imageUpload(image) {
 	}
 	//conver response to json
 	const response = await res.json()
+	console.log(response)
 	return response
 }
 
