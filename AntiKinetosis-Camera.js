@@ -93,7 +93,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		ageDiv.value = age
 		pAge.innerText = age
 
+	        gender.value = gender
+		pGende.innerText = gender
 
+	    
+
+/*
 		if(gender === "M" || gender === "m" || gender === "Male"){
 			genderDiv.value = "Male"
 			pGender.innerHTML = "Male"
@@ -102,6 +107,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			genderDiv.value = "Female"
 			pGender.innerHTML = "Female"
 		}
+  */
     }
 
     const getUserDetails = () => {
