@@ -94,7 +94,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		pAge.innerText = age
 
 	        genderDiv.value = gender
-		pGende.innerText = gender
+		pGender.innerText = gender
 
 	    
 
