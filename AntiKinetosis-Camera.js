@@ -91,14 +91,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 		const ageDiv = controlsFrame.querySelector('#age-input')
 		const genderDiv = controlsFrame.querySelector('#gender-input')
-		ageDiv.value = age
-		pAge.innerText = age
+		ageDiv.value = age.substr(1,  text.length-2)
+		pAge.innerText = age.substr(1,  text.length-2)
 
 		console.log("Gender: "+ gender)
 
 
- 			genderDiv.value = gender
-			pGender.innerHTML = gender
+ 			genderDiv.value =  gender.substr(2,  text.length-4)
+			pGender.innerHTML =  gender.substr(2,  text.length-4)
 	 
 	 
     }
