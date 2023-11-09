@@ -31,7 +31,6 @@ async function imageUpload(image) {
 	}
 	//conver response to json
 	const response = await res.json()
-	console.log(response)
 	return response
 }
 
@@ -99,11 +98,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			genderDiv.value = "Male"
 			pGender.innerHTML = "Male"
 		}
-		else if(gender === "F" || gender === "f" || gender === "Female"){
+		else {
 			genderDiv.value = "Female"
 			pGender.innerHTML = "Female"
 		}
-
     }
 
     const getUserDetails = () => {
