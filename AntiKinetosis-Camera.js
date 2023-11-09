@@ -91,14 +91,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 		const ageDiv = controlsFrame.querySelector('#age-input')
 		const genderDiv = controlsFrame.querySelector('#gender-input')
-		ageDiv.value = age.substr(1,  age.length-2);
-		pAge.innerText = age.substr(1,  age.length-2);
+		ageDiv.value = age
+		pAge.innerText = age
 
-		genderDiv.value =  gender.substr(2,  gender.length-4);
-		pGender.innerHTML =  gender.substr(2,  gender.length-4);
-		 
 
-  
+		if(gender === "M" || gender === "m" || gender === "Male"){
+			genderDiv.value = "Male"
+			pGender.innerHTML = "Male"
+		}
+		else if(gender === "F" || gender === "f" || gender === "Female"){
+			genderDiv.value = "Female"
+			pGender.innerHTML = "Female"
+		}
+
     }
 
     const getUserDetails = () => {
