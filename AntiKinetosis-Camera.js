@@ -100,12 +100,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 /*
 		if(gender === "M" || gender === "m" || gender === "Male"){
-			genderDiv.value = gender
-			pGender.innerHTML = gender
+			genderDiv.value = "Male"
+			pGender.innerHTML = "Male"
 		}
 		else {
-			genderDiv.value = gender
-			pGender.innerHTML = gender
+			genderDiv.value = "Female"
+			pGender.innerHTML = "Female"
 		}
   */
     }
