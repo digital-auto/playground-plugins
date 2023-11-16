@@ -1120,9 +1120,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         const imageUpload_authentication = async (image) => {
-            if(!imageEncoded) return
+            if(!image) return
             const data = new FormData()
-            data.append('file', imageEncoded)
+            data.append('file', image)
             const res = await fetch(
                 `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=e51fd3d7-c376-4fc3-b541-8df5a3fcfcb5`, {
                     method:'POST',
@@ -1282,10 +1282,20 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
         }
 
-
+        function dataURLtoFile(dataurl, filename) {
+            var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+                while(n--){
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new File([u8arr], filename, {type:mime});
+            }
+            let image=null;
 
         submit_btn.onclick = async () => {
-    
+          image = dataURLtoFile('data:image/jpg;base64,'+imageEncoded, 'image.jpg');
+
+            console.log(imageEncoded)
 
 
         resultRecDiv.style.left=`0px`;
@@ -1306,7 +1316,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
              resultImgDiv.src = "";
             resultImgDiv.style.display='none'
             //resultRecDiv.style.display='none'
-            const resData = await imageUpload_authentication(imageEncoded)
+            const resData = await imageUpload_authentication(image)
             if(resultImgDiv) {
                 resultImgDiv.src = imageEncoded;
                 resultImgDiv.style.display='block'
