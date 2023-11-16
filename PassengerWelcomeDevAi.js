@@ -1285,6 +1285,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
+            console.log(imageEncoded)
 
 
         resultRecDiv.style.left=`0px`;
