@@ -1098,6 +1098,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const img = container.querySelector("#image")
         upload.onchange = (event) => {
             file = event.target.files[0]
+            console.log(event.target.files[0])
             img_output.src = URL.createObjectURL(event.target.files[0]);
             img.style = "display: block"
 
@@ -1282,19 +1283,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
         }
 
-        function dataURLtoFile(dataurl, filename) {
-            var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-                while(n--){
-                    u8arr[n] = bstr.charCodeAt(n);
-                }
-                return new File([u8arr], filename, {type:mime});
-            }
-            let image=null;
+     
 
         submit_btn.onclick = async () => {
-          image = dataURLtoFile('data:image/jpg;base64,'+imageEncoded, 'image.jpg');
-
+ 
             console.log(imageEncoded)
 
 
