@@ -102,6 +102,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			genderDiv.value = "Female"
 			pGender.innerHTML = "Female"
 		}
+		genderDiv.value =  gender.substr(2,  gender.length-4);
+		pGender.innerHTML =  gender.substr(2,  gender.length-4);
     }
 
     const getUserDetails = () => {
