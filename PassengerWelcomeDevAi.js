@@ -1098,7 +1098,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const img = container.querySelector("#image")
         upload.onchange = (event) => {
             file = event.target.files[0]
-            console.log(event.target.files[0])
             img_output.src = URL.createObjectURL(event.target.files[0]);
             img.style = "display: block"
 
@@ -1121,9 +1120,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
 
         const imageUpload_authentication = async (image) => {
-            if(!image) return
+            if(!file) return
             const data = new FormData()
-            data.append('file', image)
+            data.append('file', file)
             const res = await fetch(
                 `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=e51fd3d7-c376-4fc3-b541-8df5a3fcfcb5`, {
                     method:'POST',
@@ -1283,11 +1282,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
         }
 
-     
+
 
         submit_btn.onclick = async () => {
- 
-            console.log(imageEncoded)
 
 
         resultRecDiv.style.left=`0px`;
@@ -1308,7 +1305,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
              resultImgDiv.src = "";
             resultImgDiv.style.display='none'
             //resultRecDiv.style.display='none'
-            const resData = await imageUpload_authentication(image)
+            const resData = await imageUpload_authentication(imageEncoded)
             if(resultImgDiv) {
                 resultImgDiv.src = imageEncoded;
                 resultImgDiv.style.display='block'
