@@ -1301,6 +1301,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 container.querySelector("#capture-btn").innerText = webcam_message
     
             }
+        }
+
 
 
         submit_btn.onclick = async () => {
@@ -1392,7 +1394,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         box.injectNode(simulatorFrame);
 
 
-        
         // Function to handle window close event
         const handleWindowClose = async (e) => {
             e.preventDefault();
