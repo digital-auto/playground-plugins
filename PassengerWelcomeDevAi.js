@@ -1228,20 +1228,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const submit_btn = container.querySelector("#submit-btn")
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
-
-            var base_image = new Image();
-            base_image.src = img_output.src;
-            base_image.onload = function() {
-            canvas.width = base_image.width;
-            canvas.height = base_image.height;
-
-            imgWidth = base_image.width;
-            imgHeight = base_image.height;
-    
-            ctx.drawImage(base_image, 0, 0);
-            imageEncoded = canvas.toDataURL('image/jpeg')
-            canvas.remove();
-
+            
             const video = container.querySelector("#webcam-video")
             if(webcam_message === "Webcam") {
                 webcam_message = "Capture"
