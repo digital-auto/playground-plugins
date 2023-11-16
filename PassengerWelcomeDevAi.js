@@ -1066,25 +1066,25 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         `
         <div id="image" style="display:block">
         <img id="output" width="100%" height="100%" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
-    </div>
-    <div id="video" style="display:none; width:100%; height:100%">
-        <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
-    </div>
- 
-    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-        <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-            Upload
-        </button>
-        <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-            ${webcam_message}
-        </button>
-        <input id="upload" type="file" accept="image/*" style="display:none">
-    </div>
-    <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 60px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-		<button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-			Submit
-		</button>
-	</div>
+        </div>
+        <div id="video" style="display:none; width:100%; height:100%">
+            <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
+        </div>
+    
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                ${webcam_message}
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 60px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+        </div>
         `
         const upload_btn = container.querySelector("#upload-btn")
         const upload = container.querySelector("#upload")
@@ -1228,6 +1228,20 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const submit_btn = container.querySelector("#submit-btn")
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
+
+            var base_image = new Image();
+            base_image.src = img_output.src;
+            base_image.onload = function() {
+            canvas.width = base_image.width;
+            canvas.height = base_image.height;
+
+            imgWidth = base_image.width;
+            imgHeight = base_image.height;
+    
+            ctx.drawImage(base_image, 0, 0);
+            imageEncoded = canvas.toDataURL('image/jpeg')
+            canvas.remove();
+
             const video = container.querySelector("#webcam-video")
             if(webcam_message === "Webcam") {
                 webcam_message = "Capture"
