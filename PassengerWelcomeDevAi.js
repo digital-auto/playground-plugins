@@ -1070,9 +1070,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     <div id="video" style="display:none; width:100%; height:100%">
         <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
     </div>
-    <!-- <div id="video_canvas" style="display:none; width:100%; height: 100%">
-        <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="475" height="475"></canvas>    
-    </div> -->
+ 
     <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
         <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
             Upload
@@ -1087,25 +1085,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 			Submit
 		</button>
 	</div>
-
-        <!-----------
-        <div id="image" style="display:block;z-index:1;">
-            <img id="output" width="100%" height="100%" 
-                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
-        </div>
-        <div class="btn btn-color" 
-            style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-            <button id="upload-btn" 
-                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                Upload
-            </button>
-            <button id="submit-btn" 
-                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                Submit
-            </button>
-            <input id="upload" type="file" accept="image/*" style="display:none">
-        </div>
-        ------------>
         `
         const upload_btn = container.querySelector("#upload-btn")
         const upload = container.querySelector("#upload")
@@ -1250,7 +1229,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
             const video = container.querySelector("#webcam-video")
-    
             if(webcam_message === "Webcam") {
                 webcam_message = "Capture"
                 container.querySelector("#capture-btn").innerText = webcam_message
