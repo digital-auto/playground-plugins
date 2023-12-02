@@ -614,6 +614,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let resultImgDiv = null
     let resultRecDiv = null
     let restext = null
+    let Emotion = null
+    let Probability = null
 
     let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
 
