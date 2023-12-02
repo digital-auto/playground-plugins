@@ -1129,6 +1129,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         // In this example, we'll log the FormData object to the console
         console.log(formData);
         console.log(file);
+        file=formData;
         
             }, 'image/jpeg');
           }
