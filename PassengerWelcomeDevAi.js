@@ -1082,7 +1082,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
      
 
         let imageEncoded = null
-        let upload2 = null
         let file = null
         const img_output = container.querySelector('#output');
         const img = container.querySelector("#image")
@@ -1126,19 +1125,15 @@ const plugin = ({ widgets, simulator, vehicle }) => {
               formData.append('file', blob, 'image.jpg');
           
               // Create a new File input dynamically
-              const fileInput = document.createElement('upload2');
-              fileInput.type = 'file';
-              fileInput.name = 'imageFile'; // Set the desired name
-              fileInput.files = formData;
-          
-              // Append the File input to the container
-              const container = document.getElementById('image');
-              container.appendChild(fileInput);
+              input.type = 'file';
+              input.name = 'imageFile'; // Set the desired name
+              input.files = formData;
+
             }, 'image/jpeg');
           }
           
 
-        const imageUpload_authentication = async (file) => {
+        const imageUpload_authentication = async (image) => {
             if(!file) return
             const data = new FormData()
             data.append('file', file)
@@ -1159,7 +1154,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             return response
         }
         
-        const imageUpload_Box = async (file) => {
+        const imageUpload_Box = async (image) => {
             
             if(!file) return
             const data = new FormData()
@@ -1306,8 +1301,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         submit_btn.onclick = async () => {
         convertImageToInput();
-        upload2 = document.getElementById('upload2');
-
+        console.log(input.json());
 
 
 
@@ -1329,7 +1323,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
              resultImgDiv.src = "";
             resultImgDiv.style.display='none'
             //resultRecDiv.style.display='none'
-            const resData = await imageUpload_authentication(upload2)
+            const resData = await imageUpload_authentication(imageEncoded)
             if(resultImgDiv) {
                 resultImgDiv.src = imageEncoded;
                 resultImgDiv.style.display='block'
