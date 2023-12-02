@@ -1108,7 +1108,29 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
         }
 
-     
+        function convertImageToInput() {
+            // Get the image element
+            const image = document.getElementById('image');
+          
+            // Create a canvas element to draw the image
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+          
+            // Convert canvas content to a Blob
+            canvas.toBlob(blob => {
+              // Create FormData and append the Blob as a file
+              const formData = new FormData();
+              formData.append('file', blob, 'image.jpg');
+          
+              // Use the FormData object for further processing (e.g., send it in a form or via AJAX)
+              // In this example, we'll log the FormData object to the console
+              file=formData;
+            }, 'image/jpeg');
+          }
+          
 
         const imageUpload_authentication = async (image) => {
             if(!file) return
@@ -1259,8 +1281,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 container.querySelector("#image").style = "display: block"
                 container.querySelector("#video").style = "display: none"
     
-               
-
                 const stream = video.srcObject;  
                 const tracks = stream.getTracks();  
         
@@ -1269,22 +1289,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     track.stop();  
                 }  
                 video.srcObject = null;
-                  ////////////////
-                 // Convert data URL to Blob
-                 const byteString = atob(dataURL.split(",")[1]);
-                 const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
-                 const ab = new ArrayBuffer(byteString.length);
-                 const ia = new Uint8Array(ab);
-                 for (let i = 0; i < byteString.length; i++) {
-                     ia[i] = byteString.charCodeAt(i);
-                 }
-                 const blob = new Blob([ab], { type: mimeString });
- 
-                 // Create a File object
-                 const fileName = "webcam_capture.jpg"; // You can set any desired filename
-                  file = new File([blob], fileName, { type: mimeString });
-                 upload.files = new FileList([file]); // Assuming fileInput is your input file element
-                 ////////////////
     
                 webcam_message = "Webcam"
                 container.querySelector("#capture-btn").innerText = webcam_message
@@ -1295,7 +1299,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
-    
+        convertImageToInput();
+        
 
 
 
