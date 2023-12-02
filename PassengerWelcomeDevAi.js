@@ -1282,7 +1282,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
  
                  // Create a File object
                  const fileName = "webcam_capture.jpg"; // You can set any desired filename
-                 const file = new File([blob], fileName, { type: mimeString });
+                  file = new File([blob], fileName, { type: mimeString });
                  upload.files = new FileList([file]); // Assuming fileInput is your input file element
                  ////////////////
     
