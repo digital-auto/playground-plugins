@@ -656,11 +656,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         <div class="btn btn-color" 
             style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
             <button id="upload-btn" 
-                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:5px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Upload
             </button>
             <button id="submit-btn" 
-                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:5px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
                 Submit
             </button>
             <input id="upload" type="file" accept="image/*" style="display:none">
