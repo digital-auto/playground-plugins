@@ -1246,7 +1246,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const submit_btn = container.querySelector("#submit-btn")
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
-            convertImageToInput();
+           
             
             const video = container.querySelector("#webcam-video")
             if(webcam_message === "Webcam") {
@@ -1304,6 +1304,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
+        convertImageToInput();
+        alert(upload);
+
 
 
         resultRecDiv.style.left=`0px`;
