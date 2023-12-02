@@ -663,7 +663,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
             </button>
             <input id="upload" type="file" accept="image/*" style="display:none">
         </div>
+		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
+		<div> <span></span><span id="Emotion"></span></div>
+		<div><span>Probability : </span><span id="Probability">15</span></div>
+	</div>
         `
+		Emotion = container.querySelector("#Emotion");
+        Probability = container.querySelector("#Probability");
+
         const upload_btn = container.querySelector("#upload-btn")
         const upload = container.querySelector("#upload")
         upload_btn.onclick = () => {
@@ -726,8 +733,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 resultImgDiv.style.display='block'
             }
              console.log(resData.predictions.labelName)
-             console.log(restext.innerHTML)
-             restext.innerHTML=resData.predictions.labelName+ ", Probability : "+ resData.predictions.score.toFixed(2);
+             console.log(Emotion.innerHTML)
+             Emotion.innerHTML=resData.predictions.labelName;
+             Emotion.innerHTML=resData.predictions.score.toFixed(2);
            
              console.log()
             if(resData) {
