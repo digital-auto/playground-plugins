@@ -1108,32 +1108,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
         }
 
-        function convertImageToInput() {
-         // Get the image element
-        const image = img_output;
-
-        // Create a canvas element to draw the image
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        canvas.width = image.width;
-        canvas.height = image.height;
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-        // Convert canvas content to a Blob
-        canvas.toBlob(blob => {
-        // Create FormData and append the Blob as a file
-        const formData = new FormData();
-        formData.append('file', blob, 'image.jpg');
-
-        // Use the FormData object for further processing (e.g., send it in a form or via AJAX)
-        // In this example, we'll log the FormData object to the console
-        console.log(formData);
-        console.log(file);
-        file=formData;
-        
-            }, 'image/jpeg');
-          }
-          
+     
 
         const imageUpload_authentication = async (image) => {
             if(!file) return
@@ -1302,10 +1277,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
-        convertImageToInput();
-        
-
-
 
         resultRecDiv.style.left=`0px`;
         resultRecDiv.style.top=`0px`;
