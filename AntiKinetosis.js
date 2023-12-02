@@ -726,7 +726,43 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const response = await res.json()
             return response
         }
-
+		const updateSimulation = async () => {
+			const score = await vehicle.Passenger.KinetosisScore.get()
+			const lat = await vehicle.CurrentLocation.Latitude.get()
+			const lng = await vehicle.CurrentLocation.Longitude.get()
+	
+			scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
+			scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
+			scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
+			scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
+	
+			let message = "", mobileMessage = "";
+			alert(parseFloat(score));
+			if (parseFloat(score) > 80.0) {
+				message = "Warning: High kinetosis level.";
+				mobileMessage = message + "\nPlease open the window for the passenger.";
+				//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
+			}
+			else if (parseFloat(score) > 60.0) {
+				message = "Kinetosis level is medium";
+				mobileMessage = message;
+			}
+			else {
+				message =  "Kinetosis level is normal";
+				mobileMessage = message;
+			}
+	
+			scoreFrame.querySelector("#score #message").textContent = message
+	
+			mobileNotifications(mobileMessage);
+	
+			if(setVehiclePinGlobal !== null) {
+				setVehiclePinGlobal({
+					lat: parseFloat(lat),
+					lng: parseFloat(lng)
+				})
+			}
+		}
         const submit_btn = container.querySelector("#submit-btn")
         submit_btn.onclick = async () => {
             const resData = await imageUpload(imageEncoded)
