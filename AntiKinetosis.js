@@ -726,22 +726,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const response = await res.json()
             return response
         }
-		const updateSimulation = async () => {
+		const updateSimulation = async (result) => {
 			const score = await vehicle.Passenger.KinetosisScore.get()
 			const lat = await vehicle.CurrentLocation.Latitude.get()
 			const lng = await vehicle.CurrentLocation.Longitude.get()
 	
-			scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
-			scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
-			scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
-			scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
-	
 			let message = "", mobileMessage = "";
 			alert(parseFloat(score));
-			if (parseFloat(score) > 80.0) {
+			if ((parseFloat(score) > 80.0)||(result=="discomfort")) {
 				message = "Warning: High kinetosis level.";
 				mobileMessage = message + "\nPlease open the window for the passenger.";
-				//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
 			}
 			else if (parseFloat(score) > 60.0) {
 				message = "Kinetosis level is medium";
@@ -774,6 +768,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
              console.log(Emotion.innerHTML)
              Emotion.innerHTML=resData.predictions.labelName;
              Probability.innerHTML=resData.predictions.score.toFixed(2);
+			 updateSimulation(resData.predictions.labelName);
            
              console.log()
             if(resData) {
