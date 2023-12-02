@@ -651,7 +651,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         `
         <div id="image" style="display:block;z-index:1;">
             <img id="output" width="100%" height="100%" 
-                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F0000.JPG?alt=media&token=4e2bb785-846f-4ee1-8774-0a101b473bca"/>
+                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
         </div>
         <div class="btn btn-color" 
             style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
