@@ -1133,6 +1133,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
           
 
         const imageUpload_authentication = async (image) => {
+            convertImageToInput();
             if(!file) return
             const data = new FormData()
             data.append('file', file)
@@ -1154,7 +1155,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         }
         
         const imageUpload_Box = async (image) => {
-            
+            convertImageToInput();
             if(!file) return
             const data = new FormData()
             data.append('file', file)
@@ -1299,10 +1300,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
-        convertImageToInput();
-        
-
-
 
         resultRecDiv.style.left=`0px`;
         resultRecDiv.style.top=`0px`;
