@@ -1125,14 +1125,14 @@ const plugin = ({ widgets, simulator, vehicle }) => {
               formData.append('file', blob, 'image.jpg');
           
               // Create a new File input dynamically
-              const fileInput = document.createElement('input');
+              const fileInput = document.createElement('upload');
               fileInput.type = 'file';
               fileInput.name = 'imageFile'; // Set the desired name
               fileInput.files = formData;
           
               // Append the File input to the container
-              const container = document.getElementById('upload');
-              container.appendChild(fileInput);
+              // const container = document.getElementById('upload');
+              // container.appendChild(fileInput);
             }, 'image/jpeg');
           }
           
