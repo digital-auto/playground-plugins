@@ -667,7 +667,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         </div>
 		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
 		<div> <span></span><span id="Emotion"></span></div>
-		<div><span>Probability : </span><span id="Probability">15</span></div>
+		<div><span>Probability : </span><span id="Probability"></span></div>
 	</div>
         `
 		Emotion = container.querySelector("#Emotion");
@@ -737,7 +737,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
              console.log(resData.predictions.labelName)
              console.log(Emotion.innerHTML)
              Emotion.innerHTML=resData.predictions.labelName;
-             Emotion.innerHTML=resData.predictions.score.toFixed(2);
+             Probability.innerHTML=resData.predictions.score.toFixed(2);
            
              console.log()
             if(resData) {
