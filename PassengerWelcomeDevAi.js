@@ -1258,23 +1258,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 image.setAttribute("src", data);
                 container.querySelector("#image").style = "display: block"
                 container.querySelector("#video").style = "display: none"
-                ////////////////
-                 // Convert data URL to Blob
-                const byteString = atob(dataURL.split(",")[1]);
-                const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
-                const ab = new ArrayBuffer(byteString.length);
-                const ia = new Uint8Array(ab);
-                for (let i = 0; i < byteString.length; i++) {
-                    ia[i] = byteString.charCodeAt(i);
-                }
-                const blob = new Blob([ab], { type: mimeString });
-
-                // Create a File object
-                const fileName = "webcam_capture.jpg"; // You can set any desired filename
-                file = new File([blob], fileName, { type: mimeString });
-                upload.files = new FileList([file]); // Assuming fileInput is your input file element
-                ////////////////
     
+               
+
                 const stream = video.srcObject;  
                 const tracks = stream.getTracks();  
         
@@ -1283,6 +1269,22 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     track.stop();  
                 }  
                 video.srcObject = null;
+                  ////////////////
+                 // Convert data URL to Blob
+                 const byteString = atob(dataURL.split(",")[1]);
+                 const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
+                 const ab = new ArrayBuffer(byteString.length);
+                 const ia = new Uint8Array(ab);
+                 for (let i = 0; i < byteString.length; i++) {
+                     ia[i] = byteString.charCodeAt(i);
+                 }
+                 const blob = new Blob([ab], { type: mimeString });
+ 
+                 // Create a File object
+                 const fileName = "webcam_capture.jpg"; // You can set any desired filename
+                 file = new File([blob], fileName, { type: mimeString });
+                 upload.files = new FileList([file]); // Assuming fileInput is your input file element
+                 ////////////////
     
                 webcam_message = "Webcam"
                 container.querySelector("#capture-btn").innerText = webcam_message
@@ -1293,6 +1295,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
+    
+
+
 
         resultRecDiv.style.left=`0px`;
         resultRecDiv.style.top=`0px`;
