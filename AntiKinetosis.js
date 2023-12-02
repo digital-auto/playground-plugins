@@ -607,6 +607,165 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		box.injectNode(animationFrame)
 	})
 
+
+	////////////
+	let container = null
+
+    let resultImgDiv = null
+    let resultRecDiv = null
+    let restext = null
+
+    let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
+
+    let imgWidth = 0;
+    let imgHeight = 0;
+
+    widgets.register("Result", (box) => {
+        const container = document.createElement('div');
+        container.innerHTML = `
+            <div style="width:100%;height:100%; position: relative;">
+                <div id="resultRec" 
+                    style="position:absolute;border: 2px solid red; top: 0; left: 0; width: 0; height: 0; z-index: 2;">
+                </div>
+                <img id="resultImg" 
+                    style="display:none;position:absolute;top:0%;left:0%;width:100%;height:100%; z-index: 1;"
+                    src=""/> 
+                <img id="logoImg" 
+                    style="position:absolute;top:5%;right:5%;width:30%;padding:6px; z-index: 3;object-fit:contain;background:white;"
+                    src="${landingAiLogo}"/> 
+                    <h4 id="restext" style="background:white;position:absolute;top:55%;right:55%;width:30%; z-index: 4;color:red"></h4>
+            </div>
+        `;
+        resultImgDiv = container.querySelector("#resultImg");
+        resultRecDiv = container.querySelector("#resultRec");
+        restext = container.querySelector("#restext");
+
+        box.injectNode(container);
+    });
+
+    widgets.register("InputImage", (box) => {
+        container = document.createElement('div')
+        container.innerHTML = 
+        `
+        <div id="image" style="display:block;z-index:1;">
+            <img id="output" width="100%" height="100%" 
+                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F0000.JPG?alt=media&token=4e2bb785-846f-4ee1-8774-0a101b473bca"/>
+        </div>
+        <div class="btn btn-color" 
+            style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" 
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="submit-btn" 
+                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        `
+        const upload_btn = container.querySelector("#upload-btn")
+        const upload = container.querySelector("#upload")
+        upload_btn.onclick = () => {
+            if(upload) upload.click()
+        }
+
+        let imageEncoded = null
+        let file = null
+        const img_output = container.querySelector('#output');
+        const img = container.querySelector("#image")
+        upload.onchange = (event) => {
+            file = event.target.files[0]
+            img_output.src = URL.createObjectURL(event.target.files[0]);
+            img.style = "display: block"
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+        
+            var base_image = new Image();
+            base_image.src = img_output.src;
+            base_image.onload = function() {
+                canvas.width = base_image.width;
+                canvas.height = base_image.height;
+
+                imgWidth = base_image.width;
+                imgHeight = base_image.height;
+        
+                ctx.drawImage(base_image, 0, 0);
+                imageEncoded = canvas.toDataURL('image/jpeg')
+                canvas.remove();
+            }
+        }
+
+        const imageUpload = async (image) => {
+            if(!file) return
+            const data = new FormData()
+            data.append('file', file)
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=bf6be489-eaf7-4c2f-81ff-3866e040dd11`, {
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {
+                        'apikey':'land_sk_0sIzpR0dno01dqFeIe5Ln4SKcuMhJp1HZB7Q4bLhQUo14ihdee'
+                    },
+                    body: data
+            });
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            const response = await res.json()
+            return response
+        }
+
+        const submit_btn = container.querySelector("#submit-btn")
+        submit_btn.onclick = async () => {
+            const resData = await imageUpload(imageEncoded)
+            if(resultImgDiv) {
+                resultImgDiv.src = imageEncoded;
+                resultImgDiv.style.display='block'
+            }
+             console.log(resData.predictions.labelName)
+             console.log(restext.innerHTML)
+             restext.innerHTML=resData.predictions.labelName+ ", Probability : "+ resData.predictions.score.toFixed(2);
+           
+             console.log()
+            if(resData) {
+                if(resData.backbonepredictions) {
+                    for(let key in resData.backbonepredictions) {
+                        let coordinates = resData.backbonepredictions[key].coordinates
+                        if(resultImgDiv) {
+                            resultImgDiv.src = imageEncoded;
+                            let imgWidthDiv =  resultImgDiv.width
+                            let imgHeightDiv =  resultImgDiv.height
+                            let xmax = coordinates.xmax
+                            let xmin = coordinates.xmin
+                            let ymax = coordinates.ymax
+                            let ymin = coordinates.ymin
+                           
+
+                            let leftPercent = (1.0*xmin)/(imgWidth*1.0)
+                            let topPercent = (1.0*ymin)/(imgHeight*1.0)
+
+                            let widthPercent = (xmax-xmin)/(imgWidth*1.0)
+                            let heightPercent = (ymax-ymin)/(imgHeight*1.0)
+
+                            resultRecDiv.style.left = `${imgWidthDiv * leftPercent}px`
+                            resultRecDiv.style.top = `${imgHeightDiv * topPercent}px`
+
+                            resultRecDiv.style.width = `${imgWidthDiv * widthPercent}px`
+                            resultRecDiv.style.height = `${imgHeightDiv * heightPercent}px`
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        box.injectNode(container)
+        return () => { }
+    })
+	////////////
+
 	let sim_function;
 	simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
 		sim_function = args[0]
