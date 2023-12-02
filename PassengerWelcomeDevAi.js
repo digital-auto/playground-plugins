@@ -1128,7 +1128,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         // Use the FormData object for further processing (e.g., send it in a form or via AJAX)
         // In this example, we'll log the FormData object to the console
         console.log(formData);
-        console.log(upload);
+        console.log(file);
         
             }, 'image/jpeg');
           }
