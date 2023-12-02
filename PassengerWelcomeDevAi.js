@@ -677,19 +677,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         </div>
         `
         let sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE";
-        // let optimized = controlFrame.querySelector("#optimized")
-        // optimized.onclick = () => {
-        //     sheetID = "1WA6iySLIZngtqZYBr3MPUg-XulkmrMJ_l0MAgGwNyXE"
-        //     optimized.style.backgroundColor = "rgb(104 130 158)";
-        //     non_optimized.style.backgroundColor = "rgb(157 176 184)";
-        // }
-
-        // let non_optimized = controlFrame.querySelector("#non-optimized")
-        // non_optimized.onclick = () => {
-        //     sheetID = "13ix5z-_Oa_tB5v11XJqnST0SiCBmPraZVUBbB5QzK9c"
-        //     optimized.style.backgroundColor = "rgb(157 176 184)";
-        //     non_optimized.style.backgroundColor = "rgb(104 130 158)";
-        // }
+  
 
         let start = controlFrame.querySelector("#start")
         start.onclick = () => {
@@ -1091,6 +1079,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         upload_btn.onclick = () => {
             if(upload) upload.click()
         }
+     
 
         let imageEncoded = null
         let file = null
@@ -1118,6 +1107,35 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 canvas.remove();
             }
         }
+        function convertImageToInput() {
+            // Get the image element
+            const image = img_output;
+          
+            // Create a canvas element to draw the image
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+          
+            // Convert canvas content to a Blob
+            canvas.toBlob(blob => {
+              // Create FormData and append the Blob as a file
+              const formData = new FormData();
+              formData.append('file', blob, 'image.jpg');
+          
+              // Create a new File input dynamically
+              const fileInput = document.createElement('input');
+              fileInput.type = 'file';
+              fileInput.name = 'imageFile'; // Set the desired name
+              fileInput.files = formData;
+          
+              // Append the File input to the container
+              const container = document.getElementById('upload');
+              container.appendChild(fileInput);
+            }, 'image/jpeg');
+          }
+          
 
         const imageUpload_authentication = async (image) => {
             if(!file) return
@@ -1228,6 +1246,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const submit_btn = container.querySelector("#submit-btn")
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
+            convertImageToInput();
             
             const video = container.querySelector("#webcam-video")
             if(webcam_message === "Webcam") {
