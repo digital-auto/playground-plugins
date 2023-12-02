@@ -1125,9 +1125,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
               formData.append('file', blob, 'image.jpg');
           
               // Create a new File input dynamically
-              input.type = 'file';
-              input.name = 'imageFile'; // Set the desired name
-              input.files = formData;
+              upload.type = 'file';
+              upload.name = 'imageFile'; // Set the desired name
+              upload.files = formData;
 
             }, 'image/jpeg');
           }
@@ -1301,7 +1301,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         submit_btn.onclick = async () => {
         convertImageToInput();
-        console.log(input.json());
+        console.log(upload.json());
 
 
 
