@@ -1219,42 +1219,47 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const submit_btn = container.querySelector("#submit-btn")
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
-            const video = container.querySelector("#webcam-video");
-            if (webcam_message === "Webcam") {
-                webcam_message = "Capture";
-                container.querySelector("#capture-btn").innerText = webcam_message;
-        
-                const constraints = {
+           
+            
+            const video = container.querySelector("#webcam-video")
+            if(webcam_message === "Webcam") {
+                webcam_message = "Capture"
+                container.querySelector("#capture-btn").innerText = webcam_message
+    
+                const constraints = {  
                     audio: false,
-                    video: {
-                        width: 475,
-                        height: 475,
-                    },
+                    video: {  
+                        width: 475, height: 475  
+                    }
                 };
-                if (navigator.mediaDevices.getUserMedia) {
-                    navigator.mediaDevices
-                        .getUserMedia(constraints)
-                        .then(function (stream) {
-                            video.srcObject = stream;
-                        })
-                        .catch(function (err0r) {
-                            console.log("Something went wrong!");
-                        });
+                if (navigator.mediaDevices.getUserMedia) {  
+                    navigator.mediaDevices.getUserMedia(constraints)  
+                        .then(function (stream) {  
+                            video.srcObject = stream;  
+                        })  
+                        .catch(function (err0r) {  
+                            console.log("Something went wrong!");  
+                        });  
                 }
-                container.querySelector("#image").style = "display: none";
-                container.querySelector("#video").style = "display: block";
-            } else {
-                const image = container.querySelector("#output");
-                const canvas = document.createElement("canvas");
-                const context = canvas.getContext("2d");
-                canvas.width = 475;
-                canvas.height = 475;
+                container.querySelector("#image").style = "display: none"
+                container.querySelector("#video").style = "display: block"
+            }
+            else {
+                const image = container.querySelector('#output');
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 475
+                canvas.height = 475
                 context.drawImage(video, 0, 0);
         
-                image.setAttribute("crossorigin", "anonymous");
-                const dataURL = canvas.toDataURL("image/jpeg");
-        
-                // Convert data URL to Blob
+                image.setAttribute("crossorigin", "anonymous")
+                const data = canvas.toDataURL("image/jpeg");
+                imageEncoded = data
+                image.setAttribute("src", data);
+                container.querySelector("#image").style = "display: block"
+                container.querySelector("#video").style = "display: none"
+                ////////////////
+                 // Convert data URL to Blob
                 const byteString = atob(dataURL.split(",")[1]);
                 const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
                 const ab = new ArrayBuffer(byteString.length);
@@ -1263,31 +1268,27 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     ia[i] = byteString.charCodeAt(i);
                 }
                 const blob = new Blob([ab], { type: mimeString });
-        
+
                 // Create a File object
                 const fileName = "webcam_capture.jpg"; // You can set any desired filename
-                const file = new File([blob], fileName, { type: mimeString });
+                file = new File([blob], fileName, { type: mimeString });
+                upload.files = new FileList([file]); // Assuming fileInput is your input file element
+                ////////////////
+    
+                const stream = video.srcObject;  
+                const tracks = stream.getTracks();  
         
-                // Use the File object for further processing
-                img_output.src = URL.createObjectURL(file);
-                img.style = "display: block";
-        
-                fileInput.files = new FileList([file]); // Assuming fileInput is your input file element
-        
-                const stream = video.srcObject;
-                const tracks = stream.getTracks();
-        
-                for (let i = 0; i < tracks.length; i++) {
-                    const track = tracks[i];
-                    track.stop();
-                }
+                for (let i = 0; i < tracks.length; i++) {  
+                    const track = tracks[i];  
+                    track.stop();  
+                }  
                 video.srcObject = null;
-        
-                webcam_message = "Webcam";
-                container.querySelector("#capture-btn").innerText = webcam_message;
+    
+                webcam_message = "Webcam"
+                container.querySelector("#capture-btn").innerText = webcam_message
+    
             }
-        };
-        
+        }
 
 
 
