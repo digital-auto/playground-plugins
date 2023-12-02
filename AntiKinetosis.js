@@ -732,7 +732,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			const lng = await vehicle.CurrentLocation.Longitude.get()
 	
 			let message = "", mobileMessage = "";
-			alert(parseFloat(score));
 			if ((parseFloat(score) > 80.0)||(result=="discomfort")) {
 				message = "Warning: High kinetosis level.";
 				mobileMessage = message + "\nPlease open the window for the passenger.";
