@@ -1110,7 +1110,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         function convertImageToInput() {
             // Get the image element
-            const image = document.getElementById('image');
+            const image = img_output;
           
             // Create a canvas element to draw the image
             const canvas = document.createElement('canvas');
