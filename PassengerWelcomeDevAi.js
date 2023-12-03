@@ -1278,7 +1278,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
         submit_btn.onclick = async () => {
-            
+
         const imageUrl = img_output.src;
     
         try {
