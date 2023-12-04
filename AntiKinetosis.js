@@ -821,7 +821,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
 
-        submit_btn = container.querySelector("#submit-btn")
         submit_btn.onclick = async () => {
 
 			const imageUrl = img_output.src;
