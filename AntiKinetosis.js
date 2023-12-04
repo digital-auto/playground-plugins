@@ -65,7 +65,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
 		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
 
-		let message = "Kinetosis score", mobileMessage = "";
+		let mobileMessage = "";
 		if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
 			//message = "Warning: High kinetosis level.";
 			mobileMessage = message + "\nPlease open the window for the passenger.";
@@ -506,7 +506,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Kinetosis Level is </div>		
+			<div id="message">Kinetosis score </div>		
 		</div>
 		`
 
@@ -794,7 +794,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			const lat = await vehicle.CurrentLocation.Latitude.get()
 			const lng = await vehicle.CurrentLocation.Longitude.get()
 	
-			let message = "Kinetosis score", mobileMessage = "";
+			let mobileMessage = "";
 			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
 				//message = "Warning: High kinetosis level.";
 				mobileMessage = message + "\nPlease open the window for the passenger.";
