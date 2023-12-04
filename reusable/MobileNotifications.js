@@ -22,7 +22,7 @@ const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, 
             text-align:center;            
         }
 		</style>
-    <div style="max-width: fit-content; margin: 0 auto; position: relative;left: 50%;transform: translateX(-50%);">
+    <div style="max-width: fit-content; margin: 0 auto; position: relative;">
     <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FDashboardPhone.png?alt=media&token=d361018a-b4b3-42c0-8ef0-16c9e70fd9c7" style="height: 100%; width: 100%; object-fit: contain;">
         <div class="smartphone-text" style="position: absolute; color: white; font-family: 'Lato'; width: 100%; top: 0; height: 100%; box-sizing: border-box; padding-top: ${paddingTop}px; padding-right: ${paddingHorizontal}px; padding-left: ${paddingHorizontal}px; padding-bottom: 25px; white-space: break-spaces;"></div>
     </div>
