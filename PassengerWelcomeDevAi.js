@@ -1022,7 +1022,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     style="position:absolute;top:5%;right:5%;width:30%;padding:6px; z-index: 3;object-fit:contain;background:white;"
                     src="${landingAiLogo}"/> 
             </div>
-              <div style="height: 50%; width: 50%;">
+              <div style="height: 50%; width: 50%;left: 50%;transform: translateX(-50%);">
               <div style="max-width: fit-content; margin: 0 auto; position: relative;">
     <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FDashboardPhone.png?alt=media&token=d361018a-b4b3-42c0-8ef0-16c9e70fd9c7" style="height: 100%; width: 100%; object-fit: contain;">
      <div id="ResultDiv" style="position: absolute; color: white; font-family: 'Lato'; width: 100%; top: 0; height: 100%; box-sizing: border-box; padding-top: 25px; padding-right: 12px; padding-left: 12px; padding-bottom: 25px; white-space: break-spaces;" >
