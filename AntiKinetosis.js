@@ -66,7 +66,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
 
 		let message = "", mobileMessage = "";
-		if (parseFloat(score) > 80.0) {
+		if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
 			message = "Warning: High kinetosis level.";
 			mobileMessage = message + "\nPlease open the window for the passenger.";
 			//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
@@ -615,6 +615,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let resultRecDiv = null
     let restext = null
     let Emotion = null
+	let EmotionScore = null
     let Probability = null
 
     let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
@@ -726,13 +727,13 @@ const plugin = ({widgets, simulator, vehicle}) => {
             const response = await res.json()
             return response
         }
-		const updateSimulation = async (result) => {
+		const updateSimulation = async () => {
 			const score = await vehicle.Passenger.KinetosisScore.get()
 			const lat = await vehicle.CurrentLocation.Latitude.get()
 			const lng = await vehicle.CurrentLocation.Longitude.get()
 	
 			let message = "", mobileMessage = "";
-			if ((parseFloat(score) > 80.0)||(result=="discomfort")) {
+			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
 				message = "Warning: High kinetosis level.";
 				mobileMessage = message + "\nPlease open the window for the passenger.";
 			}
@@ -767,7 +768,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
              console.log(Emotion.innerHTML)
              Emotion.innerHTML=resData.predictions.labelName;
              Probability.innerHTML=resData.predictions.score.toFixed(2);
-			 updateSimulation(resData.predictions.labelName);
+			 EmotionScore=resData.predictions.labelName;
+			 updateSimulation();
            
              console.log()
             if(resData) {
