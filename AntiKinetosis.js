@@ -673,6 +673,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 Submit
             </button>
         </div>
+		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
+		<div> <span></span><span id="Emotion"></span></div>
+		<div><span>Probability : </span><span id="Probability"></span></div>
+		</div>
         `
 		Emotion = container.querySelector("#Emotion");
         Probability = container.querySelector("#Probability");
