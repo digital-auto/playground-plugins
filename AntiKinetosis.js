@@ -65,18 +65,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
 		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
 
-		let message = "", mobileMessage = "";
+		let message = "Kinetosis score", mobileMessage = "";
 		if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
-			message = "Warning: High kinetosis level.";
+			//message = "Warning: High kinetosis level.";
 			mobileMessage = message + "\nPlease open the window for the passenger.";
 			//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
 		}
 		else if (parseFloat(score) > 60.0) {
-			message = "Kinetosis level is medium";
+			//message = "Kinetosis level is medium";
 			mobileMessage = message;
 		}
 		else {
-			message =  "Kinetosis level is normal";
+			//message =  "Kinetosis level is normal";
 			mobileMessage = message;
 		}
 
@@ -794,17 +794,17 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			const lat = await vehicle.CurrentLocation.Latitude.get()
 			const lng = await vehicle.CurrentLocation.Longitude.get()
 	
-			let message = "", mobileMessage = "";
+			let message = "Kinetosis score", mobileMessage = "";
 			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
-				message = "Warning: High kinetosis level.";
+				//message = "Warning: High kinetosis level.";
 				mobileMessage = message + "\nPlease open the window for the passenger.";
 			}
 			else if (parseFloat(score) > 60.0) {
-				message = "Kinetosis level is medium";
+				//message = "Kinetosis level is medium";
 				mobileMessage = message;
 			}
 			else {
-				message =  "Kinetosis level is normal";
+				//message =  "Kinetosis level is normal";
 				mobileMessage = message;
 			}
 	
