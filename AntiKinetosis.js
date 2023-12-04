@@ -652,37 +652,37 @@ const plugin = ({widgets, simulator, vehicle}) => {
         container = document.createElement('div')
         container.innerHTML = 
         `
-        <div id="image" style="display:block;z-index:1;">
-            <img id="output" width="100%" height="100%" 
-                src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
+		<div id="image" style="display:block">
+        <img id="output" width="100%" height="100%" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
         </div>
-		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-		<button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-			Upload
-		</button>
-		<button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-			${webcam_message}
-		</button>
-		<input id="upload" type="file" accept="image/*" style="display:none">
-		</div>
-		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 60px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-		<button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-			Submit
-		</button>
-		</div>
-		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
-		<div> <span></span><span id="Emotion"></span></div>
-		<div><span>Probability : </span><span id="Probability"></span></div>
-		</div>
+        <div id="video" style="display:none; width:100%; height:100%">
+            <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
+        </div>
+    
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                ${webcam_message}
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 60px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+        </div>
         `
 		Emotion = container.querySelector("#Emotion");
         Probability = container.querySelector("#Probability");
 
-        const upload_btn = container.querySelector("#upload-btn")
+		const upload_btn = container.querySelector("#upload-btn")
         const upload = container.querySelector("#upload")
         upload_btn.onclick = () => {
             if(upload) upload.click()
         }
+     
 
         let imageEncoded = null
         let file = null
@@ -710,6 +710,59 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 canvas.remove();
             }
         }
+      
+
+        const imageUpload = async (image) => {
+            if(!file) return
+            const data = new FormData()
+            data.append('file', file)
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=bf6be489-eaf7-4c2f-81ff-3866e040dd11`, {
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {
+                        'apikey':'land_sk_0sIzpR0dno01dqFeIe5Ln4SKcuMhJp1HZB7Q4bLhQUo14ihdee'
+                    },
+                    body: data
+            });
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            const response = await res.json()
+            return response
+        }
+		const updateSimulation = async () => {
+			const score = await vehicle.Passenger.KinetosisScore.get()
+			const lat = await vehicle.CurrentLocation.Latitude.get()
+			const lng = await vehicle.CurrentLocation.Longitude.get()
+	
+			let mobileMessage = "";
+			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
+				//message = "Warning: High kinetosis level.";
+				mobileMessage = message + "\nPlease open the window for the passenger.";
+			}
+			else if (parseFloat(score) > 60.0) {
+				//message = "Kinetosis level is medium";
+				mobileMessage = message;
+			}
+			else {
+				//message =  "Kinetosis level is normal";
+				mobileMessage = message;
+			}
+	
+			scoreFrame.querySelector("#score #message").textContent = message
+	
+			mobileNotifications(mobileMessage);
+	
+			if(setVehiclePinGlobal !== null) {
+				setVehiclePinGlobal({
+					lat: parseFloat(lat),
+					lng: parseFloat(lng)
+				})
+			}
+		}
+		const submit_btn = container.querySelector("#submit-btn")
         const capture_btn = container.querySelector("#capture-btn")
         capture_btn.onclick = () => {
            
@@ -768,58 +821,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
 
 
-
-        const imageUpload = async (image) => {
-            if(!file) return
-            const data = new FormData()
-            data.append('file', file)
-            const res = await fetch(
-                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=bf6be489-eaf7-4c2f-81ff-3866e040dd11`, {
-                    method:'POST',
-                    mode: 'cors',
-                    headers: {
-                        'apikey':'land_sk_0sIzpR0dno01dqFeIe5Ln4SKcuMhJp1HZB7Q4bLhQUo14ihdee'
-                    },
-                    body: data
-            });
-            if (!res.ok) {
-                const message = `An error has occured: ${res.status}`;
-                throw new Error(message);
-            }
-            const response = await res.json()
-            return response
-        }
-		const updateSimulation = async () => {
-			const score = await vehicle.Passenger.KinetosisScore.get()
-			const lat = await vehicle.CurrentLocation.Latitude.get()
-			const lng = await vehicle.CurrentLocation.Longitude.get()
-	
-			let mobileMessage = "";
-			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
-				//message = "Warning: High kinetosis level.";
-				mobileMessage = message + "\nPlease open the window for the passenger.";
-			}
-			else if (parseFloat(score) > 60.0) {
-				//message = "Kinetosis level is medium";
-				mobileMessage = message;
-			}
-			else {
-				//message =  "Kinetosis level is normal";
-				mobileMessage = message;
-			}
-	
-			scoreFrame.querySelector("#score #message").textContent = message
-	
-			mobileNotifications(mobileMessage);
-	
-			if(setVehiclePinGlobal !== null) {
-				setVehiclePinGlobal({
-					lat: parseFloat(lat),
-					lng: parseFloat(lng)
-				})
-			}
-		}
-        const submit_btn = container.querySelector("#submit-btn")
+        submit_btn = container.querySelector("#submit-btn")
         submit_btn.onclick = async () => {
 
 			const imageUrl = img_output.src;
