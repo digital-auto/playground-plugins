@@ -654,22 +654,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
             <img id="output" width="100%" height="100%" 
                 src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
         </div>
-        <div class="btn btn-color" 
-            style="display:flex;z-index:2; position:absolute; width: 100%; bottom: 10px; opacity:85%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
-            <button id="upload-btn" 
-                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:5px;border-radius:10px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                Upload
-            </button>
-            <button id="submit-btn" 
-                style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:5px;border-radius:10px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-                Submit
-            </button>
-            <input id="upload" type="file" accept="image/*" style="display:none">
-        </div>
+		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+		<button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			Upload
+		</button>
+		<button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+			${webcam_message}
+		</button>
+		<input id="upload" type="file" accept="image/*" style="display:none">
+		</div>
 		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
 		<div> <span></span><span id="Emotion"></span></div>
 		<div><span>Probability : </span><span id="Probability"></span></div>
-	</div>
+		</div>
         `
 		Emotion = container.querySelector("#Emotion");
         Probability = container.querySelector("#Probability");
@@ -706,6 +703,64 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 canvas.remove();
             }
         }
+        const capture_btn = container.querySelector("#capture-btn")
+        capture_btn.onclick = () => {
+           
+            
+            const video = container.querySelector("#webcam-video")
+            if(webcam_message === "Webcam") {
+                webcam_message = "Capture"
+                container.querySelector("#capture-btn").innerText = webcam_message
+    
+                const constraints = {  
+                    audio: false,
+                    video: {  
+                        width: 475, height: 475  
+                    }
+                };
+                if (navigator.mediaDevices.getUserMedia) {  
+                    navigator.mediaDevices.getUserMedia(constraints)  
+                        .then(function (stream) {  
+                            video.srcObject = stream;  
+                        })  
+                        .catch(function (err0r) {  
+                            console.log("Something went wrong!");  
+                        });  
+                }
+                container.querySelector("#image").style = "display: none"
+                container.querySelector("#video").style = "display: block"
+            }
+            else {
+                const image = container.querySelector('#output');
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 475
+                canvas.height = 475
+                context.drawImage(video, 0, 0);
+        
+                image.setAttribute("crossorigin", "anonymous")
+                const data = canvas.toDataURL("image/jpeg");
+                imageEncoded = data
+                image.setAttribute("src", data);
+                container.querySelector("#image").style = "display: block"
+                container.querySelector("#video").style = "display: none"
+    
+                const stream = video.srcObject;  
+                const tracks = stream.getTracks();  
+        
+                for (let i = 0; i < tracks.length; i++) {  
+                    const track = tracks[i];  
+                    track.stop();  
+                }  
+                video.srcObject = null;
+    
+                webcam_message = "Webcam"
+                container.querySelector("#capture-btn").innerText = webcam_message
+    
+            }
+        }
+
+
 
         const imageUpload = async (image) => {
             if(!file) return
@@ -759,6 +814,18 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		}
         const submit_btn = container.querySelector("#submit-btn")
         submit_btn.onclick = async () => {
+
+			const imageUrl = img_output.src;
+    
+			try {
+				const response = await fetch(imageUrl);
+				const blob = await response.blob();
+				file = new File([blob], "uploaded_image.jpg", { type: "image/jpeg" });
+			} catch (error) {
+				console.error('Error:', error);
+			}
+
+			
             const resData = await imageUpload(imageEncoded)
             if(resultImgDiv) {
                 resultImgDiv.src = imageEncoded;
