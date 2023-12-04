@@ -6,7 +6,7 @@
 ** all the options are mandatory but if you do not want to show the notification based on
 ** VSS signal values, then you can send apis, vehicle and refresh as null
 */
-const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, paddingTop = 25, paddingHorizontal = 12, backgroundColor = null}) => {
+const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, paddingTop = 50, paddingHorizontal = 12, backgroundColor = null}) => {
     const container = document.createElement("div")
     container.setAttribute("style", `height: 100%; width: 100%;`)
     container.innerHTML = (`
