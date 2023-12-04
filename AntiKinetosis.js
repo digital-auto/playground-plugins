@@ -743,15 +743,15 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	
 			let mobileMessage = "";
 			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
-				//message = "Warning: High kinetosis level.";
+				message = "Warning: High kinetosis level.";
 				mobileMessage = message + "\nPlease open the window for the passenger.";
 			}
 			else if (parseFloat(score) > 60.0) {
-				//message = "Kinetosis level is medium";
+				message = "Kinetosis level is medium";
 				mobileMessage = message;
 			}
 			else {
-				//message =  "Kinetosis level is normal";
+				message =  "Kinetosis level is normal";
 				mobileMessage = message;
 			}
 	
