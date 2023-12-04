@@ -80,7 +80,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			mobileMessage = "Kinetosis level is normal";
 		}
 
-		scoreFrame.querySelector("#score #message").textContent = message
 
 		mobileNotifications(mobileMessage);
 
@@ -755,7 +754,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				mobileMessage = "Kinetosis level is normal";
 			}
 	
-			scoreFrame.querySelector("#score #message").textContent = message
 	
 			mobileNotifications(mobileMessage);
 	
