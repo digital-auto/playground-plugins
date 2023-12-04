@@ -647,6 +647,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
     });
 
     widgets.register("InputImage", (box) => {
+		let webcam_message = 'Webcam'
+
         container = document.createElement('div')
         container.innerHTML = 
         `
@@ -825,7 +827,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				console.error('Error:', error);
 			}
 
-			
+
             const resData = await imageUpload(imageEncoded)
             if(resultImgDiv) {
                 resultImgDiv.src = imageEncoded;
