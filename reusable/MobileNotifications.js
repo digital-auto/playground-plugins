@@ -56,7 +56,7 @@ const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, 
     return {
         printNotification: (message) => {
             if(message !== undefined || message !== "") {
-                if(message.length>30){
+                if(message.substring(0, 8)==="Warning:"){
                 container.querySelector("#warning").textContent = message.substring(0, 8)
                 container.querySelector("#message").textContent = message.substring(9)
             }
