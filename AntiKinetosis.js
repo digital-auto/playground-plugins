@@ -68,16 +68,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		let mobileMessage = "";
 		if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
 			//message = "Warning: High kinetosis level.";
-			mobileMessage = "Warning: Passenger's Kinetosis status is abnormal." + "\nPlease open the window for the passenger.";
+			mobileMessage = "Warning: \nPassenger's Kinetosis status: Abnormal." + "\nPlease open the window for the passenger.";
 			//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
 		}
 		else if (parseFloat(score) > 60.0) {
 			//message = "Kinetosis level is medium";
-			mobileMessage = "Kinetosis level is medium";
+			mobileMessage = "Passenger's Kinetosis status: Slightly uncomfortable";
 		}
 		else {
 			//message =  "Kinetosis level is normal";
-			mobileMessage = "Kinetosis level is normal";
+			mobileMessage = "Passenger's Kinetosis status: Normal";
 		}
 
 
