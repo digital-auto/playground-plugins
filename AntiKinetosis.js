@@ -319,132 +319,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box.triggerPopup(videoFrame)
 		}
 
-		// let reload = controlsFrame.querySelector("#reload")
-		// reload.onclick = () => {
-		// simulationDetails = {
-		// 	"style": "sporty",
-		// 	"gender": "male",
-		// 	"age": "young"
-		// 	}
-
-		// 	controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
-		// 	controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
-		// 	controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
-		// 	controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
-		// 	controlsFrame.querySelector("#red img").style.width = "80%"
-		// 	controlsFrame.querySelector("#green img").style.width = "50%"
-		// 	controlsFrame.querySelector("#yellow img").style.width = "50%"
-		// 	controlsFrame.querySelector("#red div").style.fontWeight = "bold"
-		// 	controlsFrame.querySelector("#green div").style.fontWeight = "unset"
-		// 	controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
-
-		// 	index = 0;
-		// 	clearInterval(intervalId)
-
-		// 	scoreFrame.querySelector("#score .text").textContent = "0.0%"
-		// 	scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(0) * 2)) + "," + 200);
-		// 	scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(0) * 2)}`)
-		// 	scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(0) * 2)}`)
-		// 	scoreFrame.querySelector("#score #message").textContent = "Kinetosis level is "
-		// 	mobileNotifications("");
-
-		// 	animationFrame.querySelector("#animation").textContent = "Click on the Animation you want to see."
-		// 	animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
-		// 	animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
-		// 	setVehiclePinGlobal(null);
-
-		// }
-
-		// let index = 0;
-		// let intervalId = null;
-
-		// let play = controlsFrame.querySelector("#play")
-		// play.onclick = () => {
-		// 	clearInterval(intervalId)
-		// 	index = 0;
-
-		// 	fetchSimulationResults(simulationDetails).then(data => {
-		// 		const VSSdata = data.signal_values
-
-		// 		intervalId = setInterval(() => {
-		// 			if (index >= VSSdata.length) {
-		// 				clearInterval(intervalId)
-		// 			}
-		// 			else {
-
-		// 				simulator("Vehicle.TripMeterReading", "get", async () => {
-		// 					return (parseFloat(parseFloat(VSSdata[index]["Vehicle.TripMeterReading"]) / 1000).toFixed(3) + " km");
-		// 				})
-		// 				simulator("Vehicle.Speed", "get", async () => {
-		// 					return (parseFloat(parseFloat(VSSdata[index]["Vehicle.Speed"]).toFixed() * 3.6).toFixed(2) + " km/h");
-		// 				})
-		// 				simulator("Vehicle.Acceleration.Lateral", "get", async () => {
-		// 					return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Lateral"]).toFixed(3))
-		// 				})
-		// 				simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
-		// 					return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Longitudinal"]).toFixed(3))
-		// 				})
-		// 				simulator("Vehicle.Acceleration.Vertical", "get", async () => {
-		// 					return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Vertical"]).toFixed(3))
-		// 				})
-		// 				simulator("Vehicle.AngularVelocity.Roll", "get", async () => {
-		// 					return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Roll"]).toFixed(3))
-		// 				})
-		// 				simulator("Vehicle.AngularVelocity.Pitch", "get", async () => {
-		// 					return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Pitch"]).toFixed(3))
-		// 				})
-		// 				simulator("Vehicle.AngularVelocity.Yaw", "get", async () => {
-		// 					return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
-		// 				})
-		// 				simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
-		// 					return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
-		// 				})
-		// 				simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
-		// 					return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-		// 				})
-
-		// 				if(setVehiclePinGlobal !== null) {
-		// 					setVehiclePinGlobal({
-		// 						lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
-		// 						lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-		// 					})
-		// 				}
-						
-		// 				scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2) + "%"
-		// 				scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
-		// 				scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
-		// 				scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
-
-		// 				let message = "", mobileMessage = "";
-		// 				if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 80.0) {
-		// 					message = "Warning: High kinetosis level.";
-		// 					mobileMessage = message + "\nPlease open the window for the passenger.";
-		// 					//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
-		// 				}
-		// 				else if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 60.0) {
-		// 					message = "Kinetosis level is medium";
-		// 					mobileMessage = message;
-		// 				}
-		// 				else {
-		// 					message =  "Kinetosis level is normal";
-		// 					mobileMessage = message;
-		// 				}
-
-		// 				scoreFrame.querySelector("#score #message").textContent = message
-
-		// 				mobileNotifications(mobileMessage);
-
-		// 				index = index + 17
-		// 			}
-		// 		}, 1000)
-		// 	})
-		// }
-
-		// let forward = controlsFrame.querySelector("#forward")
-		// forward.onclick = () => {
-		// 	if (index !== 0)
-		// 		index = index + (17 * 60)
-		// }
+	
 
         box.injectNode(controlsFrame)
         return () => {
@@ -743,15 +618,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			let mobileMessage = "";
 			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
 				//message = "Warning: High kinetosis level.";
-				mobileMessage = "Warning: High kinetosis level." +"\nPlease open the window for the passenger.";
+				mobileMessage = "Warning: \nPassenger's Kinetosis status: Abnormal." + "\nPlease open the window for the passenger.";
+				//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
 			}
 			else if (parseFloat(score) > 60.0) {
 				//message = "Kinetosis level is medium";
-				mobileMessage = "Kinetosis level is medium";
+				mobileMessage = "Passenger's Kinetosis status: Slightly uncomfortable";
 			}
 			else {
 				//message =  "Kinetosis level is normal";
-				mobileMessage = "Kinetosis level is normal";
+				mobileMessage = "Passenger's Kinetosis status: Normal";
 			}
 	
 	
