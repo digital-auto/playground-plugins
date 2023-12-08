@@ -65,7 +65,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     // Update the vehicle every 5 seconds
     
-    setInterval(updateVehicle, 5000)
+    setInterval(updateVehicle, 1000)
 
     updateVehicle()
 
@@ -151,7 +151,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             StateOfChargeTile
         ],
         vehicle,
-        5000
+        1000
     ))
 
 }
