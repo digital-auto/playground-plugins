@@ -76,6 +76,54 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         refresh: 500
     }))
 
+    //////////// Test Maps ///////////////
+    widgets.register("VehicleMapDev", (box) => {
+        condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
+        .then(() => {
+            const path = [
+                {
+                    lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"],
+                    lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Longitude"]
+                },
+                {
+                    lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Latitude"],
+                    lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Longitude"]
+                }
+            ]
+            const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
+            const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
+
+            setTimeout(() => {
+                const directionsService = new box.window.google.maps.DirectionsService();
+                directionsService
+                .route({
+                    origin: start,
+                    destination: end,
+                    travelMode: "DRIVING"
+                })
+                .then((response) => {
+                    console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
+                    box.window.directionsRenderer.setDirections(response);
+                })
+                .catch((e) => console.log("Directions request failed due to " + e));    
+            }, 0)
+        })
+
+        return GoogleMapsFromSignal(
+            [
+                {
+                    "lat": 47.93330662389945,
+                    "lng": 6.8981571326644175
+                },
+                {
+                    "lat": 53.08277351361783,
+                    "lng": 13.195127235586439
+                },
+            ],
+            vehicle,
+        )(box)
+    })
+    //////////////// End test Maps ////////////
 
     // Register a widget that renders a map with a marker with the vehicle's location
     // Use the GoogleMapsFromSignal widget, then manually change the directions of the map created by accesing the DOM from box.window
