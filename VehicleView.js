@@ -82,8 +82,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         .then(() => {
             const path = [
                 {
-                    lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"],
-                    lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Longitude"]
+                    lat: 49.1427,
+                    lng: 9.2109
                 },
                 {
                     lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Latitude"],
