@@ -73,7 +73,7 @@ const plugin = ({ box, widgets }) => {
                         const coordinates = vehicleCoordinates[truckId];
                         vehicleMarkers[truckId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
                     })
-                }, 5000);
+                }, 1000);
 
                 // Create an object to store the markers by chargestationId
                 const chargestationMarkers = {}
@@ -105,7 +105,7 @@ const plugin = ({ box, widgets }) => {
                         const coordinates = chargestationCoordinates[chargestationId];
                         chargestationMarkers[chargestationId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
                     })
-                }, 5000);
+                }, 1000);
 
             })
     })
