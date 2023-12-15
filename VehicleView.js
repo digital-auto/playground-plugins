@@ -112,12 +112,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         return GoogleMapsFromSignal(
             [
                 {
-                    lat: 49.1427,
-                    lng: 9.2109
+                    lat: 36.8065,
+                    lng: 10.1815
                 },
                 {
-                    lat: 50.1109,
-                    lng: 8.6821
+                    lat: 36.4513,
+                    lng: 10.7357
                 },
             ],
             vehicle,
