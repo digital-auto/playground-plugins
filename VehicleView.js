@@ -86,8 +86,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     lng: 9.2109
                 },
                 {
-                    lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Latitude"],
-                    lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Longitude"]
+                    lat: 50.1109,
+                    lng: 8.6821
                 }
             ]
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
