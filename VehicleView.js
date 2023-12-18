@@ -129,6 +129,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     })
     //////////////// End test Maps ////////////
     //Maps with markets/////
+    let container = null
+
     widgets.register("VehicleMap_Markets", (box) => {
         container = document.createElement('div')
         container.innerHTML = 
