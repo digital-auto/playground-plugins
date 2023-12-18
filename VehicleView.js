@@ -102,7 +102,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     travelMode: "DRIVING"
                 })
                 .then((response) => {
-                    console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
+                    //console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
                     box.window.directionsRenderer.setDirections(response);
                 })
                 .catch((e) => console.log("Directions request failed due to " + e));    
@@ -118,7 +118,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                      // For each vehicle, create a marker on the map
                      for (let chargestationId in chargestationCoordinates) {
                          let coordinates = chargestationCoordinates[chargestationId];
-                         console.log(coordinates)
+                         //console.log(coordinates)
                          // Store market in markers object
                          chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                              position: { lat: coordinates.latitude, lng: coordinates.longitude },
@@ -135,6 +135,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                 setInterval(async () => {
                      const response = await fetch("https://fleetsim.onrender.com/chargestation/all/coordinates")
                      const chargestationCoordinates = await response.json();
+                     if (chargestationCoordinates)
                      Object.keys(chargestationCoordinates).forEach(chargestationId => {
                          const coordinates = chargestationCoordinates[chargestationId];
                          chargestationMarkers[chargestationId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
@@ -185,7 +186,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     travelMode: "DRIVING"
                 })
                 .then((response) => {
-                    console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
+                   // console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
                     box.window.directionsRenderer.setDirections(response);
                 })
                 .catch((e) => console.log("Directions request failed due to " + e));    
