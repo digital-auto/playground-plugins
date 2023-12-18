@@ -231,8 +231,8 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 }
 
 function initMap_mobile() {
-  var directionsService = new box.window.google.maps.DirectionsService();
-  var directionsRenderer = new box.window.google.maps.DirectionsRenderer({
+   const directionsService = new box.window.google.maps.DirectionsService();
+   const directionsRenderer = new box.window.google.maps.DirectionsRenderer({
     suppressMarkers: true
   });
   map = new box.window.google.maps.Map(document.getElementById('mobilemap'), {
