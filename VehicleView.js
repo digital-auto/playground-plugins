@@ -108,40 +108,42 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                 .catch((e) => console.log("Directions request failed due to " + e));    
             }, 0)
 
-                 // Create an object to store the markers by chargestationId
-                 const chargestationMarkers = {}
 
-                 // Fetch chargestation coordinates and add markers to map
-                 fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
-                 .then(response => response.json())
-                 .then(chargestationCoordinates => {
-                     // For each vehicle, create a marker on the map
-                     for (let chargestationId in chargestationCoordinates) {
-                         let coordinates = chargestationCoordinates[chargestationId];
-                         //console.log(coordinates)
-                         // Store market in markers object
-                         chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
-                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
-                             map: map,
-                             clickable: true
-                         });
-                         chargestationMarkers[chargestationId].addListener('click', () => {
-                             window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
-                         })
-                     }
-                 });
- 
-                // Every 5 seconds, fetch the new coordinates and update the chargestation markers
-                setInterval(async () => {
-                     const response = await fetch("https://fleetsim.onrender.com/chargestation/all/coordinates")
-                     const chargestationCoordinates = await response.json();
-                     if (chargestationCoordinates)
-                     Object.keys(chargestationCoordinates).forEach(chargestationId => {
-                         const coordinates = chargestationCoordinates[chargestationId];
-                         chargestationMarkers[chargestationId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
-                     })
-                 }, 1000);
         })
+        
+                         // Create an object to store the markers by chargestationId
+                         const chargestationMarkers = {}
+
+                         // Fetch chargestation coordinates and add markers to map
+                         fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
+                         .then(response => response.json())
+                         .then(chargestationCoordinates => {
+                             // For each vehicle, create a marker on the map
+                             for (let chargestationId in chargestationCoordinates) {
+                                 let coordinates = chargestationCoordinates[chargestationId];
+                                 //console.log(coordinates)
+                                 // Store market in markers object
+                                 chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
+                                     position: { lat: coordinates.latitude, lng: coordinates.longitude },
+                                     map: map,
+                                     clickable: true
+                                 });
+                                 chargestationMarkers[chargestationId].addListener('click', () => {
+                                     window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
+                                 })
+                             }
+                         });
+         
+                        // Every 5 seconds, fetch the new coordinates and update the chargestation markers
+                        setInterval(async () => {
+                             const response = await fetch("https://fleetsim.onrender.com/chargestation/all/coordinates")
+                             const chargestationCoordinates = await response.json();
+                             if (chargestationCoordinates)
+                             Object.keys(chargestationCoordinates).forEach(chargestationId => {
+                                 const coordinates = chargestationCoordinates[chargestationId];
+                                 chargestationMarkers[chargestationId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
+                             })
+                         }, 1000);
 
         return GoogleMapsFromSignal(
             [
@@ -155,7 +157,10 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                 }
             ],
             vehicle,
-        )(box)
+        )(box);
+        
+
+
     })
     //////////////// End test Maps ////////////
 
