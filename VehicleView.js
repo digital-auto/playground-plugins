@@ -129,6 +129,73 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     })
     //////////////// End test Maps ////////////
     //Maps with markets/////
+    widgets.register("VehicleMap_Markets", (box) => {
+        container = document.createElement('div')
+        container.innerHTML = 
+        `<div class="cell-xs-12 mobw100 npr">
+        <div id="mode-selector" class="controls">Driving Mode selector
+          <input type="radio" name="type" id="changemode-driving" checked="checked" />
+        </div>
+        <div class="form-group text-right">
+          <label for="departure_address" class="form-label">From</label>
+          <input maxlength="100" id="departure_address" placeholder="From address" type="text" name="departure_address" class="controls form-control form-control-gray-base dybck" value="" style="background: rgb(255, 236, 236) none repeat scroll 0% 0%;" autocomplete="off">
+          <small id="clear_dep" onclick="clear_dep();" class="ib w100 tar clear" style="display: inline;">Clear address</small>
+          <input type="hidden" name="dep_lat" id="dep_lat" value="">
+          <input type="hidden" name="dep_lng" id="dep_lng" value="">
+        </div>
+      </div>
+      
+      <div class="cell-xs-12 offset-top-20 mobw100 npr he arrival_address">
+        <div class="form-group text-right">
+          <label for="arrival_address" class="form-label">To</label>
+          <input maxlength="100" id="arrival_address" placeholder="To address" type="text" name="arrival_address" class="controls form-control form-control-gray-base" value="" autocomplete="off">
+          <small id="clear_arr" onclick="clear_arr();" class="ib w100 tar clear" style="display: inline;">Clear address</small>
+          <input type="hidden" name="arr_lat" id="arr_lat" value="">
+          <input type="hidden" name="arr_lng" id="arr_lng" value="">
+        </div>
+      
+        <div class="cell-xs-12 offset-top-20 mobw100 npr he tal date date_hide">
+          <div class="form-group ib w50 vat">
+            <label for="date" class="form-label">Date</label>
+            <input readonly id="date" data-time-picker="date" type="text" name="travel_date" class="form-control form-control-gray-base dates" value="2019-09-10" />
+          </div>
+          <div class="cell-xs-12 offset-top-20 mobw100 npr he tal pax_adults mt10" style="display: block;">
+            <div class="form-group ib w50 ">
+              <label for="pax_adults" class="form-label fs11">Pax N</label>
+              <input min="1" id="pax_adults" type="number" name="pax_adults" class="p5 form-control form-control-gray-base" value="" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;">
+            </div>
+          </div>
+      
+          <div class="cell-xs-12 offset-top-20 npr he hm tal colback mt10" style="display: block;">
+            <div class="form-group nmb ib w100 tac">
+              <h6 id="show_more" class="option-heading">Travel info</h6>
+              <hr>
+            </div>
+      
+            <div class="form-group nmb ib w100 tac mtb10 option-content is-hidden">
+              <div class="form-group nmb ib w100 tac mtb10">
+                <div class="form-group nmb ib w50 tac">
+                  <label for="travel_distance" class="form-label">Distance</label>
+                  <input readonly="" type="text" name="travel_distance" id="travel_distance" value="">
+                </div>
+                <div class="form-group nmb ib w50 tac">
+                  <label for="travel_time" class="form-label">Travel duration</label>
+                  <input readonly="" type="hidden" name="normal_travel_time" id="normal_travel_time" value="">
+                  <input readonly="" type="text" name="travel_time" id="travel_time" value="">
+                </div>
+              </div>
+      
+              <div class="form-group nmb ib w100 tac mtb10">
+                <label for="travel_price" class="form-label">Travel price USD</label>
+                <input readonly="" class="ib" type="text" name="travel_price" id="travel_price" value="">
+              </div>
+              <hr>
+            </div>
+      
+          </div>
+        </div>
+        <div id="mobilemap"></div>
+        `
     var marker; // move marker definition into the global scope
 var infowindow;
 var uniqueId = 1;
@@ -270,7 +337,24 @@ function set_lat_long(lat, lng, address, directionsService, directionsRenderer) 
 function isEmpty(value) {
   return (value == null || value.length === 0);
 }
-initMap_mobile();
+return GoogleMapsFromSignal(
+    [
+        {
+            lat: 49.1427,
+            lng: 9.2109
+        },
+        {
+            lat: 50.1109,
+            lng: 8.6821
+        }
+    ],
+    vehicle,
+)(box);
+
+
+box.injectNode(container)
+return () => { }
+})
 
     //// End maps with markets////
 
