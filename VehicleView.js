@@ -90,27 +90,11 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     lng: 8.6821
                 }
             ]
+            let directionsService = new box.window.google.maps;
+
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
             const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
-
-            setTimeout(() => {
-                const directionsService = new box.window.google.maps.DirectionsService();
-                directionsService
-                .route({
-                    origin: start,
-                    destination: end,
-                    travelMode: "DRIVING"
-                })
-                .then((response) => {
-                    //console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
-                    box.window.directionsRenderer.setDirections(response);
-                })
-                .catch((e) => console.log("Directions request failed due to " + e));    
-            }, 0)
-
-
-        })
-        
+            
                          // Create an object to store the markers by chargestationId
                          const chargestationMarkers = {}
 
@@ -133,6 +117,25 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                                  })
                              }
                          }); 
+
+            setTimeout(() => {
+                const directionsService = directionsService.DirectionsService();
+                directionsService
+                .route({
+                    origin: start,
+                    destination: end,
+                    travelMode: "DRIVING"
+                })
+                .then((response) => {
+                    //console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
+                    box.window.directionsRenderer.setDirections(response);
+                })
+                .catch((e) => console.log("Directions request failed due to " + e));    
+            }, 0)
+
+
+        })
+        
 
         return GoogleMapsFromSignal(
             [
