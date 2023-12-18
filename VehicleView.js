@@ -138,12 +138,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                         setInterval(async () => {
                              const response = await fetch("https://fleetsim.onrender.com/chargestation/all/coordinates")
                              const chargestationCoordinates = await response.json();
-                             if (chargestationCoordinates)
+                             if (chargestationCoordinates!=null)
                              Object.keys(chargestationCoordinates).forEach(chargestationId => {
                                  const coordinates = chargestationCoordinates[chargestationId];
                                  chargestationMarkers[chargestationId].setPosition({ lat: coordinates.latitude, lng: coordinates.longitude });
                              })
-                         }, 1000);
+                         }, 1000); 
 
         return GoogleMapsFromSignal(
             [
