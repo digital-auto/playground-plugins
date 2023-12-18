@@ -339,19 +339,7 @@ function set_lat_long(lat, lng, address, directionsService, directionsRenderer) 
 function isEmpty(value) {
   return (value == null || value.length === 0);
 }
-return GoogleMapsFromSignal(
-    [
-        {
-            lat: 49.1427,
-            lng: 9.2109
-        },
-        {
-            lat: 50.1109,
-            lng: 8.6821
-        }
-    ],
-    vehicle,
-)(box);
+
 
 
 box.injectNode(container)
