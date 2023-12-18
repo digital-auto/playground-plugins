@@ -118,6 +118,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                      // For each vehicle, create a marker on the map
                      for (let chargestationId in chargestationCoordinates) {
                          let coordinates = chargestationCoordinates[chargestationId];
+                         console.log(coordinates)
                          // Store market in markers object
                          chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                              position: { lat: coordinates.latitude, lng: coordinates.longitude },
