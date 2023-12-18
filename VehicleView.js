@@ -340,6 +340,7 @@ function isEmpty(value) {
   return (value == null || value.length === 0);
 }
 
+initMap_mobile();
 
 
 box.injectNode(container)
