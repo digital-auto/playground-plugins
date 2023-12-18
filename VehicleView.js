@@ -231,11 +231,11 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 }
 
 function initMap_mobile() {
-  var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer({
+  var directionsService = new box.window.google.maps.DirectionsService();
+  var directionsRenderer = new box.window.google.maps.DirectionsRenderer({
     suppressMarkers: true
   });
-  map = new google.maps.Map(document.getElementById('mobilemap'), {
+  map = new box.window.google.maps.Map(document.getElementById('mobilemap'), {
     mapTypeControl: false,
     center: {
       lat: 42.700000762939,
@@ -245,10 +245,10 @@ function initMap_mobile() {
   });
   directionsRenderer.setMap(map);
 
-  google.maps.event.addListener(map, 'click', function(event) {
-    var geocoder = new google.maps.Geocoder();
+  box.window.google.maps.event.addListener(map, 'click', function(event) {
+    var geocoder = new box.window.google.maps.Geocoder();
     geocoder.geocode({
-      'latLng': new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
+      'latLng': new box.window.google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
     }, function(results, status) {
       //otherwise clicks twice
       set_lat_long(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address, directionsService, directionsRenderer);
@@ -263,7 +263,7 @@ function initMap_mobile() {
       }
       if (marker == null) {
         console.log(event.latLng);
-        marker = new google.maps.Marker({
+        marker = new box.window.google.maps.Marker({
           position: event.latLng,
           draggable: true,
           label: {
@@ -271,14 +271,14 @@ function initMap_mobile() {
             color: '#a2003b'
           },
 
-          animation: google.maps.Animation.DROP,
+          animation: box.window.google.maps.Animation.DROP,
           map: map
         });
         marker.id = uniqueId;
       } else {
         marker.setPosition(event.latLng);
       }
-      infowindow = new google.maps.InfoWindow({
+      infowindow = new box.window.google.maps.InfoWindow({
         content: infoWindowcontent
       });
       infowindow.open(map, marker);
@@ -291,7 +291,7 @@ function initMap_mobile() {
 }
 
 function createMarker(location, label, content, map, id) {
-  var marker = new google.maps.Marker({
+  var marker = new box.window.google.maps.Marker({
     position: location,
     title: label,
     id: id,
@@ -299,11 +299,11 @@ function createMarker(location, label, content, map, id) {
       url: 'https://maps.google.com/mapfiles/kml/pal4/icon31.png',
       // This marker is 20 pixels wide by 32 pixels high.
       // The anchor for this image is the base of the flagpole at (0, 32).
-      anchor: new google.maps.Point(0, 0)
+      anchor: new box.window.google.maps.Point(0, 0)
     },
     map: map
   });
-  infowindow = new google.maps.InfoWindow({
+  infowindow = new box.window.google.maps.InfoWindow({
     content: content,
     maxWidth: 350
   });
