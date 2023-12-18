@@ -90,36 +90,11 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     lng: 8.6821
                 }
             ]
-            let directionsService = new box.window.google.maps;
-
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
             const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
-            
-                         // Create an object to store the markers by chargestationId
-                         const chargestationMarkers = {}
-
-                         // Fetch chargestation coordinates and add markers to map
-                         fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
-                         .then(response => response.json())
-                         .then(chargestationCoordinates => {
-                             // For each vehicle, create a marker on the map
-                             for (let chargestationId in chargestationCoordinates) {
-                                 let coordinates = chargestationCoordinates[chargestationId];
-                                 console.log(coordinates)
-                                 // Store market in markers object
-                                 chargestationMarkers[chargestationId] = directionsService.Marker({
-                                     position: { lat: coordinates.latitude, lng: coordinates.longitude },
-                                     map: map,
-                                     clickable: true
-                                 });
-                                 chargestationMarkers[chargestationId].addListener('click', () => {
-                                     window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
-                                 })
-                             }
-                         }); 
 
             setTimeout(() => {
-                const directionsService = directionsService.DirectionsService();
+                const directionsService = new box.window.google.maps.DirectionsService();
                 directionsService
                 .route({
                     origin: start,
