@@ -123,7 +123,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                                  let coordinates = chargestationCoordinates[chargestationId];
                                  //console.log(coordinates)
                                  // Store market in markers object
-                                 chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
+                                 chargestationMarkers[chargestationId] = directionsService.Marker({
                                      position: { lat: coordinates.latitude, lng: coordinates.longitude },
                                      map: map,
                                      clickable: true
