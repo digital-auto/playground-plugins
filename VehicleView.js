@@ -1,5 +1,5 @@
 import StatusTable from "./reusable/StatusTable.js"
-import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
+import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal_Dev.js"
 import LineChart from "./reusable/LineChart.js"
 
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -79,54 +79,45 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     //////////// Test Maps ///////////////
     widgets.register("VehicleMapDev", (box) => {
         condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
-        .then(() => {
-            const path = [
-                {
-                    lat: 49.1427,
-                    lng: 9.2109
-                },
-                {
-                    lat: 50.1109,
-                    lng: 8.6821
-                }
-            ];
+            .then(() => {
+                const path = [
+                    {
+                        lat: 49.1427,
+                        lng: 9.2109
+                    },
+                    {
+                        lat: 50.1109,
+                        lng: 8.6821
+                    }
+                ];
+                const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
+                const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
     
-            const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
-            const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
+                // Add a marker for the current position
+                const currentPosition = new box.window.google.maps.LatLng(
+                    currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"],
+                    currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Longitude"]
+                );
+                const marker = new box.window.google.maps.Marker({
+                    position: currentPosition,
+                    map: box.window.map, // Assuming 'map' is the variable holding your map instance
+                    title: "Current Position"
+                });
     
-            // Create markers for start and end points
-            const startMarker = new box.window.google.maps.Marker({
-                position: start,
-                map: box.window.map, // Assuming you have a reference to your map object
-                title: 'Start'
+                setTimeout(() => {
+                    const directionsService = new box.window.google.maps.DirectionsService();
+                    directionsService
+                        .route({
+                            origin: start,
+                            destination: end,
+                            travelMode: "DRIVING"
+                        })
+                        .then((response) => {
+                            box.window.directionsRenderer.setDirections(response);
+                        })
+                        .catch((e) => console.log("Directions request failed due to " + e));
+                }, 0);
             });
-    
-            const endMarker = new box.window.google.maps.Marker({
-                position: end,
-                map: box.window.map,
-                title: 'End'
-            });
-    
-            // Create a LatLngBounds object to fit the map to the path
-            const bounds = new box.window.google.maps.LatLngBounds();
-            bounds.extend(start);
-            bounds.extend(end);
-            box.window.map.fitBounds(bounds);
-    
-            setTimeout(() => {
-                const directionsService = new box.window.google.maps.DirectionsService();
-                directionsService
-                .route({
-                    origin: start,
-                    destination: end,
-                    travelMode: "DRIVING"
-                })
-                .then((response) => {
-                    box.window.directionsRenderer.setDirections(response);
-                })
-                .catch((e) => console.log("Directions request failed due to " + e));    
-            }, 0);
-        });
     
         return GoogleMapsFromSignal(
             [
@@ -139,7 +130,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     lng: 8.6821
                 }
             ],
-            vehicle,
+            vehicle
         )(box);
     });
     
