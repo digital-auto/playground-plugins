@@ -38,7 +38,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     box.injectNode(container);
 
     let marker = null
-
+  
     return {
         setVehiclePin: (coordinates) => {
             if (coordinates === null) {
@@ -47,7 +47,18 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     marker = null    
                 }
             } else {
-                const {lat, lng} = coordinates
+
+                
+                    const {lat, lng} = { } ;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    //alert( + "|" + position.coords.longitude);
+                    lat= position.coords.latitude ;
+                    lng= position.coords.longitude ;
+                    });
+            } else { 
+                alert("Geolocation is not supported by this browser.");
+            }
                 if (marker === null) {
                     marker = new box.window.google.maps.Marker({
                         position: {lat, lng},
