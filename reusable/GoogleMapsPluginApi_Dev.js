@@ -48,11 +48,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     marker = null    
                 }
             } else {
-                let {lat, lng} ={};
-
-                navigator.geolocation.getCurrentPosition(async (position) => {
-                      lat= await  parseFloat(position.coords.latitude) ;
-                      lng= await  parseFloat(position.coords.longitude) ;
+                const {lat, lng} = navigator.geolocation.getCurrentPosition(async (position) => {
+                     return   parseFloat(position.coords.latitude) , parseFloat(position.coords.longitude) ;
                     });
                 console.log(lat +"|"+lng)
 
