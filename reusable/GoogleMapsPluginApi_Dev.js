@@ -48,19 +48,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     marker = null    
                 }
             } else {
-                const {lat, lng} =  { } ;
+           
 
-                try {
-                    const position = await new Promise((resolve, reject) => {
-                        navigator.geolocation.getCurrentPosition(resolve, reject);
-                    });
-            
-                      lat = position.coords.latitude;
-                      lng = position.coords.longitude;
-            
-                 } catch (error) {
-                    console.error("Error getting location:", error);
-                }
+                const position = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject);
+                }) ;
+        
+              const  lat = position.coords.latitude;
+              const  lng = position.coords.longitude;
                 
 
 
