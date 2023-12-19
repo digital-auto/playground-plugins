@@ -89,10 +89,30 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     lat: 50.1109,
                     lng: 8.6821
                 }
-            ]
+            ];
+    
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
-            const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
-
+            const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
+    
+            // Create markers for start and end points
+            const startMarker = new box.window.google.maps.Marker({
+                position: start,
+                map: box.window.map, // Assuming you have a reference to your map object
+                title: 'Start'
+            });
+    
+            const endMarker = new box.window.google.maps.Marker({
+                position: end,
+                map: box.window.map,
+                title: 'End'
+            });
+    
+            // Create a LatLngBounds object to fit the map to the path
+            const bounds = new box.window.google.maps.LatLngBounds();
+            bounds.extend(start);
+            bounds.extend(end);
+            box.window.map.fitBounds(bounds);
+    
             setTimeout(() => {
                 const directionsService = new box.window.google.maps.DirectionsService();
                 directionsService
@@ -102,14 +122,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     travelMode: "DRIVING"
                 })
                 .then((response) => {
-                    //console.log("directionsRenderer", box.window.directionsRenderer.setDirections, response)
                     box.window.directionsRenderer.setDirections(response);
                 })
                 .catch((e) => console.log("Directions request failed due to " + e));    
-            }, 0)
-        })
-        
-
+            }, 0);
+        });
+    
         return GoogleMapsFromSignal(
             [
                 {
@@ -123,10 +141,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             ],
             vehicle,
         )(box);
-        
-
-
-    })
+    });
+    
     //////////////// End test Maps ////////////
     //Maps with markets/////
     let container = null
