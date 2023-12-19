@@ -18,6 +18,7 @@ function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
     .catch((e) => console.log("Directions request failed due to " + e));
 }
 
+
 const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon = null} = {}) => {
     console.log("GoogleMapsPluginApi icon", icon)
     await loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
@@ -47,7 +48,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     marker = null    
                 }
             } else {
-                const {lat, lng} = coordinates
+                let {lat, lng} = coordinates
 
                 navigator.geolocation.getCurrentPosition(async (position) => {
                       lat= await  parseFloat(position.coords.latitude) ;
