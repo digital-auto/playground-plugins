@@ -49,12 +49,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             } else {
 
                 
-                    const {lat, lng} = { } ;
+                    const {lat, lng}= null;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition((position) => {
                     //alert( + "|" + position.coords.longitude);
-                    lat= position.coords.latitude ;
-                    lng= position.coords.longitude ;
+                    lat= parseFloat(position.coords.latitude );
+                    lng= parseFloat(position.coords.longitude ) ;
                     });
             } else { 
                 alert("Geolocation is not supported by this browser.");
