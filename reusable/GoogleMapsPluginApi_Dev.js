@@ -41,16 +41,29 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let marker = null
 
     return {
-        setVehiclePin: (coordinates) => {
+        setVehiclePin: async (coordinates) => {
             if (coordinates === null) {
                 if (marker !== null) {
                     marker.setMap(null)
                     marker = null    
                 }
             } else {
-                const {lat, lng} = navigator.geolocation.getCurrentPosition(async (position) => {
-                     return   parseFloat(position.coords.latitude) , parseFloat(position.coords.longitude) ;
+                const {lat, lng} =  { } ;
+
+                try {
+                    const position = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject);
                     });
+            
+                      lat = position.coords.latitude;
+                      lng = position.coords.longitude;
+            
+                 } catch (error) {
+                    console.error("Error getting location:", error);
+                }
+                
+
+
                 console.log(lat +"|"+lng)
 
                 if (marker === null) {
