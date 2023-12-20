@@ -69,8 +69,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
               let  lat = position.coords.latitude;
               let  lng = position.coords.longitude;
                  */
-               let  lat = await path[0].lat;
-              let  lng = await path[0].lng;
+               let  lat = path[0].lat;
+              let  lng = path[0].lng;
             
        
                 if (marker === null) {
@@ -124,8 +124,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   let i=0.001;
                   setInterval(async () => {
                     i+=0.001;  
-                    lat= lat+i; 
-                    lng=lng-i;
+                     lat=await lat-i; 
+                    lng= await lng+i;
                     marker.setPosition({lat, lng});
                     console.log(lat +"|"+lng);                   
                 }, 1000);
