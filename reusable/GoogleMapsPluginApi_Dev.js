@@ -29,9 +29,9 @@ function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
 }
 
 
-const GoogleMapsPluginApi =   (apikey, box, path, travelMode = null, {icon = null} = {}) => {
+const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon = null} = {}) => {
     console.log("GoogleMapsPluginApi icon", icon)
-      loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
+    await loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
 
     const container = document.createElement("div");
     container.setAttribute("style", `display:flex; height: 100%; width: 100%;`);
@@ -122,10 +122,10 @@ const GoogleMapsPluginApi =   (apikey, box, path, travelMode = null, {icon = nul
                       }
                   });
                   let i=0.001;
-                  setInterval(async () => {
+                  setInterval( () => {
                     i+=0.001;  
                      lat=  lat-i; 
-                    lng=   lng+i;
+                    lng= lng+i;
                     marker.setPosition({lat, lng});
                     console.log(lat +"|"+lng);                   
                 }, 1000);
