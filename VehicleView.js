@@ -90,12 +90,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       
                         lat: 48.7758,
                         lng: 9.1829
-                    },
-                    {
-                      
-                        lat: 49.151062,
-                        lng: 9.230590
-                    }
+                    } 
                 ];
                 const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
                 const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
@@ -131,12 +126,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                         lat: 48.7758,
                         lng: 9.1829
                     }
-                    ,
-                {
-                  
-                    lat: 49.151062,
-                    lng: 9.230590
-                }
+                 
             ],
             vehicle
         )(box);
