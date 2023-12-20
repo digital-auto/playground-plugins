@@ -51,7 +51,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let marker = null
 
     return {
-        setVehiclePin:  async (coordinates) => {
+        setVehiclePin: (coordinates) => {
             if (coordinates === null) {
                 if (marker !== null) {
                     marker.setMap(null)
