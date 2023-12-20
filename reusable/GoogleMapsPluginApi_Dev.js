@@ -69,7 +69,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 
 
 
-                console.log(lat +"|"+lng)
 
                 if (marker === null) {
                     marker = new box.window.google.maps.Marker({
@@ -127,7 +126,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 i+=0.1;        
                 lat= lat+i; 
                 lng=lng+i;
-                marker.setPosition({lat, lng})
+                marker.setPosition({lat, lng});
+                console.log(lat +"|"+lng);
             }, 1000);
             }
         }
