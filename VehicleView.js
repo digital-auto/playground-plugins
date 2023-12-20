@@ -78,6 +78,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     //////////// Test Maps ///////////////
     widgets.register("VehicleMapDev", (box) => {
+      let path; 
       condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
           .then(() => {
               const path = [
