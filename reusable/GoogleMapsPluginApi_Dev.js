@@ -11,7 +11,6 @@ function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
     .route({
         origin: start,
         destination: end,
-        intermediates: inter,
         travelMode: mode
     })
     .then((response) => {
