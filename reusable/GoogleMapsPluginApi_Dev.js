@@ -123,7 +123,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     lng= lng-0.001;
                     marker.setPosition({lat, lng});
                     console.log(lat +"|"+lng);                   
-                }, 5000);
+                }, 1000);
 
 
              
