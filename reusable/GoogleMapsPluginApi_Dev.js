@@ -114,9 +114,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               } : icon,
                               clickable: true
                           });
-                          chargestationMarkers[chargestationId].addListener('click', () => {
-                              window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
-                          })
+                      
                       }
                   });
                    setInterval( () => {
@@ -127,8 +125,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 }, 5000);
 
 
-                     // Every 5 seconds, fetch the new coordinates and update the chargestation markers
-            
+             
             }
         }
         
