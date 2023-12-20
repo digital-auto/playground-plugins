@@ -120,14 +120,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   });
                   clearInterval(intervalId);
-                  intervalId = setInterval(async () => {
+                  intervalId = setInterval( () => {
                       console.log("Interval function executed");  // Log statement for debugging
                   
                       lat = lat - 0.001;
                       lng = lng + 0.001;
                       marker.setPosition({ lat, lng });
                       console.log(lat + "|" + lng);
-                  }, 100);  // Adjust the interval duration as needed
+                  }, 1000);  // Adjust the interval duration as needed
              
             }
         }
