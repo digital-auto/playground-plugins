@@ -64,8 +64,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     navigator.geolocation.getCurrentPosition(resolve, reject);
                 }) ;
         
-              const  lat = position.coords.latitude;
-              const  lng = position.coords.longitude;
+              let  lat = position.coords.latitude;
+              let  lng = position.coords.longitude;
                 
 
 
@@ -119,6 +119,16 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           })
                       }
                   });
+                  let i=0.1;
+
+
+                     // Every 5 seconds, fetch the new coordinates and update the chargestation markers
+               setInterval(async () => {
+                i+=0.1;        
+                lat= lat+i; 
+                lng=lng+i;
+                marker.setPosition({lat, lng})
+            }, 1000);
             }
         }
         
