@@ -103,6 +103,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                               position: { lat: coordinates.latitude, lng: coordinates.longitude },
                               map: map,
+                              icon: icon === null ? {
+                                  path: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z",
+                                  fillColor: '#2563eb',
+                                  fillOpacity: 1,
+                                  anchor: new box.window.google.maps.Point(12,-290),
+                                  strokeWeight: 0,
+                                  scale: .1,
+                                  rotation: 0
+                              } : icon,
                               clickable: true
                           });
                           chargestationMarkers[chargestationId].addListener('click', () => {
