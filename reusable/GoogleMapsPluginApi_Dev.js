@@ -51,7 +51,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let marker = null
 
     return {
-        setVehiclePin: async (coordinates) => {
+        setVehiclePin:   (coordinates) => {
             if (coordinates === null) {
                 if (marker !== null) {
                     marker.setMap(null)
@@ -60,7 +60,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             } else {
            
 
-                const position = await new Promise((resolve, reject) => {
+                const position =   new Promise((resolve, reject) => {
                     navigator.geolocation.getCurrentPosition(resolve, reject);
                 }) ;
         
@@ -128,7 +128,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 lng=lng+i;
                 marker.setPosition({lat, lng});
                 console.log(lat +"|"+lng);
-            }, 1000);
+            }, 3000);
             }
         }
         
