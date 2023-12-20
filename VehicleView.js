@@ -88,13 +88,13 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     },
                     {
                       
-                        lat: 49.151062,
-                        lng: 9.230590
+                        lat: 48.7758,
+                        lng: 9.1829
                     },
                     {
                       
-                        lat: 48.7758,
-                        lng: 9.1829
+                        lat: 49.151062,
+                        lng: 9.230590
                     }
                 ];
                 const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
@@ -124,11 +124,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                      
                     lat: 49.116911,
                     lng: 9.176294
-                },
-                {
-                  
-                    lat: 49.151062,
-                    lng: 9.230590
                 }
                 ,
                     {
@@ -136,6 +131,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                         lat: 48.7758,
                         lng: 9.1829
                     }
+                    ,
+                {
+                  
+                    lat: 49.151062,
+                    lng: 9.230590
+                }
             ],
             vehicle
         )(box);
