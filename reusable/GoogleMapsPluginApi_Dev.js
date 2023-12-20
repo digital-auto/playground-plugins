@@ -51,25 +51,28 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let marker = null
 
     return {
-        setVehiclePin:   (coordinates) => {
+        setVehiclePin:  async (coordinates) => {
             if (coordinates === null) {
                 if (marker !== null) {
                     marker.setMap(null)
                     marker = null    
                 }
             } else {
+                /*
            
 
-                const position =   new Promise((resolve, reject) => {
+                const position = new Promise((resolve, reject) => {
                     navigator.geolocation.getCurrentPosition(resolve, reject);
                 }) ;
+               
         
               let  lat = position.coords.latitude;
               let  lng = position.coords.longitude;
-                
-
-
-
+                 */
+               let  lat = await path[0].lat;
+              let  lng = await path[0].lng;
+            
+       
                 if (marker === null) {
                     marker = new box.window.google.maps.Marker({
                         position: {lat, lng},
@@ -118,17 +121,18 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           })
                       }
                   });
-                  let i=0.1;
+                  let i=0;
+                  setInterval(async () => {
+                    i+=0.1;  
+                    lat= lat+i; 
+                    lng=lng-i;
+                    marker.setPosition({lat, lng});
+                    console.log(lat +"|"+lng);                   
+                }, 3000);
 
 
                      // Every 5 seconds, fetch the new coordinates and update the chargestation markers
-               setInterval(async () => {
-                i+=0.1;        
-                lat= lat+i; 
-                lng=lng+i;
-                marker.setPosition({lat, lng});
-                console.log(lat +"|"+lng);
-            }, 3000);
+            
             }
         }
         
