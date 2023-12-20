@@ -87,9 +87,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             rotation: 0
                         } : icon
                     })
-                } else {
-                    marker.setPosition({lat, lng})
-                } 
+                }  
                 
                   // Create an object to store the markers by chargestationId
                   const chargestationMarkers = {}
