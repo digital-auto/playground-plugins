@@ -51,7 +51,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let marker = null
     let  lat = path[0].lat;
     let  lng = path[0].lng;
-
+    let intervalId;
     return {
         setVehiclePin: (coordinates) => {
             if (coordinates === null) {
@@ -59,6 +59,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     marker.setMap(null)
                     marker = null    
                 }
+                clearInterval(intervalId);
             } else {
                 /*
            
@@ -118,12 +119,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
-                  setInterval(() => {
-                    lat = lat + 0.0001; // Adjust the increment values as needed
-                    lng = lng - 0.0001;
+                // Clear the existing interval before setting a new one
+                clearInterval(intervalId);
+                intervalId = setInterval(async () => {
+                    lat = lat - 0.001;
+                    lng = lng + 0.001;
                     marker.setPosition({ lat, lng });
                     console.log(lat + "|" + lng);
-                }, 5000);
+                }, 5000);  // Adjust the interval duration as needed
 
 
              
