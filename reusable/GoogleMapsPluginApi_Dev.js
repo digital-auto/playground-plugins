@@ -49,6 +49,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     box.injectNode(container);
 
     let marker = null
+    let  lat = path[0].lat;
+    let  lng = path[0].lng;
 
     return {
         setVehiclePin: (coordinates) => {
@@ -69,8 +71,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
               let  lat = position.coords.latitude;
               let  lng = position.coords.longitude;
                  */
-               let  lat = path[0].lat;
-              let  lng = path[0].lng;
+             
             
        
                 if (marker === null) {
@@ -117,7 +118,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
-                   setInterval( () => {
+                   setInterval( async () => {
                     lat= lat+0.001; 
                     lng= lng-0.001;
                     marker.setPosition({lat, lng});
