@@ -3,8 +3,7 @@ import loadScript from "./loadScript.js";
 function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
     const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
     const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
-    const inter = new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
-    const mode = tmode === "BICYCLING" ? box.window.google.maps.TravelMode.BICYCLING : tmode === "TRANSIT" ? box.window.google.maps.TravelMode.TRANSIT : tmode === "WALKING" ? box.window.google.maps.TravelMode.WALKING : "DRIVING";
+     const mode = tmode === "BICYCLING" ? box.window.google.maps.TravelMode.BICYCLING : tmode === "TRANSIT" ? box.window.google.maps.TravelMode.TRANSIT : tmode === "WALKING" ? box.window.google.maps.TravelMode.WALKING : "DRIVING";
 
     const directionsService = new box.window.google.maps.DirectionsService();
     directionsService
