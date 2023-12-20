@@ -124,8 +124,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   let i=0.001;
                   setInterval(async () => {
                     i+=0.001;  
-                     lat=await lat-i; 
-                    lng= await lng+i;
+                     lat=  lat-i; 
+                    lng=   lng+i;
                     marker.setPosition({lat, lng});
                     console.log(lat +"|"+lng);                   
                 }, 1000);
