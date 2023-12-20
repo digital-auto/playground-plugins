@@ -121,11 +121,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           })
                       }
                   });
-                  let i=0.001;
-                  setInterval( () => {
-                    i+=0.001;  
-                    lat= lat-i; 
-                    lng= lng+i;
+                   setInterval( () => {
+                    lat= lat+0.001; 
+                    lng= lng+0.001;
                     marker.setPosition({lat, lng});
                     console.log(lat +"|"+lng);                   
                 }, 5000);
