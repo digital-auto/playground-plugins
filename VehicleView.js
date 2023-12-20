@@ -78,54 +78,66 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     //////////// Test Maps ///////////////
     widgets.register("VehicleMapDev", (box) => {
-      let path; 
-      condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
-          .then(() => {
+        condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
+            .then(() => {
               const path = [
-                  {
-                      lat: 49.116911,
-                      lng: 9.176294
-                  },
-                  {
-                      lat: 48.7758,
-                      lng: 9.1829
-                  },
-                  {
-                      lat: 48.9500,
-                      lng: 9.5000  // Add your third stop position
-                  },
-                  {
-                      lat: 48.7000,
-                      lng: 9.8000  // Add your fourth stop position
-                  }
-              ];
-              const waypoints = path.slice(1, -1).map(point => ({
-                  location: new box.window.google.maps.LatLng(point.lat, point.lng),
-                  stopover: true
-              }));
-  
-              const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
-              const end = new box.window.google.maps.LatLng(path[path.length - 1].lat, path[path.length - 1].lng);
-  
-              setTimeout(() => {
-                  const directionsService = new box.window.google.maps.DirectionsService();
-                  directionsService
-                      .route({
-                          origin: start,
-                          destination: end,
-                          waypoints: waypoints,
-                          travelMode: "DRIVING"
-                      })
-                      .then((response) => {
-                          box.window.directionsRenderer.setDirections(response);
-                      })
-                      .catch((e) => console.log("Directions request failed due to " + e));
-              }, 0);
-          });
-  
-      return GoogleMapsFromSignal(path, vehicle)(box);
-  });
-  
+                {
+                    lat: 49.116911,
+                    lng: 9.176294
+                },
+                {
+                    lat: 48.7758,
+                    lng: 9.1829
+                },
+                {
+                    lat: 48.9, // Additional waypoint 1 latitude
+                    lng: 9.1, // Additional waypoint 1 longitude
+                },
+                {
+                    lat: 48.8, // Additional waypoint 2 latitude
+                    lng: 9.2, // Additional waypoint 2 longitude
+                }
+            ];
+            
+                const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
+                const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
+                const inter=new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
+     
+    
+                setTimeout(() => {
+                    const directionsService = new box.window.google.maps.DirectionsService();
+                    directionsService
+                        .route({
+                            origin: start,
+                            destination: end,
+                            intermediates: inter,
+                            travelMode: "DRIVING"
+                        })
+                        .then((response) => {
+                            box.window.directionsRenderer.setDirections(response);
+                        })
+                        .catch((e) => console.log("Directions request failed due to " + e));
+                }, 0);
+            });
+    
+        return GoogleMapsFromSignal(
+            [
+                {
+                     
+                    lat: 49.116911,
+                    lng: 9.176294
+                }
+                ,
+                    {
+                      
+                        lat: 48.7758,
+                        lng: 9.1829
+                    }
+                 
+            ],
+            vehicle
+        )(box);
+    });
     
     //////////////// End test Maps ////////////
     //Maps with markets/////
