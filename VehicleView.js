@@ -90,21 +90,17 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       
                         lat: 49.151062,
                         lng: 9.230590
+                    },
+                    {
+                      
+                        lat: 48.7758,
+                        lng: 9.1829
                     }
                 ];
                 const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
                 const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
-    
-                // Add a marker for the current position
-                const currentPosition = new box.window.google.maps.LatLng(
-                    currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"],
-                    currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Longitude"]
-                );
-                const marker = new box.window.google.maps.Marker({
-                    position: currentPosition,
-                    map: box.window.map, // Assuming 'map' is the variable holding your map instance
-                    title: "Current Position"
-                });
+                const inter=new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
+     
     
                 setTimeout(() => {
                     const directionsService = new box.window.google.maps.DirectionsService();
@@ -112,6 +108,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                         .route({
                             origin: start,
                             destination: end,
+                            intermediates: inter,
                             travelMode: "DRIVING"
                         })
                         .then((response) => {
@@ -133,6 +130,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                     lat: 49.151062,
                     lng: 9.230590
                 }
+                ,
+                    {
+                      
+                        lat: 48.7758,
+                        lng: 9.1829
+                    }
             ],
             vehicle
         )(box);
