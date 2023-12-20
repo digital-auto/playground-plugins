@@ -120,7 +120,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   });
                   clearInterval(intervalId);
-                  intervalId = setInterval( () => {
+                  intervalId = setInterval(async () => {
                       console.log("Interval function executed");  // Log statement for debugging
                   
                       lat = lat - 0.001;
