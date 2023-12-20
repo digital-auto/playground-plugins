@@ -124,11 +124,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   let i=0.001;
                   setInterval( () => {
                     i+=0.001;  
-                     lat=  lat-i; 
+                    lat= lat-i; 
                     lng= lng+i;
                     marker.setPosition({lat, lng});
                     console.log(lat +"|"+lng);                   
-                }, 1000);
+                }, 5000);
 
 
                      // Every 5 seconds, fetch the new coordinates and update the chargestation markers
