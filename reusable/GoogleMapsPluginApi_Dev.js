@@ -87,9 +87,32 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     })
                 } else {
                     marker.setPosition({lat, lng})
-                }    
+                } 
+                
+                  // Create an object to store the markers by chargestationId
+                  const chargestationMarkers = {}
+
+                  // Fetch chargestation coordinates and add markers to map
+                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
+                  .then(response => response.json())
+                  .then(chargestationCoordinates => {
+                      // For each vehicle, create a marker on the map
+                      for (let chargestationId in chargestationCoordinates) {
+                          let coordinates = chargestationCoordinates[chargestationId];
+                          // Store market in markers object
+                          chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
+                              position: { lat: coordinates.latitude, lng: coordinates.longitude },
+                              map: map,
+                              clickable: true
+                          });
+                          chargestationMarkers[chargestationId].addListener('click', () => {
+                              window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
+                          })
+                      }
+                  });
             }
         }
+        
     }
 };
 
