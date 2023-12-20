@@ -118,12 +118,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
-                   setInterval( async () => {
-                    lat= lat-0.001; 
-                    lng= lng+0.001;
-                    marker.setPosition({lat, lng});
-                    console.log(lat +"|"+lng);                   
-                }, 1000);
+                  setInterval(() => {
+                    lat = lat + 0.0001; // Adjust the increment values as needed
+                    lng = lng - 0.0001;
+                    marker.setPosition({ lat, lng });
+                    console.log(lat + "|" + lng);
+                }, 5000);
 
 
              
