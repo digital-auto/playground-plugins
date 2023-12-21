@@ -78,7 +78,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     //////////// Test Maps ///////////////
     widgets.register("VehicleMapDev", (box) => {
-      const apiUrl = 'http://127.0.0.1:8000/api/Get/All';
+      const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
   
       const fetchPathFromApi = () => {
           return fetch(apiUrl)
