@@ -162,11 +162,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
-                  // Clear existing interval if any
-                    if (intervalId) {
-                        console.log("Clearing existing interval:", intervalId);
-                        clearInterval(intervalId);
-                    }
+                 
  
                   intervalId = setInterval(async () => {
                       if (path.length > i) {
