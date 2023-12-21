@@ -150,25 +150,23 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             ];
                         });
                     };
-            
-                    // Use stepPositions to render or perform any other actions
-                    const stepPositions = fetchPathFromApi();
-                    path=stepPositions;
-                      // Clear the existing interval before setting a new one
-                    
-                 
-                 intervalId = setInterval(async () => {
-                    if (i<path.length){
-                    lat = path.lat ;
-                    lng = path.lng;
-                    marker.setPosition({ lat, lng });
-                    console.log(lat + "|" + lng);
-                    i++;
-                }
-                }, 1000);  
-                
 
-             
+                        // Use stepPositions to render or perform any other actions
+                        const stepPositions = fetchPathFromApi();
+                        path=stepPositions;
+                          // Clear the existing interval before setting a new one
+                        
+                     
+                     intervalId = setInterval(async () => {
+                        if (i<path.length){
+                        lat = path.lat ;
+                        lng = path.lng;
+                        marker.setPosition({ lat, lng });
+                        console.log(lat + "|" + lng);
+                        i++;
+                    }
+                    }, 1000);  
+
             }
         }
         
