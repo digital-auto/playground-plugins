@@ -161,7 +161,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   });
  
-                  intervalId = async () => {
+                  intervalId = setInterval(async () => {
                       if (path.length > i) {
                           lat = path[i].lat;
                           lng = path[i].lng;
@@ -169,7 +169,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           console.log(lat + "|" + lng);
                           i++;
                       }
-                  }
+                  }, 1000);
               
                
                 
