@@ -86,7 +86,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     widgets.register("VehicleMapDev", (box) => {
       const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
   
-      const fetchPathFromApi = () => {
+      path = async () => {
           return fetch(apiUrl)
               .then(response => response.json())
               .then(data => {
@@ -99,7 +99,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       }))
                      
                   );
-                  console.log(stepPositions)
+                 
   
                   return stepPositions;
               })
@@ -114,15 +114,9 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   ];
               });
       };
-  
-      condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
-          .then(async () => {
-              const stepPositions = await fetchPathFromApi();
-  
-              // Use stepPositions to render or perform any other actions
-              path = await stepPositions ;
-          });
-          console.log(path);
+    
+   
+           
   
       return GoogleMapsFromSignal(
         path,
