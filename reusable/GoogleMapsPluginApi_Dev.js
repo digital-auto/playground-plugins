@@ -59,8 +59,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         return fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-
                 const stepPositions = data.routes[0].legs.flatMap(leg =>
                     leg.steps.map(step => ({
                         lat: step.maneuver.location[1],
@@ -161,14 +159,17 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
-                intervalId = setInterval(async () => {
-                    if(path){
-                    lat = path[i].lat;
-                    lng = path[i].lng;
-                    marker.setPosition({ lat, lng });
-                    console.log(lat + "|" + lng);
-                    }
-                }, 1000);  
+                  let path = stepPositions;
+
+                  intervalId = setInterval(async () => {
+                      if (path.length > i) {
+                          lat = path[i].lat;
+                          lng = path[i].lng;
+                          marker.setPosition({ lat, lng });
+                          console.log(lat + "|" + lng);
+                          i++;
+                      }
+                  }, 1000); 
               
                
                 
