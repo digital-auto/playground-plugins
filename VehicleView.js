@@ -80,25 +80,51 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     widgets.register("VehicleMapDev", (box) => {
         condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
             .then(() => {
-              const path = [
-                {
-                    lat: 49.116911,
-                    lng: 9.176294
-                },
-                {
-                    lat: 48.7758,
-                    lng: 9.1829
-                },
-                {
-                    lat: 48.9471, // Additional waypoint 1 latitude
-                    lng: 9.4342, // Additional waypoint 1 longitude
-                },
-                {
-                    lat: 49.0688, // Additional waypoint 2 latitude
-                    lng: 9.2887, // Additional waypoint 2 longitude
-                }
-            ];
-            
+              // Your static path array
+          const path = [
+            {
+                lat: 49.116911,
+                lng: 9.176294
+            },
+            {
+                lat: 48.7758,
+                lng: 9.1829
+            },
+            {
+                lat: 48.9471, // Additional waypoint 1 latitude
+                lng: 9.4342, // Additional waypoint 1 longitude
+            },
+            {
+                lat: 49.0688, // Additional waypoint 2 latitude
+                lng: 9.2887, // Additional waypoint 2 longitude
+            }
+          ];
+
+          // API URL
+          const apiUrl = 'http://127.0.0.1:8000/api/Get/All';
+
+          // Fetch data from the API
+          fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Extract coordinates from the API response
+                const apiCoordinates = data.waypoints.map(waypoint => ({
+                    lat: waypoint.location[1],
+                    lng: waypoint.location[0]
+                }));
+                console.log(apiCoordinates);
+
+                // Update the static path array with API coordinates
+                path.splice(0, path.length, ...apiCoordinates);
+
+                // Log the updated path array
+                console.log(path);
+
+                // Now you can use the updated path array for further processing or rendering on your map.
+            })
+            .catch(error => console.error('Error fetching data from the API:', error));
+
+
                 const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
                 const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
                 const inter=new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
@@ -122,7 +148,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     
         return GoogleMapsFromSignal(
             [
-              {
+              {  
                 lat: 49.116911,
                 lng: 9.176294
             },
