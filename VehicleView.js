@@ -97,7 +97,9 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                           lat: step.maneuver.location[1],
                           lng: step.maneuver.location[0]
                       }))
+                     
                   );
+                  console.log(stepPositions)
   
                   return stepPositions;
               })
