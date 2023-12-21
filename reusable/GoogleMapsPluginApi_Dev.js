@@ -53,6 +53,42 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let  lng = path[0].lng;
     let intervalId;
     let i=0;
+    const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
+
+    const fetchPathFromApi = () => {
+        return fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+                const stepPositions = data.routes[0].legs.flatMap(leg =>
+                    leg.steps.map(step => ({
+                        lat: step.maneuver.location[1],
+                        lng: step.maneuver.location[0]
+                    }))
+                );
+
+                return stepPositions;
+            })
+            .catch(error => {
+                console.error('Error fetching data from the API:', error);
+                // Return a default path or handle the error as needed
+                return [
+                    { lat: 49.116911, lng: 9.176294 },
+                    { lat: 48.7758, lng: 9.1829 },
+                    { lat: 48.9471, lng: 9.4342 },
+                    { lat: 49.0688, lng: 9.2887 }
+                ];
+            });
+        };
+
+    // Use stepPositions to render or perform any other actions
+    const stepPositions = fetchPathFromApi();
+    
+    intervalId = setInterval(async () => {
+        if (stepPositions.length>i)
+       i++;
+    }, 1000);  
     
 
     return {
@@ -123,62 +159,23 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
+                  intervalId = setInterval(async () => {
+                    lat = stepPositions[i].lat;
+                    lng = stepPositions[i].lng;
+                    marker.setPosition({ lat, lng });
+                    console.log(lat + "|" + lng);
+                }, 1000);  
               
-                const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
-
-                const fetchPathFromApi = () => {
-                    return fetch(apiUrl)
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-            
-                            const stepPositions = data.routes[0].legs.flatMap(leg =>
-                                leg.steps.map(step => ({
-                                    lat: step.maneuver.location[1],
-                                    lng: step.maneuver.location[0]
-                                }))
-                            );
-            
-                            return stepPositions;
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data from the API:', error);
-                            // Return a default path or handle the error as needed
-                            return [
-                                { lat: 49.116911, lng: 9.176294 },
-                                { lat: 48.7758, lng: 9.1829 },
-                                { lat: 48.9471, lng: 9.4342 },
-                                { lat: 49.0688, lng: 9.2887 }
-                            ];
-                        });
-                    };
-
-                // Use stepPositions to render or perform any other actions
-                const stepPositions = fetchPathFromApi();
-                path=stepPositions;
-                /*
-
-                // Clear the existing interval before setting a new one
-                intervalId = setInterval(() => {
-                if (i < path.length) {
-                    lat = path[i].lat;
-                    lng = path[i].lng;
-                    console.log('Updating position:', lat, lng);
-                    marker.setPosition(new box.window.google.maps.LatLng(lat, lng));
-                    i++;
-                } else {
-                    // Stop the interval when the end of the path is reached
-                    clearInterval(intervalId);
-                    console.log('End of path reached. Stopping interval.');
-                }
-            }, 1000);
-                    */
+               
+                
+            /*
             intervalId = setInterval(async () => {
                 lat = lat - 0.001;
                 lng = lng + 0.001;
                 marker.setPosition({ lat, lng });
                 console.log(lat + "|" + lng);
             }, 1000);  
+            */
 
             }
         }
