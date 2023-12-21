@@ -96,8 +96,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     return {
         setVehiclePin: (coordinates) => {
-            console.log('Setting vehicle pin with coordinates:', coordinates);
-
+ 
             if (coordinates === null) {
                 if (marker !== null) {
                     marker.setMap(null)
@@ -163,9 +162,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   });
                 intervalId = setInterval(async () => {
-                    if(stepPositions){
-                    lat = stepPositions[i].lat;
-                    lng = stepPositions[i].lng;
+                    if(path){
+                    lat = path[i].lat;
+                    lng = path[i].lng;
                     marker.setPosition({ lat, lng });
                     console.log(lat + "|" + lng);
                     }
