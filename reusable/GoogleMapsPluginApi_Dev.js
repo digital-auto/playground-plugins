@@ -153,26 +153,25 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         });
                     };
 
-                        // Use stepPositions to render or perform any other actions
-                        const stepPositions = fetchPathFromApi();
-                        path=stepPositions;
-                          // Clear the existing interval before setting a new one
-                 // Clear the existing interval before setting a new one
-                clearInterval(intervalId);
+                // Use stepPositions to render or perform any other actions
+                const stepPositions = fetchPathFromApi();
+                path=stepPositions;
 
-                intervalId = setInterval(async () => {
-                    if (i < path.length) {
-                        lat = path[i].lat;
-                        lng = path[i].lng;
-                        marker.setPosition({ lat, lng });
-                        console.log('Updating position:', lat, lng);
-                        i++;
-                    } else {
-                        // Stop the interval when the end of the path is reached
-                        clearInterval(intervalId);
-                        console.log('End of path reached. Stopping interval.');
-                    }
-                }, 1000);
+                // Clear the existing interval before setting a new one
+                intervalId = setInterval(() => {
+                if (i < path.length) {
+                    lat = path[i].lat;
+                    lng = path[i].lng;
+                    console.log('Updating position:', lat, lng);
+                    marker.setPosition(new box.window.google.maps.LatLng(lat, lng));
+                    i++;
+                } else {
+                    // Stop the interval when the end of the path is reached
+                    clearInterval(intervalId);
+                    console.log('End of path reached. Stopping interval.');
+                }
+            }, 1000);
+                    
 
             }
         }
