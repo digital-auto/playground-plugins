@@ -119,12 +119,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   });
                 // Clear the existing interval before setting a new one
+                /*
                  intervalId = setInterval(async () => {
                     lat = lat - 0.001;
                     lng = lng + 0.001;
                     marker.setPosition({ lat, lng });
                     console.log(lat + "|" + lng);
-                }, 1000);  // Adjust the interval duration as needed
+                }, 1000);  
+                */
 
 
              
