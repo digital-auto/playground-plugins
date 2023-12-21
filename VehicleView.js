@@ -75,84 +75,68 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         vehicle,
         refresh: 500
     }))
-    const path = [
-      {
-          lat: 49.116911,
-          lng: 9.176294
-      },
-      {
-          lat: 48.7758,
-          lng: 9.1829
-      },
-      {
-          lat: 48.9471, // Additional waypoint 1 latitude
-          lng: 9.4342, // Additional waypoint 1 longitude
-      },
-      {
-          lat: 49.0688, // Additional waypoint 2 latitude
-          lng: 9.2887, // Additional waypoint 2 longitude
-      }
-    ];
 
     //////////// Test Maps ///////////////
     widgets.register("VehicleMapDev", (box) => {
-        condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
-            .then(() => {
-              // Your static path array
-         
-
-          // API URL
-          const apiUrl = 'http://127.0.0.1:8000/api/Get/All';
-
-          // Fetch data from the API
-          fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                // Extract coordinates from the API response
-                const apiCoordinates = data.waypoints.map(waypoint => ({
-                    lat: waypoint.location[1],
-                    lng: waypoint.location[0]
-                }));
-                console.log(apiCoordinates);
-
-                // Update the static path array with API coordinates
-                path.splice(0, path.length, ...apiCoordinates);
-
-                // Log the updated path array
-                console.log(path);
-
-                // Now you can use the updated path array for further processing or rendering on your map.
-            })
-            .catch(error => console.error('Error fetching data from the API:', error));
-
-
-                const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
-                const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
-                const inter=new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
-     
-    
-                setTimeout(() => {
-                    const directionsService = new box.window.google.maps.DirectionsService();
-                    directionsService
-                        .route({
-                            origin: start,
-                            destination: end,
-                            intermediates: inter,
-                            travelMode: "DRIVING"
-                        })
-                        .then((response) => {
-                            box.window.directionsRenderer.setDirections(response);
-                        })
-                        .catch((e) => console.log("Directions request failed due to " + e));
-                }, 0);
-            });
-    
-        return GoogleMapsFromSignal(
-          path,
-            vehicle
-        )(box);
-    });
-    
+      const apiUrl = 'http://127.0.0.1:8000/api/Get/All';
+  
+      const fetchPathFromApi = () => {
+          return fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                  const path = data.waypoints.map(waypoint => ({
+                      lat: waypoint.location[1],
+                      lng: waypoint.location[0]
+                  }));
+                  return path;
+              })
+              .catch(error => {
+                  console.error('Error fetching data from the API:', error);
+                  // Return a default path or handle the error as needed
+                  return [
+                      { lat: 49.116911, lng: 9.176294 },
+                      { lat: 48.7758, lng: 9.1829 },
+                      { lat: 48.9471, lng: 9.4342 },
+                      { lat: 49.0688, lng: 9.2887 }
+                  ];
+              });
+      };
+  
+      condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
+          .then(() => {
+              fetchPathFromApi().then(path => {
+                  const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
+                  const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
+                  const inter = new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
+  
+                  setTimeout(() => {
+                      const directionsService = new box.window.google.maps.DirectionsService();
+                      directionsService
+                          .route({
+                              origin: start,
+                              destination: end,
+                              waypoints: [{ location: inter, stopover: true }],
+                              travelMode: "DRIVING"
+                          })
+                          .then((response) => {
+                              box.window.directionsRenderer.setDirections(response);
+                          })
+                          .catch((e) => console.log("Directions request failed due to " + e));
+                  }, 0);
+              });
+          });
+  
+      return GoogleMapsFromSignal(
+          [
+              { lat: 49.116911, lng: 9.176294 },
+              { lat: 48.7758, lng: 9.1829 },
+              { lat: 48.9471, lng: 9.4342 },
+              { lat: 49.0688, lng: 9.2887 }
+          ],
+          vehicle
+      )(box);
+  });
+  
     //////////////// End test Maps ////////////
     //Maps with markets/////
     let container = null
