@@ -75,30 +75,31 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         vehicle,
         refresh: 500
     }))
+    const path = [
+      {
+          lat: 49.116911,
+          lng: 9.176294
+      },
+      {
+          lat: 48.7758,
+          lng: 9.1829
+      },
+      {
+          lat: 48.9471, // Additional waypoint 1 latitude
+          lng: 9.4342, // Additional waypoint 1 longitude
+      },
+      {
+          lat: 49.0688, // Additional waypoint 2 latitude
+          lng: 9.2887, // Additional waypoint 2 longitude
+      }
+    ];
 
     //////////// Test Maps ///////////////
     widgets.register("VehicleMapDev", (box) => {
         condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
             .then(() => {
               // Your static path array
-          const path = [
-            {
-                lat: 49.116911,
-                lng: 9.176294
-            },
-            {
-                lat: 48.7758,
-                lng: 9.1829
-            },
-            {
-                lat: 48.9471, // Additional waypoint 1 latitude
-                lng: 9.4342, // Additional waypoint 1 longitude
-            },
-            {
-                lat: 49.0688, // Additional waypoint 2 latitude
-                lng: 9.2887, // Additional waypoint 2 longitude
-            }
-          ];
+         
 
           // API URL
           const apiUrl = 'http://127.0.0.1:8000/api/Get/All';
