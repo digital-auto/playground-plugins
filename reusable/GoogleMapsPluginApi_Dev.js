@@ -52,6 +52,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let  lat = path[0].lat;
     let  lng = path[0].lng;
     let intervalId;
+    let i=0;
+    
+
     return {
         setVehiclePin: (coordinates) => {
             if (coordinates === null) {
@@ -118,16 +121,52 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
-                // Clear the existing interval before setting a new one
-                /*
+              
+                const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
+
+                const fetchPathFromApi = () => {
+                    return fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+            
+                            const stepPositions = data.routes[0].legs.flatMap(leg =>
+                                leg.steps.map(step => ({
+                                    lat: step.maneuver.location[1],
+                                    lng: step.maneuver.location[0]
+                                }))
+                            );
+            
+                            return stepPositions;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data from the API:', error);
+                            // Return a default path or handle the error as needed
+                            return [
+                                { lat: 49.116911, lng: 9.176294 },
+                                { lat: 48.7758, lng: 9.1829 },
+                                { lat: 48.9471, lng: 9.4342 },
+                                { lat: 49.0688, lng: 9.2887 }
+                            ];
+                        });
+                    };
+            
+                    // Use stepPositions to render or perform any other actions
+                    const stepPositions = fetchPathFromApi();
+                    path=stepPositions;
+                      // Clear the existing interval before setting a new one
+                    
+                 
                  intervalId = setInterval(async () => {
-                    lat = lat - 0.001;
-                    lng = lng + 0.001;
+                    if (i<path.length){
+                    lat = path.lat ;
+                    lng = path.lng;
                     marker.setPosition({ lat, lng });
                     console.log(lat + "|" + lng);
+                    i++;
+                }
                 }, 1000);  
-                */
-
+                
 
              
             }
