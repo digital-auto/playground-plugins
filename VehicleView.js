@@ -84,6 +84,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
           return fetch(apiUrl)
               .then(response => response.json())
               .then(data => {
+                console.log(data);
                   const path = data.waypoints.map(waypoint => ({
                       lat: waypoint.location[1],
                       lng: waypoint.location[0]
