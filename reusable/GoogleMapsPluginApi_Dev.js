@@ -86,7 +86,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     path= await stepPositions;
     
     
-    intervalId = setInterval(async () => {
+    intervalId = setInterval(() => {
         if (path.length>i){
         console.log(path[i]);
        i++;}
@@ -171,16 +171,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   }, 4000);
               
-               
-                
-            /*
-            intervalId = setInterval(async () => {
-                lat = lat - 0.001;
-                lng = lng + 0.001;
-                marker.setPosition({ lat, lng });
-                console.log(lat + "|" + lng);
-            }, 1000);  
-            */
+         
 
             }
         }
