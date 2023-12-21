@@ -83,10 +83,10 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
       { lat: 48.9471, lng: 9.4342 },
       { lat: 49.0688, lng: 9.2887 }
   ]
-    widgets.register("VehicleMapDev", (box) => {
+    widgets.register("VehicleMapDev", async (box) => {
       const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
   
-      path = async () => {
+      const fetchPathFromApi =  () => {
           return fetch(apiUrl)
               .then(response => response.json())
               .then(data => {
@@ -114,7 +114,9 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   ];
               });
       };
-    
+   
+              // Use stepPositions to render or perform any other actions
+              path = await fetchPathFromApi();
    
            
   
