@@ -82,14 +82,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     // Use stepPositions to render or perform any other actions
     const stepPositions = fetchPathFromApi();
+    console.log(stepPositions)
     path= await stepPositions;
     
     
     intervalId = setInterval(async () => {
         if (path.length>i){
-        console.log(path[0]);
+        console.log(path[i]);
        i++;}
-    }, 1000);  
+    }, 2000);  
     
 
     return {
@@ -160,7 +161,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                   });
  
-                  intervalId = setInterval(async () => {
+                  intervalId = async () => {
                       if (path.length > i) {
                           lat = path[i].lat;
                           lng = path[i].lng;
@@ -168,7 +169,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           console.log(lat + "|" + lng);
                           i++;
                       }
-                  }, 1000); 
+                  }
               
                
                 
