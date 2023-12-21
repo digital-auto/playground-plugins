@@ -118,7 +118,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
               const stepPositions = await fetchPathFromApi();
   
               // Use stepPositions to render or perform any other actions
-              path =stepPositions ;
+              path = await stepPositions ;
           });
           console.log(path);
   
