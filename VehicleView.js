@@ -84,12 +84,16 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
           return fetch(apiUrl)
               .then(response => response.json())
               .then(data => {
-                console.log(data);
-                  const path = data.waypoints.map(waypoint => ({
-                      lat: waypoint.location[1],
-                      lng: waypoint.location[0]
-                  }));
-                  return path;
+                  console.log(data);
+  
+                  const stepPositions = data.routes[0].legs.flatMap(leg =>
+                      leg.steps.map(step => ({
+                          lat: step.maneuver.location[1],
+                          lng: step.maneuver.location[0]
+                      }))
+                  );
+  
+                  return stepPositions;
               })
               .catch(error => {
                   console.error('Error fetching data from the API:', error);
@@ -104,27 +108,11 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
       };
   
       condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
-          .then(() => {
-              fetchPathFromApi().then(path => {
-                  const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
-                  const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);
-                  const inter = new box.window.google.maps.LatLng(path[2].lat, path[2].lng);
+          .then(async () => {
+              const stepPositions = await fetchPathFromApi();
   
-                  setTimeout(() => {
-                      const directionsService = new box.window.google.maps.DirectionsService();
-                      directionsService
-                          .route({
-                              origin: start,
-                              destination: end,
-                              waypoints: [{ location: inter, stopover: true }],
-                              travelMode: "DRIVING"
-                          })
-                          .then((response) => {
-                              box.window.directionsRenderer.setDirections(response);
-                          })
-                          .catch((e) => console.log("Directions request failed due to " + e));
-                  }, 0);
-              });
+              // Use stepPositions to render or perform any other actions
+              console.log(stepPositions);
           });
   
       return GoogleMapsFromSignal(
@@ -137,6 +125,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
           vehicle
       )(box);
   });
+  
   
     //////////////// End test Maps ////////////
     //Maps with markets/////
