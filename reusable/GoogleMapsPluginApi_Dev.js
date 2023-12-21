@@ -90,7 +90,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         if (path.length>i){
         console.log(path[i]);
        i++;}
-    }, 2000);  
+    }, 4000);  
     
 
     return {
