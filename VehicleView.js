@@ -147,25 +147,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             });
     
         return GoogleMapsFromSignal(
-            [
-              {  
-                lat: 49.116911,
-                lng: 9.176294
-            },
-            {
-                lat: 48.7758,
-                lng: 9.1829
-            },
-            {
-                lat: 48.9471, // Additional waypoint 1 latitude
-                lng: 9.4342, // Additional waypoint 1 longitude
-            },
-            {
-                lat: 49.0688, // Additional waypoint 2 latitude
-                lng: 9.2887, // Additional waypoint 2 longitude
-            }
-                 
-            ],
+          path,
             vehicle
         )(box);
     });
