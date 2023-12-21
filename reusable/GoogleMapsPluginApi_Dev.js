@@ -169,7 +169,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           console.log(lat + "|" + lng);
                           i++;
                       }
-                  }, 1000);
+                  }, 4000);
               
                
                 
