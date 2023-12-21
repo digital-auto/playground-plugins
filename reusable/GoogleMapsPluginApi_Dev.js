@@ -84,11 +84,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     // Use stepPositions to render or perform any other actions
     const stepPositions = fetchPathFromApi();
-    console.log(stepPositions);
+    
     
     intervalId = setInterval(async () => {
-        if (stepPositions.length>i)
-       i++;
+        if (stepPositions.length>i){
+        console.log(stepPositions[0]);
+       i++;}
     }, 1000);  
     
 
