@@ -155,17 +155,21 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         const stepPositions = fetchPathFromApi();
                         path=stepPositions;
                           // Clear the existing interval before setting a new one
-                        
-                     
-                     intervalId = setInterval(async () => {
-                        if (i<path.length){
-                        lat = path.lat ;
-                        lng = path.lng;
+                // Clear the existing interval before setting a new one
+                clearInterval(intervalId);
+
+                intervalId = setInterval(async () => {
+                    if (i < path.length) {
+                        lat = path[i].lat;
+                        lng = path[i].lng;
                         marker.setPosition({ lat, lng });
                         console.log(lat + "|" + lng);
                         i++;
+                    } else {
+                        // Stop the interval when the end of the path is reached
+                        clearInterval(intervalId);
                     }
-                    }, 1000);  
+                }, 1000); 
 
             }
         }
