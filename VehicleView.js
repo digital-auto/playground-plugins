@@ -79,7 +79,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     //////////// Test Maps ///////////////
 
   widgets.register("VehicleMapDev", async (box) => {
-    const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/13.388860,52.517037;13.385983,52.496891?steps=true';
+    const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/9.1829,48.7758;9.2109,49.1427?steps=true';
 
     const fetchPathFromApi = () => {
         return fetch(apiUrl)
