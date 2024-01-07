@@ -190,6 +190,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 } : icon,
                                 clickable: true
                             });
+                            carsCoordinates.latitude=carsCoordinates.latitude+pos;
+                            console.log(carsCoordinates.latitude);
+                            pos=pos+0.001;
                         
                         }
                     });
@@ -202,9 +205,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
-                          carsCoordinates.latitude=carsCoordinates.latitude+pos;
-                          console.log(carsCoordinates.latitude);
-                          pos=+0.001;
+                         
                       }
                       if (intervalId2) {
                         console.log("Clearing existing interval:", intervalId2);
