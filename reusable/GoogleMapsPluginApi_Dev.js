@@ -178,6 +178,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         for (let carId in carsCoordinates) {
                             let coordinates = carsCoordinates[carId];
                             console.log(pos);
+                            coordinates.latitude=coordinates.latitude+pos;
+                            coordinates.longitude=coordinates.longitude+pos;
+
 
                             // Store market in markers object
                             carsMarkers[carId] = new box.window.google.maps.Marker({
@@ -213,25 +216,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
-                    coordinates.latitude=coordinates.latitude+pos;
                     pos=pos+0.00001;
-                    fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
-                    .then(response => response.json())
-                    .then(carsCoordinates => {
-                        // For each vehicle, create a marker on the map
-                        for (let carId in carsCoordinates) {
-                            let coordinates = carsCoordinates[carId];
-                            lat2=coordinates.latitude+pos
-                            lng2=coordinates.longitude+pos
-                            console.log(lat2);
-                            console.log(lng2);
-
-
-                            // Store market in markers object
-                            carsMarkers[carId].setPosition({lat , lng })
-
-                          }
-                      });
+                 
                   }, 2000);
               
          
