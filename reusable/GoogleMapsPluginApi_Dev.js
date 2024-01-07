@@ -162,6 +162,36 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                       }
                   });
+
+                    // Create an object to store the markers by CarId
+                    const carsMarkers = {}
+
+                    // Fetch cars coordinates and add markers to map
+                    fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+                    .then(response => response.json())
+                    .then(carsCoordinates => {
+                        // For each vehicle, create a marker on the map
+                        for (let carId in carsCoordinates) {
+                            let coordinates = carsCoordinates[carId];
+                            // Store market in markers object
+                            carsMarkers[carId] = new box.window.google.maps.Marker({
+                                position: { lat: coordinates.latitude, lng: coordinates.longitude },
+                                map: map,
+                                icon: icon === null ? {
+                                    path: "M137.468,253.959c-3.075,0-6.174-0.982-8.796-3.009c-6.289-4.863-7.444-13.905-2.581-20.193l100.073-129.402c13.065-16.895,33.617-26.982,54.974-26.982h142.105c33.307,0,62.015,23.744,68.261,56.46l5.128,26.849 c1.491,7.81-3.631,15.35-11.44,16.84c-7.807,1.493-15.349-3.629-16.84-11.439l-5.128-26.849c-3.659-19.162-20.473-33.07-39.981-33.07H281.138c-12.508,0-24.546,5.908-32.199,15.803L148.866,248.371C146.029,252.038,141.771,253.959,137.468,253.959z",
+                                    fillColor: '#EDEA91',
+                                    fillOpacity: 1,
+                                    anchor: new box.window.google.maps.Point(12,-290),
+                                    strokeWeight: 0,
+                                    scale: .1,
+                                    rotation: 0
+                                } : icon,
+                                clickable: true
+                            });
+                        
+                        }
+                    });
+                   
                  
  
                   intervalId = setInterval(async () => {
