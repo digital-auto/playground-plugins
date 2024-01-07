@@ -206,31 +206,30 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           marker.setPosition({ lat, lng });
                           i++;
 
-                          coordinates.latitude=coordinates.latitude+pos;
-                          pos=pos+0.00001;
-                          fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
-                          .then(response => response.json())
-                          .then(carsCoordinates => {
-                              // For each vehicle, create a marker on the map
-                              for (let carId in carsCoordinates) {
-                                  let coordinates = carsCoordinates[carId];
-                                  let lat2=coordinates.latitude+pos
-                                  let lng2=coordinates.longitude+pos
-                                  console.log(lat2);
-                                  console.log(lng2);
-
-      
-                                  // Store market in markers object
-                                  carsMarkers[carId].setPosition({lat , lng })
-
-                                }
-                            });
-                         
                       }
                       if (intervalId2) {
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
+                    coordinates.latitude=coordinates.latitude+pos;
+                    pos=pos+0.00001;
+                    fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+                    .then(response => response.json())
+                    .then(carsCoordinates => {
+                        // For each vehicle, create a marker on the map
+                        for (let carId in carsCoordinates) {
+                            let coordinates = carsCoordinates[carId];
+                            let lat2=coordinates.latitude+pos
+                            let lng2=coordinates.longitude+pos
+                            console.log(lat2);
+                            console.log(lng2);
+
+
+                            // Store market in markers object
+                            carsMarkers[carId].setPosition({lat , lng })
+
+                          }
+                      });
                   }, 2000);
               
          
