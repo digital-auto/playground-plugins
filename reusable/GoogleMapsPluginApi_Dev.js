@@ -51,6 +51,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let marker = null
     let  lat = path[0].lat;
     let  lng = path[0].lng;
+    let  lat2 = 0;
+    let  lng2 = 0;
     let intervalId;
     let i=0;
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/9.1829,48.7758;9.2109,49.1427?steps=true';
@@ -219,8 +221,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         // For each vehicle, create a marker on the map
                         for (let carId in carsCoordinates) {
                             let coordinates = carsCoordinates[carId];
-                            let lat2=coordinates.latitude+pos
-                            let lng2=coordinates.longitude+pos
+                            lat2=coordinates.latitude+pos
+                            lng2=coordinates.longitude+pos
                             console.log(lat2);
                             console.log(lng2);
 
