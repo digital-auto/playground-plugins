@@ -139,7 +139,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   const chargestationMarkers = {}
 
                   // Fetch chargestation coordinates and add markers to map
-                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates',pos)
+                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
                       // For each vehicle, create a marker on the map
