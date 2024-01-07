@@ -214,9 +214,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               // For each vehicle, create a marker on the map
                               for (let carId in carsCoordinates) {
                                   let coordinates = carsCoordinates[carId];
-                                  console.log(pos);
                                   let lat2=coordinates.latitude+pos
                                   let lng2=coordinates.longitude+pos
+                                  console.log(lat2);
+                                  console.log(lng2);
+
       
                                   // Store market in markers object
                                   carsMarkers[carId].setPosition({lat2 , lng2 })
