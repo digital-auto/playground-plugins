@@ -204,6 +204,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
+                          pos=pos+0.00001;
 
                       }
                       if (intervalId2) {
