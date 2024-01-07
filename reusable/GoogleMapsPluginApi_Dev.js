@@ -54,7 +54,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let  lat2 = 0;
     let  lng2 = 0;
     let intervalId;
-    let i=0;
+     let i=0;
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/9.1829,48.7758;9.2109,49.1427?steps=true';
 
     const fetchPathFromApi = () => {
@@ -96,11 +96,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         //pos=+0.001;
        i++;}
     }, 2000); 
-     
+   
+
     
 
     return {
         setVehiclePin: (coordinates) => {
+            
  
             if (coordinates === null) {
                 if (marker !== null) {
@@ -109,18 +111,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 }
              } else {
                 /*
-           
-
                 const position = new Promise((resolve, reject) => {
-                    navigator.geolocation.getCurrentPosition(resolve, reject);
+                navigator.geolocation.getCurrentPosition(resolve, reject);
                 }) ;
                
-        
-              let  lat = position.coords.latitude;
-              let  lng = position.coords.longitude;
+                let  lat = position.coords.latitude;
+                let  lng = position.coords.longitude;
                  */
-             
-            
        
                 if (marker === null) {
                     marker = new box.window.google.maps.Marker({
@@ -142,7 +139,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   const chargestationMarkers = {}
 
                   // Fetch chargestation coordinates and add markers to map
-                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
+                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates',pos)
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
                       // For each vehicle, create a marker on the map
@@ -150,7 +147,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           let coordinates = chargestationCoordinates[chargestationId];
                           // Store market in markers object
                           chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
-                              position: { lat: coordinates.latitude, lng: coordinates.longitude },
+                              position: { lat: coordinates.latitude+pos, lng: coordinates.longitude+pos },
                               map: map,
                               icon: icon === null ? {
                                   path: "M161 214.667H7.667c-4.236 0 -7.667 3.431 -7.667 7.667v15.333c0 4.236 3.431 7.667 7.667 7.667h153.333c4.236 0 7.667 -3.431 7.667 -7.667v-15.333c0 -4.236 -3.431 -7.667 -7.667 -7.667zm99.667 -153.333V38.333c0 -4.236 -3.431 -7.667 -7.667 -7.667s-7.667 3.431 -7.667 7.667v23h-15.333V38.333c0 -4.236 -3.431 -7.667 -7.667 -7.667s-7.667 3.431 -7.667 7.667v23h-7.667c-4.236 0 -7.667 3.431 -7.667 7.667v15.333c0 17.135 11.318 31.476 26.833 36.383v56.776c0 6.684 -4.552 12.899 -11.145 13.987C206.626 192.865 199.333 186.391 199.333 178.25v-13.417c0 -23.288 -18.879 -42.167 -42.167 -42.167h-3.833V30.667c0 -16.939 -13.728 -30.667 -30.667 -30.667H46C29.061 0 15.333 13.728 15.333 30.667v168.667h138V145.667h3.833c10.585 0 19.167 8.582 19.167 19.167v11.792c0 19.009 13.858 36.014 32.78 37.859C230.819 216.607 249.167 199.53 249.167 178.25V120.716c15.515 -4.907 26.833 -19.248 26.833 -36.383v-15.333c0 -4.236 -3.431 -7.667 -7.667 -7.667h-7.667zm-136.04 22.885 -44.898 66.604c-1.054 1.596 -2.976 2.511 -4.979 2.511 -3.675 0 -6.454 -3.009 -5.592 -6.191L80.189 107.333H51.75c-3.474 0 -6.157 -2.679 -5.697 -5.697l7.667 -51.271C54.098 47.869 56.532 46 59.417 46h32.583c3.776 0 6.526 3.134 5.558 6.33L92 76.667h27.648c4.428 0 7.192 4.207 4.979 7.552z",
@@ -178,9 +175,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         for (let carId in carsCoordinates) {
                             let coordinates = carsCoordinates[carId];
                             console.log(pos);
-                            coordinates.latitude=coordinates.latitude+pos;
-                            coordinates.longitude=coordinates.longitude+pos;
-
 
                             // Store market in markers object
                             carsMarkers[carId] = new box.window.google.maps.Marker({
@@ -216,7 +210,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
-                    pos=pos+0.00001;
+                  
                  
                   }, 2000);
               
