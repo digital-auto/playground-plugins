@@ -154,7 +154,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                   fillOpacity: 1,
                                   anchor: new box.window.google.maps.Point(12,-290),
                                   strokeWeight: 0,
-                                  scale: .1,
+                                  scale: .15,
                                   rotation: 0
                               } : icon,
                               clickable: true
@@ -183,7 +183,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                     fillOpacity: 1,
                                     anchor: new box.window.google.maps.Point(12,-290),
                                     strokeWeight: 0,
-                                    scale: .05,
+                                    scale: .07,
                                     rotation: 0
                                 } : icon,
                                 clickable: true
