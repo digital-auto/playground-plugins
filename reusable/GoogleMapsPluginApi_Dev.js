@@ -166,7 +166,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   });
 
                     // Create an object to store the markers by CarId
-                    const carsMarkers = {}
+                    let carsMarkers = {}
 
                     // Fetch cars coordinates and add markers to map
                     fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
