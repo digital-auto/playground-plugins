@@ -175,6 +175,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         // For each vehicle, create a marker on the map
                         for (let carId in carsCoordinates) {
                             let coordinates = carsCoordinates[carId];
+                            console.log(pos);
+
                             // Store market in markers object
                             carsMarkers[carId] = new box.window.google.maps.Marker({
                                 position: { lat: coordinates.latitude, lng: coordinates.longitude },
@@ -191,7 +193,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 clickable: true
                             });
                             coordinates.latitude=coordinates.latitude+pos;
-                            console.log(coordinates.latitude);
                             pos=pos+0.001;
                         
                         }
