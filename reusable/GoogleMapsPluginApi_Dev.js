@@ -208,6 +208,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
+                          
+
+                          console.log(carsMarkers[0].getPosition());
+                          //pos=pos+0.00001;
+
+                         
                          
 
                       }
@@ -215,7 +221,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
-                    pos=pos+0.00001;
+                    
+                    
                   
                  
                   }, 2000);
