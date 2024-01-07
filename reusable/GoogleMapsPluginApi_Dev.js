@@ -221,7 +221,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
       
                                   // Store market in markers object
-                                  carsMarkers[carId].setPosition({lat2 , lng2 })
+                                  carsMarkers[carId].setPosition({lat , lng })
 
                                 }
                             });
