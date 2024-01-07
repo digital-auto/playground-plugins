@@ -204,13 +204,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
-                          pos=pos+0.00001;
+                         
 
                       }
                       if (intervalId2) {
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
+                    pos=pos+0.00001;
                   
                  
                   }, 2000);
