@@ -201,9 +201,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lat = path[i].lat;
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
-                          console.log(lat + "|" + lng);
                           i++;
                           carsCoordinates.latitude=carsCoordinates.latitude+pos;
+                          console.log(carsCoordinates.latitude);
                           pos=+0.001;
                       }
                       if (intervalId2) {
