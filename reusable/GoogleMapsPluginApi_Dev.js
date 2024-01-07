@@ -190,8 +190,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 } : icon,
                                 clickable: true
                             });
-                            carsCoordinates.latitude=carsCoordinates.latitude+pos;
-                            console.log(carsCoordinates.latitude);
+                            coordinates.latitude=coordinates.latitude+pos;
+                            console.log(coordinates.latitude);
                             pos=pos+0.001;
                         
                         }
