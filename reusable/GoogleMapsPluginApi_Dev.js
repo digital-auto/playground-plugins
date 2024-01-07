@@ -85,13 +85,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     console.log(stepPositions)
     path= await stepPositions;
     let intervalId2;
-    let pos=0.001;
+    let pos=0.00001;
     
     
      intervalId2 = setInterval(() => {
         if (path.length>i){
         console.log(path[i]);
-        pos=+0.001;
+        //pos=+0.001;
        i++;}
     }, 2000); 
      
@@ -192,8 +192,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 } : icon,
                                 clickable: true
                             });
-                            coordinates.latitude=coordinates.latitude+pos;
-                            pos=pos+0.001;
+                            
                         
                         }
                     });
@@ -206,6 +205,24 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
+
+                          coordinates.latitude=coordinates.latitude+pos;
+                          pos=pos+0.00001;
+                          fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+                          .then(response => response.json())
+                          .then(carsCoordinates => {
+                              // For each vehicle, create a marker on the map
+                              for (let carId in carsCoordinates) {
+                                  let coordinates = carsCoordinates[carId];
+                                  console.log(pos);
+                                  let lat2=coordinates.latitude+pos
+                                  let lng2=coordinates.longitude+pos
+      
+                                  // Store market in markers object
+                                  carsMarkers[carId].setPosition({lat2 , lng2 })
+
+                                }
+                            });
                          
                       }
                       if (intervalId2) {
