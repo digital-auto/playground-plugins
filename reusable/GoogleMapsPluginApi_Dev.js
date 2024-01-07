@@ -210,7 +210,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           i++;
                           
 
-                          console.log(carsMarkers[0].getPosition());
+                          console.log(carsMarkers[0]);
                           //pos=pos+0.00001;
 
                          
