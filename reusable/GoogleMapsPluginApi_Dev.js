@@ -70,12 +70,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
+                    let coordinates_Next = coordinates;
                     index++;
                     
 
                     if (vehicleId==carId){
                     
-                    console.log("longitude next: "+coordinates_Next.longitude)
+                    console.log("longitude next: "+coordinates_Next.longitude);
                         
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
