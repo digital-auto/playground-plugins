@@ -105,6 +105,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         ];
     });
         };
+        
+        /*        
             // Create an object to store the markers by CarId
             let carsMarkers = {}
 
@@ -136,6 +138,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 
                 }
             });
+            */
 
     // Use stepPositions to render or perform any other actions
     const stepPositions = fetchPathFromApi();
