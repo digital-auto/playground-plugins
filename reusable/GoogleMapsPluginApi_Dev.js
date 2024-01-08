@@ -272,6 +272,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       lat = min.latitude;
                       lng = min.longitude;
+                      marker.setPosition({ lat, lng });
                       console.log("min.latitude"+min.latitude)
 
                   });
