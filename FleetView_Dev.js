@@ -83,7 +83,7 @@ const plugin = ({ box, widgets }) => {
                             clickable: true
                         });
                         vehicleMarkers[vehicleId].addListener('click', () => {
-                            window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/ZZ5wU5IDDPN6hDURdZrd/view/run?vehicleId=${vehicleId}`
+                            window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/iS3s41GyLhKQesiyY09G/view/run?vehicleId=${vehicleId}`
                         })
                     }
                 });
@@ -116,9 +116,7 @@ const plugin = ({ box, widgets }) => {
                             
                             clickable: true
                         });
-                        chargestationMarkers[chargestationId].addListener('click', () => {
-                            window.location.href = `/model/JUczdpLduBR24kMeMpyC/library/prototype/TX73uJZmwGVy3a4M3jaY/view/run?chargestationId=${chargestationId}`
-                        })
+                        
                     }
                 });
 
