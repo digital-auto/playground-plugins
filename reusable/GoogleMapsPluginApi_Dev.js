@@ -60,6 +60,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
     const fetchPathFromApi = () => {
+        let vId=vehicleId
         fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
             .then(response => response.json())
             .then(carsCoordinates => {
@@ -68,10 +69,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                    alert("Id: "+carId)
+                    alert("Id: "+vId)
 
                     
-                    if (vehicleId==carId){
+                    if (vId==carId){
                         
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
