@@ -69,7 +69,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                    alert("Id: "+vehicleId)
+                    console.log("Id: "+vehicleId)
 
                     
                     if (vehicleId==carId){
