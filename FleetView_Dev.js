@@ -118,7 +118,7 @@ const plugin = ({ box, widgets }) => {
                                 fillOpacity: 1,
                                 anchor: new box.window.google.maps.Point(12,-290),
                                 strokeWeight: 0,
-                                scale: .15,
+                                scale: .1,
                                 rotation: 0
                             } : icon,
                             clickable: true
