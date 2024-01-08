@@ -266,7 +266,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           if (min==null){
                             min=coordinates
                           }
-                          else if (distance(min.latitude,min.longitude,path[i].lat,path[i].lat)>distance(path[i].lat,path[i].lat,coordinates.latitude,coordinates.longitude)){
+                          else if (distance(min.latitude,min.longitude,path[i].lat,path[i].lng)>distance(path[i].lat,path[i].lng,coordinates.latitude,coordinates.longitude)){
                             min=coordinates
                           }
                       }
@@ -275,15 +275,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       marker.setPosition({ lat, lng });
                       console.log("min.latitude"+min.latitude)
                       intervalId = setInterval(async () => {
-                       
-                          if (score<98) {
-                            
-                              score++;
+                          if (score<70) {
+                              score=98;
                               document.cookie = "score="+score;
-                              
-    
                           }  
-                          
                       }, 1000);
 
                   });
