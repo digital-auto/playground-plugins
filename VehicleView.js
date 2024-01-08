@@ -100,6 +100,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   
 
                   if (vehicleId==carId){
+                    console.log(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true");
 
                    return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
                   .then(response => response.json())
