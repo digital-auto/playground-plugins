@@ -58,7 +58,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let i=0;
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
-    const fetchPathFromApi = async() => {
+    const fetchPathFromApi = () => {
 
         fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
             .then(response => response.json())
@@ -81,7 +81,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
 
-                     return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
+             fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
             .then(response => response.json())
             .then(data => {
            
@@ -149,7 +149,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             */
 
     // Use stepPositions to render or perform any other actions
-    let stepPositions =  await fetchPathFromApi();
+    let stepPositions =  fetchPathFromApi();
     console.log(stepPositions)
   
     path=  stepPositions;
