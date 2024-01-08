@@ -294,7 +294,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length > i) && score>68) {
+                      if ((path.length > i) && (score>68) && charger) {
                           lat = path[i].lat;
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
