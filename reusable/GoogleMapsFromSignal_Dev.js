@@ -19,10 +19,17 @@ const convertCoordinates = (coordinates) => {
 }
 
 const GoogleMapsFromSignal = (directions, vehicle, {
+ 
+
+    
+ 
     iterate = false,
     autoNext = 800,
     icon = null
 } = {}) => {
+    let getScore = async () => {
+        return await GoogleMapsPluginApi.getScore()
+    }
     return (box) => {
         console.log("GoogleMapsFromSignal icon", icon, autoNext)
         let setVehiclePinGlobal = null
