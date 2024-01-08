@@ -60,6 +60,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId;
     let i=0;
     let score=100;
+    distance=0;
     document.cookie = "score="+score;
 
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
@@ -246,8 +247,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
-                          score--;
+                          score=score-2;
                           document.cookie = "score="+score;
+                          if(score<60){
+                            console.log("Low Battery!")
+                          }
                            //pos=pos+0.00001;
 
                       }
