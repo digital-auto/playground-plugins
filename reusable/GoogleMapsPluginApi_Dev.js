@@ -60,7 +60,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     const fetchPathFromApi = async() => {
 
-        return fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+        return fetch('http://193.148.170.44:9966/get_vehicle_coordinates/')
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
@@ -119,7 +119,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             let carsMarkers = {}
 
             // Fetch cars coordinates and add markers to map
-            fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+            fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
