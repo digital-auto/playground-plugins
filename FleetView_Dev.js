@@ -34,7 +34,7 @@ const plugin = ({ box, widgets }) => {
                 container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
                 box.injectNode(container)
 
-                const rectCenter = new box.window.google.maps.LatLngBounds(rectangleCoordinates[0], rectangleCoordinates[1]).getSouth()
+                const rectCenter = new box.window.google.maps.LatLngBounds(rectangleCoordinates[0], rectangleCoordinates[1]).getSouthWest()
 
                 const map = new box.window.google.maps.Map(container, {
                     zoom: 8, // 6.3
