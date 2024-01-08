@@ -100,12 +100,11 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   
 
                   if (vehicleId==carId){
-                    console.log(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true");
 
                    return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
                   .then(response => response.json())
                   .then(data => {
-                    console.log(data);
+                 
 
                 
 
@@ -115,6 +114,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                               lng: step.maneuver.location[0]
                           }))
                       );
+                      console.log(stepPositions);
                       
 
                       return stepPositions;
