@@ -155,6 +155,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     path=  stepPositions;
     let intervalId2;
     let pos=0.00001;
+    let charger=false;
     
     
      intervalId2 = setInterval(async () => {
@@ -279,6 +280,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               score++;
                               document.cookie = "score="+score;
                           }  
+                          else if(score==100){
+                            charger=true;
+                          }
                       }, 1000);
 
                   });
@@ -300,7 +304,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                          
                           //pos=pos+0.00001;
 
-                      } else  if(score<70){
+                      } else  if(score<70&&!charger){
                         
 
                         Near_Charger()
