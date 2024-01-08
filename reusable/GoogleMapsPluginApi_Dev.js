@@ -65,12 +65,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
                 const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
-                let index=0;
+                let index=0; 
+                let coordinates_Next ;
 
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                    let coordinates_Next = coordinates;
+                   
                     index++;
                     
 
