@@ -104,6 +104,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                    return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
                   .then(response => response.json())
                   .then(data => {
+                    console.log(data);
+
                 
 
                       const stepPositions = data.routes[0].legs.flatMap(leg =>
@@ -136,7 +138,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
         // Use stepPositions to render or perform any other actions
         const stepPositions = await fetchPathFromApi();
-        console.log(stepPositions);
 
         const filteredPath = [stepPositions[0], stepPositions[stepPositions.length - 1]];
 
