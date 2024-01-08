@@ -76,7 +76,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
-                     alert(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates.longitude+pos+","+coordinates.latitude+pos+"?steps=true")
+                     console.log(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates.longitude+pos+","+coordinates.latitude+pos+"?steps=true")
         return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates.longitude+pos+","+coordinates.latitude+pos+"?steps=true")
             .then(response => response.json())
             .then(data => {
