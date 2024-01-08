@@ -6,7 +6,7 @@
 ** all the options are mandatory but if you do not want to show the notification based on
 ** VSS signal values, then you can send apis, vehicle and refresh as null
 */
-const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, paddingTop = 25, paddingHorizontal = 12, backgroundColor = null}) => {
+const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, paddingTop = 50, paddingHorizontal = 12, backgroundColor = null}) => {
     const container = document.createElement("div")
     container.setAttribute("style", `height: 100%; width: 100%;`)
     container.innerHTML = (`
@@ -24,7 +24,10 @@ const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, 
 		</style>
     <div style="max-width: fit-content; margin: 0 auto; position: relative;">
     <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FDashboardPhone.png?alt=media&token=d361018a-b4b3-42c0-8ef0-16c9e70fd9c7" style="height: 100%; width: 100%; object-fit: contain;">
-        <div class="smartphone-text" style="position: absolute; color: white; font-family: 'Lato'; width: 100%; top: 0; height: 100%; box-sizing: border-box; padding-top: ${paddingTop}px; padding-right: ${paddingHorizontal}px; padding-left: ${paddingHorizontal}px; padding-bottom: 25px; white-space: break-spaces;"></div>
+        <div class="smartphone-text" style="position: absolute; color: white; font-family: 'Lato'; width: 100%; top: 0; height: 100%; box-sizing: border-box; padding-top: ${paddingTop}px; padding-right: ${paddingHorizontal}px; padding-left: ${paddingHorizontal}px; padding-bottom: 25px; white-space: break-spaces;">
+        <div id="warning" style="color:red"></div>
+        <div id="message" ></div>
+        </div>
     </div>
     `)
     box.injectNode(container)
@@ -35,6 +38,7 @@ const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, 
                 const stripped = api.split(".").slice(1).join(".")
                 const val = await vehicle[stripped].get()
                 if (box !== null) {
+                    
                     container.querySelector(".smartphone-text").textContent = val
                 }
             }
@@ -52,7 +56,12 @@ const MobileNotifications = ({box, apis = null, vehicle = null, refresh = null, 
     return {
         printNotification: (message) => {
             if(message !== undefined || message !== "") {
-                container.querySelector(".smartphone-text").textContent = message
+                if(message.substring(0, 8)==="Warning:"){
+                container.querySelector("#warning").textContent = message.substring(0, 8)
+                container.querySelector("#message").textContent = message.substring(9)
+            }
+            else
+            container.querySelector("#message").textContent = message
             }            
         }
     }

@@ -3,10 +3,11 @@ const loadScript = (boxWindow, url) => {
         try {
             const script = boxWindow.document.createElement("script");
             script.defer = true;
+            script.referrerPolicy = "origin"
 
             script.src = url;
             boxWindow.document.head.appendChild(script);
-            script.addEventListener("load", () => resolve());
+            script.addEventListener("load", () => resolve(undefined));
         } catch (e) {
             reject();
         }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wiper</title>
+</head>
+<body>
+    <div>
+        <iframe id="wiper" src="wiper-iframe\index.html" frameborder="0" width="1024" height="468"></iframe>
+    </div>
+    <button id="hi">HI</button>
+    <button id="lo">LO</button>
+    <button id="off">OFF</button>
+</body>
+    <script>
+        var wiper = document.getElementById('wiper')
+        wiper.onload = function() {
+            var hibtn = document.getElementById("hi")
+            var lobtn = document.getElementById("lo")
+            var offbtn = document.getElementById("off")
+            hibtn.addEventListener("click",function(e){
+                wiper.contentWindow.postMessage("HI","*")/*HI 对应执行中速指令*/
+            })
+            lobtn.addEventListener("click",function(e){
+                wiper.contentWindow.postMessage("LO","*")/*LO 对应执行慢速指令*/
+            })
+            offbtn.addEventListener("click",function(e){
+                wiper.contentWindow.postMessage("OFF","*")/*OFF 对应执行停止指令*/
+            })
+        }
+    </script>
+</html>

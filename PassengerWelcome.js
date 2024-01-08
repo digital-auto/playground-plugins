@@ -13,7 +13,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOff720x360.mp4"
             },
-        }, vehicle)
+        }, 
+        vehicle)
     )
 
     widgets.register(

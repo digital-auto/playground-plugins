@@ -16,7 +16,15 @@ const supportsIteratorApis = (vehicle) => {
 }
 
 const LineChart = (signals, vehicle, refreshTime = 800) => {
+
     return (box) => {
+        let isRunning = false;
+        box.window.addEventListener("message", function(e){
+            if(!e.data) return
+            if(e.data == 'startRun') isRunning = true
+            if(e.data == 'stopRun') isRunning = false
+        }, false);
+
         const container = document.createElement("div")
         container.style = "width: 100%; height: 100%; padding: 5px;"
         container.innerHTML = (`
@@ -62,40 +70,49 @@ const LineChart = (signals, vehicle, refreshTime = 800) => {
             box.injectNode(container)
     
             intervalId = setInterval(async () => {
-                if (chart === null) {
-                    throw new Error("Chart.js hasn't been loaded yet.")
-                }
-    
-                const getDataset = (signalName) => {
-                    return chart.data.datasets.find(dataset => dataset.label === signalName)
-                }
-    
-                const entries = (await Promise.all(signals.map(async signal => {
-                    const iteratorEnded = await vehicle.IteratorEnded.get()
-    
-                    const stripped = signal.signal.split(".").slice(1).join(".")
-                    const newValue = await vehicle[stripped].get()
-    
-                    if (iteratorEnded) {
-                        return [signal.signal, null]
+                try {
+                    if(!isRunning) return false
+                    if (chart === null) {
+                        throw new Error("Chart.js hasn't been loaded yet.")
                     }
-    
-                    return [signal.signal, newValue]
-                })))
-    
-                const shouldPushData = entries.find(([signal, value]) => value !== null)
-    
-                if (!shouldPushData) {
-                    return false
+        
+                    const getDataset = (signalName) => {
+                        return chart.data.datasets.find(dataset => dataset.label === signalName)
+                    }
+        
+                    const entries = (await Promise.all(signals.map(async signal => {
+                        const iteratorEnded = await vehicle.IteratorEnded.get()
+        
+                        const stripped = signal.signal.split(".").slice(1).join(".")
+                        const newValue = await vehicle[stripped].get()
+                        
+        
+                        if (newValue === null && iteratorEnded) {
+                            //console.log(`iteratorEnded ================================`)
+                            return [signal.signal, null]
+                        }
+        
+                        return [signal.signal, newValue]
+                    })))
+        
+                    const shouldPushData = entries.find(([signal, value]) => value !== null)
+        
+                    if (!shouldPushData) {
+                        return false
+                    }
+        
+                    for (const [signalName, value] of entries) {
+                        const dataset = getDataset(signalName)
+                        dataset.data.push(value)
+                    }
+        
+                    chart.data.labels.push(chart.data.labels.length + 1)
+                    chart.update()
+
+                } catch(e) {
+                    console.log("err inside chart interval")
+                    console.log(e)
                 }
-    
-                for (const [signalName, value] of entries) {
-                    const dataset = getDataset(signalName)
-                    dataset.data.push(value)
-                }
-    
-                chart.data.labels.push(chart.data.labels.length + 1)
-                chart.update()
             }, refreshTime)
         } else {
             alert("LineChart plugin doesn't support vehicle pin without Wishlist sensor 'Vehicle.IteratorEnded'.")

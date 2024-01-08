@@ -1,10 +1,15 @@
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
+import SimulatorPlugins from "./reusable/SimulatorPlugins.js"
+import { PLUGINS_APIKEY } from "./reusable/apikey.js";
+
+// const API_HOST = "https://aiotapp.net"
+const API_HOST = "https://app.digitalauto.tech"
 
 async function fetchSimulationResults(simulationDetails) {
 	const res = await fetch(
-		`https://aiotapp.net/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
+		`${API_HOST}/kinetosis/results?style=${simulationDetails.style.trim()}&gender=${simulationDetails.gender.trim()}&age=${simulationDetails.age.trim()}`);
 	// waits until the request completes...
 	if (!res.ok) {
 		const message = `An error has occured: ${res.status}`;
@@ -15,9 +20,83 @@ async function fetchSimulationResults(simulationDetails) {
 	return response
 }
 
+async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
+    // Set the range to A1:Z1000
+    const range = "A1:Z2000";
+
+    // Fetch the rows from the Google Spreadsheet API
+    const response = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${encodeURIComponent(apiKey)}`
+    );
+    const json = await response.json();
+    // Get the headers from the first row
+    const headers = json.values[0];
+    // Convert the remaining rows to an array of objects
+    const rows = json.values.slice(1).map(row => {
+        const rowObject = {};
+        for (let i = 0; i < row.length; i++) {
+            rowObject[headers[i]] = row[i];
+        }
+        return rowObject;
+    });
+
+    return rows;
+}
+
 const plugin = ({widgets, simulator, vehicle}) => {
 
-    let controlsFrame = document.createElement("div")
+	const loadSpreadSheet = async () => {
+		const style = await vehicle.DrivingStyle.get()
+		const spreadsheetId = style === "sporty" ? "1fDkYtcpYkBfxlH5BjmhAUs0eqnSZKEJ1w7p0uuEtnQs" : style === "relaxed" ? "1ibr2IGHh6vjuOcb-3u5qjVrQtig4wvMNOSjtCp0vyo4" : "19yh1r-CL3CSy7eiLLDm6ART6VgMNqNd1KxY7Rrygfyw";
+
+		fetchRowsFromSpreadsheet(spreadsheetId, PLUGINS_APIKEY)
+		.then((rows) => {
+			SimulatorPlugins(rows, simulator)
+		})
+	}
+
+	const updateSimulation = async () => {
+		const score = await vehicle.Passenger.KinetosisScore.get()
+		const lat = await vehicle.CurrentLocation.Latitude.get()
+		const lng = await vehicle.CurrentLocation.Longitude.get()
+
+		scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
+		scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
+		scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
+		scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
+
+		let mobileMessage = "";
+		if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
+			//message = "Warning: High kinetosis level.";
+			mobileMessage = "Warning: \nPassenger's Kinetosis status: Abnormal." + "\nPlease open the window for the passenger.";
+			//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
+		}
+		else if (parseFloat(score) > 60.0) {
+			//message = "Kinetosis level is medium";
+			mobileMessage = "Passenger's Kinetosis status: Slightly uncomfortable";
+		}
+		else {
+			//message =  "Kinetosis level is normal";
+			mobileMessage = "Passenger's Kinetosis status: Normal";
+		}
+
+
+		mobileNotifications(mobileMessage);
+
+		if(setVehiclePinGlobal !== null) {
+			setVehiclePinGlobal({
+				lat: parseFloat(lat),
+				lng: parseFloat(lng)
+			})
+		}
+	}
+	
+	let sim_intervalId = null;
+	
+
+    let controlsFrame = null;
+    widgets.register("Controls", (box) => {
+	controlsFrame = document.createElement("div")
     controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
 	controlsFrame.innerHTML = 
 		`
@@ -81,7 +160,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<div style="width:2em;cursor: pointer;" id="video">
 					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
 				</div>
-				<div style="width:2em;cursor: pointer;" id="reload">
+				<!-- <div style="width:2em;cursor: pointer;" id="reload">
 					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Freload.svg?alt=media&token=0a2db061-8210-4c0b-bb84-0fdbf34c415e" alt="reload" style="filter: invert(100%);">
 				</div>
 				<div style="width:2em;cursor: pointer;" id="play">
@@ -89,7 +168,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				</div>
 				<div style="width:2em;cursor: pointer;" id="forward">
 					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fforward.svg?alt=media&token=6e729a78-4c7b-4065-a738-b58cdbcfc3cc" alt="forward" style="filter: invert(100%);">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div id="controls_intro" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
@@ -102,10 +181,16 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			</div>
 		</div>
 		`
-        
-    let boxGlobal = null
 
-    widgets.register("Controls", (box) => {
+		simulator("Vehicle.Passenger.Age", "get", async () => {
+			return parseInt("15");
+		})
+		simulator("Vehicle.Passenger.Gender", "get", async () => {
+			return "male";
+		})
+		simulator("Vehicle.DrivingStyle", "get", async () => {
+			return "sporty";
+		})
 
 		let simulationDetails = {
 			"style": "sporty",
@@ -122,6 +207,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "sporty";
+			})
 		}
 	
 		let relaxedStyle = controlsFrame.querySelector("#green")
@@ -133,6 +221,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "relaxed";
+			})
 		}
 	
 		let optimizedStyle = controlsFrame.querySelector("#yellow")
@@ -144,6 +235,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "optimized";
+			})
 		}
 	
 		let gender_male = controlsFrame.querySelector("#gender_male")
@@ -151,6 +245,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["gender"] = "male"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
+			simulator("Vehicle.Passenger.Gender", "get", async () => {
+				return "male";
+			})
 		}
 	
 		let gender_female = controlsFrame.querySelector("#gender_female")
@@ -158,6 +255,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["gender"] = "female"
 			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(104 130 158)"
+			simulator("Vehicle.Passenger.Gender", "get", async () => {
+				return "female";
+			})
 		}
 	
 		let age_young = controlsFrame.querySelector("#age_young")
@@ -165,6 +265,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["age"] = "young"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
+			simulator("Vehicle.Passenger.Age", "get", async () => {
+				return parseInt("15");
+			})
 		}
 	
 		let age_old = controlsFrame.querySelector("#age_old")
@@ -172,6 +275,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			simulationDetails["age"] = "adult"
 			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
 			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
+			simulator("Vehicle.Passenger.Age", "get", async () => {
+				return parseInt("60");
+			})
 		}
 
 		let video = controlsFrame.querySelector("#video")
@@ -213,137 +319,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box.triggerPopup(videoFrame)
 		}
 
-		let reload = controlsFrame.querySelector("#reload")
-		reload.onclick = () => {
-		simulationDetails = {
-			"style": "sporty",
-			"gender": "male",
-			"age": "young"
-			}
-
-			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
-			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
-			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
-			controlsFrame.querySelector("#red img").style.width = "80%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
-			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
-
-			index = 0;
-			clearInterval(intervalId)
-
-			scoreFrame.querySelector("#score .text").textContent = "0.0%"
-			scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(0) * 2)) + "," + 200);
-			scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(0) * 2)}`)
-			scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(0) * 2)}`)
-			scoreFrame.querySelector("#score #message").textContent = "Kinetosis level is "
-			mobileNotifications("");
-
-			animationFrame.querySelector("#animation").textContent = "Click on the Animation you want to see."
-			animationControlsFrame.querySelector("#animation_window").style.backgroundColor = "rgb(157 176 184)"
-			animationControlsFrame.querySelector("#animation_ac").style.backgroundColor = "rgb(157 176 184)"
-			setVehiclePinGlobal(null);
-
-		}
-
-		let index = 0;
-		let intervalId = null;
-
-		let play = controlsFrame.querySelector("#play")
-		play.onclick = () => {
-			clearInterval(intervalId)
-			index = 0;
-
-			fetchSimulationResults(simulationDetails).then(data => {
-				const VSSdata = data.signal_values
-
-				intervalId = setInterval(() => {
-					if (index >= VSSdata.length) {
-						clearInterval(intervalId)
-					}
-					else {
-
-						simulator("Vehicle.TripMeterReading", "get", async () => {
-							return (parseFloat(parseFloat(VSSdata[index]["Vehicle.TripMeterReading"]) / 1000).toFixed(3) + " km");
-						})
-						simulator("Vehicle.Speed", "get", async () => {
-							return (parseFloat(parseFloat(VSSdata[index]["Vehicle.Speed"]).toFixed() * 3.6).toFixed(2) + " km/h");
-						})
-						simulator("Vehicle.Acceleration.Lateral", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Lateral"]).toFixed(3))
-						})
-						simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Longitudinal"]).toFixed(3))
-						})
-						simulator("Vehicle.Acceleration.Vertical", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.Acceleration.Vertical"]).toFixed(3))
-						})
-						simulator("Vehicle.AngularVelocity.Roll", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Roll"]).toFixed(3))
-						})
-						simulator("Vehicle.AngularVelocity.Pitch", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Pitch"]).toFixed(3))
-						})
-						simulator("Vehicle.AngularVelocity.Yaw", "get", async () => {
-							return (parseFloat(VSSdata[index]["Vehicle.AngularVelocity.Yaw"]).toFixed(3))
-						})
-						simulator("Vehicle.CurrentLocation.Latitude", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI))
-						})
-						simulator("Vehicle.CurrentLocation.Longitude", "get", async () => {
-							return parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-						})
-
-						if(setVehiclePinGlobal !== null) {
-							setVehiclePinGlobal({
-								lat: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Latitude"] * (180 / Math.PI)),
-								lng: parseFloat(VSSdata[index]["Vehicle.CurrentLocation.Longitude"] * (180 / Math.PI))
-							})
-						}
-						
-						scoreFrame.querySelector("#score .text").textContent = parseFloat(VSSdata[index]["KinetosisScore"]).toFixed(2) + "%"
-						scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)) + "," + 200);
-						scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
-						scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(VSSdata[index]["KinetosisScore"].split("%")[0]) * 2)}`)
-
-						let message = "", mobileMessage = "";
-						if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 80.0) {
-							message = "Warning: High kinetosis level.";
-							mobileMessage = message + "\nPlease open the window for the passenger.";
-							//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
-						}
-						else if (parseFloat(VSSdata[index]["KinetosisScore"].split("%")[0]) > 60.0) {
-							message = "Kinetosis level is medium";
-							mobileMessage = message;
-						}
-						else {
-							message =  "Kinetosis level is normal";
-							mobileMessage = message;
-						}
-
-						scoreFrame.querySelector("#score #message").textContent = message
-
-						mobileNotifications(mobileMessage);
-
-						index = index + 17
-					}
-				}, 1000)
-			})
-		}
-
-		let forward = controlsFrame.querySelector("#forward")
-		forward.onclick = () => {
-			if (index !== 0)
-				index = index + (17 * 60)
-		}
+	
 
         box.injectNode(controlsFrame)
         return () => {
-			clearInterval(intervalId)
-            boxGlobal = null
+			//clearInterval(intervalId)
+			clearInterval(sim_intervalId)
             // Deactivation function for clearing intervals or such.
         }
     })
@@ -366,12 +347,14 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				"lng": 10.425532
 			},
 		]
-		GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", box, path, "BICYCLING").then(({setVehiclePin}) => {
+		GoogleMapsPluginApi(PLUGINS_APIKEY, box, path, "BICYCLING").then(({setVehiclePin}) => {
 			setVehiclePinGlobal = setVehiclePin
 		})
 	})
 
-	let scoreFrame = document.createElement("div")	
+	let scoreFrame = null;
+	widgets.register("Score", (box) => {
+	scoreFrame = document.createElement("div")	
 	scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
 	scoreFrame.innerHTML =
 		`
@@ -397,18 +380,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Kinetosis Level is </div>		
-		</div>				
-		
+			<div id="message">Kinetosis score </div>		
+		</div>
 		`
 
-	widgets.register("Score", (box) => {
-		boxGlobal = box
 		box.injectNode(scoreFrame)
-		return () => {
-			boxGlobal = null
-			// Deactivation function for clearing intervals or such.
-		}
 	})
 
 	let mobileNotifications = null;
@@ -504,6 +480,305 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		`
 		box.injectNode(animationFrame)
 	})
+
+
+	////////////
+	let container = null
+
+    let resultImgDiv = null
+    let resultRecDiv = null
+    let restext = null
+    let Emotion = null
+	let EmotionScore = null
+    let Probability = null
+
+    let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
+
+    let imgWidth = 0;
+    let imgHeight = 0;
+
+    widgets.register("Result", (box) => {
+        const container = document.createElement('div');
+        container.innerHTML = `
+            <div style="width:100%;height:100%; position: relative;">
+                <div id="resultRec" 
+                    style="position:absolute;border: 2px solid red; top: 0; left: 0; width: 0; height: 0; z-index: 2;">
+                </div>
+                <img id="resultImg" 
+                    style="display:none;position:absolute;top:0%;left:0%;width:100%;height:100%; z-index: 1;"
+                    src=""/> 
+                <img id="logoImg" 
+                    style="position:absolute;top:5%;right:5%;width:30%;padding:6px; z-index: 3;object-fit:contain;background:white;"
+                    src="${landingAiLogo}"/> 
+                    <h4 id="restext" style="background:white;position:absolute;top:55%;right:55%;width:30%; z-index: 4;color:red"></h4>
+            </div>
+        `;
+        resultImgDiv = container.querySelector("#resultImg");
+        resultRecDiv = container.querySelector("#resultRec");
+        restext = container.querySelector("#restext");
+
+        box.injectNode(container);
+    });
+
+    widgets.register("InputImage", (box) => {
+		let webcam_message = 'Webcam'
+
+        container = document.createElement('div')
+        container.innerHTML = 
+        `
+		<div id="image" style="display:block">
+        <img id="output" width="100%" height="100%" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2Fwebcam-default.png?alt=media&token=a7407530-25ac-4143-bbb4-f0a879f5ebba"/>
+        </div>
+        <div id="video" style="display:none; width:100%; height:100%">
+            <video id="webcam-video" playsinline autoplay width="100%" height="100%"> </video>
+        </div>
+    
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 15px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="upload-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Upload
+            </button>
+            <button id="capture-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                ${webcam_message}
+            </button>
+            <input id="upload" type="file" accept="image/*" style="display:none">
+        </div>
+        <div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 60px; opacity:50%; align-items:center; align-content:center; flex-direction:row; justify-content:center">
+            <button id="submit-btn" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+                Submit
+            </button>
+        </div>
+		<div class="btn btn-color" style="display:flex; position:absolute; width: 100%; bottom: 0px; opacity:100%; align-items:center; align-content:center; flex-direction:row; justify-content:space-around; background: #FFF">
+		<div> <span></span><span id="Emotion"></span></div>
+		<div><span>Probability : </span><span id="Probability"></span></div>
+		</div>
+        `
+		Emotion = container.querySelector("#Emotion");
+        Probability = container.querySelector("#Probability");
+
+		const upload_btn = container.querySelector("#upload-btn")
+        const upload = container.querySelector("#upload")
+        upload_btn.onclick = () => {
+            if(upload) upload.click()
+        }
+     
+
+        let imageEncoded = null
+        let file = null
+        const img_output = container.querySelector('#output');
+        const img = container.querySelector("#image")
+        upload.onchange = (event) => {
+            file = event.target.files[0]
+            img_output.src = URL.createObjectURL(event.target.files[0]);
+            img.style = "display: block"
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+        
+            var base_image = new Image();
+            base_image.src = img_output.src;
+            base_image.onload = function() {
+                canvas.width = base_image.width;
+                canvas.height = base_image.height;
+
+                imgWidth = base_image.width;
+                imgHeight = base_image.height;
+        
+                ctx.drawImage(base_image, 0, 0);
+                imageEncoded = canvas.toDataURL('image/jpeg')
+                canvas.remove();
+            }
+        }
+      
+
+        const imageUpload = async (image) => {
+            if(!file) return
+            const data = new FormData()
+            data.append('file', file)
+            const res = await fetch(
+                `https://predict.app.landing.ai/inference/v1/predict?endpoint_id=bf6be489-eaf7-4c2f-81ff-3866e040dd11`, {
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {
+                        'apikey':'land_sk_0sIzpR0dno01dqFeIe5Ln4SKcuMhJp1HZB7Q4bLhQUo14ihdee'
+                    },
+                    body: data
+            });
+            if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                throw new Error(message);
+            }
+            const response = await res.json()
+            return response
+        }
+		const updateSimulation = async () => {
+			const score = await vehicle.Passenger.KinetosisScore.get()
+			const lat = await vehicle.CurrentLocation.Latitude.get()
+			const lng = await vehicle.CurrentLocation.Longitude.get()
+	
+			let mobileMessage = "";
+			if ((parseFloat(score) > 80.0)||(EmotionScore==="discomfort")) {
+				//message = "Warning: High kinetosis level.";
+				mobileMessage = "Warning: \nPassenger's Kinetosis status: Abnormal." + "\nPlease open the window for the passenger.";
+				//scoreFrame.querySelector("#sign").innerHTML = `<img src="https://193.148.162.180:8080/warning.svg" alt="warning" style="width:30%;height:30%"/>`
+			}
+			else if (parseFloat(score) > 60.0) {
+				//message = "Kinetosis level is medium";
+				mobileMessage = "Passenger's Kinetosis status: Slightly uncomfortable";
+			}
+			else {
+				//message =  "Kinetosis level is normal";
+				mobileMessage = "Passenger's Kinetosis status: Normal";
+			}
+	
+	
+			mobileNotifications(mobileMessage);
+	
+			if(setVehiclePinGlobal !== null) {
+				setVehiclePinGlobal({
+					lat: parseFloat(lat),
+					lng: parseFloat(lng)
+				})
+			}
+		}
+		const submit_btn = container.querySelector("#submit-btn")
+        const capture_btn = container.querySelector("#capture-btn")
+        capture_btn.onclick = () => {
+           
+            
+            const video = container.querySelector("#webcam-video")
+            if(webcam_message === "Webcam") {
+                webcam_message = "Capture"
+                container.querySelector("#capture-btn").innerText = webcam_message
+    
+                const constraints = {  
+                    audio: false,
+                    video: {  
+                        width: 475, height: 475  
+                    }
+                };
+                if (navigator.mediaDevices.getUserMedia) {  
+                    navigator.mediaDevices.getUserMedia(constraints)  
+                        .then(function (stream) {  
+                            video.srcObject = stream;  
+                        })  
+                        .catch(function (err0r) {  
+                            console.log("Something went wrong!");  
+                        });  
+                }
+                container.querySelector("#image").style = "display: none"
+                container.querySelector("#video").style = "display: block"
+            }
+            else {
+                const image = container.querySelector('#output');
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 475
+                canvas.height = 475
+                context.drawImage(video, 0, 0);
+        
+                image.setAttribute("crossorigin", "anonymous")
+                const data = canvas.toDataURL("image/jpeg");
+                imageEncoded = data
+                image.setAttribute("src", data);
+                container.querySelector("#image").style = "display: block"
+                container.querySelector("#video").style = "display: none"
+    
+                const stream = video.srcObject;  
+                const tracks = stream.getTracks();  
+        
+                for (let i = 0; i < tracks.length; i++) {  
+                    const track = tracks[i];  
+                    track.stop();  
+                }  
+                video.srcObject = null;
+    
+                webcam_message = "Webcam"
+                container.querySelector("#capture-btn").innerText = webcam_message
+    
+            }
+        }
+
+
+        submit_btn.onclick = async () => {
+
+			const imageUrl = img_output.src;
+    
+			try {
+				const response = await fetch(imageUrl);
+				const blob = await response.blob();
+				file = new File([blob], "uploaded_image.jpg", { type: "image/jpeg" });
+			} catch (error) {
+				console.error('Error:', error);
+			}
+
+
+            const resData = await imageUpload(imageEncoded)
+            if(resultImgDiv) {
+                resultImgDiv.src = imageEncoded;
+                resultImgDiv.style.display='block'
+            }
+             console.log(resData.predictions.labelName)
+             console.log(Emotion.innerHTML)
+             Emotion.innerHTML=resData.predictions.labelName;
+             Probability.innerHTML=resData.predictions.score.toFixed(2);
+			 EmotionScore=resData.predictions.labelName;
+			 updateSimulation();
+           
+             console.log()
+            if(resData) {
+                if(resData.backbonepredictions) {
+                    for(let key in resData.backbonepredictions) {
+                        let coordinates = resData.backbonepredictions[key].coordinates
+                        if(resultImgDiv) {
+                            resultImgDiv.src = imageEncoded;
+                            let imgWidthDiv =  resultImgDiv.width
+                            let imgHeightDiv =  resultImgDiv.height
+                            let xmax = coordinates.xmax
+                            let xmin = coordinates.xmin
+                            let ymax = coordinates.ymax
+                            let ymin = coordinates.ymin
+                           
+
+                            let leftPercent = (1.0*xmin)/(imgWidth*1.0)
+                            let topPercent = (1.0*ymin)/(imgHeight*1.0)
+
+                            let widthPercent = (xmax-xmin)/(imgWidth*1.0)
+                            let heightPercent = (ymax-ymin)/(imgHeight*1.0)
+
+                            resultRecDiv.style.left = `${imgWidthDiv * leftPercent}px`
+                            resultRecDiv.style.top = `${imgHeightDiv * topPercent}px`
+
+                            resultRecDiv.style.width = `${imgWidthDiv * widthPercent}px`
+                            resultRecDiv.style.height = `${imgHeightDiv * heightPercent}px`
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        box.injectNode(container)
+        return () => { }
+    })
+	////////////
+
+	let sim_function;
+	simulator("Vehicle.Speed", "subscribe", async ({func, args}) => {
+		sim_function = args[0]
+	})
+
+	return {
+		start_simulation : (time, skip=1) => {
+			sim_intervalId = setInterval(async () => {
+				for(let i=0;i<skip;i++) {
+					await vehicle.Next.get()
+				}
+				sim_function()
+				updateSimulation()
+			}, time)
+		},
+		load_signals : loadSpreadSheet,
+		update_simulation : updateSimulation
+	}
 	
 }
 

@@ -12,7 +12,8 @@ const AnimatedWipers = (signal, vehicle) => {
 
     return (box) => {
         const iframe = document.createElement("iframe")
-        iframe.src = "https://aiotapp.net/wiper/simulator"
+        // iframe.src = "https://aiotapp.net/wiper/simulator"
+        iframe.src="https://playground-plugins.netlify.app/simulator/wiper-iframe/"
         iframe.setAttribute("frameborder", "0")
         iframe.style = "width:100%; height:100%;"
         box.injectNode(iframe)
