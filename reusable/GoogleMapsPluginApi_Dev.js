@@ -70,14 +70,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                    console.log("index"+index);
                     index++;
-                  
+                    
 
-                    console.log(vehicleId==carId);
                     if (vehicleId==carId){
-                        let coordinates_Next=carsCoordinates[index];
-                        console.log("longitude next: "+coordinates_Next.longitude)
+                    
+                    console.log("longitude next: "+coordinates_Next.longitude)
                         
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
@@ -94,6 +92,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 return stepPositions;
             })
+        }
+        else{
+            coordinates_Next=carsCoordinates[carId];
         }
     }
     }).catch(error => {
