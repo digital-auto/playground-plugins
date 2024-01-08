@@ -60,7 +60,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     const fetchPathFromApi = async() => {
 
-        fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+        return fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
@@ -81,7 +81,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
 
-             fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
+            return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
             .then(response => response.json())
             .then(data => {
            
@@ -96,22 +96,22 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 
 
                 return stepPositions;
-            })
+            }).catch(error => {
+                console.error('Error fetching data from the API:', error);
+                // Return a default path or handle the error as needed
+                return [
+                    { lat: 49.116911, lng: 9.176294 },
+                    { lat: 48.7758, lng: 9.1829 },
+                    { lat: 48.9471, lng: 9.4342 },
+                    { lat: 49.0688, lng: 9.2887 }
+                ];
+            });
         }
         else{
             coordinates_Next=carsCoordinates[carId];
         }
     }
-    }).catch(error => {
-        console.error('Error fetching data from the API:', error);
-        // Return a default path or handle the error as needed
-        return [
-            { lat: 49.116911, lng: 9.176294 },
-            { lat: 48.7758, lng: 9.1829 },
-            { lat: 48.9471, lng: 9.4342 },
-            { lat: 49.0688, lng: 9.2887 }
-        ];
-    });
+    })
         };
 
         /*        
