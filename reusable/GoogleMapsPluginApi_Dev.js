@@ -247,9 +247,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
-                          score--;
+                          score=score-2;
                           document.cookie = "score="+score;
-                           //pos=pos+0.00001;
+                          if(score<60){
+                            console.log("Low Battery")
+                          }
+                          //pos=pos+0.00001;
 
                       }
                       if (intervalId2) {
