@@ -65,23 +65,18 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
                 const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
-                let index=0; 
-                let coordinates_Next ;
 
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                   
-                    index++;
-                    
 
                     if (vehicleId==carId){
                     
                         
-                     lat = coordinates.latitude;
-                     lng = coordinates.longitude;
+                     lat = coordinates.latitude_start;
+                     lng = coordinates.longitude_start;
 
-            return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
+            return fetch(apiUrl+coordinates.longitude_start+","+coordinates.latitude_start+";"+coordinates.longitude_end+","+coordinates.latitude_end+"?steps=true")
             .then(response => response.json())
             .then(data => {
            
@@ -106,10 +101,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     { lat: 49.0688, lng: 9.2887 }
                 ];
             });
-        }
-        else{
-            coordinates_Next=carsCoordinates[carId];
-        }
+        } 
     }
     })
         };
