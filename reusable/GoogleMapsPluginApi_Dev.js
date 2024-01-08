@@ -92,7 +92,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lng: step.maneuver.location[0]
                     }))
                 );
-                console.log(stepPositions)
+                
                 
 
                 return stepPositions;
@@ -149,7 +149,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             */
 
     // Use stepPositions to render or perform any other actions
-    const stepPositions =  await fetchPathFromApi();
+    let stepPositions =  await fetchPathFromApi();
+    console.log(stepPositions)
   
     path=  stepPositions;
     let intervalId2;
