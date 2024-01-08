@@ -482,7 +482,7 @@ return () => { }
       return true
   }
        let scoreFrame = null;
-    widgets.register("Score Bar", (box) => {
+    widgets.register("Score Bar", async (box) => {
         scoreFrame = document.createElement("div")
         scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
         scoreFrame.innerHTML =
@@ -515,7 +515,8 @@ return () => { }
 
         box.injectNode(scoreFrame)
         start_sim;
-        const score = "100"
+        vehicle.Powertrain.TractionBattery.StateOfCharge.Current.set("100")
+        let score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
       scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
@@ -523,9 +524,7 @@ return () => { }
       scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
       //message you want to write with the bar
       scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
-       
-
-
+  
         box.window.addEventListener("unload", async () => {
             console.log("on widget unload")
             clearInterval(sim_intervalId)
