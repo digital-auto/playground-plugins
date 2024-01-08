@@ -146,9 +146,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             */
 
     // Use stepPositions to render or perform any other actions
-    const stepPositions = await fetchPathFromApi();
+    const stepPositions =  fetchPathFromApi();
   
-    path=  stepPositions;
+    path=  await stepPositions;
     let intervalId2;
     let pos=0.00001;
     
