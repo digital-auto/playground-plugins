@@ -70,8 +70,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
                     let index=carsCoordinates.indexOf(carsCoordinates[carId]);
-                    let coordinates_Next=carsCoordinates[index]+1;
-                    console.log("Id: "+vehicleId)
+                    let coordinates_Next=carsCoordinates[index+1];
+                    console.log("longitude next: "+coordinates_Next.longitude)
 
                     
                     if (vehicleId==carId){
@@ -79,7 +79,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
                      console.log(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
-        return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates.longitude+pos+","+coordinates.latitude+pos+"?steps=true")
+        return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
             .then(response => response.json())
             .then(data => {
                 const stepPositions = data.routes[0].legs.flatMap(leg =>
