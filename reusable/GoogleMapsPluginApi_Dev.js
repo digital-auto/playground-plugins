@@ -237,20 +237,61 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 
                       /* */
+                      function distance(lat1, lon1, lat2, lon2) {
+                        var radlat1 = Math.PI * lat1/180
+                        var radlat2 = Math.PI * lat2/180
+                        var theta = lon1-lon2
+                        var radtheta = Math.PI * theta/180
+                        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                        if (dist > 1) {
+                            dist = 1;
+                        }
+                        dist = Math.acos(dist)
+                        dist = dist * 180/Math.PI
+                        dist = dist * 60 * 1.1515
+                        dist = dist * 1.609344
+                        return dist
+                    }
+                    function Near_Charger(){
+                        // Fetch chargestation coordinates and add markers to map
+                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
+                  .then(response => response.json())
+                  .then(chargestationCoordinates => {
+                      // For each charger, create a marker on the map
+                      let min=null;
                    
+                      for (let chargestationId in chargestationCoordinates) {
+                          let coordinates = chargestationCoordinates[chargestationId];
+                          if (min==null){
+                            min=coordinates
+                          }
+                          else if (distance(min.latitude,min.longitude,path[i].lat,path[i].lat)>distance(path[i].lat,path[i].lat,coordinates.latitude,coordinates.longitude)){
+                            min=coordinates
+                          }
+                      }
+                      lat = min.latitude;
+                      lng = min.longitude;
+
+                  });
+                        
+
+
+                    }
                  
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if (path.length > i) {
+                      if ((path.length > i) && score>68) {
                           lat = path[i].lat;
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
                           score=score-2;
                           document.cookie = "score="+score;
-                          if(score<60){
+                          if(score<70){
                             console.log("Low Battery")
+
+                            Near_Charger()
                           }
                           //pos=pos+0.00001;
 
