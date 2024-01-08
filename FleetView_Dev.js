@@ -127,5 +127,5 @@ const plugin = ({ box, widgets }) => {
             })
     })
    
-
+}
 export default plugin
