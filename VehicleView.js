@@ -79,34 +79,63 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     //////////// Test Maps ///////////////
 
   widgets.register("VehicleMapDev", async (box) => {
-    const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/9.1829,48.7758;9.2109,49.1427?steps=true';
+    const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
-    const fetchPathFromApi = () => {
-        return fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
+    const fetchPathFromApi = async() => {
 
-                const stepPositions = data.routes[0].legs.flatMap(leg =>
-                    leg.steps.map(step => ({
-                        lat: step.maneuver.location[1],
-                        lng: step.maneuver.location[0]
-                    }))
-                );
+      fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+          .then(response => response.json())
+          .then(carsCoordinates => {
+              // For each vehicle, create a marker on the map
+              const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
+              let index=0; 
+              let coordinates_Next ;
 
-                return stepPositions;
-            })
-            .catch(error => {
-                console.error('Error fetching data from the API:', error);
-                // Return a default path or handle the error as needed
-                return [
-                    { lat: 49.116911, lng: 9.176294 },
-                    { lat: 48.7758, lng: 9.1829 },
-                    { lat: 48.9471, lng: 9.4342 },
-                    { lat: 49.0688, lng: 9.2887 }
-                ];
-            });
-        };
+
+              for (let carId in carsCoordinates) {
+                  let coordinates = carsCoordinates[carId];
+                 
+                  index++;
+                  
+
+                  if (vehicleId==carId){
+                  
+                      
+                   lat = coordinates.latitude;
+                   lng = coordinates.longitude;
+
+                   return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
+                  .then(response => response.json())
+                  .then(data => {
+                
+
+                      const stepPositions = data.routes[0].legs.flatMap(leg =>
+                          leg.steps.map(step => ({
+                              lat: step.maneuver.location[1],
+                              lng: step.maneuver.location[0]
+                          }))
+                      );
+                      
+
+                      return stepPositions;
+                  })
+              }
+              else{
+                  coordinates_Next=carsCoordinates[carId];
+              }
+          }
+          }).catch(error => {
+              console.error('Error fetching data from the API:', error);
+              // Return a default path or handle the error as needed
+              return [
+                  { lat: 49.116911, lng: 9.176294 },
+                  { lat: 48.7758, lng: 9.1829 },
+                  { lat: 48.9471, lng: 9.4342 },
+                  { lat: 49.0688, lng: 9.2887 }
+              ];
+          });
+              };
+
 
         // Use stepPositions to render or perform any other actions
         const stepPositions = await fetchPathFromApi();
