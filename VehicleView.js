@@ -97,6 +97,8 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       { lat: coordinates.latitude_start, lng: coordinates.longitude_start },
                       { lat: coordinates.latitude_end, lng: coordinates.longitude_end }
                   ]
+
+                  alert(retu)
                   
 
                     return retu;
