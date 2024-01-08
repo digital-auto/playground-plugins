@@ -253,6 +253,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         return dist
                     }
                     function Near_Charger(){
+                        console.log("Low Battery")
                         // Fetch chargestation coordinates and add markers to map
                   fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
                   .then(response => response.json())
@@ -271,6 +272,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       lat = min.latitude;
                       lng = min.longitude;
+                      console.log("min.latitude"+min.latitude)
 
                   });
                         
@@ -292,7 +294,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           //pos=pos+0.00001;
 
                       } else  if(score<70){
-                        console.log("Low Battery")
+                        
 
                         Near_Charger()
                       }
