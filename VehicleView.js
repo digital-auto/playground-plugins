@@ -431,153 +431,65 @@ return () => { }
             vehicle,
         )(box)
     })
-    const loadScript = (boxWindow, url) => {
-      return new Promise(async (resolve, reject) => {
-          try {
-              const script = boxWindow.document.createElement("script");
-              script.defer = true;
-              script.referrerPolicy = "origin"
+ 
   
-              script.src = url;
-              boxWindow.document.head.appendChild(script);
-              script.addEventListener("load", () => resolve(undefined));
-          } catch (e) {
-              reject();
-          }
-      });
-  }
-    const supportsIteratorApis = (vehicle) => {
-      try {
-          vehicle.IteratorEnded.get()
-          return true
-      } catch (error) {
-          console.log("supportsIteratorApis Error:", error)
-          return false
-      }
-  }
 
-  
-    const LineChart2 = (signals, vehicle, refreshTime = 800) => {
+       let scoreFrame = null;
+    widgets.register("Score Bar", (box) => {
+        scoreFrame = document.createElement("div")
+        scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
+        scoreFrame.innerHTML =
+            `
+		<style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color:#ffffe3;
+            background-color:rgb(0 80 114);
+            text-align:center;            
+        }
+        </style>
+		<div id="score" style="">
+			<div class="text">0.0%</div>
+			<svg width="100" height="200" style="transform: rotateX(180deg)">
+				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
+				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="200,200"/>
+				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="120,200"/>
+				<line class="high" x1="50" y1="0" x2="50" y2="200" stroke="red" stroke-width="50" stroke-dasharray="60,200"/>
+				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
+				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
+			</svg>
+			<div id="message">Current battery SOC</div>
+		</div>
+		`
 
-      return (box) => {
-          let isRunning = false;
-          box.window.addEventListener("message", function(e){
-              if(!e.data) return
-              if(e.data == 'startRun') isRunning = true
-              if(e.data == 'stopRun') isRunning = false
-          }, false);
-  
-          const container = document.createElement("div")
-          container.style = "width: 100%; height: 100%; padding: 5px;"
-          container.innerHTML = (`
-          <style>
-          @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-          * {
-              box-sizing: border-box;
-          }
-          body {
-              font-family: 'Lato', sans-serif;
-          }
-          </style>
-          <canvas width="100%" height="100%"></canvas>
-          `)
-  
-          let intervalId = null
-  
-          if (supportsIteratorApis(vehicle)) {
-              let chart = null
-  
-              loadScript(box.window, "https://cdn.jsdelivr.net/npm/chart.js").then(() => {
-                  const ctx = container.querySelector('canvas').getContext('2d');
-      
-                  chart = new box.window.Chart(ctx, {
-                      type: 'line',
-                      data: {
-                          labels: [],
-                          datasets: signals.map(signal => ({
-                              label: signal.signal,
-                              data: [],
-                              fill: false,
-                              borderColor: signal.color || 'rgb(0, 80, 114)',
-                              tension: 0.1
-                          }))
-                      },
-                      options: {
-                          responsive: true,
-                          maintainAspectRatio: false                  
-                      }
-                  });
-              })
-      
-              box.injectNode(container)
-      
-              intervalId = setInterval(async () => {
-                  try {
-                      if(!isRunning) return false
-                      if (chart === null) {
-                          throw new Error("Chart.js hasn't been loaded yet.")
-                      }
-          
-                      const getDataset = (signalName) => {
-                          return chart.data.datasets.find(dataset => dataset.label === signalName)
-                      }
-          
-                      const entries = (await Promise.all(signals.map(async signal => {
-                          const iteratorEnded = await vehicle.IteratorEnded.get()
-          
-                          const stripped = signal.signal.split(".").slice(1).join(".")
-                          const newValue = await vehicle[stripped].get()
-                          
-          
-                          if (newValue === null && iteratorEnded) {
-                              //console.log(`iteratorEnded ================================`)
-                              return [signal.signal, null]
-                          }
-          
-                          return [signal.signal, newValue]
-                      })))
-          
-                      const shouldPushData = entries.find(([signal, value]) => value !== null)
-          
-                      if (!shouldPushData) {
-                          return false
-                      }
-          
-                      for (const [signalName, value] of entries) {
-                          const dataset = getDataset(signalName)
-                          dataset.data.push(value)
-                      }
-          
-                      chart.data.labels.push(chart.data.labels.length + 1)
-                      chart.update()
-  
-                  } catch(e) {
-                      console.log("err inside chart interval")
-                      console.log(e)
-                  }
-              }, refreshTime)
-          } else {
-              alert("LineChart plugin doesn't support vehicle pin without Wishlist sensor 'Vehicle.IteratorEnded'.")
-          }
-  
-          return () => {
-              if (intervalId !== null) {
-                  clearInterval(intervalId)
-              }
-          }
-      }
-  }
-    widgets.register("SOCLineCharts", LineChart2(
-      [
-          {
-              signal: "Vehicle.TravelledDistance",
-              suffix: " C",
-              color: "Black"
-          },
-      ],
-      vehicle
-  )
-  )
+        box.injectNode(scoreFrame)
+
+        box.window.addEventListener("unload", async () => {
+            console.log("on widget unload")
+            clearInterval(sim_intervalId)
+
+            if (SimulatorStarted) {
+                console.log("Stop  simulator")
+                await anysisSimulation('stop', policy)
+            }
+        })
+
+        return async () => {
+
+            if (sim_intervalId !== null) {
+                clearInterval(sim_intervalId)
+            }
+            if (SimulatorStarted) {
+                await anysisSimulation('stop', policy)
+            }
+        }
+    })
+
+ 
 
     widgets.register("VehicleImage", box => {
         box.window.document.body.innerHTML = `<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FGenericWhiteCar.png?alt=media&token=31babbcd-3920-4044-a1a4-58a07a8df0b1" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>`
