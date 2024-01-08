@@ -417,7 +417,7 @@ return () => { }
     const updateSignals = async () => {
        
       
-      score = document.cookie;
+      score = document.cookie.substring(6, text.length)
       console.log(score)
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
