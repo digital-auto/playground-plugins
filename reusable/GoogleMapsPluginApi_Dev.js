@@ -276,14 +276,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       marker.setPosition({ lat, lng });
                       console.log("min.latitude"+min.latitude)
                       intervalId = setInterval(async () => {
-                          if (charger) {
-                              score=score+5;
+                          if (charger&&score<100) {
+                              score=score+1;
                               document.cookie = "score="+score;
                           }  
                           else if(score==100){
                             charger=false;
                           }
-                      }, 1000);
+                      }, 200);
 
                   });
                         
