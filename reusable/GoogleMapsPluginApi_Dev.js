@@ -247,6 +247,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           marker.setPosition({ lat, lng });
                           i++;
                           console.log("step: " + i);
+                          console.log(lat+" | "+lng);
 
 
                           //pos=pos+0.00001;
