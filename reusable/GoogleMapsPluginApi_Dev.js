@@ -3,7 +3,6 @@ import loadScript from "./loadScript.js";
 function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
     const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
     const end = new box.window.google.maps.LatLng(path[path.length - 1].lat, path[path.length - 1].lng);
-    const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
 
     const waypoints = [];
     for (let i = 1; i < path.length - 1; i++) {
@@ -60,19 +59,20 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
     const fetchPathFromApi = () => {
-        let vId=vehicleId
+         
         fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
-               
+                const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
+
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                    alert("Id: "+vId)
+                    alert("Id: "+vehicleId)
 
                     
-                    if (vId==carId){
+                    if (vehicleId==carId){
                         
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
