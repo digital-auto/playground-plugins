@@ -276,8 +276,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       marker.setPosition({ lat, lng });
                       console.log("min.latitude"+min.latitude)
                       intervalId = setInterval(async () => {
-                          if (score<70) {
-                              score++;
+                          if (charger) {
+                              score=score+5;
                               document.cookie = "score="+score;
                           }  
                           else if(score==100){
