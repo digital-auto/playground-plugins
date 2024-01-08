@@ -236,7 +236,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       /* */
                    
                  
- 
+               
                   intervalId = setInterval(async () => {
                     if (await path)
                       if (path.length > i) {
@@ -252,12 +252,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
-                    
-                    
-                  
-                 
+
                   }, 2000);
-              
+                             
          
 
             }
