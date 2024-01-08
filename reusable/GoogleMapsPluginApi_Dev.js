@@ -274,6 +274,17 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       lng = min.longitude;
                       marker.setPosition({ lat, lng });
                       console.log("min.latitude"+min.latitude)
+                      intervalId = setInterval(async () => {
+                       
+                          if (score<98) {
+                            
+                              score++;
+                              document.cookie = "score="+score;
+                              
+    
+                          }  
+                          
+                      }, 1000);
 
                   });
                         
