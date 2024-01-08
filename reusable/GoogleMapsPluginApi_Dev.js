@@ -43,6 +43,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     });
     box.window.directionsRenderer = directionsRenderer
     directionsRenderer.setMap(map);
+    let getScore = async () => {
+        return score
+    }
 
     calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);
     
@@ -153,6 +156,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
      intervalId2 = setInterval(async () => {
         if (path)
         if (path.length>i){
+            score--;
         
         //pos=+0.001;
        i++;}
