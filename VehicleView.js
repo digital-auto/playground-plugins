@@ -100,10 +100,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   ]
                   console.log(retu);
 
-                    return [
-                      { lat: coordinates.latitude, lng: coordinates.longitude },
-                      { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
-                  ];
+                    return retu;
               }
               else{
                   coordinates_Next=carsCoordinates[carId];
