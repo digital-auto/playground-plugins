@@ -463,37 +463,11 @@ return () => { }
 
   let sim_intervalId = null;
   
-let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev/"
 
 let SimulatorStarted = false
 
-const getAnsysStatus = async () => {
-    console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`)
-    const res = await fetch(`${ANSYS_API}simulations/status`)
-    if (!res.ok) throw "Get ansys status failed"
-    return await res.json()
-}
 
 
-  const start_sim = async (time) => {
-      let res = await getAnsysStatus()
-      if (res && res.Status === "IDLE") {
-          alert("Simulator is busy, try again later!")
-          return false
-      }
-
-      await anysisSimulation('start', policy)
-      SimulatorStarted = true
-      sim_intervalId = setInterval(async () => {
-          const res = await anysisSimulation('resume', policy)
-          updateSignals(res)
-          updateSimulation()
-
-          await vehicle.Next.get()
-          // sim_function()
-      }, time)
-      return true
-  }
        let scoreFrame = null;
     widgets.register("Score Bar", async (box) => {
         scoreFrame = document.createElement("div")
@@ -527,7 +501,8 @@ const getAnsysStatus = async () => {
 		`
 
         box.injectNode(scoreFrame)
-        start_sim();
+      
+        
         vehicle.Powertrain.TractionBattery.StateOfCharge.Current="100"
         let score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         console.log("score: "+score);
