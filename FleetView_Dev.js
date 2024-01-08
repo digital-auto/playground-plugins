@@ -83,8 +83,6 @@ const plugin = ({ box, widgets }) => {
                             clickable: true
                         });
                         vehicleMarkers[vehicleId].addListener('click', () => {
-                            const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
-                            alert(vehicleId);
                             window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/iS3s41GyLhKQesiyY09G/view/run?vehicleId=${vehicleId}`
                         })
                     }
