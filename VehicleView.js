@@ -514,8 +514,8 @@ return () => { }
 		`
 
         box.injectNode(scoreFrame)
-        start_sim;
-        vehicle.Powertrain.TractionBattery.StateOfCharge.Current.set("100")
+        start_sim();
+        vehicle.Powertrain.TractionBattery.StateOfCharge.Current="100"
         let score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
         console.log("score: "+score);
       
