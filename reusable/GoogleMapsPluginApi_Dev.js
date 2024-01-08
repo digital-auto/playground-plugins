@@ -72,11 +72,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     let coordinates = carsCoordinates[carId];
                     console.log("index"+index);
                     index++;
-                    let coordinates_Next=carsCoordinates[index];
-                    console.log("longitude next: "+coordinates_Next.longitude)
+                  
 
-                    
+                    console.log(vehicleId==carId);
                     if (vehicleId==carId){
+                        let coordinates_Next=carsCoordinates[index];
+                        console.log("longitude next: "+coordinates_Next.longitude)
                         
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
@@ -142,9 +143,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             */
 
     // Use stepPositions to render or perform any other actions
-    const stepPositions = fetchPathFromApi();
-    console.log(stepPositions)
-    path= await stepPositions;
+    const stepPositions = await fetchPathFromApi();
+  
+    path=  stepPositions;
     let intervalId2;
     let pos=0.00001;
     
