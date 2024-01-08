@@ -419,14 +419,8 @@ return () => { }
 
         return GoogleMapsFromSignal(
             [
-                {
-                    "lat": 47.93330662389945,
-                    "lng": 6.8981571326644175
-                },
-                {
-                    "lat": 53.08277351361783,
-                    "lng": 13.195127235586439
-                },
+              path[0],
+              path[1],
             ],
             vehicle,
         )(box)
