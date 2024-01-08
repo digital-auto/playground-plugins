@@ -98,7 +98,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       { lat: coordinates.latitude, lng: coordinates.longitude },
                       { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
                   ]
-                  console.log(retu);
+                  
 
                     return retu;
               }
@@ -358,16 +358,45 @@ return () => { }
     widgets.register("VehicleMap", (box) => {
         condBecomesTrue(() => currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"] !== 0, 1000)
         .then(() => {
-            const path = [
-                {
-                    lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"],
-                    lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Longitude"]
-                },
-                {
-                    lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Latitude"],
-                    lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Longitude"]
-                }
-            ]
+          let path = [
+            {
+                lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Latitude"],
+                lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.OriginSet.Longitude"]
+            },
+            {
+                lat: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Latitude"],
+                lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Longitude"]
+            }
+        ]
+        console.log("path 1")
+        console.log(path)
+          fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+          .then(response => response.json())
+          .then(carsCoordinates => {
+              // For each vehicle, create a marker on the map
+              const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
+              let coordinates_Next ;
+
+              for (let carId in carsCoordinates) {
+                  let coordinates = carsCoordinates[carId];
+
+                  if (vehicleId==carId){
+                    path=[
+                      { lat: coordinates.latitude, lng: coordinates.longitude },
+                      { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
+                  ]
+                  
+
+                   
+              }
+              else{
+                  coordinates_Next=carsCoordinates[carId];
+              }
+          }
+          console.log("path 2")
+          console.log(path)
+         
+           
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
             const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
 
@@ -386,6 +415,7 @@ return () => { }
                 .catch((e) => console.log("Directions request failed due to " + e));    
             }, 0)
         })
+         })
 
         return GoogleMapsFromSignal(
             [
