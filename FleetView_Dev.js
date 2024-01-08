@@ -64,6 +64,7 @@ const plugin = ({ box, widgets }) => {
                 fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
                 .then(response => response.json())
                 .then(vehicleCoordinates => {
+                    console.log(vehicleCoordinates);
                     // For each vehicle, create a marker on the map
                     for (let vehicleId in vehicleCoordinates) {
                         let coordinates = vehicleCoordinates[vehicleId];
