@@ -462,6 +462,19 @@ return () => { }
   }
 
   let sim_intervalId = null;
+  
+let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev/"
+
+let SimulatorStarted = false
+
+const getAnsysStatus = async () => {
+    console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`)
+    const res = await fetch(`${ANSYS_API}simulations/status`)
+    if (!res.ok) throw "Get ansys status failed"
+    return await res.json()
+}
+
+
   const start_sim = async (time) => {
       let res = await getAnsysStatus()
       if (res && res.Status === "IDLE") {
