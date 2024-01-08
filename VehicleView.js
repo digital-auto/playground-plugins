@@ -515,7 +515,15 @@ return () => { }
 
         box.injectNode(scoreFrame)
         start_sim;
-       vehicle.Powertrain.TractionBattery.StateOfCharge.Current.set("99");
+        const score = "100"
+      
+      scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
+      scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
+      scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
+      scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
+      //message you want to write with the bar
+      scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
+       
 
 
         box.window.addEventListener("unload", async () => {
