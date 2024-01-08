@@ -22,7 +22,7 @@ const plugin = ({ box, widgets }) => {
                 const rectCenter = new box.window.google.maps.LatLngBounds(rectangleCoordinates[0], rectangleCoordinates[1]).getCenter()
 
                 const map = new box.window.google.maps.Map(container, {
-                    zoom: 6.3,
+                    zoom: 9,
                     center: rectCenter,
                     mapTypeId: 'terrain'
                 });
