@@ -57,7 +57,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             return
         }
         const response = await fetch(`https://fleetsim.onrender.com/vehicle/${vehicleId}`)
-        console.log(`https://fleetsim.onrender.com/vehicle/${vehicleId}`);
         const fleetJson = await response.json()
         for (const signal in currentSignalValues) {
             currentSignalValues[signal] = fleetJson[signal].value
@@ -89,23 +88,19 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
               const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
-              let coordinates_Next ;
-
+ 
               for (let carId in carsCoordinates) {
                   let coordinates = carsCoordinates[carId];
 
                   if (vehicleId==carId){
                     let retu=[
-                      { lat: coordinates.latitude, lng: coordinates.longitude },
-                      { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
+                      { lat: coordinates.latitude_start, lng: coordinates.longitude_start },
+                      { lat: coordinates.latitude_end, lng: coordinates.longitude_end }
                   ]
                   
 
                     return retu;
-              }
-              else{
-                  coordinates_Next=carsCoordinates[carId];
-              }
+              } 
           }
           }).catch(error => {
               console.error('Error fetching data from the API:', error);
