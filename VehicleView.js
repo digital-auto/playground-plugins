@@ -418,10 +418,7 @@ return () => { }
          })
 
         return GoogleMapsFromSignal(
-            [
-              path[0],
-              path[1],
-            ],
+            path,
             vehicle,
         )(box)
     })
