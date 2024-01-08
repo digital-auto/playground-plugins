@@ -79,7 +79,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     //////////// Test Maps ///////////////
 
   widgets.register("VehicleMapDev", async (box) => {
-    const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
+    
 
     const fetchPathFromApi = async() => {
 
@@ -90,6 +90,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
               const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
               let index=0; 
               let coordinates_Next ;
+              const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
 
               for (let carId in carsCoordinates) {
