@@ -288,13 +288,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           i++;
                           score=score-2;
                           document.cookie = "score="+score;
-                          if(score<70){
-                            console.log("Low Battery")
-
-                            Near_Charger()
-                          }
+                         
                           //pos=pos+0.00001;
 
+                      } else  if(score<70){
+                        console.log("Low Battery")
+
+                        Near_Charger()
                       }
                       if (intervalId2) {
                         console.log("Clearing existing interval:", intervalId2);
