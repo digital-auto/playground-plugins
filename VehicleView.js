@@ -470,7 +470,7 @@ let SimulatorStarted = false
         box.injectNode(scoreFrame)
       
         
-        updateSignals();
+        await updateSignals();
         
   
         box.window.addEventListener("unload", async () => {
