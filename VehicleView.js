@@ -374,7 +374,7 @@ return () => { }
                     { lat: coordinates.latitude_start, lng: coordinates.longitude_start },
                     { lat: coordinates.latitude_end, lng: coordinates.longitude_end }
                 ]
-                  return retu;
+                  path= retu;
             } 
         }       
 
