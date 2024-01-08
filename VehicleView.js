@@ -517,6 +517,7 @@ return () => { }
         start_sim;
         vehicle.Powertrain.TractionBattery.StateOfCharge.Current.set("100")
         let score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
+        console.log("score: "+score);
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
       scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
