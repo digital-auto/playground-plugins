@@ -417,7 +417,8 @@ return () => { }
     const updateSignals = async () => {
        
       
-      score = await GoogleMapsFromSignal.getScore()
+      score = document.cookie;
+      console.log(score)
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
       scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
