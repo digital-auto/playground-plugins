@@ -413,45 +413,11 @@ return () => { }
         )(box)
     })
  
-  
-    const updateSignals = async (signals) => {
-      if (!signals) return
-
-      simulator("Vehicle.TravelledDistance", "get", async () => {
-          return roundNumber(signals["Distance"])
-      })
-      simulator("Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "get", async () => {
-          return roundNumber(signals["SOC"])
-      })
-      simulator("Vehicle.Speed", "get", async () => {
-          return roundNumber(signals["Speed_kmph"])
-      })
-      // simulator("Vehicle.Acceleration.Longitudinal", "get", async () => {
-      //     return roundNumber(signals["Acceleration_Limit"])
-      // })
-      simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "get", async () => {
-          return roundNumber(signals["Fan_Speed"])
-      })
-      simulator("Vehicle.Cabin.Lights.LightIntensity", "get", async () => {
-          return roundNumber(signals["Interior_Lighting"])
-      })
-      simulator("Vehicle.Cabin.Sunroof.Position", "get", async () => {
-          return roundNumber(signals["Sunroof"])
-      })
-      simulator("Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "get", async () => {
-          // const signalValue = signals["Temperature"];
-          // const result = 45 - signalValue;
-          // return roundNumber(result);
-          return roundNumber(signals["Temperature"]);
-      })
-      simulator("Vehicle.Cabin.Infotainment.Media.Volume", "get", async () => {
-          return roundNumber(signals["Volume"])
-      })
-
-
-      // update the values related to the bar here, what vss api value you want the bar for
-      // const score = await vehicle.Passenger.KinetosisScore.get()
-      const score = await GoogleMapsFromSignal.getScore()
+    let score =100
+    const updateSignals = async () => {
+       
+      
+      score = await GoogleMapsFromSignal.getScore()
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
       scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
@@ -503,16 +469,8 @@ let SimulatorStarted = false
         box.injectNode(scoreFrame)
       
         
-        vehicle.Powertrain.TractionBattery.StateOfCharge.Current="100"
-        let score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-        console.log("score: "+score);
-      
-      scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
-      scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
-      scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
-      scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
-      //message you want to write with the bar
-      scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
+        updateSignals();
+        
   
         box.window.addEventListener("unload", async () => {
             console.log("on widget unload")
