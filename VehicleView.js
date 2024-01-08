@@ -97,10 +97,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       { lat: coordinates.latitude_start, lng: coordinates.longitude_start },
                       { lat: coordinates.latitude_end, lng: coordinates.longitude_end }
                   ]
-
-               
-                  
-
                     return retu;
               } 
           }
@@ -369,26 +365,19 @@ return () => { }
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
               const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
-              let coordinates_Next ;
 
               for (let carId in carsCoordinates) {
-                  let coordinates = carsCoordinates[carId];
+                let coordinates = carsCoordinates[carId];
 
-                  if (vehicleId==carId){
-                    path=[
-                      { lat: coordinates.latitude, lng: coordinates.longitude },
-                      { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
-                  ]
-                  
+                if (vehicleId==carId){
+                  let retu=[
+                    { lat: coordinates.latitude_start, lng: coordinates.longitude_start },
+                    { lat: coordinates.latitude_end, lng: coordinates.longitude_end }
+                ]
+                  return retu;
+            } 
+        }       
 
-                   
-              }
-              else{
-                  coordinates_Next=carsCoordinates[carId];
-              }
-          }
-         
-           
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
             const end = new box.window.google.maps.LatLng(path[1].lat, path[1].lng);        
 
