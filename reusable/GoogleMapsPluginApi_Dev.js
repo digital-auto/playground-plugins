@@ -246,6 +246,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
+                          score--;
+                          document.cookie = "score="+score;
                            //pos=pos+0.00001;
 
                       }
