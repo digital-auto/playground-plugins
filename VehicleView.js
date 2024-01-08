@@ -434,7 +434,7 @@ return () => { }
 let SimulatorStarted = false
 
 
-
+let intervalId2;
        let scoreFrame = null;
     widgets.register("Score Bar", async (box) => {
         scoreFrame = document.createElement("div")
@@ -470,7 +470,16 @@ let SimulatorStarted = false
         box.injectNode(scoreFrame)
       
         
-        await updateSignals();
+        
+        
+        intervalId2 = setInterval(async () => {
+          await updateSignals();
+            if (intervalId2) {
+              console.log("Clearing existing interval:", intervalId2);
+              clearInterval(intervalId2);
+          }
+
+        }, 1000);
         
   
         box.window.addEventListener("unload", async () => {
