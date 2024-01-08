@@ -1,8 +1,7 @@
 import StatusTable from "./reusable/StatusTable.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal_Dev.js"
 import LineChart from "./reusable/LineChart.js"
-import loadScript from "./loadScript.js";
-
+ 
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const condBecomesTrue = async (cond, sleep_ms = 1000) => {
@@ -432,6 +431,21 @@ return () => { }
             vehicle,
         )(box)
     })
+    const loadScript = (boxWindow, url) => {
+      return new Promise(async (resolve, reject) => {
+          try {
+              const script = boxWindow.document.createElement("script");
+              script.defer = true;
+              script.referrerPolicy = "origin"
+  
+              script.src = url;
+              boxWindow.document.head.appendChild(script);
+              script.addEventListener("load", () => resolve(undefined));
+          } catch (e) {
+              reject();
+          }
+      });
+  }
     const supportsIteratorApis = (vehicle) => {
       try {
           vehicle.IteratorEnded.get()
