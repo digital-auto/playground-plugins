@@ -431,6 +431,17 @@ return () => { }
             vehicle,
         )(box)
     })
+    const supportsIteratorApis = (vehicle) => {
+      try {
+          vehicle.IteratorEnded.get()
+          return true
+      } catch (error) {
+          console.log("supportsIteratorApis Error:", error)
+          return false
+      }
+  }
+
+  
     const LineChart2 = (signals, vehicle, refreshTime = 800) => {
 
       return (box) => {
