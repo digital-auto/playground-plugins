@@ -61,7 +61,7 @@ const plugin = ({ box, widgets }) => {
                 const vehicleMarkers = {}
 
                 // Fetch vehicle coordinates and add markers to map
-                fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+                fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
                 .then(response => response.json())
                 .then(vehicleCoordinates => {
                     // For each vehicle, create a marker on the map
@@ -90,7 +90,7 @@ const plugin = ({ box, widgets }) => {
 
                 // Every 5 seconds, fetch the new coordinates and update the vehicle markers
                 setInterval(async () => {
-                    const response = await fetch("https://fleetsim.onrender.com/vehicle/all/coordinates")
+                    const response = await fetch("http://193.148.170.44:9966/get_vehicle_coordinates")
                     const vehicleCoordinates = await response.json();
                     Object.keys(vehicleCoordinates).forEach(vehicleId => {
                         const coordinates = vehicleCoordinates[vehicleId];
