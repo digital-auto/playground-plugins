@@ -98,7 +98,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                       { lat: coordinates.latitude_end, lng: coordinates.longitude_end }
                   ]
 
-                  alert(retu)
+               
                   
 
                     return retu;
@@ -118,7 +118,6 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
         // Use stepPositions to render or perform any other actions
         const stepPositions = fetchPathFromApi();
-        console.log(stepPositions);
 
         const filteredPath = [stepPositions[0], stepPositions[1]];
 
@@ -264,7 +263,6 @@ function initMap_mobile() {
         infoWindowcontent = '<div class="ib infobox"><label style="font-weight:bold;text-transform: uppercase;">To Address:</label><hr><br/>' + results[0].formatted_address + '<br /><br /><button class="btn btn-block btn-primary btn-sm" onclick = "clear_arr();" value = "delete">Delete</button><br/></div>';
       }
       if (marker == null) {
-        console.log(event.latLng);
         marker = new box.window.google.maps.Marker({
           position: event.latLng,
           draggable: true,
@@ -366,8 +364,6 @@ return () => { }
                 lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Longitude"]
             }
         ]
-        console.log("path 1")
-        console.log(path)
           fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
           .then(response => response.json())
           .then(carsCoordinates => {
@@ -391,8 +387,6 @@ return () => { }
                   coordinates_Next=carsCoordinates[carId];
               }
           }
-          console.log("path 2")
-          console.log(path)
          
            
             const start = new box.window.google.maps.LatLng(path[0].lat, path[0].lng);
