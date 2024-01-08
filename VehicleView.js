@@ -515,7 +515,7 @@ return () => { }
 
         box.injectNode(scoreFrame)
         start_sim;
-       vehicle.Powertrain.TractionBattery.StateOfCharge.Current.set(99);
+       vehicle.Powertrain.TractionBattery.StateOfCharge.Current.set("99");
 
 
         box.window.addEventListener("unload", async () => {
