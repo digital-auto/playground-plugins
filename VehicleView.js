@@ -100,25 +100,13 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   
 
                   if (vehicleId==carId){
-
-                   return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
-                  .then(response => response.json())
-                  .then(data => {
-                 
-
                 
-
-                      const stepPositions = data.routes[0].legs.flatMap(leg =>
-                          leg.steps.map(step => ({
-                              lat: step.maneuver.location[1],
-                              lng: step.maneuver.location[0]
-                          }))
-                      );
-                     
-                      
-
-                      return stepPositions;
-                  })
+                    return [
+                      { lat: coordinates.latitude, lng: coordinates.longitude },
+                   
+                      { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
+                  ];
+                  
               }
               else{
                   coordinates_Next=carsCoordinates[carId];
