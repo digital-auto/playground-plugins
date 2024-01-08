@@ -57,6 +57,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             return
         }
         const response = await fetch(`https://fleetsim.onrender.com/vehicle/${vehicleId}`)
+        console.log(`https://fleetsim.onrender.com/vehicle/${vehicleId}`);
         const fleetJson = await response.json()
         for (const signal in currentSignalValues) {
             currentSignalValues[signal] = fleetJson[signal].value
