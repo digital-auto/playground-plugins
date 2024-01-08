@@ -19,7 +19,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     if (!vehicleId) {
         // Fetch vehicle coordinates from API and link to the first vehicle
-        fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+        fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
         .then(response => response.json())
         .then(vehicleCoordinates => {
             const firstVehicleId = Object.keys(vehicleCoordinates)[0]
@@ -83,7 +83,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     const fetchPathFromApi = async() => {
 
-      fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+      fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
           .then(response => response.json())
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
@@ -370,7 +370,7 @@ return () => { }
         ]
         console.log("path 1")
         console.log(path)
-          fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
+          fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
           .then(response => response.json())
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
