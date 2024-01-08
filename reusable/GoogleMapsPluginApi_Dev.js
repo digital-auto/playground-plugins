@@ -64,12 +64,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
-                alert("test")
+               
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
+                    alert("Id: "+carId)
+
                     
-                    if (vehicleId==carsCoordinates[carId]){
+                    if (vehicleId==carId){
+                        
                      lat = coordinates.latitude;
                      lng = coordinates.longitude;
                      alert(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates.longitude+pos+","+coordinates.latitude+pos+"?steps=true")
