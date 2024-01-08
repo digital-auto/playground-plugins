@@ -94,10 +94,14 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                   let coordinates = carsCoordinates[carId];
 
                   if (vehicleId==carId){
+                    let retu=[
+                      { lat: coordinates.latitude, lng: coordinates.longitude },
+                      { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
+                  ]
+                  console.log(retu);
 
                     return [
                       { lat: coordinates.latitude, lng: coordinates.longitude },
-                   
                       { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
                   ];
               }
