@@ -281,7 +281,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               document.cookie = "score="+score;
                           }  
                           else if(score==100){
-                            charger=true;
+                            charger=false;
                           }
                       }, 1000);
 
@@ -294,7 +294,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length > i) && (score>68) && charger) {
+                      if ((path.length > i) && (score>68) && !charger) {
                           lat = path[i].lat;
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
@@ -305,7 +305,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           //pos=pos+0.00001;
 
                       } else  if(score<70&&!charger){
-                        
+                        charger=true;                     
 
                         Near_Charger()
                       }
