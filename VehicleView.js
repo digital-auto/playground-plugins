@@ -474,11 +474,6 @@ let intervalId2;
         
         intervalId2 = setInterval(async () => {
           await updateSignals();
-            if (intervalId2) {
-              console.log("Clearing existing interval:", intervalId2);
-              clearInterval(intervalId2);
-          }
-
         }, 1000);
         
   
