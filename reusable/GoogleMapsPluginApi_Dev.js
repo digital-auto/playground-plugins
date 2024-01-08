@@ -155,8 +155,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let pos=0.00001;
     
     
-     intervalId2 = setInterval(() => {
-        if (path.length>i){
+     intervalId2 = setInterval(async () => {
+        if (await path.length>i){
         console.log(path[i]);
         //pos=+0.001;
        i++;}
