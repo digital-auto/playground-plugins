@@ -245,7 +245,7 @@ function initMap_mobile() {
       lat: 42.700000762939,
       lng: 23.333299636841
     },
-    zoom: 13
+    zoom: 18
   });
   directionsRenderer.setMap(map);
 
