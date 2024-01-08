@@ -239,18 +239,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[i].lng;
                           marker.setPosition({ lat, lng });
                           i++;
-                            score = score - i;
-      
-      scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
-      scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
-      scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
-      scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
-      //message you want to write with the bar
-      scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
-                         
-
-
-                          //pos=pos+0.00001;
+                           //pos=pos+0.00001;
 
                       }
                       if (intervalId2) {
