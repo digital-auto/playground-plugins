@@ -269,12 +269,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           }
                           else if (distance(min.latitude,min.longitude,path[i].lat,path[i].lng)>distance(coordinates.latitude,coordinates.longitude,path[i].lat,path[i].lng)){
                             min=coordinates
+                            console.log("min.latitude: "+min.latitude)
+                            console.log("min.longitude: "+min.longitude)
                           }
                       }
                       lat = min.latitude;
                       lng = min.longitude;
                       marker.setPosition({ lat, lng });
-                      console.log("min.latitude"+min.latitude)
+                      
                       intervalId = setInterval(async () => {
                           if (charger&&score<100) {
                               score=score+1;
