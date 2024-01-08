@@ -88,25 +88,18 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
               const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
-              let index=0; 
               let coordinates_Next ;
-              const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
-
 
               for (let carId in carsCoordinates) {
                   let coordinates = carsCoordinates[carId];
-                 
-                  index++;
-                  
 
                   if (vehicleId==carId){
-                
+
                     return [
                       { lat: coordinates.latitude, lng: coordinates.longitude },
                    
                       { lat: coordinates_Next.latitude, lng: coordinates_Next.longitude }
                   ];
-                  
               }
               else{
                   coordinates_Next=carsCoordinates[carId];
@@ -117,8 +110,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
               // Return a default path or handle the error as needed
               return [
                   { lat: 49.116911, lng: 9.176294 },
-                  { lat: 48.7758, lng: 9.1829 },
-                  { lat: 48.9471, lng: 9.4342 },
+              
                   { lat: 49.0688, lng: 9.2887 }
               ];
           });
@@ -129,7 +121,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         const stepPositions = fetchPathFromApi();
         console.log(stepPositions);
 
-        const filteredPath = [stepPositions[0], stepPositions[stepPositions.length - 1]];
+        const filteredPath = [stepPositions[0], stepPositions[1]];
 
         return GoogleMapsFromSignal(
             filteredPath,
