@@ -59,12 +59,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
     const fetchPathFromApi = () => {
-         
+        const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
+
         fetch('https://fleetsim.onrender.com/vehicle/all/coordinates')
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
-                const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
 
 
                 for (let carId in carsCoordinates) {
