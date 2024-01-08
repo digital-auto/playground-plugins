@@ -60,9 +60,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId;
     let i=0;
     let score=100;
+    document.cookie = "score="+score;
+
     const apiUrl = 'http://193.148.170.44:5000/route/v1/driving/';
 
     const fetchPathFromApi = async() => {
+
 
         return fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
             .then(response => response.json())
