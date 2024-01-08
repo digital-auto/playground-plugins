@@ -65,12 +65,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
+                let index=0;
 
 
                 for (let carId in carsCoordinates) {
                     let coordinates = carsCoordinates[carId];
-                    let index=carsCoordinates.indexOf(carsCoordinates[carId]);
-                    let coordinates_Next=carsCoordinates[index+1];
+                    index++;
+                    let coordinates_Next=carsCoordinates[index];
                     console.log("longitude next: "+coordinates_Next.longitude)
 
                     
