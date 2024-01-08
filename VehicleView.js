@@ -114,7 +114,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
                               lng: step.maneuver.location[0]
                           }))
                       );
-                      console.log(stepPositions);
+                     
                       
 
                       return stepPositions;
@@ -139,6 +139,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
         // Use stepPositions to render or perform any other actions
         const stepPositions = await fetchPathFromApi();
+        console.log(fetchPathFromApi());
 
         const filteredPath = [stepPositions[0], stepPositions[stepPositions.length - 1]];
 
