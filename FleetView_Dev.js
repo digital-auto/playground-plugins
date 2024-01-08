@@ -83,7 +83,7 @@ const plugin = ({ box, widgets }) => {
                             clickable: true
                         });
                         vehicleMarkers[vehicleId].addListener('click', () => {
-                            window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/iS3s41GyLhKQesiyY09G/view/run?vehicleId=${vehicleId}`
+                            window.location.href = `/model/RBWCkwGkZqqfh6Dv3gMf/library/prototype/uPoDFuXSWxXPgKm4SuXE/view/run?vehicleId=${vehicleId}`
                         })
                     }
                 });
