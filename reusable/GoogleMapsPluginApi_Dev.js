@@ -84,7 +84,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      return fetch(apiUrl+coordinates.longitude+","+coordinates.latitude+";"+coordinates_Next.longitude+","+coordinates_Next.latitude+"?steps=true")
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+           
 
                 const stepPositions = data.routes[0].legs.flatMap(leg =>
                     leg.steps.map(step => ({
@@ -92,6 +92,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lng: step.maneuver.location[0]
                     }))
                 );
+                console.log(stepPositions);
 
                 return stepPositions;
             })
