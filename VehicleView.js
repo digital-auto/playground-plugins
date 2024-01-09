@@ -433,7 +433,7 @@ return () => { }
     console.log("score"+score)
     if ((parseFloat(score)<74)&&!InStation){
       InStation=true;
-    } else if ((parseFloat(score)>98)&&InStation) {
+    } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
     }
     
