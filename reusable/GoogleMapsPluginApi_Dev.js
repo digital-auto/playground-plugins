@@ -300,24 +300,24 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                        
 
                       marker.setPosition({ lat, lng });
+  
+
                       if(defect){
                         Near_Charger();
                       }
                       else {
+                        intervalId = setInterval(async () => {
+                            if (charger&&score<100) {
+                                score=score+1;
+                                document.cookie = "score="+score;
+                            }  
+                            else if(score==100){
+                              charger=false;
+                            }
+                        }, 200);
+                        
                         count++;
                       }
-
- 
-                      
-                      intervalId = setInterval(async () => {
-                          if (charger&&score<100) {
-                              score=score+1;
-                              document.cookie = "score="+score;
-                          }  
-                          else if(score==100){
-                            charger=false;
-                          }
-                      }, 200);
 
                   });
                         
