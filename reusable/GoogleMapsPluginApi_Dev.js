@@ -261,7 +261,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     }
                     function Near_Charger(){
                  // Fetch chargestation coordinates and add markers to map
-                  fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
+                  fetch('http://193.148.170.44:9966/get_chargestation_data')
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
                       // For each charger, create a marker on the map
