@@ -527,11 +527,10 @@ let intervalId3;
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
 
-         
+        intervalId3 = setInterval(async () => {
           await updateImagePlayed(charger,Drive);
-        
-
-        box.window.document.body.appendChild(a)
+        }, 1000);
+ 
     })
 
     // LineChart widget for StateOfCharge
