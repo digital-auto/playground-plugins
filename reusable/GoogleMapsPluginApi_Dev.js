@@ -160,7 +160,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
      
      intervalId2 = setInterval(async () => {
         if (path)
-        if (path.length>i){
+        if (path.length>count){
             score--;
         
         //pos=+0.001;
