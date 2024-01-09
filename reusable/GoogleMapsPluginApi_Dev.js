@@ -296,9 +296,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       path[count].lat=lat;
                       path[count].lng=lng;
                       defect=min.defect;
+                      intervalId = setInterval(  () => {
+                        marker.setPosition({ lat, lng });
+                    }, 1000);
                        
 
-                      marker.setPosition({ lat, lng });
+                      
                       if(defect){
                         Near_Charger2();
                       } 
@@ -351,9 +354,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       path[count].lat=lat;
                       path[count].lng=lng;
                       defect=min.defect;
+                      intervalId = setInterval(  () => {
+                        marker.setPosition({ lat, lng });
+                    }, 1000);
                        
 
-                      marker.setPosition({ lat, lng });
+                      
                       
 
                       intervalId = setInterval(async () => {
