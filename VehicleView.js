@@ -434,13 +434,13 @@ return () => { }
     
 
     if ( parseFloat(score).toFixed(2)<74){
-      charger.style="display:block";
-      Drive.style="display:none";
+      charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+      Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
       console.log("Image charger played")
     }
     else{
-      Drive.style="display:block";
-      charger.style="display:none";
+      Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+      charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
       console.log("Image Drive played")
 
     }
@@ -522,7 +522,7 @@ let intervalId3;
     let Drive=null;
     widgets.register("ImageCharger",  box => {
       const container = document.createElement("div");
-      container.setAttribute("style", `display:block; ;overflow:auto;padding: 20px;`);
+      container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 
       container.innerHTML = `
          <img  id="charger" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_Right.gif?alt=media&token=1535ab5b-b44c-4eee-a1eb-7f784a95a8c7" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
