@@ -232,6 +232,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               } : icon,
                               clickable: true
                           });
+                          console.log("position of "+ chargestationId +" : "+ chargestationMarkers[chargestationId].getPosition())
+
                       
                       }
                   });
@@ -278,6 +280,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                      
                       marker.setPosition({ lat, lng });
+
                       console.log("lat : "+ lat)
                       console.log("lng : "+ lng)
                       console.log("position : "+ marker.getPosition())
