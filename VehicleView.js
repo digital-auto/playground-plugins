@@ -426,19 +426,23 @@ return () => { }
       scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
       //message you want to write with the bar
       scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
-
-      if ( parseFloat(score).toFixed(2)<70){
-        charger.style="display:block";
-        Drive.style="display:none";
-        console.log("Image charger played")
-      }
-      else{
-        Drive.style="display:block";
-        charger.style="display:none";
-        console.log("Image Drive played")
-
-      }
+ 
   }
+  const updateImagePlayed = async (charger,Drive) => {
+    score = document.cookie.substring(6, document.cookie.length)
+
+    if ( parseFloat(score).toFixed(2)<70){
+      charger.style="display:block";
+      Drive.style="display:none";
+      console.log("Image charger played")
+    }
+    else{
+      Drive.style="display:block";
+      charger.style="display:none";
+      console.log("Image Drive played")
+
+    }
+}
 
   let sim_intervalId = null;
   
@@ -519,6 +523,9 @@ let intervalId2;
         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
+        intervalId2 = setInterval(async () => {
+          await updateImagePlayed(charger,Drive);
+        }, 1000);
     
       
         
