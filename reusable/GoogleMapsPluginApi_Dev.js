@@ -325,7 +325,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           score=score-2;
                           document.cookie = "score="+score;
                          
-                      } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
+                      } else  if((score<22)&&(!charger)&&(count<(path.length*1.7))){
                         charger=true;                     
 
                         Near_Charger()
