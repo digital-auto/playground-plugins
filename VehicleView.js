@@ -547,7 +547,10 @@ let intervalId3;
     })
 
  
-    let Type=null;
+    let Volkswagen=null;
+    let Mercedes=null;
+    let Hyundai=null;
+  
     widgets.register("ImageCharger",  box => {
       const container = document.createElement("div");
       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
