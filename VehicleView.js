@@ -430,10 +430,13 @@ return () => { }
       if ( parseFloat(score).toFixed(2)<70){
         charger.style="display:block";
         Drive.style="display:none";
+        console.log("Image charger played")
       }
       else{
         Drive.style="display:block";
         charger.style="display:none";
+        console.log("Image Drive played")
+
       }
   }
 
