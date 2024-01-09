@@ -284,6 +284,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       lat = min.latitude;
                       lng = min.longitude;
+                      console.log("latitude changed : "+ lat)
+                       console.log("longitude changed: "+ lng)
                       marker.setPosition({ lat, lng });
                       
                       intervalId = setInterval(async () => {
