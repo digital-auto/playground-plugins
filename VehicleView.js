@@ -453,6 +453,7 @@ let SimulatorStarted = false
 
 
 let intervalId2;
+let intervalId3;
        let scoreFrame = null;
     widgets.register("Score Bar", async (box) => {
         scoreFrame = document.createElement("div")
@@ -525,12 +526,11 @@ let intervalId2;
         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
-        intervalId2 = setInterval(async () => {
+
+        intervalId3 = setInterval(async () => {
           await updateImagePlayed(charger,Drive);
         }, 1000);
-    
-      
-        
+
         box.window.document.body.appendChild(a)
     })
 
