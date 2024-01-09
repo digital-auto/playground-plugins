@@ -297,7 +297,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length > count) && (score>68) && !charger) {
+                      if ((path.length > count) && (score>22) && !charger) {
                           lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
@@ -308,7 +308,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                          
                           //pos=pos+0.00001;
 
-                      } else  if((score<70)&&(!charger)&&(count<(path.length-2))){
+                      } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
                         charger=true;                     
 
                         Near_Charger()
