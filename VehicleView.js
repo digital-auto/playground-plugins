@@ -536,6 +536,7 @@ let intervalId3;
         intervalId3 = setInterval(async () => {
           await updateImagePlayed(charger,Drive);
         }, 1000);
+        box.injectNode(container);
  
     })
 
