@@ -274,12 +274,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       lat = min.latitude;
                       lng = min.longitude;
-                      console.log("lat : "+ lat)
-                      console.log("lng : "+ lng)
-                      console.log("position : "+ marker.getPosition())
+                    
 
                      
                       marker.setPosition({ lat, lng });
+                      console.log("lat : "+ lat)
+                      console.log("lng : "+ lng)
+                      console.log("position : "+ marker.getPosition())
                       
                       intervalId = setInterval(async () => {
                           if (charger&&score<100) {
