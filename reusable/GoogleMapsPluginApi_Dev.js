@@ -279,7 +279,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           let coordinates = chargestationCoordinates[chargestationId];
 
                           if (coordinates.availability)    
-                          if (coordinates.latitude !=lat)           
                           if (min==null){
                             min=coordinates
                             minIdCharger=chargestationId  
@@ -300,24 +299,74 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                        
 
                       marker.setPosition({ lat, lng });
-  
-
                       if(defect){
-                        Near_Charger();
-                      }
-                      else {
-                        intervalId = setInterval(async () => {
-                            if (charger&&score<100) {
-                                score=score+1;
-                                document.cookie = "score="+score;
-                            }  
-                            else if(score==100){
-                              charger=false;
-                            }
-                        }, 200);
+                        Near_Charger2();
+                      } 
+
+                      intervalId = setInterval(async () => {
+                          if (charger&&score<100) {
+                              score=score+1;
+                              document.cookie = "score="+score;
+                          }  
+                          else if(score==100){
+                            charger=false;
+                          }
+                      }, 200);
+                      
+                      
+
+                  });
                         
-                        count++;
+
+
+                    }
+                    function Near_Charger2(){
+                        
+                 // Fetch chargestation coordinates and add markers to map
+                  fetch('http://193.148.170.44:9966/get_chargestation_data')
+                  .then(response => response.json())
+                  .then(chargestationCoordinates => {
+                      // For each charger, create a marker on the map
+                      let min=null;
+                      let minIdCharger=null;
+                   
+                      for (let chargestationId in chargestationCoordinates) {
+                          let coordinates = chargestationCoordinates[chargestationId];
+
+                          if (coordinates.availability && !coordinates.defect)    
+                          if (min==null){
+                            min=coordinates
+                            minIdCharger=chargestationId  
+                                                     
+                          }
+                          else if (distance(min.latitude,min.longitude,path[count].lat,path[count].lng)>distance(coordinates.latitude,coordinates.longitude,path[count].lat,path[count].lng)){
+                            min=coordinates
+                            minIdCharger=chargestationId
+                          }
                       }
+                    
+
+                      lat = min.latitude;
+                      lng = min.longitude;
+                      path[count].lat=lat;
+                      path[count].lng=lng;
+                      defect=min.defect;
+                       
+
+                      marker.setPosition({ lat, lng });
+                      
+
+                      intervalId = setInterval(async () => {
+                          if (charger&&score<100) {
+                              score=score+1;
+                              document.cookie = "score="+score;
+                          }  
+                          else if(score==100){
+                            charger=false;
+                          }
+                      }, 200);
+                      
+                      
 
                   });
                         
