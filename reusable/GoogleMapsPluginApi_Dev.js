@@ -232,7 +232,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               } : icon,
                               clickable: true
                           });
-                          console.log("position: "+ chargestationMarkers[chargestationId].getPosition())
+                        
 
                       
                       }
@@ -265,7 +265,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       let min=null;
                    
                       for (let chargestationId in chargestationCoordinates) {
-                          let coordinates = chargestationCoordinates[chargestationId];
+                          let coordinates = chargestationMarkers[chargestationId].getPosition();
                  
                           if (min==null){
                             min=coordinates
