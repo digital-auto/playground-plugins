@@ -431,9 +431,14 @@ return () => { }
   const updateImagePlayed = async (charger,Drive) => {
     score = document.cookie.substring(6, document.cookie.length)
     console.log("score"+score)
+    if ((parseFloat(score)<74)&&!InStation){
+      InStation=true;
+    } else if ((parseFloat(score)>98)&&InStation) {
+      InStation=false;
+    }
     
 
-    if ( parseFloat(score).toFixed(2)<74){
+    if (InStation){
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
       Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
       console.log("Image charger played")
@@ -520,6 +525,7 @@ let intervalId3;
  
     let charger=null;
     let Drive=null;
+    let InStation=false;
     widgets.register("ImageCharger",  box => {
       const container = document.createElement("div");
       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
