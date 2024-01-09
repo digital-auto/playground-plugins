@@ -546,6 +546,52 @@ let intervalId3;
  
     })
 
+ 
+    let Type=null;
+    widgets.register("ImageCharger",  box => {
+      const container = document.createElement("div");
+      container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+
+      container.innerHTML = `
+         <img id="Volkswagen" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FVolkswagen-ID3-Pro-S-77kWh-white-2023%5E1024x768%5E.jpg?alt=media&token=97002866-6a6a-4c7c-82f3-038f199a83e5" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
+         <img id="Mercedes" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fd7b373568add71640cc2782105d2429c.png?alt=media&token=d2109cec-f1e7-40f9-8b78-51f7fdfd6d20" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
+         <img id="Hyundai" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F2022-ioniq-5-atlas-white_o-1024x576.png?alt=media&token=daf8aa49-f0c2-4ae9-81b0-0e72df0f3507" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
+         `
+         Volkswagen = container.querySelector("#Volkswagen");
+         Mercedes = container.querySelector("#Mercedes");
+         Hyundai = container.querySelector("#Hyundai");
+        
+
+        fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+        .then(response => response.json())
+        .then(carsCoordinates => {
+            // For each vehicle, create a marker on the map
+            const vehicleId =  new URLSearchParams(window.location.search).get('vehicleId');
+            for (let carId in carsCoordinates) {
+                let coordinates = carsCoordinates[carId];
+                if (vehicleId==carId){
+                 if(coordinates.vehicle_type=="Mercedes-Benz EQS"){
+                  Mercedes.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+
+                 }
+                 else if(coordinates.vehicle_type=="Volkswagen ID.3"){
+                  Volkswagen.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+
+                 }
+                 else {
+                  Hyundai.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+
+                 }
+                }
+              }
+            })
+ 
+        
+
+        box.injectNode(container);
+ 
+    })
+
     // LineChart widget for StateOfCharge
 
     const StateOfChargeTile = {
