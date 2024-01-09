@@ -58,7 +58,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let latCar1 = 0;
     let lngCar1 = 0;
     let intervalId;
-    let i=0;
+    let count=0;
     let score=100;
     let distance=0;
     document.cookie = "score="+score;
@@ -297,12 +297,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length > i) && (score>68) && !charger) {
-                          lat = path[i].lat;
-                          lng = path[i].lng;
+                      if ((path.length > count) && (score>68) && !charger) {
+                          lat = path[count].lat;
+                          lng = path[count].lng;
                           marker.setPosition({ lat, lng });
-                          i++;
-                          console.log("i= "+i);
+                          count++;
+                          console.log("count= "+count);
                           score=score-2;
                           document.cookie = "score="+score;
                          
@@ -313,10 +313,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                         Near_Charger()
                       }
-                      if (intervalId2) {
+                    /*  if (intervalId2) {
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
+                    */
 
                   }, 2000);
                              
