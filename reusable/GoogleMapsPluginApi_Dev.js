@@ -298,13 +298,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       defect=min.defect;
                       intervalId = setInterval( async () => {
                         await marker.setPosition({ lat, lng });
+                        if(defect){
+                            Near_Charger2();
+                          } 
                     }, 1000);
                        
 
                       
-                      if(defect){
-                        Near_Charger2();
-                      } 
+                      
 
                       intervalId = setInterval(async () => {
                           if (charger&&score<100) {
