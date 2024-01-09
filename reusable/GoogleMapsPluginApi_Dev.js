@@ -330,11 +330,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                         Near_Charger()
                       }
-                    /*  if (intervalId2) {
+                     if (intervalId2) {
                         console.log("Clearing existing interval:", intervalId2);
                         clearInterval(intervalId2);
                     }
-                    */
+                    
 
                   }, 2000);
                  
