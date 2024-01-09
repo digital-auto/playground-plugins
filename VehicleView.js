@@ -68,13 +68,156 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     setInterval(updateVehicle, 1000)
 
     updateVehicle()
+ 
+    widgets.register("VehicleStatusDev",  box => {
 
-	widgets.register("VehicleStatus", StatusTable({
-        // Filter all Latitiude and Longitude signals
-        apis: Object.keys(currentSignalValues).filter(signal => !(signal.includes("Latitude") || signal.includes("Longitude")) ),
-        vehicle,
-        refresh: 500
-    }))
+      const DataTableHTML = ({
+        headers,
+        rows,
+        colorTheme = {}
+    }) => {
+        colorTheme = Object.assign({
+            headerBackground: "#6c7ae0",
+            headerText: "white",
+            oddCellBackground: "transparent",
+            oddCellText: "#808080",
+            evenCellBackground: "#f8f6ff",
+            evenCellText: "#808080",
+        }, colorTheme)
+        return `
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        table {
+            display: grid;
+            height: fit-content;
+            min-height: 100%;
+            border-collapse: collapse;
+            min-width: 100%;
+            grid-template-columns: 
+                minmax(80px, 1fr)
+                minmax(80px, 1fr)
+            ;
+            grid-template-rows: min-content auto;
+            font-size: inherit;
+        }
+          
+        thead,
+        tbody,
+        tr {
+            display: contents;
+        }
+          
+        th,
+        td {
+            padding: 1em;
+            min-height: fit-content;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: max-content;
+        }
+          
+        th {
+            position: sticky;
+            top: 0;
+            background: ${colorTheme.headerBackground};
+            user-select: none;
+            text-align: left;
+            font-weight: normal;
+            font-size: 1.1em;
+            color: ${colorTheme.headerText};
+            font-weight: bold;
+        }
+          
+        th:last-child {
+            border: 0;
+        }
+        
+        td:first-child {
+            font-weight: bold;
+        }
+    
+        td {
+            padding-top: .66em;
+            padding-bottom: .66em;
+            background: ${colorTheme.oddCellBackground};
+            color: ${colorTheme.oddCellText};
+            height: 100%;
+        }
+          
+        tr:nth-child(even) td {
+            background: ${colorTheme.evenCellBackground};
+            color: ${colorTheme.evenCellText};
+        }
+    
+        </style>
+            <div style="display: flex !important; height: 100%; width: 100%;">
+                <table>
+                    <thead>
+                        <tr>
+                            ${headers.map(header => `<th>${header}</th>`).join("")}
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+            </table>
+        </div>
+        `
+    }
+ 
+const StatusTable = ({apis, vehicle, refresh = 5 * 1000}) => {
+  return (box) => {
+      const div = document.createElement("div")
+      div.style = "display: flex;height: 100%;width: 100%;"
+      div.innerHTML = DataTableHTML({
+          headers: ["VSS API", "Value"],
+          rows: apis.map(api => ({
+              htmlAttributes: `data-api="${api}"`,
+              cells: {
+                  "VSS API": api,
+                  "Value": ""
+              }
+          }))
+      })
+      box.injectNode(div)
+      
+      const updateTable = async () => {
+          for (const api of apis) {
+              const stripped = api.split(".").slice(1).join(".")
+              const val = await vehicle[stripped].get()
+              div.querySelector(`tbody > [data-api="${api}"] > td:nth-child(2)`).textContent = val
+          }
+      }
+
+      updateTable()
+
+      if (refresh !== null) {
+          if (typeof refresh !== "number") {
+              throw new Error("parameter 'refresh' must be an error")
+          }
+          const intervalId = setInterval(updateTable, refresh)
+          return () => clearInterval(intervalId)
+      }
+
+  }
+
+};
+      StatusTable({
+        // apis: ["Vehicle.TravelledDistance", "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "Vehicle.Cabin.Lights.LightIntensity", "Vehicle.Cabin.Sunroof.Position", "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "Vehicle.Cabin.Infotainment.Media.Volume", "Vehicle.PowerOptimizeLevel", "Vehicle.Cabin.Infotainment.HMI.Brightness", "Vehicle.Cabin.Infotainment.HMI.DisplayOffTime", "Vehicle.Cabin.Infotainment.HMI.IsScreenAlwaysOn", "Vehicle.Cabin.Infotainment.HMI.LastActionTime", "Vehicle.Cabin.Infotainment.Media.Volume"],
+      apis: ["Vehicle.TravelledDistance", "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current", "Vehicle.Speed", "Vehicle.Cabin.HVAC.Station.Row1.Left.FanSpeed", "Vehicle.Cabin.Lights.LightIntensity", "Vehicle.Cabin.Sunroof.Position", "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature", "Vehicle.Cabin.Infotainment.Media.Volume"],
+        vehicle: vehicle,
+        refresh: 800
+    })
+      box.injectNode(div)
+ 
+    })
 
     //////////// Test Maps ///////////////
 
@@ -413,7 +556,7 @@ return () => { }
         )(box)
     })
  
-    let score =100
+    let score =50
     const updateSignals = async () => {
        
       
