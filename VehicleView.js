@@ -418,7 +418,7 @@ return () => { }
        
       
       score = document.cookie.substring(6, document.cookie.length)
-      console.log(score)
+     
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
       scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
@@ -430,8 +430,10 @@ return () => { }
   }
   const updateImagePlayed = async (charger,Drive) => {
     score = document.cookie.substring(6, document.cookie.length)
+    console.log("score"+score)
+    
 
-    if ( parseFloat(score).toFixed(2)<70){
+    if ( parseFloat(score).toFixed(2)<74){
       charger.style="display:block";
       Drive.style="display:none";
       console.log("Image charger played")
