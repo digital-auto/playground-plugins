@@ -569,6 +569,11 @@ let intervalId3;
  
     })
   /////Table for test //////
+  let VIN=null;
+  let IsCharging=null;
+  let TimeToComplete=null;
+  let Current=null;
+
   widgets.register("TableVSS",  box => {
     const container = document.createElement("div");
     container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
@@ -657,35 +662,23 @@ let intervalId3;
                 <tbody>
                     
                         <tr data-api="Vehicle.VehicleIdentification.VIN">
-                            <td title="Vehicle.VehicleIdentification.VIN">Vehicle.VehicleIdentification.VIN</td><td title="">1GNCT18W9TEH9XV1E</td>
+                            <td title="Vehicle.VehicleIdentification.VIN">Vehicle.VehicleIdentification.VIN</td><td id="VIN"> </td>
                         </tr>
+                     
                     
-                        <tr data-api="Vehicle.Speed">
-                            <td title="Vehicle.Speed">Vehicle.Speed</td><td title="">0</td>
-                        </tr>
-                    
-                        <tr data-api="Vehicle.Powertrain.TractionBattery.NetCapacity">
-                            <td title="Vehicle.Powertrain.TractionBattery.NetCapacity">Vehicle.Powertrain.TractionBattery.NetCapacity</td><td title="">80</td>
-                        </tr>
-                    
-                        <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.ChargeLimit">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.ChargeLimit">Vehicle.Powertrain.TractionBattery.Charging.ChargeLimit</td><td title="">94</td>
-                        </tr>
+                     
                     
                         <tr data-api="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">
-                            <td title="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td><td title="">-0.17007927254561045</td>
+                            <td title="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td><td  id="Current"></td>
                         </tr>
-                    
-                        <tr data-api="Vehicle.Powertrain.TractionBattery.Range">
-                            <td title="Vehicle.Powertrain.TractionBattery.Range">Vehicle.Powertrain.TractionBattery.Range</td><td title="">-0.6803170901824418</td>
-                        </tr>
+                     
                     
                         <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td><td title="">false</td>
+                            <td title="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td><td id="IsCharging"></td>
                         </tr>
                     
                         <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td><td title="">1494.2690264734508</td>
+                            <td title="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td><td  id="TimeToComplete"></td>
                         </tr>
                     
                 </tbody>
@@ -693,11 +686,18 @@ let intervalId3;
     </div>
     </div>
     `
-        
-      
- 
-      
+      VIN=container.querySelector("#VIN");
+      IsCharging=container.querySelector("#IsCharging");
+      Current=container.querySelector("#Current");
+      TimeToComplete=container.querySelector("#TimeToComplete");
+      intervalId3 = setInterval(async () => {
+        VIN.textContent= new URLSearchParams(window.location.search).get('vehicleId');
+        Current.textContent  = document.cookie.substring(6, document.cookie.length);
+        IsCharging.textContent = InStation;
+        TimeToComplete.textContent = parseFloat(document.cookie.substring(6, document.cookie.length))*60 ;  
+      }, 1000);
 
+ 
       box.injectNode(container);
 
   })
