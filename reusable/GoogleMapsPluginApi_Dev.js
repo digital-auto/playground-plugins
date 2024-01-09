@@ -270,11 +270,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                    
                       for (let chargestationId in chargestationCoordinates) {
                           let coordinates = chargestationCoordinates[chargestationId];
-                 
+
+                          if (coordinates.availability)                 
                           if (min==null){
                             min=coordinates
-                            minIdCharger=chargestationId
-                            
+                            minIdCharger=chargestationId                            
                           }
                           else if (distance(min.latitude,min.longitude,path[count].lat,path[count].lng)>distance(coordinates.latitude,coordinates.longitude,path[count].lat,path[count].lng)){
                             min=coordinates
