@@ -263,22 +263,28 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   .then(chargestationCoordinates => {
                       // For each charger, create a marker on the map
                       let min=null;
+                      let minIdCharger=null;
                    
                       for (let chargestationId in chargestationCoordinates) {
                           let coordinates = chargestationCoordinates[chargestationId];
                  
                           if (min==null){
                             min=coordinates
+                            minIdCharger=chargestationId
+                            
                           }
                           else if (distance(min.latitude,min.longitude,path[count].lat,path[count].lng)>distance(coordinates.latitude,coordinates.longitude,path[count].lat,path[count].lng)){
                             min=coordinates
+                            minIdCharger=chargestationId
                           }
                       }
+                      console.log(chargestationMarkers[minIdCharger].getPosition())
+
                       lat = min.latitude;
                       lng = min.longitude;
+
                     
 
-                     
                       marker.setPosition({ lat, lng });
 
                       console.log("lat : "+ lat)
