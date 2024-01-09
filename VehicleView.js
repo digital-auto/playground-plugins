@@ -89,7 +89,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
-        console.log(Drive)
+        
  
 
         intervalId3 = setInterval(async () => {
@@ -453,7 +453,7 @@ return () => { }
   }
   const updateImagePlayed = async (charger,Drive) => {
     score = document.cookie.substring(6, document.cookie.length)
-    console.log("score"+score)
+     
     if ((parseFloat(score)<24)&&!InStation){
       InStation=true;
     } else if ((parseFloat(score)>96)&&InStation) {
@@ -464,12 +464,12 @@ return () => { }
     if (InStation){
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
       Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-      console.log("Image charger played")
+     
     }
     else{
       Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-      console.log("Image Drive played")
+      
 
     }
 }
@@ -559,7 +559,7 @@ let intervalId3;
         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
-        console.log(Drive)
+       
  
 
         intervalId3 = setInterval(async () => {
