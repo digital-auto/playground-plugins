@@ -297,10 +297,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       path[count].lat=lat;
                       path[count].lng=lng;
                       defect=min.defect;
+                       
 
                       marker.setPosition({ lat, lng });
                       if(defect){
                         Near_Charger();
+                      }
+                      else {
+                        count++;
                       }
 
  
