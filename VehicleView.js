@@ -426,6 +426,15 @@ return () => { }
       scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
       //message you want to write with the bar
       scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
+
+      if ( parseFloat(score).toFixed(2)<70){
+        charger.style="display:block";
+        Drive.style="display:none";
+      }
+      else{
+        Drive.style="display:block";
+        charger.style="display:none";
+      }
   }
 
   let sim_intervalId = null;
@@ -507,14 +516,7 @@ let intervalId2;
         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
-        if ( await charger){
-          charger.style="display:block";
-          Drive.style="display:none";
-        }
-        else{
-          Drive.style="display:block";
-          charger.style="display:none";
-        }
+    
       
         
         box.window.document.body.appendChild(a)
