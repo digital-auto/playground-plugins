@@ -154,7 +154,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
   
     path=  stepPositions;
     let intervalId2;
-    let pos=0.00001;
+
     let charger=false;
     
      
@@ -163,7 +163,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         if (path.length>count){
             score--;
         
-        //pos=+0.001;
+    
         count++;}
     }, 2000); 
     
@@ -255,8 +255,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         return dist
                     }
                     function Near_Charger(){
-                        console.log("Low Battery")
-                        // Fetch chargestation coordinates and add markers to map
+                 // Fetch chargestation coordinates and add markers to map
                   fetch('https://fleetsim.onrender.com/chargestation/all/coordinates')
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
@@ -266,26 +265,17 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       for (let chargestationId in chargestationCoordinates) {
                           let coordinates = chargestationCoordinates[chargestationId];
                  
-
                           if (min==null){
                             min=coordinates
-                            console.log("min distance: "+ distance(min.latitude,min.longitude,path[count].lat,path[count].lng))
-
-                            console.log("latitude: "+ min.latitude)
-                            console.log("longitude: "+ min.longitude)
                           }
                           else if (distance(min.latitude,min.longitude,path[count].lat,path[count].lng)>distance(coordinates.latitude,coordinates.longitude,path[count].lat,path[count].lng)){
                             min=coordinates
-                            console.log("min distance: "+ distance(min.latitude,min.longitude,path[count].lat,path[count].lng))
-                          
-                            console.log("latitude: "+ min.latitude)
-                            console.log("longitude: "+ min.longitude)
                           }
                       }
                       lat = min.latitude;
                       lng = min.longitude;
-                      console.log("latitude changed : "+ lat)
-                       console.log("longitude changed: "+ lng)
+                      console.log("position : "+ marker.getPosition())
+                     
                       marker.setPosition({ lat, lng });
                       
                       intervalId = setInterval(async () => {
@@ -316,8 +306,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           score=score-2;
                           document.cookie = "score="+score;
                          
-                          //pos=pos+0.00001;
-
                       } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
                         charger=true;                     
 
