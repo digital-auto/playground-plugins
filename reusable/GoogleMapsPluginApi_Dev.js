@@ -266,6 +266,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         return dist
                     }
                     function Near_Charger(){
+                        let defect=false;
                  // Fetch chargestation coordinates and add markers to map
                   fetch('http://193.148.170.44:9966/get_chargestation_data')
                   .then(response => response.json())
@@ -277,10 +278,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       for (let chargestationId in chargestationCoordinates) {
                           let coordinates = chargestationCoordinates[chargestationId];
 
-                          if (coordinates.availability)                 
+                          if (coordinates.availability)    
+                          if (coordinates.latitude !=lat)           
                           if (min==null){
                             min=coordinates
-                            minIdCharger=chargestationId                            
+                            minIdCharger=chargestationId  
+                                                     
                           }
                           else if (distance(min.latitude,min.longitude,path[count].lat,path[count].lng)>distance(coordinates.latitude,coordinates.longitude,path[count].lat,path[count].lng)){
                             min=coordinates
@@ -291,10 +294,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                       lat = min.latitude;
                       lng = min.longitude;
-
-                    
+                      path[count].lat=lat;
+                      path[count].lng=lng;
+                      defect=min.defect;
 
                       marker.setPosition({ lat, lng });
+                      if(defect){
+                        Near_Charger();
+                      }
+
  
                       
                       intervalId = setInterval(async () => {
