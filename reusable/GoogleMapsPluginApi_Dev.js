@@ -268,9 +268,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           if (min==null){
                             min=coordinates
                           }
-                          else if (distance(min.latitude,min.longitude,path[i].lat,path[i].lng)>distance(coordinates.latitude,coordinates.longitude,path[i].lat,path[i].lng)){
+                          else if (distance(min.latitude,min.longitude,path[score].lat,path[score].lng)>distance(coordinates.latitude,coordinates.longitude,path[score].lat,path[score].lng)){
                             min=coordinates
-                            console.log("min distance: "+ distance(min.latitude,min.longitude,path[i].lat,path[i].lng))
+                            console.log("min distance: "+ distance(min.latitude,min.longitude,path[score].lat,path[score].lng))
                           
                           }
                       }
