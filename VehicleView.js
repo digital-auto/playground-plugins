@@ -551,7 +551,7 @@ let intervalId3;
     let Mercedes=null;
     let Hyundai=null;
   
-    widgets.register("ImageCharger",  box => {
+    widgets.register("ImageType",  box => {
       const container = document.createElement("div");
       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 
