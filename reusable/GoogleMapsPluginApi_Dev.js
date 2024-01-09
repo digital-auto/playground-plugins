@@ -278,7 +278,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
-                      console.log(chargestationMarkers[minIdCharger].getPosition())
+                      console.log(chargestationMarkers[minIdCharger].getPosition().lat)
 
                       lat = min.latitude;
                       lng = min.longitude;
