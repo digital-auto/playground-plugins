@@ -59,7 +59,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let lngCar1 = 0;
     let intervalId;
     let count=0;
-    let score=100;
+    let score=50;
     let distance=0;
     document.cookie = "score="+score;
 
