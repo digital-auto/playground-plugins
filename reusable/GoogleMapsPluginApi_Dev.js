@@ -296,8 +296,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       path[count].lat=lat;
                       path[count].lng=lng;
                       defect=min.defect;
-                      intervalId = setInterval(  () => {
-                        marker.setPosition({ lat, lng });
+                      intervalId = setInterval( async () => {
+                        await marker.setPosition({ lat, lng });
                     }, 1000);
                        
 
@@ -352,8 +352,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       lat = min.latitude;
                       lng = min.longitude;
                        
-                      intervalId = setInterval(  () => {
-                        marker.setPosition({ lat, lng });
+                      intervalId = setInterval(  async() => {
+                        await marker.setPosition({ lat, lng });
                     }, 1000);
                        
 
