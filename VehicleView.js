@@ -527,9 +527,9 @@ let intervalId3;
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
 
-        intervalId3 = setInterval(async () => {
+         
           await updateImagePlayed(charger,Drive);
-        }, 1000);
+        
 
         box.window.document.body.appendChild(a)
     })
