@@ -694,7 +694,7 @@ let intervalId3;
         VIN.textContent= new URLSearchParams(window.location.search).get('vehicleId');
         Current.textContent  = document.cookie.substring(6, document.cookie.length);
         IsCharging.textContent = InStation;
-        TimeToComplete.textContent = parseFloat(document.cookie.substring(6, document.cookie.length))*60 ;  
+        TimeToComplete.textContent = (100-parseFloat(document.cookie.substring(6, document.cookie.length)))*60 ;  
       }, 1000);
 
  
