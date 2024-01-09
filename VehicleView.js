@@ -520,12 +520,14 @@ let intervalId3;
  
     let charger=null;
     let Drive=null;
-    widgets.register("ImageCharger", async box => {
+    widgets.register("ImageCharger",  box => {
         box.window.document.body.innerHTML = `<img  id="charger" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_Right.gif?alt=media&token=1535ab5b-b44c-4eee-a1eb-7f784a95a8c7" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
         <img id="Drive" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F2a290a67d3bb877ef3038ad698790fd9.gif?alt=media&token=b48d7ec7-da39-411e-a5c4-0404ba718895" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>
         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
+        console.log(charger)
+        console.log(Drive)
 
         intervalId3 = setInterval(async () => {
           await updateImagePlayed(charger,Drive);
