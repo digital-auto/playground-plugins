@@ -498,7 +498,7 @@ let intervalId3;
         
         intervalId2 = setInterval(async () => {
           await updateSignals();
-        }, 1000);
+        }, 500);
         
   
         box.window.addEventListener("unload", async () => {
@@ -559,7 +559,7 @@ let intervalId3;
             StateOfChargeTile
         ],
         vehicle,
-        1000
+        500
     ))
 
 }
