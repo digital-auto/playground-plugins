@@ -232,7 +232,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               } : icon,
                               clickable: true
                           });
-                          console.log("position of "+ chargestationId +" : "+ chargestationMarkers[chargestationId].getPosition())
+                          console.log("position: "+ chargestationMarkers[chargestationId].getPosition())
 
                       
                       }
