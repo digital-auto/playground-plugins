@@ -498,6 +498,10 @@ return () => { }
  
 
       if (InStation&&(Status=="defectNo")){
+        const delayInMilliseconds = 1000;  
+        setTimeout(delayedFunction, 
+          delayInMilliseconds
+        );
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
@@ -508,10 +512,7 @@ return () => { }
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         
-        const delayInMilliseconds = 1000;  
-        setTimeout(delayedFunction, 
-          delayInMilliseconds
-        );
+     
       }
   
       else{
