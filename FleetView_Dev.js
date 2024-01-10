@@ -152,7 +152,7 @@ const plugin = ({ box, widgets }) => {
     ////////Action Widget////
     widgets.register("VehicleActions_Dev_Part2",  box => {
         const container = document.createElement("div");
-        container.setAttribute("style", `height: 100%; padding: 10px; display: flex; flex-direction: column;`);
+        container.setAttribute("style", `height: 100%; display: flex; flex-direction: column;`);
   
         container.innerHTML = `
                  
