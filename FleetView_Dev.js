@@ -144,6 +144,17 @@ const plugin = ({ box, widgets }) => {
 
             })
     })
+
+    widgets.register(
+        "VehicleActions",
+        SignalPills(
+            [
+                NumberOfMovingVehiclesTile,
+                NumberOfChargingVehiclesTile,
+            ],
+            fleet
+        )
+    )
 }
 
 export default plugin
