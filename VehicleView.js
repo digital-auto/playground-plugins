@@ -476,7 +476,7 @@ return () => { }
     console.log("Status: "+Status)
      
      
-    if ((parseFloat(score)<24)&&!InStation){
+    if ((parseFloat(score)<22)&&!InStation){
       InStation=true;
     } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
@@ -486,11 +486,11 @@ return () => { }
     Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     
 
-    if (InStation&&Status=="defectNo"){
+    if (InStation&&(Status=="defectNo")){
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     }
     
-    else if (Status=="defectYes"){
+    else if (InStation&&(Status=="defectYes")){
       Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     }
 
@@ -594,7 +594,7 @@ let intervalId3;
 
         intervalId3 = setInterval(async () => {
           await updateImagePlayed(charger,Drive,Defect);
-        }, 1000);
+        }, 200);
         box.injectNode(container);
  
     })
