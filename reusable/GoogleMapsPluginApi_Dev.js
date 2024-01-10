@@ -300,6 +300,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         await marker.setPosition({ lat, lng });
                         if(defect){
                             Near_Charger2();
+                            document.cookie = "Charger=defectYes";
                           } 
                     }, 1000);
                        
@@ -355,6 +356,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                        
                       intervalId = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
+                        document.cookie = "Charger=defectNo";
                     }, 1000);
                        
 
