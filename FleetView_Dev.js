@@ -173,9 +173,7 @@ const plugin = ({ box, widgets }) => {
             </div>
         
          `
-           Volkswagen = container.querySelector("#Volkswagen");
-           Mercedes = container.querySelector("#Mercedes");
-           Hyundai = container.querySelector("#Hyundai");
+           
           
    
           
