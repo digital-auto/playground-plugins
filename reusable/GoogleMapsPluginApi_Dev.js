@@ -360,7 +360,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       intervalId = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
                        
-                    }, 2000);
+                    }, 200);
                        
 
                       
