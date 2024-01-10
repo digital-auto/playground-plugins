@@ -42,6 +42,17 @@ const plugin = ({ widgets, simulator, modelObjectCreator }) => {
         )
     )
 
+    widgets.register(
+        "VehicleActions_Dev",
+        SignalPills(
+            [
+                NumberOfMovingVehiclesTile,
+                NumberOfChargingVehiclesTile,
+            ],
+            fleet
+        )
+    )
+
     const AverageSpeedTile = {
         signal: "Fleet.AverageSpeed",
         label: "AverageSpeed",
