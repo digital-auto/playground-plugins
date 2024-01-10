@@ -359,7 +359,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         await marker.setPosition({ lat, lng });
                         
                     }, 2000);
-                       document.cookie = "Charger=defectNo";
+                       
 
                       
                       
