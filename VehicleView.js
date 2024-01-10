@@ -575,6 +575,7 @@ let intervalId3;
  
     let charger=null;
     let Drive=null;
+    let Defect=null;
     let InStation=false;
     widgets.register("ImageCharger",  box => {
       const container = document.createElement("div");
@@ -582,15 +583,17 @@ let intervalId3;
 
       container.innerHTML = `
          <img  id="charger" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_Right.gif?alt=media&token=1535ab5b-b44c-4eee-a1eb-7f784a95a8c7" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
-        <img id="Drive" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F2a290a67d3bb877ef3038ad698790fd9.gif?alt=media&token=b48d7ec7-da39-411e-a5c4-0404ba718895" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>
-        `
+         <img id="Drive" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F2a290a67d3bb877ef3038ad698790fd9.gif?alt=media&token=b48d7ec7-da39-411e-a5c4-0404ba718895" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>
+         <img id="Defect" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fchargestation_defect_warning.png?alt=media&token=7628516f-a112-4f09-b266-7e0bc46540d8" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: block;"/>
+         `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
+        Defect = container.querySelector("#Defect");
        
  
 
         intervalId3 = setInterval(async () => {
-          await updateImagePlayed(charger,Drive);
+          await updateImagePlayed(charger,Drive,Defect);
         }, 1000);
         box.injectNode(container);
  
