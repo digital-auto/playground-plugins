@@ -1,3 +1,5 @@
+import SignalPills from "./reusable/SignalPills.js"
+
 const loadScript = (boxWindow, url) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -144,6 +146,48 @@ const plugin = ({ box, widgets }) => {
 
             })
     })
+
+
+    ////////Action Widget////
+    const fleet = modelObjectCreator("Fleet")
+
+    const NumberOfMovingVehiclesTile = {
+        signal: "Fleet.NumberOfMovingVehicles",
+        label: "NumberOfMovingVehicles",
+        icon: "route",
+    }
+
+    const NumberOfChargingVehiclesTile = {
+        signal: "Fleet.NumberOfChargingVehicles",
+        label: "NumberOfChargingVehicles",
+        icon: "charging-station",
+    }
+
+    const NumberOfStuckVehicles = {
+        signal: "Fleet.NumberOfStuckVehicles",
+        label: "NumberOfStuckVehicles",
+        icon: "car-burst",
+    }
+
+    const NumberOfQueuedVehicles = {
+        signal: "Fleet.NumberOfQueuedVehicles",
+        label: "NumberOfQueuedVehicles",
+        icon: "car-side",
+    }
+
+    widgets.register(
+        "VehicleActions",
+        SignalPills(
+            [
+                NumberOfMovingVehiclesTile,
+                NumberOfChargingVehiclesTile,
+                NumberOfStuckVehicles,
+                NumberOfQueuedVehicles
+            ],
+            fleet
+        )
+    )
+    //////End Actions//////
 }
 
 export default plugin
