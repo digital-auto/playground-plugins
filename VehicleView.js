@@ -454,7 +454,7 @@ return () => { }
   const updateImagePlayed = async (charger,Drive,Defect) => {
     score = document.cookie.substring(6, document.cookie.length)
     let Status=document.cookie.substring(8, document.cookie.length)
-    console.log(document.cookie)
+    console.log(document.cookie["Charger"])
      
     if ((parseFloat(score)<24)&&!InStation){
       InStation=true;
