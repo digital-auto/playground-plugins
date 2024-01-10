@@ -196,8 +196,8 @@ const plugin = ({ box, widgets }) => {
 
                }
            });
-           numStations.textContent= count.toString ;
-           AvStations.textContent= availables.toString;
+           numStations.textContent= count.toString() ;
+           AvStations.textContent= availables.toString();
            
           box.injectNode(container);
    
