@@ -66,7 +66,7 @@ const plugin = ({ box, widgets }) => {
                 fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
                 .then(response => response.json())
                 .then(vehicleCoordinates => {
-                    console.log(vehicleCoordinates);
+
                     // For each vehicle, create a marker on the map
                     for (let vehicleId in vehicleCoordinates) {
                         let coordinates = vehicleCoordinates[vehicleId];
@@ -120,8 +120,7 @@ const plugin = ({ box, widgets }) => {
                           color="#FF5D00" ;
                         }
                          
-                        console.log(chargestationCoordinates[chargestationId]);
-                        chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
+                         chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
                             map: map,
                             icon:  {
