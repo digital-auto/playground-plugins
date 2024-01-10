@@ -470,6 +470,10 @@ return () => { }
     // Return null if not found
     return null;
 }
+
+    
+      
+
   const updateImagePlayed = async (charger,Drive,Defect) => {
     score = getCookie("score") // document.cookie.substring(6, document.cookie.length)
     let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
@@ -486,17 +490,32 @@ return () => { }
     Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     
 
-    if (InStation&&(Status=="defectNo")){
-      charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-    }
-    
-    else if (InStation&&(Status=="defectYes")){
-      Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-    }
+    intervalId3 = setInterval(async () => {
+      numStations.textContent=   count ;
+     AvStations.textContent=   availables ;
+    }, 1000);
 
-    else{
-      Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-    }
+    function delayedFunction() { 
+      if (InStation&&(Status=="defectNo")){
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+      }
+      
+      else if (InStation&&(Status=="defectYes")){
+        Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+      }
+  
+      else{
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+      }
+    }  
+
+    const delayInMilliseconds = 3000;  
+      setTimeout(delayedFunction, 
+        delayInMilliseconds
+      );
+
+    
+    
 
     
 }
