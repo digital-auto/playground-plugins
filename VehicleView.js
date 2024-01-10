@@ -440,7 +440,7 @@ return () => { }
     const updateSignals = async () => {
        
       
-      score = document.cookie.substring(6, document.cookie.length)
+      score = getCookie("score")
      
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
@@ -451,10 +451,29 @@ return () => { }
       scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
  
   }
+  function getCookie(name) {
+    // Split cookie string and get all individual name=value pairs in an array
+    let cookieArr = document.cookie.split(";");
+    
+    // Loop through the array elements
+    for(let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+        
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    
+    // Return null if not found
+    return null;
+}
   const updateImagePlayed = async (charger,Drive,Defect) => {
-    score = document.cookie.substring(6, document.cookie.length)
-    let Status=document.cookie.substring(8, document.cookie.length)
-    console.log(document.cookie["Charger"])
+    score = getCookie("score") // document.cookie.substring(6, document.cookie.length)
+    let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
+     
      
     if ((parseFloat(score)<24)&&!InStation){
       InStation=true;
@@ -465,7 +484,7 @@ return () => { }
     charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     
-/*
+
     if (InStation&&Status=="defectNo"){
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     }
@@ -478,7 +497,7 @@ return () => { }
       Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     }
 
-    */
+    
 }
 
   let sim_intervalId = null;
@@ -699,9 +718,9 @@ let intervalId3;
       TimeToComplete=container.querySelector("#TimeToComplete");
       intervalId3 = setInterval(async () => {
         VIN.textContent= new URLSearchParams(window.location.search).get('vehicleId');
-        Current.textContent  = document.cookie.substring(6, document.cookie.length);
+        Current.textContent  = getCookie("score");
         IsCharging.textContent = InStation;
-        TimeToComplete.textContent = (100-parseFloat(document.cookie.substring(6, document.cookie.length)))*60 ;  
+        TimeToComplete.textContent = (100-parseFloat(getCookie("score")))*60 ;  
       }, 1000);
 
  
