@@ -118,16 +118,7 @@ const plugin = ({ box, widgets }) => {
             })
     })
 
-    widgets.register(
-        "VehicleActions",
-        SignalPills(
-            [
-                NumberOfMovingVehiclesTile,
-                NumberOfChargingVehiclesTile,
-            ],
-            fleet
-        )
-    )
+
 
     ///////// Maps for Dev /////////
     widgets.register("MapDev", (box) => {
