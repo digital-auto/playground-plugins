@@ -192,13 +192,15 @@ const plugin = ({ box, widgets }) => {
 
                    if (coordinates.availability){
                     availables++
+                    console.log("availables: "+ availables)
                    }
 
                }
            });
-
            numStations.textContent= count ;
            AvStations.textContent= availables;
+
+          
            
 
            
