@@ -1,5 +1,3 @@
-import SignalPills from "./reusable/SignalPills.js"
-
 const loadScript = (boxWindow, url) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -18,47 +16,6 @@ const loadScript = (boxWindow, url) => {
 
 
 const plugin = ({ box, widgets }) => {
-
-   ////////Actions Widget//////
-   const fleet = modelObjectCreator("Fleet")
-
-   const NumberOfMovingVehiclesTile = {
-       signal: "Fleet.NumberOfMovingVehicles",
-       label: "NumberOfMovingVehicles",
-       icon: "route",
-   }
-
-   const NumberOfChargingVehiclesTile = {
-       signal: "Fleet.NumberOfChargingVehicles",
-       label: "NumberOfChargingVehicles",
-       icon: "charging-station",
-   }
-
-   const NumberOfStuckVehicles = {
-       signal: "Fleet.NumberOfStuckVehicles",
-       label: "NumberOfStuckVehicles",
-       icon: "car-burst",
-   }
-
-   const NumberOfQueuedVehicles = {
-       signal: "Fleet.NumberOfQueuedVehicles",
-       label: "NumberOfQueuedVehicles",
-       icon: "car-side",
-   }
-
-   widgets.register(
-       "VehicleActions",
-       SignalPills(
-           [
-               NumberOfMovingVehiclesTile,
-               NumberOfChargingVehiclesTile,
-               NumberOfStuckVehicles,
-               NumberOfQueuedVehicles
-           ],
-           fleet
-       )
-   )
-   ///////End Actions Widget////
     widgets.register("Map", (box) => {
         loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`)
             .then(() => {
@@ -104,7 +61,7 @@ const plugin = ({ box, widgets }) => {
                 const vehicleMarkers = {}
 
                 // Fetch vehicle coordinates and add markers to map
-                fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
+                fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
                 .then(response => response.json())
                 .then(vehicleCoordinates => {
                     console.log(vehicleCoordinates);
@@ -134,7 +91,7 @@ const plugin = ({ box, widgets }) => {
 
                 // Every 5 seconds, fetch the new coordinates and update the vehicle markers
                 setInterval(async () => {
-                    const response = await fetch("https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates")
+                    const response = await fetch("http://193.148.170.44:9966/get_vehicle_coordinates")
                     const vehicleCoordinates = await response.json();
                     Object.keys(vehicleCoordinates).forEach(vehicleId => {
                         const coordinates = vehicleCoordinates[vehicleId];
@@ -146,7 +103,7 @@ const plugin = ({ box, widgets }) => {
                 const chargestationMarkers = {}
 
                 // Fetch chargestation coordinates and add markers to map
-                fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
+                fetch('http://193.148.170.44:9966/get_chargestation_data')
                 .then(response => response.json())
                 .then(chargestationCoordinates => {
                     // For each charger, create a marker on the map
@@ -187,8 +144,6 @@ const plugin = ({ box, widgets }) => {
 
             })
     })
-
- 
 }
 
 export default plugin
