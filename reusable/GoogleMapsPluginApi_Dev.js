@@ -299,7 +299,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         await marker.setPosition({ lat, lng });
                         if(defect){
                             Near_Charger2();
-                            document.cookie = "Charger=defectYes";
+                            
                           } 
                     }, 1000);
                        
@@ -325,6 +325,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                     }
                     function Near_Charger2(){
+                        document.cookie = "Charger=defectYes";
                         
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
@@ -352,12 +353,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                       lat = min.latitude;
                       lng = min.longitude;
+                      
                        
                       intervalId = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
-                        document.cookie = "Charger=defectNo";
+                        
                     }, 2000);
-                       
+                       document.cookie = "Charger=defectNo";
 
                       
                       
