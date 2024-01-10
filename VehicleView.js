@@ -460,9 +460,7 @@ return () => { }
     console.log("Status: "+Status)
      
      
-    if ((parseFloat(score)<22)&&!InStation){
-      InStation=true;
-    } else if ((parseFloat(score)>96)&&InStation) {
+    if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
     } 
 
@@ -472,11 +470,12 @@ return () => { }
     }, 1000);
 
     function delayedFunction() { 
+      if(InStation){
     console.log("delayed")
-
     charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+    }
     }  
 
  
@@ -489,11 +488,11 @@ return () => { }
       
       }
       
-      else if (InStation&&(Status=="defectYes")){
+      else if ((Status=="defectYes")){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-        
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none"
+        InStation=true;      
      
       }
   
