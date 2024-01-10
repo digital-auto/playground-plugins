@@ -453,14 +453,16 @@ return () => { }
 
     
       
-
+let Charged=false;
   const updateImagePlayed = async (charger,Drive,Defect) => {
     score = getCookie("score") // document.cookie.substring(6, document.cookie.length)
     let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
     console.log("Status: "+Status)
      
      
-    if ((parseFloat(score)>96)&&InStation) {
+    if ((parseFloat(score)<22)&&!InStation){
+      InStation=true;
+    } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
     } 
 
@@ -470,12 +472,13 @@ return () => { }
     }, 1000);
 
     function delayedFunction() { 
-      if(InStation){
+      if(!Charged){
     console.log("delayed")
     charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-    }
+    Charged=true;  
+  }
     }  
 
  
@@ -488,15 +491,16 @@ return () => { }
       
       }
       
-      else if ((Status=="defectYes")){
+      else if (InStation&&(Status=="defectYes")){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none"
-        InStation=true;      
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        
      
       }
   
       else{
+         
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
