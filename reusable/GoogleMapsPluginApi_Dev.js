@@ -264,8 +264,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         dist = dist * 1.609344
                         return dist
                     }
+
                     function Near_Charger(){
-                        let defect=false;
+                   let defect=false;
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
@@ -295,17 +296,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       path[count].lat=lat;
                       path[count].lng=lng;
                       defect=min.defect;
-                      intervalId = setInterval( async () => {
-                        await marker.setPosition({ lat, lng });
+                   
+                      
+                        marker.setPosition({ lat, lng });
                         if(defect){
                             Near_Charger2();
-                            
                           } 
-                    }, 1000);
-                       
-
-                      
-                      
+                
 
                       intervalId = setInterval(async () => {
                           if (charger&&score<100) {
@@ -316,17 +313,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             charger=false;
                           }
                       }, 200);
-                      
-                      
 
                   });
                         
-
-
                     }
                 
                    function Near_Charger2(){
-
+                    if(!charger)
                     document.cookie = "Charger=defectYes";
 
                  // Fetch chargestation coordinates and add markers to map
@@ -367,13 +360,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
 
                       intervalId = setInterval(async () => {
-                        document.cookie = "Charger=defectNo";
+                        
                           if (charger&&score<100) {
                               score=score+1;
                               document.cookie = "score="+score;
+                              document.cookie = "Charger=defectNo";
                           }  
                           else if(score==100){
                             charger=false;
+                            document.cookie = "Charger=defectNo";
                           }
                       }, 200);
                       
