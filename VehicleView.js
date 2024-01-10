@@ -496,8 +496,16 @@ return () => { }
     }, 1000);
 
     function delayedFunction() { 
+      charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+    }  
+
+ 
+
       if (InStation&&(Status=="defectNo")){
-        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+        const delayInMilliseconds = 1000;  
+        setTimeout(delayedFunction, 
+          delayInMilliseconds
+        );
       }
       
       else if (InStation&&(Status=="defectYes")){
@@ -507,12 +515,6 @@ return () => { }
       else{
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
       }
-    }  
-
-    const delayInMilliseconds = 3000;  
-      setTimeout(delayedFunction, 
-        delayInMilliseconds
-      );
 
     
     
