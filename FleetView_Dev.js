@@ -18,6 +18,16 @@ const loadScript = (boxWindow, url) => {
 
 
 const plugin = ({ box, widgets }) => {
+
+    widgets.register( "VehicleActions",
+        SignalPills(
+            [
+                NumberOfMovingVehiclesTile,
+                NumberOfChargingVehiclesTile,
+            ],
+            fleet
+        )
+    )
     widgets.register("Map", (box) => {
         loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`)
             .then(() => {
@@ -147,16 +157,7 @@ const plugin = ({ box, widgets }) => {
             })
     })
 
-    widgets.register(
-        "VehicleActions",
-        SignalPills(
-            [
-                NumberOfMovingVehiclesTile,
-                NumberOfChargingVehiclesTile,
-            ],
-            fleet
-        )
-    )
+ 
 }
 
 export default plugin
