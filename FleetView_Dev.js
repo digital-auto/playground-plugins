@@ -151,6 +151,8 @@ const plugin = ({ box, widgets }) => {
     ////////Action Widget////
     let AvStations=null;
     let numStations=null;
+    let intervalId3;
+
 
     widgets.register("VehicleActions_Dev_Part2",  box => {
         const container = document.createElement("div");
@@ -196,8 +198,11 @@ const plugin = ({ box, widgets }) => {
 
                }
            });
-           numStations.textContent= count.toString() ;
-           AvStations.textContent= 1;
+           
+           intervalId3 = setInterval(async () => {
+            numStations.textContent=   count ;
+           AvStations.textContent=   availables ;
+          }, 1000);
            
           box.injectNode(container);
    
