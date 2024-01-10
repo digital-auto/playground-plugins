@@ -319,7 +319,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     }
                 
                    function Near_Charger2(){
-                    if(!charger)
+
                     document.cookie = "Charger=defectYes";
 
                  // Fetch chargestation coordinates and add markers to map
