@@ -163,7 +163,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         if (path.length>count){
             score--;
 
-        count++;}
+        }
     }, 2000); 
     
  
