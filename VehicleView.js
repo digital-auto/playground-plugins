@@ -491,7 +491,7 @@ let Charged=false;
       
       }
       
-      else if (InStation&&(Status=="defectYes")){
+      else if ((Status=="defectYes")){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
