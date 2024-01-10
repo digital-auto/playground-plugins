@@ -68,7 +68,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     const fetchPathFromApi = async() => {
 
 
-        return fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+        return fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
             .then(response => response.json())
             .then(carsCoordinates => {
                 // For each vehicle, create a marker on the map
@@ -211,7 +211,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   const chargestationMarkers = {}
 
                   // Fetch chargestation coordinates and add markers to map
-                  fetch('http://193.148.170.44:9966/get_chargestation_data')
+                  fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
                       // For each charger, create a marker on the map
@@ -268,7 +268,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     function Near_Charger(){
                         let defect=false;
                  // Fetch chargestation coordinates and add markers to map
-                  fetch('http://193.148.170.44:9966/get_chargestation_data')
+                  fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
                       // For each charger, create a marker on the map
@@ -327,7 +327,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     function Near_Charger2(){
                         
                  // Fetch chargestation coordinates and add markers to map
-                  fetch('http://193.148.170.44:9966/get_chargestation_data')
+                  fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
                   .then(chargestationCoordinates => {
                       // For each charger, create a marker on the map
