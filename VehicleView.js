@@ -492,30 +492,33 @@ return () => { }
     }, 1000);
 
     function delayedFunction() { 
-      charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-
+    console.log("delayed")
     }  
 
-    charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-        Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-
+ 
 
       if (InStation&&(Status=="defectNo")){
-        const delayInMilliseconds = 1500;  
-        setTimeout(delayedFunction, 
-          delayInMilliseconds
-        );
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
       }
       
       else if (InStation&&(Status=="defectYes")){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-     
-
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        
+        const delayInMilliseconds = 1000;  
+        setTimeout(delayedFunction, 
+          delayInMilliseconds
+        );
       }
   
       else{
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+        Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+
       }
 
     
