@@ -484,11 +484,7 @@ return () => { }
       InStation=true;
     } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
-    }
-    Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-    charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-    Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-    
+    } 
 
     intervalId3 = setInterval(async () => {
       numStations.textContent=   count ;
@@ -497,6 +493,8 @@ return () => { }
 
     function delayedFunction() { 
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+      Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+      Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     }  
 
  
@@ -510,10 +508,16 @@ return () => { }
       
       else if (InStation&&(Status=="defectYes")){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+
       }
   
       else{
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+        Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+
       }
 
     
