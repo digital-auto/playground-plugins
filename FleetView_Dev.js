@@ -147,46 +147,43 @@ const plugin = ({ box, widgets }) => {
             })
     })
 
+ 
 
     ////////Action Widget////
-    const fleet = modelObjectCreator("Fleet")
-
-    const NumberOfMovingVehiclesTile = {
-        signal: "Fleet.NumberOfMovingVehicles",
-        label: "NumberOfMovingVehicles",
-        icon: "route",
-    }
-
-    const NumberOfChargingVehiclesTile = {
-        signal: "Fleet.NumberOfChargingVehicles",
-        label: "NumberOfChargingVehicles",
-        icon: "charging-station",
-    }
-
-    const NumberOfStuckVehicles = {
-        signal: "Fleet.NumberOfStuckVehicles",
-        label: "NumberOfStuckVehicles",
-        icon: "car-burst",
-    }
-
-    const NumberOfQueuedVehicles = {
-        signal: "Fleet.NumberOfQueuedVehicles",
-        label: "NumberOfQueuedVehicles",
-        icon: "car-side",
-    }
-
-    widgets.register(
-        "VehicleActions",
-        SignalPills(
-            [
-                NumberOfMovingVehiclesTile,
-                NumberOfChargingVehiclesTile,
-                NumberOfStuckVehicles,
-                NumberOfQueuedVehicles
-            ],
-            fleet
-        )
-    )
+    widgets.register("VehicleActions_Dev_Part2",  box => {
+        const container = document.createElement("div");
+        container.setAttribute("style", `height: 100%; padding: 10px; display: flex; flex-direction: column;`);
+  
+        container.innerHTML = `
+                 
+            <div style="display: flex; height: 100%; background-image: linear-gradient(to right, #f95850, #ff836f); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;margin-bottom: 7px;" data-signal="Fleet.NumberOfMovingVehicles">
+                <div style="display: flex; flex-direction: column; overflow: hidden; width: 100%;">
+                    <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="NumberOfMovingVehicles">NumberOfMovingVehicles</div>
+                    <div style="font-size: 1.1em;" class="signal-value"><span>87</span></div>
+                </div>
+                <div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-route" aria-hidden="true"></i></div>
+            </div>
+        
+            <div style="display: flex; height: 100%; background-image: linear-gradient(to right, #f95850, #ff836f); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;false" data-signal="Fleet.NumberOfChargingVehicles">
+                <div style="display: flex; flex-direction: column; overflow: hidden; width: 100%;">
+                    <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="NumberOfChargingVehicles">NumberOfChargingVehicles</div>
+                    <div style="font-size: 1.1em;" class="signal-value"><span>2</span></div>
+                </div>
+                <div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-charging-station" aria-hidden="true"></i></div>
+            </div>
+        
+         `
+           Volkswagen = container.querySelector("#Volkswagen");
+           Mercedes = container.querySelector("#Mercedes");
+           Hyundai = container.querySelector("#Hyundai");
+          
+   
+          
+  
+          box.injectNode(container);
+   
+      })
+      
     //////End Actions//////
 }
 
