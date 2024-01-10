@@ -162,8 +162,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
         if (path)
         if (path.length>count){
             score--;
-        
-    
+
         count++;}
     }, 2000); 
     
@@ -357,7 +356,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       intervalId = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
                         document.cookie = "Charger=defectNo";
-                    }, 1000);
+                    }, 2000);
                        
 
                       
@@ -389,8 +388,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
                           count++;
-                          console.log("count= "+count);
-                          score=score-2;
+                           score=score-2;
                           document.cookie = "score="+score;
                          
                       } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
