@@ -489,7 +489,7 @@ return () => { }
     intervalId3 = setInterval(async () => {
       numStations.textContent=   count ;
      AvStations.textContent=   availables ;
-    }, 2000);
+    }, 1000);
 
     function delayedFunction() { 
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
@@ -500,7 +500,7 @@ return () => { }
  
 
       if (InStation&&(Status=="defectNo")){
-        const delayInMilliseconds = 1000;  
+        const delayInMilliseconds = 2000;  
         setTimeout(delayedFunction, 
           delayInMilliseconds
         );
