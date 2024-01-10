@@ -150,9 +150,12 @@ const plugin = ({ box, widgets }) => {
  
 
     ////////Action Widget////
+    let AvStations=null;
+    let numStations=null;
+
     widgets.register("VehicleActions_Dev_Part2",  box => {
         const container = document.createElement("div");
-        container.setAttribute("style", `height: 100%; display: flex; flex-direction: column;`);
+        container.setAttribute("style", `height: 100%; display: flex; flex-direction: column;padding-left: 10px;padding-right: 10px;`);
   
         container.innerHTML = `
                  
@@ -160,27 +163,47 @@ const plugin = ({ box, widgets }) => {
             
         <div style="display: flex; height: 100%; background-image: linear-gradient(to right, #f95850, #ff836f); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;margin-bottom: 7px;" data-signal="Fleet.NumberOfMovingVehicles">
             <div style="display: flex; flex-direction: column; overflow: hidden; width: 100%;">
-                <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="NumberOfMovingVehicles">NumberOfMovingVehicles</div>
-                <div style="font-size: 1.1em;" class="signal-value"><span>87</span></div>
+                <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="NumberOfMovingVehicles">Number Of Charges Stations</div>
+                <div style="font-size: 1.1em;" class="signal-value"><span id="numStations">0</span></div>
             </div>
             <div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-route" aria-hidden="true"></i></div>
         </div>
     
         <div style="display: flex; height: 100%; background-image: linear-gradient(to right, #f95850, #ff836f); color: white; padding: 15px; border-radius: 15px; user-select: none; align-items: center;false" data-signal="Fleet.NumberOfChargingVehicles">
             <div style="display: flex; flex-direction: column; overflow: hidden; width: 100%;">
-                <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="NumberOfChargingVehicles">NumberOfChargingVehicles</div>
-                <div style="font-size: 1.1em;" class="signal-value"><span>2</span></div>
+                <div style="margin-bottom: 10px; overflow: hidden;text-overflow: ellipsis; font-size: 0.75em;" title="NumberOfChargingVehicles">Number Of Availables Charges Stations</div>
+                <div style="font-size: 1.1em;" class="signal-value"><span id="AvStations">0 </span></div>
             </div>
             <div style="margin-left: auto;height: 100%;margin-left: 10px;margin-right: 4px;margin-top: 4px;"><i style="font-size: 1.3em;" class="fa-solid fa-charging-station" aria-hidden="true"></i></div>
-        </div>
- 
-        
+        </div>        
          `
+         AvStations = container.querySelector("#AvStations");
+         numStations = container.querySelector("#numStations");
+         let count=0;
+         let availables=0;
+
+           // Fetch chargestation coordinates and add markers to map
+           fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
+           .then(response => response.json())
+           .then(chargestationCoordinates => {
+               // For each charger, create a marker on the map
+               for (let chargestationId in chargestationCoordinates) {
+                   let coordinates = chargestationCoordinates[chargestationId];
+                   count++;     
+
+                   if (coordinates.availability){
+                    availables++
+                   }
+
+               }
+           });
+
+           numStations.textContent= count ;
+           AvStations.textContent= availables;
            
-          
-   
-          
-  
+
+           
+ 
           box.injectNode(container);
    
       })
