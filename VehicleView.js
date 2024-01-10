@@ -19,7 +19,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     if (!vehicleId) {
         // Fetch vehicle coordinates from API and link to the first vehicle
-        fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+        fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
         .then(response => response.json())
         .then(vehicleCoordinates => {
             const firstVehicleId = Object.keys(vehicleCoordinates)[0]
@@ -106,7 +106,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
 
     const fetchPathFromApi = async() => {
 
-      fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+      fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
           .then(response => response.json())
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
@@ -383,7 +383,7 @@ return () => { }
                 lng: currentSignalValues["Vehicle.Cabin.Infotainment.Navigation.DestinationSet.Longitude"]
             }
         ]
-          fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+          fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
           .then(response => response.json())
           .then(carsCoordinates => {
               // For each vehicle, create a marker on the map
@@ -451,27 +451,34 @@ return () => { }
       scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
  
   }
-  const updateImagePlayed = async (charger,Drive) => {
+  const updateImagePlayed = async (charger,Drive,Defect) => {
     score = document.cookie.substring(6, document.cookie.length)
+    let Status=document.cookie.substring(8, document.cookie.length)
+    console.log(document.cookie)
      
     if ((parseFloat(score)<24)&&!InStation){
       InStation=true;
     } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
     }
+    Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+    charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+    Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     
-
-    if (InStation){
+/*
+    if (InStation&&Status=="defectNo"){
       charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-      Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-     
     }
+    
+    else if (Status=="defectYes"){
+      Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
+    }
+
     else{
       Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
-      charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-      
-
     }
+
+    */
 }
 
   let sim_intervalId = null;
@@ -722,7 +729,7 @@ let intervalId3;
          Hyundai = container.querySelector("#Hyundai");
         
 
-        fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+        fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
         .then(response => response.json())
         .then(carsCoordinates => {
             // For each vehicle, create a marker on the map
