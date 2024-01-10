@@ -473,6 +473,7 @@ return () => { }
   const updateImagePlayed = async (charger,Drive,Defect) => {
     score = getCookie("score") // document.cookie.substring(6, document.cookie.length)
     let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
+    console.log("Status: "+Status)
      
      
     if ((parseFloat(score)<24)&&!InStation){
