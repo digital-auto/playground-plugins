@@ -395,11 +395,22 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     }  
                 });
 
-                for(let p=0; p<positions.length-1;p++){
-                lat = positions[p].lat;
-                lng = positions[p].lng;
+                var p = 1;             
+
+                function myLoop() {        
+                setTimeout(function() {   
+                    console.log('hello');   
+                    p++;                 
+                    if (p < positions.length-1) {     
+                     lat = positions[p].lat;
+                    lng = positions[p].lng;      
+                    myLoop();           
+                    }                     
+                }, 50)
                 }
-                console.log(positions)
+
+                myLoop();  
+ 
  
             })
             
