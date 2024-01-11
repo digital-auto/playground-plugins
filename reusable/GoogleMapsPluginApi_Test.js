@@ -157,7 +157,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     let charger=false;
     
-     
+     /*
      intervalId2 = setInterval(async () => {
         if (path)
         if (path.length>count){
@@ -165,7 +165,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
         }
     }, 2000); 
-    
+    */
  
 
     
