@@ -380,9 +380,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           else if(score>=100){
                             score=100
                             charger=false;
-                            
                             document.cookie = "Charger=defectNo";
                           }
+                          
                           if (path.length <= count)
                       clearInterval(intervalId4);
                       }, 200);
