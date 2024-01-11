@@ -106,12 +106,17 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     fetch(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
                     .then(response => response.json())
                     .then(data => {
-                        let stepPositions2 = data.routes[0].legs.flatMap(leg =>
-                            leg.steps.map(step => ({
-                                lat: step.maneuver.location[1],
-                                lng: step.maneuver.location[0]
-                            }))
+                        
+                        let stepPositions2 = data.routes.flatMap(route =>
+                            route.legs.flatMap(leg =>
+                                leg.steps.map(step => ({
+                                    lat: step.maneuver.location[1],
+                                    lng: step.maneuver.location[0]
+                                }))
+                            )
                         );
+                         
+                        
                         if(k>1)
                         global=global.concat(stepPositions2); 
                         else
