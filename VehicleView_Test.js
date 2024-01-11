@@ -463,14 +463,14 @@ let Charged=false;
       InStation=true;
     } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
-       clearInterval(intervalId3);
+      clearInterval(intervalId3);
     } 
 
    
 
     function delayedFunction() { 
       if(!Charged){
-    console.log("delayed")
+  
     charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
     Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
     Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
