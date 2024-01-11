@@ -159,6 +159,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId3;
     let intervalId4;
     let intervalId6;
+    let routeToCharger=false;
 
     let charger=false;
     
@@ -321,8 +322,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     lng = positions[p].lng;  
                     await marker.setPosition({ lat, lng });
                     p++;
-                    if (positions.length <= p)
+                    if (positions.length <= p){
                   clearInterval(intervalId6);
+                  routeToCharger=false;
+                }
                 }, 50);
                 
  
@@ -342,6 +345,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         if(defect){
                             Near_Charger2();
                           } 
+                           
                 
 
                       intervalId4 = setInterval(async () => {
