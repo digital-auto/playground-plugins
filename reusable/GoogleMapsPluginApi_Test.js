@@ -97,6 +97,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lng: step.maneuver.location[0]
                     }))
                 );
+                console.log("stepPositions")
+                console.log(stepPositions)
                  
 
                 for (let k = 1; k < stepPositions.length; k++) {
