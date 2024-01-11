@@ -272,6 +272,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                     function Near_Charger(){
                    let defect=false;
+                   routeToCharger=true;
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
@@ -312,7 +313,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 });
 
                 let p = 0;  
-                charger=true
+                
+                
 
                 intervalId6 = setInterval(  async() => {
                     lat = positions[p].lat;
@@ -466,7 +468,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length-1 > count) && ( ((score>40) && !charger) || ((count>((path.length*0.75)))&&score>0) ) ) {
+                      if (!routeToCharger && (path.length-1 > count) && ( ((score>40) && !charger) || ((count>((path.length*0.75)))&&score>0) ) ) {
                         
                         lat = path[count].lat;
                           lng = path[count].lng;
