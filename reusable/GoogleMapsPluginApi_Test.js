@@ -315,7 +315,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               score=score+1;
                               document.cookie = "score="+score;
                           }  
-                          else if(score>=100){
+                          else if(score>=99){
                             score=100
                             charger=false;
                           }
@@ -377,7 +377,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               document.cookie = "score="+score;
                               document.cookie = "Charger=defectNo";
                           }  
-                          else if(score>=100){
+                          else if(score>=99){
                             score=100
                             charger=false;
                             document.cookie = "Charger=defectNo";
@@ -398,7 +398,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length-1 > count) && (((score>40) && !charger)||((count>=((path.length*0.75)))&&score>0 )) ) {
+                      if ((path.length-1 > count) && ( ((score>=40) && !charger) || ((count>((path.length*0.7)))&&score>0) ) ) {
                           lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
@@ -408,9 +408,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         count+=4;
                         else
                         count++;
-                           score=score-0.2;
+                          score=score-0.2;
                           document.cookie = "score="+score;
-                         
                       } else  if((score<40)&&(!charger)&&(score>0)){
                         charger=true;  
                         Near_Charger()
