@@ -399,7 +399,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   intervalId = setInterval(async () => {
                     if (path)
                       if ((path.length-1 > count) && ( ((score>40) && !charger) || ((count>((path.length*0.8)))&&score>0) ) ) {
-                          lat = path[count].lat;
+                        console.log("count: "+count)  
+                        console.log("path.length*0.8: "+path.length*0.8)  
+                        lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
                           if(count<path.length*0.5)
