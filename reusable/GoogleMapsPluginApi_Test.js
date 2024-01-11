@@ -315,8 +315,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               score=score+1;
                               document.cookie = "score="+score;
                           }  
-                          else if(score==100){
+                          else if(score>=100){
+                            score=100
                             charger=false;
+
                           }
 
                           if (path.length <= count)
