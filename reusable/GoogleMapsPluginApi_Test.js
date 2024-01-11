@@ -273,7 +273,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                     function Near_Charger(){
                    let defect=false;
-                   routeToCharger=true;
+                   
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
@@ -316,16 +316,18 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 let p = 0;  
                 
                 
-
                 intervalId6 = setInterval(  async() => {
+                    routeToCharger=true;
+                 if (positions.length > p){
                     lat = positions[p].lat;
                     lng = positions[p].lng;  
                     await marker.setPosition({ lat, lng });
                     p++;
-                    if (positions.length <= p){
+                }
+                 if (positions.length <= p){
                   clearInterval(intervalId6);
                   routeToCharger=false;
-                }
+                 }
                 }, 50);
                 
  
@@ -392,42 +394,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
-
-                           ///////Steps to Charger////
-            fetch(apiUrl+path[count].lng+","+path[count].lat+";"+min.longitude+","+path[count].lat+"?steps=true&geometries=geojson")
-            .then(response => response.json())
-            .then(data => {
-           
-
-                const  positions = data.routes[0].legs[0].steps.flatMap(step => {
-                    // Check if 'geometry' property exists and has 'coordinates' property
-                    if (step.geometry && step.geometry.coordinates) {
-                        return step.geometry.coordinates.map(coordinate => ({
-                            lat: coordinate[1],
-                            lng: coordinate[0]
-                        }));
-                    }  
-                });
-
-                let p = 0;             
-
-                   
-           
-               
-                intervalId6 = setInterval(  async() => {
-                    lat = positions[p].lat;
-                    lng = positions[p].lng;  
-                    await marker.setPosition({ lat, lng });
-                    p++;
-                    if (positions.length <= p)
-                  clearInterval(intervalId6);
-                }, 50);
  
- 
- 
-            })
-            
-            /////End Steps to Charger///
                     
 
                       lat = min.latitude;
@@ -472,7 +439,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if (!routeToCharger && (path.length-1 > count) && ( ((score>40) && !charger) || ((count>((path.length*0.75)))&&score>0) ) ) {
+                      if (!routeToCharger && (path.length-1 > count) && ( ((score>40) && !charger) || (!routeToCharger && (count>((path.length*0.75)))&&score>0) ) ) {
                         
                         lat = path[count].lat;
                           lng = path[count].lng;
