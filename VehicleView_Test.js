@@ -478,8 +478,6 @@ let Charged=false;
   }
     }  
 
- 
-
       if (InStation&&(Status=="defectNo")){
         const delayInMilliseconds = 1500;  
         setTimeout(delayedFunction, 
