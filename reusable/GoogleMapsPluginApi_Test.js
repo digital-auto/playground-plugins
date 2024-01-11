@@ -399,7 +399,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
+                          if(count*2>path.length)
                           count++;
+                        else
+                        count+=10
                            //score=score-1;
                           document.cookie = "score="+score;
                          
