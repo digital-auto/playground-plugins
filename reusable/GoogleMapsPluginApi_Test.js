@@ -112,7 +112,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             }))
                         );
                         if(k>1)
-                        global.concat(stepPositions2); 
+                        global=global.concat(stepPositions2); 
                         else
                         global=stepPositions2;                   
                         console.log("Global")
