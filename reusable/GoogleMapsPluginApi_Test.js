@@ -312,6 +312,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 });
 
                 let p = 0;  
+                charger=true
 
                 intervalId6 = setInterval(  async() => {
                     lat = positions[p].lat;
