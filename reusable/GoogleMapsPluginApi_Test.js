@@ -104,9 +104,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      
                     fetch(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
                     .then(response => response.json())
-                    .then(data => {
+                    .then(data2 => {
                         
-                        let stepPositions2 = data.routes.flatMap(route =>
+                        let stepPositions2 = data2.routes.flatMap(route =>
                             route.legs.flatMap(leg =>
                                 leg.steps.map(step => ({
                                     lat: step.maneuver.location[1],
@@ -120,7 +120,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         global=global.concat(stepPositions2); 
                         else
                         global=stepPositions2;                   
-                        console.log("Global")
+                        console.log("Global2")
                         console.log(global)
 
                     })
