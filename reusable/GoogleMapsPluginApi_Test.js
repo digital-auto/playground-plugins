@@ -84,11 +84,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      lat = coordinates.latitude_start;
                      lng = coordinates.longitude_start;
 
-
             return fetch(apiUrl+coordinates.longitude_start+","+coordinates.latitude_start+";"+coordinates.longitude_end+","+coordinates.latitude_end+"?steps=true")
             .then(response => response.json())
             .then(data => {
-                let global;
            
 
                 const stepPositions = data.routes[0].legs.flatMap(leg =>
@@ -97,38 +95,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lng: step.maneuver.location[0]
                     }))
                 );
+
                 
-                 
-
-                for (let k = 1; k < stepPositions.length-1; k++) {
-                     
-                    fetch(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
-                    .then(response => response.json())
-                    .then(data2 => {
-                        
-                        let stepPositions2 = data2.routes.flatMap(route =>
-                            route.legs.flatMap(leg =>
-                                leg.steps.map(step => ({
-                                    lat: step.maneuver.location[1],
-                                    lng: step.maneuver.location[0]
-                                }))
-                            )
-                        );
-                         
-                        
-                        if(k>1)
-                        global=global.concat(stepPositions2); 
-                        else
-                        global=stepPositions2;                   
-                        console.log("Global2")
-                        console.log(global)
-
-                    })
-                }
                 
                 
 
-                return global;
+                return stepPositions;
             }).catch(error => {
                 console.error('Error fetching data from the API:', error);
                 // Return a default path or handle the error as needed
