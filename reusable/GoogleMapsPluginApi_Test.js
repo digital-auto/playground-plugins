@@ -383,7 +383,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length > count) && ((score>20) && !charger)||(count>=((path.length/3)*2)) ) {
+                      if ((path.length-1 > count) && ((score>20) && !charger)||(count>=((path.length/3)*2)) ) {
                           lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
@@ -397,11 +397,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                         Near_Charger()
                       }
-                     if (intervalId2) {
-                        console.log("Clearing existing interval:", intervalId2);
-                        clearInterval(intervalId2);
-                    }
-                    
 
                   }, 1000);
                  
