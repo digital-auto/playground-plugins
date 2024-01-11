@@ -297,43 +297,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           }
                       }
 
-             ///////Steps to Charger////
-            fetch(apiUrl+path[count].lng+","+path[count].lat+";"+min.longitude+","+path[count].lat+"?steps=true&geometries=geojson")
-            .then(response => response.json())
-            .then(data => {
-           
-
-                const  positions = data.routes[0].legs[0].steps.flatMap(step => {
-                    // Check if 'geometry' property exists and has 'coordinates' property
-                    if (step.geometry && step.geometry.coordinates) {
-                        return step.geometry.coordinates.map(coordinate => ({
-                            lat: coordinate[1],
-                            lng: coordinate[0]
-                        }));
-                    }  
-                });
-
-                let p = 0;  
-                
-                
-                intervalId6 = setInterval(  async() => {
-                    routeToCharger=true;
-                 if (positions.length > p){
-                    lat = positions[p].lat;
-                    lng = positions[p].lng;  
-                    await marker.setPosition({ lat, lng });
-                    p++;
-                }
-                 if (positions.length <= p){
-                  clearInterval(intervalId6);
-                  routeToCharger=false;
-                 }
-                }, 50);
-                
- 
-            })
             
-            /////End Steps to Charger///
                     
 
                       lat = min.latitude;
