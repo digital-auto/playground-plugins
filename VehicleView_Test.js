@@ -466,10 +466,7 @@ let Charged=false;
       InStation=false;
     } 
 
-    intervalId3 = setInterval(async () => {
-      numStations.textContent=   count ;
-     AvStations.textContent=   availables ;
-    }, 1000);
+   
 
     function delayedFunction() { 
       if(!Charged){
