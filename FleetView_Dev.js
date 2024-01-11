@@ -273,6 +273,17 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
     })
     ///////End Map Widget/////
 
+    widgets.register(
+        "VehicleActions_Dev",
+        SignalPills(
+            [
+                NumberOfMovingVehiclesTile,
+                NumberOfChargingVehiclesTile,
+            ],
+            fleet
+        )
+    )
+
  
 
     ////////Action Widget////
