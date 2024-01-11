@@ -158,6 +158,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     path=  stepPositions;
     let intervalId3;
     let intervalId4;
+    let intervalId6;
 
     let charger=false;
     
@@ -397,19 +398,18 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 var p = 1;             
 
-                function myLoop() {        
-                setTimeout(function() {   
-                    console.log('hello');   
-                    p++;                 
-                    if (p < positions.length-1) {     
-                     lat = positions[p].lat;
-                    lng = positions[p].lng;      
-                    myLoop();           
-                    }                     
-                }, 50)
-                }
-
-                myLoop();  
+                   
+           
+               
+                intervalId6 = setInterval(  async() => {
+                    lat = positions[p].lat;
+                    lng = positions[p].lng;  
+                    await marker.setPosition({ lat, lng });
+                    p++;
+                    if (positions.length <= p)
+                  clearInterval(intervalId6);
+                }, 50);
+ 
  
  
             })
