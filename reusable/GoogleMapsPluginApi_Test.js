@@ -90,10 +90,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
            
 
                 const stepPositions = data.routes[0].legs.flatMap(leg =>
-                    leg.steps.map(step => ({
-                        lat: step.maneuver.location[1],
-                        lng: step.maneuver.location[0]
-                    }))
+                    leg.steps.map(step => 
+                        step.geometry.coordinates.map(coordinate => ({
+                            lat: coordinate[1],
+                            lng: coordinate[0]
+                        }))
+                        )
                 );
 
                 
