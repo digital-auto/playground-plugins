@@ -111,10 +111,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 lng: step.maneuver.location[0]
                             }))
                         );
-                        if(global)
-                        global.push(stepPositions2); 
+                        if(k>1)
+                        global.push(stepPositions2[0]); 
                         else
-                        global=stepPositions2;                   
+                        global=stepPositions2[0];                   
                         console.log("Global")
                         console.log(global)
 
