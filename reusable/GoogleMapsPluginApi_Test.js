@@ -59,7 +59,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let lngCar1 = 0;
     let intervalId;
     let count=0;
-    let score=50;
+    let score=100;
     let distance=0;
     document.cookie = "score="+score;
 
@@ -400,7 +400,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
                           count++;
-                           score=score-2;
+                           //score=score-1;
                           document.cookie = "score="+score;
                          
                       } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
