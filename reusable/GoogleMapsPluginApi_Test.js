@@ -318,7 +318,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           else if(score>=100){
                             score=100
                             charger=false;
-
                           }
 
                           if (path.length <= count)
@@ -378,8 +377,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               document.cookie = "score="+score;
                               document.cookie = "Charger=defectNo";
                           }  
-                          else if(score==100){
+                          else if(score>=100){
+                            score=100
                             charger=false;
+                            
                             document.cookie = "Charger=defectNo";
                           }
                           if (path.length <= count)
