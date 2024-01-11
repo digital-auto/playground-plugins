@@ -89,14 +89,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             .then(data => {
            
 
-                const stepPositions = data.routes[0].legs[0].steps.flatMap(step =>
-                   
-                        step.geometry[0].coordinates.map(coordinate => ({
+                const stepPositions = data.routes[0].legs[0].steps.flatMap(step => {
+                    if (step.geometry && step.geometry[0] && step.geometry[0].coordinates) {
+                        return step.geometry[0].coordinates.map(coordinate => ({
                             lat: coordinate[1],
                             lng: coordinate[0]
-                        }))
-                        
-                );
+                        }));
+                    }  
+                });
 
                 
                 
