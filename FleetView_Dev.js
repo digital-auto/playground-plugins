@@ -20,7 +20,7 @@ const loadScript = (boxWindow, url) => {
 }
 
 
-const plugin = ({ box, widgets }) => {
+const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
     const fleet = modelObjectCreator("Fleet")
 
     const NumberOfMovingVehiclesTile = {
@@ -142,7 +142,7 @@ const plugin = ({ box, widgets }) => {
     }, 1000)
 
     updateFleet()
-    
+
     ////Map Widget///////
     widgets.register("Map", (box) => {
         loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`)
