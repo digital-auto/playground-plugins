@@ -405,7 +405,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         count+=4;
                         else
                         count++;
-                           //score=score-1;
+                           score=score-0.1;
                           document.cookie = "score="+score;
                          
                       } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
