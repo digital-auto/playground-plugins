@@ -153,7 +153,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     
   
     path=  stepPositions;
-    let intervalId2;
+    let intervalId3;
+    let intervalId4;
 
     let charger=false;
     
@@ -304,7 +305,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           } 
                 
 
-                      intervalId = setInterval(async () => {
+                      intervalId4 = setInterval(async () => {
                           if (charger&&score<100) {
                               score=score+1;
                               document.cookie = "score="+score;
@@ -350,16 +351,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       lng = min.longitude;
                       
                        
-                      intervalId = setInterval(  async() => {
+                      intervalId3 = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
-                       
                     }, 200);
                        
 
                       
                       
 
-                      intervalId = setInterval(async () => {
+                      intervalId4 = setInterval(async () => {
                         
                           if (charger&&score<100) {
                               score=score+1;
@@ -394,9 +394,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
                         charger=true;  
                         console.log("count= "+count+" | "+path.length-2)                   
-
                         Near_Charger()
                       }
+                      if (path.length <= count)
+                      clearInterval(intervalId);
 
                   }, 1000);
                  
