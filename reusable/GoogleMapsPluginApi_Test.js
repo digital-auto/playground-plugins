@@ -405,11 +405,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
                           if(count<path.length*0.5)
-                          count+=7;
+                          count+=8;
                         else  if(count<path.length*0.7)
-                        count+=4;
+                        count+=5;
                         else
-                        count++;
+                        count+=3;
                           score=score-0.2;
                           document.cookie = "score="+score;
                       } else  if((score<40)&&(!charger)&&(score>0)&&(count<((path.length*0.75)))){
