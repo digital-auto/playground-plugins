@@ -100,7 +100,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                 
                 
-                
+                console.log(stepPositions)
 
                 return stepPositions;
             }).catch(error => {
