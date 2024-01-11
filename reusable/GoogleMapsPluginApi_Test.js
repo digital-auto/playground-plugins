@@ -311,7 +311,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                 
 
                       intervalId4 = setInterval(async () => {
-                          if (charger&&score<100) {
+                          if (charger&&score<99) {
                               score=score+1;
                               document.cookie = "score="+score;
                           }  
@@ -372,7 +372,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                       intervalId4 = setInterval(async () => {
                         
-                          if (charger&&score<100) {
+                          if (charger&&score<99) {
                               score=score+1;
                               document.cookie = "score="+score;
                               document.cookie = "Charger=defectNo";
