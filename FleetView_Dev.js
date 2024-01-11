@@ -63,7 +63,7 @@ const plugin = ({ box, widgets }) => {
                 const vehicleMarkers = {}
 
                 // Fetch vehicle coordinates and add markers to map
-                fetch('http://193.148.170.44:9966/get_vehicle_coordinates')
+                fetch('https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates')
                 .then(response => response.json())
                 .then(vehicleCoordinates => {
 
@@ -93,7 +93,7 @@ const plugin = ({ box, widgets }) => {
 
                 // Every 5 seconds, fetch the new coordinates and update the vehicle markers
                 setInterval(async () => {
-                    const response = await fetch("http://193.148.170.44:9966/get_vehicle_coordinates")
+                    const response = await fetch("https://proxy.digitalauto.tech/fleet-simulate/get_vehicle_coordinates")
                     const vehicleCoordinates = await response.json();
                     Object.keys(vehicleCoordinates).forEach(vehicleId => {
                         const coordinates = vehicleCoordinates[vehicleId];
@@ -105,7 +105,7 @@ const plugin = ({ box, widgets }) => {
                 const chargestationMarkers = {}
 
                 // Fetch chargestation coordinates and add markers to map
-                fetch('http://193.148.170.44:9966/get_chargestation_data')
+                fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                 .then(response => response.json())
                 .then(chargestationCoordinates => {
                     // For each charger, create a marker on the map
