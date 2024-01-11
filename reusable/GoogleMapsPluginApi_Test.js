@@ -97,12 +97,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lng: step.maneuver.location[0]
                     }))
                 );
-                console.log("stepPositions")
-                console.log(stepPositions)
+                
                  
 
                 for (let k = 1; k < stepPositions.length; k++) {
-                    console.log(stepPositions.lat)
+                    
                     fetch(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
                     .then(response => response.json())
                     .then(data => {
@@ -112,8 +111,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 lng: step.maneuver.location[0]
                             }))
                         );
-
+                        
                         global+=stepPositions2;
+                        console.log("Global")
+                        console.log(global)
 
                     })
                 }
