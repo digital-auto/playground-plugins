@@ -311,11 +311,17 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     }  
                 });
 
-                for(let p=0; p<positions.length-1;p++){
-                lat = positions[p].lat;
-                lng = positions[p].lng;
-                }
-                console.log(positions)
+                let p = 0;  
+
+                intervalId6 = setInterval(  async() => {
+                    lat = positions[p].lat;
+                    lng = positions[p].lng;  
+                    await marker.setPosition({ lat, lng });
+                    p++;
+                    if (positions.length <= p)
+                  clearInterval(intervalId6);
+                }, 50);
+                
  
             })
             
@@ -396,7 +402,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     }  
                 });
 
-                var p = 1;             
+                let p = 0;             
 
                    
            
