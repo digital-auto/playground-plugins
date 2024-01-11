@@ -101,8 +101,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                  
 
                 for (let k = 1; k < stepPositions.length-1; k++) {
-                    console.log(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
-                    
+                     
                     fetch(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
                     .then(response => response.json())
                     .then(data => {
