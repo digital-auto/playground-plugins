@@ -84,9 +84,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      lat = coordinates.latitude_start;
                      lng = coordinates.longitude_start;
 
+
             return fetch(apiUrl+coordinates.longitude_start+","+coordinates.latitude_start+";"+coordinates.longitude_end+","+coordinates.latitude_end+"?steps=true")
             .then(response => response.json())
             .then(data => {
+                let global;
            
 
                 const stepPositions = data.routes[0].legs.flatMap(leg =>
@@ -95,10 +97,28 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lng: step.maneuver.location[0]
                     }))
                 );
+                 
+
+                for (let k = 1; k < stepPositions.length; k++) {
+                    console.log(stepPositions.lat)
+                    fetch(apiUrl+stepPositions[k-1].lng+","+stepPositions[k-1].lat+";"+stepPositions[k].lng+","+stepPositions[k].lat+"?steps=true")
+                    .then(response => response.json())
+                    .then(data => {
+                        let stepPositions2 = data.routes[0].legs.flatMap(leg =>
+                            leg.steps.map(step => ({
+                                lat: step.maneuver.location[1],
+                                lng: step.maneuver.location[0]
+                            }))
+                        );
+
+                        global+=stepPositions2;
+
+                    })
+                }
                 
                 
 
-                return stepPositions;
+                return global;
             }).catch(error => {
                 console.error('Error fetching data from the API:', error);
                 // Return a default path or handle the error as needed
@@ -400,7 +420,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                          
                       } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
                         charger=true;  
-                        console.log("count= "+count+" | "+path.length-2)                   
                         Near_Charger()
                       }
                       if (path.length <= count)
