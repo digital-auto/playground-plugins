@@ -99,9 +99,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     }  
                 });
 
-                
-                
-                console.log(stepPositions)
+             
 
                 return stepPositions;
             }).catch(error => {
@@ -451,8 +449,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   intervalId = setInterval(async () => {
                     if (path)
                       if ((path.length-1 > count) && ( ((score>40) && !charger) || ((count>((path.length*0.75)))&&score>0) ) ) {
-                        console.log("count: "+count)  
-                        console.log("path.length*0.75: "+parseFloat(path.length)*0.75)  
+                        
                         lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
