@@ -295,6 +295,32 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
+
+             ///////Steps to Charger////
+            fetch(apiUrl+path[count].lng+","+path[count].lat+";"+min.longitude+","+path[count].lat+"?steps=true&geometries=geojson")
+            .then(response => response.json())
+            .then(data => {
+           
+
+                const  positions = data.routes[0].legs[0].steps.flatMap(step => {
+                    // Check if 'geometry' property exists and has 'coordinates' property
+                    if (step.geometry && step.geometry.coordinates) {
+                        return step.geometry.coordinates.map(coordinate => ({
+                            lat: coordinate[1],
+                            lng: coordinate[0]
+                        }));
+                    }  
+                });
+
+                for(let p=0; p<positions.length-1;p++){
+                lat = positions[p].lat;
+                lng = positions[p].lng;
+                }
+                console.log(positions)
+ 
+            })
+            
+            /////End Steps to Charger///
                     
 
                       lat = min.latitude;
@@ -354,6 +380,32 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
+
+                           ///////Steps to Charger////
+            fetch(apiUrl+path[count].lng+","+path[count].lat+";"+min.longitude+","+path[count].lat+"?steps=true&geometries=geojson")
+            .then(response => response.json())
+            .then(data => {
+           
+
+                const  positions = data.routes[0].legs[0].steps.flatMap(step => {
+                    // Check if 'geometry' property exists and has 'coordinates' property
+                    if (step.geometry && step.geometry.coordinates) {
+                        return step.geometry.coordinates.map(coordinate => ({
+                            lat: coordinate[1],
+                            lng: coordinate[0]
+                        }));
+                    }  
+                });
+
+                for(let p=0; p<positions.length-1;p++){
+                lat = positions[p].lat;
+                lng = positions[p].lng;
+                }
+                console.log(positions)
+ 
+            })
+            
+            /////End Steps to Charger///
                     
 
                       lat = min.latitude;
