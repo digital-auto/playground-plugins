@@ -313,6 +313,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           else if(score==100){
                             charger=false;
                           }
+
+                          if (path.length <= count)
+                      clearInterval(intervalId4);
                       }, 200);
 
                   });
@@ -353,6 +356,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                        
                       intervalId3 = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
+                        if (path.length <= count)
+                      clearInterval(intervalId3);
                     }, 200);
                        
 
@@ -370,6 +375,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             charger=false;
                             document.cookie = "Charger=defectNo";
                           }
+                          if (path.length <= count)
+                      clearInterval(intervalId4);
                       }, 200);
                       
                       
