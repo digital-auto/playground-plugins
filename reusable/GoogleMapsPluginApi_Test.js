@@ -400,9 +400,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
                           if(count<path.length*0.5)
-                          count+=10;
+                          count+=7;
                         else  if(count<path.length*0.7)
-                        count+=5;
+                        count+=4;
                         else
                         count++;
                            //score=score-1;
