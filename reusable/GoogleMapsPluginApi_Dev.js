@@ -28,7 +28,6 @@ function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
         .catch((e) => console.log("Directions request failed due to " + e));
 }
 
-
 const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon = null} = {}) => {
     console.log("GoogleMapsPluginApi icon", icon)
     await loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
@@ -59,7 +58,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let lngCar1 = 0;
     let intervalId;
     let count=0;
-    let score=50;
+    let score=100;
     let distance=0;
     document.cookie = "score="+score;
 
@@ -84,19 +83,22 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                      lat = coordinates.latitude_start;
                      lng = coordinates.longitude_start;
 
-            return fetch(apiUrl+coordinates.longitude_start+","+coordinates.latitude_start+";"+coordinates.longitude_end+","+coordinates.latitude_end+"?steps=true")
+            return fetch(apiUrl+coordinates.longitude_start+","+coordinates.latitude_start+";"+coordinates.longitude_end+","+coordinates.latitude_end+"?steps=true&geometries=geojson")
             .then(response => response.json())
             .then(data => {
            
 
-                const stepPositions = data.routes[0].legs.flatMap(leg =>
-                    leg.steps.map(step => ({
-                        lat: step.maneuver.location[1],
-                        lng: step.maneuver.location[0]
-                    }))
-                );
-                
-                
+                const stepPositions = data.routes[0].legs[0].steps.flatMap(step => {
+                    // Check if 'geometry' property exists and has 'coordinates' property
+                    if (step.geometry && step.geometry.coordinates) {
+                        return step.geometry.coordinates.map(coordinate => ({
+                            lat: coordinate[1],
+                            lng: coordinate[0]
+                        }));
+                    }  
+                });
+
+             
 
                 return stepPositions;
             }).catch(error => {
@@ -153,11 +155,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     
   
     path=  stepPositions;
-    let intervalId2;
+    let intervalId3;
+    let intervalId4;
+    let intervalId6;
+    let routeToCharger=false;
 
     let charger=false;
     
-     
+     /*
      intervalId2 = setInterval(async () => {
         if (path)
         if (path.length>count){
@@ -165,7 +170,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
         }
     }, 2000); 
-    
+    */
  
 
     
@@ -267,6 +272,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                     function Near_Charger(){
                    let defect=false;
+                   
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
@@ -289,6 +295,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
+
+            
                     
 
                       lat = min.latitude;
@@ -302,16 +310,21 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         if(defect){
                             Near_Charger2();
                           } 
+                           
                 
 
-                      intervalId = setInterval(async () => {
-                          if (charger&&score<100) {
+                      intervalId4 = setInterval(async () => {
+                          if (charger&&score<99) {
                               score=score+1;
                               document.cookie = "score="+score;
                           }  
-                          else if(score==100){
+                          else if(score>=99){
+                            score=100
                             charger=false;
                           }
+
+                          if (path.length <= count)
+                      clearInterval(intervalId4);
                       }, 200);
 
                   });
@@ -344,32 +357,38 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
+ 
                     
 
                       lat = min.latitude;
                       lng = min.longitude;
                       
                        
-                      intervalId = setInterval(  async() => {
+                      intervalId3 = setInterval(  async() => {
                         await marker.setPosition({ lat, lng });
-                       
+                        if (path.length <= count)
+                      clearInterval(intervalId3);
                     }, 200);
                        
 
                       
                       
 
-                      intervalId = setInterval(async () => {
+                      intervalId4 = setInterval(async () => {
                         
-                          if (charger&&score<100) {
+                          if (charger&&score<99) {
                               score=score+1;
                               document.cookie = "score="+score;
                               document.cookie = "Charger=defectNo";
                           }  
-                          else if(score==100){
+                          else if(score>=99){
+                            score=100
                             charger=false;
                             document.cookie = "Charger=defectNo";
                           }
+                          
+                          if (path.length <= count)
+                      clearInterval(intervalId4);
                       }, 200);
                       
                       
@@ -383,25 +402,25 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                
                   intervalId = setInterval(async () => {
                     if (path)
-                      if ((path.length > count) && ((score>20) && !charger)||(count>=((path.length/3)*2)) ) {
-                          lat = path[count].lat;
+                      if (!routeToCharger && (path.length-1 > count) && ( ((score>40) && !charger) || (!routeToCharger && (count>((path.length*0.75)))&&score>0) ) ) {
+                        
+                        lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
-                          count++;
-                           score=score-2;
+                          if(count<path.length*0.5)
+                          count+=7;
+                        else  if(count<path.length*0.7)
+                        count+=5;
+                        else
+                        count+=3;
+                          score=score-0.2;
                           document.cookie = "score="+score;
-                         
-                      } else  if((score<22)&&(!charger)&&(count<(path.length-2))){
+                      } else  if((score<40)&&(!charger)&&(score>0)&&(count<((path.length*0.75)))){
                         charger=true;  
-                        console.log("count= "+count+" | "+path.length-2)                   
-
                         Near_Charger()
                       }
-                     if (intervalId2) {
-                        console.log("Clearing existing interval:", intervalId2);
-                        clearInterval(intervalId2);
-                    }
-                    
+                      if (path.length <= count)
+                      clearInterval(intervalId);
 
                   }, 1000);
                  
