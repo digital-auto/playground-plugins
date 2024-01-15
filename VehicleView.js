@@ -457,7 +457,6 @@ let Charged=false;
   const updateImagePlayed = async (charger,Drive,Defect) => {
     score = getCookie("score") // document.cookie.substring(6, document.cookie.length)
     let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
-    console.log("Status: "+Status)
      
      
     if ((parseFloat(score)<22)&&!InStation){
@@ -465,11 +464,7 @@ let Charged=false;
     } else if ((parseFloat(score)>96)&&InStation) {
       InStation=false;
     } 
-
-    intervalId3 = setInterval(async () => {
-      numStations.textContent=   count ;
-     AvStations.textContent=   availables ;
-    }, 1000);
+ 
 
     function delayedFunction() { 
       if(!Charged){
