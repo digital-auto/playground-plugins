@@ -233,8 +233,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                     }));
                                 }  
                             });
-                            console.log(stepPositionsToChargerStation)
-                             return stepPositionsToChargerStation;
+
+                            return stepPositionsToChargerStation;
                         })
                       
                     };
@@ -242,23 +242,23 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         
 
                     let countToCharger=0;
-                    let stepPositionsToCharger= await stepPositionsToChargerStation();
-                    console.log(stepPositionsToCharger)
+                    const stepPositionsToCharger= await stepPositionsToChargerStation();
+                    
                     
                     intervalId6 = setInterval(async () => {
-                        console.log(stepPositionsToCharger)
-                        if (stepPositionsToCharger)  {
+                        console.log(   stepPositionsToCharger);
+                        if (stepPositionsToCharger) {
                             lat = stepPositionsToCharger[countToCharger].lat;
-                              lng = stepPositionsToCharger[countToCharger].lng;
-                              marker.setPosition({ lat, lng });
-                              countToCharger+=7;
-                              score=score-0.1;
-                              document.cookie = "score="+score;
-                              if (stepPositionsToCharger.length <= countToCharger)
-                           clearInterval(intervalId);
-                          } 
-                          
-                      }, 1000);
+                            lng = stepPositionsToCharger[countToCharger].lng;
+                            marker.setPosition({ lat, lng });
+                            countToCharger += 7;
+                            score = score - 0.1;
+                            document.cookie = "score=" + score;
+                            if (stepPositionsToCharger.length <= countToCharger)
+                                clearInterval(intervalId);
+                        }
+
+                    }, 1000);
                       ////////End of route change
 
 
