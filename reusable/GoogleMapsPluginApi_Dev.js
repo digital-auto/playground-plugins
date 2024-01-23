@@ -241,6 +241,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             countToCharger ++;
                             score = score - 0.5;
                             document.cookie = "score=" + score;
+                            console.log("This score 1")
                         
                         }
                         if (stepPositionsToCharger.length <= countToCharger){
@@ -251,7 +252,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             routeToCharger=false;
    
                             if (!routeToCharger){
-                            console.log("Defect: " + min.defect)
+                           
                             defect=min.defect;
                               marker.setPosition({ lat, lng });
                               if(defect){
