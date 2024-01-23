@@ -251,7 +251,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             routeToCharger=false;
    
                             if (!routeToCharger){
-                              console.log("Defect: " + min.defect)
+                            console.log("Defect: " + min.defect)
                             defect=min.defect;
                               marker.setPosition({ lat, lng });
                               if(defect){
@@ -259,6 +259,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 } 
                             intervalId4 = setInterval(async () => {
                                 if (charger&&score<99) {
+                                    charger=true;
                                     score=score+1;
                                     document.cookie = "score="+score;
                                 }  
@@ -342,12 +343,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             document.cookie = "Charger=defectNo";
                             if (!routeToCharger){
                             intervalId4 = setInterval(async () => {
-                                if (charger&&score<99) {
+                                if (charger&&score<98) {
                                     score=score+1;
                                     document.cookie = "score="+score;
                                    
                                 }  
-                                else if(score>=99){
+                                else if(score>=98){
                                   score=100
                                   charger=false;
                                 }
@@ -357,7 +358,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           }
                         }
                     }, 200);
-                       console.log("End of route change")
+                       console.log("End of route change 2")
                       ////////End of route change
                   });
                     }
