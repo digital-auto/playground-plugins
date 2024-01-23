@@ -338,6 +338,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
+                            routeToCharger=false;
                             document.cookie = "Charger=defectNo";
                             if (!routeToCharger){
                             intervalId4 = setInterval(async () => {
