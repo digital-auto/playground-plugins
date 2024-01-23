@@ -265,6 +265,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                     }  ,
                                     clickable: true
                                 });
+                                console.log(minIdCharger+" -- "+min.latitude)
                            
                             defect=min.defect;
                               marker.setPosition({ lat, lng });
