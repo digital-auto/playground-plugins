@@ -219,7 +219,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       ////////Change route to the charger station
  
                     let countToCharger=0;
-                    const stepPositionsToCharger= fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
+                    const stepPositionsToCharger= async () => { fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
                     .then(response => response.json())
                     .then(data => {
                         const stepPositionsToChargerStation = data.routes[0].legs[0].steps.flatMap(step => {
@@ -234,6 +234,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         routeToCharger=true;
                         return stepPositionsToChargerStation;
                     })
+                }
                     
                     
                     intervalId6 = setInterval(async () => {
