@@ -232,8 +232,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         return stepPositionsToChargerStation;
                     })
                 
-                    
-                    
                     intervalId6 = setInterval(async () => {
                         console.log(countToCharger);
                         if (routeToCharger) {
@@ -287,7 +285,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
-                  .then(chargestationCoordinates => {
+                  .then(async chargestationCoordinates => {
                       // For each charger, create a marker on the map
                       let min=null;
                       let minIdCharger=null;
@@ -306,28 +304,60 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             minIdCharger=chargestationId
                           }
                       }
-                       lat = min.latitude;
-                      lng = min.longitude;
-                      intervalId3 = setInterval(  async() => {
-                        await marker.setPosition({ lat, lng });
-                        if (path.length <= count)
-                      clearInterval(intervalId3);
-                    }, 200);
-                      intervalId4 = setInterval(async () => {
+
+
+
+                    ////////Change route to the charger station
+ 
+                    let countToCharger=0;
+                    const stepPositionsToCharger= await fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true")
+                    .then(response => response.json())
+                    .then(data => {
+                        const stepPositionsToChargerStation = data.routes[0].legs.flatMap(leg =>
+                            leg.steps.map(step => ({
+                                lat: step.maneuver.location[1],
+                                lng: step.maneuver.location[0]
+                            }))
+                        );
+                        routeToCharger=true;
+                        return stepPositionsToChargerStation;
+                    })
+                    intervalId6 = setInterval(async () => {
+                        console.log(countToCharger);
+                        if (routeToCharger) {
+                            lat = stepPositionsToCharger[countToCharger].lat;
+                            lng = stepPositionsToCharger[countToCharger].lng;
+                            marker.setPosition({ lat, lng });
+                            countToCharger ++;
+                            score = score - 0.5;
+                            document.cookie = "score=" + score;
                         
-                          if (charger&&score<99) {
-                              score=score+1;
-                              document.cookie = "score="+score;
-                              document.cookie = "Charger=defectNo";
-                          }  
-                          else if(score>=99){
-                            score=100
-                            charger=false;
+                        }
+                        if (stepPositionsToCharger.length <= countToCharger){
+                            lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
+                            lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
+                            marker.setPosition({ lat, lng });
+                            clearInterval(intervalId6);
                             document.cookie = "Charger=defectNo";
+                            if (!routeToCharger){
+                            intervalId4 = setInterval(async () => {
+                                if (charger&&score<99) {
+                                    score=score+1;
+                                    document.cookie = "score="+score;
+                                   
+                                }  
+                                else if(score>=99){
+                                  score=100
+                                  charger=false;
+                                }
+                                if (path.length <= count)
+                            clearInterval(intervalId4);
+                            }, 200);
                           }
-                          if (path.length <= count)
-                      clearInterval(intervalId4);
-                      }, 200);
+                        }
+                    }, 200);
+                       console.log("End of route change")
+                      ////////End of route change
                   });
                     }
 
