@@ -260,12 +260,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 }
                                 else 
                             intervalId4 = setInterval(async () => {
-                                if (charger&&score<99) {
+                                if (charger&&score<97) {
                                     charger=true;
-                                    score=score+1;
+                                    score=score+3;
                                     document.cookie = "score="+score;
                                 }  
-                                else if(score>=99){
+                                else if(score>=97){
                                   score=100
                                   charger=false;
                                 }
