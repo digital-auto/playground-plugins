@@ -382,7 +382,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         charger=true;  
                         Near_Charger()
                       }
-                      if (path.length <= count)
+                      if (path.length <= count || score<1 )
                       clearInterval(intervalId);
                   }, 1000);
             }
