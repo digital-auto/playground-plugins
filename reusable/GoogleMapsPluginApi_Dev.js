@@ -252,7 +252,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               score=score-0.1;
                               document.cookie = "score="+score;
                           } 
-                          if (stepPositionsToCharger.length <= count)
+                          if (stepPositionsToCharger.length <= countToCharger)
                           clearInterval(intervalId);
                       }, 1000);
                       ////////End of route change
