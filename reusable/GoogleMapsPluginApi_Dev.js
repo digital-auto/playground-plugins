@@ -194,7 +194,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
-                  .then( chargestationCoordinates => {
+                  .then( async chargestationCoordinates => {
                       // For each charger, create a marker on the map
                       let min=null;
                       let minIdCharger=null;
@@ -219,7 +219,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       ////////Change route to the charger station
  
                     let countToCharger=0;
-                    const stepPositionsToCharger= async () => { fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
+                    const stepPositionsToCharger= await fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
                     .then(response => response.json())
                     .then(data => {
                         const stepPositionsToChargerStation = data.routes[0].legs[0].steps.flatMap(step => {
@@ -234,7 +234,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         routeToCharger=true;
                         return stepPositionsToChargerStation;
                     })
-                }
+                
                     
                     
                     intervalId6 = setInterval(async () => {
