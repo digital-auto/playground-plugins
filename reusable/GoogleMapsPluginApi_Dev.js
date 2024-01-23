@@ -240,10 +240,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       
                         
 
-                     
+                    let countToCharger=0;
                     let stepPositionsToCharger= await stepPositionsToChargerStation();
-                     let countToCharger=0;
+                    console.log(stepPositionsToCharger)
+                    
                     intervalId6 = setInterval(async () => {
+                        console.log(stepPositionsToCharger)
                         if (stepPositionsToCharger)  {
                             lat = stepPositionsToCharger[countToCharger].lat;
                               lng = stepPositionsToCharger[countToCharger].lng;
@@ -251,9 +253,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               countToCharger+=7;
                               score=score-0.1;
                               document.cookie = "score="+score;
+                              if (stepPositionsToCharger.length <= countToCharger)
+                           clearInterval(intervalId);
                           } 
-                          if (stepPositionsToCharger.length <= countToCharger)
-                          clearInterval(intervalId);
+                          
                       }, 1000);
                       ////////End of route change
 
