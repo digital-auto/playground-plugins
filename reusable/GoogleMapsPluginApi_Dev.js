@@ -252,7 +252,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
                             lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
                             marker.setPosition({ lat, lng });
-                            clearInterval(intervalId);
+                            clearInterval(intervalId6);
                             routeToCharger=false;
                         }
 
