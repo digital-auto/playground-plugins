@@ -343,21 +343,20 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             clearInterval(intervalId6);
                             routeToCharger=false;
                             document.cookie = "Charger=defectNo";
-                            if (!routeToCharger){
+                         
                             intervalId4 = setInterval(async () => {
-                                if (charger&&score<98) {
-                                    score=score+1;
+                                if (charger&&score<97) {
+                                    score=score+3;
                                     document.cookie = "score="+score;
-                                   
                                 }  
-                                else if(score>=98){
+                                else if(score>=97){
                                   score=100
                                   charger=false;
                                 }
                                 if (path.length <= count)
                             clearInterval(intervalId4);
                             }, 100);
-                          }
+                          
                         }
                     }, 200);
                        console.log("End of route change 2")
