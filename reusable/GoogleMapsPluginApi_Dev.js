@@ -244,16 +244,19 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             lng = stepPositionsToCharger[countToCharger].lng;
                             marker.setPosition({ lat, lng });
                             countToCharger += 20;
-                            score = score - 0.15;
+                            score = score - 0.2;
                             document.cookie = "score=" + score;
                         
                         }
-                        if (stepPositionsToCharger.length <= countToCharger){
+                        if (stepPositionsToCharger.length-30 <= countToCharger){
+                            lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
+                            lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
+                            marker.setPosition({ lat, lng });
                             clearInterval(intervalId);
                             routeToCharger=false;
                         }
 
-                    }, 1000);
+                    }, 200);
                       ////////End of route change
                       
                       if (!routeToCharger){
