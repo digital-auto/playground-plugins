@@ -238,18 +238,19 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                     
                     
                     intervalId6 = setInterval(async () => {
-                        console.log(stepPositionsToCharger);
-                        if (stepPositionsToCharger) {
+                        console.log(countToCharger);
+                        if (routeToCharger) {
                             lat = stepPositionsToCharger[countToCharger].lat;
                             lng = stepPositionsToCharger[countToCharger].lng;
                             marker.setPosition({ lat, lng });
                             countToCharger += 10;
                             score = score - 0.1;
                             document.cookie = "score=" + score;
-                            if (stepPositionsToCharger.length <= countToCharger){
-                                clearInterval(intervalId);
-                                routeToCharger=false;
-                            }
+                        
+                        }
+                        if (stepPositionsToCharger.length <= countToCharger){
+                            clearInterval(intervalId);
+                            routeToCharger=false;
                         }
 
                     }, 1000);
