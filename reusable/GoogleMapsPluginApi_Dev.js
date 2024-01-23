@@ -257,6 +257,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         }
                     }, 200);
                       ////////End of route change
+                      console.log("End of route change")
 
 
                       lat = min.latitude;
