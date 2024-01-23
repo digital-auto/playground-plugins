@@ -254,11 +254,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
                             routeToCharger=false;
-                            lat = min.latitude;
-                            lng = min.longitude;
-                            path[count].lat=lat;
-                            path[count].lng=lng;
-                            
+   
                             if (!routeToCharger){
                               console.log("Defect: " + min.defect)
                             defect=min.defect;
@@ -281,13 +277,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           }
                         }
                     }, 200);
-                      ////////End of route change
+                     
                       console.log("End of route change")
-
+                      ////////End of route change
 
                      
                   });
-                
+               
                     }
                    function Near_Charger2(){
                     document.cookie = "Charger=defectYes";
@@ -340,7 +336,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                   intervalId = setInterval(async () => {
                     if (path)
-                      if (!routeToCharger && (path.length-1 > count) && ( ((score>40) && !charger) || (!routeToCharger && (count>((path.length*0.75)))&&score>0) ) ) {
+                      if (!routeToCharger && (path.length-1 > count) && ( ((score>50) && !charger) || (!routeToCharger && (count>((path.length*0.75)))&&score>0) ) ) {
                         lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
@@ -352,7 +348,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         count+=3;
                           score=score-0.2;
                           document.cookie = "score="+score;
-                      } else  if((score<40)&&(!charger)&&(score>0)&&(count<((path.length*0.75)))){
+                      } else  if((score<50)&&(!charger)&&(score>0)&&(count<((path.length*0.75)))){
                         charger=true;  
                         Near_Charger()
                       }
