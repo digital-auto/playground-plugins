@@ -233,8 +233,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                     }));
                                 }  
                             });
-                            console.log(stepPositionsToChargerStation);
-                            return stepPositionsToChargerStation;
+                             return stepPositionsToChargerStation;
                         })
                       
                     };
