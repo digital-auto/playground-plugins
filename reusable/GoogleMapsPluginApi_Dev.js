@@ -254,37 +254,38 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
                             routeToCharger=false;
+                            lat = min.latitude;
+                            lng = min.longitude;
+                            path[count].lat=lat;
+                            path[count].lng=lng;
+                            
+                            if (!routeToCharger){
+                              console.log("Defect: " + min.defect)
+                            defect=min.defect;
+                              marker.setPosition({ lat, lng });
+                              if(defect){
+                                  Near_Charger2();
+                                } 
+                            intervalId4 = setInterval(async () => {
+                                if (charger&&score<99) {
+                                    score=score+1;
+                                    document.cookie = "score="+score;
+                                }  
+                                else if(score>=99){
+                                  score=100
+                                  charger=false;
+                                }
+                                if (path.length <= count)
+                            clearInterval(intervalId4);
+                            }, 200);
+                          }
                         }
                     }, 200);
                       ////////End of route change
                       console.log("End of route change")
 
 
-                      lat = min.latitude;
-                      lng = min.longitude;
-                      path[count].lat=lat;
-                      path[count].lng=lng;
-                      
-                      if (!routeToCharger){
-                        console.log("Defect: " + min.defect)
-                      defect=min.defect;
-                        marker.setPosition({ lat, lng });
-                        if(defect){
-                            Near_Charger2();
-                          } 
-                      intervalId4 = setInterval(async () => {
-                          if (charger&&score<99) {
-                              score=score+1;
-                              document.cookie = "score="+score;
-                          }  
-                          else if(score>=99){
-                            score=100
-                            charger=false;
-                          }
-                          if (path.length <= count)
-                      clearInterval(intervalId4);
-                      }, 200);
-                    }
+                     
                   });
                 
                     }
