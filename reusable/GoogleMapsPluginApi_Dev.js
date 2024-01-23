@@ -257,13 +257,13 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                               marker.setPosition({ lat, lng });
                               if(defect){
                                   Near_Charger2();
-                                } 
+                                }
+                                else 
                             intervalId4 = setInterval(async () => {
                                 if (charger&&score<99) {
                                     charger=true;
                                     score=score+1;
                                     document.cookie = "score="+score;
-                                    console.log("This score 1.1")
                                 }  
                                 else if(score>=99){
                                   score=100
