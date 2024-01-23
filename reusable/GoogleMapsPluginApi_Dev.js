@@ -243,8 +243,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             lat = stepPositionsToCharger[countToCharger].lat;
                             lng = stepPositionsToCharger[countToCharger].lng;
                             marker.setPosition({ lat, lng });
-                            countToCharger += 10;
-                            score = score - 0.1;
+                            countToCharger += 20;
+                            score = score - 0.15;
                             document.cookie = "score=" + score;
                         
                         }
