@@ -62,8 +62,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let distance=0;
     document.cookie = "score="+score;
 
-    const apiUrl = 'https://proxy.digitalauto.tech/osrm_backend/route/v1/driving/';
-
+    const apiUrl = 'https://api-proxy.digitalauto.asia/osrm_backend/route/v1/driving/';
+    
     const fetchPathFromApi = async() => {
 
 
