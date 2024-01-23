@@ -194,7 +194,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                  // Fetch chargestation coordinates and add markers to map
                   fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
                   .then(response => response.json())
-                  .then(async chargestationCoordinates => {
+                  .then( chargestationCoordinates => {
                       // For each charger, create a marker on the map
                       let min=null;
                       let minIdCharger=null;
@@ -218,13 +218,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
                       ////////Change route to the charger station
  
-
-                  
-                      
-                        
-
                     let countToCharger=0;
-                    const stepPositionsToCharger= await fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
+                    const stepPositionsToCharger= fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
                     .then(response => response.json())
                     .then(data => {
                         const stepPositionsToChargerStation = data.routes[0].legs[0].steps.flatMap(step => {
@@ -236,32 +231,30 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 }));
                             }  
                         });
-
+                        routeToCharger=true;
                         return stepPositionsToChargerStation;
                     })
                     
                     
                     intervalId6 = setInterval(async () => {
-                        console.log(   stepPositionsToCharger);
+                        console.log(stepPositionsToCharger);
                         if (stepPositionsToCharger) {
                             lat = stepPositionsToCharger[countToCharger].lat;
                             lng = stepPositionsToCharger[countToCharger].lng;
                             marker.setPosition({ lat, lng });
-                            countToCharger += 7;
+                            countToCharger += 10;
                             score = score - 0.1;
                             document.cookie = "score=" + score;
-                            if (stepPositionsToCharger.length <= countToCharger)
+                            if (stepPositionsToCharger.length <= countToCharger){
                                 clearInterval(intervalId);
+                                routeToCharger=false;
+                            }
                         }
 
                     }, 1000);
                       ////////End of route change
-
-
-                      lat = min.latitude;
-                      lng = min.longitude;
-                      path[count].lat=lat;
-                      path[count].lng=lng;
+                      
+                      if (!routeToCharger){
                       defect=min.defect;
                         marker.setPosition({ lat, lng });
                         if(defect){
@@ -279,7 +272,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           if (path.length <= count)
                       clearInterval(intervalId4);
                       }, 200);
+                    }
                   });
+                
                     }
                    function Near_Charger2(){
                     document.cookie = "Charger=defectYes";
