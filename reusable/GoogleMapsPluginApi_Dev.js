@@ -352,7 +352,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 }
                                 if (path.length <= count)
                             clearInterval(intervalId4);
-                            }, 200);
+                            }, 100);
                           }
                         }
                     }, 200);
