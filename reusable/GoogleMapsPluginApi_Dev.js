@@ -219,30 +219,26 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       ////////Change route to the charger station
  
 
-                      const stepPositionsToChargerStation  = async() => {
-                        console.log("step Positions To Charger Station");
-                        fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
-                        .then(response => response.json())
-                        .then(data => {
-                            const stepPositionsToChargerStation = data.routes[0].legs[0].steps.flatMap(step => {
-                                // Check if 'geometry' property exists and has 'coordinates' property
-                                if (step.geometry && step.geometry.coordinates) {
-                                    return step.geometry.coordinates.map(coordinate => ({
-                                        lat: coordinate[1],
-                                        lng: coordinate[0]
-                                    }));
-                                }  
-                            });
-
-                            return stepPositionsToChargerStation;
-                        })
-                      
-                    };
+                  
                       
                         
 
                     let countToCharger=0;
-                    const stepPositionsToCharger= await stepPositionsToChargerStation();
+                    const stepPositionsToCharger= await fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
+                    .then(response => response.json())
+                    .then(data => {
+                        const stepPositionsToChargerStation = data.routes[0].legs[0].steps.flatMap(step => {
+                            // Check if 'geometry' property exists and has 'coordinates' property
+                            if (step.geometry && step.geometry.coordinates) {
+                                return step.geometry.coordinates.map(coordinate => ({
+                                    lat: coordinate[1],
+                                    lng: coordinate[0]
+                                }));
+                            }  
+                        });
+
+                        return stepPositionsToChargerStation;
+                    })
                     
                     
                     intervalId6 = setInterval(async () => {
