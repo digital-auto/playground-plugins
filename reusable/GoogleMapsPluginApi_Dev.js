@@ -219,18 +219,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       ////////Change route to the charger station
  
                     let countToCharger=0;
-                    const stepPositionsToCharger= await fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true&geometries=geojson")
+                    const stepPositionsToCharger= await fetch(apiUrl+lng+","+lat+";"+min.longitude+","+min.latitude+"?steps=true")
                     .then(response => response.json())
                     .then(data => {
-                        const stepPositionsToChargerStation = data.routes[0].legs[0].steps.flatMap(step => {
-                            // Check if 'geometry' property exists and has 'coordinates' property
-                            if (step.geometry && step.geometry.coordinates) {
-                                return step.geometry.coordinates.map(coordinate => ({
-                                    lat: coordinate[1],
-                                    lng: coordinate[0]
-                                }));
-                            }  
-                        });
+                        const stepPositionsToChargerStation = data.routes[0].legs.flatMap(leg =>
+                            leg.steps.map(step => ({
+                                lat: step.maneuver.location[1],
+                                lng: step.maneuver.location[0]
+                            }))
+                        );
                         routeToCharger=true;
                         return stepPositionsToChargerStation;
                     })
@@ -243,12 +240,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             lat = stepPositionsToCharger[countToCharger].lat;
                             lng = stepPositionsToCharger[countToCharger].lng;
                             marker.setPosition({ lat, lng });
-                            countToCharger += 20;
-                            score = score - 0.2;
+                            countToCharger ++;
+                            score = score - 0.5;
                             document.cookie = "score=" + score;
                         
                         }
-                        if (stepPositionsToCharger.length-30 <= countToCharger){
+                        if (stepPositionsToCharger.length <= countToCharger){
                             lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
                             lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
                             marker.setPosition({ lat, lng });
