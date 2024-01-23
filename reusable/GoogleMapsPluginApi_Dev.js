@@ -242,7 +242,20 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         
 
                      
-                    stepPositionsToChargerStation();
+                    let stepPositionsToCharger= stepPositionsToChargerStation();
+                    let countToCharger=0;
+                    intervalId6 = setInterval(async () => {
+                        if (stepPositionsToCharger)  {
+                            lat = stepPositionsToCharger[countToCharger].lat;
+                              lng = stepPositionsToCharger[countToCharger].lng;
+                              marker.setPosition({ lat, lng });
+                              countToCharger+=7;
+                              score=score-0.1;
+                              document.cookie = "score="+score;
+                          } 
+                          if (stepPositionsToCharger.length <= count)
+                          clearInterval(intervalId);
+                      }, 1000);
                       ////////End of route change
 
 
