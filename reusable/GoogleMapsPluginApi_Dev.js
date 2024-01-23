@@ -242,7 +242,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         
 
                      
-
+                    stepPositionsToChargerStation();
                       ////////End of route change
 
 
