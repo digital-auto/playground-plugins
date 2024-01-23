@@ -255,9 +255,14 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             clearInterval(intervalId6);
                             routeToCharger=false;
                         }
-
                     }, 200);
                       ////////End of route change
+
+                      
+                      lat = min.latitude;
+                      lng = min.longitude;
+                      path[count].lat=lat;
+                      path[count].lng=lng;
                       
                       if (!routeToCharger){
                       defect=min.defect;
