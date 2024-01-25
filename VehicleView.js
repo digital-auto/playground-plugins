@@ -496,18 +496,14 @@ let Charged=false;
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
       }
-
 }
 
-  let sim_intervalId = null;
-  
+    let sim_intervalId = null;
+    let SimulatorStarted = false
+    let intervalId2;
+    let intervalId3;
+    let scoreFrame = null;
 
-let SimulatorStarted = false
-
-
-let intervalId2;
-let intervalId3;
-       let scoreFrame = null;
     widgets.register("Score Bar", async (box) => {
         scoreFrame = document.createElement("div")
         scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
@@ -590,11 +586,10 @@ let intervalId3;
         Drive = container.querySelector("#Drive");
         Defect = container.querySelector("#Defect");
         Parking = container.querySelector("#Parking");
-       
- 
-
         intervalId3 = setInterval(async () => {
           await updateImagePlayed(charger,Drive,Defect,Parking);
+          if (getCookie("InRoute") == "No")
+          clearInterval(intervalId3);
         }, 200);
         box.injectNode(container);
  
