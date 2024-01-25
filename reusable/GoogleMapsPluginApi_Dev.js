@@ -292,8 +292,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                   document.cookie = "InStation=false";
                                   charger=false;
                                 }
-                                if (path.length <= count)
-                            clearInterval(intervalId4);
+                            if (path.length <= count){
+                            document.cookie = "InRoute=No";
+                            clearInterval(intervalId4);}
                             }, 200);
                           }
                         }
@@ -412,8 +413,10 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         charger=true;  
                         Near_Charger()
                       }
-                      if (path.length <= count || score<1 )
-                      clearInterval(intervalId);
+                      if (path.length <= count || score<1 ){
+                        document.cookie = "InRoute=No";
+
+                      clearInterval(intervalId);}
                   }, 1000);
             }
         }
