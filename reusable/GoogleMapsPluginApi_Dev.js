@@ -118,7 +118,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId6;
     let routeToCharger=false;
     document.cookie = "routeToCharger=" + false;
-    document.cookie = "InRoute=No";
+    
 
     let charger=false;
     return {
@@ -247,15 +247,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             countToCharger ++;
                             score = score - 0.5;
                             document.cookie = "InRoute=Yes";
-                            document.cookie = "score=" + score;
-                           
-                        
+                            document.cookie = "score=" + score;                        
                         }
                         if (stepPositionsToCharger.length <= countToCharger){
                             lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
                             lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
                             marker.setPosition({ lat, lng });
-                            document.cookie = "InRoute=No";
                             clearInterval(intervalId6);
                             routeToCharger=false;
                             document.cookie = "routeToCharger=" + false;
@@ -369,7 +366,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
                             routeToCharger=false;
-                            document.cookie = "InRoute=No";
                             document.cookie = "routeToCharger=" + false;
                             document.cookie = "Charger=defectNo";
                          
