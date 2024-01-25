@@ -412,6 +412,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       if ((path.length <= count) || score<1 ){
                         document.cookie = "InRoute=No";
+                        document.cookie = "Parking=Yes";
                       clearInterval(intervalId);}
                   }, 1000);
             }
