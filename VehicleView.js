@@ -474,18 +474,17 @@ let Charged=false;
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
       }
-      else if ((Status=="defectYes")){
+      else if (Status=="defectYes"){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
-
         const delayInMilliseconds = 1000;  
         setTimeout(delayedFunction, 
           delayInMilliseconds
         );
       }
-      else if (InRoute="Yes"){
+      else if (InRoute=="Yes"){
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
