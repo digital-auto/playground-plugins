@@ -454,11 +454,12 @@ return () => { }
     
       
 let Charged=false;
-  const updateImagePlayed = async (charger,Drive,Defect) => {
+  const updateImagePlayed = async (charger,Drive,Defect,Parking) => {
     score = getCookie("score") // document.cookie.substring(6, document.cookie.length)
     let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
     let routeToCharger= getCookie("routeToCharger") //document.cookie.substring(8, document.cookie.length)
     InStation= getCookie("InStation") //document.cookie.substring(8, document.cookie.length)
+    let InRoute= getCookie("InRoute") //document.cookie.substring(8, document.cookie.length)
 
 
     function delayedFunction() { 
@@ -471,20 +472,30 @@ let Charged=false;
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
       }
       else if ((Status=="defectYes")){
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+
         const delayInMilliseconds = 1000;  
         setTimeout(delayedFunction, 
           delayInMilliseconds
         );
       }
-      else{
+      else if (InRoute="Yes"){
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+      }
+      else {
+        Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
+        Parking.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
       }
 
 }
@@ -564,6 +575,7 @@ let intervalId3;
     let charger=null;
     let Drive=null;
     let Defect=null;
+    let Parking=null;
     let InStation=false;
     widgets.register("ImageCharger",  box => {
       const container = document.createElement("div");
@@ -573,15 +585,17 @@ let intervalId3;
       <img id="Drive" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2F2a290a67d3bb877ef3038ad698790fd9.gif?alt=media&token=b48d7ec7-da39-411e-a5c4-0404ba718895" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
       <img  id="charger" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_Right.gif?alt=media&token=1535ab5b-b44c-4eee-a1eb-7f784a95a8c7" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
       <img id="Defect" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fchargestation_defect_warning.png?alt=media&token=7628516f-a112-4f09-b266-7e0bc46540d8" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
-         `
+      <img id="Parking" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fcar-parking.png?alt=media&token=71dbe3a8-ca16-4cfa-9f27-5204f9b927a9" style="width: 100%; height: 100%; object-fit: contain; margin: auto; display: none;"/>
+      `
         charger = container.querySelector("#charger");
         Drive = container.querySelector("#Drive");
         Defect = container.querySelector("#Defect");
+        Parking = container.querySelector("#Parking");
        
  
 
         intervalId3 = setInterval(async () => {
-          await updateImagePlayed(charger,Drive,Defect);
+          await updateImagePlayed(charger,Drive,Defect,Parking);
         }, 200);
         box.injectNode(container);
  
