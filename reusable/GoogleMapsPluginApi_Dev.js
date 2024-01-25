@@ -118,7 +118,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId6;
     let routeToCharger=false;
     document.cookie = "routeToCharger=" + false;
-    document.cookie = "InRoute=No";
+    document.cookie = "InRoute=Yes";
     
 
     let charger=false;
