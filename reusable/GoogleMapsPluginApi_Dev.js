@@ -118,6 +118,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId6;
     let routeToCharger=false;
     document.cookie = "routeToCharger=" + false;
+    document.cookie = "InRoute=No";
     
 
     let charger=false;
@@ -397,8 +398,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
-                          document.cookie = "InRoute=Yes";
-
                           if(count<path.length*0.5)
                           count+=7;
                         else  if(count<path.length*0.7)
@@ -411,9 +410,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         charger=true;  
                         Near_Charger()
                       }
-                      if (path.length <= count || score<1 ){
+                      if ((path.length <= count) || score<1 ){
                         document.cookie = "InRoute=No";
-
                       clearInterval(intervalId);}
                   }, 1000);
             }
