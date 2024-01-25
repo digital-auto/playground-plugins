@@ -246,7 +246,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             countToCharger ++;
                             score = score - 0.5;
-                            document.cookie = "InRoute=Yes";
+                            
                             document.cookie = "score=" + score;                        
                         }
                         if (stepPositionsToCharger.length <= countToCharger){
@@ -292,7 +292,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                   charger=false;
                                 }
                             if (path.length <= count){
-                            document.cookie = "InRoute=No";
+            
                             clearInterval(intervalId4);}
                             }, 200);
                           }
@@ -356,7 +356,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             countToCharger ++;
                             score = score - 0.5;
-                            document.cookie = "InRoute=Yes";
+                           
                             document.cookie = "score=" + score;
                         
                         }
