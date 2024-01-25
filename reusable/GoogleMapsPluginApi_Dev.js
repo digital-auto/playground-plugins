@@ -117,6 +117,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId4;
     let intervalId6;
     let routeToCharger=false;
+    document.cookie = "routeToCharger=" + false;
     let charger=false;
     return {
         setVehiclePin: (coordinates) => {
@@ -231,6 +232,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             }))
                         );
                         routeToCharger=true;
+                        document.cookie = "routeToCharger=" + true;
                         return stepPositionsToChargerStation;
                     })
                 
@@ -252,6 +254,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
                             routeToCharger=false;
+                            document.cookie = "routeToCharger=" + false;
+                           
    
                             if (!routeToCharger){
                                  new box.window.google.maps.Marker({
@@ -278,10 +282,12 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                                 if (charger&&score<97) {
                                     charger=true;
                                     score=score+3;
+                                    document.cookie = "InStation=true";
                                     document.cookie = "score="+score;
                                 }  
                                 else if(score>=97){
                                   score=100
+                                  document.cookie = "InStation=false";
                                   charger=false;
                                 }
                                 if (path.length <= count)
@@ -338,6 +344,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             }))
                         );
                         routeToCharger=true;
+                        document.cookie = "routeToCharger=" + true;
                         return stepPositionsToChargerStation;
                     })
                     intervalId6 = setInterval(async () => {
@@ -357,14 +364,17 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
                             routeToCharger=false;
+                            document.cookie = "routeToCharger=" + false;
                             document.cookie = "Charger=defectNo";
                          
                             intervalId4 = setInterval(async () => {
                                 if (charger&&score<97) {
                                     score=score+3;
+                                    document.cookie = "InStation=true";
                                     document.cookie = "score="+score;
                                 }  
                                 else if(score>=97){
+                                  document.cookie = "InStation=false";
                                   score=100
                                   charger=false;
                                 }
