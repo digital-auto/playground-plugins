@@ -244,6 +244,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             countToCharger ++;
                             score = score - 0.5;
+                            document.cookie = "InRoute=Yes";
                             document.cookie = "score=" + score;
                            
                         
@@ -252,6 +253,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
                             lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
                             marker.setPosition({ lat, lng });
+                            document.cookie = "InRoute=No";
                             clearInterval(intervalId6);
                             routeToCharger=false;
                             document.cookie = "routeToCharger=" + false;
@@ -321,7 +323,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           if (min==null){
                             min=coordinates
                             minIdCharger=chargestationId  
-                                                     
                           }
                           else if (distance(min.latitude,min.longitude,path[count].lat,path[count].lng)>distance(coordinates.latitude,coordinates.longitude,path[count].lat,path[count].lng)){
                             min=coordinates
@@ -355,6 +356,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             countToCharger ++;
                             score = score - 0.5;
+                            document.cookie = "InRoute=Yes";
                             document.cookie = "score=" + score;
                         
                         }
@@ -364,6 +366,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             marker.setPosition({ lat, lng });
                             clearInterval(intervalId6);
                             routeToCharger=false;
+                            document.cookie = "InRoute=No";
                             document.cookie = "routeToCharger=" + false;
                             document.cookie = "Charger=defectNo";
                          
@@ -395,6 +398,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         lat = path[count].lat;
                           lng = path[count].lng;
                           marker.setPosition({ lat, lng });
+                          document.cookie = "InRoute=Yes";
+
                           if(count<path.length*0.5)
                           count+=7;
                         else  if(count<path.length*0.7)
