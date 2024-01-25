@@ -467,7 +467,7 @@ let Charged=false;
     }
       }  
 
-      if (InStation){
+      if (InStation=="true"){
         charger.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:block";
         Drive.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
         Defect.style="width: 100%; height: 100%; object-fit: contain; margin: auto; display:none";
