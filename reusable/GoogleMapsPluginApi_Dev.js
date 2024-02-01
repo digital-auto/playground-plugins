@@ -130,7 +130,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
             if (coordinates === null) {
                 if (marker !== null) {
                     marker.setMap(null)
-                    marker = null    
+                    marker = null   
+                    markerCar2.setMap(null)
+                    markerCar2 = null     
                 }
              } else {
                 if (marker === null) {
