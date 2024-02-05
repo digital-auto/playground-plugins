@@ -127,6 +127,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     document.cookie = "InRouteCar2=Yes";    
 
     let charger=false;
+    let chargerCar2=false;
     return {
         setVehiclePin: (coordinates) => {
             if (coordinates === null) {
