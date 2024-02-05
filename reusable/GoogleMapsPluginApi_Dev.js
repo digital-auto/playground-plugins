@@ -440,9 +440,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   intervalIdCar2 = setInterval(async () => {
                     if (path)
                       if (!routeToChargerCar2 && (path.length-1 > countCar2) && ( ((scoreCar2>40) && !chargerCar2) || (!routeToChargerCar2 && (countCar2>((path.length*0.65)))&&scoreCar2>0) ) ) {
-                        latCar2 = path[countCar2].lat;
-                          lngCar2 = path[countCar2].lng;
-                          markerCar2.setPosition({ latCar2, lngCar2 });
+                          let lat  = path[countCar2].lat;
+                          let lng  = path[countCar2].lng;
+                          markerCar2.setPosition({ lat , lng  });
                           if(countCar2<path.length*0.5)
                           countCar2+=7;
                         else  if(countCar2<path.length*0.7)
