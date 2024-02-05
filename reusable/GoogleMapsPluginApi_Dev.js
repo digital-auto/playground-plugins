@@ -118,7 +118,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     path=  stepPositions;
     let intervalId3;
     let intervalId4;
+    let intervalId4Car2;
     let intervalId6;
+    let intervalId6Car2;
     let routeToCharger=false;
     let routeToChargerCar2=false;
     document.cookie = "routeToCharger=" + false;
@@ -328,6 +330,115 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   });
                
                     }
+                    function Near_ChargerCar2(){
+                        let defect=false;
+                        
+                      // Fetch chargestation coordinates and add markers to map
+                       fetch('https://proxy.digitalauto.tech/fleet-simulate/get_chargestation_data')
+                       .then(response => response.json())
+                       .then( async chargestationCoordinates => {
+                           // For each charger, create a marker on the map
+                           let min=null;
+                           let minIdCharger=null;
+                        
+                           for (let chargestationId in chargestationCoordinates) {
+                               let coordinates = chargestationCoordinates[chargestationId];
+     
+                               if (coordinates.availability &&!coordinates.defect)    
+                               if (min==null){
+                                 minIdCharger=chargestationId
+                                 min=coordinates
+                                 minIdCharger=chargestationId  
+                                                          
+                               }
+                               else if (distance(min.latitude,min.longitude,path[countCar2].lat,path[countCar2].lng)>distance(coordinates.latitude,coordinates.longitude,path[countCar2].lat,path[countCar2].lng)){
+                                 minIdCharger=chargestationId
+                                 min=coordinates
+                                 minIdCharger=chargestationId
+                               }
+                           }
+     
+                           
+     
+                           ////////Change route to the charger station
+      
+                         let countToCharger=0;
+                         const stepPositionsToCharger= await fetch(apiUrl+lngCar2+","+latCar2+";"+min.longitude+","+min.latitude+"?steps=true")
+                         .then(response => response.json())
+                         .then(data => {
+                             const stepPositionsToChargerStation = data.routes[0].legs.flatMap(leg =>
+                                 leg.steps.map(step => ({
+                                     lat: step.maneuver.location[1],
+                                     lng: step.maneuver.location[0]
+                                 }))
+                             );
+                             routeToChargerCar2=true;
+                             document.cookie = "routeToChargerCar2=" + true;
+                             return stepPositionsToChargerStation;
+                         })
+                     
+                         intervalId6Car2 = setInterval(async () => {
+                             if (routeToChargerCar2) {
+                               let  lat = stepPositionsToCharger[countToCharger].lat;
+                               let  lng = stepPositionsToCharger[countToCharger].lng;
+                                 markerCar2.setPosition({ lat, lng });
+                                 countToCharger ++;
+                                 scoreCar2 = scoreCar2 - 0.5;
+                                 document.cookie = "scoreCar2=" + scoreCar2;                        
+                             }
+                             if (stepPositionsToCharger.length <= countToCharger){
+                                let  lat = stepPositionsToCharger[stepPositionsToCharger.length-1].lat;
+                                let  lng = stepPositionsToCharger[stepPositionsToCharger.length-1].lng;
+                                 markerCar2.setPosition({ lat, lng });
+                                 clearInterval(intervalId6Car2);
+                                 routeToChargerCar2=false;
+                                 document.cookie = "routeToChargerCar2=" + false;
+                                
+                                 if (!routeToChargerCar2){
+                                      new box.window.google.maps.Marker({
+                                         position: { lat: min.latitude, lng: min.longitude },
+                                         map: map,
+                                         icon: {
+                                             path: "M161 214.667H7.667c-4.236 0 -7.667 3.431 -7.667 7.667v15.333c0 4.236 3.431 7.667 7.667 7.667h153.333c4.236 0 7.667 -3.431 7.667 -7.667v-15.333c0 -4.236 -3.431 -7.667 -7.667 -7.667zm99.667 -153.333V38.333c0 -4.236 -3.431 -7.667 -7.667 -7.667s-7.667 3.431 -7.667 7.667v23h-15.333V38.333c0 -4.236 -3.431 -7.667 -7.667 -7.667s-7.667 3.431 -7.667 7.667v23h-7.667c-4.236 0 -7.667 3.431 -7.667 7.667v15.333c0 17.135 11.318 31.476 26.833 36.383v56.776c0 6.684 -4.552 12.899 -11.145 13.987C206.626 192.865 199.333 186.391 199.333 178.25v-13.417c0 -23.288 -18.879 -42.167 -42.167 -42.167h-3.833V30.667c0 -16.939 -13.728 -30.667 -30.667 -30.667H46C29.061 0 15.333 13.728 15.333 30.667v168.667h138V145.667h3.833c10.585 0 19.167 8.582 19.167 19.167v11.792c0 19.009 13.858 36.014 32.78 37.859C230.819 216.607 249.167 199.53 249.167 178.25V120.716c15.515 -4.907 26.833 -19.248 26.833 -36.383v-15.333c0 -4.236 -3.431 -7.667 -7.667 -7.667h-7.667zm-136.04 22.885 -44.898 66.604c-1.054 1.596 -2.976 2.511 -4.979 2.511 -3.675 0 -6.454 -3.009 -5.592 -6.191L80.189 107.333H51.75c-3.474 0 -6.157 -2.679 -5.697 -5.697l7.667 -51.271C54.098 47.869 56.532 46 59.417 46h32.583c3.776 0 6.526 3.134 5.558 6.33L92 76.667h27.648c4.428 0 7.192 4.207 4.979 7.552z",
+                                             fillColor: "#000",
+                                             fillOpacity: 1,
+                                             scale: .1,
+                                         }  ,
+                                         zIndex: 999,
+                                         clickable: true
+                                     });
+                                     console.log(minIdCharger +" -- "+min.latitude )
+                                
+                                 defect=min.defect;
+                                   marker.setPosition({ lat, lng });
+                                   
+                                 intervalId4Car2 = setInterval(async () => {
+                                     if (charger&&scoreCar2<97) {
+                                         charger=true;
+                                         scoreCar2=scoreCar2+3;
+                                         document.cookie = "InStation=true";
+                                         document.cookie = "score="+score;
+                                     }  
+                                     else if(scoreCar2>=97){
+                                        scoreCar2=100
+                                       document.cookie = "InStation=false";
+                                       charger=false;
+                                     }
+                                 if (path.length <= countCar2){
+                 
+                                 clearInterval(intervalId4Car2);}
+                                 }, 200);
+                               }
+                             }
+                         }, 200);
+                          
+                           console.log("End of route change")
+                           ////////End of route change
+     
+                          
+                       });
+                    
+                         }
                    function Near_Charger2(){
                     document.cookie = "Charger=defectYes";
                  // Fetch chargestation coordinates and add markers to map
@@ -440,6 +551,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                   intervalIdCar2 = setInterval(async () => {
                     if (path)
                       if (!routeToChargerCar2 && (path.length-1 > countCar2) && ( ((scoreCar2>40) && !chargerCar2) || (!routeToChargerCar2 && (countCar2>((path.length*0.65)))&&scoreCar2>0) ) ) {
+                         latCar2  = path[countCar2].lat;
+                         lngCar2  = path[countCar2].lng;                         
                           let lat  = path[countCar2].lat;
                           let lng  = path[countCar2].lng;
                           markerCar2.setPosition({ lat , lng  });
@@ -453,7 +566,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                           document.cookie = "scoreCar2="+scoreCar2;
                       } else  if((scoreCar2<40)&&(!chargerCar2)&&(scoreCar2>0)&&(countCar2<((path.length*0.65)))){
                         chargerCar2=true;  
-                        //Near_ChargerCar2()
+                        Near_ChargerCar2()
                       }
                       if ((path.length <= countCar2) || scoreCar2<1 ){
                         document.cookie = "InRouteCar2=No";
