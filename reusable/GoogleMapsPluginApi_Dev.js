@@ -120,9 +120,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     let intervalId4;
     let intervalId6;
     let routeToCharger=false;
+    let routeToChargerCar2=false;
     document.cookie = "routeToCharger=" + false;
     document.cookie = "InRoute=Yes";
-    
+    document.cookie = "routeToChargerCar2=" + false;
+    document.cookie = "InRouteCar2=Yes";    
 
     let charger=false;
     return {
@@ -432,6 +434,30 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         document.cookie = "InRoute=No";
                         document.cookie = "Parking=Yes";
                       clearInterval(intervalId);}
+                  }, 1000);
+
+                  intervalIdCar2 = setInterval(async () => {
+                    if (path)
+                      if (!routeToChargerCar2 && (path.length-1 > countCar2) && ( ((scoreCar2>40) && !chargerCar2) || (!routeToChargerCar2 && (countCar2>((path.length*0.65)))&&scoreCar2>0) ) ) {
+                        latCar2 = path[countCar2].lat;
+                          lngCar2 = path[countCar2].lng;
+                          markerCar2.setPosition({ latCar2, lngCar2 });
+                          if(countCar2<path.length*0.5)
+                          countCar2+=7;
+                        else  if(countCar2<path.length*0.7)
+                        countCar2+=5;
+                        else
+                        countCar2+=3;
+                          scoreCar2=scoreCar2-0.2;
+                          document.cookie = "scoreCar2="+scoreCar2;
+                      } else  if((scoreCar2<40)&&(!chargerCar2)&&(scoreCar2>0)&&(countCar2<((path.length*0.65)))){
+                        chargerCar2=true;  
+                        //Near_ChargerCar2()
+                      }
+                      if ((path.length <= countCar2) || scoreCar2<1 ){
+                        document.cookie = "InRouteCar2=No";
+                        document.cookie = "ParkingCar2=Yes";
+                      clearInterval(intervalIdCar2);}
                   }, 1000);
             }
         }
