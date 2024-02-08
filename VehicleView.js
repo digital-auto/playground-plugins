@@ -614,6 +614,7 @@ let Charged=false;
     })
     /////Time Watch///////
     let intervalId7;
+    let stopwatchValue=null;
 
     widgets.register("Watch",  box => {
       const container = document.createElement("div");
@@ -685,6 +686,7 @@ let Charged=false;
           }
           </style>
        `
+       stopwatchValue = container.querySelector("#stopwatch");
       
           let totalElapsedTime = 0;
           let startTime;
@@ -744,7 +746,7 @@ let Charged=false;
               const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
 
               const formattedTime = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds) + ':' + padMilliseconds(milliseconds);
-              document.getElementById('stopwatch').innerText = formattedTime;
+              stopwatchValue.innerText  = formattedTime;
           }
 
           function updateLapList() {
