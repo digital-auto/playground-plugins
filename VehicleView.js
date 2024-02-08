@@ -803,7 +803,7 @@ let Charged=false;
           }, 1000);
           intervalId8 = setInterval(async () => {
             if (getCookie("InRoute") == "No"){
-            clearInterval(intervalId7);
+            clearInterval(intervalId8);
             stopStopwatch();
           }
           }, 1000);
