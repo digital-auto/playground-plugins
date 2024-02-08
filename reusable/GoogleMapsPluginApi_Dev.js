@@ -529,8 +529,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         charger=true;  
                         Near_Charger()
                       }
-                      console.log("path lenght= "+path.length)
-                      console.log("position= "+count)
+                   
                       if ((path.length <= (count+7)) || score<1 ){
                         document.cookie = "InRoute=No";
                         document.cookie = "Parking=Yes";
