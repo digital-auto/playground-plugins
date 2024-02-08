@@ -639,10 +639,13 @@ let Charged=false;
 
           .stopwatch-container {
               text-align: center;
+              align-items: center;
+              justify-content: center;
               max-width: 500px;
               margin: auto;
               position: relative;
               display: inline-flex;
+  
             
           }
           .Block{
@@ -674,7 +677,8 @@ let Charged=false;
           }
           .message{
             width: 200px;
-            margin:20px;
+            font-size: 2em;
+            margin-top:20px;
           }
           </style>
        `
