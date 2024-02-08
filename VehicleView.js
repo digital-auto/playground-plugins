@@ -651,7 +651,7 @@ let Charged=false;
           }
           .Block{
     
-            margin: 30px auto;
+            margin: 20px auto;
             width: 250px;
 
           }
