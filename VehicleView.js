@@ -616,24 +616,28 @@ let Charged=false;
     widgets.register("Watch",  box => {
       const container = document.createElement("div");
       container.innerHTML = `
-          <div id="stopwatch-container">
-          <div id="stopwatch-frame" class="color-zone">
-              <div id="stopwatch">00:00:00:00:000</div>
+          <div id="stopwatch-container" class="stopwatch-container">
+          <div id="stopwatch-frame" class="stopwatch-frame color-zone">
+              <div id="stopwatch" class="stopwatch">00:00:00:00:000</div>
+          </div>            
           </div>
-            
+          <div id="stopwatch2-container"  class="stopwatch-container">
+          <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
+              <div id="stopwatch2"  class="stopwatch">00:00:00:00:000</div>
+          </div>            
           </div>
 
           <style>
 
               
-          #stopwatch-container {
+          .stopwatch-container {
               text-align: center;
               max-width: 500px;
               margin: auto;
               position: relative;
           }
 
-          #stopwatch-frame {
+          .stopwatch-frame {
               width: 300px;
               height: 300px;
               border-radius: 50%;
@@ -646,7 +650,7 @@ let Charged=false;
               transition: background-color 0.3s ease;
           }
 
-          #stopwatch {
+          .stopwatch {
               font-size: 2em;
               color: #ECF0F1;
           }
