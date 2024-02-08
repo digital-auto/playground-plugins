@@ -946,12 +946,12 @@ let Charged=false;
       intervalId11 = setInterval(async () => {
         VIN.textContent= new URLSearchParams(window.location.search).get('vehicleId');
         VINCar2.textContent= new URLSearchParams(window.location.search).get('vehicleId');
-        Current.textContent  = getCookie("score");
-        CurrentCar2.textContent  = getCookie("scoreCar2");
+        Current.textContent  = parseFloat(getCookie("score")).toFixed(2);
+        CurrentCar2.textContent  = parseFloat(getCookie("scoreCar2")).toFixed(2);
         IsCharging.textContent = InStation;
         IsChargingCar2.textContent = InStationCar2;
-        TimeToComplete.textContent = (100-parseFloat(getCookie("score")))*60 ;  
-        TimeToCompleteCar2.textContent = (100-parseFloat(getCookie("scoreCar2")))*60 ;  
+        TimeToComplete.textContent = (100-parseFloat(getCookie("score")).toFixed(2))*60 ;  
+        TimeToCompleteCar2.textContent = (100-parseFloat(getCookie("scoreCar2")).toFixed(2))*60 ;  
       }, 1000);
 
  
