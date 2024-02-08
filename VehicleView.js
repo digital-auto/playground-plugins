@@ -677,12 +677,12 @@ let Charged=false;
           }
 
           .stopwatch {
-              font-size: 2em;
+              font-size: 30px;
               color: #ECF0F1;
           }
           .message{
             width: 200px;
-            font-size: 1.5;
+            font-size: 20px;
             margin-top:20px;
           }
           </style>
