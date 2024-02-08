@@ -950,8 +950,8 @@ let Charged=false;
         CurrentCar2.textContent  = parseFloat(getCookie("scoreCar2")).toFixed(2);
         IsCharging.textContent = InStation;
         IsChargingCar2.textContent = InStationCar2;
-        TimeToComplete.textContent = parseFloat((100-parseFloat(getCookie("score")).toFixed(2))*60).toFixed(2) ;  
-        TimeToCompleteCar2.textContent = parseFloat((100-parseFloat(getCookie("scoreCar2")).toFixed(2))*60).toFixed(2) ;  
+        TimeToComplete.textContent = parseFloat((100-parseFloat(getCookie("score")))*60).toFixed(2) ;  
+        TimeToCompleteCar2.textContent = parseFloat((100-parseFloat(getCookie("scoreCar2")))*60).toFixed(2) ;  
       }, 1000);
 
  
