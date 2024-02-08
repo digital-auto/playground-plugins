@@ -642,12 +642,13 @@ let Charged=false;
               max-width: 500px;
               margin: auto;
               position: relative;
+              display: inline-flex;
             
           }
           .Block{
-            display: inline-flex;
+    
             margin: 30px auto;
-            width: 210px;
+            width: 250px;
 
           }
 
@@ -673,6 +674,7 @@ let Charged=false;
           }
           .message{
             width: 200px;
+            margin:20px;
           }
           </style>
        `
