@@ -628,7 +628,6 @@ let Charged=false;
 
           <style>
 
-              
           .stopwatch-container {
               text-align: center;
               max-width: 500px;
