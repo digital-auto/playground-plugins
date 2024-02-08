@@ -617,12 +617,21 @@ let Charged=false;
       const container = document.createElement("div");
       container.innerHTML = `
           <div id="stopwatch-container" class="stopwatch-container">
+          <div class="Block">
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
               <div id="stopwatch" class="stopwatch">00:00:00</div>
-          </div>   
+          </div> 
+          <div id="message">Time of Car 1</div>
+          </div>
+
+          <div class="Block">
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
               <div id="stopwatch2"  class="stopwatch">00:00:00</div>
-          </div>          
+          </div>   
+          <div id="message">Time of Car 2</div>
+          </div>
+          
+          
           </div>
           
 
@@ -635,13 +644,18 @@ let Charged=false;
               position: relative;
             
           }
+          .Block{
+            display: inline-flex;
+
+
+          }
 
           .stopwatch-frame {
               width: 200px;
               height: 200px;
               border-radius: 50%;
               background-color: #2C3E50;
-              display: inline-flex;
+              display: flex;
               
               align-items: center;
               justify-content: center;
