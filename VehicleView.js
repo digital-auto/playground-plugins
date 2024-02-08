@@ -845,7 +845,7 @@ let Charged=false;
             minmax(80px, 1fr)
             minmax(80px, 1fr)
         ;
-        grid-template-rows: min-content auto;
+        grid-template-rows: min-content min-content auto;
         font-size: inherit;
     }
       
