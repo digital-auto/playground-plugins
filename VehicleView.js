@@ -645,6 +645,7 @@ let Charged=false;
               margin: auto;
               position: relative;
               display: inline-flex;
+              padding-left: 10%;
   
             
           }
