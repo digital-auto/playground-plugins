@@ -792,12 +792,14 @@ let Charged=false;
               if (getCookie("InRouteCar2") == "Yes"){
               clearInterval(intervalId5);
               startStopwatchCar2();
+              console.log("Start Car 2")
             }
             }, 200);
             intervalId6 = setInterval(async () => {
               if (getCookie("InRouteCar2") == "No"){
               clearInterval(intervalId6);
               stopStopwatchCar2();
+              console.log("Stop Car 2")
             }
             }, 200);             
 
