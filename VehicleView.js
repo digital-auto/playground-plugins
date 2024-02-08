@@ -613,6 +613,8 @@ let Charged=false;
  
     })
     /////Time Watch///////
+    let intervalId7;
+
     widgets.register("Watch",  box => {
       const container = document.createElement("div");
       container.innerHTML = `
@@ -790,6 +792,12 @@ let Charged=false;
               const hours = Math.floor((lapTime / (1000 * 60 * 60)) % 24);
               return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds) + ':' + padMilliseconds(milliseconds);
           }
+          intervalId7 = setInterval(async () => {
+            if (getCookie("InRoute") == "Yes"){
+            clearInterval(intervalId7);
+            startStopwatch();
+          }
+          }, 1000);
  
 
         box.injectNode(container);
