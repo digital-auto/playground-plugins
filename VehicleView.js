@@ -796,13 +796,13 @@ let Charged=false;
 
  
              intervalId5 = setInterval(async () => {
-              if (getCookie("InRoute") == "Yes"){
+              if (getCookie("InRouteCar2") == "Yes"){
               clearInterval(intervalId5);
               startStopwatchCar2();
             }
             }, 1000);
             intervalId6 = setInterval(async () => {
-              if (getCookie("InRoute") == "No"){
+              if (getCookie("InRouteCar2") == "No"){
               clearInterval(intervalId6);
               stopStopwatchCar2();
             }
