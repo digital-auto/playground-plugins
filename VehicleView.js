@@ -796,7 +796,7 @@ let Charged=false;
             }
             }, 200);
             intervalId6 = setInterval(async () => {
-              if (getCookie("InRouteCar2") == "No"){
+              if (startTimeCar2 && getCookie("InRouteCar2") == "No"){
               clearInterval(intervalId6);
               stopStopwatchCar2();
               console.log("Stop Car 2")
