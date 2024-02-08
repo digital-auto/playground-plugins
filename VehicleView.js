@@ -800,6 +800,12 @@ let Charged=false;
             startStopwatch();
           }
           }, 1000);
+          intervalId8 = setInterval(async () => {
+            if (getCookie("InRoute") == "No"){
+            clearInterval(intervalId7);
+            stopStopwatch();
+          }
+          }, 1000);
  
 
         box.injectNode(container);
