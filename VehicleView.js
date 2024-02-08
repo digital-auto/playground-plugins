@@ -613,9 +613,12 @@ let Charged=false;
  
     })
     /////Time Watch///////
+    let intervalId5;
+    let intervalId6;
     let intervalId7;
     let intervalId8;
     let stopwatchValue=null;
+    let stopwatchValueCar2=null;
 
     widgets.register("Watch",  box => {
       const container = document.createElement("div");
@@ -688,13 +691,14 @@ let Charged=false;
           </style>
        `
        stopwatchValue = container.querySelector("#stopwatch");
+       stopwatchValueCar2 = container.querySelector("#stopwatch2");
       
-          let totalElapsedTime = 0;
-          let startTime;
-          let stopwatchInterval;
-          let isRunning = false;
-          let lapTimes = [];
-          let lastUpdateTime = 0;
+       let totalElapsedTime = 0;
+       let startTime;
+       let stopwatchInterval;
+       let isRunning = false;
+       let lastUpdateTime = 0;
+ 
 
           function startStopwatch() {
               if (!isRunning) {
@@ -705,6 +709,7 @@ let Charged=false;
               }
           }
 
+
           function stopStopwatch() {
               if (isRunning) {
                   clearInterval(stopwatchInterval);
@@ -712,28 +717,7 @@ let Charged=false;
                   isRunning = false;
               }
           }
-
-          function resetStopwatch() {
-              clearInterval(stopwatchInterval);
-              totalElapsedTime = 0;
-              isRunning = false;
-              lapTimes = [];
-              lastUpdateTime = 0;
-              updateStopwatch();
-              updateLapList();
-              updateLapCounter();
-              updateLapTime(0); // Reset lap time
-          }
-
-          function recordLap() {
-              if (isRunning) {
-                  const lapTime = performance.now() - startTime + totalElapsedTime;
-                  lapTimes.unshift(lapTime);
-                  updateLapList();
-                  updateLapCounter();
-                  updateLapTime(lapTime);
-              }
-          }
+ 
 
           function updateStopwatch() {
               const currentTime = performance.now();
@@ -750,51 +734,13 @@ let Charged=false;
               stopwatchValue.innerText  = formattedTime;
           }
 
-          function updateLapList() {
-              const lapList = document.getElementById('lap-list');
-              lapList.innerHTML = "";
-              lapTimes.forEach((lapTime, index) => {
-                  const listItem = document.createElement('li');
-                  listItem.textContent = `Lap ${index + 1}: ${formatLapTime(lapTime)}`;
-                  lapList.appendChild(listItem);
-
-                  // Change the background color of the lap entry based on index
-                  listItem.style.backgroundColor = index % 2 === 0 ? '#3498DB' : '#E74C3C';
-              });
-          }
-
-          function updateLapCounter() {
-              document.getElementById('lap-counter').innerText = `Laps: ${lapTimes.length}`;
-          }
-
-          function updateLapTime(lapTime) {
-              const formattedTime = formatLapTime(lapTime);
-              document.getElementById('lap-time').innerText = `Lap Time: ${formattedTime}`;
-          }
-
-          function changeColorZone(color) {
-              const frame = document.getElementById('stopwatch-frame');
-              frame.style.backgroundColor = color;
-
-              const colorPickerFrame = document.querySelector('.color-picker-frame');
-              colorPickerFrame.style.backgroundColor = color;
-          }
+  
 
           function pad(value) {
               return value < 10 ? '0' + value : value;
           }
 
-          function padMilliseconds(value) {
-              return value < 10 ? '00' + value : (value < 100 ? '0' + value : value);
-          }
-
-          function formatLapTime(lapTime) {
-              const milliseconds = Math.floor(lapTime % 1000);
-              const seconds = Math.floor((lapTime / 1000) % 60);
-              const minutes = Math.floor((lapTime / (1000 * 60)) % 60);
-              const hours = Math.floor((lapTime / (1000 * 60 * 60)) % 24);
-              return  pad(minutes) + ':' + pad(seconds) ;
-          }
+ 
           intervalId7 = setInterval(async () => {
             if (getCookie("InRoute") == "Yes"){
             clearInterval(intervalId7);
@@ -808,6 +754,59 @@ let Charged=false;
           }
           }, 1000);
  
+          let totalElapsedTimeCar2 = 0;
+          let startTimeCar2;
+          let stopwatchIntervalCar2;
+          let isRunningCar2 = false;
+          let lastUpdateTimeCar2 = 0;
+   
+             function startStopwatchCar2() {
+                 if (!isRunningCar2) {
+                     startTimeCar2 = performance.now();
+                     lastUpdateTimeCar2 = startTimeCar2;
+                     stopwatchIntervalCar2 = setInterval(updateStopwatchCar2, 1); // Update every 1 millisecond
+                     isRunningCar2 = true;
+                 }
+             }
+   
+   
+             function stopStopwatchCar2() {
+                 if (isRunningCar2) {
+                     clearInterval(stopwatchIntervalCar2);
+                     totalElapsedTimeCar2 += performance.now() - startTimeCar2;
+                     isRunningCar2 = false;
+                 }
+             }
+    
+   
+             function updateStopwatchCar2() {
+                 const currentTime = performance.now();
+                 const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
+                 const deltaTime = currentTime - lastUpdateTimeCar2;
+                 lastUpdateTimeCar2 = currentTime;
+   
+                 const seconds = Math.floor((elapsed / 1000) % 60);
+                 const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+   
+                 const formattedTime = pad(minutes) + ':' + pad(seconds);
+                 stopwatchValueCar2.innerText  = formattedTime;
+             }
+   
+     
+
+ 
+             intervalId5 = setInterval(async () => {
+              if (getCookie("InRoute") == "Yes"){
+              clearInterval(intervalId5);
+              startStopwatchCar2();
+            }
+            }, 1000);
+            intervalId6 = setInterval(async () => {
+              if (getCookie("InRoute") == "No"){
+              clearInterval(intervalId6);
+              stopStopwatchCar2();
+            }
+            }, 1000);             
 
         box.injectNode(container);
  
