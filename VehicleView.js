@@ -800,13 +800,13 @@ let Charged=false;
               clearInterval(intervalId5);
               startStopwatchCar2();
             }
-            }, 1000);
+            }, 200);
             intervalId6 = setInterval(async () => {
               if (getCookie("InRouteCar2") == "No"){
               clearInterval(intervalId6);
               stopStopwatchCar2();
             }
-            }, 1000);             
+            }, 200);             
 
         box.injectNode(container);
  
