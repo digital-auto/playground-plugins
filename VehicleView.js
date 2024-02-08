@@ -647,8 +647,11 @@ let Charged=false;
           .Block{
             display: inline-flex;
             margin: 30px auto;
-
-
+            width: 250px;
+            display: inline-flex;
+              
+            align-items: center;
+            justify-content: center;
           }
 
           .stopwatch-frame {
