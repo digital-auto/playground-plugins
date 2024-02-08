@@ -416,7 +416,8 @@ return () => { }
         )(box)
     })
  
-    let score =50
+    let score =100
+    let scoreCar2 =100
     const updateSignals = async () => {
        
       
