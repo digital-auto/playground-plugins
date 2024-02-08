@@ -722,13 +722,10 @@ let Charged=false;
           function updateStopwatch() {
               const currentTime = performance.now();
               const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
-              const deltaTime = currentTime - lastUpdateTime;
               lastUpdateTime = currentTime;
 
-              const milliseconds = Math.floor(elapsed % 1000);
               const seconds = Math.floor((elapsed / 1000) % 60);
               const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-              const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
 
               const formattedTime = pad(minutes) + ':' + pad(seconds);
               stopwatchValue.innerText  = formattedTime;
@@ -782,7 +779,6 @@ let Charged=false;
              function updateStopwatchCar2() {
                  const currentTime = performance.now();
                  const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
-                 const deltaTime = currentTime - lastUpdateTimeCar2;
                  lastUpdateTimeCar2 = currentTime;
    
                  const seconds = Math.floor((elapsed / 1000) % 60);
@@ -792,9 +788,6 @@ let Charged=false;
                  stopwatchValueCar2.innerText  = formattedTime;
              }
    
-     
-
- 
              intervalId5 = setInterval(async () => {
               if (getCookie("InRouteCar2") == "Yes"){
               clearInterval(intervalId5);
