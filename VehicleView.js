@@ -788,7 +788,7 @@ let Charged=false;
           }
 
           function formatLapTime(lapTime) {
-              const milliseconds = Math.floor(lapTime % 1000);
+              const milliseconds = Math.floor(lapTime % 100);
               const seconds = Math.floor((lapTime / 1000) % 60);
               const minutes = Math.floor((lapTime / (1000 * 60)) % 60);
               const hours = Math.floor((lapTime / (1000 * 60 * 60)) % 24);
