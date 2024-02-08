@@ -682,7 +682,7 @@ let Charged=false;
           }
           .message{
             width: 200px;
-            font-size: 2em;
+            font-size: 1.5;
             margin-top:20px;
           }
           </style>
