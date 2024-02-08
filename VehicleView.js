@@ -552,7 +552,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="messageCar2">Current battery SOC Car 2</div>
+			<div id="message">Current battery SOC Car 2</div>
 		</div>
 		`
 
