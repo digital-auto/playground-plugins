@@ -618,10 +618,10 @@ let Charged=false;
       container.innerHTML = `
           <div id="stopwatch-container" class="stopwatch-container">
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
-              <div id="stopwatch" class="stopwatch">00:00:00:00:000</div>
+              <div id="stopwatch" class="stopwatch">00:00:00</div>
           </div>   
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
-              <div id="stopwatch2"  class="stopwatch">00:00:00:00:000</div>
+              <div id="stopwatch2"  class="stopwatch">00:00:00</div>
           </div>          
           </div>
           
@@ -652,7 +652,7 @@ let Charged=false;
           }
 
           .stopwatch {
-              font-size: 1em;
+              font-size: 2em;
               color: #ECF0F1;
           }
           </style>
