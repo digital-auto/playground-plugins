@@ -614,6 +614,7 @@ let Charged=false;
     })
     /////Time Watch///////
     let intervalId7;
+    let intervalId8;
     let stopwatchValue=null;
 
     widgets.register("Watch",  box => {
