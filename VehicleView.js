@@ -511,6 +511,7 @@ let Charged=false;
     let SimulatorStarted = false
     let intervalId2;
     let intervalId3;
+    let intervalId11;
     let scoreFrame = null;
 
     widgets.register("Score Bar", async (box) => {
@@ -931,7 +932,7 @@ let Charged=false;
       IsCharging=container.querySelector("#IsCharging");
       Current=container.querySelector("#Current");
       TimeToComplete=container.querySelector("#TimeToComplete");
-      intervalId3 = setInterval(async () => {
+      intervalId11 = setInterval(async () => {
         VIN.textContent= new URLSearchParams(window.location.search).get('vehicleId');
         Current.textContent  = getCookie("score");
         IsCharging.textContent = InStation;
