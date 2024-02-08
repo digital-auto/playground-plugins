@@ -421,6 +421,7 @@ return () => { }
        
       
       score = getCookie("score")
+      scoreCar2 = getCookie("scoreCar2")
      
       
       scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
@@ -428,7 +429,14 @@ return () => { }
       scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
       scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
       //message you want to write with the bar
-      scoreFrame.querySelector("#score #message").textContent = "Current Battery SOC"
+      scoreFrame.querySelector("#score #message").textContent = "Current battery SOC Car 1"
+
+      scoreFrame.querySelector("#scoreCar2 .text").textContent = parseFloat(scoreCar2).toFixed(2) + "%"
+      scoreFrame.querySelector("#scoreCar2 .mask").setAttribute("stroke-dasharray", (200 - (parseInt(scoreCar2) * 2)) + "," + 200);
+      scoreFrame.querySelector("#scoreCar2 .needle").setAttribute("y1", `${(parseInt(scoreCar2) * 2)}`)
+      scoreFrame.querySelector("#scoreCar2 .needle").setAttribute("y2", `${(parseInt(scoreCar2) * 2)}`)
+      //message you want to write with the bar
+      scoreFrame.querySelector("#scoreCar2 #message").textContent = "Current battery SOC Car 2"
  
   }
   function getCookie(name) {
