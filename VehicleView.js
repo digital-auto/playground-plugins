@@ -648,10 +648,7 @@ let Charged=false;
             display: inline-flex;
             margin: 30px auto;
             width: 210px;
-            display: inline-flex;
-              
-            align-items: center;
-            justify-content: center;
+
           }
 
           .stopwatch-frame {
