@@ -948,8 +948,8 @@ let Charged=false;
         VINCar2.textContent= new URLSearchParams(window.location.search).get('vehicleId');
         Current.textContent  = parseFloat(getCookie("score")).toFixed(2);
         CurrentCar2.textContent  = parseFloat(getCookie("scoreCar2")).toFixed(2);
-        IsCharging.textContent = InStation;
-        IsChargingCar2.textContent = InStationCar2;
+        IsCharging.textContent  = getCookie("InStation") //document.cookie.substring(8, document.cookie.length)
+        IsChargingCar2.textContent = getCookie("InStationCar2") //document.cookie.substring(8, document.cookie.length)
         TimeToComplete.textContent = parseInt((100-parseFloat(getCookie("score")))*60);  
         TimeToCompleteCar2.textContent = parseInt((100-parseFloat(getCookie("scoreCar2")))*60) ;  
       }, 1000);
