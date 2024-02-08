@@ -531,7 +531,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       console.log("path lenght= "+path.length)
                       console.log("position= "+count)
-                      if ((path.length <= count+7) || score<1 ){
+                      if ((path.length <= (count+7)) || score<1 ){
                         document.cookie = "InRoute=No";
                         document.cookie = "Parking=Yes";
                       clearInterval(intervalId);}
@@ -557,7 +557,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         chargerCar2=true;  
                         Near_ChargerCar2()
                       }
-                      if ((path.length <= countCar2) || scoreCar2<1 ){
+                      if ((path.length <= (countCar2+7)) || scoreCar2<1 ){
                         document.cookie = "InRouteCar2=No";
                         document.cookie = "ParkingCar2=Yes";
                       clearInterval(intervalIdCar2);}
