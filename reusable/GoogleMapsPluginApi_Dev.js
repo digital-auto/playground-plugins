@@ -531,7 +531,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       }
                       console.log("path lenght= "+path.length)
                       console.log("position= "+count)
-                      if ((path.length <= count) || score<1 ){
+                      if ((path.length <= count+7) || score<1 ){
                         document.cookie = "InRoute=No";
                         document.cookie = "Parking=Yes";
                       clearInterval(intervalId);}
