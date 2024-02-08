@@ -634,7 +634,7 @@ let Charged=false;
               max-width: 500px;
               margin: auto;
               position: relative;
-              display: inline;
+            
           }
 
           .stopwatch-frame {
@@ -648,7 +648,7 @@ let Charged=false;
               box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
               margin: 10px auto;
               transition: background-color 0.3s ease;
-              display: inline;
+              display: inline-block;
           }
 
           .stopwatch {
