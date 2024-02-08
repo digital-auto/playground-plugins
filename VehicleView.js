@@ -638,8 +638,8 @@ let Charged=false;
           }
 
           .stopwatch-frame {
-              width: 300px;
-              height: 300px;
+              width: 200px;
+              height: 200px;
               border-radius: 50%;
               background-color: #2C3E50;
               display: flex;
@@ -648,7 +648,7 @@ let Charged=false;
               box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
               margin: 10px auto;
               transition: background-color 0.3s ease;
-              display: inline-block;
+            
           }
 
           .stopwatch {
