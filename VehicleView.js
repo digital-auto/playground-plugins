@@ -621,14 +621,14 @@ let Charged=false;
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
               <div id="stopwatch" class="stopwatch">00:00:00</div>
           </div> 
-          <div class="message">Time of Car 1</div>
+          <div class="message">Stopwatch of Car 1</div>
           </div>
 
           <div class="Block">
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
               <div id="stopwatch2"  class="stopwatch">00:00:00</div>
           </div>   
-          <div class="message">Time of Car 2</div>
+          <div class="message">Stopwatch of Car 2</div>
           </div>
           
           
