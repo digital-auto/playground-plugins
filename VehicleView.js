@@ -646,6 +646,7 @@ let Charged=false;
           }
           .Block{
             display: inline-flex;
+            margin: 30px auto;
 
 
           }
@@ -661,7 +662,7 @@ let Charged=false;
               justify-content: center;
               
               box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-              margin: 10px auto;
+              
               transition: background-color 0.3s ease;
             
           }
