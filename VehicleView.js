@@ -814,7 +814,11 @@ let Charged=false;
   let VIN=null;
   let IsCharging=null;
   let TimeToComplete=null;
-  let Current=null;
+  let Current=null;  
+  let VINCar2=null;
+  let IsChargingCar2=null;
+  let TimeToCompleteCar2=null;
+  let CurrentCar2=null;
 
   widgets.register("TableVSS",  box => {
     const container = document.createElement("div");
@@ -898,29 +902,29 @@ let Charged=false;
             <table>
                 <thead>
                     <tr>
-                        <th>VSS API</th><th>Value</th>
+                        <th>VSS API</th><th>Value (Car 1)</th><th>Value (Car 2)</th>
                     </tr>
                 </thead>
                 <tbody>
                     
                         <tr data-api="Vehicle.VehicleIdentification.VIN">
-                            <td title="Vehicle.VehicleIdentification.VIN">Vehicle.VehicleIdentification.VIN</td><td id="VIN"> </td>
+                            <td title="Vehicle.VehicleIdentification.VIN">Vehicle.VehicleIdentification.VIN</td><td id="VIN"> </td><td id="VINCar2"> </td>
                         </tr>
                      
                     
                      
                     
                         <tr data-api="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">
-                            <td title="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td><td  id="Current"></td>
+                            <td title="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td><td  id="Current"></td><td  id="CurrentCar2"></td>
                         </tr>
                      
                     
                         <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td><td id="IsCharging"></td>
+                            <td title="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td><td id="IsCharging"></td><td id="IsChargingCar2"></td>
                         </tr>
                     
                         <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td><td  id="TimeToComplete"></td>
+                            <td title="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td><td  id="TimeToComplete"></td><td  id="TimeToCompleteCar2"></td>
                         </tr>
                     
                 </tbody>
@@ -932,11 +936,19 @@ let Charged=false;
       IsCharging=container.querySelector("#IsCharging");
       Current=container.querySelector("#Current");
       TimeToComplete=container.querySelector("#TimeToComplete");
+      VINCar2=container.querySelector("#VINCar2");
+      IsChargingCar2=container.querySelector("#IsChargingCar2");
+      CurrentCar2=container.querySelector("#CurrentCar2");
+      TimeToCompleteCar2=container.querySelector("#TimeToCompleteCar2");
       intervalId11 = setInterval(async () => {
         VIN.textContent= new URLSearchParams(window.location.search).get('vehicleId');
+        VINCar2.textContent= new URLSearchParams(window.location.search).get('vehicleId');
         Current.textContent  = getCookie("score");
+        CurrentCar2.textContent  = getCookie("scoreCar2");
         IsCharging.textContent = InStation;
+        IsChargingCar2.textContent = InStationCar2;
         TimeToComplete.textContent = (100-parseFloat(getCookie("score")))*60 ;  
+        TimeToCompleteCar2.textContent = (100-parseFloat(getCookie("scoreCar2")))*60 ;  
       }, 1000);
 
  
