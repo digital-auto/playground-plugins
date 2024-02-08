@@ -623,14 +623,14 @@ let Charged=false;
           <div id="stopwatch-container" class="stopwatch-container">
           <div class="Block">
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
-              <div id="stopwatch" class="stopwatch">00:00:00</div>
+              <div id="stopwatch" class="stopwatch">00:00</div>
           </div> 
           <div class="message">Stopwatch of Car 1</div>
           </div>
 
           <div class="Block">
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
-              <div id="stopwatch2"  class="stopwatch">00:00:00</div>
+              <div id="stopwatch2"  class="stopwatch">00:00</div>
           </div>   
           <div class="message">Stopwatch of Car 2</div>
           </div>
@@ -746,7 +746,7 @@ let Charged=false;
               const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
               const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
 
-              const formattedTime = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds) + ':' + padMilliseconds(milliseconds);
+              const formattedTime = pad(minutes) + ':' + pad(seconds);
               stopwatchValue.innerText  = formattedTime;
           }
 
@@ -789,11 +789,11 @@ let Charged=false;
           }
 
           function formatLapTime(lapTime) {
-              const milliseconds = Math.floor(lapTime % 100);
+              const milliseconds = Math.floor(lapTime % 1000);
               const seconds = Math.floor((lapTime / 1000) % 60);
               const minutes = Math.floor((lapTime / (1000 * 60)) % 60);
               const hours = Math.floor((lapTime / (1000 * 60 * 60)) % 24);
-              return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds) + ':' + padMilliseconds(milliseconds);
+              return  pad(minutes) + ':' + pad(seconds) ;
           }
           intervalId7 = setInterval(async () => {
             if (getCookie("InRoute") == "Yes"){
