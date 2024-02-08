@@ -468,6 +468,7 @@ let Charged=false;
     let Status= getCookie("Charger") //document.cookie.substring(8, document.cookie.length)
     let routeToCharger= getCookie("routeToCharger") //document.cookie.substring(8, document.cookie.length)
     InStation= getCookie("InStation") //document.cookie.substring(8, document.cookie.length)
+    InStationCar2= getCookie("InStationCar2") //document.cookie.substring(8, document.cookie.length)
     let InRoute= getCookie("InRoute") //document.cookie.substring(8, document.cookie.length)
 
 
@@ -591,6 +592,7 @@ let Charged=false;
     let Defect=null;
     let Parking=null;
     let InStation=false;
+    let InStationCar2=false;
     widgets.register("ImageCharger",  box => {
       const container = document.createElement("div");
       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
