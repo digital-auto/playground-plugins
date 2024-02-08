@@ -619,34 +619,33 @@ let Charged=false;
           <div id="stopwatch-container" class="stopwatch-container">
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
               <div id="stopwatch" class="stopwatch">00:00:00:00:000</div>
-          </div>            
-          </div>
-          <div id="stopwatch2-container"  class="stopwatch-container">
+          </div>   
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
               <div id="stopwatch2"  class="stopwatch">00:00:00:00:000</div>
-          </div>            
+          </div>          
           </div>
+          
 
           <style>
 
               
           .stopwatch-container {
               text-align: center;
-              max-width: 40%;
+              max-width: 500px;
               margin: auto;
               position: relative;
           }
 
           .stopwatch-frame {
-              width: 300px;
-              height: 300px;
+              width: 150px;
+              height: 150px;
               border-radius: 50%;
               background-color: #2C3E50;
               display: flex;
               align-items: center;
               justify-content: center;
               box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-              margin: 20px auto;
+              margin: 10px auto;
               transition: background-color 0.3s ease;
           }
 
