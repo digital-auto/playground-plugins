@@ -638,10 +638,11 @@ let Charged=false;
 
           .stopwatch-frame {
               width: 150px;
-              height: 150px;
+              height: 100px;
               border-radius: 50%;
               background-color: #2C3E50;
-              display: flex;
+              display: inline-block;
+              padding-top:30px;
               align-items: center;
               justify-content: center;
               box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
