@@ -543,7 +543,7 @@ let Charged=false;
 			<div id="message">Current battery SOC Car 1</div>
 		</div>
     		<div id="scoreCar2" style="">
-			<div class="textCar2">0.00%</div>
+			<div class="text">0.00%</div>
 			<svg width="100" height="200" style="transform: rotateX(180deg)">
 				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
 				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="200,200"/>
