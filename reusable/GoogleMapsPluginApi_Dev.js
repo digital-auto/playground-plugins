@@ -34,6 +34,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
 
     const container = document.createElement("div");
     container.setAttribute("style", `display:flex; height: 80%; width: 100%;`);
+    container.setAttribute("id", `myDIV`);
     
     const directionsRenderer = new box.window.google.maps.DirectionsRenderer();
     const map = new box.window.google.maps.Map(container, {
@@ -42,7 +43,9 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     });
     box.window.directionsRenderer = directionsRenderer
     directionsRenderer.setMap(map);
-
+    let getScore = async () => {
+        return score
+    }
 
     calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);
 
@@ -50,7 +53,8 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     box.injectNode(container);
      const legends = document.createElement("div");
      legends.innerHTML = '<div><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEVIconWithOutCIF.png?alt=media&token=7337cfb3-b4f5-4b67-bfff-27a307396d4f" width="40" height="30"> Vehicle without CIF </div><div><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEViconCIF.png?alt=media&token=4ef5caf0-f58a-4d84-924a-43db76cd6668" width="40" height="30">Vehicle with CIF </div>';
-     box.injectNode(legends);
+     document.getElementById("myDIV").insertBefore(legends);
+    
 
     let marker = null
     let markerCar2 = null
