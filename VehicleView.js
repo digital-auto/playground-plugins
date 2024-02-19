@@ -905,7 +905,7 @@ let Charged=false;
             <table>
                 <thead>
                     <tr>
-                        <th>VSS API</th><th>Value (Car 1)</th><th>Value (Car 2)</th>
+                        <th>VSS API</th><th>Value of Vehicle without CIF</th><th>Value of Vehicle with CIF</th>
                     </tr>
                 </thead>
                 <tbody>
