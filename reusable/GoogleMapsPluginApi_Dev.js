@@ -44,8 +44,20 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     directionsRenderer.setMap(map);
 
     calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);
+    const legend = document.getElementById("legend") ;
 
-     box.injectNode(container);
+ 
+    const div = document.createElement("div");
+    div.innerHTML = `<div id="legends">
+    <div><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEVIconWithOutCIF.png?alt=media&token=7337cfb3-b4f5-4b67-bfff-27a307396d4f" width="40" height="30"> Vehicle without CIF </div>
+    <div><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEViconCIF.png?alt=media&token=4ef5caf0-f58a-4d84-924a-43db76cd6668" width="40" height="30">Vehicle with CIF </div>
+    </div>`;
+    legend.appendChild(div);
+      
+    
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
+    box.injectNode(container);
 
     let marker = null
     let markerCar2 = null
