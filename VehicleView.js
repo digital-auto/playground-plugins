@@ -430,14 +430,14 @@ return () => { }
       scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
       scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
       //message you want to write with the bar
-      scoreFrame.querySelector("#score #message").textContent = "Current battery SOC Car 1"
+      scoreFrame.querySelector("#score #message").textContent = "Current battery SOC of Vehicle without CIF"
 
       scoreFrame.querySelector("#scoreCar2 .text").textContent = parseFloat(scoreCar2).toFixed(2) + "%"
       scoreFrame.querySelector("#scoreCar2 .mask").setAttribute("stroke-dasharray", (200 - (parseInt(scoreCar2) * 2)) + "," + 200);
       scoreFrame.querySelector("#scoreCar2 .needle").setAttribute("y1", `${(parseInt(scoreCar2) * 2)}`)
       scoreFrame.querySelector("#scoreCar2 .needle").setAttribute("y2", `${(parseInt(scoreCar2) * 2)}`)
       //message you want to write with the bar
-      scoreFrame.querySelector("#scoreCar2 #message").textContent = "Current battery SOC Car 2"
+      scoreFrame.querySelector("#scoreCar2 #message").textContent = "Current battery SOC of Vehicle with CIF"
  
   }
   function getCookie(name) {
@@ -542,7 +542,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Current battery SOC Car 1</div>
+			<div id="message">Current battery SOC of Vehicle without CIF</div>
 		</div>
     		<div id="scoreCar2" style="">
 			<div class="text">0.00%</div>
@@ -554,7 +554,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Current battery SOC Car 2</div>
+			<div id="message">Current battery SOC of Vehicle with CIF</div>
 		</div>
 		`
 
