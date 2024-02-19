@@ -27,7 +27,7 @@ function calculateAndDisplayRoute(box, path, directionsRenderer, tmode = null) {
         })
         .catch((e) => console.log("Directions request failed due to " + e));
 }
-
+let contMap=null;
 const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon = null} = {}) => {
     console.log("GoogleMapsPluginApi icon", icon)
     await loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=${apikey}`)
@@ -39,7 +39,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             <div><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEVIconWithOutCIF.png?alt=media&token=7337cfb3-b4f5-4b67-bfff-27a307396d4f" width="40" height="30"> Vehicle without CIF </div>
                             <div><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEViconCIF.png?alt=media&token=4ef5caf0-f58a-4d84-924a-43db76cd6668" width="40" height="30">Vehicle with CIF </div>
                             </div>`
-    const contMap=  container.querySelector("#forMaps");
+     contMap=  container.querySelector("#forMaps");
     
     const directionsRenderer = new box.window.google.maps.DirectionsRenderer();
     const map = new box.window.google.maps.Map(contMap, {
@@ -48,9 +48,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
     });
     box.window.directionsRenderer = directionsRenderer
     directionsRenderer.setMap(map);
-    let getScore = async () => {
-        return score
-    }
+ 
 
     calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);
  
