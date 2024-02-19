@@ -42,18 +42,15 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
      contMap=  container.querySelector("#forMaps");
     
     const directionsRenderer = new box.window.google.maps.DirectionsRenderer();
-    const map = new box.window.google.maps.Map(contMap, {
+    const map = new box.window.google.maps.Map(container, {
         zoom: 7,
         center: path[0],
     });
     box.window.directionsRenderer = directionsRenderer
     directionsRenderer.setMap(map);
- 
 
     calculateAndDisplayRoute(box, path, directionsRenderer, travelMode);
- 
 
-      
      box.injectNode(container);
 
     let marker = null
