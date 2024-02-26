@@ -871,7 +871,13 @@ let Charged=false;
       </tr>    
       <tr>
         <td style="color:white;">Updated charging stations</td>
-        <td style="color:#ff006e;"></td>
+        <td style="color:#ff006e;"><span style="width:70%">
+        <img width="50px" height="50px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon1.png?alt=media&token=e3daae9a-b2cf-445a-804b-31ddee038655" >
+        </span>
+        <span style="width:30%">
+        <img width="50px" height="50px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" >
+        </span>
+        </td>
         <td style="color:#00ffff;"></td>
         
       </tr>
