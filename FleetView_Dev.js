@@ -284,6 +284,22 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
         )
     )
 
+    
+     ///// Cover Image //////
+ 
+     widgets.register("Cover",  box => {
+        const container = document.createElement("div");
+        container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+  
+        container.innerHTML = `
+        <img width="100%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargingFunCover.png?alt=media&token=e217d0e6-1444-48db-b794-4650392f41ac" >
+ 
+        `
+       
+  
+          box.injectNode(container);
+   
+      })
  
 
     ////////Action Widget////
