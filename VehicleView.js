@@ -881,7 +881,7 @@ let Charged=false;
         </td>
 
         <td style="color:#00ffff;">
-        <span style="width:70%; font-size: x-large;">
+        <span style="width:70%; font-size: xx-large;">
         X
         </span>
         <span style="width:100px"> &nbsp;</span>
