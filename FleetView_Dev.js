@@ -414,6 +414,9 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 td{
     padding: 1%;
 }
+span{
+    font-weight: bold;
+}
 </style>   
       `
 
