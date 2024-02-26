@@ -886,7 +886,7 @@ let Charged=false;
         </span>
         <span style="width:100px"> &nbsp;</span>
         <span style="width:30%; margin-left:100px">
-        <img width="50px" height="75px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" >
+        <img width="50px" height="65px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" >
         </span>
         </td>
         
