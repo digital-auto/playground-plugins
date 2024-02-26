@@ -427,18 +427,21 @@ td{
 
         // Initial distanceRandom value
         let distanceRandom = getRandomValue(200, 270);
+        let distanceRandom2 = getRandomValue(180, 220);
 
         // Function to update the distanceRandom and log it every second
         function updateDistance() {
             // Increment distanceRandom by 1
-            distanceRandom++;
+            if(distanceRandom<270)
+            distanceRandom=distanceRandom+2;
+            if(distanceRandom2<220)
+            distanceRandom2++;
             distanceValue1.innerText=distanceRandom;
+            distanceValue2.innerText=distanceRandom2;
             // If distanceRandom reaches 270, stop the interval
-            if (distanceRandom >= 270) {
+            if ((distanceRandom >= 270) && (distanceRandom2 >= 220)){
                 clearInterval(interval);
             }
-            // Log the updated distanceRandom
-            console.log("Distance:", distanceRandom);
         }
 
         // Call updateDistance function every second
