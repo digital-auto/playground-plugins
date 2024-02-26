@@ -374,8 +374,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 </tr>
 <tr>
   <td style="color:white;  ">Average route distance </td>
-  <td style="color:#ff006e;" ><span id="distance1">0</span><span>&nbsp; km</span></td>
-  <td style="color:#00ffff;" ><span id="distance2">0</span><span>&nbsp; km</span></td>
+  <td style="color:#ff006e;  font-size: x-large;" ><span id="distance1">0</span><span>&nbsp; km</span></td>
+  <td style="color:#00ffff;   font-size: x-large;" ><span id="distance2">0</span><span>&nbsp; km</span></td>
   
 </tr>
 <tr>
