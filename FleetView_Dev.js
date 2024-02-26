@@ -399,8 +399,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
     </span>
     </td>
 
-    <td style="color:#00ffff;">&nbsp;&nbsp;
-    <span style="width:70%; font-size: xx-large;  font-size: x-large;" id="StationUpdatedValue">
+    <td style="color:#00ffff;vertical-align: text-top;">&nbsp;&nbsp;
+    <span style="width:70%; font-size: xx-large;  font-size: x-large;vertical-align: text-top;" id="StationUpdatedValue">
     0
     </span>
     <span style="width:100px"> &nbsp;</span>
