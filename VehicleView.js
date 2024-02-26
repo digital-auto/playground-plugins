@@ -878,7 +878,14 @@ let Charged=false;
         <img width="50px" height="50px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" >
         </span>
         </td>
-        <td style="color:#00ffff;"></td>
+        <td style="color:#00ffff;">
+        <span style="width:70%">
+        X
+        </span>
+        <span style="width:30%">
+        <img width="50px" height="50px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" >
+        </span>
+        </td>
         
       </tr>
   </table>
