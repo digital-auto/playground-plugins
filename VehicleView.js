@@ -826,7 +826,7 @@ let Charged=false;
  
      widgets.register("Cover",  box => {
        const container = document.createElement("div");
-       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;border-style: solid;border-color: #3b3b71;`);
  
        container.innerHTML = `
        <img width="100%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargingFunCover.png?alt=media&token=e217d0e6-1444-48db-b794-4650392f41ac" >
@@ -844,7 +844,7 @@ let Charged=false;
         container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
   
         container.innerHTML = `
-        <img width="100%" height="100%" style="border-style: solid;border-color: #3b3b71;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FinfoMap.png?alt=media&token=7a60aade-c61f-4a56-a61b-2eecd33e1479" >
+        <img width="100%" height="100%" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FinfoMap.png?alt=media&token=7a60aade-c61f-4a56-a61b-2eecd33e1479" >
  
         `
        
@@ -858,7 +858,7 @@ let Charged=false;
  
          widgets.register("UpdatedInfo",  box => {
           const container = document.createElement("div");
-          container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+          container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;border-style: solid;border-color: #3b3b71;`);
     
           container.innerHTML = `
           <table style="border: none; border-collapse: collapse;height: 100%; width:100%" >
