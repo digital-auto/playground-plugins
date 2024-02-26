@@ -619,190 +619,7 @@ let Charged=false;
     let stopwatchValue=null;
     let stopwatchValueCar2=null;
 
-    widgets.register("Watch",  box => {
-      const container = document.createElement("div");
-      container.innerHTML = `
-          <div id="stopwatch-container" class="stopwatch-container">
-          <div class="Block">
-          <div id="stopwatch-frame" class="stopwatch-frame color-zone">
-              <div id="stopwatch" class="stopwatch">00:00</div>
-          </div> 
-          <div class="message">Vehicle without CIF <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEVIconWithOutCIF.png?alt=media&token=7337cfb3-b4f5-4b67-bfff-27a307396d4f" width="40" height="30"></div>
-          </div>
-
-          <div class="Block">
-          <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
-              <div id="stopwatch2"  class="stopwatch">00:00</div>
-          </div>   
-          <div class="message">Vehicle with CIF <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FEViconCIF.png?alt=media&token=4ef5caf0-f58a-4d84-924a-43db76cd6668" width="40" height="30"></div>
-          </div>
-          </div>
-          
-
-          <style>
-
-          .stopwatch-container {
-              text-align: center;
-              align-items: center;
-              justify-content: center;
-              max-width: 500px;
-              margin: auto;
-              position: relative;
-              display: inline-flex;
-              padding-left: 10%;
   
-            
-          }
-          .Block{
-    
-            margin: 20px auto;
-            width: 250px;
-
-          }
-
-          .stopwatch-frame {
-              width: 200px;
-              height: 200px;
-              border-radius: 50%;
-              background-color: #2C3E50;
-              display: flex;
-              
-              align-items: center;
-              justify-content: center;
-              
-              box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-              
-              transition: background-color 0.3s ease;
-            
-          }
-
-          .stopwatch {
-              font-size: 30px;
-              color: #ECF0F1;
-          }
-          .message{
-            width: 250px;
-            font-size: 18px;
-            margin-top:20px;
-          }
-          </style>
-       `
-       stopwatchValue = container.querySelector("#stopwatch");
-       stopwatchValueCar2 = container.querySelector("#stopwatch2");
-      
-       let totalElapsedTime = 0;
-       let startTime;
-       let stopwatchInterval;
-       let isRunning = false;
-       let lastUpdateTime = 0;
- 
-
-          function startStopwatch() {
-              if (!isRunning) {
-                  startTime = performance.now();
-                  lastUpdateTime = startTime;
-                  stopwatchInterval = setInterval(updateStopwatch, 1); // Update every 1 millisecond
-                  isRunning = true;
-              }
-          }
-
-
-          function stopStopwatch() {
-              if (isRunning) {
-                  clearInterval(stopwatchInterval);
-                  totalElapsedTime += performance.now() - startTime;
-                  isRunning = false;
-              }
-          }
- 
-
-          function updateStopwatch() {
-              const currentTime = performance.now();
-              const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
-              lastUpdateTime = currentTime;
-
-              const seconds = Math.floor((elapsed / 1000) % 60);
-              const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-
-              const formattedTime = pad(minutes) + ':' + pad(seconds);
-              stopwatchValue.innerText  = formattedTime;
-          }
-
-  
-
-          function pad(value) {
-              return value < 10 ? '0' + value : value;
-          }
-
- 
-          intervalId7 = setInterval(async () => {
-            if (getCookie("InRoute") == "Yes"){
-            clearInterval(intervalId7);
-            startStopwatch();
-          }
-          }, 1000);
-          intervalId8 = setInterval(async () => {
-            if (startTime && getCookie("InRoute") == "No"){
-            clearInterval(intervalId8);
-            stopStopwatch();
-          }
-          }, 1000);
- 
-          let totalElapsedTimeCar2 = 0;
-          let startTimeCar2;
-          let stopwatchIntervalCar2;
-          let isRunningCar2 = false;
-          let lastUpdateTimeCar2 = 0;
-   
-             function startStopwatchCar2() {
-                 if (!isRunningCar2) {
-                     startTimeCar2 = performance.now();
-                     lastUpdateTimeCar2 = startTimeCar2;
-                     stopwatchIntervalCar2 = setInterval(updateStopwatchCar2, 1); // Update every 1 millisecond
-                     isRunningCar2 = true;
-                 }
-             }
-   
-   
-             function stopStopwatchCar2() {
-                 if (isRunningCar2) {
-                     clearInterval(stopwatchIntervalCar2);
-                     totalElapsedTimeCar2 += performance.now() - startTimeCar2;
-                     isRunningCar2 = false;
-                 }
-             }
-    
-   
-             function updateStopwatchCar2() {
-                 const currentTime = performance.now();
-                 const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
-                 lastUpdateTimeCar2 = currentTime;
-   
-                 const seconds = Math.floor((elapsed / 1000) % 60);
-                 const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-   
-                 const formattedTime = pad(minutes) + ':' + pad(seconds);
-                 stopwatchValueCar2.innerText  = formattedTime;
-             }
-   
-             intervalId5 = setInterval(async () => {
-              if (getCookie("InRouteCar2") == "Yes"){
-              clearInterval(intervalId5);
-              startStopwatchCar2();
-              console.log("Start Car 2")
-            }
-            }, 200);
-            intervalId6 = setInterval(async () => {
-              if (startTimeCar2 && getCookie("InRouteCar2") == "No"){
-              clearInterval(intervalId6);
-              stopStopwatchCar2();
-              console.log("Stop Car 2")
-            }
-            }, 200);             
-
-        box.injectNode(container);
- 
-    })
     /////End Of Time Watch/////
 
 
@@ -1021,7 +838,7 @@ let Charged=false;
   
      })
      
-         ///// Cover Image //////
+         ///// Updated data //////
  
          widgets.register("UpdatedInfo",  box => {
           const container = document.createElement("div");
@@ -1036,8 +853,8 @@ let Charged=false;
     </colgroup>
     <tr >
       <td style="color:white; width:20%">Average Ev route time</td>
-      <td style="color:#ff006e; width:40%"></td>
-      <td style="color:#00ffff; width:40%"></td>
+      <td style="color:#ff006e; width:40%" id="stopwatch"></td>
+      <td style="color:#00ffff; width:40%" id="stopwatch2"></td>
     
     </tr>
     <tr>
@@ -1066,6 +883,122 @@ let Charged=false;
   </style>   
           `
          
+    
+
+          stopwatchValue = container.querySelector("#stopwatch");
+          stopwatchValueCar2 = container.querySelector("#stopwatch2");
+         
+          let totalElapsedTime = 0;
+          let startTime;
+          let stopwatchInterval;
+          let isRunning = false;
+          let lastUpdateTime = 0;
+    
+   
+             function startStopwatch() {
+                 if (!isRunning) {
+                     startTime = performance.now();
+                     lastUpdateTime = startTime;
+                     stopwatchInterval = setInterval(updateStopwatch, 1); // Update every 1 millisecond
+                     isRunning = true;
+                 }
+             }
+   
+   
+             function stopStopwatch() {
+                 if (isRunning) {
+                     clearInterval(stopwatchInterval);
+                     totalElapsedTime += performance.now() - startTime;
+                     isRunning = false;
+                 }
+             }
+    
+   
+             function updateStopwatch() {
+                 const currentTime = performance.now();
+                 const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
+                 lastUpdateTime = currentTime;
+   
+                 const seconds = Math.floor((elapsed / 1000) % 60);
+                 const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+   
+                 const formattedTime = pad(minutes) + ':' + pad(seconds);
+                 stopwatchValue.innerText  = formattedTime;
+             }
+   
+     
+   
+             function pad(value) {
+                 return value < 10 ? '0' + value : value;
+             }
+   
+    
+             intervalId7 = setInterval(async () => {
+               if (getCookie("InRoute") == "Yes"){
+               clearInterval(intervalId7);
+               startStopwatch();
+             }
+             }, 1000);
+             intervalId8 = setInterval(async () => {
+               if (startTime && getCookie("InRoute") == "No"){
+               clearInterval(intervalId8);
+               stopStopwatch();
+             }
+             }, 1000);
+    
+             let totalElapsedTimeCar2 = 0;
+             let startTimeCar2;
+             let stopwatchIntervalCar2;
+             let isRunningCar2 = false;
+             let lastUpdateTimeCar2 = 0;
+      
+                function startStopwatchCar2() {
+                    if (!isRunningCar2) {
+                        startTimeCar2 = performance.now();
+                        lastUpdateTimeCar2 = startTimeCar2;
+                        stopwatchIntervalCar2 = setInterval(updateStopwatchCar2, 1); // Update every 1 millisecond
+                        isRunningCar2 = true;
+                    }
+                }
+      
+      
+                function stopStopwatchCar2() {
+                    if (isRunningCar2) {
+                        clearInterval(stopwatchIntervalCar2);
+                        totalElapsedTimeCar2 += performance.now() - startTimeCar2;
+                        isRunningCar2 = false;
+                    }
+                }
+       
+      
+                function updateStopwatchCar2() {
+                    const currentTime = performance.now();
+                    const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
+                    lastUpdateTimeCar2 = currentTime;
+      
+                    const seconds = Math.floor((elapsed / 1000) % 60);
+                    const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+      
+                    const formattedTime = pad(minutes) + ':' + pad(seconds);
+                    stopwatchValueCar2.innerText  = formattedTime;
+                }
+      
+                intervalId5 = setInterval(async () => {
+                 if (getCookie("InRouteCar2") == "Yes"){
+                 clearInterval(intervalId5);
+                 startStopwatchCar2();
+                 console.log("Start Car 2")
+               }
+               }, 200);
+               intervalId6 = setInterval(async () => {
+                 if (startTimeCar2 && getCookie("InRouteCar2") == "No"){
+                 clearInterval(intervalId6);
+                 stopStopwatchCar2();
+                 console.log("Stop Car 2")
+               }
+               }, 200);             
+   
+           box.injectNode(container);
     
             box.injectNode(container);
      
