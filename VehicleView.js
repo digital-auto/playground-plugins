@@ -960,6 +960,8 @@ let Charged=false;
     
    
              function updateStopwatch() {
+              console.log("updateStopwatch")
+
                  const currentTime = performance.now();
                  const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
                  lastUpdateTime = currentTime;
@@ -969,6 +971,7 @@ let Charged=false;
    
                  const formattedTime = pad(minutes) + ':' + pad(seconds);
                  stopwatchValue.innerText  = formattedTime;
+                 console.log(formattedTime)
              }
    
      
