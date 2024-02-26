@@ -356,6 +356,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
      let distanceValue2=null;
      let Reroute1Value=null;
      let Reroute2Value=null;
+     let StationUpdatedValue=null;
      
      let timingToBeInCar1=true;
      widgets.register("UpdatedInfo",  box => {
@@ -399,8 +400,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
     </td>
 
     <td style="color:#00ffff;">
-    <span style="width:70%; font-size: xx-large;">
-    X
+    <span style="width:70%; font-size: xx-large;  font-size: x-large;" id="StationUpdatedValue">
+    0
     </span>
     <span style="width:100px"> &nbsp;</span>
     <span style="width:30%; margin-left:100px">
@@ -450,22 +451,19 @@ td{
         // Function to update the distanceRandom and log it every second
         function updateDistance() {
 
-            let distanceRandom = getRandomValue(250, 270);
-            let distanceRandom2 = getRandomValue(210, 230);
-            distanceValue1.innerHTML=distanceRandom
-            distanceValue2.innerHTML=distanceRandom2
+
+            distanceValue1.innerHTML=getRandomValue(250, 270);
+            distanceValue2.innerHTML=getRandomValue(210, 230);
 
             let time1=getRandomValue(130, 165);
             let time2=getRandomValue(105, 125);
             stopwatchValue.innerHTML=formatTimeFromMinutes(time1);
             stopwatchValueCar2.innerHTML=formatTimeFromMinutes(time2);
 
-            let Reroute1=getRandomValue(40, 60);
-            let Reroute2=getRandomValue(10, 20);
-            Reroute1Value.innerHTML=formatTimeFromMinutes(time1);
-            Reroute2Value.innerHTML=formatTimeFromMinutes(time2);
+            Reroute1Value.innerHTML=getRandomValue(40, 60);
+            Reroute2Value.innerHTML=getRandomValue(10, 20);
 
-
+            StationUpdatedValue.innerHTML=getRandomValue(5, 20);
 
         }
 
