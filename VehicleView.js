@@ -853,8 +853,8 @@ let Charged=false;
     </colgroup>
     <tr >
       <td style="color:white; width:20%">Average Ev route time</td>
-      <td style="color:#ff006e; width:40%" id="stopwatch"></td>
-      <td style="color:#00ffff; width:40%" id="stopwatch2"></td>
+      <td style="color:#ff006e; width:40%;  font-size: large;" ><span id="stopwatch"></span><span>h</span></td>
+      <td style="color:#00ffff; width:40%;  font-size: large;" ><span id="stopwatch2"></span><span>h</span></td>
     
     </tr>
     <tr>
