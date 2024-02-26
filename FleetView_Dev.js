@@ -372,8 +372,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 </tr>
 <tr>
   <td style="color:white;  ">Average route distance </td>
-  <td style="color:#ff006e;"></td>
-  <td style="color:#00ffff;"></td>
+  <td style="color:#ff006e;" ><span id="distance1">0</span><span>&nbsp; km</span></td>
+  <td style="color:#00ffff;" ><span id="distance2">0</span><span>&nbsp; km</span></td>
   
 </tr>
 <tr>
@@ -411,11 +411,39 @@ td{
 }
 </style>   
       `
+
+       stopwatchValue = container.querySelector("#stopwatch");
+       stopwatchValueCar2 = container.querySelector("#stopwatch2");
+       distanceValue1 = container.querySelector("#distance1");
+       distanceValue2 = container.querySelector("#distance2");
      
+      
+        // Function to generate a random value between min (inclusive) and max (inclusive)
+        function getRandomValue(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Initial distanceRandom value
+        let distanceRandom = getRandomValue(200, 270);
+
+        // Function to update the distanceRandom and log it every second
+        function updateDistance() {
+            // Increment distanceRandom by 1
+            distanceRandom++;
+            distanceValue1.innerText=distanceRandom;
+            // If distanceRandom reaches 270, stop the interval
+            if (distanceRandom >= 270) {
+                clearInterval(interval);
+            }
+            // Log the updated distanceRandom
+            console.log("Distance:", distanceRandom);
+        }
+
+        // Call updateDistance function every second
+        let interval = setInterval(updateDistance, 1000);
 
 
-      stopwatchValue = container.querySelector("#stopwatch");
-      stopwatchValueCar2 = container.querySelector("#stopwatch2");
+     
      
       let totalElapsedTime = 0;
       let startTime;
