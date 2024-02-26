@@ -433,7 +433,7 @@ td{
         function updateDistance() {
             // Increment distanceRandom by 1
             if(distanceRandom<270)
-            distanceRandom=distanceRandom+2;
+            distanceRandom++;
             if(distanceRandom2<220)
             distanceRandom2++;
             distanceValue1.innerText=distanceRandom;
@@ -506,7 +506,7 @@ td{
          }
          }, 1000);
          intervalId8 = setInterval(async () => {
-           if (startTime && !timingToBeInCar1){
+           if ((distanceRandom >= 270)){
            clearInterval(intervalId8);
            stopStopwatch();
          }
@@ -519,21 +519,21 @@ td{
          let lastUpdateTimeCar2 = 0;
   
             function startStopwatchCar2() {
-                if (!isRunningCar2) {
+               
                     startTimeCar2 = performance.now();
                     lastUpdateTimeCar2 = startTimeCar2;
                     stopwatchIntervalCar2 = setInterval(updateStopwatchCar2, 1); // Update every 1 millisecond
                     isRunningCar2 = true;
-                }
+                 
             }
   
   
             function stopStopwatchCar2() {
-                if (isRunningCar2) {
+                
                     clearInterval(stopwatchIntervalCar2);
                     totalElapsedTimeCar2 += performance.now() - startTimeCar2;
                     isRunningCar2 = false;
-                }
+                 
             }
    
   
@@ -550,17 +550,17 @@ td{
             }
   
             intervalId5 = setInterval(async () => {
-             if (getCookie("InRouteCar2") == "Yes"){
+            
              clearInterval(intervalId5);
              startStopwatchCar2();
-             console.log("Start Car 2")
-           }
+            
            }, 200);
+
            intervalId6 = setInterval(async () => {
-             if (startTimeCar2 && getCookie("InRouteCar2") == "No"){
+             if ((distanceRandom2 >= 220)){
              clearInterval(intervalId6);
              stopStopwatchCar2();
-             console.log("Stop Car 2")
+              
            }
            }, 200);             
 
