@@ -250,17 +250,21 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                           else {
                             carIcon=  "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fnotavailablecaricon2.png?alt=media&token=d063eeb9-ecec-4f38-a3ba-3eb08cc49880";
                           }
-                          const icon = {
-                            url: carIcon, // url
-                            scaledSize: new google.maps.Size(50, 50), // scaled size
-                            origin: new google.maps.Point(0,0), // origin
-                            anchor: new google.maps.Point(0, 0) // anchor
-                        };
                          
                          chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                             position: { lat: coordinates.latitude, lng: coordinates.longitude },
                             map: map,
-                            icon:  icon,
+                            icon:  {
+                                url:carIcon,
+                                fillOpacity: 1,
+                                anchor: new box.window.google.maps.Point(12,-290),
+                               
+                                scale: .05,
+                                rotation: 0,
+                                scaledSize: new google.maps.Size(50, 50), // scaled size
+                                origin: new google.maps.Point(0,0), // origin
+                                anchor: new google.maps.Point(0, 0) // anchor
+                            } ,
                             clickable: true
                         });
                         chargestationMarkers[chargestationId].addListener('click', () => {
