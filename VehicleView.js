@@ -1012,14 +1012,8 @@ let Charged=false;
        container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
  
        container.innerHTML = `
-       <div class="hero-image" style="  background-image: url("https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargingFunCover.png?alt=media&token=e217d0e6-1444-48db-b794-4650392f41ac");
-       height: 100%;width: 100%;
-       background-position: center;
-       background-repeat: no-repeat;
-       background-size: cover;
-       position: relative;" >
+       <img width="100%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargingFunCover.png?alt=media&token=e217d0e6-1444-48db-b794-4650392f41ac" >
 
-       </div>
        `
       
  
