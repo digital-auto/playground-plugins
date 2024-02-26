@@ -385,7 +385,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 <tr>
     <td style="color:white; ">Reroutes because of non-functioning charging station</td>
     <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="Reroute1">0</span></td>
-    <td style="color:#00ffff;font-size: x-large;" id="Reroute2">&nbsp;&nbsp;<span id="Reroute2">0</span></td>
+    <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="Reroute2">0</span></td>
      
   </tr>    
   <tr>
@@ -404,7 +404,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
     0
     </span>
     <span style="width:100px"> &nbsp;</span>
-    <span style="width:30%; margin-left:100px">
+    <span style="width:30%; margin-right:10px">
     <img width="50px" height="65px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" >
     </span>
     </td>
