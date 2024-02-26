@@ -1005,7 +1005,28 @@ let Charged=false;
     })
     
 
+     ///// Cover Image //////
  
+     widgets.register("Cover",  box => {
+       const container = document.createElement("div");
+       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+ 
+       container.innerHTML = `
+       <div class="hero-image" style="  background-image: url("https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChargingFunCover.png?alt=media&token=e217d0e6-1444-48db-b794-4650392f41ac");
+       height: 500px;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       position: relative;" >
+
+       </div>
+       `
+      
+ 
+         box.injectNode(container);
+  
+     })
+     
 
     const StateOfChargeTile = {
         signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
