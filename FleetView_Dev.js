@@ -262,8 +262,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                                 scale: .05,
                                 rotation: 0,
                                 scaledSize: new google.maps.Size(50, 50), // scaled size
-                                origin: new google.maps.Point(0,0), // origin
-                                anchor: new google.maps.Point(0, 0) // anchor
+                             
                             } ,
                             clickable: true
                         });
