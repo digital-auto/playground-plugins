@@ -399,12 +399,12 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
     </span>
     </td>
 
-    <td style="color:#00ffff;">&nbsp;&nbsp;
+    <td style="color:#00ffff;text-align: center;">&nbsp;&nbsp;
     <span style="width:70%; font-size: xx-large;  font-size: x-large;" id="StationUpdatedValue">
     0
     </span>
     <span style="width:100px"> &nbsp;</span>
-    <span style="width:30%; margin-right:10px">
+    <span style="width:30%; margin-left:100px">
     <img width="50px" height="65px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" >
     </span>
     </td>
