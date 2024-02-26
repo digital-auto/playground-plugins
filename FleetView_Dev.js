@@ -261,7 +261,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                                 strokeWeight: 0,
                                 scale: .1,
                                 rotation: 0,
-                                scaledSize: new box.window.google.maps.Size(50, 50)
+                                scaledSize: new box.window.google.maps.Size(40, 40)
                             } ,
                             clickable: true
                         });
