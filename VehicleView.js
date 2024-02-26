@@ -1021,6 +1021,55 @@ let Charged=false;
   
      })
      
+         ///// Cover Image //////
+ 
+         widgets.register("UpdatedInfo",  box => {
+          const container = document.createElement("div");
+          container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+    
+          container.innerHTML = `
+          <table style="border: none; border-collapse: collapse;height: 100%; width:100%" >
+    <colgroup>
+      <col style="background-color:#00001e; " >
+      <col style="background-color:#40001c; ">
+      <col style="background-color:#003740; ">
+    </colgroup>
+    <tr >
+      <td style="color:white; width:20%">Average Ev route time</td>
+      <td style="color:#ff006e; width:40%"></td>
+      <td style="color:#00ffff; width:40%"></td>
+    
+    </tr>
+    <tr>
+      <td style="color:white;  ">Average route distance </td>
+      <td style="color:#ff006e;"></td>
+      <td style="color:#00ffff;"></td>
+      
+    </tr>
+    <tr>
+        <td style="color:white; ">Reroutes because of non-functioning charging station</td>
+        <td style="color:#ff006e;"></td>
+        <td style="color:#00ffff;"></td>
+         
+      </tr>    
+      <tr>
+        <td style="color:white;">Updated charging stations</td>
+        <td style="color:#ff006e;"></td>
+        <td style="color:#00ffff;"></td>
+        
+      </tr>
+  </table>
+  <style>
+    td{
+        padding: 1%;
+    }
+  </style>   
+          `
+         
+    
+            box.injectNode(container);
+     
+        })
 
     const StateOfChargeTile = {
         signal: "Vehicle.Powertrain.TractionBattery.StateOfCharge.Current",
