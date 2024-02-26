@@ -384,8 +384,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 </tr>
 <tr>
     <td style="color:white; ">Reroutes because of non-functioning charging station</td>
-    <td style="color:#ff006e;font-size: x-large;" id="Reroute1">0</td>
-    <td style="color:#00ffff;font-size: x-large;" id="Reroute2">0</td>
+    <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="Reroute1">0</span></td>
+    <td style="color:#00ffff;font-size: x-large;" id="Reroute2">&nbsp;&nbsp;<span id="Reroute2">0</span></td>
      
   </tr>    
   <tr>
