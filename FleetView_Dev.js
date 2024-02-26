@@ -354,6 +354,9 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
      let stopwatchValueCar2=null;
      let distanceValue1=null;
      let distanceValue2=null;
+     let Reroute1Value=null;
+     let Reroute2Value=null;
+     
      let timingToBeInCar1=true;
      widgets.register("UpdatedInfo",  box => {
       const container = document.createElement("div");
@@ -380,8 +383,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 </tr>
 <tr>
     <td style="color:white; ">Reroutes because of non-functioning charging station</td>
-    <td style="color:#ff006e;font-size: x-large;"></td>
-    <td style="color:#00ffff;font-size: x-large;"></td>
+    <td style="color:#ff006e;font-size: x-large;" id="Reroute1Value">0</td>
+    <td style="color:#00ffff;font-size: x-large;" id="Reroute2Value">0</td>
      
   </tr>    
   <tr>
@@ -418,6 +421,9 @@ td{
        stopwatchValueCar2 = container.querySelector("#stopwatch2");
        distanceValue1 = container.querySelector("#distance1");
        distanceValue2 = container.querySelector("#distance2");
+       Reroute1Value = container.querySelector("#Reroute1");
+       Reroute2Value = container.querySelector("#Reroute2");
+
      
       
         // Function to generate a random value between min (inclusive) and max (inclusive)
@@ -443,17 +449,21 @@ td{
 
         // Function to update the distanceRandom and log it every second
         function updateDistance() {
-            // Initial distanceRandom value
-            let distanceRandom = getRandomValue(200, 270);
-            let distanceRandom2 = getRandomValue(180, distanceRandom);
+
+            let distanceRandom = getRandomValue(250, 270);
+            let distanceRandom2 = getRandomValue(210, 230);
             distanceValue1.innerHTML=distanceRandom
             distanceValue2.innerHTML=distanceRandom2
 
-            let time1=getRandomValue(59, 179);
-            let time2=getRandomValue(59, time1);
-          
+            let time1=getRandomValue(130, 165);
+            let time2=getRandomValue(105, 125);
             stopwatchValue.innerHTML=formatTimeFromMinutes(time1);
             stopwatchValueCar2.innerHTML=formatTimeFromMinutes(time2);
+
+            let Reroute1=getRandomValue(40, 60);
+            let Reroute2=getRandomValue(10, 20);
+            Reroute1Value.innerHTML=formatTimeFromMinutes(time1);
+            Reroute2Value.innerHTML=formatTimeFromMinutes(time2);
 
 
 
