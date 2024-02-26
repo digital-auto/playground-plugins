@@ -352,6 +352,8 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
      let intervalId8;
      let stopwatchValue=null;
      let stopwatchValueCar2=null;
+     let distance1=null;
+     let distance2=null;
      let timingToBeInCar1=true;
      widgets.register("UpdatedInfo",  box => {
       const container = document.createElement("div");
