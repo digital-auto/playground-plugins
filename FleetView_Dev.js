@@ -238,7 +238,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                     for (let chargestationId in chargestationCoordinates) {
                         let coordinates = chargestationCoordinates[chargestationId];
                         // Store market in markers object
-                        const carIcon;
+                        let carIcon;
 
                         if (coordinates.availability){
                             carIcon="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Favailablecaricon.png?alt=media&token=8028bf73-5775-46e6-9e92-ef29a587598e";
