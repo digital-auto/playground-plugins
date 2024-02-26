@@ -424,145 +424,44 @@ td{
         function getRandomValue(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-
-        // Initial distanceRandom value
-        let distanceRandom = getRandomValue(200, 270);
-        let distanceRandom2 = getRandomValue(180, 220);
+        function formatTimeFromMinutes(totalMinutes) {
+            // Calculate hours and minutes
+            var hours = Math.floor(totalMinutes / 60);
+            var minutes = totalMinutes % 60;
+        
+            // Format hours and minutes with leading zeros if necessary
+            var formattedHours = hours < 10 ? '0' + hours : hours;
+            var formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        
+            // Return the formatted time string
+            return formattedHours + ':' + formattedMinutes;
+        }
+        
+  
+       
+        
 
         // Function to update the distanceRandom and log it every second
         function updateDistance() {
-            // Increment distanceRandom by 1
-            if(distanceRandom<270)
-            distanceRandom++;
-            if(distanceRandom2<220)
-            distanceRandom2++;
-            distanceValue1.innerText=distanceRandom;
-            distanceValue2.innerText=distanceRandom2;
-            // If distanceRandom reaches 270, stop the interval
-            if ((distanceRandom >= 270) && (distanceRandom2 >= 220)){
-                clearInterval(interval);
-            }
+            // Initial distanceRandom value
+            let distanceRandom = getRandomValue(200, 270);
+            let distanceRandom2 = getRandomValue(180, distanceRandom);
+            distanceValue1.innerHTML=distanceRandom
+            distanceValue2.innerHTML=distanceRandom2
+
+            let time1=getRandomValue(59, 179);
+            let time2=getRandomValue(59, time1);
+          
+            stopwatchValue.innerHTML=formatTimeFromMinutes(time1);
+            stopwatchValueCar2.innerHTML=formatTimeFromMinutes(time2);
+
+
+
         }
 
         // Call updateDistance function every second
-        let interval = setInterval(updateDistance, 1000);
-
-
-     
-     
-      let totalElapsedTime = 0;
-      let startTime;
-      let stopwatchInterval;
-      let isRunning = false;
-      let lastUpdateTime = 0;
-
-
-         function startStopwatch() {
-             if (!isRunning) {
-                 startTime = performance.now();
-                 lastUpdateTime = startTime;
-                 stopwatchInterval = setInterval(updateStopwatch, 1); // Update every 1 millisecond
-                 isRunning = true;
-                 
-             }
-         }
-
-
-         function stopStopwatch() {
-             if (isRunning) {
-                 clearInterval(stopwatchInterval);
-                 totalElapsedTime += performance.now() - startTime;
-                 isRunning = false;
-             }
-         }
-
-
-         function updateStopwatch() {
-          console.log("updateStopwatch")
-
-             const currentTime = performance.now();
-             const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
-             lastUpdateTime = currentTime;
-
-             const seconds = Math.floor((elapsed / 1000) % 60);
-             const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-
-             const formattedTime = pad(minutes) + ':' + pad(seconds);
-             stopwatchValue.innerText  = formattedTime;
-             console.log(formattedTime)
-         }
-
- 
-
-         function pad(value) {
-             return value < 10 ? '0' + value : value;
-         }
-
-
-         intervalId7 = setInterval(async () => {
-           if (timingToBeInCar1){
-           clearInterval(intervalId7);
-           startStopwatch();
-         }
-         }, 1000);
-         intervalId8 = setInterval(async () => {
-           if ((distanceRandom >= 270)){
-           clearInterval(intervalId8);
-           stopStopwatch();
-         }
-         }, 1000);
-
-         let totalElapsedTimeCar2 = 0;
-         let startTimeCar2;
-         let stopwatchIntervalCar2;
-         let isRunningCar2 = false;
-         let lastUpdateTimeCar2 = 0;
-  
-            function startStopwatchCar2() {
-               
-                    startTimeCar2 = performance.now();
-                    lastUpdateTimeCar2 = startTimeCar2;
-                    stopwatchIntervalCar2 = setInterval(updateStopwatchCar2, 1); // Update every 1 millisecond
-                    isRunningCar2 = true;
-                 
-            }
-  
-  
-            function stopStopwatchCar2() {
-                
-                    clearInterval(stopwatchIntervalCar2);
-                    totalElapsedTimeCar2 += performance.now() - startTimeCar2;
-                    isRunningCar2 = false;
-                 
-            }
-   
-  
-            function updateStopwatchCar2() {
-                const currentTime = performance.now();
-                const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
-                lastUpdateTimeCar2 = currentTime;
-  
-                const seconds = Math.floor((elapsed / 1000) % 60);
-                const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-  
-                const formattedTime = pad(minutes) + ':' + pad(seconds);
-                stopwatchValueCar2.innerText  = formattedTime;
-            }
-  
-            intervalId5 = setInterval(async () => {
-            
-             clearInterval(intervalId5);
-             startStopwatchCar2();
-            
-           }, 200);
-
-           intervalId6 = setInterval(async () => {
-             if ((distanceRandom2 >= 220)){
-             clearInterval(intervalId6);
-             stopStopwatchCar2();
-              
-           }
-           }, 200);             
+        setInterval(updateDistance, 2000);
+        
 
        box.injectNode(container);
  
