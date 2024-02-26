@@ -300,7 +300,218 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
           box.injectNode(container);
    
       })
+   ///// MapsLegend //////
  
+   widgets.register("MapsLegend",  box => {
+    const container = document.createElement("div");
+    container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+
+    container.innerHTML = `
+    <img width="100%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FinfoMap.png?alt=media&token=7a60aade-c61f-4a56-a61b-2eecd33e1479" >
+
+    `
+   
+
+      box.injectNode(container);
+
+  })
+  
+  widgets.register("ChartGraph",  box => {
+    const container = document.createElement("div");
+    container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;background-color: #00001e; `);
+
+    container.innerHTML = `
+    <img width="60%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChartStatic.png?alt=media&token=ada31d8f-7ba2-43cf-a5bd-1ab3a3e9c308" >
+    <div style="width:40%;height="100%";background-color: #00001e;"></div>
+    `
+   
+
+      box.injectNode(container);
+
+  })
+ 
+     ///// Updated data //////
+
+     widgets.register("UpdatedInfo",  box => {
+      const container = document.createElement("div");
+      container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+
+      container.innerHTML = `
+      <table style="border: none; border-collapse: collapse;height: 100%; width:100%" >
+<colgroup>
+  <col style="background-color:#00001e; " >
+  <col style="background-color:#40001c; ">
+  <col style="background-color:#003740; ">
+</colgroup>
+<tr >
+  <td style="color:white; width:20%">Average Ev route time</td>
+  <td style="color:#ff006e; width:40%;  font-size: x-large;" >&nbsp;&nbsp;<span id="stopwatch">00:00</span><span>&nbsp; h</span></td>
+  <td style="color:#00ffff; width:40%;  font-size: x-large;" >&nbsp;&nbsp;<span id="stopwatch2">00:00</span><span>&nbsp; h</span></td>
+
+</tr>
+<tr>
+  <td style="color:white;  ">Average route distance </td>
+  <td style="color:#ff006e;"></td>
+  <td style="color:#00ffff;"></td>
+  
+</tr>
+<tr>
+    <td style="color:white; ">Reroutes because of non-functioning charging station</td>
+    <td style="color:#ff006e;font-size: x-large;"></td>
+    <td style="color:#00ffff;font-size: x-large;"></td>
+     
+  </tr>    
+  <tr>
+    <td style="color:white;">Updated charging stations</td>
+    <td style="color:#ff006e;"><span style="width:70%">
+    <img width="50px" height="50px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon1.png?alt=media&token=e3daae9a-b2cf-445a-804b-31ddee038655" >
+    </span>
+    <span style="width:100px"> &nbsp;</span>
+    <span style="width:30% ;margin-left:100px">
+    <img width="50px" height="50px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" >
+    </span>
+    </td>
+
+    <td style="color:#00ffff;">
+    <span style="width:70%; font-size: xx-large;">
+    X
+    </span>
+    <span style="width:100px"> &nbsp;</span>
+    <span style="width:30%; margin-left:100px">
+    <img width="50px" height="65px"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" >
+    </span>
+    </td>
+    
+  </tr>
+</table>
+<style>
+td{
+    padding: 1%;
+}
+</style>   
+      `
+     
+
+
+      stopwatchValue = container.querySelector("#stopwatch");
+      stopwatchValueCar2 = container.querySelector("#stopwatch2");
+     
+      let totalElapsedTime = 0;
+      let startTime;
+      let stopwatchInterval;
+      let isRunning = false;
+      let lastUpdateTime = 0;
+
+
+         function startStopwatch() {
+             if (!isRunning) {
+                 startTime = performance.now();
+                 lastUpdateTime = startTime;
+                 stopwatchInterval = setInterval(updateStopwatch, 1); // Update every 1 millisecond
+                 isRunning = true;
+             }
+         }
+
+
+         function stopStopwatch() {
+             if (isRunning) {
+                 clearInterval(stopwatchInterval);
+                 totalElapsedTime += performance.now() - startTime;
+                 isRunning = false;
+             }
+         }
+
+
+         function updateStopwatch() {
+          console.log("updateStopwatch")
+
+             const currentTime = performance.now();
+             const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
+             lastUpdateTime = currentTime;
+
+             const seconds = Math.floor((elapsed / 1000) % 60);
+             const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+
+             const formattedTime = pad(minutes) + ':' + pad(seconds);
+             stopwatchValue.innerText  = formattedTime;
+             console.log(formattedTime)
+         }
+
+ 
+
+         function pad(value) {
+             return value < 10 ? '0' + value : value;
+         }
+
+
+         intervalId7 = setInterval(async () => {
+           if (getCookie("InRoute") == "Yes"){
+           clearInterval(intervalId7);
+           startStopwatch();
+         }
+         }, 1000);
+         intervalId8 = setInterval(async () => {
+           if (startTime && getCookie("InRoute") == "No"){
+           clearInterval(intervalId8);
+           stopStopwatch();
+         }
+         }, 1000);
+
+         let totalElapsedTimeCar2 = 0;
+         let startTimeCar2;
+         let stopwatchIntervalCar2;
+         let isRunningCar2 = false;
+         let lastUpdateTimeCar2 = 0;
+  
+            function startStopwatchCar2() {
+                if (!isRunningCar2) {
+                    startTimeCar2 = performance.now();
+                    lastUpdateTimeCar2 = startTimeCar2;
+                    stopwatchIntervalCar2 = setInterval(updateStopwatchCar2, 1); // Update every 1 millisecond
+                    isRunningCar2 = true;
+                }
+            }
+  
+  
+            function stopStopwatchCar2() {
+                if (isRunningCar2) {
+                    clearInterval(stopwatchIntervalCar2);
+                    totalElapsedTimeCar2 += performance.now() - startTimeCar2;
+                    isRunningCar2 = false;
+                }
+            }
+   
+  
+            function updateStopwatchCar2() {
+                const currentTime = performance.now();
+                const elapsed = isRunning ? totalElapsedTime + currentTime - startTime : totalElapsedTime;
+                lastUpdateTimeCar2 = currentTime;
+  
+                const seconds = Math.floor((elapsed / 1000) % 60);
+                const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+  
+                const formattedTime = pad(minutes) + ':' + pad(seconds);
+                stopwatchValueCar2.innerText  = formattedTime;
+            }
+  
+            intervalId5 = setInterval(async () => {
+             if (getCookie("InRouteCar2") == "Yes"){
+             clearInterval(intervalId5);
+             startStopwatchCar2();
+             console.log("Start Car 2")
+           }
+           }, 200);
+           intervalId6 = setInterval(async () => {
+             if (startTimeCar2 && getCookie("InRouteCar2") == "No"){
+             clearInterval(intervalId6);
+             stopStopwatchCar2();
+             console.log("Stop Car 2")
+           }
+           }, 200);             
+
+       box.injectNode(container);
+ 
+    })
 
     ////////Action Widget////
     let AvStations=null;
