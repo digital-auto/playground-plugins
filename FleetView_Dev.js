@@ -258,11 +258,10 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                                 url:carIcon,
                                 fillOpacity: 1,
                                 anchor: new box.window.google.maps.Point(12,-290),
-                               
-                                scale: .05,
+                                strokeWeight: 0,
+                                scale: .1,
                                 rotation: 0,
-                                scaledSize: new google.maps.Size(50, 50), // scaled size
-                             
+                                scaledSize: new box.window.google.maps.Size(50, 50)
                             } ,
                             clickable: true
                         });
