@@ -331,7 +331,12 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
   })
  
      ///// Updated data //////
-
+     let intervalId5;
+     let intervalId6;
+     let intervalId7;
+     let intervalId8;
+     let stopwatchValue=null;
+     let stopwatchValueCar2=null;
      widgets.register("UpdatedInfo",  box => {
       const container = document.createElement("div");
       container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
@@ -512,6 +517,8 @@ td{
        box.injectNode(container);
  
     })
+
+
 
     ////////Action Widget////
     let AvStations=null;
