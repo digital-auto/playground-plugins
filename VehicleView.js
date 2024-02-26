@@ -853,6 +853,19 @@ let Charged=false;
    
       })
       
+      widgets.register("ChartGraph",  box => {
+        const container = document.createElement("div");
+        container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px; `);
+  
+        container.innerHTML = `
+        <img width="60%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FChartStatic.png?alt=media&token=ada31d8f-7ba2-43cf-a5bd-1ab3a3e9c308" >
+        <div style="width:40%;height="100%";background-color: #00001e;"></div>
+        `
+       
+  
+          box.injectNode(container);
+   
+      })
      
          ///// Updated data //////
  
