@@ -157,6 +157,13 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                         "lng": 13.195127235586439
                     },
                 ]
+                // Define dark mode styles
+                const darkModeStyles = [
+                    { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+                    { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+                    { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+                    // Add more styles as needed
+                ];
 
                 const container = document.createElement("div")
                 container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
@@ -167,7 +174,7 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                 const map = new box.window.google.maps.Map(container, {
                     zoom: 8, // 6.3
                     center: rectCenter,
-                    mapTypeId: 'terrain'
+                    styles: darkModeStyles // Apply dark mode styles here
                 });
 
                 new box.window.google.maps.Rectangle({
