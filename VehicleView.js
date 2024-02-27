@@ -635,7 +635,7 @@ let Charged=false;
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone" style="background-color: #003740">
               <div id="stopwatch2"  class="stopwatch">00:00</div>
           </div>   
-          <div class="message"  style="color:#00ffff; font-size: large;font-weight: bold;">EV with CIF</div>
+          <div class="message"  style="color:#00ffff; font-size: large;font-weight: bold;margin-left: -20px;">EV with CIF</div>
           </div>
           </div>
           
