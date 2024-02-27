@@ -628,14 +628,14 @@ let Charged=false;
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
               <div id="stopwatch" class="stopwatch">00:00</div>
           </div> 
-          <div class="message">Vehicle without CIF</div>
+          <div class="message" style="color:#ff006e;font-size: large;">EV without CIF</div>
           </div>
 
           <div class="Block">
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
               <div id="stopwatch2"  class="stopwatch">00:00</div>
           </div>   
-          <div class="message">Vehicle with CIF</div>
+          <div class="message"  style="color:#00ffff; font-size: large;">EV with CIF</div>
           </div>
           </div>
           
@@ -683,7 +683,6 @@ let Charged=false;
           }
           .message{
             width: 250px;
-            font-size: 18px;
             margin-top:20px;
           }
           </style>
