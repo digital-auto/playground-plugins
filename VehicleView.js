@@ -625,14 +625,14 @@ let Charged=false;
       container.innerHTML = `
           <div id="stopwatch-container" class="stopwatch-container">
           <div class="Block">
-          <div id="stopwatch-frame" class="stopwatch-frame color-zone">
+          <div id="stopwatch-frame" class="stopwatch-frame color-zone" style="background-color: #40001c;">
               <div id="stopwatch" class="stopwatch">00:00</div>
           </div> 
           <div class="message" style="color:#ff006e;font-size: large;font-weight: bold;">EV without CIF</div>
           </div>
 
           <div class="Block">
-          <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
+          <div id="stopwatch2-frame"  class="stopwatch-frame color-zone" style="background-color: #003740">
               <div id="stopwatch2"  class="stopwatch">00:00</div>
           </div>   
           <div class="message"  style="color:#00ffff; font-size: large;font-weight: bold;">EV with CIF</div>
@@ -665,7 +665,7 @@ let Charged=false;
               width: 200px;
               height: 200px;
               border-radius: 50%;
-              background-color: #2C3E50;
+              
               display: flex;
               
               align-items: center;
