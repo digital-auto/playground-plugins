@@ -118,8 +118,7 @@ const plugin = ({ box, widgets }) => {
             })
     })
 
-
-
+    
     ///////// Maps for Dev /////////
     widgets.register("MapDev", (box) => {
         loadScript(box.window, `https://maps.googleapis.com/maps/api/js?key=AIzaSyC3LEcjTvyxYu1urM8qrGtZc_a5eNlPdW0`)
