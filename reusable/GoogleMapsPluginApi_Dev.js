@@ -189,22 +189,31 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                       for (let chargestationId in chargestationCoordinates) {
                           let coordinates = chargestationCoordinates[chargestationId];
                           // Store market in markers object
-                          let color=null;
+                          let carIcon;
+
                           if (coordinates.availability){
-                            color="#2563eb" ;
+                              carIcon="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Favailablecaricon.png?alt=media&token=8028bf73-5775-46e6-9e92-ef29a587598e";
+                             
                           }
-                          else{
-                            color="#FF5D00" ;
-                          }
+                          else if (coordinates.defect){
+                              carIcon =  "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fnotavailablecaricon.png?alt=media&token=d213e5b1-f7a4-44a8-96e5-485db6303a91";
+                            }
+                            else {
+                              carIcon=  "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fnotavailablecaricon2.png?alt=media&token=d063eeb9-ecec-4f38-a3ba-3eb08cc49880";
+                            }
+
                           chargestationMarkers[chargestationId] = new box.window.google.maps.Marker({
                               position: { lat: coordinates.latitude, lng: coordinates.longitude },
                               map: map,
-                              icon: {
-                                  path: "M161 214.667H7.667c-4.236 0 -7.667 3.431 -7.667 7.667v15.333c0 4.236 3.431 7.667 7.667 7.667h153.333c4.236 0 7.667 -3.431 7.667 -7.667v-15.333c0 -4.236 -3.431 -7.667 -7.667 -7.667zm99.667 -153.333V38.333c0 -4.236 -3.431 -7.667 -7.667 -7.667s-7.667 3.431 -7.667 7.667v23h-15.333V38.333c0 -4.236 -3.431 -7.667 -7.667 -7.667s-7.667 3.431 -7.667 7.667v23h-7.667c-4.236 0 -7.667 3.431 -7.667 7.667v15.333c0 17.135 11.318 31.476 26.833 36.383v56.776c0 6.684 -4.552 12.899 -11.145 13.987C206.626 192.865 199.333 186.391 199.333 178.25v-13.417c0 -23.288 -18.879 -42.167 -42.167 -42.167h-3.833V30.667c0 -16.939 -13.728 -30.667 -30.667 -30.667H46C29.061 0 15.333 13.728 15.333 30.667v168.667h138V145.667h3.833c10.585 0 19.167 8.582 19.167 19.167v11.792c0 19.009 13.858 36.014 32.78 37.859C230.819 216.607 249.167 199.53 249.167 178.25V120.716c15.515 -4.907 26.833 -19.248 26.833 -36.383v-15.333c0 -4.236 -3.431 -7.667 -7.667 -7.667h-7.667zm-136.04 22.885 -44.898 66.604c-1.054 1.596 -2.976 2.511 -4.979 2.511 -3.675 0 -6.454 -3.009 -5.592 -6.191L80.189 107.333H51.75c-3.474 0 -6.157 -2.679 -5.697 -5.697l7.667 -51.271C54.098 47.869 56.532 46 59.417 46h32.583c3.776 0 6.526 3.134 5.558 6.33L92 76.667h27.648c4.428 0 7.192 4.207 4.979 7.552z",
-                                  fillColor: color,
-                                  fillOpacity: 1,
-                                  scale: .1,
-                              }  ,
+                              icon:  {
+                                url:carIcon,
+                                fillOpacity: 1,
+                                anchor: new box.window.google.maps.Point(12,-290),
+                                strokeWeight: 0,
+                                scale: .1,
+                                rotation: 0,
+                                scaledSize: new box.window.google.maps.Size(40, 40)
+                            } ,
                               clickable: true
                           });
                       }
