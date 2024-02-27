@@ -51,7 +51,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             return currentSignalValues[signal]
         })
     }
-
+/*
     const updateVehicle = async () => {
         if (!vehicleId) {
             return
@@ -68,7 +68,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     setInterval(updateVehicle, 1000)
 
     updateVehicle()
-
+*/
 	widgets.register("VehicleStatus", StatusTable({
 
 
