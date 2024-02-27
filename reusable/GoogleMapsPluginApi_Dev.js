@@ -184,11 +184,11 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                         // Store market in markers object
                         let carIcon;
 
-                        if (coordinates.availability && coordinates.defect){
+                        if (coordinates.availability && !coordinates.defect){
                             carIcon="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Favailablecaricon.png?alt=media&token=8028bf73-5775-46e6-9e92-ef29a587598e";
                             
                         }
-                        else if (coordinates.defect){
+                        else if (!coordinates.availability && !coordinates.defect){
                             carIcon =  "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fnotavailablecaricon.png?alt=media&token=d213e5b1-f7a4-44a8-96e5-485db6303a91";
                         }
                         else {
