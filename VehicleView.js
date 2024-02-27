@@ -539,7 +539,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Current battery SOC <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" width="30" height="30"></div>
+			<div id="message" style="color:#00ffff; font-size: large;">Current battery SOC</div>
 		</div>
     		<div id="scoreCar2" style="">
 			<div class="text">0.00%</div>
@@ -551,7 +551,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div id="message">Current battery SOC <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" width="30" height="40"></div>
+			<div id="message" style="color:#00ffff; font-size: large;">Current battery SOC</div>
 		</div>
 		`
 
