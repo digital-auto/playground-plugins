@@ -822,114 +822,56 @@ let Charged=false;
     container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 
     container.innerHTML = `
-    <div style="display: flex; height: 100%; width: 100%;">
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        font-family: 'Lato', sans-serif;
-    }
-    table {
-        display: grid;
-        height: fit-content;
-        min-height: 100%;
-        border-collapse: collapse;
-        min-width: 100%;
-        grid-template-columns: 
-            minmax(80px, 1fr)
-            minmax(80px, 1fr)
-            minmax(80px, 1fr)
-        ;
-        grid-template-rows: min-content min-content auto;
-        font-size: inherit;
-    }
-      
-    thead,
-    tbody,
-    tr {
-        display: contents;
-    }
-      
-    th,
-    td {
-        padding: 1em;
-        min-height: fit-content;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        height: max-content;
-    }
-      
-    th {
-        position: sticky;
-        top: 0;
-        background: #6c7ae0;
-        user-select: none;
-        text-align: left;
-        font-weight: normal;
-        font-size: 1.1em;
-        color: white;
-        font-weight: bold;
-    }
-      
-    th:last-child {
-        border: 0;
-    }
+   
+    <table style="border: none; border-collapse: collapse;height: 100%; width:100%" >
+    <colgroup>
+      <col style="background-color:#00001e; " >
+      <col style="background-color:#40001c; ">
+      <col style="background-color:#003740; ">
+    </colgroup>
+    <tr >
+      <td style="color:white; width:20%">VSS API</td>
+      <td style="color:#ff006e; width:40%;  font-size: x-large;" >&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" width="30" height="30"></td>
+      <td style="color:#00ffff; width:40%;  font-size: x-large;" >&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" width="30" height="40"></td>
     
-    td:first-child {
+    </tr>
+    <tr>
+      <td style="color:white;  ">Vehicle.VehicleIdentification.VIN</td>
+      <td style="color:#ff006e;  font-size: x-large;" >&nbsp;&nbsp;<span  id="VIN"></span></td> 
+      <td style="color:#00ffff;   font-size: x-large;" >&nbsp;&nbsp;<span id="VINCar2"></span></td> 
+      
+    </tr>
+    <tr>
+        <td style="color:white; ">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td>
+        <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="Current"></span></td>
+        <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="CurrentCar2"></span></td>
+         
+      </tr>    
+      <tr>
+      <td style="color:white; ">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td>
+      <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="IsCharging"></span></td>
+      <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="IsChargingCar2"></span></td>
+    </tr>  
+    
+    <tr>
+    <td style="color:white; ">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td>
+    <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="IsCharging"></span></td>
+    <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="IsChargingCar2"></span></td>
+  </tr>  
+  <tr>
+  <td style="color:white; ">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td>
+  <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="TimeToComplete"></span></td>
+  <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="TimeToCompleteCar2"></span></td>
+</tr> 
+     </table>
+    <style>
+    td{
+        padding: 1%;
+    }
+    span{
         font-weight: bold;
     }
-
-    td {
-        padding-top: .66em;
-        padding-bottom: .66em;
-        background: transparent;
-        color: #808080;
-        height: 100%;
-    }
-      
-    tr:nth-child(even) td {
-        background: #f8f6ff;
-        color: #808080;
-    }
-
-    </style>
-        <div style="display: flex !important; height: 100%; width: 100%;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>VSS API</th><th>Value <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" width="30" height="30">
-                        </th><th>Value <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" width="30" height="40"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                        <tr data-api="Vehicle.VehicleIdentification.VIN">
-                            <td title="Vehicle.VehicleIdentification.VIN">Vehicle.VehicleIdentification.VIN</td><td id="VIN"> </td><td id="VINCar2"> </td>
-                        </tr>
-                     
-                    
-                     
-                    
-                        <tr data-api="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">
-                            <td title="Vehicle.Powertrain.TractionBattery.StateOfCharge.Current">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td><td  id="Current"></td><td  id="CurrentCar2"></td>
-                        </tr>
-                     
-                    
-                        <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.IsCharging">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td><td id="IsCharging"></td><td id="IsChargingCar2"></td>
-                        </tr>
-                    
-                        <tr data-api="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">
-                            <td title="Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td><td  id="TimeToComplete"></td><td  id="TimeToCompleteCar2"></td>
-                        </tr>
-                    
-                </tbody>
-        </table>
-    </div>
-    </div>
+    </style>   
     `
       VIN=container.querySelector("#VIN");
       IsCharging=container.querySelector("#IsCharging");
