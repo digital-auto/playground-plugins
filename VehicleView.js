@@ -628,14 +628,14 @@ let Charged=false;
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
               <div id="stopwatch" class="stopwatch">00:00</div>
           </div> 
-          <div class="message">Vehicle without CIF <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" width="30" height="30"></div>
+          <div class="message">Vehicle without CIF</div>
           </div>
 
           <div class="Block">
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
               <div id="stopwatch2"  class="stopwatch">00:00</div>
           </div>   
-          <div class="message">Vehicle with CIF <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" width="30" height="40"></div>
+          <div class="message">Vehicle with CIF</div>
           </div>
           </div>
           
@@ -830,47 +830,40 @@ let Charged=false;
       <col style="background-color:#003740; ">
     </colgroup>
     <tr >
-      <td style="color:white; width:20%">VSS API</td>
-      <td style="color:#ff006e; width:40%;  font-size: x-large;" >&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" width="30" height="30"></td>
-      <td style="color:#00ffff; width:40%;  font-size: x-large;" >&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" width="30" height="40"></td>
+      <td style="color:white; width:58%">VSS API</td>
+      <td style="color:#ff006e; width:20%;  font-size: large;" >&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon002.png?alt=media&token=d3a69c0d-67b2-44b2-8698-917e27f5d947" width="30" height="30"></td>
+      <td style="color:#00ffff; width:20%;  font-size: large;" >&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ficon003.png?alt=media&token=c5a2f484-319e-41cb-be24-663779acdd5b" width="30" height="40"></td>
     
     </tr>
     <tr>
       <td style="color:white;  ">Vehicle.VehicleIdentification.VIN</td>
-      <td style="color:#ff006e;  font-size: x-large;" >&nbsp;&nbsp;<span  id="VIN"></span></td> 
-      <td style="color:#00ffff;   font-size: x-large;" >&nbsp;&nbsp;<span id="VINCar2"></span></td> 
+      <td style="color:#ff006e;  font-size: large;" >&nbsp;&nbsp;<span  id="VIN"></span></td> 
+      <td style="color:#00ffff;   font-size: large;" >&nbsp;&nbsp;<span id="VINCar2"></span></td> 
       
     </tr>
     <tr>
         <td style="color:white; ">Vehicle.Powertrain.TractionBattery.StateOfCharge.Current</td>
-        <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="Current"></span></td>
-        <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="CurrentCar2"></span></td>
+        <td style="color:#ff006e;font-size: large;" >&nbsp;&nbsp;<span id="Current"></span></td>
+        <td style="color:#00ffff;font-size: large;">&nbsp;&nbsp;<span id="CurrentCar2"></span></td>
          
       </tr>    
       <tr>
       <td style="color:white; ">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td>
-      <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="IsCharging"></span></td>
-      <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="IsChargingCar2"></span></td>
+      <td style="color:#ff006e;font-size: large;" >&nbsp;&nbsp;<span id="IsCharging"></span></td>
+      <td style="color:#00ffff;font-size: large;">&nbsp;&nbsp;<span id="IsChargingCar2"></span></td>
     </tr>  
-    
-    <tr>
-    <td style="color:white; ">Vehicle.Powertrain.TractionBattery.Charging.IsCharging</td>
-    <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="IsCharging"></span></td>
-    <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="IsChargingCar2"></span></td>
-  </tr>  
+ 
   <tr>
   <td style="color:white; ">Vehicle.Powertrain.TractionBattery.Charging.TimeToComplete</td>
-  <td style="color:#ff006e;font-size: x-large;" >&nbsp;&nbsp;<span id="TimeToComplete"></span></td>
-  <td style="color:#00ffff;font-size: x-large;">&nbsp;&nbsp;<span id="TimeToCompleteCar2"></span></td>
+  <td style="color:#ff006e;font-size: large;" >&nbsp;&nbsp;<span id="TimeToComplete"></span></td>
+  <td style="color:#00ffff;font-size: large;">&nbsp;&nbsp;<span id="TimeToCompleteCar2"></span></td>
 </tr> 
      </table>
     <style>
     td{
         padding: 1%;
     }
-    span{
-        font-weight: bold;
-    }
+   
     </style>   
     `
       VIN=container.querySelector("#VIN");
