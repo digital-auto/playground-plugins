@@ -163,7 +163,7 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             fillColor: '#fe0073',
                             fillOpacity: 1,
                             anchor: new box.window.google.maps.Point(-20,-150),
-                            strokeWeight: 1,
+                            strokeWeight: 0,
                             scale: .1,
                             rotation: 0
                         }  
@@ -201,7 +201,6 @@ const GoogleMapsPluginApi = async (apikey, box, path, travelMode = null, {icon =
                             icon:  {
                                 url:carIcon,
                                 fillOpacity: 1,
-                                anchor: new box.window.google.maps.Point(12,-290),
                                 strokeWeight: 0,
                                 scale: .1,
                                 rotation: 0,
