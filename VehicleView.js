@@ -539,7 +539,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div  style="color:#ff006e; font-size: large;">Current battery SOC</div>
+			<div  style="color:#ff006e; font-size: large;font-weight: bold;">Current battery SOC</div>
 		</div>
     		<div id="scoreCar2" style="">
 			<div class="text">0.00%</div>
@@ -551,7 +551,7 @@ let Charged=false;
 				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
 				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
 			</svg>
-			<div style="color:#00ffff; font-size: large;">Current battery SOC</div>
+			<div style="color:#00ffff; font-size: large;font-weight: bold;">Current battery SOC</div>
 		</div>
 		`
 
@@ -628,14 +628,14 @@ let Charged=false;
           <div id="stopwatch-frame" class="stopwatch-frame color-zone">
               <div id="stopwatch" class="stopwatch">00:00</div>
           </div> 
-          <div class="message" style="color:#ff006e;font-size: large;">EV without CIF</div>
+          <div class="message" style="color:#ff006e;font-size: large;font-weight: bold;">EV without CIF</div>
           </div>
 
           <div class="Block">
           <div id="stopwatch2-frame"  class="stopwatch-frame color-zone">
               <div id="stopwatch2"  class="stopwatch">00:00</div>
           </div>   
-          <div class="message"  style="color:#00ffff; font-size: large;">EV with CIF</div>
+          <div class="message"  style="color:#00ffff; font-size: large;font-weight: bold;">EV with CIF</div>
           </div>
           </div>
           
