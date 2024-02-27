@@ -51,12 +51,12 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
             return currentSignalValues[signal]
         })
     }
-/*
+ 
     const updateVehicle = async () => {
         if (!vehicleId) {
             return
         }
-        const response = await fetch(`https://fleetsim.onrender.com/vehicle/${vehicleId}`)
+        const response = await fetch(`https://fleetsim.onrender.com/vehicle/random`)
         const fleetJson = await response.json()
         for (const signal in currentSignalValues) {
             currentSignalValues[signal] = fleetJson[signal].value
@@ -68,7 +68,7 @@ const plugin = ({simulator, widgets, modelObjectCreator}) => {
     setInterval(updateVehicle, 1000)
 
     updateVehicle()
-*/
+ 
 	widgets.register("VehicleStatus", StatusTable({
 
 
