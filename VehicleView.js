@@ -511,6 +511,7 @@ let Charged=false;
     let intervalId11;
     let scoreFrame = null;
 
+    
     widgets.register("Score Bar", async (box) => {
         scoreFrame = document.createElement("div")
         scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
@@ -1004,6 +1005,19 @@ let Charged=false;
  
     })
     
+    ///// MapsLegend //////
+    
+    widgets.register("MapsLegend",  box => {
+      const container = document.createElement("div");
+      container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+
+      container.innerHTML = `
+      <img width="100%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FinfoMap.png?alt=media&token=7a60aade-c61f-4a56-a61b-2eecd33e1479" >
+      `
+
+        box.injectNode(container);
+
+    })
 
      ///// Cover Image //////
  
