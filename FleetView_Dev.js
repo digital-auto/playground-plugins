@@ -252,11 +252,11 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
 
                         if (coordinates.availability && !coordinates.defect){
                             carIcon="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Favailablecaricon.png?alt=media&token=8028bf73-5775-46e6-9e92-ef29a587598e";
-                           
+                            
                         }
-                        else if (coordinates.defect){
+                        else if (!coordinates.availability && !coordinates.defect){
                             carIcon =  "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fnotavailablecaricon.png?alt=media&token=d213e5b1-f7a4-44a8-96e5-485db6303a91";
-                          }
+                        }
                           else {
                             carIcon=  "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fnotavailablecaricon2.png?alt=media&token=d063eeb9-ecec-4f38-a3ba-3eb08cc49880";
                           }
