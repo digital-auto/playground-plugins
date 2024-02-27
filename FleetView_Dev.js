@@ -174,7 +174,9 @@ const plugin = ({ widgets,  simulator,  modelObjectCreator}) => {
                 const map = new box.window.google.maps.Map(container, {
                     zoom: 8, // 6.3
                     center: rectCenter,
+                    mapTypeId: 'terrain',
                     styles: darkModeStyles // Apply dark mode styles here
+                    
                 });
 
                 new box.window.google.maps.Rectangle({
