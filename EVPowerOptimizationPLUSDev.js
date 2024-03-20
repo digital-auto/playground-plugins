@@ -34,7 +34,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev/"
+let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_00/"
 
 let SimulatorStarted = false
 
@@ -281,10 +281,23 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     const start_sim = async (time) => {
         let res = await getAnsysStatus()
         if (res && res.Status === "IDLE") {
-            alert("Simulator is busy, try again later!")
-            return false
+            ANSYS_API = "https://proxy.digitalauto.tech/evtwin_01/" 
+             res = await getAnsysStatus()
+            if (res && res.Status === "IDLE") {
+                ANSYS_API = "https://proxy.digitalauto.tech/evtwin_02/" 
+                 res = await getAnsysStatus()
+                if (res && res.Status === "IDLE") {
+                    ANSYS_API = "https://proxy.digitalauto.tech/evtwin_03/" 
+                    res = await getAnsysStatus()
+                    if (res && res.Status === "IDLE") {
+                        ANSYS_API = "https://proxy.digitalauto.tech/evtwin_04/" 
+                        alert("Simulator is busy, try again later!")
+                        return false
+                    }
+                }
+            }
         }
-
+         
         await anysisSimulation('start', policy)
         SimulatorStarted = true
         sim_intervalId = setInterval(async () => {
