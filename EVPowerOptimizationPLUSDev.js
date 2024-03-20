@@ -279,16 +279,16 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
     let sim_intervalId = null;
     const start_sim = async (time) => {
-        let res = await getAnsysStatus()
+        let res =  getAnsysStatus()
         if (res && res.Status === "IDLE") {
             ANSYS_API = "https://proxy.digitalauto.tech/evtwin_01/" 
-             res = await getAnsysStatus()
+             res =  getAnsysStatus()
             if (res && res.Status === "IDLE") {
                 ANSYS_API = "https://proxy.digitalauto.tech/evtwin_02/" 
-                 res = await getAnsysStatus()
+                 res =  getAnsysStatus()
                 if (res && res.Status === "IDLE") {
                     ANSYS_API = "https://proxy.digitalauto.tech/evtwin_03/" 
-                    res = await getAnsysStatus()
+                    res =  getAnsysStatus()
                     if (res && res.Status === "IDLE") {
                         ANSYS_API = "https://proxy.digitalauto.tech/evtwin_04/" 
                         alert("Simulator is busy, try again later!")
@@ -366,7 +366,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             let bat_soc = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
             let trvl_dist = await vehicle.TravelledDistance.get()
 
-            console.log('message_from_provider', payload)
             if (payload.cmd == 'showTest') {
                 lblSpeed.innerText = payload.data
             }
@@ -571,7 +570,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         function btnClick() {
             let wind = HVACAnimationFrame.querySelector("#wind");
-            console.log(wind.getAttribute("src"));
             if (wind.getAttribute("src") == "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fevpoweroptimization%2Fhvac%2Fsmall.gif?alt=media&token=a46d0186-80d0-4540-bf23-e94b0cd18368") {
                 wind.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fblue%20air.gif?alt=media&token=6a00f612-649e-4587-9b46-0be192588088");
                 return;
@@ -939,7 +937,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         //Get values
         const requestDataFromAnsys = async () => {
-            console.log(`requestDataFromAnsys`)
             //let mode = await vehicle.PowerOptimizationMode.get();
             let inf_light = await vehicle.Cabin.Lights.LightIntensity.get()
             let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get()
@@ -965,7 +962,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE"
         const PROVIDER_ID_MOBIS = "Mobis-SAMPLE"
         socket.on("connect", () => {
-            console.log("Io connected from Policy")
             socket.emit("register_client", {
                 master_provider_id: PROVIDER_ID
             })
@@ -976,8 +972,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         })
 
         socket.on("new_request", (data) => {
-            console.log("on new_request from ansys");
-            console.log(data)
 
             if (!data || !data.cmd || !data.request_from) return
             switch (data.cmd) {
@@ -993,7 +987,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         let pol = PolicyFrame.querySelectorAll(".pol")
         for (let i = 1; i < 13; i++) {
             pol[i-1].onclick = () => {
-                console.log(`Pol ${i} clicked!`)
                 policy = i
                 let id = "#pol" + policy
                 PolicyFrame.querySelector(id).style.backgroundColor = "rgb(104 130 158)"
@@ -1011,7 +1004,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         const renderActivePolicy = () => {
             let policies =  PolicyFrame.querySelectorAll(".pol")
-            console.log(`policy ${policy} policies`, policies)
             if(policies) {
                 policies.forEach((pol) => {
                     if(pol.id == 'pol'+policy) {
@@ -1032,7 +1024,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 await requestDataFromAnsys()
                 await sleep(1000);
                 renderActivePolicy()
-                console.log("sleep");
             }
         }
 
@@ -1137,11 +1128,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         box.injectNode(scoreFrame)
 
         box.window.addEventListener("unload", async () => {
-            console.log("on widget unload")
             clearInterval(sim_intervalId)
 
             if (SimulatorStarted) {
-                console.log("Stop  simulator")
                 await anysisSimulation('stop', policy)
             }
         })
