@@ -34,7 +34,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_00/"
+let ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/"
 
 let SimulatorStarted = false
 
