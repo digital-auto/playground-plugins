@@ -36,28 +36,9 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
 
 let ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/";
 
-const ConnectToServer= async () => {
-
-let res =  getAnsysStatus();
-if (res && res.Status === "IDLE") {
-    ANSYS_API = "https://proxy.digitalauto.tech/evtwin_01/" 
-     res =  getAnsysStatus()
-    if (res && res.Status === "IDLE") {
-        ANSYS_API = "https://proxy.digitalauto.tech/evtwin_02/" 
-         res =  getAnsysStatus()
-        if (res && res.Status === "IDLE") {
-            ANSYS_API = "https://proxy.digitalauto.tech/evtwin_03/" 
-            res =  getAnsysStatus()
-            if (res && res.Status === "IDLE") {
-                ANSYS_API = "https://proxy.digitalauto.tech/evtwin_04/" 
-
-            }
-        }
-    }
-}
-}
+ 
 let SimulatorStarted = false
-ConnectToServer();
+
 const getAnsysStatus = async () => {
     console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`)
     const res = await fetch(`${ANSYS_API}simulations/status`)
