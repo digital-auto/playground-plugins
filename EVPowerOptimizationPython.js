@@ -3,7 +3,8 @@ import StatusTable from "./reusable/StatusTable.js";
 import { PLUGINS_APIKEY } from "./reusable/apikey.js";
 import SimulatorPlugins from "./reusable/SimulatorPlugins.js";
 
-// The public version with New UI (without Python VSS, prototye under EV model)
+// The dev version with New UI
+// TBD: To use Python VSS on Playground
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
