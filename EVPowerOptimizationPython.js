@@ -555,6 +555,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 cmd: "set_policy",
                 data: policy,
             });
+            vehicle.EVPowerOptimization.Mode = policy;
+            alert (vehicle.EVPowerOptimization.Mode.get()) ;
+
         };
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE";
         const PROVIDER_ID_MOBIS = "Mobis-SAMPLE";
