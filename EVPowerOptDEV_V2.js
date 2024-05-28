@@ -28,29 +28,9 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-let ANSYS_API =   async () => {
-    ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/" 
-    let res =  getAnsysStatus()
-    if (res && res.Status === "IDLE") {
-        ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
-         res =  getAnsysStatus()
-        if (res && res.Status === "IDLE") {
-            ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
-             res =  getAnsysStatus()
-            if (res && res.Status === "IDLE") {
-                ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
-                res =  getAnsysStatus()
-                if (res && res.Status === "IDLE") {
-                    ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
-                    alert("Simulator is busy, try again later!")
-                   //return false
-                }
-            }
-        }
-    }
-    console.log(ANSYS_API);
-    return ANSYS_API;
-}
+let ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/";
+
+
 
 let SimulatorStarted = false;
 const PROVIDER_ID = "dev-CLIENT-SAMPLE";
@@ -382,7 +362,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     let sim_intervalId = null;
     const start_sim = async (time) => {
         let res =  getAnsysStatus()
-        if (res && res.Status === "IDLE") {
+        console.log ("--------- res  ----------- ")
+        console.log (res)
+        console.log ("----------------")
+        if (res && (res.Status === "IDLE")) {
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
              res =  getAnsysStatus()
             if (res && res.Status === "IDLE") {
