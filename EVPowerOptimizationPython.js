@@ -557,10 +557,10 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             });
             //vehicle.EVPowerOptimization.Mode = policy;
             vehicle.EVPowerOptimization.Mode.set(policy) ;
-            console.log (vehicle.EVPowerOptimization.Mode.get().then(result => {
+            vehicle.EVPowerOptimization.Mode.get().then(result => {
                 console.log(result); // This will print "FRESH"
                 }
-            )) ;
+            );
 
         };
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE";
