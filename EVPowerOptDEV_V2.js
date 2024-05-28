@@ -43,11 +43,12 @@ let ANSYS_API =   async () => {
                 if (res && res.Status === "IDLE") {
                     ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
                     alert("Simulator is busy, try again later!")
-                    return false
+                   //return false
                 }
             }
         }
     }
+    console.log(ANSYS_API);
     return ANSYS_API;
 }
 
