@@ -556,7 +556,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 data: policy,
             });
             vehicle.EVPowerOptimization.Mode = policy;
-            alert (vehicle.EVPowerOptimization.Mode.get()) ;
+            console.log (vehicle.EVPowerOptimization.Mode.get()) ;
 
         };
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE";
@@ -572,10 +572,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             });
         });
 
-        socket.on("new_request", (data) => {
-
-
-            
+        socket.on("new_request", (data) => {            
             if (!data || !data.cmd || !data.request_from) return;
             switch (data.cmd) {
                 case "set_policy":
