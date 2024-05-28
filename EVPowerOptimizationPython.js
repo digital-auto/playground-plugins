@@ -556,6 +556,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 data: policy,
             });
             vehicle.EVPowerOptimization.Mode = policy;
+            vehicle.EVPowerOptimization.Mode.set(policy) ;
             console.log (vehicle.EVPowerOptimization.Mode.get()) ;
 
         };
