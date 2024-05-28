@@ -5,6 +5,8 @@ import GoogleMapsPluginApi from "./reusable/GoogleMapsPluginApi.js"
 import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 
+// The deprecated version (Prototype under Ansys model)
+
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     // Set the range to A1:Z1000
     const range = "A1:Z1000";

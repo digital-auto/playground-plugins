@@ -5,7 +5,7 @@ import GoogleMapsFromSignal from "./reusable/GoogleMapsFromSignal.js"
 import { PLUGINS_APIKEY } from "./reusable/apikey.js"
 import MobileNotifications from "./reusable/MobileNotifications.js"
 
-
+// The private version with old UI (Prototype under Ansys model)
 
 async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     /*window.onbeforeunload = function(){
