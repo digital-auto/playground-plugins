@@ -155,31 +155,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			</div>
 			</div>
 		</div>
-		<div id="controls" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
-			<div id="icons" style="margin:5px;display:flex;justify-content:space-around">
-				<div style="width:2em;cursor: pointer;" id="video">
-					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
-				</div>
-				<!-- <div style="width:2em;cursor: pointer;" id="reload">
-					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Freload.svg?alt=media&token=0a2db061-8210-4c0b-bb84-0fdbf34c415e" alt="reload" style="filter: invert(100%);">
-				</div>
-				<div style="width:2em;cursor: pointer;" id="play">
-					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
-				</div>
-				<div style="width:2em;cursor: pointer;" id="forward">
-					<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fforward.svg?alt=media&token=6e729a78-4c7b-4065-a738-b58cdbcfc3cc" alt="forward" style="filter: invert(100%);">
-				</div> -->
-			</div>
-		</div>
-		<div id="controls_intro" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
-			<div style="margin:5px;display:flex;justify-content:space-around">
-				<div style="cursor: pointer;" id="intro">
-					<button id="intro_btn" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-					Intro
-					</button>
-				</div>
-			</div>
-		</div>
 		`
 
 		simulator("Vehicle.Passenger.Age", "get", async () => {
@@ -300,25 +275,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box.triggerPopup(videoFrame)
 		}
 
-		let intro_video = controlsFrame.querySelector("#intro_btn")
-		intro_video.onclick = () => {
-			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FKinetosis%20final%20kompr.mp4?alt=media&token=3b58ba7f-3a62-4357-9475-ea986e407d75"
-			let videoFrame = document.createElement("div")
-			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
-			videoFrame.innerHTML =
-				`
-				<div id="videoContainer" >
-					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
-						<source
-						src=${videoURL}
-						type="video/mp4"
-						/>
-					</video>
-				</div>
-				`
-			box.triggerPopup(videoFrame)
-		}
-
+	 
 	
 
         box.injectNode(controlsFrame)
@@ -328,7 +285,100 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // Deactivation function for clearing intervals or such.
         }
     })
-
+	widgets.register("VideoPlay", (box) => {
+		controlsFrame = document.createElement("div")
+		controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
+		controlsFrame.innerHTML = 
+			`
+			<style>
+			@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				font-family: 'Lato', sans-serif;
+				color:#ffffe3;
+				background-color:rgb(0 80 114);
+				text-align:center;
+				display:flex;          
+			}
+			</style>
+	
+			<div id="controls" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
+				<div id="icons" style="margin:5px;display:flex;justify-content:space-around">
+					<div style="width:2em;cursor: pointer;" id="video">
+						<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" alt="video" style="filter: invert(100%);">
+					</div>
+					<!-- <div style="width:2em;cursor: pointer;" id="reload">
+						<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Freload.svg?alt=media&token=0a2db061-8210-4c0b-bb84-0fdbf34c415e" alt="reload" style="filter: invert(100%);">
+					</div>
+					<div style="width:2em;cursor: pointer;" id="play">
+						<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fplay.svg?alt=media&token=4f68e20d-5c11-4e2c-9ae3-7f44ebdd0416" alt="play" style="filter: invert(100%);">
+					</div>
+					<div style="width:2em;cursor: pointer;" id="forward">
+						<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fforward.svg?alt=media&token=6e729a78-4c7b-4065-a738-b58cdbcfc3cc" alt="forward" style="filter: invert(100%);">
+					</div> -->
+				</div>
+			</div>
+			<div id="controls_intro" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
+				<div style="margin:5px;display:flex;justify-content:space-around">
+					<div style="cursor: pointer;" id="intro">
+						<button id="intro_btn" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+						Intro
+						</button>
+					</div>
+				</div>
+			</div>
+			`
+ 	
+			let video = controlsFrame.querySelector("#video")
+			video.onclick = () => {
+				const style = simulationDetails.style.trim();
+				const videoURL = style === "relaxed" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxedDriver_AVC.mp4?alt=media&token=ea69aa02-828b-4a66-af0b-5b5abc257d5c" : style === "optimized" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimizedDriver_AVC.mp4?alt=media&token=f9fc5f86-c61a-4760-ac48-4a83d135b8f3" : "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSportyDriver_AVC.mp4?alt=media&token=2f2b664a-f682-4171-912f-0b0e3e32a5bd"
+				let videoFrame = document.createElement("div")
+				videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
+				videoFrame.innerHTML =
+					`
+					<div id="videoContainer" >
+						<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
+							<source
+							src=${videoURL}
+							type="video/mp4"
+							/>
+						</video>
+					</div>
+					`
+				box.triggerPopup(videoFrame)
+			}
+	
+			let intro_video = controlsFrame.querySelector("#intro_btn")
+			intro_video.onclick = () => {
+				const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FKinetosis%20final%20kompr.mp4?alt=media&token=3b58ba7f-3a62-4357-9475-ea986e407d75"
+				let videoFrame = document.createElement("div")
+				videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
+				videoFrame.innerHTML =
+					`
+					<div id="videoContainer" >
+						<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
+							<source
+							src=${videoURL}
+							type="video/mp4"
+							/>
+						</video>
+					</div>
+					`
+				box.triggerPopup(videoFrame)
+			}
+	
+		
+	
+			box.injectNode(controlsFrame)
+			return () => {
+				//clearInterval(intervalId)
+				clearInterval(sim_intervalId)
+				// Deactivation function for clearing intervals or such.
+			}
+		})
 	widgets.register("Table", StatusTable({
 		apis: ["Vehicle.Speed", "Vehicle.TripMeterReading", "Vehicle.Acceleration.Lateral", "Vehicle.Acceleration.Longitudinal", "Vehicle.Acceleration.Vertical", "Vehicle.AngularVelocity.Roll", "Vehicle.AngularVelocity.Pitch", "Vehicle.AngularVelocity.Yaw", "Vehicle.CurrentLocation.Latitude", "Vehicle.CurrentLocation.Longitude"],
 		vehicle: vehicle,
