@@ -167,11 +167,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			return "sporty";
 		})
 
-		let simulationDetails = {
-			"style": "sporty",
-			"gender": "male",
-			"age": "young"
-		}
+
 	
 		let sportyStyle = controlsFrame.querySelector("#red")
 		sportyStyle.onclick = () => {
@@ -210,6 +206,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
+			controlsFrame.querySelector("#yellow div").style.color = "bold"
 			simulator("Vehicle.DrivingStyle", "get", async () => {
 				return "optimized";
 			})
@@ -262,6 +259,12 @@ const plugin = ({widgets, simulator, vehicle}) => {
             // Deactivation function for clearing intervals or such.
         }
     })
+	
+	let simulationDetails = {
+		"style": "sporty",
+		"gender": "male",
+		"age": "young"
+	}
 	widgets.register("VideoPlay", (box) => {
 		controlsFrame = document.createElement("div")
 		controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
