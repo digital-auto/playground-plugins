@@ -95,6 +95,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	
 
     let controlsFrame = null;
+	let simulationDetails = {
+		"style": "sporty",
+		"gender": "male",
+		"age": "young"
+	}
     widgets.register("Controls", (box) => {
 	controlsFrame = document.createElement("div")
     controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
@@ -260,11 +265,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }
     })
 	
-	let simulationDetails = {
-		"style": "sporty",
-		"gender": "male",
-		"age": "young"
-	}
+
 	widgets.register("VideoPlay", (box) => {
 		controlsFrame = document.createElement("div")
 		controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
