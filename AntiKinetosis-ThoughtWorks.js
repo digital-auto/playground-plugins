@@ -126,18 +126,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 						Sporty
 					</div>
 				</div>
-				<div id="yellow" style="width:33%;text-align:center;cursor: pointer; ">
-					<img style="width:50%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimized.png?alt=media&token=dff86e6b-ee69-4daf-b213-abc38da273ef" />
-					<div style="font-weight:unset">
-						Optimized
-					</div>
-				</div>
-				<div id="green" style="width:33%;text-align:center;cursor: pointer; ">
-					<img style="width:50%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxed.png?alt=media&token=86901115-a104-4f48-b09b-6b4e44a7e8bd" />
-					<div style="font-weight:unset">
-						Relaxed
-					</div>
-				</div>
 			</div>
 			<div class="label" style="width:100%;position:relative;margin-top:10px;">Back Seat passengers: </div>
 			<div id="passengers" style="position:relative;margin-top:5px;width:100%;">        
@@ -185,35 +173,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
 			simulator("Vehicle.DrivingStyle", "get", async () => {
 				return "sporty";
-			})
-		}
-	
-		let relaxedStyle = controlsFrame.querySelector("#green")
-		relaxedStyle.onclick = () => {
-			simulationDetails["style"] = "relaxed"
-			controlsFrame.querySelector("#red img").style.width = "50%"
-			controlsFrame.querySelector("#green img").style.width = "80%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
-			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
-			simulator("Vehicle.DrivingStyle", "get", async () => {
-				return "relaxed";
-			})
-		}
-	
-		let optimizedStyle = controlsFrame.querySelector("#yellow")
-		optimizedStyle.onclick = () => {
-			simulationDetails["style"] = "optimized"
-			controlsFrame.querySelector("#red img").style.width = "50%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "80%"
-			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#yellow div").style.color = "bold"
-			simulator("Vehicle.DrivingStyle", "get", async () => {
-				return "optimized";
 			})
 		}
 	
