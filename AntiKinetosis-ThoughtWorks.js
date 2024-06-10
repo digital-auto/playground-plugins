@@ -118,7 +118,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 				display:flex;          
 			}
 			</style>
-			<div class="label" style="width:100%;position:relative;margin-top:10px;">Driving Style:</div>
+			<div class="label" style="width:100%;position:relative;margin-top:10px;">Car model:</div>
 			<div id="style" style="display:flex;width:100%;justify-content: center;align-items:center;position:relative;margin-top:5px">        
 				<div id="red" style="width:33%;text-align:center;cursor: pointer; ">
 					<img style="width:80%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSporty.png?alt=media&token=e318b297-d41e-4e6a-9a41-8b7fbbf2602d" />
@@ -159,8 +159,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		simulator("Vehicle.DrivingStyle", "get", async () => {
 			return "sporty";
 		})
-
-
 	
 		let sportyStyle = controlsFrame.querySelector("#red")
 		sportyStyle.onclick = () => {
