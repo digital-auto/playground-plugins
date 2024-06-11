@@ -548,7 +548,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			</video>
 		 
 			`
-			document.getElementById('vid').play();
+			 
 			  box.injectNode(container);
 		  })
 
