@@ -524,7 +524,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
 	     ///// Cover Image //////
  
-		 widgets.register("Cover",  box => {
+		 widgets.register("Poster",  box => {
 			const container = document.createElement("div");
 			container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 	  
@@ -533,7 +533,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			`
 			  box.injectNode(container);
 		  })
-		  
+
 
     widgets.register("InputImage", (box) => {
 		let webcam_message = 'Webcam'
