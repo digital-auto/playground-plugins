@@ -300,15 +300,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 					</div> -->
 				</div>
 			</div>
-			<div id="controls_intro" style="position:relative;bottom:0%;display:grid;width:100%;align-items:center">
-				<div style="margin:5px;display:flex;justify-content:space-around">
-					<div style="cursor: pointer;" id="intro">
-						<button id="intro_btn" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
-						Intro
-						</button>
-					</div>
-				</div>
-			</div>
 			`
  	
 
@@ -332,26 +323,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			box.triggerPopup(videoFrame)
 		}
 
-		let intro_video = controlsFrame.querySelector("#intro_btn")
-		intro_video.onclick = () => {
-			const videoURL = "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FKinetosis%20final%20kompr.mp4?alt=media&token=3b58ba7f-3a62-4357-9475-ea986e407d75"
-			let videoFrame = document.createElement("div")
-			videoFrame.style = "width:100%;height:100%;background-color:rgb(0 80 114)"
-			videoFrame.innerHTML =
-				`
-				<div id="videoContainer" >
-					<video id="videoPlayer" style="width:100%; height:100%; object-fit: fill" autoplay controls>
-						<source
-						src=${videoURL}
-						type="video/mp4"
-						/>
-					</video>
-				</div>
-				`
-			box.triggerPopup(videoFrame)
-		}
-
-	
 
         box.injectNode(controlsFrame)
         return () => {
