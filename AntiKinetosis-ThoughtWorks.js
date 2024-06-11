@@ -541,7 +541,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 	  
 			container.innerHTML = `
-			<video  width="100%" height="100%" controls autoplay>
+			<video  width="100%" height="100%" controls>
 			<source src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" type="video/mp4">
 			Your browser does not support the video tag.
 			</video>
