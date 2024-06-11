@@ -550,11 +550,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 		sportyStyle.onclick = () => {
 			simulationDetails["style"] = "sporty"
 			controlsFrame.querySelector("#red img").style.width = "80%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
 			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
 			simulator("Vehicle.DrivingStyle", "get", async () => {
 				return "sporty";
 			})
