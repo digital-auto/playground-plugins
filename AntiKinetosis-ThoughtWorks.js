@@ -121,21 +121,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			<div class="label" style="width:100%;position:relative;margin-top:10px;">Driving Style:</div>
 			<div id="style" style="display:flex;width:100%;justify-content: center;align-items:center;position:relative;margin-top:5px">        
 				<div id="red" style="width:33%;text-align:center;cursor: pointer; ">
-					<img style="width:80%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSporty.png?alt=media&token=e318b297-d41e-4e6a-9a41-8b7fbbf2602d" />
+					<img style="width:80%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMicrosoftTeams-image.png?alt=media&token=0c0a3deb-dae9-4be1-b709-54f00a4187c5" />
 					<div style="font-weight:bold">
-						Sporty
-					</div>
-				</div>
-				<div id="yellow" style="width:33%;text-align:center;cursor: pointer; ">
-					<img style="width:50%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimized.png?alt=media&token=dff86e6b-ee69-4daf-b213-abc38da273ef" />
-					<div style="font-weight:unset">
-						Optimized
-					</div>
-				</div>
-				<div id="green" style="width:33%;text-align:center;cursor: pointer; ">
-					<img style="width:50%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxed.png?alt=media&token=86901115-a104-4f48-b09b-6b4e44a7e8bd" />
-					<div style="font-weight:unset">
-						Relaxed
+						TW Demonstrator Vehicle
 					</div>
 				</div>
 			</div>
