@@ -541,9 +541,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 	  
 			container.innerHTML = `
-			<img width="100%" height="100%"  src="https://drive.google.com/file/d/1BStawX7jSJ8ue8ycTGrbgst47oCwws7r/view?usp=sharing" >
 			<video  width="100%" height="100%" controls autoplay>
-			<source src="movie.mp4" type="video/mp4">
+			<source src="https://drive.google.com/file/d/1BStawX7jSJ8ue8ycTGrbgst47oCwws7r/view?usp=sharing" type="video/mp4">
 			Your browser does not support the video tag.
 			</video>
 			`
