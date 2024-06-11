@@ -522,6 +522,19 @@ const plugin = ({widgets, simulator, vehicle}) => {
         box.injectNode(container);
     });
 
+	     ///// Cover Image //////
+ 
+		 widgets.register("Cover",  box => {
+			const container = document.createElement("div");
+			container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
+	  
+			container.innerHTML = `
+			<img width="100%" height="100%"  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FTestVehicle_1264x1264px.png?alt=media&token=64c05ed4-019a-44dc-b860-04daf8007511" >
+			`
+			  box.injectNode(container);
+		  })
+		  
+
     widgets.register("InputImage", (box) => {
 		let webcam_message = 'Webcam'
 
