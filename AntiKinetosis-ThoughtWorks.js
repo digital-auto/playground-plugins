@@ -542,7 +542,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 	  
 			container.innerHTML = `
 			<video  width="100%" height="100%" controls autoplay>
-			<source src="https://drive.google.com/file/d/1BStawX7jSJ8ue8ycTGrbgst47oCwws7r/view?usp=sharing" type="video/mp4">
+			<source src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" type="video/mp4">
 			Your browser does not support the video tag.
 			</video>
 			`
