@@ -541,8 +541,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
 	  
 			container.innerHTML = `
-			<video  width="100%" height="100%" controls>
-			<source src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvideo.svg?alt=media&token=93f6bed8-10c8-43f5-ba09-44bde5bb1797" type="video/mp4">
+			<video  width="100%" height="100%" controls autoplay>
+			<source src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FRelaxedDriver_AVC.mp4?alt=media&token=ea69aa02-828b-4a66-af0b-5b5abc257d5c" : style === "optimized" ? "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FOptimizedDriver_AVC.mp4?alt=media&token=f9fc5f86-c61a-4760-ac48-4a83d135b8f3" : "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fkinetosis%2FSportyDriver_AVC.mp4?alt=media&token=2f2b664a-f682-4171-912f-0b0e3e32a5bd" type="video/mp4">
 			Your browser does not support the video tag.
 			</video>
 			`
