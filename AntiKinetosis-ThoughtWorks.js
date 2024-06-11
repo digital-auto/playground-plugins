@@ -176,34 +176,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			})
 		}
 	
-		let relaxedStyle = controlsFrame.querySelector("#green")
-		relaxedStyle.onclick = () => {
-			simulationDetails["style"] = "relaxed"
-			controlsFrame.querySelector("#red img").style.width = "50%"
-			controlsFrame.querySelector("#green img").style.width = "80%"
-			controlsFrame.querySelector("#yellow img").style.width = "50%"
-			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#green div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
-			simulator("Vehicle.DrivingStyle", "get", async () => {
-				return "relaxed";
-			})
-		}
-	
-		let optimizedStyle = controlsFrame.querySelector("#yellow")
-		optimizedStyle.onclick = () => {
-			simulationDetails["style"] = "optimized"
-			controlsFrame.querySelector("#red img").style.width = "50%"
-			controlsFrame.querySelector("#green img").style.width = "50%"
-			controlsFrame.querySelector("#yellow img").style.width = "80%"
-			controlsFrame.querySelector("#red div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
-			controlsFrame.querySelector("#yellow div").style.fontWeight = "bold"
-			controlsFrame.querySelector("#yellow div").style.color = "bold"
-			simulator("Vehicle.DrivingStyle", "get", async () => {
-				return "optimized";
-			})
-		}
+ 
+ 
 	
 		let gender_male = controlsFrame.querySelector("#gender_male")
 		gender_male.onclick = () => {
