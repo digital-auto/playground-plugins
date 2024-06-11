@@ -536,8 +536,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 		  })
 
 	     ///// Cover Video //////
-		 let vid =  null
- 
+  
 		 widgets.register("Video-Player",  box => {
 			const container = document.createElement("div");
 			container.setAttribute("style", `display:block; ;overflow:auto;padding: 0px;`);
@@ -549,8 +548,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 			</video>
 		 
 			`
-			vid = document.querySelector('video');
-			vid.play();
+			 
 
 			 
 			  box.injectNode(container);
