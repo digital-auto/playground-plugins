@@ -476,6 +476,142 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
 
     })
+ 	
+
+    let controlsFrame = null;
+	let simulationDetails = {
+		"style": "sporty",
+		"gender": "male",
+		"age": "young"
+	}
+    widgets.register("Controls", (box) => {
+	controlsFrame = document.createElement("div")
+    controlsFrame.style = 'width:100%;height:100%;display:grid;align-content:center;justify-content:center;align-items:center'
+	controlsFrame.innerHTML = 
+		`
+        <style>
+			@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				font-family: 'Lato', sans-serif;
+				color:#ffffe3;
+				background-color:rgb(0 80 114);
+				text-align:center;
+				display:flex;          
+			}
+			</style>
+			<div class="label" style="width:100%;position:relative;margin-top:10px;">Driving Style:</div>
+			<div id="style" style="display:flex;width:100%;justify-content: center;align-items:center;position:relative;margin-top:5px">        
+				<div id="red" style="width:33%;text-align:center;cursor: pointer; ">
+					<img style="width:80%;" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMicrosoftTeams-image.png?alt=media&token=0c0a3deb-dae9-4be1-b709-54f00a4187c5" />
+					<div style="font-weight:bold">
+						TW Demonstrator Vehicle
+					</div>
+				</div>
+			</div>
+			<div class="label" style="width:100%;position:relative;margin-top:10px;">Back Seat passengers: </div>
+			<div id="passengers" style="position:relative;margin-top:5px;width:100%;">        
+				<div class="selections" style="display:flex;position:relative;justify-content:center">
+				<div class="btn-group gender" style="margin:5px;display:grid">
+					<button id="gender_male" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Male
+					</button>
+					<button id="gender_female" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Female
+					</button>
+				</div>
+				<div class="btn-group age" style="margin:5px;display:grid">
+					<button id="age_young" style="background-color: rgb(104 130 158);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Young
+					</button>
+					<button id="age_old" style="background-color: rgb(157 176 184);padding: 10px 24px;cursor: pointer;float: left;margin:2px;border-radius:5px;font-size:1em;font-family:Lato;color: rgb(255, 255, 227);border:0px">
+					Adult
+					</button>
+				</div>
+				</div>
+			</div>		 
+		`
+
+		simulator("Vehicle.Passenger.Age", "get", async () => {
+			return parseInt("15");
+		})
+		simulator("Vehicle.Passenger.Gender", "get", async () => {
+			return "male";
+		})
+		simulator("Vehicle.DrivingStyle", "get", async () => {
+			return "sporty";
+		})
+
+
+	
+		let sportyStyle = controlsFrame.querySelector("#red")
+		sportyStyle.onclick = () => {
+			simulationDetails["style"] = "sporty"
+			controlsFrame.querySelector("#red img").style.width = "80%"
+			controlsFrame.querySelector("#green img").style.width = "50%"
+			controlsFrame.querySelector("#yellow img").style.width = "50%"
+			controlsFrame.querySelector("#red div").style.fontWeight = "bold"
+			controlsFrame.querySelector("#green div").style.fontWeight = "unset"
+			controlsFrame.querySelector("#yellow div").style.fontWeight = "unset"
+			simulator("Vehicle.DrivingStyle", "get", async () => {
+				return "sporty";
+			})
+		}
+	
+ 
+ 
+	
+		let gender_male = controlsFrame.querySelector("#gender_male")
+		gender_male.onclick = () => {
+			simulationDetails["gender"] = "male"
+			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(104 130 158)"
+			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(157 176 184)"
+			simulator("Vehicle.Passenger.Gender", "get", async () => {
+				return "male";
+			})
+		}
+	
+		let gender_female = controlsFrame.querySelector("#gender_female")
+		gender_female.onclick = () => {
+			simulationDetails["gender"] = "female"
+			controlsFrame.querySelector("#gender_male").style.backgroundColor = "rgb(157 176 184)"
+			controlsFrame.querySelector("#gender_female").style.backgroundColor = "rgb(104 130 158)"
+			simulator("Vehicle.Passenger.Gender", "get", async () => {
+				return "female";
+			})
+		}
+	
+		let age_young = controlsFrame.querySelector("#age_young")
+		age_young.onclick = () => {
+			simulationDetails["age"] = "young"
+			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(104 130 158)"
+			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(157 176 184)"
+			simulator("Vehicle.Passenger.Age", "get", async () => {
+				return parseInt("15");
+			})
+		}
+	
+		let age_old = controlsFrame.querySelector("#age_old")
+		age_old.onclick = () => {
+			simulationDetails["age"] = "adult"
+			controlsFrame.querySelector("#age_young").style.backgroundColor = "rgb(157 176 184)"
+			controlsFrame.querySelector("#age_old").style.backgroundColor = "rgb(104 130 158)"
+			simulator("Vehicle.Passenger.Age", "get", async () => {
+				return parseInt("60");
+			})
+		}	
+
+        box.injectNode(controlsFrame)
+        return () => {
+			//clearInterval(intervalId)
+			clearInterval(sim_intervalId)
+            // Deactivation function for clearing intervals or such.
+        }
+    })
+	
+
 		     ///// Cover Video //////
   
 			 widgets.register("Video-Player",  box => {
@@ -1181,58 +1317,41 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
   })
  ///// Cover Video //////
-    let scoreFrame = null;
-    widgets.register("Score Bar", (box) => {
-        scoreFrame = document.createElement("div")
-        scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
-        scoreFrame.innerHTML =
-            `
-		<style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Lato', sans-serif;
-            color:#ffffe3;
-            background-color:rgb(0 80 114);
-            text-align:center;            
-        }
-        </style>
-		<div id="score" style="">
-			<div class="text">0.0%</div>
-			<svg width="100" height="200" style="transform: rotateX(180deg)">
-				<rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
-				<line class="low" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="200,200"/>
-				<line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="120,200"/>
-				<line class="high" x1="50" y1="0" x2="50" y2="200" stroke="red" stroke-width="50" stroke-dasharray="60,200"/>
-				<line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
-				<line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
-			</svg>
-			<div id="message">Current battery SOC</div>
-		</div>
-		`
+ let scoreFrame = null;
+ widgets.register("Score", (box) => {
+ scoreFrame = document.createElement("div")	
+ scoreFrame.style = `width:100%;height:100%;display:flex;align-content:center;justify-content:center;align-items:center`
+ scoreFrame.innerHTML =
+	 `
+	 <style>
+	 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+	 * {
+		 box-sizing: border-box;
+	 }
+	 body {
+		 font-family: 'Lato', sans-serif;
+		 color:#ffffe3;
+		 background-color:rgb(0 80 114);
+		 text-align:center;            
+	 }
+	 </style>
+	 <div id="score" style="">
+		 <div class="text">0.0%</div>
+		 <svg width="100" height="200" style="transform: rotateX(180deg)">
+			 <rect class="outline" x="25" y="0" rx="2" ry="2" stroke="black" stroke-width="3" width="50" height="200" fill="none" />
+			 <line class="low" x1="50" y1="0" x2="50" y2="200" stroke="red" stroke-width="50" stroke-dasharray="200,200"/>
+			 <line class="medium" x1="50" y1="0" x2="50" y2="200" stroke="yellow" stroke-width="50" stroke-dasharray="160,200"/>
+			 <line class="high" x1="50" y1="0" x2="50" y2="200" stroke="green" stroke-width="50" stroke-dasharray="120,200"/>
+			 <line class="mask" x1="50" y1="200" x2="50" y2="0" stroke="white" stroke-width="50" stroke-dasharray="200,200"/>
+			 <line class="needle" x1="0" y1="0" x2="100" y2="0" stroke="rgb(156 163 175)" stroke-width="3" />
+		 </svg>
+		 <div id="message">Kinetosis score </div>		
+	 </div>
+	 `
 
-        box.injectNode(scoreFrame)
+	 box.injectNode(scoreFrame)
+ })
 
-        box.window.addEventListener("unload", async () => {
-            clearInterval(sim_intervalId)
-
-            if (SimulatorStarted) {
-                await anysisSimulation('stop', policy)
-            }
-        })
-
-        return async () => {
-
-            if (sim_intervalId !== null) {
-                clearInterval(sim_intervalId)
-            }
-            if (SimulatorStarted) {
-                await anysisSimulation('stop', policy)
-            }
-        }
-    })
 
     return {
         start_simulation: start_sim,
