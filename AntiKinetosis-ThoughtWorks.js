@@ -270,7 +270,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         // const score = await vehicle.Passenger.KinetosisScore.get()
         // const score = "20"
         const score = await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get()
-        scoreFrame.querySelector("#score .text").textContent = parseFloat(score).toFixed(2) + "%"
+        scoreFrame.querySelector("#text").textContent = parseFloat(score).toFixed(2) + "%"
         scoreFrame.querySelector("#score .mask").setAttribute("stroke-dasharray", (200 - (parseInt(score) * 2)) + "," + 200);
         scoreFrame.querySelector("#score .needle").setAttribute("y1", `${(parseInt(score) * 2)}`)
         scoreFrame.querySelector("#score .needle").setAttribute("y2", `${(parseInt(score) * 2)}`)
@@ -1343,7 +1343,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }
             </style>
             <div class="wrapper">
-                <span class="text">0 %</span>
+                <span id="text">0 %</span>
                 <div class="battery" id="score">
                     <svg width="100" height="200" style="transform: rotateX(180deg)">
                         <rect class="outline" x="25" y="0" rx="2" ry="2" stroke="transparent" stroke-width="3" width="50" height="200" fill="none" />
