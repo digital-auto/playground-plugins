@@ -1316,7 +1316,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 	  box.injectNode(animationControlsFrame)
 
   })
- ///// Cover Video ////// let batteryFrame = null;
+ ///// Cover Video ////// 
+ let batteryFrame = null;
     widgets.register("Battery", (box) => {
         batteryFrame = document.createElement("div");
         batteryFrame.style = "width:100%; height:100%;";
