@@ -385,31 +385,33 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     res.then(result => {
                         Status= result.Status;
                         console.log("Status 01: "+Status);
+                        if (Status === "IDLE") {
+                            console.log("02 USED")
+        
+                            ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
+                            res =  getAnsysStatus(ANSYS_API)
+                            res.then(result => {
+                                Status= result.Status;
+                                console.log("Status 02: "+Status);
+                                if (Status === "IDLE") {
+                                    console.log("03 USED")
+                                                    console.log("Status 00: "+Status);
+            
+                                    ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
+                                    alert("Simulator is busy, try again later!")
+                                    return false
+                                }
+        
+                            }).catch(error => {
+                                console.error('An error occurred:', error);
+                            });
+    
+                        }
     
                     }).catch(error => {
                         console.error('An error occurred:', error);
                     });
-                     if (Status === "IDLE") {
-                        console.log("02 USED")
-    
-                        ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
-                        res =  getAnsysStatus(ANSYS_API)
-                        res.then(result => {
-                            Status= result.Status;
-                            console.log("Status 02: "+Status);
-    
-                        }).catch(error => {
-                            console.error('An error occurred:', error);
-                        });
-                        if (Status === "IDLE") {
-                            console.log("03 USED")
-                                            console.log("Status 00: "+Status);
-    
-                            ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
-                            alert("Simulator is busy, try again later!")
-                            return false
-                        }
-                    }
+
                 }
             }).catch(error => {
                 console.error('An error occurred:', error);
