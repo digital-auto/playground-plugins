@@ -34,9 +34,9 @@ let ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/";
 let SimulatorStarted = false;
 const PROVIDER_ID = "dev-CLIENT-SAMPLE";
 
-const getAnsysStatus = async () => {
+const getAnsysStatus = async (ANSYS_API2) => {
      //console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`);
-    const res = await fetch(`${ANSYS_API}simulations/status`);
+    const res = await fetch(`${ANSYS_API2}simulations/status`);
     if (!res.ok) throw "Get ansys status failed";
     return await res.json();
 };
@@ -363,7 +363,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
     let sim_intervalId = null;
     const start_sim = async (time) => {
-        let res =  getAnsysStatus()
+        let res =  getAnsysStatus(ANSYS_API)
         let Status=null;
        
         res.then(result => {
@@ -375,7 +375,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         if (Status === "IDLE") {
             console.log("00 USED")
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
-            res =  getAnsysStatus()
+            res =  getAnsysStatus(ANSYS_API)
             res.then(result => {
                 Status= result.Status;// This should log "Status: FRESH"
             }).catch(error => {
@@ -385,7 +385,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 console.log("01 USED")
 
                 ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
-                res =  getAnsysStatus()
+                res =  getAnsysStatus(ANSYS_API)
                 res.then(result => {
                     Status= result.Status;// This should log "Status: FRESH"
                 }).catch(error => {
@@ -395,7 +395,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     console.log("02 USED")
 
                     ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
-                    res =  getAnsysStatus()
+                    res =  getAnsysStatus(ANSYS_API)
                     res.then(result => {
                         Status= result.Status;// This should log "Status: FRESH"
                     }).catch(error => {
@@ -403,7 +403,6 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     });
                     if (Status === "IDLE") {
                         console.log("03 USED")
-
                         ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
                         alert("Simulator is busy, try again later!")
                         return false
