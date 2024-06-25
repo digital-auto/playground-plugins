@@ -373,6 +373,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         });
 
         if (Status === "IDLE") {
+            console.log("00 USED")
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
             res =  getAnsysStatus()
             res.then(result => {
@@ -380,7 +381,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             }).catch(error => {
                 console.error('An error occurred:', error);
             });
-            if (res.Status === "IDLE") {
+            if (Status === "IDLE") {
+                console.log("01 USED")
+
                 ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
                 res =  getAnsysStatus()
                 res.then(result => {
@@ -388,7 +391,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 }).catch(error => {
                     console.error('An error occurred:', error);
                 });
-                 if (res.Status === "IDLE") {
+                 if (Status === "IDLE") {
+                    console.log("02 USED")
+
                     ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
                     res =  getAnsysStatus()
                     res.then(result => {
@@ -396,7 +401,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     }).catch(error => {
                         console.error('An error occurred:', error);
                     });
-                    if (res.Status === "IDLE") {
+                    if (Status === "IDLE") {
+                        console.log("03 USED")
+
                         ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
                         alert("Simulator is busy, try again later!")
                         return false
