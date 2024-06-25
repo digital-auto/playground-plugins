@@ -34,9 +34,9 @@ let ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/";
 let SimulatorStarted = false;
 const PROVIDER_ID = "dev-CLIENT-SAMPLE";
 
-const getAnsysStatus = async (ANSYS_API2) => {
+const getAnsysStatus = async () => {
      //console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`);
-    const res = await fetch(`${ANSYS_API2}simulations/status`);
+    const res = await fetch(`${ANSYS_API}simulations/status`);
     if (!res.ok) throw "Get ansys status failed";
     return await res.json();
 };
@@ -368,20 +368,23 @@ const plugin = ({ widgets, simulator, vehicle }) => {
        
         res.then(result => {
             Status= result.Status;
+            console.log("Status 00: "+Status);
         }).catch(error => {
             console.error('An error occurred:', error);
         });
+        console.log("Status global: "+Status);
 
         if (Status === "IDLE") {
             console.log("00 USED")
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
-            res =  getAnsysStatus(ANSYS_API)
+            res =  getAnsysStatus()
             res.then(result => {
                 Status= result.Status;
-                console.log("Status 00: "+Status);
+                console.log("Status 01: "+Status);
             }).catch(error => {
                 console.error('An error occurred:', error);
             });
+            /**
             if (Status === "IDLE") {
                 console.log("01 USED")
 
@@ -408,7 +411,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     });
                     if (Status === "IDLE") {
                         console.log("03 USED")
-                        console.log("Status 00: "+Status);
+                                        console.log("Status 00: "+Status);
 
                         ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
                         alert("Simulator is busy, try again later!")
@@ -416,6 +419,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     }
                 }
             }
+            **/
         }
          
         await anysisSimulation('start', policy)
