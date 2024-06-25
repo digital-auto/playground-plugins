@@ -364,27 +364,39 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     let sim_intervalId = null;
     const start_sim = async (time) => {
         let res =  getAnsysStatus()
+        let Status=null;
        
         res.then(result => {
-            console.log('Status:', result.Status); // This should log "Status: FRESH"
+            Status= result.Status;// This should log "Status: FRESH"
         }).catch(error => {
             console.error('An error occurred:', error);
         });
 
-        if (res && res.Status === "IDLE") {
+        if (Status === "IDLE") {
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
-             res =  getAnsysStatus()
-             console.log("res 01: ")
-             console.log(res)
-            if (res && res.Status === "IDLE") {
+            res =  getAnsysStatus()
+            res.then(result => {
+                Status= result.Status;// This should log "Status: FRESH"
+            }).catch(error => {
+                console.error('An error occurred:', error);
+            });
+            if (res.Status === "IDLE") {
                 ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
-                 res =  getAnsysStatus()
-                 console.log("res 01: ")
-                 console.log(res)
-                 if (res && res.Status === "IDLE") {
+                res =  getAnsysStatus()
+                res.then(result => {
+                    Status= result.Status;// This should log "Status: FRESH"
+                }).catch(error => {
+                    console.error('An error occurred:', error);
+                });
+                 if (res.Status === "IDLE") {
                     ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
                     res =  getAnsysStatus()
-                    if (res && res.Status === "IDLE") {
+                    res.then(result => {
+                        Status= result.Status;// This should log "Status: FRESH"
+                    }).catch(error => {
+                        console.error('An error occurred:', error);
+                    });
+                    if (res.Status === "IDLE") {
                         ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
                         alert("Simulator is busy, try again later!")
                         return false
