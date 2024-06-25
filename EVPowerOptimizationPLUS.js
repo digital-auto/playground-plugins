@@ -364,16 +364,20 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     let sim_intervalId = null;
     const start_sim = async (time) => {
         let res =  getAnsysStatus()
-        console.log("res 00: " + res)
+        console.log("res 00: ")
+        console.log(res)
+
         if (res && res.Status === "IDLE") {
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
              res =  getAnsysStatus()
-             console.log("res 01: " + res)
+             console.log("res 01: ")
+             console.log(res)
             if (res && res.Status === "IDLE") {
                 ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
                  res =  getAnsysStatus()
-                 console.log("res 02: " + res)
-                if (res && res.Status === "IDLE") {
+                 console.log("res 01: ")
+                 console.log(res)
+                 if (res && res.Status === "IDLE") {
                     ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
                     res =  getAnsysStatus()
                     if (res && res.Status === "IDLE") {
