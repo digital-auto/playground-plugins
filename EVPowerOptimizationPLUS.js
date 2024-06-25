@@ -30,7 +30,7 @@ async function fetchRowsFromSpreadsheet(spreadsheetId, apiKey) {
     return rows;
 }
 
-let ANSYS_API = "https://proxy.digitalauto.tech/evtwin_dev/";
+let ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_00/";
 let SimulatorStarted = false;
 const PROVIDER_ID = "dev-CLIENT-SAMPLE";
 
@@ -360,24 +360,37 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
     let sim_intervalId = null;
     const start_sim = async (time) => {
-        let res = await getAnsysStatus();
+        let res =  getAnsysStatus()
         if (res && res.Status === "IDLE") {
-            alert("Simulator is busy, try again later!");
-            return false;
+            ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
+             res =  getAnsysStatus()
+            if (res && res.Status === "IDLE") {
+                ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
+                 res =  getAnsysStatus()
+                if (res && res.Status === "IDLE") {
+                    ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
+                    res =  getAnsysStatus()
+                    if (res && res.Status === "IDLE") {
+                        ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
+                        alert("Simulator is busy, try again later!")
+                        return false
+                    }
+                }
+            }
         }
-
-        await anysisSimulation("start", policy);
-        SimulatorStarted = true;
+         
+        await anysisSimulation('start', policy)
+        SimulatorStarted = true
         sim_intervalId = setInterval(async () => {
-            const res = await anysisSimulation("resume", policy);
-            updateSignals(res);
-            updateSimulation();
+            const res = await anysisSimulation('resume', policy)
+            updateSignals(res)
+            updateSimulation()
 
-            await vehicle.Next.get();
-            //sim_function()
-        }, time);
-        return true;
-    };
+            await vehicle.Next.get()
+            // sim_function()
+        }, time)
+        return true
+    }
 
     const stop_sim = async () => {
         clearInterval(sim_intervalId);
