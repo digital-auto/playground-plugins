@@ -446,8 +446,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 "Vehicle.Cabin.Sunroof.Position",
                 "Vehicle.Cabin.HVAC.Station.Row1.Left.Temperature",
                 "Vehicle.Cabin.Infotainment.Media.Volume",
-                "Vehicle.AccelerationLimit",
-                "Vehicle.SpeedLimit",
+       
             ],
             vehicle: vehicle,
             refresh: 800,
