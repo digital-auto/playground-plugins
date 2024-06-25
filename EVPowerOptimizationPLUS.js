@@ -365,7 +365,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
     const start_sim = async (time) => {
         let res =  getAnsysStatus()
         console.log("res 00: ")
-        console.log(res)
+        console.log(res["Status"])
 
         if (res && res.Status === "IDLE") {
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
