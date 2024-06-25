@@ -35,7 +35,7 @@ let SimulatorStarted = false;
 const PROVIDER_ID = "dev-CLIENT-SAMPLE";
 
 const getAnsysStatus = async () => {
-    console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`);
+     //console.log("getAnsysStatus " + `${ANSYS_API}simulations/status`);
     const res = await fetch(`${ANSYS_API}simulations/status`);
     if (!res.ok) throw "Get ansys status failed";
     return await res.json();
@@ -95,13 +95,16 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         let bat_soc =
             await vehicle.Powertrain.TractionBattery.StateOfCharge.Current.get();
         let trvl_dist = await vehicle.TravelledDistance.get();
-        let acceleration_limit = await vehicle.AccelerationLimit.get();
-        let speed_limit = await vehicle.SpeedLimit.get();
+        //let acceleration_limit = await vehicle.AccelerationLimit.get();
+        //let speed_limit = await vehicle.SpeedLimit.get();
 
+        /**
         interiorFrame.querySelector("#speed-limit-value").innerHTML =
             `${speed_limit}`;
+           
         interiorFrame.querySelector("#acc-limit-value").innerHTML =
-            `${acceleration_limit}`;
+            `${acceleration_limit}`; 
+        **/
         interiorFrame.querySelector("#interior-light-value").innerHTML =
             `${inf_light}`;
         interiorFrame.querySelector("#temperature-value").innerHTML = `${temp}`;
@@ -548,7 +551,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         //Get values
         const requestDataFromAnsys = async () => {
-            console.log(`requestDataFromAnsys`);
+             //console.log(`requestDataFromAnsys`);
             //let mode = await vehicle.PowerOptimizationMode.get();
             let inf_light = await vehicle.Cabin.Lights.LightIntensity.get();
             let temp = await vehicle.Cabin.HVAC.Station.Row1.Left.Temperature.get();
@@ -574,7 +577,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         const PROVIDER_ID = "JAVASCRIPT-CLIENT-SAMPLE";
         const PROVIDER_ID_MOBIS = "Mobis-SAMPLE";
         socket.on("connect", () => {
-            console.log("Io connected from Policy");
+             //console.log("Io connected from Policy");
             socket.emit("register_client", {
                 master_provider_id: PROVIDER_ID,
             });
@@ -585,8 +588,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         });
 
         socket.on("new_request", (data) => {
-            console.log("on new_request from ansys");
-            console.log(data);
+             //console.log("on new_request from ansys");
+             //console.log(data);
 
             if (!data || !data.cmd || !data.request_from) return;
             switch (data.cmd) {
@@ -643,7 +646,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
 
         const renderActivePolicy = () => {
             let policies = policyFrame.querySelectorAll(".pol");
-            console.log(`policy ${policy} policies`, policies);
+             //console.log(`policy ${policy} policies`, policies);
             if (policies) {
                 policies.forEach((pol) => {
                     if (pol.id == "pol" + policy) {
@@ -664,7 +667,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 await requestDataFromAnsys();
                 await sleep(1000);
                 renderActivePolicy();
-                console.log("sleep");
+                 //console.log("sleep");
             }
         }
 
@@ -1083,11 +1086,11 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             `;
         box.injectNode(batteryFrame);
         box.window.addEventListener("unload", async () => {
-            console.log("on widget unload");
+             //console.log("on widget unload");
             clearInterval(sim_intervalId);
 
             if (SimulatorStarted) {
-                console.log("Stop  simulator");
+                 //console.log("Stop  simulator");
                 await anysisSimulation("stop", policy);
             }
         });
