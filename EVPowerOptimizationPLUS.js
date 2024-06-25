@@ -367,7 +367,7 @@ const plugin = ({ widgets, simulator, vehicle }) => {
         let Status=null;
        
         res.then(result => {
-            Status= result.Status;// This should log "Status: FRESH"
+            Status= result.Status;
         }).catch(error => {
             console.error('An error occurred:', error);
         });
@@ -377,7 +377,8 @@ const plugin = ({ widgets, simulator, vehicle }) => {
             ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_01/" 
             res =  getAnsysStatus(ANSYS_API)
             res.then(result => {
-                Status= result.Status;// This should log "Status: FRESH"
+                Status= result.Status;
+                console.log("Status 00: "+Status);
             }).catch(error => {
                 console.error('An error occurred:', error);
             });
@@ -387,7 +388,9 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                 ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_02/" 
                 res =  getAnsysStatus(ANSYS_API)
                 res.then(result => {
-                    Status= result.Status;// This should log "Status: FRESH"
+                    Status= result.Status;
+                    console.log("Status 01: "+Status);
+
                 }).catch(error => {
                     console.error('An error occurred:', error);
                 });
@@ -397,12 +400,16 @@ const plugin = ({ widgets, simulator, vehicle }) => {
                     ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_03/" 
                     res =  getAnsysStatus(ANSYS_API)
                     res.then(result => {
-                        Status= result.Status;// This should log "Status: FRESH"
+                        Status= result.Status;
+                        console.log("Status 02: "+Status);
+
                     }).catch(error => {
                         console.error('An error occurred:', error);
                     });
                     if (Status === "IDLE") {
                         console.log("03 USED")
+                        console.log("Status 00: "+Status);
+
                         ANSYS_API = "https://api-proxy.digitalauto.asia/evtwin_04/" 
                         alert("Simulator is busy, try again later!")
                         return false
