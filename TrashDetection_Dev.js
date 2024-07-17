@@ -84,7 +84,7 @@ let container = null
     let resultImgDiv = null
     let resultRecDiv = null
 
-    let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FLanding_AI_Logo_RGB_600.png?alt=media&token=9f6e445d-cf6d-4556-9240-4645a804b240`
+    let landingAiLogo = `https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FAIOT_LAB_Logo_RGB_RZ.jpg?alt=media&token=f12df497-6f0b-4549-ac8b-c006de5d06d1`
 
     let imgWidth = 0;
     let imgHeight = 0;
