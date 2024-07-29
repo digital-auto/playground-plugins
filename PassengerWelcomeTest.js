@@ -1,4 +1,4 @@
-import SignalWithMedia from "./SignalWithMedia_PW.js"
+import SignalWithMedia from "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/SignalWithMedia_PW.js"
 // import SignalPills from "./SignalPills_PW.js"
 
 const plugin = ({widgets, vehicle, simulator}) => {
