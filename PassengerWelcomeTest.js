@@ -1,0 +1,151 @@
+import SignalWithMedia from "./SignalWithMedia_PW.js"
+// import SignalPills from "./SignalPills_PW.js"
+
+const plugin = ({widgets, vehicle, simulator}) => {
+    widgets.register(
+        "LightDome",
+        SignalWithMedia("Vehicle.Body.Lights.IsBrakeOn", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn720x360.mp4",
+                style: `margin: auto; transform: translate(-25%);`
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOff720x360.mp4",
+                style: `margin: auto; transform: translate(-25%);`
+            },
+        }, 
+        vehicle)
+    )
+
+    widgets.register(
+        "SeatUpDown",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Position", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoDown720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoUp720x360.mp4"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "LeftDoorOpen",
+        SignalWithMedia("Vehicle.Cabin.Door.Row1.Left.IsOpen", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/DoorOpen720x360.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/DoorClose720x360.mp4"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "MirrorTilt",
+        SignalWithMedia("Vehicle.Body.Mirrors.Left.Tilt", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/MirrorsOpening720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/MirrorsClose720x360.mp4"
+            },
+        }, vehicle)
+    )
+
+    widgets.register(
+        "SeatEngaged",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Switch.Seating.IsForwardEngaged", {
+            [true]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoToFront720x360.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatGoToRear720x360.mp4"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "Tilt",
+        SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Tilt", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatRotationFront720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/SeatRotationBack720x360.mp44"
+            },
+        }, vehicle)
+    )
+    
+    widgets.register(
+        "AmbientLight",
+        SignalWithMedia("Vehicle.Cabin.Lights.AmbientLight", {
+            [0]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/Ambience720x360.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://digitalauto-media-data.netlify.app/Ambience720x360.mp4"
+            },
+        }, vehicle)
+    )
+
+    widgets.register(
+        "BYODCoffee",
+        SignalWithMedia("Vehicle.BYOD.CoffeeMachine.Brew", {
+            [true]: {
+                type: "video",
+                url: "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/coffee_machine_02.mp4"
+            },
+            [false]: {
+                type: "video",
+                url: "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/coffee_machine_empty.mp4"
+            },
+        }, vehicle)
+    )
+    widgets.register(
+        "BYODAirfreshner",
+        SignalWithMedia("Vehicle.BYOD.Airfreshner.Speed", {
+            [0]: {
+                type: "video",
+                url: "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/airpurifier_off.mp4"
+            },
+            [100]: {
+                type: "video",
+                url: "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/airpurifier.mp4"
+            },
+        }, vehicle)
+    )
+    
+    // widgets.register(
+    //     "SignalPillsConsumer",
+    //     SignalPills(
+    //         [
+    //             {
+    //                 signal: "Vehicle.Cabin.Door.Row1.Left.IsOpen",
+    //                 icon: `fa-gauge`
+    //             },
+    //             {
+    //                 signal: "Vehicle.Cabin.Seat.Row1.Pos1.Height",
+    //                 icon: `fa-gauge`
+    //             }
+    //         ],
+    //         vehicle
+    //     )
+    // )
+}
+
+export default plugin
