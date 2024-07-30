@@ -1,5 +1,6 @@
 import SignalWithMedia from "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/SignalWithMedia_PW.js"
 // import SignalPills from "./SignalPills_PW.js"
+import StatusTable from "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/StatusTable.js";
 
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
@@ -129,6 +130,20 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
+    widgets.register(
+        "Table",
+        StatusTable({
+          apis: [
+            "Vehicle.Cabin.Door.Row1.Left.IsOpen",
+            "Vehicle.Cabin.Lights.IsDomeOn",
+            "Vehicle.Cabin.Seat.Row1.Pos1.Position",
+            "Vehicle.BYOD.CoffeeMachine.Brew",
+            "Vehicle.BYOD.Airfreshner.Speed"
+          ],
+          vehicle,
+          refresh: 300,
+        })
+    );
     
     // widgets.register(
     //     "SignalPillsConsumer",
