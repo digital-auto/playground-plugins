@@ -130,6 +130,8 @@ const plugin = ({widgets, vehicle, simulator}) => {
             },
         }, vehicle)
     )
+
+    
     widgets.register(
         "Table",
         StatusTable({
