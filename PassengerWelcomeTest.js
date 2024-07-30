@@ -24,11 +24,11 @@ const plugin = ({widgets, vehicle, simulator}) => {
         SignalWithMedia("Vehicle.Cabin.Seat.Row1.Pos1.Position", {
             [0]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoDown720x360.mp4"
+                url: "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FSeatGoForward720x360.mp4?alt=media&token=8ce653bc-23d9-4840-8bd6-f785de555dac"
             },
             [100]: {
                 type: "video",
-                url: "https://digitalauto-media-data.netlify.app/SeatGoUp720x360.mp4"
+                url: "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FSeatGoForward720x360Reverse.mp4?alt=media&token=8ce653bc-23d9-4840-8bd6-f785de555dac"
             },
         }, vehicle)
     )
