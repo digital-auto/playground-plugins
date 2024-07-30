@@ -4,7 +4,7 @@ import SignalWithMedia from "https://edx-digitalauto-plugins.s3.eu-central-1.ama
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "LightDome",
-        SignalWithMedia("Vehicle.Body.Lights.IsBrakeOn", {
+        SignalWithMedia("Vehicle.Cabin.Lights.IsDomeOn", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn720x360.mp4",
