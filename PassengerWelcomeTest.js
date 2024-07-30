@@ -26,7 +26,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
                 type: "video",
                 url: "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FSeatGoForward720x360.mp4?alt=media&token=8ce653bc-23d9-4840-8bd6-f785de555dac"
             },
-            [100]: {
+            [10]: {
                 type: "video",
                 url: "https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FSeatGoForward720x360Reverse.mp4?alt=media&token=8ce653bc-23d9-4840-8bd6-f785de555dac"
             },
