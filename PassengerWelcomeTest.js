@@ -139,7 +139,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
             "Vehicle.Cabin.Door.Row1.Left.IsOpen",
             "Vehicle.Cabin.Lights.IsIndoorDomeOn",
             "Vehicle.Cabin.Seat.Row1.Pos1.Position",
-            "Vehicle.BYOD.CoffeeMachine.Brew",
+            "Vehicle.BYOD.CoffeeMachine.IsBrew",
             "Vehicle.BYOD.Airfreshner.Speed"
           ],
           vehicle,
