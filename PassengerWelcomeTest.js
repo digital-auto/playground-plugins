@@ -106,7 +106,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
 
     widgets.register(
         "BYODCoffee",
-        SignalWithMedia("Vehicle.BYOD.CoffeeMachine.Brew", {
+        SignalWithMedia("Vehicle.BYOD.CoffeeMachine.IsBrew", {
             [true]: {
                 type: "video",
                 url: "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/coffee_machine_02.mp4"
