@@ -33,7 +33,7 @@ Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae06
   * Drag the image dataset to LandingLens on the upload image page.
     <img src="./img/BrowseImages2.png" alt="DatasetUpload" width="700">
   * After uploading your dataset to LandingLens, the images will be automatically annotated.
-    <img src="./img/DatasetUpload.png" alt="DatasetUpload" width="700">
+    <img src="./img/DatasetUpload2.png" alt="DatasetUpload" width="700">
 * If you only have some raw images without labeling, you can utilize LandingLens online annotation tool to label your images. 
   * Update your raw images to LandingLens as before, then click one image to enter the annotation editor.
     <img src="./img/AnnotationTool.png" alt="AnnotationTool" width="700">
