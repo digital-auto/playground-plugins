@@ -61,23 +61,23 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Login with your user email ID and password. (Please send an email to chris.cheng@ferdinand-steinbeis-institut.de to request an account)
 
 ### 2.2 Choose your vehicle model
-* Click on **Select Model** button; thus, all public vehicle models are visible.
-  <img src="./img/SelectVehicleModel.jpg" alt="SelectVehicleModel" width="600">
+* Click on **Vehicle Models** button; thus, all public vehicle models are visible.
+  <img src="./img/SelectVehicleModel2.jpg" alt="SelectVehicleModel" width="600">
 
 * Click on the vehicle model **Industrial Internet**.
    
-  <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
+  <img src="./img/IndustrialInternet2.jpg" alt="IndustrialInternet" width="600">
 
 ### 2.3 Create your Software-defined Vehicle prototype
 * Click **Prototype Library** to enter the prototype catalog.
-  <img src="./img/PrototypeLibrary.jpg" alt="PrototypeLibrary" width="600">
+  <img src="./img/PrototypeLibrary2.jpg" alt="PrototypeLibrary" width="600">
 
-* Click on **+ New prototype** button to create your prototype under **Industrial Internet** vehicle model.
-  <img src="./img/NewPrototype.jpg" alt="NewPrototype" width="600">
+* Click on **+ Create New Prototype** button to create your prototype under **Industrial Internet** vehicle model.
+  <img src="./img/NewPrototype2.jpg" alt="NewPrototype" width="600">
 
-* Provide your prototype name, description, target user, and a brief solution introduction, then click **Create** button to create your prototype.
+* Provide your prototype name and your programming language, then click **New Prototype** button to create your prototype.
   
-  <img src="./img/PrototypeDescription.jpg" alt="PrototypeDescription" width="300">
+  <img src="./img/PrototypeDescription2.jpg" alt="PrototypeDescription" width="300">
 
 ### 2.4 Build your plugin with the online digital.auto Plugin Editor
 * Go back to **Industrial Internet** vehicle model, then select **Plugins**.
