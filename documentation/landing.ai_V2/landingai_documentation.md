@@ -7,7 +7,7 @@
 
 # Landing AI Platform Model build up and digital.auto Playground Deployment Guide
 
-Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/run) demo case on [**digital.auto Playground**](https://digitalauto.netlify.app/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the Landing AI platform [**LandingLens**](https://landing.ai/) from scratch and deploying this model on digital.auto Playground. 
+Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/dashboard) demo case on [**digital.auto Playground**](https://playground.digital.auto/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the Landing AI platform [**LandingLens**](https://landing.ai/) from scratch and deploying this model on digital.auto Playground. 
 
 ## 1. LandingLens AI model build up
 
@@ -57,7 +57,7 @@ Here we take [**Wallet Detection**](https://digitalauto.netlify.app/model/uRApze
 In this section, the integration processes of the AI model from LandingLens on digital.auto Playground will be introduced. We will deploy two widgets (one for the raw image and one for the AI inference results) on the vehicle model Dashboard on Playground to demonstrate Wallet Detection use case. 
 
 ### 2.1 Login to the digital.auto playground portal
-* Click this link https://digitalauto.netlify.app/ to visit digital.auto playground portal on your web browser.
+* Click this link https://playground.digital.auto/ to visit digital.auto playground portal on your web browser.
 * Login with your user email ID and password. (Please send an email to chris.cheng@ferdinand-steinbeis-institut.de to request an account)
 
 ### 2.2 Choose your vehicle model
@@ -119,7 +119,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Click on **Dashboard config** option to open the Dashboard config editor.
   <img src="./img/DashboardConfig.jpg" alt="DashboardConfig" width="600">
 
-* Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/code).
+* Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/code).
   
   <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="600">
 
