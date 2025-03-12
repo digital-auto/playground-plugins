@@ -13,13 +13,13 @@ Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae06
 
 ### 1.1 Register a LandingLens account and create an AI project
 * Register an account at Landing AI homepage (https://app.landing.ai/login).
-  <img src="./img/LandingaiRegistration.png" alt="LandingaiRegistration" width="700">
+  <img src="./img/LandingaiRegistration2.png" alt="LandingaiRegistration" width="700">
 
 * After entering your personal account home page, click on **Create Project** tile to create your project.
-  <img src="./img//LandingLens.png" alt="LandingLens" width="700">
+  <img src="./img//LandingLens2.png" alt="LandingLens" width="700">
 
 * After entering your created project, click on **Edit** icon  and enter a descriptive name for your project.
-  <img src="./img/ProjectName.png" alt="ProjectName" width="700">
+  <img src="./img/ProjectName2.png" alt="ProjectName" width="700">
 
 ### 1.2 Select your project type
 * Three main Computer Vision related tasks that can be developed on LandingLens: 
@@ -31,7 +31,7 @@ Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae06
 ### 1.3 Upload your image dataset 
 * If you have labeled image datasets, you can upload them by selecting drop to upload button. 
   * Drag the image dataset to LandingLens on the upload image page.
-    <img src="./img/BrowseImages.png" alt="DatasetUpload" width="700">
+    <img src="./img/BrowseImages2.png" alt="DatasetUpload" width="700">
   * After uploading your dataset to LandingLens, the images will be automatically annotated.
     <img src="./img/DatasetUpload.png" alt="DatasetUpload" width="700">
 * If you only have some raw images without labeling, you can utilize LandingLens online annotation tool to label your images. 
