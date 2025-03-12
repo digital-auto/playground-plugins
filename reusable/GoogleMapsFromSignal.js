@@ -10,7 +10,7 @@ const supportsPins = (vehicle) => {
         return false
     }
 }
-
+ 
 const convertCoordinates = (coordinates) => {
     return {
         lat: parseFloat(coordinates.lat),

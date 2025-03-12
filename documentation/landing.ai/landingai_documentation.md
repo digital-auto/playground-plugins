@@ -119,7 +119,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 * Click on **Dashboard config** option to open the Dashboard config editor.
   <img src="./img/DashboardConfig.jpg" alt="DashboardConfig" width="600">
 
-* Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://digitalauto.netlify.app/model/uRApzeqYHTGpdDSUhA3X/library/prototype/9RjCbSGC94xsuo7awzkB/view/code).
+* Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://digitalauto.netlify.app/model/Xkxqsrk3ATDLBdhJ4XCN/library/prototype/hBPBJe2n3e7vsrogrS8R/view/code).
   
   <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="600">
 

@@ -19,10 +19,7 @@ const convertCoordinates = (coordinates) => {
 }
 
 const GoogleMapsFromSignal = (directions, vehicle, {
- 
 
-    
- 
     iterate = false,
     autoNext = 800,
     icon = null

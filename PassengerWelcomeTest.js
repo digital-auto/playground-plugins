@@ -5,7 +5,7 @@ import StatusTable from "https://edx-digitalauto-plugins.s3.eu-central-1.amazona
 const plugin = ({widgets, vehicle, simulator}) => {
     widgets.register(
         "LightDome",
-        SignalWithMedia("Vehicle.Cabin.Lights.IsDomeOn", {
+        SignalWithMedia("Vehicle.Cabin.Lights.IsIndoorDomeOn", {
             [true]: {
                 type: "video",
                 url: "https://digitalauto-media-data.netlify.app/BatrayDomeLightOn720x360.mp4",
@@ -106,7 +106,7 @@ const plugin = ({widgets, vehicle, simulator}) => {
 
     widgets.register(
         "BYODCoffee",
-        SignalWithMedia("Vehicle.BYOD.CoffeeMachine.Brew", {
+        SignalWithMedia("Vehicle.BYOD.CoffeeMachine.IsBrew", {
             [true]: {
                 type: "video",
                 url: "https://edx-digitalauto-plugins.s3.eu-central-1.amazonaws.com/bcw-showcase-2024/coffee_machine_02.mp4"
@@ -137,9 +137,9 @@ const plugin = ({widgets, vehicle, simulator}) => {
         StatusTable({
           apis: [
             "Vehicle.Cabin.Door.Row1.Left.IsOpen",
-            "Vehicle.Cabin.Lights.IsDomeOn",
+            "Vehicle.Cabin.Lights.IsIndoorDomeOn",
             "Vehicle.Cabin.Seat.Row1.Pos1.Position",
-            "Vehicle.BYOD.CoffeeMachine.Brew",
+            "Vehicle.BYOD.CoffeeMachine.IsBrew",
             "Vehicle.BYOD.Airfreshner.Speed"
           ],
           vehicle,
