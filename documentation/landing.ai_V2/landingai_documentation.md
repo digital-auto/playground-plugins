@@ -66,7 +66,7 @@ In this section, the integration processes of the AI model from LandingLens on d
 
 * Click on the vehicle model **Industrial Internet**.
    
-  <img src="./img/IndustrialInternet.jpg" alt="IndustrialInternet" width="700">
+  <img src="documentation/landing.ai_V2/img/IndustrialInternet.jpg" alt="IndustrialInternet" width="600">
 
 ### 2.3 Create your Software-defined Vehicle prototype
 * Click **Prototype Library** to enter the prototype catalog.
