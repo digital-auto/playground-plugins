@@ -79,49 +79,29 @@ In this section, the integration processes of the AI model from LandingLens on d
   
   <img src="./img/PrototypeDescription2.jpg" alt="PrototypeDescription" width="300">
 
-### 2.4 Implement your prototype
-* Go back to **Industrial Internet** vehicle model, then select **Plugins**.
-  <img src="./img/SelectPlugin.jpg" alt="SelectPlugin" width="700">
+### 2.4 Implement your prototype using Python script
+* Click on the **SDV Code** sub-tab within your prototype to enter the page for the Software-defined vehicle Python script editor and write your code..
+  <img src="./img/PythonScript.jpg" alt="PythonScript" width="700">
 
-* Click on **+ New plugin** button to create your customized plugin to support your prototype demonstration on your prototype **Dashboard**.
-  <img src="./img/NewPlugin.jpg" alt="NewPlugin" width="700">
+### 2.5 Implement Widgets and Build your Dashboard
+* Click on the **Dashboard** sub-tab within your prototype to see a blank canvas. Click on the **Edit** button.
+    <img src="./img/Dashboard.jpg" alt="Dashboard" width="700">
 
-* Add plugin name, Plugin description and click on **Create JS code file using our editor**.
-  <img src="./img/JSCodeEditor.jpg" alt="JSCodeEditor" width="700">
+* Select the blocks in which you want to place the first widget and click on the **Add widget** button as shown below.
+    <img src="./img/AddWidget.jpg" alt="AddWidget" width="700">
 
-* Click **Open JS code editor** to open an online digital.auto Plugin Editor (https://editor.digitalauto.tech/) for prototype development on digital.auto Playground.
-  
-  <img src="./img/OpenJSEditor.jpg" alt="OpenJSEditor" width="700">
+* A list of widgets from the marketplace is displayed. Select the Simple Landing AI widget and click on Add selected widget.
+    <img src="./img/AddLandingaiWidget.jpg" alt="AddLandingaiWidget" width="700">
 
-* Click on **Create New Plugin** button to create a plugin for your prototype, specify your plugin name and add the respective JavaScript code on the digital.auto Plugin Editor.
-  
-  <img src="./img/PluginEditor_1.png" alt="PluginEditor" width="700">
-  <img src="./img/PluginEditor_2.png" alt="PluginEditor" width="700">
+* Go back to the **Deploy** menu on Landing.ai and copy the details like endpoint and API key(generated earlier). 
+* Click on Edit Widget and add the copied details from above and click **Save**.
+    <img src="./img/AddEndpointAPIKey.jpg" alt="AddEndpointAPIKey" width="700">
+    <img src="./img/LandingaiWidget.jpg" alt="LandingaiWidget" width="700">
 
-  * Go back to **Deploy** menu on **LandingLens** and copy the URL (inside the red box), as shown in the image below. 
-  
-    <img src="./img/URL.png" alt="DatasetUpload" width="700">
+* After clicking on **Save**, you should see your first widget on the dashboard as shown below.
+    <img src="./img/LandingaiDashboard.jpg" alt="LandingaiDashoboard" width="700">
 
-  * You can copy the JavaScript code we provided in the **Wallet Detection** prototype (https://editor.digitalauto.tech/editor/f7054ad5-77f7-47cd-8d0d-d0d9bbb58761wallet_detection.js), and paste into the new plugin you created on the online editor, then replace the URL with the one you copied just now and the **apikey**  with your personalized API Key, which LandingLens previously generated.
-    <img src="./img/JSScript.png" alt="JSScript" width="700">
-
-* Return to the plugin description page to add the copied link, then click **Create** to create your plugin.
-  <img src="./img/CreatePlugin.jpg" alt="CreatePlugin" width="700">
-
-### 2.5 Widget implementation 
-* The created prototype screen displays as follows; click on **Open** button.
-  <img src="./img/OpenPrototype.jpg" alt="OpenPrototype" width="700">
-
-* Click on the **Code** button to enter the page for the Software-defined vehicle Python script editor and Dashboard configuration.
-  
-  <img src="./img/CodeEditor.jpg" alt="CodeEditor" width="700">
-
-* Click on **Dashboard config** option to open the Dashboard config editor.
-  <img src="./img/DashboardConfig.jpg" alt="DashboardConfig" width="700">
-
-* Add the plugins to the respective widget boxes on the editor.  (**Wallet Detection** prototype Dashboard config: https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/code).
-  
-  <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="700">
+* Next, create and add the other widget blocks needed, as shown below. Ensure to set their attribute values appropriately.
 
 ### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
