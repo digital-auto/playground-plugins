@@ -1,14 +1,14 @@
 import socketio
 import asyncio
 sio = socketio.AsyncClient()
-provider_id = "PYTHON-CLIENT-SAMPLE"
+provider_id = "dev-CLIENT-SAMPLE"
 
 async def simulate_run(val):
     global sio
     for i in range(0, 10):
         await asyncio.sleep(1)
         await sio.emit("sent_to_my_clients", {
-        "provider_id": "PYTHON-CLIENT-SAMPLE",
+        "provider_id": "dev-CLIENT-SAMPLE",
         "cmd": val,
         "data": val
         })
@@ -25,7 +25,7 @@ async def Get_input():
                 inp = input("Wish value you want to get it ? ").lower()
 
             await sio.emit("sent_to_my_clients", {
-            "provider_id": "PYTHON-CLIENT-SAMPLE",
+            "provider_id": "dev-CLIENT-SAMPLE",
             "cmd": inp,
             "data": inp
             })
@@ -51,7 +51,7 @@ async def new_request(data):
     global sio
     if data["cmd"] == "result_from_vehicul":
         await sio.emit("sent_to_my_clients", {
-            "provider_id": "PYTHON-CLIENT-SAMPLE",
+            "provider_id": "dev-CLIENT-SAMPLE",
             "cmd": "showTest",
             "data": data["data"]
         })
