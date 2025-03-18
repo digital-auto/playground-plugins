@@ -79,36 +79,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   
   <img src="./img/PrototypeDescription2.jpg" alt="PrototypeDescription" width="300">
 
-### 2.4 Build your plugin with the online digital.auto Plugin Editor
-* Go back to **Industrial Internet** vehicle model, then select **Plugins**.
-  <img src="./img/SelectPlugin.jpg" alt="SelectPlugin" width="700">
-
-* Click on **+ New plugin** button to create your customized plugin to support your prototype demonstration on your prototype **Dashboard**.
-  <img src="./img/NewPlugin.jpg" alt="NewPlugin" width="700">
-
-* Add plugin name, Plugin description and click on **Create JS code file using our editor**.
-  <img src="./img/JSCodeEditor.jpg" alt="JSCodeEditor" width="700">
-
-* Click **Open JS code editor** to open an online digital.auto Plugin Editor (https://editor.digitalauto.tech/) for prototype development on digital.auto Playground.
-  
-  <img src="./img/OpenJSEditor.jpg" alt="OpenJSEditor" width="700">
-
-* Click on **Create New Plugin** button to create a plugin for your prototype, specify your plugin name and add the respective JavaScript code on the digital.auto Plugin Editor.
-  
-  <img src="./img/PluginEditor_1.png" alt="PluginEditor" width="700">
-  <img src="./img/PluginEditor_2.png" alt="PluginEditor" width="700">
-
-  * Go back to **Deploy** menu on **LandingLens** and copy the URL (inside the red box), as shown in the image below. 
-  
-    <img src="./img/URL.png" alt="DatasetUpload" width="700">
-
-  * You can copy the JavaScript code we provided in the **Wallet Detection** prototype (https://editor.digitalauto.tech/editor/f7054ad5-77f7-47cd-8d0d-d0d9bbb58761wallet_detection.js), and paste into the new plugin you created on the online editor, then replace the URL with the one you copied just now and the **apikey**  with your personalized API Key, which LandingLens previously generated.
-    <img src="./img/JSScript.png" alt="JSScript" width="700">
-
-* Return to the plugin description page to add the copied link, then click **Create** to create your plugin.
-  <img src="./img/CreatePlugin.jpg" alt="CreatePlugin" width="700">
-
-### 2.5 Widget implementation 
+### 2.4 Widget implementation 
 * The created prototype screen displays as follows; click on **Open** button.
   <img src="./img/OpenPrototype.jpg" alt="OpenPrototype" width="700">
 
@@ -123,7 +94,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   
   <img src="./img/WidgetEdit.jpg" alt="WidgetEdit" width="700">
 
-### 2.6 Final view of your prototype on Dashboard.
+### 2.5 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
   
   <img src="./img/FinalDashboard2.jpg" alt="FinalDashboard" width="700">
