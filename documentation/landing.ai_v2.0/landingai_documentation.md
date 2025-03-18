@@ -80,8 +80,8 @@ In this section, the integration processes of the AI model from LandingLens on d
   <img src="./img/PrototypeDescription2.jpg" alt="PrototypeDescription" width="300">
 
 ### 2.4 Implement your prototype using Python script
-* Click on the **SDV Code** sub-tab within your prototype to enter the page for the Software-defined vehicle Python script editor and write your code..
-  <img src="./img/PythonScript.jpg" alt="PythonScript" width="700">
+* Click on the **SDV Code** sub-tab within your prototype to enter the page for the Software-defined vehicle Python script editor and write your code.
+   <img src="./img/PythonScript.jpg" alt="PythonScript" width="700">
 
 ### 2.5 Implement Widgets and Build your Dashboard
 * Click on the **Dashboard** sub-tab within your prototype to see a blank canvas. Click on the **Edit** button.
