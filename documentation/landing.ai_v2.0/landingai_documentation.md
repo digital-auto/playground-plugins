@@ -7,11 +7,11 @@
 
 # Landing AI Platform Model build up and digital.auto Playground Deployment Guide
 
-Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/dashboard) demo case on [**digital.auto Playground**](https://playground.digital.auto/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the Landing AI platform [**LandingLens**](https://landing.ai/) from scratch and deploying this model on digital.auto Playground. 
+Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/dashboard) demo case on [**digital.auto Playground**](https://playground.digital.auto/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the [**Landing.ai**](https://landing.ai/) platform  from scratch and deploying this model on digital.auto Playground. 
 
-## 1. LandingLens AI model build up
+## 1. Landing.ai AI model build up
 
-### 1.1 Register a LandingLens account and create an AI project
+### 1.1 Register a Landing.ai account and create an AI project
 * Register an account at Landing AI homepage (https://app.landing.ai/login).
   <img src="./img/LandingaiRegistration2.png" alt="LandingaiRegistration" width="700">
 
@@ -79,11 +79,7 @@ In this section, the integration processes of the AI model from LandingLens on d
   
   <img src="./img/PrototypeDescription2.jpg" alt="PrototypeDescription" width="300">
 
-### 2.4 Implement your prototype using Python script
-* Click on the **SDV Code** sub-tab within your prototype to enter the page for the Software-defined vehicle Python script editor and write your code.
-   <img src="./img/PythonScript.jpg" alt="PythonScript" width="700">
-
-### 2.5 Implement Widgets and Build your Dashboard
+### 2.4 Implement Widgets and Build your Dashboard
 * Click on the **Dashboard** sub-tab within your prototype to see a blank canvas. Click on the **Edit** button.
     <img src="./img/Dashboard.jpg" alt="Dashboard" width="700">
 
@@ -102,6 +98,27 @@ In this section, the integration processes of the AI model from LandingLens on d
     <img src="./img/LandingaiDashboard.jpg" alt="LandingaiDashoboard" width="700">
 
 * Next, create and add the other widget blocks needed, as shown below. Ensure to set their attribute values appropriately.
+
+  **Simple Alert Sound Widget:** 
+    This widget can be used in scenarios to notify or alert the customer of any event. In this case, if a wallet is detected, the sound alert buzzer notifies the user that their wallet is found. This widget/animation listens to one VSS signal. The default value is "0". When the VSS value is "1", it will trigger the alert.
+     <img src="./img/AlertSoundWidget.jpg" alt="AlertSoundWidget" width="700">
+     <img src="./img/AlertWidgetVSSAPI.jpg" alt="AlertWidgetVSSAPI" width="700">
+  
+  **Map Widget:**
+    This widget showcases the current location and the direction in which the vehicle has traveled on Google Maps. VSS APIs are used to fetch the current latitude and longitude to configure the present location on the map.
+     <img src="./img/MapWidget.jpg" alt="MapWidget" width="700">
+     <img src="./img/MapWidgetVSSAPI.jpg" alt="MapWidgetVSSAPI" width="700">
+
+  **Signal List Settable widget:**
+    This widget is used to read and set the values of the VSS signals being used in the scenario. It listens to a list of VSS signals you want to monitor. This widget displays the current values of VSS signals in the list and an option to set the values.
+      <img src="./img/SignalListWidget.jpg" alt="SignalListWidget" width="700">
+      <img src="./img/SignalListWidget2.jpg" alt="SignalListWidget2" width="700">
+      <img src="./img/SignalListWidget3.jpg" alt="SignalListWidget3" width="700">
+
+
+### 2.5 Implement your prototype using Python script
+* Click on the **SDV Code** sub-tab within your prototype to enter the page for the Software-defined vehicle Python script editor and write your code.
+   <img src="./img/PythonScript.jpg" alt="PythonScript" width="700">
 
 ### 2.6 Final view of your prototype on Dashboard.
 * Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
