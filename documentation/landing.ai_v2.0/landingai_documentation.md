@@ -63,83 +63,78 @@ For the **Wallet Detection** project, select **Object Detection** as the project
      <img src="./img/Api.png" alt="API Key Generation" width="700">  
 
 
-## 2. Deploying the Model and Prototyping
+## 2. Deploying the Model and Prototyping  
 
-In this section, the integration processes of the AI model from LandingLens on digital.auto Playground will be introduced. We will deploy two widgets (one for the raw image and one for the AI inference results) on the vehicle model Dashboard on Playground to demonstrate Wallet Detection use case. 
+In this section, we will guide you through the process of integrating your AI model from **Landing.ai** into **digital.auto Playground**. We will deploy two widgets—a raw image display and an AI inference results display—onto the dashboard and in the Playground to demonstrate the **Wallet Detection** use case.  
 
-### 2.1 Login to the digital.auto playground portal
-* Click this link https://playground.digital.auto/ to visit digital.auto playground portal on your web browser.
-* Login with your user email ID and password. (Please send an email to chris.cheng@ferdinand-steinbeis-institut.de to request an account)
+### 2.1 Log in to digital.auto Playground  
+1. Open [**digital.auto Playground**](https://playground.digital.auto/) in your web browser.  
+2. Log in using your email ID and password. *(To request an account, please contact chris.cheng@ferdinand-steinbeis-institut.de.)*  
 
-### 2.2 Choose your vehicle model
-* Click on **Vehicle Models** button; thus, all public vehicle models are visible.
-  <img src="./img/SelectVehicleModel2.jpg" alt="SelectVehicleModel" width="700">
+### 2.2 Select Your Vehicle Model  
+1. Click the **Vehicle Models** button to view available public models.  
+   <img src="./img/SelectVehicleModel2.jpg" alt="Select Vehicle Model" width="700">  
+2. Select the **Industrial Internet** vehicle model.  
+   <img src="./img/IndustrialInternet2.jpg" alt="Industrial Internet" width="700">  
 
-* Click on the vehicle model **Industrial Internet**.
-   
-  <img src="./img/IndustrialInternet2.jpg" alt="IndustrialInternet" width="700">
+### 2.3 Create Your Prototype Template  
+1. Navigate to **Prototype Library** to access the prototype catalog.  
+   <img src="./img/PrototypeLibrary2.jpg" alt="Prototype Library" width="700">  
+2. Click **+ Create New Prototype** to create a prototype under the **Industrial Internet** vehicle model.  
+   <img src="./img/NewPrototype2.jpg" alt="New Prototype" width="700">  
+3. Provide a name for your prototype, select your preferred programming language, and click **New Prototype** to proceed.  
+   <img src="./img/PrototypeDescription2.jpg" alt="Prototype Description" width="300">  
 
-### 2.3 Create your prototype template
-* Click **Prototype Library** to enter the prototype catalog.
-  <img src="./img/PrototypeLibrary2.jpg" alt="PrototypeLibrary" width="700">
+### 2.4 Implement Widgets and Build Your Dashboard  
+1. Click the **Dashboard** sub-tab within your prototype to access a blank canvas, then click **Edit**.  
+   <img src="./img/Dashboard.jpg" alt="Dashboard" width="700">  
+2. Select the grid blocks where you want to place your first widget and click **Add Widget**.  
+   <img src="./img/AddWidget.jpg" alt="Add Widget" width="700">  
+3. From the available widget marketplace, select **Simple Landing AI Widget** and click **Add Selected Widget**.  
+   <img src="./img/AddLandingaiWidget.jpg" alt="Add Landing AI Widget" width="700">  
+4. Retrieve your **Endpoint** and **API Key** from the **Deploy** menu in Landing.ai.  
+5. Click **Edit Widget**, enter the copied details, and click **Save**.  
+   <img src="./img/AddEndpointAPIKey.jpg" alt="Add Endpoint API Key" width="700">  
+   <img src="./img/LandingaiWidget.jpg" alt="Landing AI Widget" width="700">  
+6. Once saved, your first widget will appear on the dashboard.  
+   <img src="./img/LandingaiDashboard.jpg" alt="Landing AI Dashboard" width="700">  
 
-* Click on **+ Create New Prototype** button to create your prototype under **Industrial Internet** vehicle model.
-  <img src="./img/NewPrototype2.jpg" alt="NewPrototype" width="700">
+### 2.5 Add Additional Widgets  
+To enhance your prototype, add the following widgets and configure them accordingly:  
 
-* Provide your prototype name and your programming language, then click **New Prototype** button to create your prototype.
-  
-  <img src="./img/PrototypeDescription2.jpg" alt="PrototypeDescription" width="300">
+#### **Simple Alert Sound Widget**  
+- This widget generates an audio alert when a wallet is detected.  
+- It listens to a VSS signal that triggers the alert when the value changes from "0" to "1".  
+   <img src="./img/AlertSoundWidget.jpg" alt="Alert Sound Widget" width="700">  
+   <img src="./img/AlertWidgetVSSAPI.jpg" alt="Alert Widget VSS API" width="700">  
 
-### 2.4 Implement Widgets and Build your Dashboard
-* Click on the **Dashboard** sub-tab within your prototype to see a blank canvas. Click on the **Edit** button.
-    <img src="./img/Dashboard.jpg" alt="Dashboard" width="700">
+#### **Map Widget**  
+- Displays the vehicle’s current location and movement direction using Google Maps.  
+- Uses VSS APIs to fetch real-time latitude and longitude coordinates.  
+   <img src="./img/MapWidget.jpg" alt="Map Widget" width="700">  
+   <img src="./img/MapWidgetVSSAPI.jpg" alt="Map Widget VSS API" width="700">  
 
-* Select the blocks in which you want to place the first widget and click on the **Add widget** button as shown below.
-    <img src="./img/AddWidget.jpg" alt="AddWidget" width="700">
+#### **Signal List Settable Widget**  
+- Monitors and updates VSS signal values in real-time.  
+- Provides an interface to set and modify VSS signal values directly.  
+   <img src="./img/SignalListWidget.jpg" alt="Signal List Widget" width="700">  
+   <img src="./img/SignalListWidget2.jpg" alt="Signal List Widget 2" width="700">  
+   <img src="./img/SignalListWidget3.jpg" alt="Signal List Widget 3" width="700">  
 
-* A list of widgets from the marketplace is displayed. Select the Simple Landing AI widget and click on Add selected widget.
-    <img src="./img/AddLandingaiWidget.jpg" alt="AddLandingaiWidget" width="700">
+By following these steps, you will successfully integrate your AI model into **digital.auto Playground** and build an interactive prototype demonstrating **Wallet Detection** in an AIoT environment.  
 
-* Go back to the **Deploy** menu on Landing.ai and copy the details like endpoint and API key(generated earlier). 
-* Click on Edit Widget and add the copied details from above and click **Save**.
-    <img src="./img/AddEndpointAPIKey.jpg" alt="AddEndpointAPIKey" width="700">
-    <img src="./img/LandingaiWidget.jpg" alt="LandingaiWidget" width="700">
+### 2.6 Implement Your Prototype Using a Python Script  
+1. Navigate to the **SDV Code** sub-tab within your prototype to access the Application Python script editor.  
+2. Write and implement your Python code to define the behavior of your prototype.  
+   <img src="./img/PythonScript.jpg" alt="Python Script" width="700">  
 
-* After clicking on **Save**, you should see your first widget on the dashboard as shown below.
-    <img src="./img/LandingaiDashboard.jpg" alt="LandingaiDashoboard" width="700">
+### 2.7 Finalizing and Viewing Your Prototype on the Dashboard  
+- Once all widgets are configured, your prototype dashboard will display the **image upload** widget alongside the **AI model inference results**.  
+  <img src="./img/FinalDashboard1.jpg" alt="Final Dashboard" width="700">  
 
-* Next, create and add the other widget blocks needed, as shown below. Ensure to set their attribute values appropriately.
+- To test your setup:  
+  1. Click the **Upload** button to upload a local image.  
+  2. Click **Submit** to send the image to the AI model.  
+  3. After a few seconds, the AI inference result from **Landing.ai** will be displayed on the right side of the dashboard.  
 
-  **Simple Alert Sound Widget:** 
-    This widget can be used in scenarios to notify or alert the customer of any event. In this case, if a wallet is detected, the sound alert buzzer notifies the user that their wallet is found. This widget/animation listens to one VSS signal. The default value is "0". When the VSS value is "1", it will trigger the alert.
-     <img src="./img/AlertSoundWidget.jpg" alt="AlertSoundWidget" width="700">
-     <img src="./img/AlertWidgetVSSAPI.jpg" alt="AlertWidgetVSSAPI" width="700">
-  
-  **Map Widget:**
-    This widget showcases the current location and the direction in which the vehicle has traveled on Google Maps. VSS APIs are used to fetch the current latitude and longitude to configure the present location on the map.
-     <img src="./img/MapWidget.jpg" alt="MapWidget" width="700">
-     <img src="./img/MapWidgetVSSAPI.jpg" alt="MapWidgetVSSAPI" width="700">
-
-  **Signal List Settable widget:**
-    This widget is used to read and set the values of the VSS signals being used in the scenario. It listens to a list of VSS signals you want to monitor. This widget displays the current values of VSS signals in the list and an option to set the values.
-      <img src="./img/SignalListWidget.jpg" alt="SignalListWidget" width="700">
-      <img src="./img/SignalListWidget2.jpg" alt="SignalListWidget2" width="700">
-      <img src="./img/SignalListWidget3.jpg" alt="SignalListWidget3" width="700">
-
-
-### 2.5 Implement your prototype using Python script
-* Click on the **SDV Code** sub-tab within your prototype to enter the page for the Software-defined vehicle Python script editor and write your code.
-   <img src="./img/PythonScript.jpg" alt="PythonScript" width="700">
-
-### 2.6 Final view of your prototype on Dashboard.
-* Finally, the widgets for uploading your local image and presenting AI model inference will be populated on your prototype dashboard.
-  
-  <img src="./img/FinalDashboard1.jpg" alt="FinalDashboard1" width="700">
-
-* Upload your image with **Upload** button, then click on **Submit** button; AI model inference from LandingLens will pop up on the right side after a few seconds.
-  
-
-
-
-
-
+With this, your first AI-powered prototype is successfully deployed and ready for use in **digital.auto Playground**! 🚀  
