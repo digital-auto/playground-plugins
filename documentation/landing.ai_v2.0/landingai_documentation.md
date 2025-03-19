@@ -5,54 +5,65 @@
   <img src="./img//AIoTLogoLabHN.jpg" alt="Logo 1" width="160"/>
 </div>
 
-# Landing AI Platform Model build up and digital.auto Playground Deployment Guide
+# AIoT Hands-on Practice Guide 
 
-Here we take [**Wallet Detection**](https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/dashboard) demo case on [**digital.auto Playground**](https://playground.digital.auto/), as an example, to demonstrate how to create an AI-related Software-defined Vehicle prototype. The process is divided into two main parts, building an object detection AI model on the [**Landing.ai**](https://landing.ai/) platform  from scratch and deploying this model on digital.auto Playground. 
+In this guide, we use the [**Wallet Detection**](https://playground.digital.auto/model/67ae0607133b6f0028e0dc8c/library/prototype/67ae0646133b6f0028e0dd17/dashboard) demo case on [**digital.auto Playground**](https://playground.digital.auto/) as an example to illustrate the process of building an AIoT prototype powered by Cloud-AI services.  
 
-## 1. Landing.ai AI model build up
+The guide is structured into two key phases:  
 
-### 1.1 Register a Landing.ai account and create an AI project
-* Register an account at Landing AI homepage (https://app.landing.ai/login).
-  <img src="./img/LandingaiRegistration2.png" alt="LandingaiRegistration" width="700">
+1. **Building an Object Detection AI Model** – We will create an AI model from scratch using the [**Landing.ai**](https://landing.ai/) platform.  
+2. **Deploying the Model and Prototying** – Once the model is trained, we will deploy it on [**digital.auto Playground**](https://playground.digital.auto/) and develop a simple prototype around it. This step will demonstrate how the model can be integrated into an AIoT application, showcasing its functionality in a real-world scenario. 
 
-* After entering your personal account home page, click on **Create Project** tile to create your project.
-  <img src="./img//LandingLens2.png" alt="LandingLens" width="700">
+Through this hands-on approach, you will gain practical experience in developing and deploying AIoT applications seamlessly.
 
-* After entering your created project, click on **Edit** icon  and enter a descriptive name for your project.
-  <img src="./img/ProjectName2.png" alt="ProjectName" width="700">
+## 1. Building an Object Detection AI Model  
 
-### 1.2 Select your project type
-* Three main Computer Vision related tasks that can be developed on LandingLens: 
-  * Object Detection: I want to identify objects by drawing boxes around them.
-  * Segmentation: I want to identify objects by painting pixels on them.
-  * Classification: I want to identify each image into different categories.
-* For **Wallet Detection** project, we select the project type of Object detection.
+### 1.1 Register a Landing.ai Account and Create a New AI Project  
+1. Sign up for an account on the [Landing.ai homepage](https://app.landing.ai/login).  
+   <img src="./img/LandingaiRegistration2.png" alt="Landing.ai Registration" width="700">  
 
-### 1.3 Upload your image dataset 
-* If you have labeled image datasets, you can upload them by selecting drop to upload button. 
-  * Drag the image dataset to LandingLens on the upload image page.
-    <img src="./img/BrowseImages2.png" alt="DatasetUpload" width="700">
-  * After uploading your dataset to LandingLens, the images will be automatically annotated.
-    <img src="./img/DatasetUpload.png" alt="DatasetUpload" width="700">
-* If you only have some raw images without labeling, you can utilize LandingLens online annotation tool to label your images. 
-  * Update your raw images to LandingLens as before, then click one image to enter the annotation editor.
-    <img src="./img/AnnotationTool.png" alt="AnnotationTool" width="700">
-  * Click on **+ Create Class** to define the item you want to detect into a class, e.g., Wallet.   
-     <img src="./img/DefineClass.png" alt="DefineClass" width="700">
-  *  You can label your images by drawing a box on the object that you want to identify, then press the left or right arrow keys on your keyboard accordingly to move to the next image.
-     <img src="./img/DrawBox.png" alt="DrawBox" width="700">
+2. Once logged in, navigate to your personal dashboard and click on the **Create Project** tile to start a new project.  
+   <img src="./img/LandingLens2.png" alt="LandingLens" width="700">  
 
-  * If the image does not have any items to label, then click **Nothing to Label** on the bottom right corner.
+3. Inside your newly created project, click the **Edit** icon and assign a descriptive name to your project.  
+   <img src="./img/ProjectName2.png" alt="Project Name" width="700">  
 
-### 1.4 Train your model online
-  * After you prepare your dataset on LandingLens, click the **Train** button to start training your customized wallet detection model, which will take a few minutes.
-  
-### 1.5 Generate your model API key
-* Click on **Deploy** button in the left menu, then click on **Create new endpoint** and deploy. Give a name and click **Create** button to create your endpoint.
-* Select **View API Key**, enter the name, and click **Generate API Key** to generate your personalized API key. Later during the deployment of digital.auto Playground, you will use API calls to send images by specifying your API key. 
-  <img src="./img/Api.png" alt="DatasetUpload" width="700">
+### 1.2 Select Your Project Type  
+  LandingLens supports three main computer vision tasks:  
+  - **Object Detection**: Identifies objects by drawing bounding boxes around them.  
+  - **Segmentation**: Identifies objects by painting pixels over them.  
+  - **Classification**: Categorizes entire images into predefined groups.  
 
-## 2. digital.auto Playground integration
+For the **Wallet Detection** project, select **Object Detection** as the project type.  
+
+### 1.3 Upload Your Image Dataset  
+1. If you have a pre-labeled image dataset, upload it by selecting the **Drop to Upload** button.  
+     - Drag and drop your dataset onto the upload page.  
+       <img src="./img/BrowseImages2.png" alt="Dataset Upload" width="700">  
+     - Once uploaded, LandingLens will automatically annotate the images.  
+       <img src="./img/DatasetUpload.png" alt="Dataset Upload" width="700">  
+
+2. If you only have raw (unlabeled) images, you can manually annotate them using LandingLens’s built-in annotation tool.  
+     - Upload your raw images as before, then click on an image to enter the annotation editor.  
+        <img src="./img/AnnotationTool.png" alt="Annotation Tool" width="700">  
+     - Click **+ Create Class** to define the object you want to detect (e.g., Wallet).  
+        <img src="./img/DefineClass.png" alt="Define Class" width="700">  
+     - Label your images by drawing a bounding box around the object and use the left/right arrow keys to navigate through images.  
+        <img src="./img/DrawBox.png" alt="Draw Box" width="700">  
+     - If an image does not contain any relevant objects, click **Nothing to Label** in the bottom right corner.  
+
+### 1.4 Train Your Model Online  
+1. Once your dataset is prepared, click the **Train** button to initiate model training. This process will take a few minutes.  
+
+### 1.5 Generate Your Model API Key  
+  1. Click **Deploy** in the left menu, then select **Create new endpoint** to deploy your model.  
+  2. Assign a name and click **Create** to finalize the deployment.  
+  3. Click **View API Key**, enter a name, and then click **Generate API Key** to obtain your personalized API key.  
+  4. This API key will be required later when integrating your model with **digital.auto Playground**, allowing you to send image data via API calls.  
+     <img src="./img/Api.png" alt="API Key Generation" width="700">  
+
+
+## 2. Deploying the Model and Prototyping
 
 In this section, the integration processes of the AI model from LandingLens on digital.auto Playground will be introduced. We will deploy two widgets (one for the raw image and one for the AI inference results) on the vehicle model Dashboard on Playground to demonstrate Wallet Detection use case. 
 
