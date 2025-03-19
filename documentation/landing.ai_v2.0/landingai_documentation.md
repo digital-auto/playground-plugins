@@ -29,7 +29,7 @@ Through this hands-on approach, you will gain practical experience in developing
    <img src="./img/ProjectName2.png" alt="Project Name" width="700">  
 
 ### 1.2 Select Your Project Type  
-  LandingLens supports three main computer vision tasks:  
+  Landing.ai supports three main computer vision tasks:  
   - **Object Detection**: Identifies objects by drawing bounding boxes around them.  
   - **Segmentation**: Identifies objects by painting pixels over them.  
   - **Classification**: Categorizes entire images into predefined groups.  
@@ -40,10 +40,10 @@ For the **Wallet Detection** project, select **Object Detection** as the project
 1. If you have a pre-labeled image dataset, upload it by selecting the **Drop to Upload** button.  
      - Drag and drop your dataset onto the upload page.  
        <img src="./img/BrowseImages2.png" alt="Dataset Upload" width="700">  
-     - Once uploaded, LandingLens will automatically annotate the images.  
+     - Once uploaded, Landing.ai will automatically annotate the images.  
        <img src="./img/DatasetUpload.png" alt="Dataset Upload" width="700">  
 
-2. If you only have raw (unlabeled) images, you can manually annotate them using LandingLens’s built-in annotation tool.  
+2. If you only have raw (unlabeled) images, you can manually annotate them using Landing.ai's built-in annotation tool.  
      - Upload your raw images as before, then click on an image to enter the annotation editor.  
         <img src="./img/AnnotationTool.png" alt="Annotation Tool" width="700">  
      - Click **+ Create Class** to define the object you want to detect (e.g., Wallet).  
@@ -65,7 +65,8 @@ For the **Wallet Detection** project, select **Object Detection** as the project
 
 ## 2. Deploying the Model and Prototyping  
 
-In this section, we will guide you through the process of integrating your AI model from **Landing.ai** into **digital.auto Playground**. We will deploy two widgets—a raw image display and an AI inference results display—onto the dashboard and in the Playground to demonstrate the **Wallet Detection** use case.  
+In this section, we will guide you through the process of integrating your AI model from **Landing.ai** into **digital.auto Playground**. We will deploy multiple widgets—including a Landing.aI inference results display, an alert sound widget, a map widget, and a signal list widget—onto the canvas in the Playground to demonstrate the **Wallet Detection** use case.  
+
 
 ### 2.1 Log in to digital.auto Playground  
 1. Open [**digital.auto Playground**](https://playground.digital.auto/) in your web browser.  
@@ -129,7 +130,7 @@ By following these steps, you will successfully integrate your AI model into **d
    <img src="./img/PythonScript.jpg" alt="Python Script" width="700">  
 
 ### 2.7 Finalizing and Viewing Your Prototype on the Dashboard  
-- Once all widgets are configured, your prototype dashboard will display the **image upload** widget alongside the **AI model inference results**.  
+- Once all widgets are configured, your prototype dashboard will be ready for demostraction.  
   <img src="./img/FinalDashboard1.jpg" alt="Final Dashboard" width="700">  
 
 - To test your setup:  
