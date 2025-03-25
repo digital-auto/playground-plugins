@@ -50,22 +50,27 @@ For the **Wallet Detection** project, select **Object Detection** as the project
         <img src="./img/DefineClass.png" alt="Define Class" width="700">  
      - Label your images by drawing a bounding box around the object and use the left/right arrow keys to navigate through images.  
         <img src="./img/DrawBox.png" alt="Draw Box" width="700">  
-     - If an image does not contain any relevant objects, click **Nothing to Label** in the bottom right corner.  
+     - If an image does not contain any relevant objects, click **No Class**.
+         <img src="./img/LabelNoClass.png" alt="Label No Class" width="700">    
 
 ### 1.4 Train Your Model Online  
-1. Once your dataset is prepared, click the **Train** button to initiate model training. This process will take a few minutes.  
+   1. Once your dataset is prepared, click the **Train** button to initiate model training. This process will take a few minutes.
+      <img src="./img/ModelTrain.png" alt="LandingaiModelTrain" width="700"> 
 
 ### 1.5 Generate Your Model API Key  
-  1. Click **Deploy** in the left menu, then select **Create new endpoint** to deploy your model.  
-  2. Assign a name and click **Create** to finalize the deployment.  
-  3. Click **View API Key**, enter a name, and then click **Generate API Key** to obtain your personalized API key.  
-  4. This API key will be required later when integrating your model with **digital.auto Playground**, allowing you to send image data via API calls.  
-     <img src="./img/Api.png" alt="API Key Generation" width="700">  
+  1. Click **Deploy** in the left menu, then select **Create new endpoint** to deploy your model.
+      <img src="./img/CreateEndPoint.png" alt="Creat End Point" width="700">   
+  2. Assign a name and click **Create** to finalize the deployment. Then you will see the endpoint ID of this deployment.  
+      <img src="./img/GetEndPointID.png" alt="Get End Point ID" width="700">  
+  3. Click **API Key** to enter the API Key menu, and then click **Generate New Key** to obtain your personalized API key.  
+     <img src="./img/CreateAPIKey.png" alt="Create API Key" width="700">  
+      <img src="./img/Api.png" alt="API Key Generation" width="700">  
+  4. The endpoint ID and API key will be required later when integrating your model with **digital.auto Playground**, allowing you to send image data via API calls.
 
 
 ## 2. Deploying the Model and Prototyping  
 
-In this section, we will guide you through the process of integrating your AI model from **Landing.ai** into **digital.auto Playground**. We will deploy multiple widgets—including a Landing.aI inference results display, an alert sound widget, a map widget, and a signal list widget—onto the canvas in the Playground to demonstrate the **Wallet Detection** use case.  
+In this section, we will guide you through the process of integrating your AI model from **Landing.ai** into **digital.auto Playground**. We will deploy multiple widgets—including a Landing.ai inference results display, an alert sound widget, a map widget, and a signal list widget—onto the canvas in the Playground to demonstrate the **Wallet Detection** use case.  
 
 
 ### 2.1 Log in to digital.auto Playground  
@@ -134,8 +139,9 @@ By following these steps, you will successfully integrate your AI model into **d
   <img src="./img/FinalDashboard1.jpg" alt="Final Dashboard" width="700">  
 
 - To test your setup:  
-  1. Click the **Upload** button to upload a local image.  
-  2. Click **Submit** to send the image to the AI model.  
-  3. After a few seconds, the AI inference result from **Landing.ai** will be displayed on the right side of the dashboard.  
+  1. Click the start button to run your prototype.
+  2. Click the **Upload Image** button to upload a local image.  
+  3. After a few seconds, the AI inference result from **Landing.ai** will be displayed on the right side of the dashboard.
+  4. The AI inference will trigger the actions of other widgets according to the logic you program on Dashboard.  
 
 With this, your first AI-powered prototype is successfully deployed and ready for use in **digital.auto Playground**! 🚀  
